@@ -1334,8 +1334,10 @@ class Player : SKSpriteNode {
     func launchRock(_ range: CGFloat, height: CGFloat, forwardMomentum: CGFloat) {
         let rock: PlayerRock = self.projectiles2.popLast() as! PlayerRock
         
-        rock.position = CGPoint(x: self.position.x + range, y: self.defaultPositionY - 30 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         rock.physicsBody!.velocity = CGVector()
+        
+        rock.position = CGPoint(x: self.position.x + range, y: self.defaultPositionY - 30 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+        
         // Change the name back to default so it receives updates
         rock.resetName()
         
@@ -1352,8 +1354,10 @@ class Player : SKSpriteNode {
     func launchMeteorFromSky(range: CGFloat, velocity: CGFloat, heightBoost: CGFloat) {
         let meteor: PlayerMeteor = self.projectiles2.popLast() as! PlayerMeteor
         
-        meteor.position = CGPoint(x: self.position.x + range, y: self.gameScene!.size.height + heightBoost)
         meteor.physicsBody!.velocity = CGVector()
+        
+        meteor.position = CGPoint(x: self.position.x + range, y: self.gameScene!.size.height + heightBoost)
+        
         // Change the name back to default so it receives updates
         meteor.resetName()
         
@@ -1748,10 +1752,10 @@ class Player : SKSpriteNode {
                 self.launchMeteorFromSky(range: skill.range * ScaleBuddy.sharedInstance.getGameScaleAmount(false), velocity: CGFloat(skill.secondaryValue), heightBoost: 0)
             }
             if skill.value >= 2 {
-                self.launchMeteorFromSky(range: skill.range + 100 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), velocity: CGFloat(skill.secondaryValue), heightBoost: 50 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+                self.launchMeteorFromSky(range: (skill.range + 100) * ScaleBuddy.sharedInstance.getGameScaleAmount(false), velocity: CGFloat(skill.secondaryValue), heightBoost: 50 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             }
             if skill.value >= 3 {
-                self.launchMeteorFromSky(range: skill.range + 200 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), velocity: CGFloat(skill.secondaryValue), heightBoost: 150 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+                self.launchMeteorFromSky(range: (skill.range + 200) * ScaleBuddy.sharedInstance.getGameScaleAmount(false), velocity: CGFloat(skill.secondaryValue), heightBoost: 150 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             }
             
             SoundHelper.sharedInstance.playSound(self, sound: SoundType.Explode)

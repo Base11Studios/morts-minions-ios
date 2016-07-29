@@ -758,6 +758,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             for projectile in self.worldViewPlayerProjectiles {
                 if projectile.name!.hasPrefix("playerProjectile") {
                     projectile.updateAfterPhysics()
+                } else {
+                    projectile.physicsBody!.velocity = CGVector()
                 }
             }
             
@@ -1598,7 +1600,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 
                 // Create and add the map object unit to the array
                 let object: String = level["Object"] as! String
-                var location: CGFloat = level["Location"] as! CGFloat
+                var location: CGFloat = level["Location"] as! CGFloat + 60
                 
                 // Scale location
                 location *= ScaleBuddy.sharedInstance.getGameScaleAmount(false)
