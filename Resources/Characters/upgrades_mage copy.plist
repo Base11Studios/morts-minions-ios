@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>Teleport</string>
+			<key>IconName</key>
+			<string>iconjump</string>
+			<key>Type</key>
+			<string>skill</string>
+			<key>Id</key>
+			<string>teleport</string>
+			<key>Cost</key>
+			<integer>0</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>allows gary to teleport. gary is suspended in the air 0.35 seconds after teleporting.</string>
+			<key>ActivationMethod</key>
+			<string>press</string>
+			<key>Value</key>
+			<integer>80</integer>
+			<key>TertiaryValue</key>
+			<real>0.35</real>
+			<key>TutorialVersion</key>
+			<integer>3</integer>
+			<key>TutorialText</key>
+			<string>Press anywhere on the screen to teleport. Hold down to jump continuously.</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Tele Charge</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>teleport</string>
+			<key>Id</key>
+			<string>telecharge</string>
+			<key>Cost</key>
+			<integer>4</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>Enhances leonard&apos;s ability to jump, adding height to every jump.</string>
+			<key>Value</key>
+			<integer>20</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Tele Charge 2</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>teleport</string>
+			<key>Id</key>
+			<string>telecharge2</string>
+			<key>Cost</key>
+			<integer>6</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>further enhances leonard&apos;s ability to jump, adding more height to every jump.</string>
+			<key>Value</key>
+			<integer>20</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Double Teleport</string>
+			<key>Type</key>
+			<string>enhancement</string>
+			<key>TargetSkill</key>
+			<string>teleport</string>
+			<key>Id</key>
+			<string>doubleteleport</string>
+			<key>Cost</key>
+			<integer>4</integer>
+			<key>Currency</key>
+			<string>citrine</string>
+			<key>SecondaryValue</key>
+			<integer>25</integer>
+			<key>TertiaryValue</key>
+			<real>0.125</real>
+			<key>Description</key>
+			<string>Allows gary to teleport a 2nd time while in the air. Also adds 0.125 seconds to the time gary is suspended in the air after teleporting for a total of 0.475 seconds.</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Tele Charge 3</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>teleport</string>
+			<key>Id</key>
+			<string>telecharge3</string>
+			<key>Cost</key>
+			<integer>8</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>gives leonard a super jump, adding even more height to every jump.</string>
+			<key>Value</key>
+			<integer>20</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Triple Teleport</string>
+			<key>Type</key>
+			<string>enhancement</string>
+			<key>TargetSkill</key>
+			<string>teleport</string>
+			<key>Id</key>
+			<string>tripleteleport</string>
+			<key>Cost</key>
+			<integer>7</integer>
+			<key>Currency</key>
+			<string>citrine</string>
+			<key>SecondaryValue</key>
+			<integer>25</integer>
+			<key>TertiaryValue</key>
+			<real>0.125</real>
+			<key>Description</key>
+			<string>Allows gary to teleport a 3rd time while in the air. Further adds 0.125 seconds to the time gary is suspended in the air after teleporting for a total of 0.6 seconds.</string>
+		</dict>
+	</array>
+</array>
+</plist>

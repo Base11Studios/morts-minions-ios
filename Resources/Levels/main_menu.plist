@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Tutorial</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>what&apos;s new in version 0.6</string>
+			<key>Description</key>
+			<string>credits/about, small UX improvements, major performance enhancements and bug fixes. video rewards.</string>
+			<key>Key</key>
+			<string>whats_new_main_menu</string>
+			<key>Version</key>
+			<integer>6</integer>
+		</dict>
+	</array>
+</dict>
+</plist>

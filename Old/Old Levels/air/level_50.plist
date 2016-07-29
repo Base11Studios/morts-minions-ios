@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>World</key>
+	<string>air</string>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<integer>2500</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>WindBeast</string>
+		<key>Location</key>
+		<real>1500</real>
+	</dict>
+	<key>EnvironmentObject</key>
+	<dict>
+		<key>Object</key>
+		<string>Flappy</string>
+		<key>Location</key>
+		<real>1000</real>
+		<key>Value1</key>
+		<real>0.95</real>
+	</dict>
+</dict>
+</plist>

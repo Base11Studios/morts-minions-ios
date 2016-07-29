@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>World</key>
+	<string>air</string>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<integer>1500</integer>
+	</dict>
+	<key>EnvironmentObject</key>
+	<dict>
+		<key>Object</key>
+		<string>StormCloud</string>
+		<key>Location</key>
+		<real>1200</real>
+		<key>Value1</key>
+		<integer>100</integer>
+	</dict>
+	<key>EnvironmentObject - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LightningCloud</string>
+		<key>Location</key>
+		<integer>800</integer>
+		<key>Value1</key>
+		<integer>3</integer>
+	</dict>
+</dict>
+</plist>

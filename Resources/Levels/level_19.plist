@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>DontTouchEnemies</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>OneHundredPercent</string>
+			<key>Reward</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>World</key>
+	<string>water</string>
+	<key>Tutorial</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>getting difficult?</string>
+			<key>Description</key>
+			<string>go back to easier levels and collect a superstar by scoring 100%. these can be used for skill upgrades.</string>
+			<key>Type</key>
+			<string>tutorial</string>
+			<key>Key</key>
+			<string>get_superstars</string>
+			<key>Version</key>
+			<real>1.1</real>
+		</dict>
+	</array>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<integer>4950</integer>
+	</dict>
+	<key>EnvironmentObject</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>4800</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 5 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>BubbleMaker</string>
+		<key>Location</key>
+		<integer>4500</integer>
+		<key>Value1</key>
+		<real>2.5</real>
+	</dict>
+	<key>EnvironmentObject - 5 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>4400</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 5 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>4100</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>4100</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>3800</integer>
+	</dict>
+	<key>EnvironmentObject - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>Crab</string>
+		<key>Location</key>
+		<integer>3800</integer>
+	</dict>
+	<key>EnvironmentObject - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>3400</integer>
+	</dict>
+	<key>EnvironmentObject - 9</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<real>3200</real>
+	</dict>
+	<key>EnvironmentObject - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<real>2900</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<real>2500</real>
+		<key>New item</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>2400</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>BubbleMaker</string>
+		<key>Location</key>
+		<integer>1800</integer>
+		<key>Value1</key>
+		<real>2.5</real>
+	</dict>
+	<key>EnvironmentObject - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>1600</integer>
+		<key>Value1</key>
+		<integer>2</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>1400</integer>
+	</dict>
+	<key>EnvironmentObject - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>1200</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Crab</string>
+		<key>Location</key>
+		<integer>800</integer>
+	</dict>
+</dict>
+</plist>

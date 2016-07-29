@@ -1,0 +1,76 @@
+//
+//  Bat.swift
+//  Push
+//
+//  Created by Dan Bellinski on 10/4/15.
+//  Copyright (c) 2015 Dan Bellinski. All rights reserved.
+//
+
+import Foundation
+
+@objc(BubbleMaker)
+class BubbleMaker : Obstacle {
+    
+    var projectiles = Array<Projectile>()
+    
+    required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
+        super.init(scalar: scalar, imageName: "bubble_maker_base", textureAtlas: GameTextures.sharedInstance.waterAtlas, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
+        
+        // Create some bubbles
+        for _ in 1...6 {
+            // Create projectile
+            let projectile: Bubble = Bubble(scalar: 1.0, defaultYPosition: defaultYPosition, defaultXPosition: defaultXPosition, parent: parent, value1: 0, value2: 0, scene: scene)
+            
+            // We dont want this to get updated by gamescene so change the name which is the selector
+            projectile.name = "proj_dont_update"
+            projectile.isHidden = true
+            
+            projectile.position = CGPoint(x: defaultXPosition, y: defaultYPosition - 300)
+            
+            self.gameScene!.addEnvironmentObject(environmentObject: projectile)
+            
+            projectiles.append(projectile)
+        }
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func setupTraitsWithScalar(_ scalar: Double) {
+        // Add physics to the enemy
+        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        
+        // Determine interactions with player
+        self.collidesWithPlayer = false
+        self.playerCanDamage = false
+        
+        // Set physics
+        self.setDefaultPhysicsBodyValues()
+        
+        // Damage
+        self.damage = 0
+        self.damageToShields = 0
+    }
+    
+    override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
+        if self.attackCooldown <= 0.0 && self.projectiles.count > 0 {
+            let bubble: Bubble = self.projectiles.popLast() as! Bubble
+            
+            bubble.position = CGPoint(x: self.position.x, y: self.position.y)
+            bubble.defaultYPosition = self.position.y
+            
+            // Change the name back to default so it receives updates
+            bubble.resetName()
+            
+            // Unhide it
+            bubble.isHidden = false
+            
+            self.attackCooldown = self.value1
+            
+            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Bubble)
+        }
+        
+        super.attack(timeSinceLast, player: player)
+    }
+}

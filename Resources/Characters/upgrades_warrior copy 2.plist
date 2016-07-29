@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<array>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>jump</string>
+			<key>IconName</key>
+			<string>iconjump</string>
+			<key>Type</key>
+			<string>skill</string>
+			<key>Id</key>
+			<string>jump</string>
+			<key>Cost</key>
+			<integer>0</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>allows jim to jump.</string>
+			<key>ActivationMethod</key>
+			<string>press</string>
+			<key>Value</key>
+			<integer>5000</integer>
+			<key>TutorialVersion</key>
+			<integer>3</integer>
+			<key>TutorialText</key>
+			<string>Press anywhere on the screen to jump. Hold down to jump continuously.</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Moon Shoes</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>jump</string>
+			<key>Id</key>
+			<string>rubber_sneakers</string>
+			<key>Cost</key>
+			<integer>4</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>Enhances jim&apos;s ability to jump, adding height to every jump.</string>
+			<key>Value</key>
+			<integer>700</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Moon Shoes 2</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>jump</string>
+			<key>Id</key>
+			<string>moon_shoes</string>
+			<key>Cost</key>
+			<integer>6</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>further enhances jim&apos;s ability to jump, adding more height to every jump.</string>
+			<key>Value</key>
+			<integer>450</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Double Jump</string>
+			<key>Type</key>
+			<string>enhancement</string>
+			<key>TargetSkill</key>
+			<string>jump</string>
+			<key>Id</key>
+			<string>double_jump</string>
+			<key>Cost</key>
+			<integer>4</integer>
+			<key>Currency</key>
+			<string>citrine</string>
+			<key>Description</key>
+			<string>Allows jim to jump a 2nd time while in the air.</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Moon Shoes 3</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>jump</string>
+			<key>Id</key>
+			<string>superjump</string>
+			<key>Cost</key>
+			<integer>8</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>gives jim a super jump, adding even more height to every jump.</string>
+			<key>Value</key>
+			<integer>350</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Triple Jump</string>
+			<key>Type</key>
+			<string>enhancement</string>
+			<key>TargetSkill</key>
+			<string>jump</string>
+			<key>Id</key>
+			<string>triplejump</string>
+			<key>Cost</key>
+			<integer>7</integer>
+			<key>Currency</key>
+			<string>citrine</string>
+			<key>Description</key>
+			<string>Allows jim to jump a 3rd time while in the air.</string>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>Block</string>
+			<key>IconName</key>
+			<string>iconblock</string>
+			<key>Type</key>
+			<string>skill</string>
+			<key>Id</key>
+			<string>block</string>
+			<key>Cost</key>
+			<integer>12</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>Allows jim to block 1 attack while the skill is activated. Recharges every 35 seconds.</string>
+			<key>ActivationMethod</key>
+			<string>press</string>
+			<key>SkillCount</key>
+			<integer>1</integer>
+			<key>SkillCountRegeneration</key>
+			<integer>35</integer>
+			<key>TutorialVersion</key>
+			<integer>1</integer>
+			<key>TutorialText</key>
+			<string>Hold down the button to activate block. When the button is released, block is no longer active.</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Enhanced Charging</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>block</string>
+			<key>Id</key>
+			<string>basic_charging</string>
+			<key>Cost</key>
+			<integer>4</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>Reduces the recharge rate of jim&apos;s shields to 30 seconds.</string>
+			<key>SkillCountRegeneration</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Enhanced Charging 2</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>block</string>
+			<key>Id</key>
+			<string>smooth_charging</string>
+			<key>Cost</key>
+			<integer>7</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>Further reduces the recharge rate of jim&apos;s shields to 25 seconds.</string>
+			<key>SkillCountRegeneration</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Steel Shield</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>block</string>
+			<key>Id</key>
+			<string>steel_shield</string>
+			<key>Cost</key>
+			<integer>5</integer>
+			<key>Currency</key>
+			<string>citrine</string>
+			<key>Description</key>
+			<string>gives jim 2 total shields to block with.</string>
+			<key>SkillCount</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Enhanced Charging 3</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>block</string>
+			<key>Id</key>
+			<string>advanced_charging</string>
+			<key>Cost</key>
+			<integer>11</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>Further reduces the recharge rate of jim&apos;s shields to 20 seconds.</string>
+			<key>SkillCountRegeneration</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Diamond Shield</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>block</string>
+			<key>Id</key>
+			<string>diamond_shield</string>
+			<key>Cost</key>
+			<integer>8</integer>
+			<key>Currency</key>
+			<string>citrine</string>
+			<key>Description</key>
+			<string>gives jim 3 total shields to block with.</string>
+			<key>SkillCount</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>Charge</string>
+			<key>IconName</key>
+			<string>iconcharge</string>
+			<key>Type</key>
+			<string>skill</string>
+			<key>Id</key>
+			<string>charge</string>
+			<key>Cost</key>
+			<integer>16</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>jim charges ahead at 200% speed for 0.5 seconds. colliding head on with an obstacle or minion will stop jim but cause no damage to him. skill is available to use every 30 seconds.</string>
+			<key>ActivationMethod</key>
+			<string>release</string>
+			<key>Cooldown</key>
+			<integer>30</integer>
+			<key>ActiveLength</key>
+			<real>0.5</real>
+			<key>Value</key>
+			<integer>2</integer>
+			<key>SecondaryValue</key>
+			<integer>1</integer>
+			<key>TutorialVersion</key>
+			<integer>1</integer>
+			<key>TutorialText</key>
+			<string>Press the button to activate charge.</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Speed Boost</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>charge</string>
+			<key>Id</key>
+			<string>speedboost</string>
+			<key>Cost</key>
+			<integer>6</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>Increases jim&apos;s speed to 300% when charging.</string>
+			<key>Value</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Great Stamina</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>charge</string>
+			<key>Id</key>
+			<string>greatstamina</string>
+			<key>Cost</key>
+			<integer>10</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>jim is now able to charge for 1 second.</string>
+			<key>ActiveLength</key>
+			<real>0.5</real>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Power Charge</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>charge</string>
+			<key>Id</key>
+			<string>powercharge</string>
+			<key>Cost</key>
+			<integer>5</integer>
+			<key>Currency</key>
+			<string>citrine</string>
+			<key>Description</key>
+			<string>jim causes double damage to the minion or obstacle that he collides with while charging.</string>
+			<key>Value</key>
+			<integer>1</integer>
+			<key>SecondaryValue</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Great Stamina 2</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>charge</string>
+			<key>Id</key>
+			<string>greatstamina2</string>
+			<key>Cost</key>
+			<integer>12</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>jim is now able to charge for 2 seconds.</string>
+			<key>ActiveLength</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Super Strength</string>
+			<key>Type</key>
+			<string>enhancement</string>
+			<key>TargetSkill</key>
+			<string>charge</string>
+			<key>Id</key>
+			<string>ragingstrength</string>
+			<key>Cost</key>
+			<integer>8</integer>
+			<key>Currency</key>
+			<string>citrine</string>
+			<key>Description</key>
+			<string>jim turns it up a notch charging furiously ahead, reflecting all projectiles without taking damage from them.</string>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>stomp</string>
+			<key>IconName</key>
+			<string>iconstomp</string>
+			<key>Type</key>
+			<string>skill</string>
+			<key>Id</key>
+			<string>stomp</string>
+			<key>Cost</key>
+			<integer>18</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>jim stomps the ground, causing 1 damage to minions within 150 feet. skill is available to use every 25 seconds.</string>
+			<key>ActivationMethod</key>
+			<string>release</string>
+			<key>Cooldown</key>
+			<integer>25</integer>
+			<key>Value</key>
+			<integer>1</integer>
+			<key>Range</key>
+			<integer>150</integer>
+			<key>Restriction</key>
+			<string>ground</string>
+			<key>TutorialVersion</key>
+			<integer>1</integer>
+			<key>TutorialText</key>
+			<string>Press the button to activate stomp.</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>harder stomp</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>stomp</string>
+			<key>Id</key>
+			<string>harderstomp</string>
+			<key>Cost</key>
+			<integer>12</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>increases the range of jim&apos;s stomp to 200 feet.</string>
+			<key>Range</key>
+			<integer>50</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>faster stomp</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>stomp</string>
+			<key>Id</key>
+			<string>fasterstomp</string>
+			<key>Cost</key>
+			<integer>16</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>allows jim to stomp every 20 seconds.</string>
+			<key>Cooldown</key>
+			<integer>5</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>earthquake</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>stomp</string>
+			<key>Id</key>
+			<string>earthquake</string>
+			<key>Cost</key>
+			<integer>6</integer>
+			<key>Currency</key>
+			<string>citrine</string>
+			<key>Description</key>
+			<string>jim&apos;s stomp sets off an aftershock, launching 1 rock into the air after the stomp.</string>
+			<key>SecondaryValue</key>
+			<integer>1</integer>
+			<key>SecondaryRange</key>
+			<integer>150</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Harder Stomp 2</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>stomp</string>
+			<key>Id</key>
+			<string>harderstomp2</string>
+			<key>Cost</key>
+			<integer>18</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>increases the range of jim&apos;s stomp to 250 feet.</string>
+			<key>Range</key>
+			<integer>50</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Harder Stomp 3</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>stomp</string>
+			<key>Id</key>
+			<string>harderstomp3</string>
+			<key>Cost</key>
+			<integer>9</integer>
+			<key>Currency</key>
+			<string>citrine</string>
+			<key>Description</key>
+			<string>the aftershock from jim&apos;s stomp expands, launching 2 rocks into the air.</string>
+			<key>SecondaryValue</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>first aid kit</string>
+			<key>IconName</key>
+			<string>iconheart</string>
+			<key>Type</key>
+			<string>skill</string>
+			<key>Id</key>
+			<string>firstaidkit</string>
+			<key>Cost</key>
+			<integer>20</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>[passive] patch jim&apos;s wounds with a first aid kit, causing 1 heart to regenerate every 50 seconds.</string>
+			<key>ActivationMethod</key>
+			<string>passive</string>
+			<key>Value</key>
+			<integer>0</integer>
+			<key>SecondaryValue</key>
+			<integer>1</integer>
+			<key>SkillCountRegeneration</key>
+			<integer>50</integer>
+			<key>TutorialVersion</key>
+			<integer>1</integer>
+			<key>TutorialText</key>
+			<string>This is a passive skill. You automatically get the benefits without having to do any work!</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>health boost</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>firstaidkit</string>
+			<key>Id</key>
+			<string>mysteriousliquid</string>
+			<key>Cost</key>
+			<integer>14</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>increases jim&apos;s total hearts to 4.</string>
+			<key>Value</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>faster recovery</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>firstaidkit</string>
+			<key>Id</key>
+			<string>kalesmoothie</string>
+			<key>Cost</key>
+			<integer>16</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>reduces jim&apos;s heart recharge rate to 40 seconds.</string>
+			<key>SkillCountRegeneration</key>
+			<integer>10</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>health boost 2</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>firstaidkit</string>
+			<key>Id</key>
+			<string>bigbandage</string>
+			<key>Cost</key>
+			<integer>7</integer>
+			<key>Currency</key>
+			<string>citrine</string>
+			<key>Description</key>
+			<string>increases jim&apos;s total hearts to 5.</string>
+			<key>Value</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>faster recovery 2</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>firstaidkit</string>
+			<key>Id</key>
+			<string>massagetherapist</string>
+			<key>Cost</key>
+			<integer>18</integer>
+			<key>Currency</key>
+			<string>stars</string>
+			<key>Description</key>
+			<string>reduces jim&apos;s heart recharge rate to 30 seconds.</string>
+			<key>SkillCountRegeneration</key>
+			<integer>10</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>faster recovery 3</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>firstaidkit</string>
+			<key>Id</key>
+			<string>fasterrecovery3</string>
+			<key>Cost</key>
+			<integer>10</integer>
+			<key>Currency</key>
+			<string>citrine</string>
+			<key>Description</key>
+			<string>reduces jim&apos;s heart recharge rate to 20 seconds.</string>
+			<key>SkillCountRegeneration</key>
+			<integer>10</integer>
+		</dict>
+	</array>
+</array>
+</plist>

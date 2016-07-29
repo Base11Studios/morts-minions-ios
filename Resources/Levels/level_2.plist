@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>World</key>
+	<string>earth</string>
+	<key>Story</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>ending story 1</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Key</key>
+			<string>story_11-1</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>ending st 2</string>
+			<key>Icon</key>
+			<string>tutorial_mage</string>
+			<key>Key</key>
+			<string>story_11-2</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+	</array>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>OneHundredPercent</string>
+			<key>Reward</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>NoHeartsCollected</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>EnvironmentObject - 5 - 3 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<integer>7000</integer>
+	</dict>
+	<key>EnvironmentObject - 5 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<real>6840</real>
+	</dict>
+	<key>EnvironmentObject - 5 - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<real>6720</real>
+	</dict>
+	<key>EnvironmentObject - 5 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<real>6600</real>
+	</dict>
+	<key>EnvironmentObject - 5 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<real>5940</real>
+	</dict>
+	<key>EnvironmentObject - 5 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<real>5870</real>
+	</dict>
+	<key>EnvironmentObject - 5 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<integer>5800</integer>
+	</dict>
+	<key>EnvironmentObject - 5 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>5160</integer>
+	</dict>
+	<key>EnvironmentObject - 5 - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<integer>5260</integer>
+	</dict>
+	<key>EnvironmentObject - 5 - 9</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>5000</integer>
+	</dict>
+	<key>EnvironmentObject - 5 - 10</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<real>4424</real>
+	</dict>
+	<key>EnvironmentObject - 5 - 11</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>4400</integer>
+	</dict>
+	<key>EnvironmentObject - 5 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<integer>3660</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<integer>3600</integer>
+	</dict>
+	<key>EnvironmentObject - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>3000</integer>
+	</dict>
+	<key>EnvironmentObject - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<real>3220</real>
+		<key>Notes</key>
+		<string>This is tricky at 3200 but it can be beaten 2 ways - hit the minion and bounce over second, or hit right in front of him and jump.</string>
+	</dict>
+	<key>EnvironmentObject - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<real>2880</real>
+		<key>Notes</key>
+		<string>This is tough at 2900. Made 2880 to make it easier.</string>
+	</dict>
+	<key>EnvironmentObject - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<integer>2330</integer>
+	</dict>
+	<key>EnvironmentObject - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<integer>2300</integer>
+	</dict>
+	<key>EnvironmentObject</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>1700</integer>
+	</dict>
+	<key>EnvironmentObject - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>1600</integer>
+	</dict>
+	<key>EnvironmentObject - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<real>1000</real>
+	</dict>
+</dict>
+</plist>

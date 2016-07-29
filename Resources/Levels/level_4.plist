@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>OhSoClose</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>DontTouchEnemies</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>World</key>
+	<string>earth</string>
+	<key>EnvironmentObject - 4 - 6 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<integer>5670</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Panther</string>
+		<key>Location</key>
+		<real>5520</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>5400</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>Panther</string>
+		<key>Location</key>
+		<integer>5200</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>Panther</string>
+		<key>Location</key>
+		<integer>4900</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 9</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>4000</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>3900</integer>
+	</dict>
+	<key>EnvironmentObject - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>3700</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<integer>3000</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>2700</integer>
+	</dict>
+	<key>EnvironmentObject - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Panther</string>
+		<key>Location</key>
+		<integer>2800</integer>
+	</dict>
+	<key>EnvironmentObject - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<integer>2030</integer>
+	</dict>
+	<key>EnvironmentObject - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<integer>2000</integer>
+	</dict>
+	<key>EnvironmentObject - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>1600</integer>
+	</dict>
+	<key>EnvironmentObject</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<integer>1600</integer>
+	</dict>
+	<key>EnvironmentObject - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Panther</string>
+		<key>Location</key>
+		<real>1200</real>
+	</dict>
+	<key>EnvironmentObject - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Panther</string>
+		<key>Location</key>
+		<integer>1000</integer>
+	</dict>
+</dict>
+</plist>

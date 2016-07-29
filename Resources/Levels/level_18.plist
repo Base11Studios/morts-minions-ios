@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>OneHundredPercent</string>
+			<key>Reward</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>NoHeartsCollected</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>World</key>
+	<string>water</string>
+	<key>Tutorial</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>hot spot</string>
+			<key>Description</key>
+			<string>my sand feels gooey in your toes</string>
+			<key>Type</key>
+			<string>environment</string>
+			<key>Class</key>
+			<string>BubbleMaker</string>
+			<key>Key</key>
+			<string>bubble_maker</string>
+			<key>Version</key>
+			<real>1.1</real>
+		</dict>
+	</array>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<integer>5350</integer>
+	</dict>
+	<key>EnvironmentObject - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>5200</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 8 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>5000</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 8 - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>4600</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 8 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>4280</integer>
+	</dict>
+	<key>EnvironmentObject - 8 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>4140</integer>
+	</dict>
+	<key>EnvironmentObject - 8 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>4000</integer>
+	</dict>
+	<key>EnvironmentObject - 8 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>3750</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 8 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>3500</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 9</key>
+	<dict>
+		<key>Object</key>
+		<string>Crab</string>
+		<key>Location</key>
+		<integer>3100</integer>
+	</dict>
+	<key>EnvironmentObject - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<real>2900</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>2650</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Crab</string>
+		<key>Location</key>
+		<integer>2400</integer>
+	</dict>
+	<key>EnvironmentObject - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>BubbleMaker</string>
+		<key>Location</key>
+		<real>1800</real>
+		<key>Value1</key>
+		<real>2.5</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>1200</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>730</integer>
+	</dict>
+</dict>
+</plist>

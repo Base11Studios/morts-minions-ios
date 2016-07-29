@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r7">
+    <folder id="0">
+        <file id="0" name="orby_head.png" width="62" height="62" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="orby_ball.png" width="25" height="25" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <obj_info name="bone_000" type="bone" w="11.8863" h="10"/>
+        <obj_info name="bone_001" type="bone" w="6.82679" h="10"/>
+        <obj_info name="bone_002" type="bone" w="6.39763" h="10"/>
+        <obj_info name="bone_003" type="bone" w="6.94317" h="10"/>
+        <obj_info name="bone_004" type="bone" w="7.68272" h="10"/>
+        <animation id="0" name="NewAnimation" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <bone_ref id="0" timeline="5" key="0"/>
+                    <bone_ref id="1" parent="0" timeline="6" key="0"/>
+                    <bone_ref id="2" parent="0" timeline="7" key="0"/>
+                    <bone_ref id="3" parent="0" timeline="8" key="0"/>
+                    <bone_ref id="4" parent="0" timeline="9" key="0"/>
+                    <object_ref id="0" parent="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" parent="1" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" parent="4" timeline="2" key="0" z_index="2"/>
+                    <object_ref id="3" parent="2" timeline="3" key="0" z_index="3"/>
+                    <object_ref id="4" parent="3" timeline="4" key="0" z_index="4"/>
+                </key>
+                <key id="1" time="1000">
+                    <bone_ref id="0" timeline="5" key="1"/>
+                    <bone_ref id="1" parent="0" timeline="6" key="1"/>
+                    <bone_ref id="2" parent="0" timeline="7" key="1"/>
+                    <bone_ref id="3" parent="0" timeline="8" key="1"/>
+                    <bone_ref id="4" parent="0" timeline="9" key="1"/>
+                    <object_ref id="0" parent="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" parent="1" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" parent="4" timeline="2" key="1" z_index="2"/>
+                    <object_ref id="3" parent="2" timeline="3" key="1" z_index="3"/>
+                    <object_ref id="4" parent="3" timeline="4" key="1" z_index="4"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="orby_head">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-24.547804" y="-31.782946" angle="90" scale_x="1"/>
+                </key>
+                <key id="1" time="1000" spin="0">
+                    <object folder="0" file="0" x="-24.547804" y="-31.782946" angle="90" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="orby_ball">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="12.802682" y="16.734446" angle="299.475889" scale_x="1"/>
+                </key>
+                <key id="1" time="1000" spin="0">
+                    <object folder="0" file="1" x="12.802682" y="16.734446" angle="299.475889" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="orby_ball_000">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="26.107352" y="-1.060285" angle="222.273689" scale_x="1"/>
+                </key>
+                <key id="1" time="1000" spin="0">
+                    <object folder="0" file="1" x="26.107352" y="-1.060285" angle="222.273689" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="orby_ball_001">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-11.334141" y="0.041746" angle="46.636577" scale_x="1"/>
+                </key>
+                <key id="1" time="1000" spin="0">
+                    <object folder="0" file="1" x="-11.334141" y="0.041746" angle="46.636577" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="4" name="orby_ball_002">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="7.491312" y="-18.088778" angle="135" scale_x="1"/>
+                </key>
+                <key id="1" time="1000" spin="0">
+                    <object folder="0" file="1" x="7.491312" y="-18.088778" angle="135" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="5" obj="0" name="bone_000" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="0.775194" y="16.537468" angle="270" scale_x="1"/>
+                </key>
+                <key id="1" time="1000" spin="0">
+                    <bone x="0.775194" y="16.537468" angle="270" scale_x="1"/>
+                </key>
+            </timeline>
+            <timeline id="6" obj="1" name="bone_001" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="-16.020672" y="22.997416" angle="150.524111"/>
+                </key>
+                <key id="1" time="1000" spin="0">
+                    <bone x="-15.98708" y="-34.400517" angle="150.524111"/>
+                </key>
+            </timeline>
+            <timeline id="7" obj="2" name="bone_002" object_type="bone">
+                <key id="0">
+                    <bone x="30.749354" y="23.255814" angle="43.363423"/>
+                </key>
+                <key id="1" time="1000" spin="-1">
+                    <bone x="-26.614987" y="21.963824" angle="50.710593"/>
+                </key>
+            </timeline>
+            <timeline id="8" obj="3" name="bone_003" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="29.97416" y="-24.289406" angle="315"/>
+                </key>
+                <key id="1" time="1000" spin="0">
+                    <bone x="30.232558" y="33.591731" angle="315"/>
+                </key>
+            </timeline>
+            <timeline id="9" obj="4" name="bone_004" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="-17.054264" y="-24.289406" angle="227.726311"/>
+                </key>
+                <key id="1" time="1000" spin="0">
+                    <bone x="40.826873" y="-23.77261" angle="227.726311"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

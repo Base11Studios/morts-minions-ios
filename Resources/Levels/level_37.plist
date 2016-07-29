@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Tutorial</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>fire geyser</string>
+			<key>Description</key>
+			<string>i&apos;m a volcano with a touch of the flu</string>
+			<key>Type</key>
+			<string>environment</string>
+			<key>Class</key>
+			<string>FireGeyser</string>
+			<key>Key</key>
+			<string>firegeyser</string>
+			<key>Version</key>
+			<real>1.1</real>
+		</dict>
+	</array>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>FullHealth</string>
+			<key>Reward</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>OhSoClose</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>World</key>
+	<string>fire</string>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<integer>6150</integer>
+	</dict>
+	<key>EnvironmentObject - 19</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeRock</string>
+		<key>Location</key>
+		<integer>5990</integer>
+	</dict>
+	<key>EnvironmentObject - 20</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeRock</string>
+		<key>Location</key>
+		<integer>5830</integer>
+	</dict>
+	<key>EnvironmentObject - 21</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeRock</string>
+		<key>Location</key>
+		<real>5700</real>
+	</dict>
+	<key>EnvironmentObject - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Prowler</string>
+		<key>Location</key>
+		<integer>5200</integer>
+	</dict>
+	<key>EnvironmentObject - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>FirePole</string>
+		<key>Location</key>
+		<real>5000</real>
+	</dict>
+	<key>EnvironmentObject - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Flamey</string>
+		<key>Value1</key>
+		<integer>5000</integer>
+		<key>Location</key>
+		<real>4700</real>
+	</dict>
+	<key>EnvironmentObject - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>FirePole</string>
+		<key>Location</key>
+		<real>4600</real>
+	</dict>
+	<key>EnvironmentObject - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>Danger</string>
+		<key>Location</key>
+		<real>4300</real>
+		<key>Value1</key>
+		<integer>55</integer>
+	</dict>
+	<key>EnvironmentObject - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>Flamey</string>
+		<key>Location</key>
+		<integer>4100</integer>
+		<key>Value1</key>
+		<integer>6400</integer>
+	</dict>
+	<key>EnvironmentObject - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>Bomber</string>
+		<key>Location</key>
+		<integer>3900</integer>
+		<key>Value1</key>
+		<integer>500</integer>
+	</dict>
+	<key>EnvironmentObject - 9</key>
+	<dict>
+		<key>Object</key>
+		<string>FireGeyser</string>
+		<key>Location</key>
+		<integer>3680</integer>
+		<key>Value1</key>
+		<integer>2</integer>
+		<key>Value2</key>
+		<integer>1</integer>
+	</dict>
+	<key>EnvironmentObject - 10</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeRock</string>
+		<key>Location</key>
+		<integer>3500</integer>
+	</dict>
+	<key>EnvironmentObject - 11</key>
+	<dict>
+		<key>Object</key>
+		<string>Bomber</string>
+		<key>Location</key>
+		<real>3650</real>
+		<key>Value1</key>
+		<integer>450</integer>
+	</dict>
+	<key>EnvironmentObject - 12</key>
+	<dict>
+		<key>Object</key>
+		<string>Slanky</string>
+		<key>Location</key>
+		<integer>3100</integer>
+		<key>Value1</key>
+		<integer>1</integer>
+	</dict>
+	<key>EnvironmentObject - 6 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Danger</string>
+		<key>Location</key>
+		<integer>2700</integer>
+		<key>Value1</key>
+		<integer>55</integer>
+	</dict>
+	<key>EnvironmentObject - 13</key>
+	<dict>
+		<key>Object</key>
+		<string>FireGeyser</string>
+		<key>Location</key>
+		<real>2300</real>
+		<key>Value1</key>
+		<integer>2</integer>
+		<key>Value2</key>
+		<integer>1</integer>
+	</dict>
+	<key>EnvironmentObject - 14</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeRock</string>
+		<key>Location</key>
+		<integer>1800</integer>
+	</dict>
+	<key>EnvironmentObject - 15</key>
+	<dict>
+		<key>Object</key>
+		<string>Flamey</string>
+		<key>Location</key>
+		<integer>1700</integer>
+		<key>Value1</key>
+		<integer>5800</integer>
+	</dict>
+	<key>EnvironmentObject - 16</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeRock</string>
+		<key>Location</key>
+		<integer>1500</integer>
+	</dict>
+	<key>EnvironmentObject - 17</key>
+	<dict>
+		<key>Object</key>
+		<string>Prowler</string>
+		<key>Location</key>
+		<integer>1400</integer>
+	</dict>
+	<key>EnvironmentObject - 18</key>
+	<dict>
+		<key>Object</key>
+		<string>Bomber</string>
+		<key>Location</key>
+		<integer>1100</integer>
+		<key>Value1</key>
+		<integer>500</integer>
+	</dict>
+</dict>
+</plist>

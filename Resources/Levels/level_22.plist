@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>Score3Stars</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>FullHealth</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>World</key>
+	<string>water</string>
+	<key>Tutorial</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>seahorse</string>
+			<key>Description</key>
+			<string>am i real?</string>
+			<key>Type</key>
+			<string>environment</string>
+			<key>Class</key>
+			<string>Seahorse</string>
+			<key>Key</key>
+			<string>seahorse</string>
+			<key>Version</key>
+			<real>1.1</real>
+		</dict>
+	</array>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<integer>6550</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>6400</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>BubbleMaker</string>
+		<key>Location</key>
+		<real>6200</real>
+		<key>Value1</key>
+		<real>2.5</real>
+	</dict>
+	<key>EnvironmentObject</key>
+	<dict>
+		<key>Object</key>
+		<string>Pirahna</string>
+		<key>Location</key>
+		<integer>5900</integer>
+	</dict>
+	<key>EnvironmentObject - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>5650</integer>
+	</dict>
+	<key>EnvironmentObject - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>5400</integer>
+	</dict>
+	<key>EnvironmentObject - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>Seahorse</string>
+		<key>Location</key>
+		<integer>5100</integer>
+	</dict>
+	<key>EnvironmentObject - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>Seahorse</string>
+		<key>Location</key>
+		<integer>4600</integer>
+	</dict>
+	<key>EnvironmentObject - 9</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>4100</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 10</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>3800</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 11</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>3600</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 12</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>3400</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 13</key>
+	<dict>
+		<key>Object</key>
+		<string>Crab</string>
+		<key>Location</key>
+		<integer>3100</integer>
+	</dict>
+	<key>EnvironmentObject - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Seahorse</string>
+		<key>Location</key>
+		<integer>2900</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>2500</integer>
+	</dict>
+	<key>EnvironmentObject - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>2400</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Crab</string>
+		<key>Location</key>
+		<real>2100</real>
+		<key>Value1</key>
+		<integer>80</integer>
+	</dict>
+	<key>EnvironmentObject - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>BubbleMaker</string>
+		<key>Location</key>
+		<real>1800</real>
+		<key>Value1</key>
+		<real>2.5</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>1400</integer>
+	</dict>
+	<key>EnvironmentObject - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Pirahna</string>
+		<key>Location</key>
+		<integer>1300</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Seahorse</string>
+		<key>Location</key>
+		<integer>900</integer>
+	</dict>
+</dict>
+</plist>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Tutorial</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>welcome to the air world</string>
+			<key>Description</key>
+			<string>finally the last world (until the next major release :)). max out your air time skills. </string>
+			<key>Type</key>
+			<string>tutorial</string>
+			<key>Key</key>
+			<string>world_air</string>
+			<key>Version</key>
+			<real>1.1</real>
+		</dict>
+	</array>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>NoHeartsCollected</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>DontTouchAnything</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>World</key>
+	<string>air</string>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<integer>3700</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 4 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Steady</string>
+		<key>Location</key>
+		<integer>3550</integer>
+		<key>Value1</key>
+		<integer>15</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 4 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Steady</string>
+		<key>Location</key>
+		<integer>3450</integer>
+		<key>Value1</key>
+		<integer>15</integer>
+	</dict>
+	<key>EnvironmentObject - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>Flappy</string>
+		<key>Location</key>
+		<integer>3350</integer>
+		<key>Value1</key>
+		<real>0.99</real>
+	</dict>
+	<key>EnvironmentObject - 2 - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Steady</string>
+		<key>Location</key>
+		<integer>3100</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+	</dict>
+	<key>EnvironmentObject - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Trampoline</string>
+		<key>Location</key>
+		<integer>3000</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 4 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Steady</string>
+		<key>Location</key>
+		<integer>2850</integer>
+		<key>Value1</key>
+		<integer>70</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Orby</string>
+		<key>Location</key>
+		<integer>2600</integer>
+		<key>Value1</key>
+		<real>4.5</real>
+		<key>Value2</key>
+		<integer>50</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 5 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Orby</string>
+		<key>Location</key>
+		<integer>2350</integer>
+		<key>Value1</key>
+		<real>4.5</real>
+		<key>Value2</key>
+		<integer>70</integer>
+	</dict>
+	<key>EnvironmentObject - 7 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Flappy</string>
+		<key>Location</key>
+		<integer>1900</integer>
+		<key>Value1</key>
+		<real>0.99</real>
+	</dict>
+	<key>EnvironmentObject - 5 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Trampoline</string>
+		<key>Location</key>
+		<integer>1600</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 5 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Orby</string>
+		<key>Location</key>
+		<integer>1550</integer>
+		<key>Value1</key>
+		<real>4.5</real>
+		<key>Value2</key>
+		<integer>80</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Steady</string>
+		<key>Location</key>
+		<integer>1300</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 5 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Orby</string>
+		<key>Location</key>
+		<integer>1050</integer>
+		<key>Value1</key>
+		<real>4.5</real>
+		<key>Value2</key>
+		<integer>70</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 4 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Steady</string>
+		<key>Location</key>
+		<integer>800</integer>
+		<key>Value1</key>
+		<integer>15</integer>
+	</dict>
+</dict>
+</plist>

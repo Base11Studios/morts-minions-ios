@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r6">
+    <folder id="0">
+        <file id="0" name="swormhead.png" width="54" height="59" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="swormbody3.png" width="33" height="31" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="swormbody2.png" width="37" height="37" pivot_x="0" pivot_y="1"/>
+        <file id="3" name="swormbody1.png" width="38" height="43" pivot_x="0" pivot_y="1"/>
+        <file id="4" name="swormant2.png" width="19" height="29" pivot_x="0" pivot_y="1"/>
+        <file id="5" name="swormant1.png" width="19" height="29" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="small worm">
+        <obj_info name="bone_000" type="bone" w="27.074" h="10"/>
+        <obj_info name="bone_001" type="bone" w="31" h="10"/>
+        <obj_info name="bone_002" type="bone" w="19" h="10"/>
+        <obj_info name="bone_003" type="bone" w="15" h="10"/>
+        <obj_info name="bone_004" type="bone" w="18.0278" h="10"/>
+        <obj_info name="bone_005" type="bone" w="19.3132" h="10"/>
+        <animation id="0" name="Crawling" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <bone_ref id="0" timeline="4" key="0"/>
+                    <bone_ref id="1" parent="0" timeline="5" key="0"/>
+                    <bone_ref id="2" parent="1" timeline="6" key="0"/>
+                    <bone_ref id="3" parent="2" timeline="7" key="0"/>
+                    <bone_ref id="4" parent="0" timeline="10" key="0"/>
+                    <bone_ref id="5" parent="0" timeline="11" key="0"/>
+                    <object_ref id="0" parent="3" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" parent="2" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" parent="1" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" parent="5" timeline="8" key="0" z_index="3"/>
+                    <object_ref id="4" parent="0" timeline="0" key="0" z_index="4"/>
+                    <object_ref id="5" parent="4" timeline="9" key="0" z_index="5"/>
+                </key>
+                <key id="1" time="600">
+                    <bone_ref id="0" timeline="4" key="0"/>
+                    <bone_ref id="1" parent="0" timeline="5" key="1"/>
+                    <bone_ref id="2" parent="1" timeline="6" key="1"/>
+                    <bone_ref id="3" parent="2" timeline="7" key="1"/>
+                    <bone_ref id="4" parent="0" timeline="10" key="1"/>
+                    <bone_ref id="5" parent="0" timeline="11" key="1"/>
+                    <object_ref id="0" parent="3" timeline="1" key="0" z_index="0"/>
+                    <object_ref id="1" parent="2" timeline="2" key="0" z_index="1"/>
+                    <object_ref id="2" parent="1" timeline="3" key="0" z_index="2"/>
+                    <object_ref id="3" parent="0" timeline="0" key="0" z_index="3"/>
+                    <object_ref id="4" parent="5" timeline="8" key="1" z_index="4"/>
+                    <object_ref id="5" parent="4" timeline="9" key="1" z_index="5"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="swormhead">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-12.595122" y="33.020643" angle="355.763605"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="swormbody3">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-10" y="16" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="swormbody2">
+                <key id="0" spin="0">
+                    <object folder="0" file="2" x="-13" y="19" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="3" name="swormbody1">
+                <key id="0" spin="0">
+                    <object folder="0" file="3" x="-4" y="19" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="4" obj="0" name="bone_000" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="-92" y="86" angle="4.236395"/>
+                </key>
+            </timeline>
+            <timeline id="5" obj="1" name="bone_001" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="37.67456" y="-5.798927" angle="355.763605"/>
+                </key>
+                <key id="1" time="600" spin="0">
+                    <bone x="23.823619" y="10.268164" angle="355.763605"/>
+                </key>
+            </timeline>
+            <timeline id="6" obj="2" name="bone_002" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="42" y="-6" angle="0"/>
+                </key>
+                <key id="1" time="600" spin="0">
+                    <bone x="25" y="-15" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="7" obj="3" name="bone_003" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="27" y="-3" angle="0"/>
+                </key>
+                <key id="1" time="600" spin="0">
+                    <bone x="10" y="-9" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="8" name="swormant2">
+                <key id="0" spin="0">
+                    <object folder="0" file="4" x="21.280773" y="11.494724" angle="291.250506"/>
+                </key>
+                <key id="1" time="600" spin="0">
+                    <object folder="0" file="4" x="21.280773" y="11.494724" angle="291.250506"/>
+                </key>
+            </timeline>
+            <timeline id="9" name="swormant1">
+                <key id="0" spin="0">
+                    <object folder="0" file="5" x="28.89988" y="6.767342" angle="250.559965"/>
+                </key>
+                <key id="1" time="600" spin="0">
+                    <object folder="0" file="5" x="28.89988" y="6.767342" angle="250.559965"/>
+                </key>
+            </timeline>
+            <timeline id="10" obj="4" name="bone_004" object_type="bone">
+                <key id="0" spin="-1">
+                    <bone x="7.239425" y="16.510322" angle="105.20364"/>
+                </key>
+                <key id="1" time="600">
+                    <bone x="7.239425" y="16.510322" angle="93.893707"/>
+                </key>
+            </timeline>
+            <timeline id="11" obj="5" name="bone_005" object_type="bone">
+                <key id="0">
+                    <bone x="13.223032" y="16.067092" angle="64.513099"/>
+                </key>
+                <key id="1" time="600" spin="-1">
+                    <bone x="13.223032" y="16.067092" angle="75.14395"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

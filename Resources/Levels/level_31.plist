@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>DieByEnemies</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>DestroyAllObstacles</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>Tutorial</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>starfish</string>
+			<key>Description</key>
+			<string>if you see me make a wish</string>
+			<key>Type</key>
+			<string>environment</string>
+			<key>Class</key>
+			<string>Starfish</string>
+			<key>Key</key>
+			<string>starfish</string>
+			<key>Version</key>
+			<real>1.1</real>
+		</dict>
+	</array>
+	<key>World</key>
+	<string>water</string>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<integer>7150</integer>
+	</dict>
+	<key>EnvironmentObject</key>
+	<dict>
+		<key>Object</key>
+		<string>Starfish</string>
+		<key>Location</key>
+		<integer>7000</integer>
+	</dict>
+	<key>EnvironmentObject - 14</key>
+	<dict>
+		<key>Object</key>
+		<string>Jellyfish</string>
+		<key>Location</key>
+		<integer>6660</integer>
+	</dict>
+	<key>EnvironmentObject - 15</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>6500</integer>
+	</dict>
+	<key>EnvironmentObject - 16</key>
+	<dict>
+		<key>Object</key>
+		<string>Pirahna</string>
+		<key>Location</key>
+		<integer>6000</integer>
+	</dict>
+	<key>EnvironmentObject - 17</key>
+	<dict>
+		<key>Object</key>
+		<string>Cannon</string>
+		<key>Location</key>
+		<integer>5600</integer>
+		<key>Value1</key>
+		<integer>3</integer>
+		<key>Value2</key>
+		<integer>6500</integer>
+	</dict>
+	<key>EnvironmentObject - 18</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>5200</integer>
+	</dict>
+	<key>EnvironmentObject - 19</key>
+	<dict>
+		<key>Object</key>
+		<string>Seaweed</string>
+		<key>Location</key>
+		<integer>5000</integer>
+	</dict>
+	<key>EnvironmentObject - 20</key>
+	<dict>
+		<key>Object</key>
+		<string>Jellyfish</string>
+		<key>Location</key>
+		<integer>4600</integer>
+	</dict>
+	<key>EnvironmentObject - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Pirahna</string>
+		<key>Location</key>
+		<integer>4280</integer>
+	</dict>
+	<key>EnvironmentObject - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>Jellyfish</string>
+		<key>Location</key>
+		<integer>4000</integer>
+	</dict>
+	<key>EnvironmentObject - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>Seahorse</string>
+		<key>Location</key>
+		<integer>3800</integer>
+	</dict>
+	<key>EnvironmentObject - 9</key>
+	<dict>
+		<key>Object</key>
+		<string>Pirahna</string>
+		<key>Location</key>
+		<integer>3800</integer>
+	</dict>
+	<key>EnvironmentObject - 10</key>
+	<dict>
+		<key>Object</key>
+		<string>BubbleMaker</string>
+		<key>Location</key>
+		<integer>3300</integer>
+		<key>Value1</key>
+		<integer>4</integer>
+	</dict>
+	<key>EnvironmentObject - 11</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>3200</integer>
+		<key>Value1</key>
+		<integer>120</integer>
+	</dict>
+	<key>EnvironmentObject - 12</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<real>2900</real>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 13</key>
+	<dict>
+		<key>Object</key>
+		<string>Cannon</string>
+		<key>Location</key>
+		<integer>2700</integer>
+		<key>Value1</key>
+		<integer>3</integer>
+		<key>Value2</key>
+		<integer>5600</integer>
+	</dict>
+	<key>EnvironmentObject - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Seahorse</string>
+		<key>Location</key>
+		<integer>2400</integer>
+	</dict>
+	<key>EnvironmentObject - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Pirahna</string>
+		<key>Location</key>
+		<integer>2150</integer>
+	</dict>
+	<key>EnvironmentObject - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Jellyfish</string>
+		<key>Location</key>
+		<real>2000</real>
+	</dict>
+	<key>EnvironmentObject - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Cannon</string>
+		<key>Location</key>
+		<real>1600</real>
+		<key>Value1</key>
+		<integer>2</integer>
+		<key>Value2</key>
+		<integer>6000</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>1450</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Shark</string>
+		<key>Location</key>
+		<integer>1150</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Starfish</string>
+		<key>Location</key>
+		<real>1000</real>
+	</dict>
+</dict>
+</plist>

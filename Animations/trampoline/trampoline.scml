@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r7">
+    <folder id="0">
+        <file id="0" name="trampoline_leg.png" width="24" height="62" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="trampoline_base.png" width="359" height="21" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <obj_info name="bone_000" type="bone" w="17.4825" h="10"/>
+        <obj_info name="bone_001" type="bone" w="16.0991" h="10"/>
+        <obj_info name="bone_002" type="bone" w="15.4005" h="10"/>
+        <animation id="0" name="NewAnimation" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <bone_ref id="0" timeline="3" key="0"/>
+                    <bone_ref id="1" parent="0" timeline="4" key="0"/>
+                    <bone_ref id="2" parent="0" timeline="5" key="0"/>
+                    <object_ref id="0" parent="1" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" parent="2" timeline="1" key="0" z_index="1"/>
+                    <object_ref id="2" parent="0" timeline="2" key="0" z_index="2"/>
+                </key>
+                <key id="1" time="249">
+                    <bone_ref id="0" timeline="3" key="1"/>
+                    <bone_ref id="1" parent="0" timeline="4" key="1"/>
+                    <bone_ref id="2" parent="0" timeline="5" key="1"/>
+                    <object_ref id="0" parent="1" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" parent="2" timeline="1" key="1" z_index="1"/>
+                    <object_ref id="2" parent="0" timeline="2" key="1" z_index="2"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="trampoline_leg">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="7.330976" y="-12.280566" angle="92.489553" scale_y="0.070763"/>
+                </key>
+                <key id="1" time="249" spin="0">
+                    <object folder="0" file="0" x="-12.72741" y="-13.15267" angle="92.489553"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="trampoline_leg_000">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="5.170868" y="-11.435403" angle="87.397438" scale_y="0.06"/>
+                </key>
+                <key id="1" time="249" spin="0">
+                    <object folder="0" file="0" x="-16.875773" y="-10.433283" angle="87.397438"/>
+                </key>
+            </timeline>
+            <timeline id="2" name="trampoline_base">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="10.48951" y="179.265734" angle="270"/>
+                </key>
+                <key id="1" time="249" spin="0">
+                    <object folder="0" file="1" x="10.48951" y="179.867129" angle="270"/>
+                </key>
+            </timeline>
+            <timeline id="3" obj="0" name="bone_000" object_type="bone">
+                <key id="0" spin="0">
+                    <bone y="3.496503" angle="90"/>
+                </key>
+                <key id="1" time="249" spin="0">
+                    <bone x="0.601399" y="53.146853" angle="90"/>
+                </key>
+            </timeline>
+            <timeline id="4" obj="1" name="bone_001" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="6.51049" y="94.503497" angle="177.510447"/>
+                </key>
+                <key id="1" time="249" spin="0">
+                    <bone x="-10.48951" y="95.503497" angle="177.510447"/>
+                </key>
+            </timeline>
+            <timeline id="5" obj="2" name="bone_002" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="5.713287" y="-97.902098" angle="182.602562"/>
+                </key>
+                <key id="1" time="249" spin="0">
+                    <bone x="-13.286713" y="-97.902098" angle="182.602562"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

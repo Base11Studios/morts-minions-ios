@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>Score3Stars</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>FullHealth</string>
+			<key>Reward</key>
+			<integer>2</integer>
+		</dict>
+	</array>
+	<key>World</key>
+	<string>air</string>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<integer>5250</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Lungey</string>
+		<key>Location</key>
+		<integer>5100</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 5 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Orby</string>
+		<key>Location</key>
+		<integer>4850</integer>
+		<key>Value1</key>
+		<real>5.5</real>
+		<key>Value2</key>
+		<integer>40</integer>
+	</dict>
+	<key>EnvironmentObject - 5 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Trampoline</string>
+		<key>Location</key>
+		<integer>4700</integer>
+	</dict>
+	<key>EnvironmentObject - 3 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>StormCloud</string>
+		<key>Location</key>
+		<integer>4400</integer>
+		<key>Value1</key>
+		<integer>25</integer>
+	</dict>
+	<key>EnvironmentObject - 3 - 5 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>StormCloud</string>
+		<key>Location</key>
+		<integer>4250</integer>
+		<key>Value1</key>
+		<integer>25</integer>
+	</dict>
+	<key>EnvironmentObject - 3 - 5 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>StormCloud</string>
+		<key>Location</key>
+		<integer>4100</integer>
+		<key>Value1</key>
+		<integer>25</integer>
+	</dict>
+	<key>EnvironmentObject - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Motherhen</string>
+		<key>Location</key>
+		<integer>4100</integer>
+		<key>Value1</key>
+		<integer>1</integer>
+		<key>Value2</key>
+		<integer>1</integer>
+	</dict>
+	<key>EnvironmentObject - 7 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Flappy</string>
+		<key>Location</key>
+		<integer>3850</integer>
+		<key>Value1</key>
+		<real>0.98</real>
+	</dict>
+	<key>EnvironmentObject - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Lungey</string>
+		<key>Location</key>
+		<integer>3650</integer>
+	</dict>
+	<key>EnvironmentObject - 7 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Flappy</string>
+		<key>Location</key>
+		<integer>3450</integer>
+		<key>Value1</key>
+		<real>0.98</real>
+	</dict>
+	<key>EnvironmentObject - 2 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Orby</string>
+		<key>Location</key>
+		<integer>3200</integer>
+		<key>Value1</key>
+		<real>5.5</real>
+		<key>Value2</key>
+		<integer>70</integer>
+	</dict>
+	<key>EnvironmentObject - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>StormCloud</string>
+		<key>Location</key>
+		<integer>3200</integer>
+		<key>Value1</key>
+		<integer>100</integer>
+	</dict>
+	<key>EnvironmentObject - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>Flappy</string>
+		<key>Location</key>
+		<integer>3000</integer>
+		<key>Value1</key>
+		<real>0.98</real>
+	</dict>
+	<key>EnvironmentObject - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>StormCloud</string>
+		<key>Location</key>
+		<integer>2725</integer>
+		<key>Value1</key>
+		<integer>15</integer>
+	</dict>
+	<key>EnvironmentObject - 3 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>StormCloud</string>
+		<key>Location</key>
+		<integer>2650</integer>
+		<key>Value1</key>
+		<integer>15</integer>
+	</dict>
+	<key>EnvironmentObject - 7 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Flappy</string>
+		<key>Location</key>
+		<integer>2350</integer>
+		<key>Value1</key>
+		<real>0.98</real>
+	</dict>
+	<key>EnvironmentObject</key>
+	<dict>
+		<key>Object</key>
+		<string>Motherhen</string>
+		<key>Location</key>
+		<integer>2250</integer>
+		<key>Value1</key>
+		<integer>2</integer>
+		<key>Value2</key>
+		<integer>1</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 5 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Orby</string>
+		<key>Location</key>
+		<integer>1950</integer>
+		<key>Value1</key>
+		<integer>6</integer>
+		<key>Value2</key>
+		<integer>70</integer>
+	</dict>
+	<key>EnvironmentObject - 3 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>StormCloud</string>
+		<key>Location</key>
+		<integer>1700</integer>
+		<key>Value1</key>
+		<integer>25</integer>
+	</dict>
+	<key>EnvironmentObject - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Trampoline</string>
+		<key>Location</key>
+		<integer>1600</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Lungey</string>
+		<key>Location</key>
+		<integer>1500</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Lungey</string>
+		<key>Location</key>
+		<integer>1350</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 5 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Orby</string>
+		<key>Location</key>
+		<integer>1100</integer>
+		<key>Value1</key>
+		<integer>5</integer>
+		<key>Value2</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>StormCloud</string>
+		<key>Location</key>
+		<integer>800</integer>
+		<key>Value1</key>
+		<integer>45</integer>
+	</dict>
+</dict>
+</plist>

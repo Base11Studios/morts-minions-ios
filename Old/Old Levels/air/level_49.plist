@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>World</key>
+	<string>air</string>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<integer>1500</integer>
+	</dict>
+	<key>EnvironmentObject - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>Flappy</string>
+		<key>Location</key>
+		<real>1000</real>
+		<key>Value1</key>
+		<real>0.96</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>WindBeast</string>
+		<key>Location</key>
+		<real>1500</real>
+	</dict>
+	<key>EnvironmentObject - 2 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Orby</string>
+		<key>Location</key>
+		<integer>700</integer>
+		<key>Value1</key>
+		<integer>6</integer>
+		<key>Value2</key>
+		<integer>70</integer>
+	</dict>
+	<key>EnvironmentObject - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>DiveBomber</string>
+		<key>Location</key>
+		<integer>1000</integer>
+		<key>Value1</key>
+		<integer>250</integer>
+	</dict>
+	<key>EnvironmentObject - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Trampoline</string>
+		<key>Location</key>
+		<integer>600</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Steady</string>
+		<key>Location</key>
+		<integer>900</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>ExpandyCloud</string>
+		<key>Location</key>
+		<integer>600</integer>
+	</dict>
+	<key>EnvironmentObject - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Ballooner</string>
+		<key>Location</key>
+		<integer>900</integer>
+		<key>Value1</key>
+		<real>1.25</real>
+		<key>Value2</key>
+		<integer>5</integer>
+	</dict>
+	<key>EnvironmentObject</key>
+	<dict>
+		<key>Object</key>
+		<string>Motherhen</string>
+		<key>Location</key>
+		<integer>1200</integer>
+		<key>Value1</key>
+		<integer>2</integer>
+		<key>Value2</key>
+		<integer>1</integer>
+	</dict>
+	<key>EnvironmentObject - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LightningCloud</string>
+		<key>Location</key>
+		<integer>800</integer>
+		<key>Value1</key>
+		<integer>3</integer>
+	</dict>
+	<key>EnvironmentObject - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>StormCloud</string>
+		<key>Location</key>
+		<real>1200</real>
+		<key>Value1</key>
+		<integer>100</integer>
+	</dict>
+	<key>EnvironmentObject - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Lungey</string>
+		<key>Location</key>
+		<real>1000</real>
+		<key>Value1</key>
+		<integer>300</integer>
+	</dict>
+</dict>
+</plist>

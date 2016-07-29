@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Tutorial</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>want more?</string>
+			<key>Description</key>
+			<string>unlock new characters with gems at the main menu. each character has its own set of skills! </string>
+			<key>Type</key>
+			<string>tutorial</string>
+			<key>Key</key>
+			<string>othercharacters</string>
+			<key>Version</key>
+			<real>1.1</real>
+		</dict>
+	</array>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>Score80Percent</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>DontTouchObstacles</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>World</key>
+	<string>earth</string>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<real>6610</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 14 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>Goblin</string>
+		<key>Location</key>
+		<integer>6460</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 14 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeShield</string>
+		<key>Location</key>
+		<integer>6300</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 14 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Panther</string>
+		<key>Location</key>
+		<integer>5900</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 14 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Panther</string>
+		<key>Location</key>
+		<integer>5700</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 14 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<real>5700</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 14 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<real>5560</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Panther</string>
+		<key>Location</key>
+		<real>5400</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>Goblin</string>
+		<key>Location</key>
+		<integer>4800</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeShield</string>
+		<key>Location</key>
+		<real>4730</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<real>4220</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 9</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<real>4100</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 10</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<real>3900</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 11</key>
+	<dict>
+		<key>Object</key>
+		<string>Sqworm</string>
+		<key>Location</key>
+		<integer>3700</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 12</key>
+	<dict>
+		<key>Object</key>
+		<string>HummingBird</string>
+		<key>Location</key>
+		<real>3400</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 13</key>
+	<dict>
+		<key>Object</key>
+		<string>Goblin</string>
+		<key>Location</key>
+		<integer>2860</integer>
+	</dict>
+	<key>EnvironmentObject - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>2560</integer>
+	</dict>
+	<key>EnvironmentObject - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>Panther</string>
+		<key>Location</key>
+		<integer>2200</integer>
+	</dict>
+	<key>EnvironmentObject</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeShield</string>
+		<key>Location</key>
+		<real>1600</real>
+	</dict>
+	<key>EnvironmentObject - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>1040</integer>
+	</dict>
+	<key>EnvironmentObject - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Goblin</string>
+		<key>Location</key>
+		<integer>1000</integer>
+	</dict>
+</dict>
+</plist>

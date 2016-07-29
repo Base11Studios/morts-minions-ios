@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r7">
+    <folder id="0">
+        <file id="0" name="firegeyser_backflame.png" width="41" height="129" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="firegeyser_frontflame.png" width="49" height="126" pivot_x="0" pivot_y="1"/>
+        <file id="2" name="firegeyser_base.png" width="127" height="41" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <obj_info name="bone_001" type="bone" w="27.7067" h="10"/>
+        <obj_info name="bone_002" type="bone" w="31.6435" h="10"/>
+        <animation id="0" name="NewAnimation" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <bone_ref id="0" timeline="2" key="0"/>
+                    <bone_ref id="1" timeline="3" key="0"/>
+                    <object_ref id="0" parent="1" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" parent="0" timeline="1" key="0" z_index="1"/>
+                </key>
+                <key id="1" time="501">
+                    <bone_ref id="0" timeline="2" key="1"/>
+                    <bone_ref id="1" timeline="3" key="1"/>
+                    <object_ref id="0" parent="1" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" parent="0" timeline="1" key="1" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="firegeyser_backflame">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="101.396264" y="14.011083" angle="268.97697"/>
+                </key>
+                <key id="1" time="501" spin="0">
+                    <object folder="0" file="0" x="73.888231" y="14.502298" angle="268.97697" scale_y="0.787549"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="firegeyser_frontflame">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="76.833631" y="33.104502" angle="272.337306" scale_y="0.822568"/>
+                </key>
+                <key id="1" time="501" spin="0">
+                    <object folder="0" file="1" x="99.26014" y="34.019869" angle="272.337306"/>
+                </key>
+            </timeline>
+            <timeline id="2" obj="0" name="bone_001" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="-2.259887" y="-12.99435" angle="87.662694"/>
+                </key>
+                <key id="1" time="501" spin="0">
+                    <bone x="-2.259887" y="-12.99435" angle="87.662694"/>
+                </key>
+            </timeline>
+            <timeline id="3" obj="1" name="bone_002" object_type="bone">
+                <key id="0" spin="0">
+                    <bone x="-11.299435" y="-10.734463" angle="91.02303"/>
+                </key>
+                <key id="1" time="501" spin="0">
+                    <bone x="-11.299435" y="-10.734463" angle="91.02303"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
