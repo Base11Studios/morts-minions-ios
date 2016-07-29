@@ -26,9 +26,4 @@ class PlayerSmallMeteor: PlayerProjectile {
         self.isFlying = false
         self.physicsBody!.affectedByGravity = true
     }
-    
-    override func updateAfterPhysics() {
-        NSLog("cool: \(self.position.x), 2: \(self.position.y)")
-        super.updateAfterPhysics()
-    }
 }
