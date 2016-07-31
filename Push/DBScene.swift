@@ -281,7 +281,7 @@ class DBScene : SKScene {
     }
     
     func initializeCredits() {
-        self.credits = DBSceneDialog(title: "credits", description: "game created by Dan Bellinski", descriptionSize: 18, description2: "thanks to my wife, Megan, for inspiration", description3: "thanks to my beta testers: Brett, Eric, Tyler, Ryan, A.J., Jason, Megan, Kim, Chris, Neehar and everyone else", description4: "© 2016 Base11 Studios, Ltd", frameSize: self.size, scene: self, iconTexture: GameTextures.sharedInstance.buttonAtlas.textureNamed("trophygold"))
+        self.credits = DBSceneDialog(title: "credits", description: "game created by Dan Bellinski", descriptionSize: 18, description2: "thanks to my wife, Megan, for inspiration", description3: "thanks to my beta testers: Brett, Eric, Tyler, Ryan, A.J., Jason, Megan, Rita, Kim, Chris, Kas, Neehar and everyone else", description4: "© 2016 Base11 Studios, Ltd", frameSize: self.size, scene: self, iconTexture: GameTextures.sharedInstance.buttonAtlas.textureNamed("trophygold"))
         self.credits!.zPosition = 30
         self.addChild(self.credits!)
     }
