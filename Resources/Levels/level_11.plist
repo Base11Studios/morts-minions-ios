@@ -2,6 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Story</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>You get an eerie feeling about the imals. You see your youngest brother, Mort, in their eyes.</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>Mort always had a connection with the imals and went missing years ago. Could the imals be Mort’s minions?</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+	</array>
 	<key>Challenges</key>
 	<array>
 		<dict>

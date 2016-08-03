@@ -38,11 +38,9 @@
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>here&apos;s the story, you&apos;re C_NAME, a C_ROLE.</string>
+			<string>Once upon a time, imals and rulens lived in harmony...</string>
 			<key>Icon</key>
 			<string>tutorial_monk</string>
-			<key>Key</key>
-			<string>story_1_1</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -50,25 +48,9 @@
 		</dict>
 		<dict>
 			<key>Description</key>
-			<string>warrior only story</string>
+			<string>…but things have changed. The imals are attacking the rulens on the Terra world.</string>
 			<key>Icon</key>
 			<string>tutorial_monk</string>
-			<key>Key</key>
-			<string>story_1_2</string>
-			<key>Character</key>
-			<string>warrior</string>
-			<key>Version</key>
-			<integer>1</integer>
-			<key>Type</key>
-			<string>Beginning</string>
-		</dict>
-		<dict>
-			<key>Description</key>
-			<string>here&apos;s the story 3</string>
-			<key>Icon</key>
-			<string>tutorial_mage</string>
-			<key>Key</key>
-			<string>story_1_3</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>

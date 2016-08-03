@@ -1923,8 +1923,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         if storyArray != nil {
             for storyDictionary in storyArray! {
                 // Get the version information
-                var key = storyDictionary["Key"] as! String
-                key = "level_\(self.currentLevel)_" + key + self.player!.name! // Make it level specific and character specific
+                var key = "story_\(self.currentLevel)_\(count)_\(self.player!.name!)"
                 
                 let version = storyDictionary["Version"] as! Double
                 

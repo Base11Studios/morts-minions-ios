@@ -2,6 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Story</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>You reach the Aqua world. As you catch your breath from all that swimming, you reflect that as children, your siblings each had a special skill. Mort’s skill was communication with the imals.</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>You and your siblings used your skills to become leaders of the rulens, but Mort withdrew from the rulens, and spent his time with the imals. Eventually, Mort never returned home.</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+	</array>
 	<key>Challenges</key>
 	<array>
 		<dict>

@@ -2,6 +2,79 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Story</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>You finally catch up to Mort and have the confrontation you’ve fought so hard to secure.</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>“Mort, you have helped me see the dominance of the rulens over the imals. Our egos controlled us. As a leader of the rulens, I surrender and pledge our peace to the imals. The rulens will treat every living thing with the love it deserves.&quot;</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>You and Mort talk for hours of a life in which imals and rulens will both be free. As leaders of your people, you sign a treaty and make a commitment to peace.</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>You turn to start your journey home and Mort speaks:</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>&quot;But c_relationship, I should have mentioned, I, umm, may have shattered the space time continuum and summoned evil imals from the past to bring judgement to the rulens. Now that their ruler, the king of Tempus, is awake, I’ll need some help, he’s a bit cranky after waking from centuries of sleep.&quot;</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>You and Mort pack up your weapons and begin your final journey to the Tempus realm.</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>To be continued. Want to know what happens to you and Mort? Post on social media #mortsminions and more will come.</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+	</array>
 	<key>Tutorial</key>
 	<array>
 		<dict>
