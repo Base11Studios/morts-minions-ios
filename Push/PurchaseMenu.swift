@@ -62,7 +62,7 @@ class PurchaseMenu: DialogBackground {
         self.headerText = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
         self.footerText = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
         
-        self.buffer = 10.0
+        self.buffer = 10.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         
         super.init(frameSize: frameSize)
         
@@ -112,7 +112,7 @@ class PurchaseMenu: DialogBackground {
         self.title.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
         self.title.verticalAlignmentMode = SKLabelVerticalAlignmentMode.bottom
         
-        self.title.position = CGPoint(x: self.buy1Button.position.x - self.buy1Button.size.width / 2 + self.title.calculateAccumulatedFrame().size.width / 2, y: self.headerText!.position.y + self.headerText!.calculateAccumulatedFrame().size.height / 2 + self.title.calculateAccumulatedFrame().size.height / 2 - buffer)
+        self.title.position = CGPoint(x: self.buy1Button.position.x - self.buy1Button.size.width / 2 + self.title.calculateAccumulatedFrame().size.width / 2, y: self.headerText!.position.y + self.headerText!.calculateAccumulatedFrame().size.height / 2 + self.title.calculateAccumulatedFrame().size.height / 2)
         
         // Diamonds label
         self.totalGemsText.setText("\(GameData.sharedGameData.totalDiamonds)")
