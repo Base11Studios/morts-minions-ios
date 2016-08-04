@@ -17,7 +17,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>allows jim to jump.</string>
+			<string>Allows Jim to jump.</string>
 			<key>ActivationMethod</key>
 			<string>press</string>
 			<key>Value</key>
@@ -41,7 +41,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>Enhances jim&apos;s ability to jump, adding height to every jump.</string>
+			<string>Enhances Jim&apos;s ability to jump, adding height to every jump.</string>
 			<key>Value</key>
 			<integer>700</integer>
 		</dict>
@@ -59,7 +59,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>further enhances jim&apos;s ability to jump, adding more height to every jump.</string>
+			<string>Further enhances Jim&apos;s ability to jump, adding more height to every jump.</string>
 			<key>Value</key>
 			<integer>450</integer>
 		</dict>
@@ -77,7 +77,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>Allows jim to jump a 2nd time while in the air.</string>
+			<string>Allows Jim to jump a 2nd time while in the air.</string>
 		</dict>
 		<dict>
 			<key>Name</key>
@@ -93,7 +93,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>gives jim a super jump, adding even more height to every jump.</string>
+			<string>Gives Jim a super jump, adding even more height to every jump.</string>
 			<key>Value</key>
 			<integer>350</integer>
 		</dict>
@@ -111,7 +111,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>Allows jim to jump a 3rd time while in the air.</string>
+			<string>Allows Jim to jump a 3rd time while in the air.</string>
 		</dict>
 	</array>
 	<array>
@@ -129,7 +129,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>Allows jim to block 1 attack while the skill is activated. Recharges every 30 seconds.</string>
+			<string>Allows Jim to block 1 attack while the skill is activated. Recharges every 30 seconds.</string>
 			<key>ActivationMethod</key>
 			<string>press</string>
 			<key>SkillCount</key>
@@ -155,7 +155,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>Reduces the recharge rate of jim&apos;s shields to 24 seconds.</string>
+			<string>Reduces the recharge rate of Jim&apos;s shields to 24 seconds.</string>
 			<key>SkillCountRegeneration</key>
 			<integer>6</integer>
 		</dict>
@@ -173,7 +173,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>Further reduces the recharge rate of jim&apos;s shields to 20 seconds.</string>
+			<string>Further reduces the recharge rate of Jim&apos;s shields to 20 seconds.</string>
 			<key>SkillCountRegeneration</key>
 			<integer>4</integer>
 		</dict>
@@ -191,7 +191,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>gives jim 2 total shields to block with.</string>
+			<string>Gives Jim 2 total shields to block with.</string>
 			<key>SkillCount</key>
 			<integer>1</integer>
 		</dict>
@@ -209,7 +209,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>Further reduces the recharge rate of jim&apos;s shields to 18 seconds.</string>
+			<string>Further reduces the recharge rate of Jim&apos;s shields to 18 seconds.</string>
 			<key>SkillCountRegeneration</key>
 			<integer>2</integer>
 		</dict>
@@ -227,7 +227,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>gives jim 3 total shields to block with.</string>
+			<string>Gives Jim 3 total shields to block with.</string>
 			<key>SkillCount</key>
 			<integer>1</integer>
 		</dict>
@@ -247,7 +247,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>jim charges ahead at 200% speed for 0.5 seconds. colliding head on with an obstacle or minion will stop jim but cause no damage to him. skill is available to use every 20 seconds.</string>
+			<string>Jim charges ahead at 200% speed for 0.5 seconds. Colliding head on with an obstacle or minion will stop Jim but cause no damage to him. Skill is available to use every 20 seconds.</string>
 			<key>ActivationMethod</key>
 			<string>release</string>
 			<key>Cooldown</key>
@@ -277,7 +277,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>Increases jim&apos;s speed to 300% when charging.</string>
+			<string>Increases Jim&apos;s speed to 300% when charging.</string>
 			<key>Value</key>
 			<integer>1</integer>
 		</dict>
@@ -295,7 +295,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>jim is now able to charge for 1 second.</string>
+			<string>Jim is now able to charge for 1 second.</string>
 			<key>ActiveLength</key>
 			<real>0.5</real>
 		</dict>
@@ -313,7 +313,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>jim causes double damage to the minion or obstacle that he collides with while charging.</string>
+			<string>Jim causes double damage to the minion or obstacle that he collides with while charging.</string>
 			<key>Value</key>
 			<integer>1</integer>
 			<key>SecondaryValue</key>
@@ -333,7 +333,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>jim is now able to charge for 2 seconds.</string>
+			<string>Jim is now able to charge for 2 seconds.</string>
 			<key>ActiveLength</key>
 			<integer>1</integer>
 		</dict>
@@ -351,7 +351,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>jim turns it up a notch charging furiously ahead, reflecting all projectiles without taking damage from them.</string>
+			<string>Jim turns it up a notch charging furiously ahead, reflecting all projectiles without taking damage from them.</string>
 		</dict>
 	</array>
 	<array>
@@ -369,7 +369,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>jim stomps the ground, causing 1 damage to minions within 150 feet. skill is available to use every 24 seconds.</string>
+			<string>Jim stomps the ground, causing 1 damage to minions within 150 feet. Skill is available to use every 24 seconds.</string>
 			<key>ActivationMethod</key>
 			<string>release</string>
 			<key>Cooldown</key>
@@ -399,7 +399,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>increases the range of jim&apos;s stomp to 200 feet.</string>
+			<string>Increases the range of Jim&apos;s stomp to 200 feet.</string>
 			<key>Range</key>
 			<integer>50</integer>
 		</dict>
@@ -417,7 +417,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>allows jim to stomp every 16 seconds.</string>
+			<string>Allows Jim to stomp every 16 seconds.</string>
 			<key>Cooldown</key>
 			<integer>8</integer>
 		</dict>
@@ -435,7 +435,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>jim&apos;s stomp sets off an aftershock, launching 1 rock into the air after the stomp.</string>
+			<string>Jim&apos;s stomp sets off an aftershock, launching 1 rock into the air after the stomp.</string>
 			<key>SecondaryValue</key>
 			<integer>1</integer>
 			<key>SecondaryRange</key>
@@ -455,7 +455,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>increases the range of jim&apos;s stomp to 250 feet.</string>
+			<string>Increases the range of Jim&apos;s stomp to 250 feet.</string>
 			<key>Range</key>
 			<integer>50</integer>
 		</dict>
@@ -473,7 +473,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>the aftershock from jim&apos;s stomp expands, launching 2 rocks into the air.</string>
+			<string>The aftershock from Jim&apos;s stomp expands, launching 2 rocks into the air.</string>
 			<key>SecondaryValue</key>
 			<integer>1</integer>
 		</dict>
@@ -493,7 +493,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>[passive] patch jim&apos;s wounds with a first aid kit, causing 1 heart to regenerate every 30 seconds.</string>
+			<string>[Passive] Patch Jim&apos;s wounds with a first aid kit, causing 1 heart to regenerate every 30 seconds.</string>
 			<key>ActivationMethod</key>
 			<string>passive</string>
 			<key>Value</key>
@@ -521,7 +521,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>reduces jim&apos;s heart recharge rate to 26 seconds.</string>
+			<string>Reduces Jim&apos;s heart recharge rate to 26 seconds.</string>
 			<key>SkillCountRegeneration</key>
 			<integer>4</integer>
 		</dict>
@@ -539,7 +539,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>reduces jim&apos;s heart recharge rate to 23 seconds.</string>
+			<string>Reduces Jim&apos;s heart recharge rate to 23 seconds.</string>
 			<key>SkillCountRegeneration</key>
 			<integer>3</integer>
 		</dict>
@@ -557,7 +557,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>increases jim&apos;s total hearts to 4.</string>
+			<string>Increases Jim&apos;s total hearts to 4.</string>
 			<key>Value</key>
 			<integer>1</integer>
 		</dict>
@@ -575,7 +575,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>reduces jim&apos;s heart recharge rate to 20 seconds.</string>
+			<string>Reduces Jim&apos;s heart recharge rate to 20 seconds.</string>
 			<key>SkillCountRegeneration</key>
 			<integer>3</integer>
 		</dict>
@@ -593,7 +593,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>increases jim&apos;s total hearts to 5.</string>
+			<string>Increases Jim&apos;s total hearts to 5.</string>
 			<key>Value</key>
 			<integer>1</integer>
 		</dict>

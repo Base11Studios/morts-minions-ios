@@ -21,9 +21,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>cannon</string>
+			<string>Arr Cannon</string>
 			<key>Description</key>
-			<string>pirate crab called in the arrrrtillery!</string>
+			<string>Pirate crab called in the arrrrtillery!</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

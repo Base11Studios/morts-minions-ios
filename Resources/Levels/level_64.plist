@@ -12,7 +12,7 @@
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
-			<string>Beginning</string>
+			<string>End</string>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -22,7 +22,7 @@
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
-			<string>Beginning</string>
+			<string>End</string>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -32,7 +32,7 @@
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
-			<string>Beginning</string>
+			<string>End</string>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -42,7 +42,7 @@
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
-			<string>Beginning</string>
+			<string>End</string>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -52,7 +52,7 @@
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
-			<string>Beginning</string>
+			<string>End</string>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -62,7 +62,7 @@
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
-			<string>Beginning</string>
+			<string>End</string>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -72,16 +72,16 @@
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
-			<string>Beginning</string>
+			<string>End</string>
 		</dict>
 	</array>
 	<key>Tutorial</key>
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>the last level</string>
+			<string>The Last Level</string>
 			<key>Description</key>
-			<string>great job for making it this far! make sure you&apos;ve completed each level 100% and tried new characters.</string>
+			<string>Great job for making it this far! After beating it, complete each level 100% and try new characters.</string>
 			<key>Type</key>
 			<string>tutorial</string>
 			<key>Key</key>

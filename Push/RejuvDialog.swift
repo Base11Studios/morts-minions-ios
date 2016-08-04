@@ -56,7 +56,7 @@ class RejuvDialog: DialogBackground {
         self.titleNode?.paragraphWidth = self.container.size.width - self.buttonBuffer - self.iconBackgroundNode!.size.width
         self.titleNode?.fontSize = round(28 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.titleNode?.fontColor = MerpColors.darkFont
-        self.titleNode?.text = "revive?"
+        self.titleNode?.text = "Revive?"
         
         self.rejuvGemsButton = RejuvenateGemButton(scene: scene, unlockAmount: gemCost)
         self.rejuvVideoButton = RejuvenateVideoButton(scene: scene)

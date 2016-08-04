@@ -46,9 +46,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>welcome to the water world</string>
+			<string>Welcome to the Aqua World!</string>
 			<key>Description</key>
-			<string>tip: consider investing in a skill that gets you far off the sea floor.</string>
+			<string>Tip: consider investing in a skill that gets you far off the sea floor.</string>
 			<key>Type</key>
 			<string>tutorial</string>
 			<key>Key</key>
@@ -58,9 +58,9 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>crabby</string>
+			<string>Mr. Crabby</string>
 			<key>Description</key>
-			<string>*beware* - i take 2 hits</string>
+			<string>*Beware* - I take 2 hits.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

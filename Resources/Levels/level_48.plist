@@ -12,7 +12,7 @@
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
-			<string>Beginning</string>
+			<string>End</string>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -22,7 +22,7 @@
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
-			<string>Beginning</string>
+			<string>End</string>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -32,7 +32,7 @@
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
-			<string>Beginning</string>
+			<string>End</string>
 		</dict>
 	</array>
 	<key>Challenges</key>

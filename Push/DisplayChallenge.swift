@@ -45,9 +45,9 @@ class DisplayChallenge: SKNode {
         self.text.fontSize = round(16 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         // Change text if completed
         if self.challenge.completed {
-            self.text.text = challenge.getDescription() + ". claimed \(challenge.reward) gem"
+            self.text.text = challenge.getDescription() + ". Claimed \(challenge.reward) gem"
         } else {
-            self.text.text = challenge.getDescription() + ". bounty: \(challenge.reward) gem"
+            self.text.text = challenge.getDescription() + ". Bounty: \(challenge.reward) gem"
         }
         
         // Make gem plural if needed

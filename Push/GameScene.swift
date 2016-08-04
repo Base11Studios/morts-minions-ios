@@ -1949,20 +1949,20 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                         
                         // Do some mods to the description
                         if GameData.sharedGameData.selectedCharacter == CharacterType.Archer {
-                            description = description.replacingOccurrences(of: nameReplace, with: "may")
-                            description = description.replacingOccurrences(of: roleReplace, with: "fearless archer")
+                            description = description.replacingOccurrences(of: nameReplace, with: "May")
+                            description = description.replacingOccurrences(of: roleReplace, with: "fearless Archer")
                             description = description.replacingOccurrences(of: relationshipReplace, with: "sister")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Warrior {
-                            description = description.replacingOccurrences(of: nameReplace, with: "jim")
-                            description = description.replacingOccurrences(of: roleReplace, with: "fearless warrior")
+                            description = description.replacingOccurrences(of: nameReplace, with: "Jim")
+                            description = description.replacingOccurrences(of: roleReplace, with: "fearless Warrior")
                             description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Mage {
-                            description = description.replacingOccurrences(of: nameReplace, with: "gary")
-                            description = description.replacingOccurrences(of: roleReplace, with: "fearless mage")
+                            description = description.replacingOccurrences(of: nameReplace, with: "Gary")
+                            description = description.replacingOccurrences(of: roleReplace, with: "fearless Mage")
                             description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Monk {
-                            description = description.replacingOccurrences(of: nameReplace, with: "leonard")
-                            description = description.replacingOccurrences(of: roleReplace, with: "fearless monk")
+                            description = description.replacingOccurrences(of: nameReplace, with: "Leonard")
+                            description = description.replacingOccurrences(of: roleReplace, with: "fearless Monk")
                             description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
                         }
                         

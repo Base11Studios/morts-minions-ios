@@ -6,9 +6,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>dangerous duo</string>
+			<string>Dangerous Duo</string>
 			<key>Description</key>
-			<string>we&apos;re double danger with twice the fun</string>
+			<string>We&apos;re double danger with twice the fun.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>You reach the Ignis world and need answers. Why would the imals revolt when it seemed like the rulens and imals were living in peace for hundreds of years</string>
+			<string>You reach the Ignis world and need answers. Why would the imals revolt when it seemed like the rulens and imals were living in peace for hundreds of years?</string>
 			<key>Icon</key>
 			<string>tutorial_monk</string>
 			<key>Version</key>
@@ -19,9 +19,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>welcome to the fire world</string>
+			<string>Welcome to the Ignis World!</string>
 			<key>Description</key>
-			<string>timing is critical! consider upgrading your skills. </string>
+			<string>Timing is critical! Consider upgrading your skills. </string>
 			<key>Type</key>
 			<string>tutorial</string>
 			<key>Key</key>

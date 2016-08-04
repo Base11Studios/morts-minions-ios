@@ -12,7 +12,7 @@
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
-			<string>Beginning</string>
+			<string>End</string>
 		</dict>
 		<dict>
 			<key>Description</key>
@@ -22,7 +22,7 @@
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
-			<string>Beginning</string>
+			<string>End</string>
 		</dict>
 	</array>
 	<key>Challenges</key>
@@ -46,9 +46,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>follow mort to the next world!</string>
+			<string>Next World</string>
 			<key>Description</key>
-			<string>to unlock the next world world, obtain at least 2 stars on this level. </string>
+			<string>To unlock the next world world, obtain at least 1 star on this level. </string>
 			<key>Type</key>
 			<string>tutorial</string>
 			<key>Key</key>

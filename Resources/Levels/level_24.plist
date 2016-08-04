@@ -21,9 +21,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>watch out!</string>
+			<string>Watch Out!</string>
 			<key>Description</key>
-			<string>minions will start to become less predictable!</string>
+			<string>Minions will start to become less predictable!</string>
 			<key>Type</key>
 			<string>tutorial</string>
 			<key>Key</key>

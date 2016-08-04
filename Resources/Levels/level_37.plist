@@ -6,9 +6,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>fire geyser</string>
+			<string>Fire Geyser</string>
 			<key>Description</key>
-			<string>i&apos;m a volcano with a touch of the flu</string>
+			<string>I&apos;m a volcano with a touch of the flu.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

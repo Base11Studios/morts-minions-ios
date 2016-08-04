@@ -19,9 +19,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>welcome to the air world</string>
+			<string>Welcome to the Astra World!</string>
 			<key>Description</key>
-			<string>finally the last world (until the next major release :)). max out your air time skills. </string>
+			<string>Finally the last world ( until the next major release :P ). Max out your air time skills. </string>
 			<key>Type</key>
 			<string>tutorial</string>
 			<key>Key</key>

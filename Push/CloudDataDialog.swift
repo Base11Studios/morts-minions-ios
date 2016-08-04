@@ -61,7 +61,7 @@ class CloudDataDialog: DialogBackground {
         self.titleNode?.paragraphWidth = self.container.size.width - self.buttonBuffer - self.iconBackgroundNode!.size.width
         self.titleNode?.fontSize = round(28 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.titleNode?.fontColor = MerpColors.darkFont
-        self.titleNode?.text = "newer iCloud data found"
+        self.titleNode?.text = "Newer iCloud Data Found"
         let titleNodeXPosition = self.iconBackgroundNode!.position.x + self.iconBackgroundNode!.size.width / 2 + self.titleNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2
         let titleNodeYPosition = self.container.size.height / 2 - self.titleNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2
         self.titleNode?.position = CGPoint(x: titleNodeXPosition, y: titleNodeYPosition)
@@ -71,7 +71,7 @@ class CloudDataDialog: DialogBackground {
         self.descriptionNode?.paragraphWidth = self.container.size.width - self.buttonBuffer
         self.descriptionNode?.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.descriptionNode?.fontColor = MerpColors.darkFont
-        self.descriptionNode?.text = "a game save was found in iCloud that is more recent than the local game save on this device. would you like to load the save from iCloud and replace the save on this device (recommended)? if you do not load the iCloud save it will be overwritten."
+        self.descriptionNode?.text = "A game save was found in iCloud that is more recent than the local game save on this device. Would you like to load the save from iCloud and replace the save on this device (recommended)? If you do not load the iCloud save it will be overwritten."
         let descriptionNodeXPosition = self.container.size.width / -2 + self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2
         let descriptionNodeYPosition = self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer
         self.descriptionNode?.position = CGPoint(x: descriptionNodeXPosition, y: descriptionNodeYPosition)
@@ -92,10 +92,10 @@ class CloudDataDialog: DialogBackground {
     }
     
     func changeToLocalConfirm() {
-        self.titleNode?.text = "are you sure?"
+        self.titleNode?.text = "Are You Sure?"
         self.titleNode?.position = CGPoint(x: self.iconBackgroundNode!.position.x + self.iconBackgroundNode!.size.width / 2 + self.titleNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2, y: self.titleNode!.position.y)
         
-        self.descriptionNode?.text = "if you do not load the iCloud save, the iCloud save will be overwritten by the local save on this device for this iCloud account."
+        self.descriptionNode?.text = "If you do not load the iCloud save, the iCloud save will be overwritten by the local save on this device for this iCloud account."
         self.descriptionNode?.position = CGPoint(x: self.descriptionNode!.position.x, y: self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
         
         //self.cloudButton!.position = CGPointMake(self.container.size.width / 2 - self.cloudButton!.size.width / 2 - self.buttonBuffer / 2, self.container.size.height / -2 + self.cloudButton!.size.height / 2 + self.buttonBuffer / 2)

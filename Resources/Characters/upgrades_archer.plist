@@ -17,7 +17,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>allows may to jump.</string>
+			<string>Allows May to jump.</string>
 			<key>ActivationMethod</key>
 			<string>press</string>
 			<key>Value</key>
@@ -41,7 +41,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>Enhances may&apos;s ability to jump, adding height to every jump.</string>
+			<string>Enhances May&apos;s ability to jump, adding height to every jump.</string>
 			<key>Value</key>
 			<integer>700</integer>
 		</dict>
@@ -59,7 +59,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>further enhances may&apos;s ability to jump, adding more height to every jump.</string>
+			<string>Further enhances May&apos;s ability to jump, adding more height to every jump.</string>
 			<key>Value</key>
 			<integer>450</integer>
 		</dict>
@@ -77,7 +77,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>Allows may to jump a 2nd time while in the air.</string>
+			<string>Allows May to jump a 2nd time while in the air.</string>
 		</dict>
 		<dict>
 			<key>Name</key>
@@ -93,7 +93,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>gives may a super jump, adding even more height to every jump.</string>
+			<string>Gives May a super jump, adding even more height to every jump.</string>
 			<key>Value</key>
 			<integer>350</integer>
 		</dict>
@@ -111,7 +111,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>Allows may to jump a 3rd time while in the air.</string>
+			<string>Allows May to jump a 3rd time while in the air.</string>
 		</dict>
 	</array>
 	<array>
@@ -129,7 +129,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>may shoots a single arrow in front of her. may is able to shoot an arrow every 24 seconds.</string>
+			<string>May shoots a single arrow in front of her. May is able to shoot an arrow every 24 seconds.</string>
 			<key>ActivationMethod</key>
 			<string>release</string>
 			<key>Cooldown</key>
@@ -155,7 +155,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>studies in cooldown reduction allow may to shoot every 20 seconds.</string>
+			<string>Studies in cooldown reduction allow May to shoot every 20 seconds.</string>
 			<key>Cooldown</key>
 			<integer>4</integer>
 		</dict>
@@ -173,7 +173,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>mastery of cooldown reduction allows may to shoot every 16 seconds.</string>
+			<string>Mastery of cooldown reduction allows May to shoot every 16 seconds.</string>
 			<key>Cooldown</key>
 			<integer>4</integer>
 		</dict>
@@ -191,7 +191,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>may is able to split her arrow into 2 and direct one to the sky.</string>
+			<string>May is able to split her arrow into 2 and direct one to the sky.</string>
 			<key>Value</key>
 			<integer>1</integer>
 		</dict>
@@ -209,7 +209,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>may is able to split her arrow into 3 and directs 2 to the sky.</string>
+			<string>May is able to split her arrow into 3 and directs 2 to the sky.</string>
 			<key>Value</key>
 			<integer>1</integer>
 		</dict>
@@ -227,7 +227,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>may can shoot twice in succession, filling the battlefield with arrows.</string>
+			<string>May can shoot twice in succession, filling the battlefield with arrows.</string>
 			<key>SecondaryValue</key>
 			<integer>1</integer>
 		</dict>
@@ -247,7 +247,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>when pressed, may sneaks past minions, dodges their projectiles, and avoids obstacles. may can spend a total of 1.5 seconds in the shadows.</string>
+			<string>When pressed, May sneaks past minions, dodges their projectiles, and avoids obstacles. May can spend a total of 1.5 seconds in the shadows.</string>
 			<key>ActivationMethod</key>
 			<string>press</string>
 			<key>ChargeCount</key>
@@ -255,7 +255,7 @@
 			<key>TutorialVersion</key>
 			<integer>1</integer>
 			<key>TutorialText</key>
-			<string>Hold down the button to activate walk with shadows. When the button is released, walk with shadows is no longer active.</string>
+			<string>Hold down the button to walk in shadows. When the button is released, May no longer walks in shadows.</string>
 		</dict>
 		<dict>
 			<key>Name</key>
@@ -271,7 +271,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>increases may&apos;s sneakiness, allowing her to spend 2.0 seconds in shadows.</string>
+			<string>Increases May&apos;s sneakiness, allowing her to spend 2.0 seconds in shadows.</string>
 			<key>ChargeCount</key>
 			<real>0.5</real>
 		</dict>
@@ -289,7 +289,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>further increases may&apos;s sneakiness, allowing her to spend 2.5 seconds in shadows.</string>
+			<string>Further increases May&apos;s sneakiness, allowing her to spend 2.5 seconds in shadows.</string>
 			<key>ChargeCount</key>
 			<real>0.5</real>
 		</dict>
@@ -307,7 +307,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>with meditation, may is able to recharge her time in the shadows, gaining 1 shadow second every 60 seconds.</string>
+			<string>With meditation, May is able to recharge her time in the shadows, gaining 1 shadow second every 60 seconds.</string>
 			<key>ChargeRecoup</key>
 			<real>0.016666666</real>
 		</dict>
@@ -325,7 +325,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>increases may&apos;s sneakiness, allowing her to spend 3.0 seconds in shadows.</string>
+			<string>Increases May&apos;s sneakiness, allowing her to spend 3.0 seconds in shadows.</string>
 			<key>ChargeCount</key>
 			<real>0.5</real>
 		</dict>
@@ -343,7 +343,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>with advanced meditation, may is able to further recharge her time in the shadows, gaining 1 shadow second every 30 seconds.</string>
+			<string>With advanced meditation, May is able to further recharge her time in the shadows, gaining 1 shadow second every 30 seconds.</string>
 			<key>ChargeRecoup</key>
 			<real>0.033333333</real>
 		</dict>
@@ -363,7 +363,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>may uses her alliance with the forest creatures to recruit an eagle to follow her. activating the skill causes the eagle to soar forward in attack. skill can be used every 30 seconds.</string>
+			<string>May recruits an eagle to follow her. Activating the skill causes the eagle to soar forward in attack. Skill can be used every 30 seconds.</string>
 			<key>ActivationMethod</key>
 			<string>release</string>
 			<key>Cooldown</key>
@@ -389,7 +389,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>increases the eagle&apos;s stamina, allowing her to attack every 24 seconds.</string>
+			<string>Increases the eagle&apos;s stamina, allowing her to attack every 24 seconds.</string>
 			<key>Cooldown</key>
 			<integer>6</integer>
 		</dict>
@@ -407,7 +407,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>further increases the eagle&apos;s stamina, allowing her to attack every 20 seconds.</string>
+			<string>Further increases the eagle&apos;s stamina, allowing her to attack every 20 seconds.</string>
 			<key>Cooldown</key>
 			<integer>4</integer>
 		</dict>
@@ -425,7 +425,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>increases the eagle&apos;s confidence of may&apos;s abilities, allowing her to fly further away from may.</string>
+			<string>Increases the eagle&apos;s confidence of May&apos;s abilities, allowing her to fly further away from May.</string>
 			<key>Value</key>
 			<integer>30</integer>
 		</dict>
@@ -443,7 +443,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>further increases the eagle&apos;s stamina, allowing her to attack every 16 seconds.</string>
+			<string>Further increases the eagle&apos;s stamina, allowing her to attack every 16 seconds.</string>
 			<key>Cooldown</key>
 			<integer>4</integer>
 		</dict>
@@ -461,7 +461,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>unleashes the eagle&apos;s primal instincts giving her the ability to track down minions.</string>
+			<string>Unleashes the eagle&apos;s primal instincts giving her the ability to track down minions.</string>
 			<key>SecondaryValue</key>
 			<integer>1</integer>
 		</dict>
@@ -481,7 +481,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>may drinks a health potion, restoring 1 heart. may is able to drink a potion every 40 seconds.</string>
+			<string>May drinks a health potion, restoring 1 heart. May is able to drink a potion every 40 seconds.</string>
 			<key>ActivationMethod</key>
 			<string>release</string>
 			<key>SecondaryValue</key>
@@ -491,7 +491,7 @@
 			<key>TutorialVersion</key>
 			<integer>1</integer>
 			<key>TutorialText</key>
-			<string>press the button to activate health potion.</string>
+			<string>Press the button to activate health potion.</string>
 		</dict>
 		<dict>
 			<key>Name</key>
@@ -507,7 +507,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>increases the stock of health potions, allowing may to use one every 32 seconds.</string>
+			<string>Increases the stock of health potions, allowing May to use one every 32 seconds.</string>
 			<key>Cooldown</key>
 			<integer>8</integer>
 		</dict>
@@ -525,7 +525,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>may brings bigger health potions, with each vial restoring 2 total hearts.</string>
+			<string>May brings bigger health potions, with each vial restoring 2 total hearts.</string>
 			<key>SecondaryValue</key>
 			<integer>1</integer>
 		</dict>
@@ -543,7 +543,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>increases may&apos;s total hearts to 4.</string>
+			<string>Increases May&apos;s total hearts to 4.</string>
 			<key>Value</key>
 			<integer>1</integer>
 		</dict>
@@ -561,7 +561,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>increases the stock of health potions, allowing may to use one every 24 seconds.</string>
+			<string>Increases the stock of health potions, allowing May to use one every 24 seconds.</string>
 			<key>Cooldown</key>
 			<integer>8</integer>
 		</dict>
@@ -579,7 +579,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>may brings bigger health potions, with each vial restoring 3 total hearts.</string>
+			<string>May brings bigger health potions, with each vial restoring 3 total hearts.</string>
 			<key>SecondaryValue</key>
 			<integer>1</integer>
 		</dict>

@@ -23,9 +23,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>spike shield</string>
+			<string>Spike Shield</string>
 			<key>Description</key>
-			<string>please don&apos;t jump on me</string>
+			<string>Please don&apos;t jump on me.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

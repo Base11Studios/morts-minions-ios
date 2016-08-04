@@ -10,6 +10,14 @@ import Foundation
 
 class TextFormatter {
     static func formatText(_ text: String) -> String {
+        return text//text.lowercased()
+    }
+    
+    static func formatTextLowercase(_ text: String) -> String {
         return text.lowercased()
+    }
+    
+    static func formatTextUppercase(_ text: String) -> String {
+        return text.capitalized
     }
 }
