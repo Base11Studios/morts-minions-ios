@@ -1937,8 +1937,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                     if character == nil || character == GameData.sharedGameData.selectedCharacter.rawValue.lowercased() {
                         // Image Info
                         var iconName: String = (storyDictionary["Icon"] as! String).lowercased()
-                        var iconTexture: SKTexture
-                        iconTexture = SKTexture(imageNamed: iconName)
                         
                         // Create dialog
                         var description = TextFormatter.formatText(storyDictionary["Description"] as! String)
@@ -1952,19 +1950,26 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                             description = description.replacingOccurrences(of: nameReplace, with: "May")
                             description = description.replacingOccurrences(of: roleReplace, with: "fearless Archer")
                             description = description.replacingOccurrences(of: relationshipReplace, with: "sister")
+                            iconName = iconName.replacingOccurrences(of: roleReplace, with: "archer")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Warrior {
                             description = description.replacingOccurrences(of: nameReplace, with: "Jim")
                             description = description.replacingOccurrences(of: roleReplace, with: "fearless Warrior")
                             description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
+                            iconName = iconName.replacingOccurrences(of: roleReplace, with: "warrior")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Mage {
                             description = description.replacingOccurrences(of: nameReplace, with: "Gary")
                             description = description.replacingOccurrences(of: roleReplace, with: "fearless Mage")
                             description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
+                            iconName = iconName.replacingOccurrences(of: roleReplace, with: "mage")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Monk {
                             description = description.replacingOccurrences(of: nameReplace, with: "Leonard")
                             description = description.replacingOccurrences(of: roleReplace, with: "fearless Monk")
                             description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
+                            iconName = iconName.replacingOccurrences(of: roleReplace, with: "monk")
                         }
+                        
+                        var iconTexture: SKTexture
+                        iconTexture = SKTexture(imageNamed: iconName)
                         
                         // Type - either beginning of level or end
                         let type = storyDictionary["Type"] as! String

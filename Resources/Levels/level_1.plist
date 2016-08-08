@@ -40,7 +40,7 @@
 			<key>Description</key>
 			<string>Once upon a time, imals and rulens lived in harmony...</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-w1-peace</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -50,7 +50,7 @@
 			<key>Description</key>
 			<string>…but things have changed. The imals are attacking the rulens on the Terra world.</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-w1-conflict</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>

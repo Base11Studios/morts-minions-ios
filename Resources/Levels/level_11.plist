@@ -8,7 +8,7 @@
 			<key>Description</key>
 			<string>You get an eerie feeling about the imals. You see your youngest brother, Mort, in their eyes.</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-w1-resemblance</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -18,7 +18,7 @@
 			<key>Description</key>
 			<string>Mort always had a connection with the imals and went missing years ago. Could the imals be Mort’s minions?</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-w1-mort-leaving</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
