@@ -36,7 +36,7 @@
 		</dict>
 		<dict>
 			<key>Description</key>
-			<string>You turn to leave and Mort speaks: &quot;I should have mentioned, I, umm, may have shattered the space time continuum and summoned evil imals from the past to bring judgement to the rulens. Now that their ruler, the King of Tempus, is awake, I’ll need some help, he’s a bit cranky.&quot;</string>
+			<string>You turn to leave and Mort speaks: &quot;I should have mentioned, I, umm, may have shattered the space time continuum and summoned evil imals from the past. I&apos;ll need some help with their ruler, the King of Tempus.&quot;</string>
 			<key>Icon</key>
 			<string>story-mort-talk</string>
 			<key>Version</key>
@@ -56,7 +56,7 @@
 		</dict>
 		<dict>
 			<key>Description</key>
-			<string>To be continued. Want to know what happens to you and Mort? Post about us on Facebook and more will come.</string>
+			<string>To be continued. Want to know what happens to you and Mort? Post about us on Facebook and more will come. Visit our site for more.</string>
 			<key>Icon</key>
 			<string>story-w4-social-media</string>
 			<key>Version</key>

@@ -1368,7 +1368,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     func tearDownScene() {
         // Save this bad boy
-        self.viewController!.saveData()
+        //self.viewController!.saveData()
+        GameData.sharedGameData.save()
         
         // Stop audio
         self.backgroundPlayer?.stop()

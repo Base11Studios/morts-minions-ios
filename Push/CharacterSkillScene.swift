@@ -249,7 +249,8 @@ class CharacterSkillScene : DBScene {
         /*
         self.scrollingNode!.disableScrollingOnView(view)
         */
-        self.viewController!.saveData()
+        //self.viewController!.saveData()
+        GameData.sharedGameData.save()
         
         super.willMove(from: view)
     }

@@ -670,9 +670,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     func saveData() {
-        DispatchQueue.global(attributes: .qosUserInitiated).async {
+        //DispatchQueue.global(attributes: .qosUserInitiated).async {
             GameData.sharedGameData.save()
-        }
+        //}
         
     }
 }

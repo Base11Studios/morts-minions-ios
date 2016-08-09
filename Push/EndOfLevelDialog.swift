@@ -507,7 +507,8 @@ class EndOfLevelDialog: DialogBackground {
                 }),
                 SKAction.run({
                     // Save Data
-                    self.dbScene!.viewController!.saveData()
+                    //self.dbScene!.viewController!.saveData()
+                    GameData.sharedGameData.save()
                 })
                 ]),withKey: "playerWinning")
         }
