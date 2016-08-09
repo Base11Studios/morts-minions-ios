@@ -99,6 +99,8 @@ class Archer : Player {
                 self.gameScene!.worldViewPlayerProjectiles.append(arrow)
                 
                 arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 2000.0 * CGFloat(i)))
+                
+                SoundHelper.sharedInstance.playSound(self, sound: SoundType.ProjectileThrow)
             }
         })
         

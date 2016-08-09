@@ -832,6 +832,8 @@ class Player : SKSpriteNode {
         self.startInvisibility()
         
         self.updateSkillsBasedOnPlayerPosition()
+        
+        SoundHelper.sharedInstance.playSound(self, sound: SoundType.Air)
     }
     
     func stopTeleport() {
@@ -1603,6 +1605,8 @@ class Player : SKSpriteNode {
                     freezeTimes -= 1
                 }
             }
+            
+            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Pow)
         case .ProtectorOfTheSky:
             // Set the skill to cooldown
             skill.cooldownInProgress = true
@@ -1639,6 +1643,8 @@ class Player : SKSpriteNode {
                     self.protectorOfTheSky!.homingObject = closestObject
                 }
             }
+            
+            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Zoom)
         case .WalkWithShadows:
             if skill.chargeCount > 0 {
                 skill.skillIsUncharging = true
@@ -1707,6 +1713,8 @@ class Player : SKSpriteNode {
             
             // Reset damage avoided
             self.damageAvoided = 0
+            
+            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Buzz)
         case .ForceField:
             self.projectileDamageReduction = 10
             self.enemyDamageReduction = 10
@@ -1726,6 +1734,8 @@ class Player : SKSpriteNode {
             
             // Reset damage avoided
             self.damageAvoided = 0
+            
+            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Buzz)
         case .HealthPotion:
             // Set the skill to cooldown // TODO move this into a function
             skill.cooldownInProgress = true

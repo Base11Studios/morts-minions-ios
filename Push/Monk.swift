@@ -90,6 +90,8 @@ class Monk : Player {
             self.gameScene!.worldViewPlayerProjectiles.append(arrow)
             
             arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 0))
+            
+            SoundHelper.sharedInstance.playSound(self, sound: SoundType.ProjectileThrow)
         })
         
         // At the end, switch back to walking and update the animation
