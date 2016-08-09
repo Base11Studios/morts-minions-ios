@@ -330,13 +330,13 @@ class MainMenuScene : DBScene {
         
         switch type {
         case .Warrior:
-            self.charDescriptions[type]!.text = "jim is a feast of the eyes for the ladies. he’s a brute force and he stops for nothing. if you’re willing to charge into battle before sizing up your enemy, jim is your man."
+            self.charDescriptions[type]!.text = "Jim is a feast of the eyes for the ladies. He’s a brute force and he stops for nothing. If you’re willing to charge into battle before sizing up your enemy, Jim is your man."
         case .Archer:
-            self.charDescriptions[type]!.text = "may prefers to deal with her problems from afar. she's not too touchy feely so keep your distance. if you're not a fan of smelling minion breath, hold back with may."
+            self.charDescriptions[type]!.text = "May prefers to deal with her problems from afar. She's not too touchy feely so keep your distance. If you're not a fan of smelling minion breath, hold back with May."
         case .Mage:
-            self.charDescriptions[type]!.text = "gary is an amazing dude. he’ll shock the feeble minded with his magic tricks and surprise the brilliants with his wits. when the only way is the mystic way, call gary."
+            self.charDescriptions[type]!.text = "Gary is an amazing dude. He’ll shock the feeble minded with his magic tricks and surprise the brilliants with his wits. When the only way is the mystic way, call Gary."
         case .Monk:
-            self.charDescriptions[type]!.text = "leonard is a man of peace. if he must fight, he will disable a foe with perfect accuracy, hitting the right spot so they feel no pain. for the keen on fighting like a gentleman, leonard won’t let you down."
+            self.charDescriptions[type]!.text = "Leonard is a man of peace. If he must fight, he will disable a foe with perfect accuracy, hitting the right spot so they feel no pain. For the keen on fighting like a gentleman, Leonard won’t let you down."
         }
         
         // Positions for name and txt
@@ -529,7 +529,7 @@ class MainMenuScene : DBScene {
         
         // Create dialog for error message
         if true { // TODO base on bool from notification
-            let dialog = DBSceneDialog(title: "unable to connect to game center", description: "ensure you're logged in by going to iOS settings then game center. if you're logged in and it still won't connect, try signing out then back in. once you sign in to game center successfully, you will need to restart Mort's Minions.", descriptionSize: 14, description2: nil, description3: nil, description4: nil, frameSize : self.size, scene: self, iconTexture:  GameTextures.sharedInstance.buttonAtlas.textureNamed("trophyred"))
+            let dialog = DBSceneDialog(title: "Unable to Connect to Game Center", description: "Ensure you're logged in by going to iOS settings then game center. If you're logged in and it still won't connect, try signing out then back in. Once you sign in to game center successfully, you will need to restart Mort's Minions.", descriptionSize: 14, description2: nil, description3: nil, description4: nil, frameSize : self.size, scene: self, iconTexture:  GameTextures.sharedInstance.buttonAtlas.textureNamed("trophyred"))
             
             self.addChild(dialog)
             dialog.isHidden = false

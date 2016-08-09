@@ -6,9 +6,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>lightning cloud</string>
+			<string>Lightning Cloud</string>
 			<key>Description</key>
-			<string>i was created by zeus</string>
+			<string>I was created by Zeus.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

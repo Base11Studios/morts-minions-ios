@@ -2,6 +2,39 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Story</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>You reach the end of the Terra world and find a letter. “The attack on Terra is the beginning of change. We will unite the minions and conquer the 4 worlds.”</string>
+			<key>Icon</key>
+			<string>story-envelope</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>The letter is signed by your brother Mort, but why has he rebelled with the minions?</string>
+			<key>Icon</key>
+			<string>story-letter</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>You travel to the Aqua world to find Mort and get answers.</string>
+			<key>Icon</key>
+			<string>story-mort-walk-aqua</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+	</array>
 	<key>Challenges</key>
 	<array>
 		<dict>
@@ -23,9 +56,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>follow mort to the next world!</string>
+			<string>Next World</string>
 			<key>Description</key>
-			<string>to unlock the next world world, obtain at least 2 stars on this level. </string>
+			<string>To unlock the next world world, obtain at least 1 star on this level. </string>
 			<key>Type</key>
 			<string>tutorial</string>
 			<key>Key</key>

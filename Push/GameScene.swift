@@ -436,7 +436,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         if storedTutorialBlackHearts == nil || floor(storedTutorialBlackHearts!) != floor(tutorialVersionBlackHearts) {
             // minion hearts
-            let tutBlackHearts = UXTutorialDialog(frameSize: self.size, description: "minion hearts freed", scene: self, size: "Small", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKeyBlackHearts, version: tutorialVersionBlackHearts, onComplete: onCompleteUxTooltip!)
+            let tutBlackHearts = UXTutorialDialog(frameSize: self.size, description: "minions defeated", scene: self, size: "Small", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKeyBlackHearts, version: tutorialVersionBlackHearts, onComplete: onCompleteUxTooltip!)
             tutBlackHearts.containerBackground.position = CGPoint(x: self.blackHeart!.position.x - self.blackHeart!.size.width - self.frame.width/2, y: self.healthNodes[0].position.y - self.healthNodes[0].size.height / 2 - self.buttonBuffer * 2 - tutBlackHearts.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.frame.height/2)
             self.uxTutorialTooltips!.append(tutBlackHearts)
             self.addChild(tutBlackHearts)
@@ -758,6 +758,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             for projectile in self.worldViewPlayerProjectiles {
                 if projectile.name!.hasPrefix("playerProjectile") {
                     projectile.updateAfterPhysics()
+                } else {
+                    projectile.physicsBody!.velocity = CGVector()
                 }
             }
             
@@ -1366,7 +1368,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     func tearDownScene() {
         // Save this bad boy
-        self.viewController!.saveData()
+        //self.viewController!.saveData()
+        GameData.sharedGameData.save()
         
         // Stop audio
         self.backgroundPlayer?.stop()
@@ -1598,7 +1601,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 
                 // Create and add the map object unit to the array
                 let object: String = level["Object"] as! String
-                var location: CGFloat = level["Location"] as! CGFloat
+                var location: CGFloat = level["Location"] as! CGFloat + 60
                 
                 // Scale location
                 location *= ScaleBuddy.sharedInstance.getGameScaleAmount(false)
@@ -1921,8 +1924,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         if storyArray != nil {
             for storyDictionary in storyArray! {
                 // Get the version information
-                var key = storyDictionary["Key"] as! String
-                key = "level_\(self.currentLevel)_" + key + self.player!.name! // Make it level specific and character specific
+                var key = "story_\(self.currentLevel)_\(count)_\(self.player!.name!)"
                 
                 let version = storyDictionary["Version"] as! Double
                 
@@ -1936,8 +1938,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                     if character == nil || character == GameData.sharedGameData.selectedCharacter.rawValue.lowercased() {
                         // Image Info
                         var iconName: String = (storyDictionary["Icon"] as! String).lowercased()
-                        var iconTexture: SKTexture
-                        iconTexture = SKTexture(imageNamed: iconName)
                         
                         // Create dialog
                         var description = TextFormatter.formatText(storyDictionary["Description"] as! String)
@@ -1948,22 +1948,29 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                         
                         // Do some mods to the description
                         if GameData.sharedGameData.selectedCharacter == CharacterType.Archer {
-                            description = description.replacingOccurrences(of: nameReplace, with: "may")
-                            description = description.replacingOccurrences(of: roleReplace, with: "fearless archer")
+                            description = description.replacingOccurrences(of: nameReplace, with: "May")
+                            description = description.replacingOccurrences(of: roleReplace, with: "fearless Archer")
                             description = description.replacingOccurrences(of: relationshipReplace, with: "sister")
+                            iconName = iconName.replacingOccurrences(of: roleReplace, with: "archer")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Warrior {
-                            description = description.replacingOccurrences(of: nameReplace, with: "jim")
-                            description = description.replacingOccurrences(of: roleReplace, with: "fearless warrior")
+                            description = description.replacingOccurrences(of: nameReplace, with: "Jim")
+                            description = description.replacingOccurrences(of: roleReplace, with: "fearless Warrior")
                             description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
+                            iconName = iconName.replacingOccurrences(of: roleReplace, with: "warrior")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Mage {
-                            description = description.replacingOccurrences(of: nameReplace, with: "gary")
-                            description = description.replacingOccurrences(of: roleReplace, with: "fearless mage")
+                            description = description.replacingOccurrences(of: nameReplace, with: "Gary")
+                            description = description.replacingOccurrences(of: roleReplace, with: "fearless Mage")
                             description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
+                            iconName = iconName.replacingOccurrences(of: roleReplace, with: "mage")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Monk {
-                            description = description.replacingOccurrences(of: nameReplace, with: "leonard")
-                            description = description.replacingOccurrences(of: roleReplace, with: "fearless monk")
+                            description = description.replacingOccurrences(of: nameReplace, with: "Leonard")
+                            description = description.replacingOccurrences(of: roleReplace, with: "fearless Monk")
                             description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
+                            iconName = iconName.replacingOccurrences(of: roleReplace, with: "monk")
                         }
+                        
+                        var iconTexture: SKTexture
+                        iconTexture = SKTexture(imageNamed: iconName)
                         
                         // Type - either beginning of level or end
                         let type = storyDictionary["Type"] as! String

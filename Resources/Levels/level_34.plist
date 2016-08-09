@@ -6,9 +6,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>slanky</string>
+			<string>Slanky</string>
 			<key>Description</key>
-			<string>i&apos;m cranky. avoid the ground during my &quot;fists of rage&quot;.</string>
+			<string>I&apos;m cranky. Avoid the ground during my fists of rage.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

@@ -17,7 +17,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>allows leonard to jump.</string>
+			<string>Allows Leonard to jump.</string>
 			<key>ActivationMethod</key>
 			<string>press</string>
 			<key>Value</key>
@@ -41,7 +41,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>Enhances leonard&apos;s ability to jump, adding height to every jump.</string>
+			<string>Enhances Leonard&apos;s ability to jump, adding height to every jump.</string>
 			<key>Value</key>
 			<integer>700</integer>
 		</dict>
@@ -59,7 +59,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>further enhances leonard&apos;s ability to jump, adding more height to every jump.</string>
+			<string>Further enhances Leonard&apos;s ability to jump, adding more height to every jump.</string>
 			<key>Value</key>
 			<integer>450</integer>
 		</dict>
@@ -77,7 +77,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>Allows leonard to jump a 2nd time while in the air.</string>
+			<string>Allows Leonard to jump a 2nd time while in the air.</string>
 		</dict>
 		<dict>
 			<key>Name</key>
@@ -93,7 +93,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>gives leonard a super jump, adding even more height to every jump.</string>
+			<string>Gives Leonard a super jump, adding even more height to every jump.</string>
 			<key>Value</key>
 			<integer>350</integer>
 		</dict>
@@ -111,7 +111,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>Allows leonard to jump a 3rd time while in the air.</string>
+			<string>Allows Leonard to jump a 3rd time while in the air.</string>
 		</dict>
 	</array>
 	<array>
@@ -129,7 +129,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>allows leonard to launch himself to the ground causing 1 damage to anything his charge field touches. leonard is immune to damage until he reaches the ground. skill is available to use every 24 seconds.</string>
+			<string>Allows Leonard to launch himself to the ground causing 1 damage to anything his charge field touches. Leonard is immune to damage until he reaches the ground. Skill is available to use every 24 seconds.</string>
 			<key>ActivationMethod</key>
 			<string>release</string>
 			<key>Restriction</key>
@@ -163,7 +163,7 @@
 			<key>Value</key>
 			<integer>1500</integer>
 			<key>Description</key>
-			<string>Increases the speed of leonard&apos;s dive allowing him to reach the ground quicker.</string>
+			<string>Increases the speed of Leonard&apos;s dive allowing him to reach the ground quicker.</string>
 		</dict>
 		<dict>
 			<key>Name</key>
@@ -179,7 +179,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>increases the size of leonard&apos;s charge field allowing him to reach further.</string>
+			<string>Increases the size of Leonard&apos;s charge field allowing him to reach further.</string>
 			<key>SecondaryValue</key>
 			<integer>1</integer>
 		</dict>
@@ -197,7 +197,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>increases the size of leonard&apos;s charge field even futher and reduces the recharge rate of dive bomb to 20 seconds.</string>
+			<string>Increases the size of Leonard&apos;s charge field even futher and reduces the recharge rate of dive bomb to 20 seconds.</string>
 			<key>Cooldown</key>
 			<integer>4</integer>
 			<key>SecondaryValue</key>
@@ -217,7 +217,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>Further reduces the recharge rate of leonard&apos;s dive bomb to 16 seconds.</string>
+			<string>Further reduces the recharge rate of Leonard&apos;s dive bomb to 16 seconds.</string>
 			<key>Cooldown</key>
 			<integer>4</integer>
 		</dict>
@@ -235,7 +235,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>when leonard lands his dive bomb, the impact is so great that it causes a shock wave surrounding him, damaging anything left in the area even further.</string>
+			<string>When Leonard lands his dive bomb, the impact is so great that it causes a shock wave surrounding him, damaging anything left in the area even further.</string>
 			<key>Range</key>
 			<integer>250</integer>
 		</dict>
@@ -255,7 +255,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>leonard hovers in mid-air, freezing his vertical movement until the skill ends. leonard can spend a total of 3 seconds hovering.</string>
+			<string>Leonard hovers in mid-air, freezing his vertical movement until the skill ends. Leonard can spend a total of 3 seconds hovering.</string>
 			<key>ActivationMethod</key>
 			<string>press</string>
 			<key>ChargeCount</key>
@@ -283,7 +283,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>leonard is now able to hover for 4.5 seconds.</string>
+			<string>Leonard is now able to hover for 4.5 seconds.</string>
 			<key>ChargeCount</key>
 			<real>1.5</real>
 		</dict>
@@ -301,7 +301,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>leonard is now able to hover for 6 seconds.</string>
+			<string>Leonard is now able to hover for 6 seconds.</string>
 			<key>ChargeCount</key>
 			<real>1.5</real>
 		</dict>
@@ -319,7 +319,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>leonard is able to dodge 1 projectile when hovering, taking no damage from it. </string>
+			<string>Leonard is able to dodge 1 projectile when hovering, taking no damage from it. </string>
 			<key>Value</key>
 			<integer>1</integer>
 		</dict>
@@ -337,7 +337,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>leonard is now able to hover for 7.5 seconds.</string>
+			<string>Leonard is now able to hover for 7.5 seconds.</string>
 			<key>ChargeCount</key>
 			<real>1.5</real>
 		</dict>
@@ -355,7 +355,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>leonard is now able to dodge 2 projectiles when hovering, taking no damage from either. </string>
+			<string>Leonard is now able to dodge 2 projectiles when hovering, taking no damage from either. </string>
 			<key>Value</key>
 			<integer>1</integer>
 		</dict>
@@ -375,7 +375,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>leonard uses his ki power to send a shockwave forward, damaging anything in its path. skill is available to use every 24 seconds.</string>
+			<string>Leonard uses his ki power to send a shockwave forward, damaging anything in its path. Skill is available to use every 24 seconds.</string>
 			<key>ActivationMethod</key>
 			<string>release</string>
 			<key>Cooldown</key>
@@ -403,7 +403,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>studies in cooldown reduction allow leonard to send out of wave every 18 seconds.</string>
+			<string>Studies in cooldown reduction allow Leonard to send out of wave every 18 seconds.</string>
 			<key>Cooldown</key>
 			<integer>6</integer>
 		</dict>
@@ -421,7 +421,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>leonard concentrates harder and sends out a ki wave that is double in size.</string>
+			<string>Leonard concentrates harder and sends out a ki wave that is double in size.</string>
 			<key>Value</key>
 			<integer>1</integer>
 		</dict>
@@ -439,7 +439,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>the force of leonard&apos;s wave is greater, allowing it to pass through 2 objects.</string>
+			<string>The force of Leonard&apos;s wave is greater, allowing it to pass through 2 objects.</string>
 			<key>SecondaryValue</key>
 			<integer>1</integer>
 		</dict>
@@ -457,7 +457,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>leonard concentrates further and sends out a ki wave that is triple in size.</string>
+			<string>Leonard concentrates further and sends out a ki wave that is triple in size.</string>
 			<key>Value</key>
 			<integer>1</integer>
 		</dict>
@@ -475,7 +475,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>the force of leonard&apos;s wave is greater, allowing it to pass through 3 objects.</string>
+			<string>The force of Leonard&apos;s wave is greater, allowing it to pass through 3 objects.</string>
 			<key>SecondaryValue</key>
 			<integer>1</integer>
 		</dict>
@@ -495,7 +495,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>leonard puts up a ki shield making him immune to all damage for 2 seconds.</string>
+			<string>Leonard puts up a ki shield making him immune to all damage for 2 seconds.</string>
 			<key>ActivationMethod</key>
 			<string>release</string>
 			<key>Cooldown</key>
@@ -521,7 +521,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>leonard is now able to use his ki shield for 3 seconds.</string>
+			<string>Leonard is now able to use his ki shield for 3 seconds.</string>
 			<key>ActiveLength</key>
 			<integer>1</integer>
 		</dict>
@@ -539,7 +539,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>leonard is now able to use his ki shield for 4 seconds.</string>
+			<string>Leonard is now able to use his ki shield for 4 seconds.</string>
 			<key>ActiveLength</key>
 			<integer>1</integer>
 		</dict>
@@ -557,7 +557,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>increases leonard&apos;s total hearts to 4.</string>
+			<string>Increases Leonard&apos;s total hearts to 4.</string>
 			<key>Value</key>
 			<integer>1</integer>
 		</dict>
@@ -575,7 +575,7 @@
 			<key>Currency</key>
 			<string>stars</string>
 			<key>Description</key>
-			<string>leonard is now able to use his ki shield for 5 seconds.</string>
+			<string>Leonard is now able to use his ki shield for 5 seconds.</string>
 			<key>ActiveLength</key>
 			<integer>1</integer>
 		</dict>
@@ -593,7 +593,7 @@
 			<key>Currency</key>
 			<string>citrine</string>
 			<key>Description</key>
-			<string>increases leonard&apos;s total hearts to 5.</string>
+			<string>Increases Leonard&apos;s total hearts to 5.</string>
 			<key>Value</key>
 			<integer>1</integer>
 		</dict>

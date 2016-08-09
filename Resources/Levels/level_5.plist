@@ -23,9 +23,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>the goblin</string>
+			<string>Gobbly</string>
 			<key>Description</key>
-			<string>try to dodge my arrows dude</string>
+			<string>Try to dodge my arrows dude.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

@@ -2,6 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Story</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>You reach the Aqua world quicky. You reflect that as children, your siblings each had a special skill. Mort’s skill was communication with the minions.</string>
+			<key>Icon</key>
+			<string>story-aqua</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>You and your siblings used your skills to become leaders of the rulens, but Mort withdrew, and spent his time with the minions. Eventually, Mort never returned home.</string>
+			<key>Icon</key>
+			<string>story-w2-mort-imals</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+	</array>
 	<key>Challenges</key>
 	<array>
 		<dict>
@@ -23,9 +46,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>welcome to the water world</string>
+			<string>Welcome to the Aqua World!</string>
 			<key>Description</key>
-			<string>tip: consider investing in a skill that gets you far off the sea floor.</string>
+			<string>Tip: consider investing in a skill that gets you far off the sea floor.</string>
 			<key>Type</key>
 			<string>tutorial</string>
 			<key>Key</key>
@@ -35,9 +58,9 @@
 		</dict>
 		<dict>
 			<key>Title</key>
-			<string>crabby</string>
+			<string>Mr. Crabby</string>
 			<key>Description</key>
-			<string>*beware* - i take 2 hits</string>
+			<string>*Beware* - I take 2 hits.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

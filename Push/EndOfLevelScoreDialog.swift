@@ -156,7 +156,7 @@ class EndOfLevelScoreDialog: DialogBackground {
         self.totalLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
         self.totalLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
         
-        self.enemyLabel.text = "minion hearts freed: 0 of 0"
+        self.enemyLabel.text = "minions defeated: 0 of 0"
         self.enemyLabel.fontSize = 18 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         self.enemyLabel.fontColor = MerpColors.darkFont
         self.enemyLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
@@ -412,7 +412,7 @@ class EndOfLevelScoreDialog: DialogBackground {
     func applyScore(_ score: LevelScore, completedChallenges: Array<LevelChallenge>) {
         // Update score text
         totalLabel.text = "average score: "
-        enemyLabel.text = "minion hearts: "//\(score.heartsCollected) of \(score.maxHeartsToCollect) ="
+        enemyLabel.text = "minions defeated: "//\(score.heartsCollected) of \(score.maxHeartsToCollect) ="
         distanceLabel.text = "distance: "//\(Int(floor(score.distanceTraveled))) of \(Int(floor(score.maxDistanceToTravel))) ="
         totalScoreLabel.text = "...\(Int(floor(score.totalCompletePercent*100)))%"
         enemyScoreLabel.text = "...\(Int(floor(score.heartsCollectedPercent*100)))%"

@@ -34,7 +34,7 @@ class Mage : Player {
             // Set up initial location of projectile
             projectile.position = CGPoint(x: self.position.x + self.weaponStartPosition.x, y: self.position.y + self.weaponStartPosition.y - 2.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             
-            projectile.zPosition = 9
+            projectile.zPosition = 4
             
             // Override
             projectile.physicsBody!.categoryBitMask = GameScene.harmlessObjectCategory
@@ -108,6 +108,8 @@ class Mage : Player {
             self.gameScene!.worldViewPlayerProjectiles.append(arrow)
             
             arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 0))
+            
+            SoundHelper.sharedInstance.playSound(self, sound: SoundType.ProjectileThrow)
         })
         
         // At the end, switch back to walking and update the animation

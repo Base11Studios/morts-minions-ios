@@ -6,9 +6,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>dive bomber</string>
+			<string>Dive Bomber</string>
 			<key>Description</key>
-			<string>i like the bullseye on your shirt</string>
+			<string>I like the bullseye on your shirt.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

@@ -280,7 +280,7 @@ class LevelSelectionScene : DBScene {
         
         // Show the first skill being unlocked already
         if ((tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion))) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "click the level number to start playing.", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Click the level number to start playing.", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
             
             // First skill - convert it to the right coords
             let point: CGPoint = self.convert(self.centerNodeBackground!.position, from: self.centerNodeBackground!.parent!)

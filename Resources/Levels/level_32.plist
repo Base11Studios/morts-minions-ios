@@ -2,6 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Story</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>You find an abandoned imal camp and another letter. “c_name, I know you are following me. I lead the minions, but I am only a small piece of this. The minions have chosen to revolt on their own.&quot;</string>
+			<key>Icon</key>
+			<string>story-letter</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>Darn, you missed Mort again so you continue into the Ignis world for answers...</string>
+			<key>Icon</key>
+			<string>story-mort-walk-ignis</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+	</array>
 	<key>Challenges</key>
 	<array>
 		<dict>

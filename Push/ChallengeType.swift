@@ -31,39 +31,39 @@ enum ChallengeType: String {
     func getDescription() -> String {
         switch self {
         case .OneHeartLeft:
-            return "reach the end with 1 health left"
+            return "Reach the end with 1 health left"
         case .NoHeartsCollected:
-            return "reach the end without freeing any minion hearts"
+            return "Reach the end without defeating any minions"
         case .FullHealth:
-            return "reach the end with full health"
+            return "Reach the end with full health"
         case .OneHundredPercent:
-            return "get a score of 100%"
+            return "Get a score of 100%"
         case .OhSoClose:
-            return "don't reach the end but collect all the minion hearts"
+            return "Don't reach the end but defeat all the minions"
         case .DieByObstacles:
-            return "lose all your health by obstacles only"
+            return "Lose all your health by obstacles only"
         case .DieByProjectiles:
-            return "lose your last health by a projectile"
+            return "Lose your last health by a projectile"
         case .DieByEnemies:
-            return "lose all your health by minions only"
+            return "Lose all your health by minions only"
         case .DontTouchObstacles:
-            return "reach the end without touching an obstacle"
+            return "Reach the end without touching an obstacle"
         case .DontTouchProjectiles:
-            return "reach the end without touching a projectile"
+            return "Reach the end without touching a projectile"
         case .DontTouchEnemies:
-            return "reach the end without touching a minion"
+            return "Reach the end without touching a minion"
         case .ReachEndOfLevel:
-            return "reach the end of the level"
+            return "Reach the end of the level"
         case .Score3Stars:
-            return "earn 3 stars"
+            return "Earn 3 stars"
         case .Score80Percent:
-            return "get a score of 80%"
+            return "Get a score of 80%"
         case .Collect75PercentHearts:
-            return "free at least 75% of the minion hearts"
+            return "Defeat at least 75% of the minions"
         case .DestroyAllObstacles:
-            return "destroy all destructible obstacles"
+            return "Destroy all destructible obstacles"
         case .DontTouchAnything:
-            return "reach the end without touching anything"
+            return "Reach the end without touching anything"
         }
     }
 }

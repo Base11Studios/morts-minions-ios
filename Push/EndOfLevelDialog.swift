@@ -113,10 +113,10 @@ class EndOfLevelDialog: DialogBackground {
         
         // Challenges
         if self.showChallenges() {
-            self.challengeTitle.text = "challenge completion"
+            self.challengeTitle.text = "Challenge Completion"
         } else {
             self.challengeContainerPlaceholder = SKSpriteNode(texture: SKTexture(imageNamed: "splash-warrior"))
-            self.challengeTitle.text = "select your move"
+            self.challengeTitle.text = "Select Your Move"
         }
         
         // Now stars
@@ -136,7 +136,7 @@ class EndOfLevelDialog: DialogBackground {
         self.totalScoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
         
         // Title labels
-        self.endedLabel.text = "level \(currentLevel) score"
+        self.endedLabel.text = "Level \(currentLevel) Score"
         self.endedLabel.fontSize = round(28 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.endedLabel.fontColor = MerpColors.darkFont
         self.endedLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
@@ -149,7 +149,7 @@ class EndOfLevelDialog: DialogBackground {
         self.challengeTitle.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
         
         // Challenge labels
-        self.challengeRewardTitle.text = "gems earned: "
+        self.challengeRewardTitle.text = "Gems earned: "
         self.challengeRewardTitle.fontSize = round(18 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.challengeRewardTitle.fontColor = MerpColors.darkFont
         self.challengeRewardTitle.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
@@ -202,7 +202,7 @@ class EndOfLevelDialog: DialogBackground {
         
         // Now create stuff dependent on the page width
         self.levelHintDescription.paragraphWidth = self.pageWidth
-        self.levelHintDescription.text = "tip: upgrade your skills below"
+        self.levelHintDescription.text = "Tip: upgrade your skills below."
         
         // Get the page height
         let page1TotalHeight: CGFloat = self.endedLabel.calculateAccumulatedFrame().size.height + self.totalScoreLabel.calculateAccumulatedFrame().size.height + self.levelHintDescription.calculateAccumulatedFrame().size.height + self.page1ContinueButton.size.height + self.starButton1.size.height + self.buttonBuffer * 6
@@ -307,7 +307,7 @@ class EndOfLevelDialog: DialogBackground {
         tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
         
         if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "score = distance traveled + minion hearts collected.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Score = distance traveled + minions defeated.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: 0, y: self.totalScoreLabel.position.y - self.totalScoreLabel.calculateAccumulatedFrame().size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
             self.uxTutorialTooltips!.append(tutorial)
             self.page1.addChild(tutorial)
@@ -319,7 +319,7 @@ class EndOfLevelDialog: DialogBackground {
         tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
         
         if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "earn stars and superstars by getting a better score.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Earn stars and superstars by getting a better score.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: 0, y: self.starButton2.position.y - self.starButton2.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
             self.uxTutorialTooltips!.append(tutorial)
             self.page1.addChild(tutorial)
@@ -332,7 +332,7 @@ class EndOfLevelDialog: DialogBackground {
         
         // We don't want to show this until the character has 2 skills total
         if (currentLevel >= 5 && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.TeleCharge.rawValue) && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.RubberSneakers.rawValue) && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion))) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "having trouble? go upgrade your jump skill below.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.bottomCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Having trouble? go upgrade your jump skill below.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.bottomCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: self.upgradeSkillsButton.position.x, y: self.upgradeSkillsButton.position.y + self.upgradeSkillsButton.size.height / 2 + tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2)
             self.uxTutorialTooltips!.append(tutorial)
             self.page1.addChild(tutorial)
@@ -376,11 +376,11 @@ class EndOfLevelDialog: DialogBackground {
             if score.starsRewarded <= 2 {
                 switch score.levelNumber {
                 case 5, 6:
-                    levelHintDescription.text = "tip: goblin troubles? make sure you upgrade your jump skill"
+                    levelHintDescription.text = "Tip: goblin troubles? Make sure you upgrade your jump skill."
                 case 10, 11:
-                    levelHintDescription.text = "tip: ogre troubles? upgrade your jump skill again"
+                    levelHintDescription.text = "Tip: ogre troubles? Upgrade your jump skill again."
                 case 17, 18:
-                    levelHintDescription.text = "tip: pirate crab troubles? purchase skills that can damage him"
+                    levelHintDescription.text = "Tip: pirate crab troubles? Purchase skills that can damage him."
                 default:
                     levelHintDescription.text = ""
                 }
@@ -389,47 +389,47 @@ class EndOfLevelDialog: DialogBackground {
                     let tipNum = Int(arc4random_uniform(3))
                     switch tipNum {
                     case 0:
-                        levelHintDescription.text = "tip: reset your skills and try new strategies"
+                        levelHintDescription.text = "Tip: reset your skills and try new strategies."
                     case 1:
-                        levelHintDescription.text = "tip: you don't need 3 stars on every level"
+                        levelHintDescription.text = "Tip: you don't need 3 stars on every level."
                     case 2:
-                        levelHintDescription.text = "tip: replay earlier levels to get more stars for new skills"
+                        levelHintDescription.text = "Tip: replay earlier levels to get more stars for new skills."
                     default:
-                        levelHintDescription.text = "tip: reset your skills and try new strategies"
+                        levelHintDescription.text = "Tip: reset your skills and try new strategies."
                     }
                 }
             } else if score.starsRewarded == 3 && score.citrineRewarded == 0 {
                 let tipNum = Int(arc4random_uniform(3))
                 switch tipNum {
                 case 0:
-                    levelHintDescription.text = "rock on!"
+                    levelHintDescription.text = "Rock on!"
                 case 1:
-                    levelHintDescription.text = "wow, you are so good!"
+                    levelHintDescription.text = "Wow, you are so good!"
                 case 2:
-                    levelHintDescription.text = "way to go!"
+                    levelHintDescription.text = "Way to go!"
                 default:
-                    levelHintDescription.text = "rock on!"
+                    levelHintDescription.text = "Rock on!"
                 }
             } else if score.starsRewarded == 3 && score.citrineRewarded == 1 {
                 let tipNum = Int(arc4random_uniform(3))
                 switch tipNum {
                 case 0:
-                    levelHintDescription.text = "this is just fantastic!"
+                    levelHintDescription.text = "This is just fantastic!"
                 case 1:
-                    levelHintDescription.text = "super duper!"
+                    levelHintDescription.text = "Super duper!"
                 case 2:
-                    levelHintDescription.text = "i'm impressed!"
+                    levelHintDescription.text = "I'm impressed!"
                 default:
-                    levelHintDescription.text = "this is just fantastic!"
+                    levelHintDescription.text = "This is just fantastic!"
                 }
             }
             
         } else if unlockedLevels.count == 1 {
             levelHintDescription.fontSize += round(8 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
-            levelHintDescription.text = "level \(unlockedLevels[0]) unlocked!"
+            levelHintDescription.text = "Level \(unlockedLevels[0]) unlocked!"
         } else if unlockedLevels.count == 2 {
             levelHintDescription.fontSize += round(8 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
-            levelHintDescription.text = "levels \(unlockedLevels[0]) & \(unlockedLevels[1]) unlocked!"
+            levelHintDescription.text = "Levels \(unlockedLevels[0]) & \(unlockedLevels[1]) unlocked!"
         }
         
         self.updateScorePositioning()
@@ -507,7 +507,8 @@ class EndOfLevelDialog: DialogBackground {
                 }),
                 SKAction.run({
                     // Save Data
-                    self.dbScene!.viewController!.saveData()
+                    //self.dbScene!.viewController!.saveData()
+                    GameData.sharedGameData.save()
                 })
                 ]),withKey: "playerWinning")
         }

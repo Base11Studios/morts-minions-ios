@@ -21,9 +21,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>spikey plant</string>
+			<string>Spikey Plant</string>
 			<key>Description</key>
-			<string>i have been waiting for you</string>
+			<string>I have been waiting for you.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

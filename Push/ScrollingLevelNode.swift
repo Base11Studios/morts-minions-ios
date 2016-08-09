@@ -151,7 +151,7 @@ class ScrollingLevelNode : SKNode {
         self.timesLevelPlayedLabel.fontColor = MerpColors.darkFont
         self.timesLevelPlayedLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
         self.timesLevelPlayedLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.top
-        self.timesLevelPlayedLabel.text = "level played \(timesPlayed) times"
+        self.timesLevelPlayedLabel.text = "Level played \(timesPlayed) times"
         self.timesLevelPlayedLabel.isHidden = true
         
         self.levelLockedDescLabel1.fontSize = round(18 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
@@ -414,6 +414,6 @@ class ScrollingLevelNode : SKNode {
         }
         
         // Set the label to ahev the right # of timesPlayed
-        self.timesLevelPlayedLabel.text = "level played \(timesPlayed) times"
+        self.timesLevelPlayedLabel.text = "Level played \(timesPlayed) times"
     }
 }

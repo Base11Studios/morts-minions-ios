@@ -6,9 +6,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>lava on the floor</string>
+			<string>Floor is Lava</string>
 			<key>Description</key>
-			<string>you know what happens when the floor is lava.</string>
+			<string>Beware when the floor becomes lava.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>
