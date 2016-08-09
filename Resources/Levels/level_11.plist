@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>You get an eerie feeling about the imals. You see your youngest brother, Mort, in their eyes.</string>
+			<string>You get an eerie feeling about the minions. You see your youngest brother, Mort, in their eyes.</string>
 			<key>Icon</key>
 			<string>story-w1-resemblance</string>
 			<key>Version</key>
@@ -16,7 +16,7 @@
 		</dict>
 		<dict>
 			<key>Description</key>
-			<string>Mort always had a connection with the imals and went missing years ago. Could the imals be Mort’s minions?</string>
+			<string>Mort always had a connection with the minions and went missing years ago. Could Mort be controlling the minions?</string>
 			<key>Icon</key>
 			<string>story-w1-mort-leaving</string>
 			<key>Version</key>

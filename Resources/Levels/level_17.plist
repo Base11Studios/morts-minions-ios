@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>You reach the Aqua world quicky. You reflect that as children, your siblings each had a special skill. Mort’s skill was communication with the imals.</string>
+			<string>You reach the Aqua world quicky. You reflect that as children, your siblings each had a special skill. Mort’s skill was communication with the minions.</string>
 			<key>Icon</key>
 			<string>story-aqua</string>
 			<key>Version</key>
@@ -16,7 +16,7 @@
 		</dict>
 		<dict>
 			<key>Description</key>
-			<string>You and your siblings used your skills to become leaders of the rulens, but Mort withdrew, and spent his time with the imals. Eventually, Mort never returned home.</string>
+			<string>You and your siblings used your skills to become leaders of the rulens, but Mort withdrew, and spent his time with the minions. Eventually, Mort never returned home.</string>
 			<key>Icon</key>
 			<string>story-w2-mort-imals</string>
 			<key>Version</key>

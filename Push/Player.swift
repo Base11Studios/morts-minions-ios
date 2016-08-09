@@ -932,7 +932,7 @@ class Player : SKSpriteNode {
         
         // Setup collision details for player
         self.physicsBody!.categoryBitMask = GameScene.transparentPlayerCategory
-        self.physicsBody!.collisionBitMask = GameScene.groundCategory | GameScene.obstacleCategory
+        self.physicsBody!.collisionBitMask = GameScene.groundCategory //| GameScene.obstacleCategory
         self.physicsBody!.contactTestBitMask = GameScene.groundCategory | GameScene.obstacleCategory | GameScene.enemyCategory | GameScene.projectileCategory | GameScene.transparentObstacleCategory | GameScene.transparentEnemyCategory
     }
     
