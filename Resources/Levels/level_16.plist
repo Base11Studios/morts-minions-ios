@@ -8,7 +8,7 @@
 			<key>Description</key>
 			<string>You reach the end of the Terra world and find a letter in an abandoned tent. “The attack on Terra is the beginning of change. We will unite the imals and conquer the 4 worlds.”</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-envelope</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -16,9 +16,19 @@
 		</dict>
 		<dict>
 			<key>Description</key>
-			<string>The letter is signed by your brother Mort, but why has he rebelled with the imals? You travel to the Aqua world to find Mort and get answers.</string>
+			<string>The letter is signed by your brother Mort, but why has he rebelled with the imals?</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-letter</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>You travel to the Aqua world to find Mort and get answers.</string>
+			<key>Icon</key>
+			<string>story-mort-walk-aqua</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>

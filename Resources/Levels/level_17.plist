@@ -6,9 +6,9 @@
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>You reach the Aqua world using the butterfly stroke. You reflect that as children, your siblings each had a special skill. Mort’s skill was communication with the imals.</string>
+			<string>You reach the Aqua world quicky. You reflect that as children, your siblings each had a special skill. Mort’s skill was communication with the imals.</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-aqua</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -18,7 +18,7 @@
 			<key>Description</key>
 			<string>You and your siblings used your skills to become leaders of the rulens, but Mort withdrew, and spent his time with the imals. Eventually, Mort never returned home.</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-w2-mort-imals</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>

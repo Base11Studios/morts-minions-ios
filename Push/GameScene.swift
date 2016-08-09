@@ -436,7 +436,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         if storedTutorialBlackHearts == nil || floor(storedTutorialBlackHearts!) != floor(tutorialVersionBlackHearts) {
             // minion hearts
-            let tutBlackHearts = UXTutorialDialog(frameSize: self.size, description: "minion hearts freed", scene: self, size: "Small", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKeyBlackHearts, version: tutorialVersionBlackHearts, onComplete: onCompleteUxTooltip!)
+            let tutBlackHearts = UXTutorialDialog(frameSize: self.size, description: "minions defeated", scene: self, size: "Small", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKeyBlackHearts, version: tutorialVersionBlackHearts, onComplete: onCompleteUxTooltip!)
             tutBlackHearts.containerBackground.position = CGPoint(x: self.blackHeart!.position.x - self.blackHeart!.size.width - self.frame.width/2, y: self.healthNodes[0].position.y - self.healthNodes[0].size.height / 2 - self.buttonBuffer * 2 - tutBlackHearts.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.frame.height/2)
             self.uxTutorialTooltips!.append(tutBlackHearts)
             self.addChild(tutBlackHearts)

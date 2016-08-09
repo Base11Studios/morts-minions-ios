@@ -8,7 +8,7 @@
 			<key>Description</key>
 			<string>You find an abandoned imal camps and another letter. “c_name, I know you are following me. I lead the imals, but I am only a small piece of this. The imals have chosen to revolt on their own.&quot;</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-letter</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -18,7 +18,7 @@
 			<key>Description</key>
 			<string>Darn, you missed Mort again so you continue into the Ignis world for answers...</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-mort-walk-ignis</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>

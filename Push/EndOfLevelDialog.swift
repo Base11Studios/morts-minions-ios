@@ -307,7 +307,7 @@ class EndOfLevelDialog: DialogBackground {
         tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
         
         if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Score = distance traveled + minion hearts collected.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Score = distance traveled + minions defeated.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: 0, y: self.totalScoreLabel.position.y - self.totalScoreLabel.calculateAccumulatedFrame().size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
             self.uxTutorialTooltips!.append(tutorial)
             self.page1.addChild(tutorial)

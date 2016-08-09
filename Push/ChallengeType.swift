@@ -33,13 +33,13 @@ enum ChallengeType: String {
         case .OneHeartLeft:
             return "Reach the end with 1 health left"
         case .NoHeartsCollected:
-            return "Reach the end without freeing any minion hearts"
+            return "Reach the end without defeating any minions"
         case .FullHealth:
             return "Reach the end with full health"
         case .OneHundredPercent:
             return "Get a score of 100%"
         case .OhSoClose:
-            return "Don't reach the end but collect all the minion hearts"
+            return "Don't reach the end but defeat all the minions"
         case .DieByObstacles:
             return "Lose all your health by obstacles only"
         case .DieByProjectiles:
@@ -59,7 +59,7 @@ enum ChallengeType: String {
         case .Score80Percent:
             return "Get a score of 80%"
         case .Collect75PercentHearts:
-            return "Free at least 75% of the minion hearts"
+            return "Defeat at least 75% of the minions"
         case .DestroyAllObstacles:
             return "Destroy all destructible obstacles"
         case .DontTouchAnything:
