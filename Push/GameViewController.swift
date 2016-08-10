@@ -453,6 +453,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         // Preload the texture atlases we need
         let world = GameData.sharedGameData.getSelectedCharacterData().getWorldForLevel(level)
         
+        /*
         // Move to a background thread to do some long running work
         DispatchQueue.global(attributes: .qosUserInitiated).async {
             self.gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
@@ -469,23 +470,23 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
                 // Present the scene - pass through regulator
                 self.presentDBScene(skView, scene: self.gameScene!)
             }
-        }
+        }*/
         
-        /*
-        //SKTextureAtlas.preloadTextureAtlases(atlasArray) { () -> Void in
+        
+        SKTextureAtlas.preloadTextureAtlases([GameTextures.sharedInstance.earthAtlas]) { () -> Void in
             self.gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
             self.gameScene!.scaleMode = SKSceneScaleMode.aspectFill
             self.gameScene!.viewController = self
             let skView: SKView = self.view as! SKView
             skView.isMultipleTouchEnabled = true
-            //skView.showsFPS = true
+            skView.showsFPS = true
             //skView.showsNodeCount = true
             //skView.showsPhysics = true
 
             // Present the scene - pass through regulator
             self.presentDBScene(skView, scene: self.gameScene!)
-        //}
-         */
+        }
+ 
     }
     
     func representGameSceneLevel(_ level: Int, justRestarted: Bool) {

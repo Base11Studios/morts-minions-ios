@@ -70,10 +70,10 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     var adjustedGroundPositionY: CGFloat = 0 // Adjusted ground position (where objects will intersect with it).
     
     // GUI Labels
-    var heartsLabel: LabelWithShadow?
+    var heartsLabel: MultilineLabelWithShadow?
     var blackHeart: SKSpriteNode?
     var blackHeartAction: SKAction?
-    var levelLabel: LabelWithShadow?
+    var levelLabel: MultilineLabelWithShadow?
     var progressBar: SKSpriteNode = SKSpriteNode()
     var activeProgressBar: SKSpriteNode = SKSpriteNode()
     var pauseButtonAdjustment: CGFloat = 0
@@ -685,8 +685,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         for envObject in self.environmentObjectsToAdd {
             if envObject.name!.hasPrefix("environmentobject_") {
                 if envObject.position.x - self.player!.position.x < updatePosition {
-                    self.addEnvironmentObject(environmentObject: envObject)
-                    
+                    //self.addEnvironmentObject(environmentObject: envObject)
+                    envObject.physicsBody!.isDynamic = true
                     envObject.runAnimation()
                     
                     // Remove it from the array
@@ -1272,6 +1272,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 
                 // Add the env object to the scene
                 self.environmentObjectsToAdd.append(updatedEnvObject)
+                self.addEnvironmentObject(environmentObject: updatedEnvObject)
             }
         }
     }
@@ -1334,7 +1335,14 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
         
         // Text displays
-        heartsLabel!.setText("\(self.collectedLevelEnemyHealth)/\(self.totalLevelEnemyHealth)")
+        let newHeartLabel = "\(self.collectedLevelEnemyHealth)/\(self.totalLevelEnemyHealth)"
+        if newHeartLabel != heartsLabel!.label.text {
+            let buffer: CGFloat = 10.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+            let yPosition: CGFloat = self.frame.size.height - 20.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+            
+            heartsLabel!.setText("\(self.collectedLevelEnemyHealth)/\(self.totalLevelEnemyHealth)")
+            self.blackHeart!.position = CGPoint(x: self.heartsLabel!.position.x + self.blackHeart!.size.width/2 + buffer/2 + (self.heartsLabel!.calculateAccumulatedFrame().size.width / 2), y: yPosition)
+        }
     }
     
     
@@ -1475,31 +1483,31 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         */
         
         // Level label - TODO replace this with a bar
-        levelLabel = LabelWithShadow(fontNamed: "Avenir-Roman", darkFont:false)
+        levelLabel = MultilineLabelWithShadow(fontNamed: "Avenir-Roman", scene: self, darkFont: false, borderSize: 2)
         levelLabel!.name = "hudLabel"
         levelLabel!.setText("\(self.worldNumber)-\(self.currentLevel)")
         levelLabel!.setFontSize(round(23 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
-        temp = (self.frame.size.width / 16.0) * 11
-        levelLabel!.position = CGPoint(x: self.progressBar.position.x - self.progressBar.size.width / 2 - buffer, y: yPosition)
         levelLabel!.setHorizontalAlignmentMode(SKLabelHorizontalAlignmentMode.right)
         levelLabel!.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
+        temp = (self.frame.size.width / 16.0) * 11
+        levelLabel!.position = CGPoint(x: self.progressBar.position.x - self.progressBar.size.width / 2 - buffer - (self.levelLabel!.calculateAccumulatedFrame().size.width / 2), y: yPosition - self.nodeBuffer * 0.4)
         self.addChild(levelLabel!)
         
         // Heart label - TODO replace this with a bar
         self.blackHeart = SKSpriteNode(texture: GameTextures.sharedInstance.uxGameAtlas.textureNamed("blackheartfilled"))
         self.blackHeart!.setScale(0.75)
         
-        heartsLabel = LabelWithShadow(fontNamed: "Avenir-Roman", darkFont:false)
+        heartsLabel = MultilineLabelWithShadow(fontNamed: "Avenir-Roman", scene: self, darkFont: false, borderSize: 2)
         heartsLabel!.name = "hudLabel"
         heartsLabel!.setText("\(self.collectedLevelEnemyHealth)/\(self.totalLevelEnemyHealth)")
         heartsLabel!.setFontSize(round(23 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
-        temp = (self.frame.size.width / 16.0) * 7
-        heartsLabel!.position = CGPoint(x: self.levelLabel!.position.x - self.levelLabel!.calculateAccumulatedFrame().width - buffer * 2 - self.blackHeart!.size.width - buffer/2, y: yPosition)
         heartsLabel!.setHorizontalAlignmentMode(SKLabelHorizontalAlignmentMode.right)
         heartsLabel!.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
+        temp = (self.frame.size.width / 16.0) * 7
+        heartsLabel!.position = CGPoint(x: self.levelLabel!.position.x - self.levelLabel!.calculateAccumulatedFrame().width - buffer * 2 - self.blackHeart!.size.width - buffer/2 - (self.heartsLabel!.calculateAccumulatedFrame().size.width / 2), y: yPosition - self.nodeBuffer * 0.4)
         self.addChild(heartsLabel!)
         
-        self.blackHeart!.position = CGPoint(x: self.heartsLabel!.position.x + self.blackHeart!.size.width/2 + buffer/2, y: yPosition)
+        self.blackHeart!.position = CGPoint(x: self.heartsLabel!.position.x + self.blackHeart!.size.width/2 + buffer/2 + (self.heartsLabel!.calculateAccumulatedFrame().size.width / 2), y: yPosition)
         self.addChild(self.blackHeart!)
 
         self.blackHeartAction = SKAction.sequence([SKAction.scale(to: 1.1, duration: 0.15), SKAction.scale(to: 0.75, duration: 0.3)])
@@ -2076,7 +2084,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.worldView.stayPaused = false
         self.worldView.isPaused = false
         
-        self.physicsWorld.speed = ScaleBuddy.sharedInstance.getGameScaleAmount(false) //2.0
+        self.physicsWorld.speed = ScaleBuddy.sharedInstance.getGameScaleAmount(false) * 0.9999 //2.0
         self.pauseMenu!.isHidden = true
         self.skill1Button?.isPaused = false
         self.skill2Button?.isPaused = false

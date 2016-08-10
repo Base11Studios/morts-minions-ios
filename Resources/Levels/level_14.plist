@@ -183,9 +183,16 @@
 	<key>EnvironmentObject - 2</key>
 	<dict>
 		<key>Object</key>
-		<string>Panthern</string>
+		<string>Panther</string>
 		<key>Location</key>
-		<integer>1200</integer>
+		<real>1200</real>
+	</dict>
+	<key>EnvironmentObject - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>SpikeTrap</string>
+		<key>Location</key>
+		<integer>1000</integer>
 	</dict>
 </dict>
 </plist>
