@@ -1483,7 +1483,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         */
         
         // Level label - TODO replace this with a bar
-        levelLabel = MultilineLabelWithShadow(fontNamed: "Avenir-Roman", scene: self, darkFont: false, borderSize: 2)
+        levelLabel = MultilineLabelWithShadow(fontNamed: "Avenir-Medium", scene: self, darkFont: false, borderSize: 1)
         levelLabel!.name = "hudLabel"
         levelLabel!.setText("\(self.worldNumber)-\(self.currentLevel)")
         levelLabel!.setFontSize(round(23 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
@@ -1497,7 +1497,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.blackHeart = SKSpriteNode(texture: GameTextures.sharedInstance.uxGameAtlas.textureNamed("blackheartfilled"))
         self.blackHeart!.setScale(0.75)
         
-        heartsLabel = MultilineLabelWithShadow(fontNamed: "Avenir-Roman", scene: self, darkFont: false, borderSize: 2)
+        heartsLabel = MultilineLabelWithShadow(fontNamed: "Avenir-Medium", scene: self, darkFont: false, borderSize: 1)
         heartsLabel!.name = "hudLabel"
         heartsLabel!.setText("\(self.collectedLevelEnemyHealth)/\(self.totalLevelEnemyHealth)")
         heartsLabel!.setFontSize(round(23 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))

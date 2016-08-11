@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MultilineLabelWithShadow : SKNode {
+class MultilineLabelWithShadow : SKNode, LabelWithShadowProtocol {
     var rightShadow: DSMultilineLabelNode
     var label: DSMultilineLabelNode
     var shadowXOffset: CGFloat
