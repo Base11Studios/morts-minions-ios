@@ -680,6 +680,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.skill5Button!.update(self.player!, timeSinceLast: timeSinceLast)
         
         let updatePosition = (self.frame.size.width - horizontalPlayerLimitRight) + (100 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+        let projectileDestroyPosition = (self.frame.size.width - horizontalPlayerLimitRight) + (20 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         
         // Add environment objects
         for envObject in self.environmentObjectsToAdd {
@@ -699,12 +700,12 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Iterate through player projectiles and remove them if off screen
         for projectile in self.worldViewPlayerProjectiles {
             if projectile.name!.hasPrefix("playerProjectile") {
-                if projectile.position.x - self.player!.position.x < updatePosition {
-                    if projectile.position.x - self.player!.position.x > self.frame.size.width {
+                if abs(projectile.position.x - self.player!.position.x) > projectileDestroyPosition {
+                    //if projectile.position.x - self.player!.position.x > self.frame.size.width {
                         // This is off screen remove from parent
                         projectile.removeAllActions()
                         projectile.executeDeath()
-                    }
+                    //}
                 }
             }
         }

@@ -479,7 +479,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             self.gameScene!.viewController = self
             let skView: SKView = self.view as! SKView
             skView.isMultipleTouchEnabled = true
-            skView.showsFPS = true
+            //skView.showsFPS = true
             //skView.showsNodeCount = true
             //skView.showsPhysics = true
 
