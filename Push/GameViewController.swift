@@ -17,7 +17,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     var introScene: IntroductionScene?
     var loadingScene: LoadingScene?
     var mainMenuScene: MainMenuScene?
-
+    
     var characterSkillSceneCharacter: CharacterType?
     var characterSkillScene: CharacterSkillScene?
     
@@ -53,27 +53,27 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     override func viewDidLoad() {
         // Setup observer for cloud data change
         NotificationCenter.default().addObserver(self,
-            selector: #selector(GameViewController.ubiquitousKeyValueStoreDidChangeExternally),
-            name:  NSUbiquitousKeyValueStore.didChangeExternallyNotification,
-            object: NSUbiquitousKeyValueStore.default())
+                                                 selector: #selector(GameViewController.ubiquitousKeyValueStoreDidChangeExternally),
+                                                 name:  NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+                                                 object: NSUbiquitousKeyValueStore.default())
         
         // Setup CUSTOM observer for cloud has more recent data than local
         NotificationCenter.default().addObserver(self,
-            selector: #selector(GameViewController.handleCloudHasMoreRecentDataThanLocal),
-            name: CloudHasMoreRecentDataThanLocal,
-            object: nil)
+                                                 selector: #selector(GameViewController.handleCloudHasMoreRecentDataThanLocal),
+                                                 name: CloudHasMoreRecentDataThanLocal,
+                                                 object: nil)
         
         // Setup CUSTOM observer for gamekit auth
         NotificationCenter.default().addObserver(self,
-            selector: #selector(GameViewController.showAuthenticationViewController),
-            name: PresentAuthenticationViewController,
-            object: nil)
+                                                 selector: #selector(GameViewController.showAuthenticationViewController),
+                                                 name: PresentAuthenticationViewController,
+                                                 object: nil)
         
         // Setup CUSTOM observer for player is authenticated
         NotificationCenter.default().addObserver(self,
-            selector: #selector(GameViewController.playerAuthenticated),
-            name: LocalPlayerIsAuthenticated,
-            object: nil)
+                                                 selector: #selector(GameViewController.playerAuthenticated),
+                                                 name: LocalPlayerIsAuthenticated,
+                                                 object: nil)
         
         // Setup the scale helpers
         ScaleBuddy.sharedInstance.screenSize = self.getScreenSize()
@@ -211,9 +211,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         
         // Now load the menu screen
         /*
-        SKTextureAtlas.preloadTextureAtlases(GameTextures.sharedInstance.menuSceneAtlas) { () -> Void in
-            self.presentIntroductionScene()
-        }*/
+         SKTextureAtlas.preloadTextureAtlases(GameTextures.sharedInstance.menuSceneAtlas) { () -> Void in
+         self.presentIntroductionScene()
+         }*/
         
         // Move to a background thread to do some long running work
         DispatchQueue.global(attributes: .qosUserInitiated).async {
@@ -253,13 +253,13 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             self.introScene = self.createIntroductionScene()
         }
         /*
-        if self.characterSkillScene == nil {
-            self.characterSkillScene = self.createCharacterSkillScene()
-        }*/
+         if self.characterSkillScene == nil {
+         self.characterSkillScene = self.createCharacterSkillScene()
+         }*/
         /*
-        if self.levelSelectionScene == nil {
-            self.levelSelectionScene = self.createLevelSelectionScene()
-        }*/
+         if self.levelSelectionScene == nil {
+         self.levelSelectionScene = self.createLevelSelectionScene()
+         }*/
         if self.mainMenuScene == nil {
             self.mainMenuScene = self.createMainMenuScene()
         }
@@ -291,11 +291,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             self.characterSkillScene = nil
             
             /*
-            SKTextureAtlas.preloadTextureAtlases(GameTextures.sharedInstance.menuSceneAtlas) { () -> Void in
-                self.characterSkillScene = self.createCharacterSkillScene()
-
-                self.reallyPresentCharacterSkillScene(sceneType)
-            }*/
+             SKTextureAtlas.preloadTextureAtlases(GameTextures.sharedInstance.menuSceneAtlas) { () -> Void in
+             self.characterSkillScene = self.createCharacterSkillScene()
+             
+             self.reallyPresentCharacterSkillScene(sceneType)
+             }*/
             // Move to a background thread to do some long running work
             DispatchQueue.global(attributes: .qosUserInitiated).async {
                 // Bounce back to the main thread to update the UI
@@ -338,11 +338,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     /*
-    func createCharacterSkillSceneAsCompletionHandler(completion: (result: CharacterSkillScene) -> Void) {
-        let skillScene = self.createCharacterSkillScene()
-        
-        completion(result: skillScene)
-    }*/
+     func createCharacterSkillSceneAsCompletionHandler(completion: (result: CharacterSkillScene) -> Void) {
+     let skillScene = self.createCharacterSkillScene()
+     
+     completion(result: skillScene)
+     }*/
     
     func createMainMenuScene() -> MainMenuScene {
         let scene: MainMenuScene = MainMenuScene(size: self.getScreenSize())
@@ -392,14 +392,28 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         autoreleasepool {
             self.gameScene = nil
             self.characterSkillScene = nil
+            self.levelSelectionScene = nil
         }
         
-        if self.levelSelectionScene == nil {
-            self.presentLoadingScreen()
-            
-            /*
-            //SKTextureAtlas.preloadTextureAtlases(GameTextures.sharedInstance.menuSceneAtlas) { () -> Void in
-                self.levelSelectionScene = self.createLevelSelectionScene()
+        self.presentLoadingScreen()
+        
+        /*
+         //SKTextureAtlas.preloadTextureAtlases(GameTextures.sharedInstance.menuSceneAtlas) { () -> Void in
+         self.levelSelectionScene = self.createLevelSelectionScene()
+         let skView: SKView = self.view as! SKView
+         skView.isMultipleTouchEnabled = true
+         skView.showsFPS = false
+         skView.showsNodeCount = false
+         
+         // Present the scene - pass through regulator
+         self.presentDBScene(skView, scene: self.levelSelectionScene!)
+         //}*/
+        
+        // Move to a background thread to do some long running work
+        DispatchQueue.global(attributes: .qosUserInitiated).async {
+            // Bounce back to the main thread to update the UI
+            self.levelSelectionScene = self.createLevelSelectionScene()
+            DispatchQueue.main.async {
                 let skView: SKView = self.view as! SKView
                 skView.isMultipleTouchEnabled = true
                 skView.showsFPS = false
@@ -407,33 +421,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
                 
                 // Present the scene - pass through regulator
                 self.presentDBScene(skView, scene: self.levelSelectionScene!)
-            //}*/
-
-            // Move to a background thread to do some long running work
-            DispatchQueue.global(attributes: .qosUserInitiated).async {
-                // Bounce back to the main thread to update the UI
-                self.levelSelectionScene = self.createLevelSelectionScene()
-                DispatchQueue.main.async {
-                    let skView: SKView = self.view as! SKView
-                    skView.isMultipleTouchEnabled = true
-                    skView.showsFPS = false
-                    skView.showsNodeCount = false
-                    
-                    // Present the scene - pass through regulator
-                    self.presentDBScene(skView, scene: self.levelSelectionScene!)
-                }
             }
-        } else {
-            // Call the correct reset method
-            self.levelSelectionScene!.updateScene()
-            
-            let skView: SKView = self.view as! SKView
-            skView.isMultipleTouchEnabled = true
-            skView.showsFPS = false
-            skView.showsNodeCount = false
-            
-            // Present the scene - pass through regulator
-            self.presentDBScene(skView, scene: self.levelSelectionScene!)
         }
     }
     
@@ -472,27 +460,27 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         }
         
         /*
-        //SKTextureAtlas.preloadTextureAtlases(atlasArray) { () -> Void in
-            self.gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
-            self.gameScene!.scaleMode = SKSceneScaleMode.aspectFill
-            self.gameScene!.viewController = self
-            let skView: SKView = self.view as! SKView
-            skView.isMultipleTouchEnabled = true
-            //skView.showsFPS = true
-            //skView.showsNodeCount = true
-            //skView.showsPhysics = true
-
-            // Present the scene - pass through regulator
-            self.presentDBScene(skView, scene: self.gameScene!)
-        //}
+         //SKTextureAtlas.preloadTextureAtlases(atlasArray) { () -> Void in
+         self.gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
+         self.gameScene!.scaleMode = SKSceneScaleMode.aspectFill
+         self.gameScene!.viewController = self
+         let skView: SKView = self.view as! SKView
+         skView.isMultipleTouchEnabled = true
+         //skView.showsFPS = true
+         //skView.showsNodeCount = true
+         //skView.showsPhysics = true
+         
+         // Present the scene - pass through regulator
+         self.presentDBScene(skView, scene: self.gameScene!)
+         //}
          */
     }
     
     func representGameSceneLevel(_ level: Int, justRestarted: Bool) {
         //let loadingScene = LoadingScene(size: self.getScreenSize()) DJB removed on 3/13/16 - dont think I need to recreate it
-
+        
         let skView: SKView = self.view as! SKView
-
+        
         // Present the scene - pass through regulator
         self.presentDBScene(skView, scene: self.loadingScene!)
         
@@ -501,7 +489,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     func presentLoadingScreen() {
         if self.loadingScene == nil {
-        self.loadingScene = self.createLoadingScene()
+            self.loadingScene = self.createLoadingScene()
         }
         
         let skView: SKView = self.view as! SKView
@@ -519,7 +507,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     func showAuthenticationViewController() {
         self.present(GameKitHelper.sharedInstance.authenticationViewController!, animated: true, completion: nil)
-
+        
     }
     
     func playerAuthenticated() {
@@ -540,7 +528,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             
             //NSLog("\(Double(round(100*Double(skView.bounds.height / skView.bounds.width))/100))")
             //NSLog("\(Double(round(100*(9.0 / 16.0))/100))")
-        
+            
             if Double(round(100*Double(skView.bounds.height / skView.bounds.width))/100) == Double(round(100*(9.0 / 16.0))/100) {
                 return CGSize(width: 667, height: 375)
             } else {
@@ -644,7 +632,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         if !GameData.sharedGameData.adsUnlocked {
             // App delegate needs to record we're trying to show
             AdSupporter.sharedInstance.adReady = false
-        
+            
             // Show interstitial at main menu
             Chartboost.showInterstitial(CBLocationMainMenu)
         }
@@ -671,7 +659,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     func saveData() {
         //DispatchQueue.global(attributes: .qosUserInitiated).async {
-            GameData.sharedGameData.save()
+        GameData.sharedGameData.save()
         //}
         
     }

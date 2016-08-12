@@ -455,6 +455,7 @@ class LevelSelectionScene : DBScene {
         self.totalDiamonds?.position = CGPoint(x: self.totalDiamondsIcon!.position.x - self.totalDiamondsIcon!.size.width/2 - nodeBuffer/5, y: self.backdropBar.position.y)
     }
     
+    /*
     func updateScene() {
         // Select the world
         let worldSelected = GameData.sharedGameData.getSelectedCharacterData().lastPlayedWorld
@@ -496,7 +497,7 @@ class LevelSelectionScene : DBScene {
         } else {
             self.heartBoostContainer?.selectHeartByBoost(0)
         }*/
-    }
+    }*/
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
