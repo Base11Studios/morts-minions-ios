@@ -33,7 +33,7 @@ class DSMultilineLabelNode : SKSpriteNode
 {
     private var _text = ""
     private var _fontColor = SKColor.white()
-    private var _fontName = "Helvetica"
+    private var _fontName = "Avenir"
     private var _fontSize = CGFloat(round(32 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
     private var _horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
     private var _verticalAlignmentMode = SKLabelVerticalAlignmentMode.top
@@ -230,8 +230,10 @@ class DSMultilineLabelNode : SKSpriteNode
         }
         set(value)
         {
-            _text = value
-            retexture()
+            if _text != value {
+                _text = value
+                retexture()
+            }
         }
     }
     

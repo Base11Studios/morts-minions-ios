@@ -31,7 +31,7 @@ class Flamey : Enemy {
             // Update the animations
             self.updateAnimation()
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Action)
+            self.playActionSound()
             
         })
         // Set the appropriate fight action
@@ -72,6 +72,9 @@ class Flamey : Enemy {
         
         // This is for collision detection
         self.hasVerticalVelocity = true
+        
+        // Sound
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Action.rawValue, waitForCompletion: false)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {

@@ -24,6 +24,18 @@ class Monk : Player {
         super.init(atlas: GameTextures.sharedInstance.playerMonkAtlas, textureArrayName: "monkwalking", worldView: worldView, gameScene: gameScene)
         self.name = "monk"
     }
+    
+    override func initSounds() {
+        if GameData.sharedGameData.preferenceSoundEffects {
+            self.actionSoundSkill1 = SKAction.playSoundFileNamed(SoundType.Jump.rawValue, waitForCompletion: false)
+            self.actionSoundSkill2 = SKAction.playSoundFileNamed(SoundType.ProjectileThrow.rawValue, waitForCompletion: false)
+            //self.actionSoundSkill3 = SKAction.playSoundFileNamed(SoundType..rawValue, waitForCompletion: false)
+            self.actionSoundSkill4 = SKAction.playSoundFileNamed(SoundType.Air.rawValue, waitForCompletion: false)
+            self.actionSoundSkill5 = SKAction.playSoundFileNamed(SoundType.Buzz.rawValue, waitForCompletion: false)
+        }
+        
+        super.initSounds()
+    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -91,7 +103,7 @@ class Monk : Player {
             
             arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 0))
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.ProjectileThrow)
+            self.playActionSound(action: self.actionSoundSkill2!)
         })
         
         // At the end, switch back to walking and update the animation

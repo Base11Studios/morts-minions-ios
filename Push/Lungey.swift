@@ -49,6 +49,9 @@ class Lungey : Enemy {
         
         // This is for collision detection
         self.hasVerticalVelocity = true
+        
+        // Sound
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Lunge.rawValue, waitForCompletion: false)
     }
     
     override func update(_ timeSinceLast: CFTimeInterval, withPlayer player: Player) {
@@ -78,7 +81,7 @@ class Lungey : Enemy {
             
             self.updateAnimation()
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Lunge)
+            self.playActionSound()
         }
     }
 }

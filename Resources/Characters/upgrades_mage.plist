@@ -91,7 +91,7 @@
 			<key>Id</key>
 			<string>tripleteleport</string>
 			<key>SecondaryValue</key>
-			<integer>0</integer>
+			<integer>10</integer>
 			<key>TertiaryValue</key>
 			<real>0.075</real>
 			<key>Description</key>

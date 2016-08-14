@@ -94,7 +94,7 @@ class Enemy : EnvironmentObject {
     }
     
     func setDefaultPhysicsBodyValues() {
-        self.physicsBody!.isDynamic = true
+        self.physicsBody!.isDynamic = false
         self.physicsBody!.allowsRotation = false
         self.physicsBody!.usesPreciseCollisionDetection = OptimizerBuddy.sharedInstance.usePreciseCollisionDetection()
         self.physicsBody!.affectedByGravity = true
