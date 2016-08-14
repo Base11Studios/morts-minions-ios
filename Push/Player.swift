@@ -1626,12 +1626,13 @@ class Player : SKSpriteNode {
                 // Iterate through all enemies to find someone close
                 for object in self.gameScene!.worldViewEnvironmentObjects {
                     if object.name!.hasPrefix("environmentobject_obstacle") || object.name!.hasPrefix("environmentobject_enemy") && object.isAlive {
+                        let modifiedObjectPosition = (abs(object.position.x) - (100 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
                         if closestObject == nil {
-                            if object.position.x - 20 * ScaleBuddy.sharedInstance.getGameScaleAmount(false) > self.protectorOfTheSky!.position.x && object.position.y > self.protectorOfTheSky!.minimumHeight {
+                            if modifiedObjectPosition - abs(self.protectorOfTheSky!.position.x) > 0 && object.position.y > self.protectorOfTheSky!.minimumHeight {
                                 closestObject = object
                             }
                         } else {
-                            if object.position.x - 20 * ScaleBuddy.sharedInstance.getGameScaleAmount(false) > self.protectorOfTheSky!.position.x && object.position.x < closestObject!.position.x && object.position.y > self.protectorOfTheSky!.minimumHeight {
+                            if modifiedObjectPosition - abs(self.protectorOfTheSky!.position.x) > 0 && abs(object.position.x) < abs(closestObject!.position.x) && object.position.y > self.protectorOfTheSky!.minimumHeight {
                                 closestObject = object
                             }
                         }

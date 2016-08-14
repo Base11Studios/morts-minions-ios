@@ -81,6 +81,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
     
     // Called after a rewarded video has been displayed on the screen.
     func didDisplayRewardedVideo(_ location: String!) {
+        // Remove the loading dialog
+        self.dismissLoadingDialog()
+        
         // Store something to show we presented a video
         self.presentingVideo = true
         self.dismissingVideo = false
@@ -111,6 +114,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
     // Called after a rewarded video has attempted to load from the Chartboost API
     // servers but failed.
     func didFail(toLoadRewardedVideo location: String!, withError error: CBLoadError) {
+        // Remove the loading dialog
+        self.dismissLoadingDialog()
+        
         if self.completedVideo == false && self.presentingVideo == true && !self.dismissingVideo {
             self.endVideoUnsuccessfully()
         }
@@ -142,6 +148,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
         if self.presentingVideo && !self.completedVideo {
             self.completedVideo = true
         }
+    }
+    
+    private func dismissLoadingDialog() {
+        // Send notification that gamescene will pick up
+        NotificationCenter.default().post(name: Notification.Name(rawValue: "DismissLoadingDialog"), object: nil)
     }
     
     private func endVideoSuccessfully() {

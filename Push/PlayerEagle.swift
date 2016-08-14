@@ -90,6 +90,7 @@ class PlayerEagle: PlayerProjectile {
         // Set bool back to go back to where we need to be
         self.keepTryingToHome = true
         self.stopPositionAdjustment = false
+        self.needsToExecuteDeath = false
         
         // Set physics colls
         self.physicsBody!.categoryBitMask = GameScene.deathCategory
@@ -104,6 +105,7 @@ class PlayerEagle: PlayerProjectile {
     func resetEagle() {
         // Unhide
         self.isHidden = false
+        self.numberOfContacts = 1
         
         // TODO consider fading in.
         

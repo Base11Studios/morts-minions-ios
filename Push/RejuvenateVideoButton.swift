@@ -61,6 +61,9 @@ class RejuvenateVideoButton : DBButton {
         appDelegate.presentingVideo = true
         self.dbScene!.viewController!.showRewardedVideo()
         
+        // Start loading screen
+        self.dbScene!.startLoadingOverlay()
+        
         self.forceDisabled = true
         self.checkDisabled()
     }

@@ -185,6 +185,12 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                                                          name: "DontRejuvenatePlayer",
                                                          object: nil)
         
+        // Setup CUSTOM observer for dismissing the loading dialog
+        NotificationCenter.default().addObserver(self,
+                                                 selector: #selector(GameScene.stopLoadingOverlay),
+                                                 name: "DismissLoadingDialog",
+                                                 object: nil)
+        
         // Setup CUSTOM observer for dismissing static ad
         NotificationCenter.default().addObserver(self,
                                                          selector: #selector(GameScene.dismissStaticAds),
@@ -200,6 +206,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         NotificationCenter.default().removeObserver(self, name: "PauseGameScene" as NSNotification.Name, object: nil)
         NotificationCenter.default().removeObserver(self, name: "RejuvenatePlayer" as NSNotification.Name, object: nil)
         NotificationCenter.default().removeObserver(self, name: "DontRejuvenatePlayer" as NSNotification.Name, object: nil)
+        NotificationCenter.default().removeObserver(self, name: "DismissLoadingDialog" as NSNotification.Name, object: nil)
         NotificationCenter.default().removeObserver(self, name: "ProgressPastInterstitialAd" as NSNotification.Name, object: nil)
         if backgroundPlayer != nil {
             backgroundPlayer!.stop()
