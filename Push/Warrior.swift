@@ -46,6 +46,18 @@ class Warrior : Player {
         super.init(atlas: GameTextures.sharedInstance.playerWarriorAtlas, textureArrayName: "warriorwalking", worldView: worldView, gameScene: gameScene)
         self.name = "warrior"
     }
+    
+    override func initSounds() {
+        if GameData.sharedGameData.preferenceSoundEffects {
+            self.actionSoundSkill1 = SKAction.playSoundFileNamed(SoundType.Jump.rawValue, waitForCompletion: false)
+            //self.actionSoundSkill2 = SKAction.playSoundFileNamed(SoundType..rawValue, waitForCompletion: false)
+            self.actionSoundSkill3 = SKAction.playSoundFileNamed(SoundType.Charge.rawValue, waitForCompletion: false)
+            self.actionSoundSkill4 = SKAction.playSoundFileNamed(SoundType.Explode.rawValue, waitForCompletion: false)
+            //self.actionSoundSkill5 = SKAction.playSoundFileNamed(SoundType..rawValue, waitForCompletion: false)
+        }
+        
+        super.initSounds()
+    }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

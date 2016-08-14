@@ -1,18 +1,28 @@
 {
   "images" : [
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "filename" : "story-w1-mort-leaving.png",
       "scale" : "1x"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "filename" : "story-w1-mort-leaving@2x.png",
       "scale" : "2x"
     },
     {
-      "idiom" : "universal",
+      "idiom" : "iphone",
       "scale" : "3x"
+    },
+    {
+      "idiom" : "ipad",
+      "filename" : "story-w1-mort-leaving~ipad.png",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "ipad",
+      "filename" : "story-w1-mort-leaving@2x~ipad.png",
+      "scale" : "2x"
     }
   ],
   "info" : {

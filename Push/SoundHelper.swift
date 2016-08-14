@@ -15,4 +15,10 @@ class SoundHelper {
             object.run(SKAction.playSoundFileNamed(sound.rawValue, waitForCompletion: false))
         }
     }
+    
+    func playSoundAction(_ object: SKNode, action: SKAction) {
+        if GameData.sharedGameData.preferenceSoundEffects {
+            object.run(action)
+        }
+    }
 }

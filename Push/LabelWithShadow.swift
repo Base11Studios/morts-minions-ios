@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LabelWithShadow : SKNode {
+class LabelWithShadow : SKNode, LabelWithShadowProtocol {
     var topShadow: SKLabelNode
     var bottomShadow: SKLabelNode
     var leftShadow: SKLabelNode

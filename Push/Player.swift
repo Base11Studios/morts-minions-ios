@@ -151,6 +151,17 @@ class Player : SKSpriteNode {
     var projectiles = Array<PlayerProjectile>()
     var projectiles2 = Array<PlayerProjectile>()
     
+    // Sound actions
+    var actionSoundSkill1: SKAction?
+    var actionSoundSkill2: SKAction?
+    var actionSoundSkill3: SKAction?
+    var actionSoundSkill4: SKAction?
+    var actionSoundSkill5: SKAction?
+    var actionSoundHurt: SKAction?
+    var actionSoundContact: SKAction?
+    var actionSoundCollision: SKAction?
+    var actionSoundJumpedOnObject: SKAction?
+    
     init(atlas: SKTextureAtlas, textureArrayName: String, worldView: SKNode?, gameScene: GameScene) {
         self.worldView = worldView
         self.gameScene = gameScene
@@ -176,6 +187,9 @@ class Player : SKSpriteNode {
         
         // Create the weapon
         self.initializeWeapon()
+        
+        // Initialize sounds
+        self.initSounds()
         
         // Initialize class specific traits
         self.setupTraits()
@@ -214,6 +228,15 @@ class Player : SKSpriteNode {
     }
     
     func setPlayerAttachmentPositions(_ defaultYPosition: CGFloat, position: CGPoint) {
+    }
+    
+    func initSounds() {
+        if GameData.sharedGameData.preferenceSoundEffects {
+            self.actionSoundHurt = SKAction.playSoundFileNamed(SoundType.Hurt.rawValue, waitForCompletion: false)
+            self.actionSoundContact = SKAction.playSoundFileNamed(SoundType.Contact.rawValue, waitForCompletion: false)
+            self.actionSoundCollision = SKAction.playSoundFileNamed(SoundType.Collision.rawValue, waitForCompletion: false)
+            self.actionSoundJumpedOnObject = SKAction.playSoundFileNamed(SoundType.JumpedOnObject.rawValue, waitForCompletion: false)
+        }
     }
     
     func initPlayerDamaged() {
@@ -800,7 +823,7 @@ class Player : SKSpriteNode {
         self.updateSkillsBasedOnPlayerPosition()
         
         // Sound effect!
-        SoundHelper.sharedInstance.playSound(self, sound: SoundType.Jump)
+        self.playActionSound(action: self.actionSoundSkill1!)
     }
     
     func startTeleport(_ position: CGFloat, fromDefaultPosition: Bool) {
@@ -833,7 +856,7 @@ class Player : SKSpriteNode {
         
         self.updateSkillsBasedOnPlayerPosition()
         
-        SoundHelper.sharedInstance.playSound(self, sound: SoundType.Air)
+        self.playActionSound(action: self.actionSoundSkill1!)
     }
     
     func stopTeleport() {
@@ -1038,7 +1061,7 @@ class Player : SKSpriteNode {
             
             self.animatePlayerDamaged()
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Hurt)
+            self.playActionSound(action: self.actionSoundHurt!)
             
             // Vibrate
             //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
@@ -1177,12 +1200,12 @@ class Player : SKSpriteNode {
             self.frontEngageWithEnvironmentObject(object)
         } else {
             // We are assuming we jumped on the enemy
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.JumpedOnObject)
+            self.playActionSound(action: self.actionSoundJumpedOnObject!)
             self.playedEngageSound = true
         }
         
         if !self.playedEngageSound {
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Collision)
+            self.playActionSound(action: self.actionSoundCollision!)
             self.playedEngageSound = true
         }
     }
@@ -1220,8 +1243,8 @@ class Player : SKSpriteNode {
     func performContactLogic(_ object: EnvironmentObject) {
         // Take Damage
         self.frontEngageWithEnvironmentObject(object)
-        
-        SoundHelper.sharedInstance.playSound(self, sound: SoundType.Contact)
+
+        self.playActionSound(action: self.actionSoundContact!)
     }
     
     func contactOrCollisionMethods(_ object: EnvironmentObject) {
@@ -1474,7 +1497,7 @@ class Player : SKSpriteNode {
             
             self.spriteOverlay!.isHidden = false
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Charge)
+            self.playActionSound(action: self.actionSoundSkill3!)
         case .Stomp:
             // Set the skill to cooldown // TODO move this into a function
             skill.cooldownInProgress = true
@@ -1527,7 +1550,7 @@ class Player : SKSpriteNode {
                 }
             }
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Explode)
+            self.playActionSound(action: self.actionSoundSkill4!)
         case .ShootArrow:
             // Set the skill to cooldown
             skill.cooldownInProgress = true
@@ -1606,7 +1629,7 @@ class Player : SKSpriteNode {
                 }
             }
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Pow)
+            self.playActionSound(action: self.actionSoundSkill4!)
         case .ProtectorOfTheSky:
             // Set the skill to cooldown
             skill.cooldownInProgress = true
@@ -1645,7 +1668,7 @@ class Player : SKSpriteNode {
                 }
             }
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Zoom)
+            self.playActionSound(action: self.actionSoundSkill4!)
         case .WalkWithShadows:
             if skill.chargeCount > 0 {
                 skill.skillIsUncharging = true
@@ -1683,7 +1706,7 @@ class Player : SKSpriteNode {
             self.physicsBody!.velocity = CGVector(dx: self.physicsBody!.velocity.dx, dy: 0)
             self.physicsBody!.applyImpulse(CGVector(dx: 0, dy: CGFloat(-skill.value)))
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Air)
+            self.playActionSound(action: self.actionSoundSkill4!)
         case .Hover:
             if !self.isOnGround {
                 if skill.chargeCount > 0 {
@@ -1715,7 +1738,7 @@ class Player : SKSpriteNode {
             // Reset damage avoided
             self.damageAvoided = 0
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Buzz)
+            self.playActionSound(action: self.actionSoundSkill5!)
         case .ForceField:
             self.projectileDamageReduction = 10
             self.enemyDamageReduction = 10
@@ -1736,7 +1759,7 @@ class Player : SKSpriteNode {
             // Reset damage avoided
             self.damageAvoided = 0
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Buzz)
+            self.playActionSound(action: self.actionSoundSkill5!)
         case .HealthPotion:
             // Set the skill to cooldown // TODO move this into a function
             skill.cooldownInProgress = true
@@ -1751,7 +1774,7 @@ class Player : SKSpriteNode {
                 self.health = self.health + Int(skill.secondaryValue)
             }
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Drink)
+            self.playActionSound(action: self.actionSoundSkill5!)
         case .Meteor:
             // Set the skill to cooldown // TODO move this into a function
             skill.cooldownInProgress = true
@@ -1769,7 +1792,7 @@ class Player : SKSpriteNode {
                 self.launchMeteorFromSky(range: (skill.range + 200) * ScaleBuddy.sharedInstance.getGameScaleAmount(false), velocity: CGFloat(skill.secondaryValue), heightBoost: 150 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             }
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Explode)
+            self.playActionSound(action: self.actionSoundSkill3!)
         default: break
         }
     }
@@ -1931,5 +1954,9 @@ class Player : SKSpriteNode {
     func clearOutActions() {
         fightAction = SKAction()
         spriteOverlay2Action = SKAction()
+    }
+    
+    func playActionSound(action: SKAction) {
+        SoundHelper.sharedInstance.playSoundAction(self, action: action)
     }
 }

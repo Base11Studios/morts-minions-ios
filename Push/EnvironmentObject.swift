@@ -125,6 +125,9 @@ class EnvironmentObject : SKSpriteNode {
     // Homing stuff needs this
     var isBeingTargeted: Bool = false
     
+    // Sound action
+    var actionSound: SKAction?
+    
     weak var gameScene: GameScene?
     
     init(imageName: String, textureAtlas: SKTextureAtlas, scene: GameScene) {
@@ -376,5 +379,9 @@ class EnvironmentObject : SKSpriteNode {
     func freezeEnemy() {
         self.isFrozen = true
         self.justFrozen = true
+    }
+    
+    func playActionSound() {
+        SoundHelper.sharedInstance.playSoundAction(self, action: self.actionSound!)
     }
 }

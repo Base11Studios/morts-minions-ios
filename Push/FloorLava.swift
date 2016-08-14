@@ -43,6 +43,9 @@ class FloorLava : Obstacle {
         self.damageToShields = 1
         
         self.lineOfSight = 300 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+        
+        // Sound
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Burn.rawValue, waitForCompletion: false)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
@@ -68,7 +71,7 @@ class FloorLava : Obstacle {
                 (self.scene as! GameScene).ground.color = MerpColors.fireGroundLava
                 self.state = self.state + 1
                 self.attackCooldown = self.value1
-                SoundHelper.sharedInstance.playSound(self, sound: SoundType.Burn)
+                self.playActionSound()
             case 3:
                 // Turn off lava
                 (self.scene as! GameScene).ground.color = self.originalGroundColor!

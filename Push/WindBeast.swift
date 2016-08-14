@@ -75,6 +75,9 @@ class WindBeast : Enemy {
         
         // Rewards
         self.experience = 1
+        
+        // Sound
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Wind.rawValue, waitForCompletion: false)
     }
     
     override func update(_ timeSinceLast: CFTimeInterval, withPlayer player: Player) {
@@ -124,7 +127,7 @@ class WindBeast : Enemy {
             // Start the weapon animation
             self.weapon.run(self.weaponAction, withKey: "weapon_fighting")
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Wind)
+            self.playActionSound()
         }
         
         if self.isFighting && self.weapon.texture!.isEqual(self.weaponFrames[9]) {
