@@ -44,6 +44,8 @@ class GameTextures {
     
     internal var splashAndStoryAtlas = SKTextureAtlas()
     
+    internal var waterStoryTutorialAtlas = SKTextureAtlas()
+    
    // internal var menuSceneAtlas = [SKTextureAtlas()]
     
     // MARK: - Init
@@ -73,6 +75,8 @@ class GameTextures {
         self.uxGameAtlas = SKTextureAtlas(named: "uxgame")
         
         self.splashAndStoryAtlas = SKTextureAtlas(named: "splashandstory")
+        
+        self.waterStoryTutorialAtlas = SKTextureAtlas(named: "water-story-tutorial")
         
         /*
         //self.notSortedYetAtlas = SKTextureAtlas(named: "notsortedyet") // TODO REMOVE

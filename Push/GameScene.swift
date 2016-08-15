@@ -430,7 +430,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         if storedTutorialHearts == nil || floor(storedTutorialHearts!) != floor(tutorialVersionHearts) {
             // Red hearts
-            let tutHp = UXTutorialDialog(frameSize: self.size, description: "your health", scene: self, size: "Small", indicators: [UxTutorialIndicatorPosition.topLeft], key: tutorialKeyHearts, version: tutorialVersionHearts, onComplete: onCompleteUxTooltip!)
+            let tutHp = UXTutorialDialog(frameSize: self.size, description: "Your health", scene: self, size: "Small", indicators: [UxTutorialIndicatorPosition.topLeft], key: tutorialKeyHearts, version: tutorialVersionHearts, onComplete: onCompleteUxTooltip!)
             tutHp.containerBackground.position = CGPoint(x: self.healthNodes[0].position.x + tutHp.containerBackground.calculateAccumulatedFrame().size.width / 2 - self.frame.width/2, y: self.healthNodes[0].position.y - self.healthNodes[0].size.height / 2 - self.buttonBuffer * 2 - tutHp.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.frame.height/2)
             self.uxTutorialTooltips!.append(tutHp)
             self.addChild(tutHp)
@@ -443,7 +443,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         if storedTutorialBlackHearts == nil || floor(storedTutorialBlackHearts!) != floor(tutorialVersionBlackHearts) {
             // minion hearts
-            let tutBlackHearts = UXTutorialDialog(frameSize: self.size, description: "minions defeated", scene: self, size: "Small", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKeyBlackHearts, version: tutorialVersionBlackHearts, onComplete: onCompleteUxTooltip!)
+            let tutBlackHearts = UXTutorialDialog(frameSize: self.size, description: "Minions defeated", scene: self, size: "Small", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKeyBlackHearts, version: tutorialVersionBlackHearts, onComplete: onCompleteUxTooltip!)
             tutBlackHearts.containerBackground.position = CGPoint(x: self.blackHeart!.position.x - self.blackHeart!.size.width - self.frame.width/2, y: self.healthNodes[0].position.y - self.healthNodes[0].size.height / 2 - self.buttonBuffer * 2 - tutBlackHearts.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.frame.height/2)
             self.uxTutorialTooltips!.append(tutBlackHearts)
             self.addChild(tutBlackHearts)
@@ -456,7 +456,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         if storedTutorialLevelProgress == nil || floor(storedTutorialLevelProgress!) != floor(tutorialVersionLevelProgress) {
             // Level progress
-            let tutLevelProgress = UXTutorialDialog(frameSize: self.size, description: "distance traveled", scene: self, size: "Small", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKeyLevelProgress, version: tutorialVersionLevelProgress, onComplete: onCompleteUxTooltip!)
+            let tutLevelProgress = UXTutorialDialog(frameSize: self.size, description: "Distance traveled", scene: self, size: "Small", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKeyLevelProgress, version: tutorialVersionLevelProgress, onComplete: onCompleteUxTooltip!)
             tutLevelProgress.containerBackground.position = CGPoint(x: self.progressBar.position.x - self.frame.width/2, y: self.healthNodes[0].position.y - self.healthNodes[0].size.height / 2 - self.buttonBuffer * 2 - tutLevelProgress.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.frame.height/2)
             self.uxTutorialTooltips!.append(tutLevelProgress)
             self.addChild(tutLevelProgress)
@@ -469,7 +469,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         if storedTutorialPause == nil || floor(storedTutorialPause!) != floor(tutorialVersionPause) {
             // Pause
-            let tutPause = UXTutorialDialog(frameSize: self.size, description: "pause and settings", scene: self, size: "Small", indicators: [UxTutorialIndicatorPosition.topRight], key: tutorialKeyPause, version: tutorialVersionPause, onComplete: onCompleteUxTooltip!)
+            let tutPause = UXTutorialDialog(frameSize: self.size, description: "Pause and settings", scene: self, size: "Small", indicators: [UxTutorialIndicatorPosition.topRight], key: tutorialKeyPause, version: tutorialVersionPause, onComplete: onCompleteUxTooltip!)
             let tutPauseXPosition = self.pauseButton!.position.x - tutPause.containerBackground.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer * 2 - self.frame.width/2
             let tutPauseYPosition = self.healthNodes[0].position.y - self.healthNodes[0].size.height / 2 - self.buttonBuffer * 2 - tutPause.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.frame.height/2
             tutPause.containerBackground.position = CGPoint(x: tutPauseXPosition, y: tutPauseYPosition)
