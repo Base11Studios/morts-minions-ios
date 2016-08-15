@@ -6,13 +6,13 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>what&apos;s new in version 0.6</string>
+			<string>What&apos;s New In Version 0.7</string>
 			<key>Description</key>
-			<string>credits/about, small UX improvements, major performance enhancements and bug fixes. video rewards.</string>
+			<string>All kinds of stuff!</string>
 			<key>Key</key>
 			<string>whats_new_main_menu</string>
 			<key>Version</key>
-			<integer>6</integer>
+			<integer>7</integer>
 		</dict>
 	</array>
 </dict>

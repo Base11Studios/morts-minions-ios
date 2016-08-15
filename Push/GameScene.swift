@@ -719,7 +719,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // Iterate through all enemies and update them
         for envObject in self.worldViewEnvironmentObjects {
-            if envObject.name!.hasPrefix("environmentobject_") {
+            if envObject.name!.hasPrefix("environmentobject_") && envObject.physicsBody!.isDynamic {
                 if envObject.position.x - self.player!.position.x < updatePosition {
                     // Update the enemy
                     envObject.update(timeSinceLast, withPlayer: self.player!)
@@ -773,7 +773,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             
             // Iterate through all enemies and update them after physics
             for envObject in self.worldViewEnvironmentObjects {
-                if envObject.name!.hasPrefix("environmentobject_") {
+                if envObject.name!.hasPrefix("environmentobject_") && envObject.physicsBody!.isDynamic {
                     if envObject.position.x - self.player!.position.x < self.frame.size.width * 1.1 {
                         // Update the enemy
                         envObject.updateAfterPhysics()
@@ -837,9 +837,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.endLevel(self.totalLevelDistance)
         }
         if self.player!.health <= 0 { // Player died
-            // Note - due to player death and update phase, the death animation will automatically start
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Defeat)
-            
             if self.rejuvAllowed {
                 // TODO REJUV: If reivivng -  5. set rejuvallowed to false 6. stop the animation/hide dialog (actually do this when it is purchased)
                 // REJUV purchase - can we make it purchase the heart boost automatically if the player goes and buys gems (same with other places in game when player gets purchase prompt?) - or instead, need it to stick around but have dismiss dialog, or just have it last 5 seconds or something a little longer
@@ -852,6 +849,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 self.showPauseMenu = false
                 self.pauseGame()
             } else if !self.promptingForRejuv {
+                // Note - due to player death and update phase, the death animation will automatically start
+                SoundHelper.sharedInstance.playSound(self, sound: SoundType.Defeat)
+                
                 // TODO eval - let's see if we stop memory leaks
                 self.tearDownEnvObjects()
                 self.endLevel(self.player!.position.x)

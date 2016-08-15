@@ -194,22 +194,6 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
         self.run(SKAction.sequence([doMove, endMoveAction]))
     }
     
-    func updateLevelRewards() {
-        let lastPlayedLevel: Int = GameData.sharedGameData.getSelectedCharacterData().getLastPlayedLevelByWorld(self.worldName)
-        
-        for node in self.children as! [ScrollingLevelNode] {
-            node.updateLevelNode()
-            
-            if node.levelNumber == lastPlayedLevel {
-                // Select it somehow
-                self.levelSelectedNode = node
-            }
-        }
-        
-        // Scroll to the level selected
-        self.moveToNode(self.levelSelectedNode!)
-    }
-    
     func displayLevelDetails(_ level: Int) {
         // Loop through all the nodes and set display to false except the one that is passed
         

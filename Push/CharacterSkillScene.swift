@@ -595,6 +595,6 @@ class CharacterSkillScene : DBScene {
     }
     
     override func impactsMusic() -> Bool {
-        return false
+        return true // This was false at one point... to allow for the scene's music to carry forward. It isn't working now because the loading screen kills the music.
     }
 }

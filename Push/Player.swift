@@ -162,6 +162,9 @@ class Player : SKSpriteNode {
     var actionSoundCollision: SKAction?
     var actionSoundJumpedOnObject: SKAction?
     
+    // Alphs
+    var forcedAlpha: CGFloat = 1.0
+    
     init(atlas: SKTextureAtlas, textureArrayName: String, worldView: SKNode?, gameScene: GameScene) {
         self.worldView = worldView
         self.gameScene = gameScene
@@ -445,7 +448,7 @@ class Player : SKSpriteNode {
                 if self.graceDamagePeriodCount <= 0 {
                     self.isGraceDamagePeriod = false
                     self.removeAction(forKey: "grace_period")
-                    self.alpha = 1.0
+                    self.alpha = self.forcedAlpha
                 }
             }
             
@@ -952,6 +955,7 @@ class Player : SKSpriteNode {
     
     func startInvisibility() {
         self.alpha = 0.5
+        self.forcedAlpha = 0.5
         
         // Setup collision details for player
         self.physicsBody!.categoryBitMask = GameScene.transparentPlayerCategory
@@ -968,6 +972,7 @@ class Player : SKSpriteNode {
     
     func stopInvisibility() {
         self.alpha = 1.0
+        self.forcedAlpha = 1.0
         self.gameScene!.transparentObjectsAlreadyDamagedPlayer.removeAll()
     }
     
@@ -1813,7 +1818,7 @@ class Player : SKSpriteNode {
                 self.stopHovering()
                 self.allowDoubleJump = false
                 self.additionalJumps -= 1
-                self.startTeleport(CGFloat(skill.secondaryValue), fromDefaultPosition: false)
+                self.startTeleport(CGFloat(skill.secondaryValue) * ScaleBuddy.sharedInstance.getGameScaleAmount(false), fromDefaultPosition: false)
             }
         case .Jump:
             if self.isActiveJumping {
