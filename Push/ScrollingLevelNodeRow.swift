@@ -22,9 +22,13 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
     var numberOfLevels: Int = 0
     var worldName: String = "earth"
     
+    // Scene
+    weak var dbScene: DBScene?
+    
     init(size: CGSize, worldName: String, scene: DBScene) {
         self.size = size
         self.worldName = worldName
+        self.dbScene = scene
         
         // Super initializer
         super.init()
@@ -45,8 +49,8 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
     }
     
     override func addChild(_ node: SKNode) {
-        if self.children.count == 0 {
-            self.levelSelectedNode = node as? ScrollingLevelNode
+        if self.children.count + 1 == self.levelSelected {
+            self.levelSelectedNode = node as! ScrollingLevelNode
         }
         super.addChild(node)
         self.xOffset = self.calculateAccumulatedFrame().origin.x
@@ -80,8 +84,7 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
             self.gestureRecognizer!.delegate = self
             
             // Add to scene
-            let dbScene = self.scene! as! DBScene
-            dbScene.gestureRecognizers.append(self.gestureRecognizer!)
+            self.dbScene!.gestureRecognizers.append(self.gestureRecognizer!)
             
             view?.addGestureRecognizer(self.gestureRecognizer!)
         }
@@ -179,7 +182,12 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
         return true
     }
     
-    func moveToNode(_ node: ScrollingLevelNode) {
+    func moveToNode(_ node: ScrollingLevelNode, immediately: Bool) {
+        var duration: Double = kScrollDuration
+        if immediately {
+            duration = 0
+        }
+        
         self.isMoving = true
         self.levelSelectedNode!.displayLevelDetails(false)
         
@@ -188,9 +196,15 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
             self.levelSelectedNode = node
             self.levelSelected = node.levelNumber
             self.displayLevelDetails(node.levelNumber)
+            self.isHidden = false
+            (self.dbScene! as! LevelSelectionScene).revealLevels()
         })
         let doMove: SKAction = SKAction.move(to: CGPoint(x: -node.position.x, y: 0), duration: kScrollDuration)
-        doMove.timingMode = SKActionTimingMode.easeOut
+        if !immediately {
+            doMove.timingMode = SKActionTimingMode.easeOut
+        } else {
+            doMove.timingMode = SKActionTimingMode.linear
+        }
         self.run(SKAction.sequence([doMove, endMoveAction]))
     }
     

@@ -1100,14 +1100,14 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
         
         // Transparent Player and Enemy
-        if self.transparentEnemyContacts.count > 0 && firstBody.categoryBitMask & GameScene.transparentPlayerCategory != 0 && (secondBody.categoryBitMask & GameScene.enemyCategory) != 0 {
+        if self.transparentEnemyContacts.count > 0 && firstBody.categoryBitMask & GameScene.transparentPlayerCategory != 0 && ((secondBody.categoryBitMask & GameScene.enemyCategory) != 0 || (secondBody.categoryBitMask & GameScene.transparentEnemyCategory) != 0) {
             let enemy: Enemy = secondBody.node as! Enemy
             
             self.removeFromTransparentEnemyContacts(enemy)
         }
         
         // Transparent Player and Obstacle
-        if self.transparentObstacleContacts.count > 0 && firstBody.categoryBitMask & GameScene.transparentPlayerCategory != 0 && (secondBody.categoryBitMask & GameScene.obstacleCategory) != 0 {
+        if self.transparentObstacleContacts.count > 0 && firstBody.categoryBitMask & GameScene.transparentPlayerCategory != 0 && ((secondBody.categoryBitMask & GameScene.obstacleCategory) != 0 || (secondBody.categoryBitMask & GameScene.transparentObstacleCategory) != 0) {
             let obstacle: Obstacle = secondBody.node as! Obstacle
             
             self.removeFromTransparentObstacleContacts(obstacle)
@@ -1170,7 +1170,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
         
         // Player and Environment Object (Obstacle or Enemy) [Contact]
-        else if ((firstBody.categoryBitMask & GameScene.playerCategory) != 0 || (firstBody.categoryBitMask & GameScene.transparentPlayerCategory) != 0) && ((secondBody.categoryBitMask & GameScene.transparentEnemyCategory) != 0 || (secondBody.categoryBitMask & GameScene.transparentObstacleCategory) != 0) {
+        else if ((firstBody.categoryBitMask & GameScene.playerCategory) != 0 /*|| (firstBody.categoryBitMask & GameScene.transparentPlayerCategory) != 0*/) && ((secondBody.categoryBitMask & GameScene.transparentEnemyCategory) != 0 || (secondBody.categoryBitMask & GameScene.transparentObstacleCategory) != 0) {
             self.playerDidContactWithEnvironmentObject(firstBody.node as! Player, object: secondBody.node as! EnvironmentObject)
         }
         
@@ -1213,12 +1213,12 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // **** Transparent ****
         // Transparent Player and Enemy
-        else if (firstBody.categoryBitMask & GameScene.transparentPlayerCategory) != 0 && (secondBody.categoryBitMask & GameScene.enemyCategory) != 0 {
+        else if (firstBody.categoryBitMask & GameScene.transparentPlayerCategory) != 0 && ((secondBody.categoryBitMask & GameScene.enemyCategory) != 0 || (secondBody.categoryBitMask & GameScene.transparentEnemyCategory) != 0) {
             self.transparentEnemyContacts.append(secondBody.node as! Enemy)
         }
         
         // Transparent Player and Obstacle
-        else if (firstBody.categoryBitMask & GameScene.transparentPlayerCategory) != 0 && (secondBody.categoryBitMask & GameScene.obstacleCategory) != 0 {
+        else if (firstBody.categoryBitMask & GameScene.transparentPlayerCategory) != 0 && ((secondBody.categoryBitMask & GameScene.obstacleCategory) != 0 || (secondBody.categoryBitMask & GameScene.transparentObstacleCategory) != 0) {
             self.transparentObstacleContacts.append(secondBody.node as! Obstacle)
         }
         
