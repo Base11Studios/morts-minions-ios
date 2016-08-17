@@ -968,22 +968,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     func endLevel(_ distance: CGFloat) {
         if self.score == nil {
-            // Update and save data
-            let score = GameData.sharedGameData.getSelectedCharacterData().levelProgress[self.currentLevel]!.updateLevelData(self.collectedLevelEnemyHealth, distanceTraveled: distance, heartsRemaining: self.player!.health, worldNumber: self.worldNumber, levelNumber: self.currentLevel)
-            
-            // Update all the score info
-            GameData.sharedGameData.getSelectedCharacterData().updateScores(score, worldNumber: self.worldNumber, levelNumber: self.currentLevel)
-            
-            // Calculate scores
-            self.calculateScores(score)
-            
-            // Store gold heart count
-            GameData.sharedGameData.getSelectedCharacterData().goldHearts = self.player!.goldHearts
-            
-            // Update times played for game
-            GameData.sharedGameData.promptRateMeCountdown -= 1
-            
-            self.score = score
+            self.updateLevelData(distance)
         }
         
         if storyEndDialogs!.count <= 0 || GameData.sharedGameData.getSelectedCharacterData().levelProgress[self.currentLevel]?.starsEarnedHighScore < 1 {
@@ -996,6 +981,29 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.pauseGame()
             self.storyEndDialogs![0].isHidden = false
         }
+    }
+    
+    func updateLevelData() {
+        self.updateLevelData(self.player!.position.x)
+    }
+    
+    func updateLevelData(_ distance: CGFloat) {
+        // Update and save data
+        let score = GameData.sharedGameData.getSelectedCharacterData().levelProgress[self.currentLevel]!.updateLevelData(self.collectedLevelEnemyHealth, distanceTraveled: distance, heartsRemaining: self.player!.health, worldNumber: self.worldNumber, levelNumber: self.currentLevel)
+        
+        // Update all the score info
+        GameData.sharedGameData.getSelectedCharacterData().updateScores(score, worldNumber: self.worldNumber, levelNumber: self.currentLevel)
+        
+        // Calculate scores
+        self.calculateScores(score)
+        
+        // Store gold heart count
+        GameData.sharedGameData.getSelectedCharacterData().goldHearts = self.player!.goldHearts
+        
+        // Update times played for game
+        GameData.sharedGameData.promptRateMeCountdown -= 1
+        
+        self.score = score
     }
     
     func loadEndOfLevelDialog(_ score: LevelScore) {

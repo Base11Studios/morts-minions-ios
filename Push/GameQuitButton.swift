@@ -19,6 +19,7 @@ class GameQuitButton : DBButton {
     }
     
     override func touchesEndedAction() {
+        (self.dbScene as! GameScene).self.updateLevelData()
         (self.dbScene as! GameScene).endSceneLevelSelect()
     }
 }

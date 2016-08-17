@@ -451,7 +451,7 @@ class LevelSelectionScene : DBScene {
         worldForLevel!.displayLevelDetails(worldForLevel!.levelSelected)
         
         // Start gesture recognizer
-        worldForLevel!.enableScrollingOnView(self.sceneView)
+        worldForLevel!.enableScrollingOnView(view)
         
         // Position
         worldForLevel!.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
@@ -607,6 +607,9 @@ class LevelSelectionScene : DBScene {
     
     override func didMove(to view: SKView) {
         self.sceneView = view
+        
+        // Start gesture recognizer
+        self.selectedWorld!.relatedLevelSelector!.enableScrollingOnView(view)
         
         //self.selectedWorld!.relatedLevelSelector!.enableScrollingOnView(view)
         
