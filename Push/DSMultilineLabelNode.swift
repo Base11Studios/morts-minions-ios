@@ -81,7 +81,7 @@ class DSMultilineLabelNode : SKSpriteNode
         paragraph_style.lineBreakMode = NSLineBreakMode.byWordWrapping
         paragraph_style.alignment = horizontalNSTextAlignment
         paragraph_style.lineSpacing = _paragraphSpacing;
-        paragraph_style.maximumLineHeight = _fontSize + (2.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false));
+        paragraph_style.maximumLineHeight = _fontSize + (3.5 * ScaleBuddy.sharedInstance.getGameScaleAmount(false));
         
         var font = UIFont(name: _fontName, size: _fontSize)
         if (font == nil)
@@ -93,6 +93,10 @@ class DSMultilineLabelNode : SKSpriteNode
         text_attributes.setObject(font!, forKey: NSFontAttributeName)
         text_attributes.setObject(paragraph_style, forKey: NSParagraphStyleAttributeName)
         text_attributes.setObject(_fontColor, forKey: NSForegroundColorAttributeName)
+        
+        //var style = NSMutableParagraphStyle()
+        //style.paragraphSpacingBefore = 0.0
+        //text_attributes.setObject(style, forKey: NSParagraphStyleAttributeName)
         
         if(self.dbScene == nil)
         {

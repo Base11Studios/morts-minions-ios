@@ -469,7 +469,7 @@ class CharacterSkillScene : DBScene {
         }
         
         let selectedSkillDescriptionXPosition = -(self.selectedSkillBackground!.size.width - self.nodeBuffer * 2 - (self.selectedSkillDescription?.calculateAccumulatedFrame().width)!) / 2
-        let selectedSkillDescriptionYPosition = topYPosition - self.nodeBuffer * descYPos - self.selectedSkillIcon!.size.height
+        let selectedSkillDescriptionYPosition = topYPosition - self.nodeBuffer * 1.2 * descYPos - self.selectedSkillIcon!.size.height
         self.selectedSkillDescription?.position = CGPoint(x: selectedSkillDescriptionXPosition, y: selectedSkillDescriptionYPosition)
         
         // Buy skill button
