@@ -680,27 +680,31 @@ class Player : SKSpriteNode {
     func checkHealth() {
         // If the enemy has no more health
         if self.health <= 0 && self.isAlive {
-            // Set the indicator that the player is dead
-            self.isAlive = false
-            
-            // Remove the physics body to prevent collisions
-            //self.physicsBody = nil;
-            self.physicsBody!.categoryBitMask = GameScene.deathCategory
-            self.physicsBody!.collisionBitMask = GameScene.groundCategory
-            self.physicsBody!.contactTestBitMask = GameScene.groundCategory
-            
-            // Group actions to do in parallel
-            let group: SKAction = SKAction.group([SKAction.rotate(byAngle: 360, duration: 1.0), SKAction.fadeOut(withDuration: 2.0), SKAction.scale(to: 0, duration: 2.0)])
-            
-            self.removeAction(forKey: "playerWalking")
-            
-            // Start the new action
-            self.run(SKAction.sequence([group]), withKey: "playerDieing")
-            // REJUV TODO SKAction.removeFromParent() - put back in?
+            self.executeDeath()
         }
     }
     
-    func rejuvPlayer(_ position: CGPoint, numberOfHearts: Int) {
+    func executeDeath() {
+        // Set the indicator that the player is dead
+        self.isAlive = false
+        
+        // Remove the physics body to prevent collisions
+        //self.physicsBody = nil;
+        self.physicsBody!.categoryBitMask = GameScene.deathCategory
+        self.physicsBody!.collisionBitMask = GameScene.groundCategory
+        self.physicsBody!.contactTestBitMask = GameScene.groundCategory
+        
+        // Group actions to do in parallel
+        let group: SKAction = SKAction.group([SKAction.rotate(byAngle: 360, duration: 1.0), SKAction.fadeOut(withDuration: 2.0), SKAction.scale(to: 0, duration: 2.0)])
+        
+        self.removeAction(forKey: "playerWalking")
+        
+        // Start the new action
+        self.run(SKAction.sequence([group]), withKey: "playerDieing")
+        // REJUV TODO SKAction.removeFromParent() - put back in?
+    }
+    
+    func rejuvPlayer(position: CGPoint, numberOfHearts: Int) {
         //NSLog("\(self.position.x), y \(self.position.y)")
         self.removeAllActions()
         self.position = position

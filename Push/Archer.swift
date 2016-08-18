@@ -177,4 +177,16 @@ class Archer : Player {
     override func createPhysicsBody() {
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.9, height: self.size.height * 1), center: CGPoint(x: self.size.width * 0.05, y: self.size.height * 0.0))
     }
+    
+    override func executeDeath() {
+        super.executeDeath()
+        
+        self.protectorOfTheSky?.isHidden = true
+    }
+    
+    override func rejuvPlayer(position: CGPoint, numberOfHearts: Int) {
+        super.rejuvPlayer(position: position, numberOfHearts: numberOfHearts)
+        
+        self.protectorOfTheSky?.isHidden = false
+    }
 }

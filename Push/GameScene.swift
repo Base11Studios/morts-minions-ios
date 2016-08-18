@@ -963,7 +963,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.rejuvDialog!.isHidden = true
         
         // Reset the player
-        self.player!.rejuvPlayer(self.rejuvPosition, numberOfHearts: numberOfHearts)
+        self.player!.rejuvPlayer(position: self.rejuvPosition, numberOfHearts: numberOfHearts)
     }
     
     func endLevel(_ distance: CGFloat) {
@@ -1858,8 +1858,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             }
             
             // Create dialog
-            let title = "unlock ads"
-            let description = "purchase gems and we won't show static ads."
+            let title = "Unlock Ads"
+            let description = "Purchase gems and we won't show static ads."
             
             let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: true, key: key, version: version, prependText: false)
             
