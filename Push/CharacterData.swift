@@ -402,6 +402,11 @@ class CharacterData : NSObject { // TODO doesnt have to extend this after objc c
         }
     }
     
+    func incrementTimesPlayed(levelNumber: Int) {
+        self.totalTimesPlayed += 1
+        self.levelProgress[levelNumber]!.timesLevelPlayed += 1
+    }
+    
     func getNextSuperstarPurchaseCost() -> Int {
         switch self.purchasedSuperstars {
         case 0:

@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>You reach the Aqua world quicky. You reflect that as children, your siblings each had a special skill. Mort’s skill was communication with the minions.</string>
+			<string>You reach Aqua quicky. You reflect that as children, your siblings each had a special skill. Mort’s skill was communication with the minions.</string>
 			<key>Icon</key>
 			<string>story-aqua</string>
 			<key>Version</key>
@@ -46,7 +46,7 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>Welcome to the Aqua World!</string>
+			<string>Welcome to Aqua!</string>
 			<key>Description</key>
 			<string>Tip: consider investing in a skill that gets you far off the sea floor.</string>
 			<key>Type</key>

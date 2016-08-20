@@ -373,7 +373,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.showPauseMenu = false
             self.pauseGame()
             self.storyDialogs![0].isHidden = false
-        } else if GameData.sharedGameData.adPopCountdown <= 0 && AdSupporter.sharedInstance.adReady && !self.adsPresented {
+        } else if (GameData.sharedGameData.adPopCountdown <= 0 || GameData.sharedGameData.getSelectedCharacterData().godMode) && AdSupporter.sharedInstance.adReady && !self.adsPresented {
             // Then ads
             // Show the ad
             viewController!.showInterstitialAd()
@@ -983,8 +983,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
     }
     
-    func updateLevelData() {
-        self.updateLevelData(self.player!.position.x)
+    func updateLevelDataWithoutScore() {
+        GameData.sharedGameData.getSelectedCharacterData().incrementTimesPlayed(levelNumber: self.currentLevel)
     }
     
     func updateLevelData(_ distance: CGFloat) {

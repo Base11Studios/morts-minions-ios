@@ -390,11 +390,13 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     func presentLevelSelectionScene() {
         autoreleasepool {
-            self.gameScene = nil
+            // self.gameScene = nil - DONT RELEASE THIS IT WILL CRASH BAD_ACCESS
             self.characterSkillScene = nil
             self.levelSelectionScene = nil
             self.mainMenuScene = nil
         }
+        
+        self.gameScene = nil
         
         self.presentLoadingScreen(ignoreMusic: true)
         

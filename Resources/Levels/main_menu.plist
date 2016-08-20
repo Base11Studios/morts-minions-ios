@@ -6,9 +6,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>What&apos;s New In Version 0.7</string>
+			<string>What&apos;s New In V0.7</string>
 			<key>Description</key>
-			<string>All kinds of stuff!</string>
+			<string>Performance optimizations. Story. Bug Fixes.</string>
 			<key>Key</key>
 			<string>whats_new_main_menu</string>
 			<key>Version</key>

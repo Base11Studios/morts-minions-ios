@@ -19,8 +19,12 @@ class GameQuitButton : DBButton {
     }
     
     override func touchesEndedAction() {
-        (self.dbScene as! GameScene).self.updateLevelData()
+        // We want the game scene to be able to be destroyed
+        //self.removeFromParent()
+        
+        (self.dbScene as! GameScene).updateLevelDataWithoutScore()
         (self.dbScene as! GameScene).endSceneLevelSelect()
+        //(self.dbScene as! GameScene).viewController!.presentLevelSelectionScene()
     }
 }
 

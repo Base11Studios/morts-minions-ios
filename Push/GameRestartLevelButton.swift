@@ -19,6 +19,7 @@ class GameRestartButton : DBButton {
     }
     
     override func touchesEndedAction() {
+        (self.dbScene as! GameScene).updateLevelDataWithoutScore()
         (self.dbScene as! GameScene).endSceneRetryLevel()
     }
 }
