@@ -168,7 +168,7 @@ class TutorialDialog: DialogBackground {
             
             self.descriptionNode = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
             self.descriptionNode?.paragraphWidth = self.container.size.width - self.buttonBuffer
-            self.descriptionNode?.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+            self.descriptionNode?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
             self.descriptionNode?.fontColor = MerpColors.darkFont
             self.descriptionNode?.text = description
             let descriptionNodeXPosition = self.container.size.width / -2 + self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2

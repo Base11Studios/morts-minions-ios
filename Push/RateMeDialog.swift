@@ -66,7 +66,7 @@ class RateMeDialog: DialogBackground {
         self.container.addChild(self.descriptionNode!)
         
         self.descriptionNode?.paragraphWidth = self.container.size.width - self.buttonBuffer
-        self.descriptionNode?.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+        self.descriptionNode?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
         self.descriptionNode?.fontColor = MerpColors.darkFont
         self.descriptionNode?.text = "If you like Mort's Minions, please leave a positive rating on the App Store. I built this game in my free time with love and support from friends. Help me pursue my passion by spreading the word! Thanks - Dan"
         let descriptionNodeXPosition = self.container.size.width / -2 + self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2

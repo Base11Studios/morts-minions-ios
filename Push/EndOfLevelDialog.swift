@@ -384,7 +384,7 @@ class EndOfLevelDialog: DialogBackground {
                     levelHintDescription.text = "Tip: goblin troubles? Make sure you upgrade your jump skill."
                 case 10, 11:
                     levelHintDescription.text = "Tip: ogre troubles? Upgrade your jump skill again."
-                case 19:
+                case 19, 20:
                     levelHintDescription.text = "Tip: invest in a skill that gets you far off the sea floor."
                 case 17, 18:
                     levelHintDescription.text = "Tip: pirate crab troubles? Purchase skills that can damage him."
