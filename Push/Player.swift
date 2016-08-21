@@ -162,8 +162,17 @@ class Player : SKSpriteNode {
     var actionSoundCollision: SKAction?
     var actionSoundJumpedOnObject: SKAction?
     
+    // Other actions
+    var actionGroup1: SKAction?
+    var actionGroup2: SKAction?
+    var actionGroup3: SKAction?
+    var actionGroup4: SKAction?
+    
     // Alphs
     var forcedAlpha: CGFloat = 1.0
+    
+    // Range
+    var rangeInd: SKSpriteNode?
     
     init(atlas: SKTextureAtlas, textureArrayName: String, worldView: SKNode?, gameScene: GameScene) {
         self.worldView = worldView
@@ -695,12 +704,12 @@ class Player : SKSpriteNode {
         self.physicsBody!.contactTestBitMask = GameScene.groundCategory
         
         // Group actions to do in parallel
-        let group: SKAction = SKAction.group([SKAction.rotate(byAngle: 360, duration: 1.0), SKAction.fadeOut(withDuration: 2.0), SKAction.scale(to: 0, duration: 2.0)])
+        self.actionGroup1 = SKAction.group([SKAction.rotate(byAngle: 360, duration: 1.0), SKAction.fadeOut(withDuration: 2.0), SKAction.scale(to: 0, duration: 2.0)])
         
         self.removeAction(forKey: "playerWalking")
         
         // Start the new action
-        self.run(SKAction.sequence([group]), withKey: "playerDieing")
+        self.run(SKAction.sequence([self.actionGroup1!]), withKey: "playerDieing")
         // REJUV TODO SKAction.removeFromParent() - put back in?
     }
     
@@ -747,12 +756,12 @@ class Player : SKSpriteNode {
         self.physicsBody!.contactTestBitMask = GameScene.groundCategory
         
         // Group actions to do in parallel
-        let group: SKAction = SKAction.group([SKAction.fadeOut(withDuration: 3.0), SKAction.scale(to: 3, duration: 3.0)])
+        self.actionGroup2 = SKAction.group([SKAction.fadeOut(withDuration: 3.0), SKAction.scale(to: 3, duration: 3.0)])
         
         self.removeAction(forKey: "playerWalking")
         
         // Start the new action
-        self.run(SKAction.sequence([group, SKAction.removeFromParent()]), withKey: "playerWinning")
+        self.run(SKAction.sequence([self.actionGroup2!, SKAction.removeFromParent()]), withKey: "playerWinning")
     }
     
     func updateWeapon() {
@@ -1516,14 +1525,14 @@ class Player : SKSpriteNode {
             
             // Add stomp animations
             // Create yellow for range
-            let rangeInd = SKSpriteNode(texture: nil, color: SKColor(red: 219/255.0, green: 14/255.0, blue: 14/255.0, alpha: 1.0), size: CGSize(width: skill.range * 2 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), height: 2 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
-            rangeInd.position = CGPoint(x: self.position.x + rangeInd.size.width / 6.0, y: self.defaultPositionY - self.size.height / 2)
-            rangeInd.zPosition = 3
-            self.worldView!.addChild(rangeInd)
+            rangeInd = SKSpriteNode(texture: nil, color: SKColor(red: 219/255.0, green: 14/255.0, blue: 14/255.0, alpha: 1.0), size: CGSize(width: skill.range * 2 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), height: 2 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
+            rangeInd!.position = CGPoint(x: self.position.x + rangeInd!.size.width / 6.0, y: self.defaultPositionY - self.size.height / 2)
+            rangeInd!.zPosition = 3
+            self.worldView!.addChild(rangeInd!)
             
             // Group actions to do in parallel
-            let group: SKAction = SKAction.group([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 - 5 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), duration: 0.25), SKAction.fadeOut(withDuration: 0.25)])
-            rangeInd.run(SKAction.sequence([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 + 10 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), duration: 0.05), group, SKAction.removeFromParent()]))
+            self.actionGroup3 = SKAction.group([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 - 5 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), duration: 0.25), SKAction.fadeOut(withDuration: 0.25)])
+            rangeInd!.run(SKAction.sequence([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 + 10 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), duration: 0.05), self.actionGroup3!, SKAction.removeFromParent()]))
             
             // If there is a sec value, launch rocks
             if skill.secondaryValue == 1 {
@@ -1542,8 +1551,8 @@ class Player : SKSpriteNode {
             for enemy in self.gameScene!.worldViewEnvironmentObjects {
                 if enemy.name!.hasPrefix("environmentobject_enemy") {
                     // The enemy is within the skill range and the enemy is not flying or floating (so they should be on the ground
-                    let enemyWithinRange1 = enemy.position.x + enemy.size.width / 2 > rangeInd.position.x - rangeInd.size.width / 2
-                    let enemyWithinRange2 = enemy.position.x - enemy.size.width / 2 < rangeInd.position.x + rangeInd.size.width / 2
+                    let enemyWithinRange1 = enemy.position.x + enemy.size.width / 2 > rangeInd!.position.x - rangeInd!.size.width / 2
+                    let enemyWithinRange2 = enemy.position.x - enemy.size.width / 2 < rangeInd!.position.x + rangeInd!.size.width / 2
                     if (enemyWithinRange1 && enemyWithinRange2) && !enemy.isFloating && !enemy.isFlying {
                         let multiplier: Double = 1
                         
@@ -1903,8 +1912,8 @@ class Player : SKSpriteNode {
                 self.worldView!.addChild(rangeInd)
                 
                 // Group actions to do in parallel
-                let group: SKAction = SKAction.group([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 - 5, duration: 0.25), SKAction.fadeOut(withDuration: 0.25)])
-                rangeInd.run(SKAction.sequence([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 + 10, duration: 0.05), group, SKAction.removeFromParent()]))
+                self.actionGroup3 = SKAction.group([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 - 5, duration: 0.25), SKAction.fadeOut(withDuration: 0.25)])
+                rangeInd.run(SKAction.sequence([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 + 10, duration: 0.05), self.actionGroup3!, SKAction.removeFromParent()]))
                 
                 // Iterate through all enemies and deal damage to them if they are touching the ground
                 for enemy in self.gameScene!.worldViewEnvironmentObjects {
@@ -1972,6 +1981,18 @@ class Player : SKSpriteNode {
         actionSoundContact = SKAction()
         actionSoundCollision = SKAction()
         actionSoundJumpedOnObject = SKAction()
+        
+        // Group actions
+        self.actionGroup1 = SKAction()
+        self.actionGroup2 = SKAction()
+        self.actionGroup3 = SKAction()
+        self.actionGroup4 = SKAction()
+        
+        redFlash.removeAllActions()
+        blueFlash.removeAllActions()
+        rangeInd?.removeAllActions()
+        spriteOverlay2?.removeAllActions()
+        weapon.removeAllActions()
     }
     
     func playActionSound(action: SKAction?) {

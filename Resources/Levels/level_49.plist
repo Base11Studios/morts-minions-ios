@@ -15,21 +15,6 @@
 			<string>Beginning</string>
 		</dict>
 	</array>
-	<key>Tutorial</key>
-	<array>
-		<dict>
-			<key>Title</key>
-			<string>Welcome to Astra!</string>
-			<key>Description</key>
-			<string>Finally the last world (until the next major release!). Max out your air time skills. </string>
-			<key>Type</key>
-			<string>tutorial</string>
-			<key>Key</key>
-			<string>world_air</string>
-			<key>Version</key>
-			<real>1.1</real>
-		</dict>
-	</array>
 	<key>Challenges</key>
 	<array>
 		<dict>

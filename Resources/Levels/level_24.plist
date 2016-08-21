@@ -21,18 +21,6 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>Watch Out!</string>
-			<key>Description</key>
-			<string>Minions will start to become less predictable!</string>
-			<key>Type</key>
-			<string>tutorial</string>
-			<key>Key</key>
-			<string>unpredicability</string>
-			<key>Version</key>
-			<real>1.1</real>
-		</dict>
-		<dict>
-			<key>Title</key>
 			<string>Schooly</string>
 			<key>Description</key>
 			<string>You&apos;ll never find me alone!</string>

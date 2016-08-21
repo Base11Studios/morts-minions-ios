@@ -50,18 +50,13 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
     
     override func addChild(_ node: SKNode) {
         if self.children.count + 1 == self.levelSelected {
-            self.levelSelectedNode = node as! ScrollingLevelNode
+            self.levelSelectedNode = (node as! ScrollingLevelNode)
         }
         super.addChild(node)
         self.xOffset = self.calculateAccumulatedFrame().origin.x
     }
     
     func minXPosition() -> CGFloat {
-        let parentSize: CGSize = self.parent!.frame.size
-        //NSLog("PARENT SIZE %f", parentSize.width)
-        //NSLog("CALC SIZE %f", self.calculateAccumulatedFrame().size.width)
-        //NSLog("OFFSET SIZE %f", self.xOffset)
-        //NSLog("WID/2 SIZE %f", self.size.width / 2)
         let minPosition: CGFloat = -(self.calculateAccumulatedFrame().size.width + self.xOffset) + self.levelSelectedNode!.levelSelectionBackground.size.width / 2.0 + self.buttonBuffer
         return minPosition
     }

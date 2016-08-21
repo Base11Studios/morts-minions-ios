@@ -46,18 +46,6 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>Welcome to Aqua!</string>
-			<key>Description</key>
-			<string>Tip: consider investing in a skill that gets you far off the sea floor.</string>
-			<key>Type</key>
-			<string>tutorial</string>
-			<key>Key</key>
-			<string>world_water</string>
-			<key>Version</key>
-			<real>1.1</real>
-		</dict>
-		<dict>
-			<key>Title</key>
 			<string>Mr. Crabby</string>
 			<key>Description</key>
 			<string>*Beware* - I take 2 hits.</string>

@@ -309,6 +309,7 @@ class EndOfLevelDialog: DialogBackground {
         if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
             let tutorial = UXTutorialDialog(frameSize: self.size, description: "Score = distance traveled + minions defeated.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: 0, y: self.totalScoreLabel.position.y - self.totalScoreLabel.calculateAccumulatedFrame().size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
+            tutorial.color = MerpColors.nothing
             self.uxTutorialTooltips!.append(tutorial)
             self.page1.addChild(tutorial)
         }
@@ -321,6 +322,7 @@ class EndOfLevelDialog: DialogBackground {
         if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
             let tutorial = UXTutorialDialog(frameSize: self.size, description: "Earn stars and superstars by getting a better score.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: 0, y: self.starButton2.position.y - self.starButton2.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
+            tutorial.color = MerpColors.nothing
             self.uxTutorialTooltips!.append(tutorial)
             self.page1.addChild(tutorial)
         }
@@ -334,6 +336,7 @@ class EndOfLevelDialog: DialogBackground {
         if (currentLevel >= 5 && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.TeleCharge.rawValue) && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.RubberSneakers.rawValue) && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion))) || GameData.sharedGameData.getSelectedCharacterData().godMode {
             let tutorial = UXTutorialDialog(frameSize: self.size, description: "Having trouble? go upgrade your jump skill below.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.bottomCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: self.upgradeSkillsButton.position.x, y: self.upgradeSkillsButton.position.y + self.upgradeSkillsButton.size.height / 2 + tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2)
+            tutorial.color = MerpColors.nothing
             self.uxTutorialTooltips!.append(tutorial)
             self.page1.addChild(tutorial)
         }
@@ -371,6 +374,8 @@ class EndOfLevelDialog: DialogBackground {
         // Update score text
         totalScoreLabel.text = "\(Int(floor(score.totalCompletePercent*100)))%"
         
+        levelHintDescription.text = ""
+        
         // Update tip
         if unlockedLevels.count == 0 {
             if score.starsRewarded <= 2 {
@@ -379,8 +384,16 @@ class EndOfLevelDialog: DialogBackground {
                     levelHintDescription.text = "Tip: goblin troubles? Make sure you upgrade your jump skill."
                 case 10, 11:
                     levelHintDescription.text = "Tip: ogre troubles? Upgrade your jump skill again."
+                case 19:
+                    levelHintDescription.text = "Tip: invest in a skill that gets you far off the sea floor."
                 case 17, 18:
                     levelHintDescription.text = "Tip: pirate crab troubles? Purchase skills that can damage him."
+                case 33, 34:
+                    levelHintDescription.text = "Tip: timing is critical! Consider upgrading your skills."
+                case 49, 50:
+                    levelHintDescription.text = "Tip: max out your air time skills."
+                case 16, 32, 48:
+                    levelHintDescription.text = "Tip: get 2 stars to unlock the next world."
                 default:
                     levelHintDescription.text = ""
                 }

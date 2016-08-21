@@ -106,7 +106,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
      *
      */
     func didCompleteRewardedVideo(_ location: String!, withReward reward: Int32) {
-        NSLog("completed rewarded video view at location %@ with reward amount %d", location, reward);
+        //NSLog("completed rewarded video view at location %@ with reward amount %d", location, reward);
         
         self.endVideoSuccessfully()
     }

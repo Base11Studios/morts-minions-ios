@@ -23,7 +23,7 @@ class UXTutorialDialog: DialogBackground {
         self.dbScene = scene
         self.onComplete = onComplete
         
-        var offsetSize: CGFloat = 4 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+        let offsetSize: CGFloat = 4 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         
         // First just get offsets
         if indicators.contains(UxTutorialIndicatorPosition.leftBottom) ||
