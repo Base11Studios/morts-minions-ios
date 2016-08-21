@@ -396,8 +396,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             self.mainMenuScene = nil
         }
         
-        self.gameScene = nil
-        
         self.presentLoadingScreen(ignoreMusic: true)
         
         /*
@@ -424,6 +422,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
                 
                 // Present the scene - pass through regulator
                 self.presentDBScene(skView, scene: self.levelSelectionScene!, ignoreMusic: false)
+                
+                //self.gameScene = nil
             }
         }
     }

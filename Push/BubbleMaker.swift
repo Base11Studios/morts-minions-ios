@@ -51,6 +51,9 @@ class BubbleMaker : Obstacle {
         // Damage
         self.damage = 0
         self.damageToShields = 0
+        
+        // Sound
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Bubble.rawValue, waitForCompletion: false)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
@@ -68,7 +71,7 @@ class BubbleMaker : Obstacle {
             
             self.attackCooldown = self.value1
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Bubble)
+            self.playActionSound()
         }
         
         super.attack(timeSinceLast, player: player)

@@ -92,9 +92,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
     
     // Called after a rewarded video has been loaded from the Chartboost API
     // servers and cached locally.
-    /*func didCacheRewardedVideo(location: String!) {
-        self.videoIsCached = true
-    }*/
+    func didCacheRewardedVideo(_ location: String!) {
+        //self.videoIsCached = true
+    }
     
     /*
      * didCompleteRewardedVideo

@@ -32,6 +32,9 @@ class EnvironmentObject : SKSpriteNode {
     var jumpAction = SKAction()
     var coilAction = SKAction()
     var moveAction = SKAction()
+    var extraAction: SKAction = SKAction()
+    var weaponAction: SKAction = SKAction()
+    var startWalkingAction: SKAction = SKAction()
     
     // Texture arrays
     var walkingAnimatedFrames = Array<SKTexture>()
@@ -205,6 +208,9 @@ class EnvironmentObject : SKSpriteNode {
         jumpAction = SKAction()
         coilAction = SKAction()
         moveAction = SKAction()
+        extraAction = SKAction()
+        weaponAction = SKAction()
+        startWalkingAction = SKAction()
     }
     
     func update(_ timeSinceLast: CFTimeInterval, withPlayer player: Player) {

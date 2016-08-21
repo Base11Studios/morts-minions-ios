@@ -58,6 +58,8 @@ class LevelSelectionScene : DBScene {
     
     var levelButtonHeight: CGFloat?
     
+    var worldSwitchInProgress: Bool = false
+    
     // Hearts
     //var heartBoostContainer: HeartBoostContainer?
     
@@ -365,20 +367,23 @@ class LevelSelectionScene : DBScene {
     }
     
     func switchSelectedWorld(worldNameToSelect: String, initialLoad: Bool) {
-        if (self.selectedWorld != nil && self.selectedWorld!.worldName != worldNameToSelect) || self.selectedWorld == nil {
+        if ((self.selectedWorld != nil && self.selectedWorld!.worldName != worldNameToSelect) || self.selectedWorld == nil) && !self.worldSwitchInProgress {
+            self.worldSwitchInProgress = true
+            
             self.startLoadingOverlay()
             // Hide bg of selected node
             self.centerNodeBackground!.isHidden = true
             
             if initialLoad {
                 self.switchSelectedWorldWorker(worldNameToSelect: worldNameToSelect)
+                self.worldSwitchInProgress = false
             } else {
                 // Move to a background thread to do some long running work
                 DispatchQueue.global(attributes: .qosUserInitiated).async {
                     self.switchSelectedWorldWorker(worldNameToSelect: worldNameToSelect)
                     
                     DispatchQueue.main.async {
-                        
+                        self.worldSwitchInProgress = false
                     }
                 }
             }
@@ -635,38 +640,40 @@ class LevelSelectionScene : DBScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // Level slider
-        let touch: UITouch = touches.first!
-        let location: CGPoint = touch.location(in: self)
-        
-        // Get the current level selected // TODO
-        // Translate the world location to the scrolling node location
-        let translatedTouchLocation: CGPoint = self.convert(location, to: self.selectedWorld!.relatedLevelSelector!.levelSelectedNode!)
-        
-        // Find the closest child
-        if self.selectedWorld!.relatedLevelSelector!.levelSelectedNode!.levelSelectionBackground.contains(translatedTouchLocation) && !self.selectedWorld!.relatedLevelSelector!.levelSelectedNode!.levelLocked {
-            // Remove actions
-            self.selectedWorld!.relatedLevelSelector!.removeAllActions()
+        if !worldSwitchInProgress {
+            // Level slider
+            let touch: UITouch = touches.first!
+            let location: CGPoint = touch.location(in: self)
             
-            // We touched a level so let's load it
-            self.viewController!.presentGameSceneLevel(self.selectedWorld!.relatedLevelSelector!.levelSelected, justRestarted: false)
+            // Get the current level selected // TODO
+            // Translate the world location to the scrolling node location
+            let translatedTouchLocation: CGPoint = self.convert(location, to: self.selectedWorld!.relatedLevelSelector!.levelSelectedNode!)
             
-            self.viewController!.playButtonSound()
-        } else {
-            // Loop through children. If one is touched, go there
             // Find the closest child
-            scrollNodeLoop: for node in self.selectedWorld!.relatedLevelSelector!.children as! [ScrollingLevelNode]{
-                //NSLog("node # %d", node.levelNumber)
+            if self.selectedWorld!.relatedLevelSelector!.levelSelectedNode!.levelSelectionBackground.contains(translatedTouchLocation) && !self.selectedWorld!.relatedLevelSelector!.levelSelectedNode!.levelLocked {
+                // Remove actions
+                self.selectedWorld!.relatedLevelSelector!.removeAllActions()
                 
-                let nodeTranslatedTouchLocation: CGPoint = self.convert(location, to: node)
+                // We touched a level so let's load it
+                self.viewController!.presentGameSceneLevel(self.selectedWorld!.relatedLevelSelector!.levelSelected, justRestarted: false)
                 
-                // If we touched a node, move to it
-                if node.levelSelectionBackground.contains(nodeTranslatedTouchLocation) {
-                    self.selectedWorld!.relatedLevelSelector!.moveToNode(node, immediately: false)
+                self.viewController!.playButtonSound()
+            } else {
+                // Loop through children. If one is touched, go there
+                // Find the closest child
+                scrollNodeLoop: for node in self.selectedWorld!.relatedLevelSelector!.children as! [ScrollingLevelNode]{
+                    //NSLog("node # %d", node.levelNumber)
                     
-                    SoundHelper.sharedInstance.playSound(self, sound: SoundType.Click)
+                    let nodeTranslatedTouchLocation: CGPoint = self.convert(location, to: node)
                     
-                    break scrollNodeLoop
+                    // If we touched a node, move to it
+                    if node.levelSelectionBackground.contains(nodeTranslatedTouchLocation) {
+                        self.selectedWorld!.relatedLevelSelector!.moveToNode(node, immediately: false)
+                        
+                        SoundHelper.sharedInstance.playSound(self, sound: SoundType.Click)
+                        
+                        break scrollNodeLoop
+                    }
                 }
             }
         }

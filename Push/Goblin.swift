@@ -57,7 +57,7 @@ class Goblin : Enemy {
             // Set physics body back
             arrow.physicsBody!.categoryBitMask = GameScene.projectileCategory
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.ProjectileThrow)
+            self.playActionSound()
         })
         
         // At the end, switch back to walking and update the animation
@@ -109,6 +109,9 @@ class Goblin : Enemy {
         // Don't move
         self.moveSpeed = 0
         self.velocityRate = 0
+        
+        // Sound
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.ProjectileThrow.rawValue, waitForCompletion: false)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {

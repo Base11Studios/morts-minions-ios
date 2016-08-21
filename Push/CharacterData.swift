@@ -233,10 +233,10 @@ class CharacterData : NSObject { // TODO doesnt have to extend this after objc c
         if (godMode) || level == 1 {
             return false
         } else {
-            // If we're looking at a level > total levels, this is the credits menu. need to have earned 1 star on this level
+            // If we're looking at a level > total levels, this is the credits menu. need to have earned 2 stars on this level
             if level > self.totalLevels {
-                // Check if the current level (level - 1) has 1 star earned.
-                if self.levelProgress[level - 1]?.starsEarnedHighScore > 0 {
+                // Check if the current level (level - 1) has 2 star earned.
+                if self.levelProgress[level - 1]?.starsEarnedHighScore > 1 {
                     return false
                 } else {
                     return true
@@ -254,7 +254,8 @@ class CharacterData : NSObject { // TODO doesnt have to extend this after objc c
     }
     
     func beatLevelBeforeToUnlock(_ level: Int) -> Bool {
-        return level == 1 || (self.levelProgress[level-1] != nil && self.levelProgress[level-1]?.starsEarnedHighScore > 0)
+        // Need 1 if any normal level, need 2 if it is end of level
+        return level == 1 || (self.levelProgress[level-1] != nil && self.levelProgress[level-1]?.starsEarnedHighScore > 0 && level % self.levelsPerWorld != 1) || (self.levelProgress[level-1] != nil && self.levelProgress[level-1]?.starsEarnedHighScore > 1 && level % self.levelsPerWorld == 1)
     }
     
     func isWorldLocked(_ level: Int) -> Bool {

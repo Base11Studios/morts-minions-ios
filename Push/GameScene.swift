@@ -373,7 +373,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.showPauseMenu = false
             self.pauseGame()
             self.storyDialogs![0].isHidden = false
-        } else if (GameData.sharedGameData.adPopCountdown <= 0 || GameData.sharedGameData.getSelectedCharacterData().godMode) && AdSupporter.sharedInstance.adReady && !self.adsPresented {
+        } else if (GameData.sharedGameData.adPopCountdown <= 0 /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/) && AdSupporter.sharedInstance.adReady && !self.adsPresented {
             // Then ads
             // Show the ad
             viewController!.showInterstitialAd()
@@ -971,7 +971,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.updateLevelData(distance)
         }
         
-        if storyEndDialogs!.count <= 0 || GameData.sharedGameData.getSelectedCharacterData().levelProgress[self.currentLevel]?.starsEarnedHighScore < 1 {
+        if storyEndDialogs!.count <= 0 || GameData.sharedGameData.getSelectedCharacterData().levelProgress[self.currentLevel]?.starsEarnedHighScore < 2 {
             self.unpauseGame()
             
             // Load the dialog

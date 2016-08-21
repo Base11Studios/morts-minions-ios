@@ -57,6 +57,10 @@ class LightningCloud : Obstacle {
         // Damage
         self.damage = 0
         self.damageToShields = 0
+        
+        
+        // Sound
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Pew.rawValue, waitForCompletion: false)
     }
     
     override func runAnimation() {
@@ -87,7 +91,7 @@ class LightningCloud : Obstacle {
             
             self.isFighting = false
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Pew)
+            self.playActionSound()
         }
         
         super.attack(timeSinceLast, player: player)

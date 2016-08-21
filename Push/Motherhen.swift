@@ -65,6 +65,9 @@ class Motherhen : Enemy {
         
         // Rewards
         self.experience = 1
+        
+        // Sound
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.ProjectileThrow.rawValue, waitForCompletion: false)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
@@ -87,7 +90,7 @@ class Motherhen : Enemy {
             
             self.attackCooldown = self.value2
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.ProjectileThrow)
+            self.playActionSound()
         }
     }
 }

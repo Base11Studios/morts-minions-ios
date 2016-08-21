@@ -23,9 +23,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>Seahorse</string>
+			<string>A. Seahorse</string>
 			<key>Description</key>
-			<string>Yes I am a sine curve.</string>
+			<string>I&apos;m big into trigonometry.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

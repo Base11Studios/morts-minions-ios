@@ -44,6 +44,10 @@ class Ogre : Enemy {
         
         self.attackCooldown = 3
         self.maxAttackCooldown = 3
+        
+        
+        // Sound
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Ogre.rawValue, waitForCompletion: false)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
@@ -52,7 +56,7 @@ class Ogre : Enemy {
         if self.attackCooldown <= 0 {
             self.attackCooldown = self.maxAttackCooldown
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Ogre)
+            self.playActionSound()
         }
     }
 }

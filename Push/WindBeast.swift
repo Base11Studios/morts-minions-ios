@@ -14,8 +14,7 @@ class WindBeast : Enemy {
     var weaponFrames = Array<SKTexture>()
     var weapon: SKSpriteNode = SKSpriteNode()
     var weaponStartPosition: CGPoint = CGPoint()
-    var weaponAction: SKAction = SKAction()
-    var startWalkingAction: SKAction = SKAction()
+    
     var shouldAttack: Bool = false
     
     required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
@@ -139,5 +138,11 @@ class WindBeast : Enemy {
             
             self.isFighting = false
         }
+    }
+    
+    override func clearOutActions() {
+        super.clearOutActions()
+        
+        self.weapon.removeAllActions()
     }
 }
