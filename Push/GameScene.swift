@@ -1276,7 +1276,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             }
             
             // If this is an obstacle class, add destroyable count
-            if let enemyClass = NSClassFromString(name) as? Obstacle.Type {
+            if (NSClassFromString(name) as? Obstacle.Type) != nil {
                 if envObject.playerCanDamage {
                     self.totalLevelDestroyableObstacles += 1
                 }
@@ -1454,7 +1454,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     // Create the HUD
     func initializeHUD() {
-        var temp : CGFloat
         let buffer: CGFloat = 10.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         let yPosition: CGFloat = self.frame.size.height - 20.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         
@@ -1505,7 +1504,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         levelLabel!.setFontSize(round(23 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
         levelLabel!.setHorizontalAlignmentMode(SKLabelHorizontalAlignmentMode.right)
         levelLabel!.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
-        temp = (self.frame.size.width / 16.0) * 11
+
         levelLabel!.position = CGPoint(x: self.progressBar.position.x - self.progressBar.size.width / 2 - buffer - (self.levelLabel!.calculateAccumulatedFrame().size.width / 2), y: yPosition - self.nodeBuffer * 0.4)
         self.addChild(levelLabel!)
         
@@ -1519,7 +1518,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         heartsLabel!.setFontSize(round(23 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
         heartsLabel!.setHorizontalAlignmentMode(SKLabelHorizontalAlignmentMode.right)
         heartsLabel!.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
-        temp = (self.frame.size.width / 16.0) * 7
+
         heartsLabel!.position = CGPoint(x: self.levelLabel!.position.x - self.levelLabel!.calculateAccumulatedFrame().width - buffer * 2 - self.blackHeart!.size.width - buffer/2 - (self.heartsLabel!.calculateAccumulatedFrame().size.width / 2), y: yPosition - self.nodeBuffer * 0.4)
         self.addChild(heartsLabel!)
         
@@ -1709,7 +1708,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     func initializeScrollingBackground(_ size: CGSize) {
         var backgroundYPosition: CGFloat = 0
-        var foregroundYPosition: CGFloat = self.adjustedGroundPositionY
+        let foregroundYPosition: CGFloat = self.adjustedGroundPositionY
         
         // This is our scrolling background code.
         if self.worldName == "earth" {
@@ -1948,7 +1947,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         if storyArray != nil {
             for storyDictionary in storyArray! {
                 // Get the version information
-                var key = "story_\(self.currentLevel)_\(count)_\(self.player!.name!)"
+                let key = "story_\(self.currentLevel)_\(count)_\(self.player!.name!)"
                 
                 let version = storyDictionary["Version"] as! Double
                 

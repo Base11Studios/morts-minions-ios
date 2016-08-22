@@ -181,7 +181,7 @@ class LevelSelectionScene : DBScene {
         self.spiritWorld?.setScale(0.85)
         
         // Worlds
-        var worldAdjuster: CGFloat = 1.0
+        let worldAdjuster: CGFloat = 1.0
         let fourAdjuster = (self.earthWorld!.size.width / 2)
         self.earthWorld!.position = CGPoint(x: (self.earthWorld!.size.width + self.nodeBuffer/2) * -2 + fourAdjuster, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.earthWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
         self.waterWorld!.position = CGPoint(x: (self.waterWorld!.size.width + self.nodeBuffer/2) * -1 + fourAdjuster, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.waterWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
@@ -279,11 +279,8 @@ class LevelSelectionScene : DBScene {
             if let path: String = Bundle.main().pathForResource(filePath, ofType: "plist") {
                 // Read in the level
                 let levelSetup: NSDictionary = NSDictionary(contentsOfFile: path)!
-                
-                let worldName = levelSetup.value(forKey: "World") as! String
-                
+
                 // Set the total levels for the gamedata
-                // TODO introduce as function on GameData
                 if let data: CharacterData = GameData.sharedGameData.archerCharacter {
                     data.totalLevels = 64 //level TODO SPIRIT set back to level
                     
@@ -317,48 +314,9 @@ class LevelSelectionScene : DBScene {
                     }
                 }
                 
-                /*
-                 // Setup the level data only if it doesnt exist already
-                 if GameData.sharedGameData.getSelectedCharacterData().levelProgress[level] == nil {
-                 GameData.sharedGameData.getSelectedCharacterData().initializeLevel(level, maxHearts: 100, maxDistance: 10000)
-                 }*/
-                
                 // Update all of the challenges
-                let challengeSet: [String : Bool] = self.updateChallenges(levelSetup, level: level)
-                
-                //GameData.sharedGameData.save()
-                
-                /*
-                var worldForLevel: ScrollingLevelNodeRow?
-                
-                if worldName == "earth" {
-                    worldForLevel = self.scrollingEarthLevels
-                } else if worldName == "water" {
-                    worldForLevel = self.scrollingWaterLevels
-                } else if worldName == "fire" {
-                    worldForLevel = self.scrollingFireLevels
-                } else if worldName == "air" {
-                    worldForLevel = self.scrollingAirLevels
-                } else if worldName == "spirit" {
-                    worldForLevel = self.scrollingSpiritLevels
-                }
-                
-                worldForLevel!.numberOfLevels += 1
-                
-                let node: ScrollingLevelNode = ScrollingLevelNode(imageName: "button_level_selector", textureAtlas: GameTextures.sharedInstance.buttonAtlas, levelNumber: level, worldName: worldName, scene: self, challengeSet: challengeSet)
-                
-                worldForLevel!.addChild(node)
-                
-                let scale: CGFloat = 0.8
-                node.setScale(scale)
-                
-                node.position = CGPoint(x: (worldForLevel!.buttonBuffer + node.levelSelectionBackground.size.width * scale) * CGFloat(worldForLevel!.numberOfLevels - 1), y: getLevelNodeHeight(buttonSize))
-                
-                // If this level node is the one that we last played, set it in focus
-                if level == GameData.sharedGameData.getSelectedCharacterData().getLastPlayedLevelByWorld(worldName) {
-                    worldForLevel!.levelSelectedNode = node
-                }
-                */
+                self.updateChallenges(levelSetup, level: level)
+
                 level += 1
             } else {
                 moreLevels = false
@@ -579,8 +537,6 @@ class LevelSelectionScene : DBScene {
             self.selectWorld(self.spiritWorld!)
         }
         
-        
-        
         self.earthWorld!.updateLevelNode()
         self.waterWorld!.updateLevelNode()
         self.fireWorld!.updateLevelNode()
@@ -596,14 +552,6 @@ class LevelSelectionScene : DBScene {
         
         // Update rewards
         self.updateRewards()
-        
-        /*
-        // Update heart boost
-        if HeartBoostCosts.getCostOfBoost(GameData.sharedGameData.getSelectedCharacterData().lastHeartBoost) <= GameData.sharedGameData.totalDiamonds {
-            self.heartBoostContainer?.selectHeartByBoost(GameData.sharedGameData.getSelectedCharacterData().lastHeartBoost)
-        } else {
-            self.heartBoostContainer?.selectHeartByBoost(0)
-        }*/
     }*/
     
     required init?(coder aDecoder: NSCoder) {

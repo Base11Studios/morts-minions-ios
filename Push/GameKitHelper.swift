@@ -550,9 +550,9 @@ class GameKitHelper: NSObject {
     }
     
     func syncAchievements() {
-        for achievement in GameData.sharedGameData.achievementsCompleted {
+        //for achievement in GameData.sharedGameData.achievementsCompleted {
             //NSLog("Achievement obtained \(achievement)")
-        }
+        //}
         
         if enableGameCenter && !self.waitingForAchievementsToReturn {
             var achievements = Array<GKAchievement>() // This will be sent to GameCenter

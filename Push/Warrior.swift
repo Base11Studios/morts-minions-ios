@@ -20,7 +20,7 @@ class Warrior : Player {
         super.initializeSkills()
 
         // Create the rocks for stomp
-        for i in 0 ..< Int(self.getSkill(CharacterUpgrade.Stomp)!.secondaryValue * 5) {
+        for _ in 0 ..< Int(self.getSkill(CharacterUpgrade.Stomp)!.secondaryValue * 5) {
             // Create projectile
             let projectile: PlayerRock = PlayerRock(gameScene: self.gameScene!)
             projectile.physicsBody!.velocity = CGVector()

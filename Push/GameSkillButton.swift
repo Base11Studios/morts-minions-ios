@@ -45,23 +45,9 @@ class GameSkillButton : DBButton {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        var buttonPressed: Bool = false
-        
         // Allow anywhere on screen
         if self.allowAnywhereOnScreen {
-            buttonPressed = true
             self.allowAnywhereOnScreen = false
-        }
-        
-        // For loop on touches and set boolean on which buttons contain a point
-        for touch: UITouch in touches {
-            
-            // Get the location of the touch
-            let location: CGPoint = touch.location(in: self.parent!)
-            
-            if self.contains(location) {
-                buttonPressed = true
-            }
         }
         
         // Press button

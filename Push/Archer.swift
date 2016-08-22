@@ -57,7 +57,7 @@ class Archer : Player {
         self.weapon.position = self.weaponStartPosition
         
         // Create projectiles
-        for i in 0 ..< (Int(self.getSkill(CharacterUpgrade.ShootArrow)!.value * (self.getSkill(CharacterUpgrade.ShootArrow)!.secondaryValue + 1)) * 5) {
+        for _ in 0 ..< (Int(self.getSkill(CharacterUpgrade.ShootArrow)!.value * (self.getSkill(CharacterUpgrade.ShootArrow)!.secondaryValue + 1)) * 5) {
             // Create projectile
             let projectile: PlayerArrow = PlayerArrow(gameScene: self.gameScene!)
             

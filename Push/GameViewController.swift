@@ -441,9 +441,24 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             self.characterSkillScene = nil
         }
         
-        // Preload the texture atlases we need
-        let world = GameData.sharedGameData.getSelectedCharacterData().getWorldForLevel(level)
-        
+        /*
+         // Preload the texture atlases we need
+         let world = GameData.sharedGameData.getSelectedCharacterData().getWorldForLevel(level)
+         
+         SKTextureAtlas.preloadTextureAtlases([GameTextures.sharedInstance.waterStoryTutorialAtlas]) { () -> Void in
+         self.gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
+         self.gameScene!.scaleMode = SKSceneScaleMode.aspectFill
+         self.gameScene!.viewController = self
+         let skView: SKView = self.view as! SKView
+         skView.isMultipleTouchEnabled = true
+         //skView.showsFPS = true
+         //skView.showsNodeCount = true
+         //skView.showsPhysics = true
+         
+         // Present the scene - pass through regulator
+         self.presentDBScene(skView, scene: self.gameScene!)
+         }
+         */
         
         // Move to a background thread to do some long running work
         DispatchQueue.global(attributes: .qosUserInitiated).async {
@@ -462,22 +477,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
                 self.presentDBScene(skView, scene: self.gameScene!, ignoreMusic: false)
             }
         }
-        
-        /*
-         SKTextureAtlas.preloadTextureAtlases([GameTextures.sharedInstance.waterStoryTutorialAtlas]) { () -> Void in
-         self.gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
-         self.gameScene!.scaleMode = SKSceneScaleMode.aspectFill
-         self.gameScene!.viewController = self
-         let skView: SKView = self.view as! SKView
-         skView.isMultipleTouchEnabled = true
-         //skView.showsFPS = true
-         //skView.showsNodeCount = true
-         //skView.showsPhysics = true
-         
-         // Present the scene - pass through regulator
-         self.presentDBScene(skView, scene: self.gameScene!)
-         }
-        */
     }
     
     func representGameSceneLevel(_ level: Int, justRestarted: Bool) {

@@ -194,7 +194,7 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
             self.isHidden = false
             (self.dbScene! as! LevelSelectionScene).revealLevels()
         })
-        let doMove: SKAction = SKAction.move(to: CGPoint(x: -node.position.x, y: 0), duration: kScrollDuration)
+        let doMove: SKAction = SKAction.move(to: CGPoint(x: -node.position.x, y: 0), duration: duration)
         if !immediately {
             doMove.timingMode = SKActionTimingMode.easeOut
         } else {
