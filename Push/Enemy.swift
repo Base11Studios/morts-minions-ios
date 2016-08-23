@@ -64,6 +64,7 @@ class Enemy : EnvironmentObject {
     
     func resetName() {
         self.name = "environmentobject_enemy_\(UUID().uuidString)"
+        self.type = EnvironmentObjectType.Enemy
     }
 
     func initializeAttributes() {

@@ -1549,7 +1549,7 @@ class Player : SKSpriteNode {
             
             // Iterate through all enemies and deal damage to them if they are touching the ground
             for enemy in self.gameScene!.worldViewEnvironmentObjects {
-                if enemy.name!.hasPrefix("environmentobject_enemy") {
+                if enemy.type == EnvironmentObjectType.Enemy {
                     // The enemy is within the skill range and the enemy is not flying or floating (so they should be on the ground
                     let enemyWithinRange1 = enemy.position.x + enemy.size.width / 2 > rangeInd!.position.x - rangeInd!.size.width / 2
                     let enemyWithinRange2 = enemy.position.x - enemy.size.width / 2 < rangeInd!.position.x + rangeInd!.size.width / 2
@@ -1614,7 +1614,7 @@ class Player : SKSpriteNode {
             // Find all enemies on screen.
             // Iterate through all enemies to find someone close
             for object in self.gameScene!.worldViewEnvironmentObjects {
-                if (object.name!.hasPrefix("environmentobject_enemy") || object.name!.hasPrefix("environmentobject_projectile")) && object.isAlive {
+                if (object.type == EnvironmentObjectType.Enemy || object.type == EnvironmentObjectType.Projectile) && object.isAlive {
                     if object.position.x > self.position.x {
                         objectsToFreeze.append(object)
                     }
@@ -1666,7 +1666,8 @@ class Player : SKSpriteNode {
                 
                 // Iterate through all enemies to find someone close
                 for object in self.gameScene!.worldViewEnvironmentObjects {
-                    if object.name!.hasPrefix("environmentobject_obstacle") || object.name!.hasPrefix("environmentobject_enemy") && object.isAlive {
+                    if (object.type == EnvironmentObjectType.Enemy ||
+                        object.type == EnvironmentObjectType.Obstacle) && object.isAlive {
                         let modifiedObjectPosition = (abs(object.position.x) - (100 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
                         if closestObject == nil {
                             if modifiedObjectPosition - abs(self.protectorOfTheSky!.position.x) > 0 && object.position.y > self.protectorOfTheSky!.minimumHeight {
@@ -1917,7 +1918,7 @@ class Player : SKSpriteNode {
                 
                 // Iterate through all enemies and deal damage to them if they are touching the ground
                 for enemy in self.gameScene!.worldViewEnvironmentObjects {
-                    if enemy.name!.hasPrefix("environmentobject_enemy") {
+                    if enemy.type == EnvironmentObjectType.Enemy {
                         // The enemy is within the skill range and the enemy is not flying or floating (so they should be on the ground
                         let enemyWithinRange1 = enemy.position.x + enemy.size.width / 2 > rangeInd.position.x - rangeInd.size.width / 2
                         let enemyWithinRange2 = enemy.position.x - enemy.size.width / 2 < rangeInd.position.x + rangeInd.size.width / 2
@@ -1938,7 +1939,7 @@ class Player : SKSpriteNode {
                 
                 // Iterate through all obstacles and deal damage to them if they are touching the ground
                 for obstacle in self.gameScene!.worldViewEnvironmentObjects {
-                    if obstacle.name!.hasPrefix("environmentobject_obstacle") {
+                    if obstacle.type == EnvironmentObjectType.Obstacle {
                         // The enemy is within the skill range and the enemy is not flying or floating (so they should be on the ground
                         let obstacleWithinRange1 = obstacle.position.x + obstacle.size.width / 2 > rangeInd.position.x - rangeInd.size.width / 2
                         let obstacleWithinRange2 = obstacle.position.x - obstacle.size.width / 2 < rangeInd.position.x + rangeInd.size.width / 2

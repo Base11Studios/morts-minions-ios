@@ -71,7 +71,7 @@ class CloudDataDialog: DialogBackground {
         self.descriptionNode?.paragraphWidth = self.container.size.width - self.buttonBuffer
         self.descriptionNode?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
         self.descriptionNode?.fontColor = MerpColors.darkFont
-        self.descriptionNode?.text = "A game save was found in iCloud that is more recent than the local game save on this device. Would you like to load the save from iCloud and replace the save on this device (recommended)? If you do not load the iCloud save it will be overwritten."
+        self.descriptionNode?.text = "A game save was found in iCloud that is more recent than the game save on this device. Would you like to load the save from iCloud and replace the save on this device (recommended)? If you do not load the iCloud save, your saves on this device will not be backed up to iCloud."
         let descriptionNodeXPosition = self.container.size.width / -2 + self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2
         let descriptionNodeYPosition = self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer
         self.descriptionNode?.position = CGPoint(x: descriptionNodeXPosition, y: descriptionNodeYPosition)
@@ -95,7 +95,7 @@ class CloudDataDialog: DialogBackground {
         self.titleNode?.text = "Are You Sure?"
         self.titleNode?.position = CGPoint(x: self.iconBackgroundNode!.position.x + self.iconBackgroundNode!.size.width / 2 + self.titleNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2, y: self.titleNode!.position.y)
         
-        self.descriptionNode?.text = "If you do not load the iCloud save, the iCloud save will be overwritten by the local save on this device for this iCloud account."
+        self.descriptionNode?.text = "If you do not load the iCloud save, your saves on this device will not be backed up to iCloud."
         self.descriptionNode?.position = CGPoint(x: self.descriptionNode!.position.x, y: self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
         
         //self.cloudButton!.position = CGPointMake(self.container.size.width / 2 - self.cloudButton!.size.width / 2 - self.buttonBuffer / 2, self.container.size.height / -2 + self.cloudButton!.size.height / 2 + self.buttonBuffer / 2)

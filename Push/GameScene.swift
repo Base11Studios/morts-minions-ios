@@ -691,7 +691,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // Add environment objects
         for envObject in self.environmentObjectsToAdd {
-            if envObject.name!.hasPrefix("environmentobject_") {
+            if envObject.type == EnvironmentObjectType.Enemy ||
+                envObject.type == EnvironmentObjectType.Obstacle ||
+                envObject.type == EnvironmentObjectType.Projectile {
                 if envObject.position.x - self.player!.position.x < updatePosition {
                     //self.addEnvironmentObject(environmentObject: envObject)
                     envObject.physicsBody!.isDynamic = true
@@ -706,7 +708,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // Iterate through player projectiles and remove them if off screen
         for projectile in self.worldViewPlayerProjectiles {
-            if projectile.name!.hasPrefix("playerProjectile") {
+            if projectile.type == EnvironmentObjectType.PlayerProjectile {
                 if abs(projectile.position.x - self.player!.position.x) > projectileDestroyPosition {
                     //if projectile.position.x - self.player!.position.x > self.frame.size.width {
                         // This is off screen remove from parent
@@ -719,8 +721,16 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // Iterate through all enemies and update them
         for envObject in self.worldViewEnvironmentObjects {
-            if envObject.name!.hasPrefix("environmentobject_") && envObject.physicsBody!.isDynamic {
-                if envObject.position.x - self.player!.position.x < updatePosition {
+            if (envObject.type == EnvironmentObjectType.Enemy ||
+                envObject.type == EnvironmentObjectType.Obstacle ||
+                envObject.type == EnvironmentObjectType.Projectile) && envObject.physicsBody!.isDynamic {
+                // Check for destroyable obstacle destroyed
+                if envObject is Obstacle && envObject.playerCanDamage && envObject.readyToBeDestroyed {
+                    self.collectedLevelDestroyableObstacles += 1
+                    
+                    // Remove from parent
+                    self.removeEnvironmentObject(environmentObject: envObject)
+                } else if envObject.position.x - self.player!.position.x < updatePosition {
                     // Update the enemy
                     envObject.update(timeSinceLast, withPlayer: self.player!)
                     
@@ -737,11 +747,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                     } else if envObject.position.x + 600 < self.player!.position.x || envObject.readyToBeDestroyed { // Is off the screen enough so that if the player gets knocked back it is gone
                         // Remove from parent
                         self.removeEnvironmentObject(environmentObject: envObject)
-                    }
-                    
-                    // Check for destroyable obstacle destroyed
-                    if envObject is Obstacle && envObject.playerCanDamage {
-                        self.collectedLevelDestroyableObstacles += 1
                     }
                 }
             }
@@ -764,7 +769,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             
             // Iterate through all player projectiles
             for projectile in self.worldViewPlayerProjectiles {
-                if projectile.name!.hasPrefix("playerProjectile") {
+                if projectile.type == EnvironmentObjectType.PlayerProjectile {
                     projectile.updateAfterPhysics()
                 } else {
                     projectile.physicsBody!.velocity = CGVector()
@@ -773,7 +778,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             
             // Iterate through all enemies and update them after physics
             for envObject in self.worldViewEnvironmentObjects {
-                if envObject.name!.hasPrefix("environmentobject_") && envObject.physicsBody!.isDynamic {
+                if (envObject.type == EnvironmentObjectType.Enemy ||
+                    envObject.type == EnvironmentObjectType.Obstacle ||
+                    envObject.type == EnvironmentObjectType.Projectile) && envObject.physicsBody!.isDynamic {
                     if envObject.position.x - self.player!.position.x < self.frame.size.width * 1.1 {
                         // Update the enemy
                         envObject.updateAfterPhysics()
@@ -865,11 +872,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         Chartboost.closeImpression()
         
         // Rejuvenate player and remove dialog through 1 sec slideout
-        var hearts = 1
-        if self.worldNumber > 2 {
+        var hearts = 2
+        if self.worldNumber > 3 {
             hearts += 1
         }
-        if self.worldNumber > 4 {
+        if self.worldNumber > 5 {
             hearts += 1
         }
         if self.worldNumber > 6 {
@@ -920,7 +927,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.rejuvDialog!.color = MerpColors.nothing
         self.rejuvDialog!.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height + self.rejuvDialog!.calculateAccumulatedFrame().size.height / 2)
         self.addChild(self.rejuvDialog!)
-        self.rejuvDialog!.zPosition = 11
+        self.rejuvDialog!.zPosition = 14
         self.rejuvDialog!.isHidden = true
         
         // Start the new action

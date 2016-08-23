@@ -63,6 +63,7 @@ class Archer : Player {
             
             // We dont want this to get updated by gamescene so change the name which is the selector
             projectile.name = "proj_dont_update"
+            projectile.type = EnvironmentObjectType.Ignored
             projectile.isHidden = true
             
             // Set up initial location of projectile

@@ -23,6 +23,7 @@ class Firebomber : Enemy {
         
         // We dont want this to get updated by gamescene so change the name which is the selector
         self.bomb!.name = "proj_dont_update"
+        self.bomb!.type = EnvironmentObjectType.Ignored
         self.bomb!.isHidden = true
         
         self.bomb!.position = CGPoint(x: self.position.x - self.size.width / 2, y: self.position.y - self.size.height / 2.0)

@@ -49,6 +49,9 @@ class DiveBomber : Enemy {
         // This is for collision detection
         self.hasVerticalVelocity = true
         
+        // Make him hurt
+        self.damage = 2
+        
         // Sound
         self.actionSound = SKAction.playSoundFileNamed(SoundType.Lunge.rawValue, waitForCompletion: false)
     }

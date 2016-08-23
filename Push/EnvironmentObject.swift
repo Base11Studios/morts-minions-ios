@@ -9,7 +9,10 @@
 import Foundation
 
 @objc(EnvironmentObject)
-class EnvironmentObject : SKSpriteNode {    
+class EnvironmentObject : SKSpriteNode {
+    // Type
+    var type: EnvironmentObjectType = EnvironmentObjectType.Ignored
+    
     // Physics
     var collisionRebound: CGFloat = 1600.0 / ScaleBuddy.sharedInstance.getGameScaleAmount(false) // The amount this object should get knocked back on collision
     var playerCollisionRebound: CGFloat = -1600.0 / ScaleBuddy.sharedInstance.getGameScaleAmount(false) // The amount the player should get knocked back on collision
