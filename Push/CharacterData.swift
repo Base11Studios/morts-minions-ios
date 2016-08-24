@@ -205,6 +205,10 @@ class CharacterData : NSObject { // TODO doesnt have to extend this after objc c
         
         if decoder.containsValue(forKey: SSGameDataFreeRejuvenationsKey) {
             self.freeRejuvenations = decoder.decodeInteger(forKey: SSGameDataFreeRejuvenationsKey)
+            
+            if self.freeRejuvenations > 1 {
+                self.freeRejuvenations = 1
+            }
         } else {
             self.freeRejuvenations = 1
         }

@@ -373,7 +373,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.showPauseMenu = false
             self.pauseGame()
             self.storyDialogs![0].isHidden = false
-        } else if (GameData.sharedGameData.adPopCountdown <= 0 /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/) && AdSupporter.sharedInstance.adReady && !self.adsPresented {
+        } else if (GameData.sharedGameData.adPopCountdown <= 0 /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/) && AdSupporter.sharedInstance.adReady && !self.adsPresented && !GameData.sharedGameData.adsUnlocked {
             // Then ads
             // Show the ad
             viewController!.showInterstitialAd()
