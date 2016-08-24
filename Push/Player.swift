@@ -1615,7 +1615,7 @@ class Player : SKSpriteNode {
             // Iterate through all enemies to find someone close
             for object in self.gameScene!.worldViewEnvironmentObjects {
                 if (object.type == EnvironmentObjectType.Enemy || object.type == EnvironmentObjectType.Projectile) && object.isAlive {
-                    if object.position.x > self.position.x {
+                    if object.position.x > self.position.x && abs(object.position.x - self.position.x) < self.gameScene!.size.width {
                         objectsToFreeze.append(object)
                     }
                 }

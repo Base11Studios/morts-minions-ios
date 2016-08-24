@@ -306,7 +306,7 @@ class EndOfLevelDialog: DialogBackground {
         tutorialVersion = 1.0
         tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
         
-        if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
+        if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
             let tutorial = UXTutorialDialog(frameSize: self.size, description: "Score = distance traveled + minions defeated.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: 0, y: self.totalScoreLabel.position.y - self.totalScoreLabel.calculateAccumulatedFrame().size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
             tutorial.color = MerpColors.nothing
@@ -319,7 +319,7 @@ class EndOfLevelDialog: DialogBackground {
         tutorialVersion = 1.0
         tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
         
-        if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
+        if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
             let tutorial = UXTutorialDialog(frameSize: self.size, description: "Earn stars and superstars by getting a better score.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: 0, y: self.starButton2.position.y - self.starButton2.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
             tutorial.color = MerpColors.nothing
@@ -333,7 +333,7 @@ class EndOfLevelDialog: DialogBackground {
         tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
         
         // We don't want to show this until the character has 2 skills total
-        if (currentLevel >= 5 && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.TeleCharge.rawValue) && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.RubberSneakers.rawValue) && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion))) || GameData.sharedGameData.getSelectedCharacterData().godMode {
+        if (currentLevel >= 5 && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.TeleCharge.rawValue) && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.RubberSneakers.rawValue) && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion))) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
             let tutorial = UXTutorialDialog(frameSize: self.size, description: "Having trouble? go upgrade your jump skill below.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.bottomCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: self.upgradeSkillsButton.position.x, y: self.upgradeSkillsButton.position.y + self.upgradeSkillsButton.size.height / 2 + tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2)
             tutorial.color = MerpColors.nothing
