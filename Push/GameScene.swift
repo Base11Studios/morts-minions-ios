@@ -2239,7 +2239,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     func initializeSound() {
         // For now we are just going to have the sound icons in the game view controller... we will add here later
         if GameData.sharedGameData.preferenceMusic {
-            guard let path = Bundle.main().urlForResource(self.worldName, withExtension: "caf") else {
+            guard let path = Bundle.main().urlForResource(self.worldName, withExtension: "m4a") else {
                 //NSLog("The path could not be created.")
                 return
             }

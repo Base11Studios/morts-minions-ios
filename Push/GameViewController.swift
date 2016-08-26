@@ -116,7 +116,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     func setupMusic() {
-        guard let path = Bundle.main().urlForResource("menu", withExtension: "caf") else {
+        guard let path = Bundle.main().urlForResource("menu", withExtension: "m4a") else {
             return
         }
         
