@@ -60,20 +60,20 @@ class GameSkillButton : DBButton {
     
     override func touchesBeganAction() {
         if self.upgradeDetails!.activatesOnPress {
-            (self.dbScene as! GameScene).player!.activateSkill(self.upgradeDetails!)
+            (self.dbScene as! GameScene).player.activateSkill(self.upgradeDetails!)
         }
     }
     
     override func touchesReleasedAction() {
         if self.upgradeDetails!.activatesOnPress {
-            (self.dbScene as! GameScene).player!.deactivateSkill(self.upgradeDetails!)
+            (self.dbScene as! GameScene).player.deactivateSkill(self.upgradeDetails!)
         }
     }
     
     override func touchesEndedAction() {
         // If this is a release skill, activate the skill
         if !self.upgradeDetails!.cooldownInProgress && self.upgradeDetails!.activatesOnRelease {
-            (self.dbScene as! GameScene).player!.activateSkill(self.upgradeDetails!)
+            (self.dbScene as! GameScene).player.activateSkill(self.upgradeDetails!)
             
             // Create a cooldown animation on the button
             self.createCooldownButtonForCooldown()
@@ -84,7 +84,7 @@ class GameSkillButton : DBButton {
         
         // If this is a press skill, deactivate it
         if self.upgradeDetails!.activatesOnPress {
-            (self.dbScene as! GameScene).player!.deactivateSkill(self.upgradeDetails!)
+            (self.dbScene as! GameScene).player.deactivateSkill(self.upgradeDetails!)
         }
     }
     
