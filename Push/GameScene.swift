@@ -12,7 +12,7 @@ import AVFoundation
 @objc(GameScene)
 class GameScene : DBScene, SKPhysicsContactDelegate {    
     var worldView: PreventUnpauseSKNode = PreventUnpauseSKNode()
-    var player: Player?
+    var player: Player = Monk()
     
     // Buttons
     var skill1Button: GameSkillButton?
@@ -307,7 +307,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.initializeHUD()
         
         // Add hearts to player for rejuv boost. When we initialized player, if they had any carried over gold hearts it would be set in goldHearts
-        self.addHeartsToPlayer(self.player!.goldHearts)
+        self.addHeartsToPlayer(self.player.goldHearts)
         
         // Set the boundaries for player and background interaction
         horizontalPlayerLimitRight = self.frame.size.width / ScaleBuddy.sharedInstance.playerHorizontalRight
@@ -589,7 +589,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         if hearts > 0 {
             // Need to add the hearts to the player. Need to update player and update UX and update GameData.sharedGameData.getSelectedCharacterData().lastHeartBoost
-            self.player!.updateMaxHearts(hearts)
+            self.player.updateMaxHearts(hearts)
             self.addHeartsToHud(hearts)
         }
     }
@@ -602,7 +602,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     func addHeartsToHud(_ hearts: Int) {
         // However many, create that many more heart buttons
         let currentHearts = self.healthNodes.count
-        let maxHealth = Int(self.player!.maxHealth)
+        let maxHealth = Int(self.player.maxHealth)
         
         //for var i = currentHearts + 1; i <= maxHealth; i += 1 {
         for i in currentHearts + 1...maxHealth {
@@ -677,14 +677,14 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // self.lastSpawnTimeInterval += timeSinceLast
         
         // Update the player
-        self.player!.update(timeSinceLast)
+        self.player.update(timeSinceLast)
         
         // Update the buttons
-        self.skill1Button!.update(self.player!, timeSinceLast: timeSinceLast)
-        self.skill2Button!.update(self.player!, timeSinceLast: timeSinceLast)
-        self.skill3Button!.update(self.player!, timeSinceLast: timeSinceLast)
-        self.skill4Button!.update(self.player!, timeSinceLast: timeSinceLast)
-        self.skill5Button!.update(self.player!, timeSinceLast: timeSinceLast)
+        self.skill1Button!.update(self.player, timeSinceLast: timeSinceLast)
+        self.skill2Button!.update(self.player, timeSinceLast: timeSinceLast)
+        self.skill3Button!.update(self.player, timeSinceLast: timeSinceLast)
+        self.skill4Button!.update(self.player, timeSinceLast: timeSinceLast)
+        self.skill5Button!.update(self.player, timeSinceLast: timeSinceLast)
         
         let updatePosition = (self.frame.size.width - horizontalPlayerLimitRight) + (100 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         let projectileDestroyPosition = (self.frame.size.width - horizontalPlayerLimitRight) + (20 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
@@ -694,7 +694,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             if envObject.type == EnvironmentObjectType.Enemy ||
                 envObject.type == EnvironmentObjectType.Obstacle ||
                 envObject.type == EnvironmentObjectType.Projectile {
-                if envObject.position.x - self.player!.position.x < updatePosition {
+                if envObject.position.x - self.player.position.x < updatePosition {
                     //self.addEnvironmentObject(environmentObject: envObject)
                     envObject.physicsBody!.isDynamic = true
                     envObject.runAnimation()
@@ -709,8 +709,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Iterate through player projectiles and remove them if off screen
         for projectile in self.worldViewPlayerProjectiles {
             if projectile.type == EnvironmentObjectType.PlayerProjectile {
-                if abs(projectile.position.x - self.player!.position.x) > projectileDestroyPosition {
-                    //if projectile.position.x - self.player!.position.x > self.frame.size.width {
+                if abs(projectile.position.x - self.player.position.x) > projectileDestroyPosition {
+                    //if projectile.position.x - self.player.position.x > self.frame.size.width {
                         // This is off screen remove from parent
                         projectile.removeAllActions()
                         projectile.executeDeath()
@@ -730,9 +730,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                     
                     // Remove from parent
                     self.removeEnvironmentObject(environmentObject: envObject)
-                } else if envObject.position.x - self.player!.position.x < updatePosition {
+                } else if envObject.position.x - self.player.position.x < updatePosition {
                     // Update the enemy
-                    envObject.update(timeSinceLast, withPlayer: self.player!)
+                    envObject.update(timeSinceLast, withPlayer: self.player)
                     
                     // If the object is now dead, remove it. If it was an enemy, add to the collectedLevelEnemyHealth
                     if !envObject.isAlive && !envObject.heartsCollected && envObject.hasHeartsToCollect {
@@ -744,7 +744,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                         
                         // Mark so we don't double count it
                         envObject.heartsCollected = true
-                    } else if envObject.position.x + 600 < self.player!.position.x || envObject.readyToBeDestroyed { // Is off the screen enough so that if the player gets knocked back it is gone
+                    } else if envObject.position.x + 600 < self.player.position.x || envObject.readyToBeDestroyed { // Is off the screen enough so that if the player gets knocked back it is gone
                         // Remove from parent
                         self.removeEnvironmentObject(environmentObject: envObject)
                     }
@@ -765,7 +765,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Only update if not paused
         if !self.worldView.isPaused {
             // Update player after physics
-            self.player!.updateAfterPhysics()
+            self.player.updateAfterPhysics()
             
             // Iterate through all player projectiles
             for projectile in self.worldViewPlayerProjectiles {
@@ -781,7 +781,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 if (envObject.type == EnvironmentObjectType.Enemy ||
                     envObject.type == EnvironmentObjectType.Obstacle ||
                     envObject.type == EnvironmentObjectType.Projectile) && envObject.physicsBody!.isDynamic {
-                    if envObject.position.x - self.player!.position.x < self.frame.size.width * 1.1 {
+                    if envObject.position.x - self.player.position.x < self.frame.size.width * 1.1 {
                         // Update the enemy
                         envObject.updateAfterPhysics()
                     }
@@ -790,14 +790,14 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             
             // Calculate player vs background movement
             // Player has moved beyond one of the left or right limits
-            if (self.player!.previousPosition.x >= (-self.worldView.position.x + horizontalPlayerLimitRight) && self.player!.position.x > self.player!.previousPosition.x) || (self.player!.previousPosition.x <= (-self.worldView.position.x + horizontalPlayerLimitLeft) && self.player!.position.x < self.player!.previousPosition.x) {
+            if (self.player.previousPosition.x >= (-self.worldView.position.x + horizontalPlayerLimitRight) && self.player.position.x > self.player.previousPosition.x) || (self.player.previousPosition.x <= (-self.worldView.position.x + horizontalPlayerLimitLeft) && self.player.position.x < self.player.previousPosition.x) {
                 
                 // Move the world
-                self.moveWorld(CGPoint(x: self.player!.position.x - self.player!.previousPosition.x, y: 0.0))
+                self.moveWorld(CGPoint(x: self.player.position.x - self.player.previousPosition.x, y: 0.0))
                 
                 // We need to update the background in case one of the 2 tiles is now off the screen
-                self.moveBackground(CGPoint(x: (self.player!.position.x - self.player!.previousPosition.x) * 0.8, y: 0), backgroundArray: worldViewBackgrounds)
-                self.moveBackground(CGPoint(x: (self.player!.position.x - self.player!.previousPosition.x) * 0.0005, y: 0), backgroundArray: worldViewForegrounds)
+                self.moveBackground(CGPoint(x: (self.player.position.x - self.player.previousPosition.x) * 0.8, y: 0), backgroundArray: worldViewBackgrounds)
+                self.moveBackground(CGPoint(x: (self.player.position.x - self.player.previousPosition.x) * 0.0005, y: 0), backgroundArray: worldViewForegrounds)
             }
             
             // Move the ground along with the world view so that it is always there for objects to stand on
@@ -820,22 +820,22 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     override func didFinishUpdate() {
         // Only update if not paused
         if !self.worldView.isPaused {
-            self.player!.updateAfterConstraints()
+            self.player.updateAfterConstraints()
         }
     }
     
     func checkLevelOver() {
         // End the scene.
-        if self.player!.position.x > self.totalLevelDistance || self.player!.health <= 0 { // Player died
+        if self.player.position.x > self.totalLevelDistance || self.player.health <= 0 { // Player died
             self.levelEnded = true
         }
     }
     
     func beginLevelEnding() {
         // End the scene.
-        if self.player!.position.x > self.totalLevelDistance { // Victory
+        if self.player.position.x > self.totalLevelDistance { // Victory
             // Have the player victory animation start
-            self.player!.completeLevel()
+            self.player.completeLevel()
             
             SoundHelper.sharedInstance.playSound(self, sound: SoundType.Victory)
             
@@ -843,13 +843,13 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.tearDownEnvObjects()
             self.endLevel(self.totalLevelDistance)
         }
-        if self.player!.health <= 0 { // Player died
+        if self.player.health <= 0 { // Player died
             if self.rejuvAllowed {
                 // TODO REJUV: If reivivng -  5. set rejuvallowed to false 6. stop the animation/hide dialog (actually do this when it is purchased)
                 // REJUV purchase - can we make it purchase the heart boost automatically if the player goes and buys gems (same with other places in game when player gets purchase prompt?) - or instead, need it to stick around but have dismiss dialog, or just have it last 5 seconds or something a little longer
                 
                 // REJUV: Store position of player
-                self.rejuvPosition = CGPoint(x: self.player!.position.x, y: self.player!.defaultPositionY)
+                self.rejuvPosition = CGPoint(x: self.player.position.x, y: self.player.defaultPositionY)
                 self.rejuvDialog!.run(self.rejuvHeartDialogAction, withKey: "rejuvDialog")
                 self.rejuvAllowed = false
                 self.promptingForRejuv = true
@@ -861,7 +861,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 
                 // TODO eval - let's see if we stop memory leaks
                 self.tearDownEnvObjects()
-                self.endLevel(self.player!.position.x)
+                self.endLevel(self.player.position.x)
             }
         }
     }
@@ -970,7 +970,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.rejuvDialog!.isHidden = true
         
         // Reset the player
-        self.player!.rejuvPlayer(position: self.rejuvPosition, numberOfHearts: numberOfHearts)
+        self.player.rejuvPlayer(position: self.rejuvPosition, numberOfHearts: numberOfHearts)
     }
     
     func endLevel(_ distance: CGFloat) {
@@ -996,7 +996,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     func updateLevelData(_ distance: CGFloat) {
         // Update and save data
-        let score = GameData.sharedGameData.getSelectedCharacterData().levelProgress[self.currentLevel]!.updateLevelData(self.collectedLevelEnemyHealth, distanceTraveled: distance, heartsRemaining: self.player!.health, worldNumber: self.worldNumber, levelNumber: self.currentLevel)
+        let score = GameData.sharedGameData.getSelectedCharacterData().levelProgress[self.currentLevel]!.updateLevelData(self.collectedLevelEnemyHealth, distanceTraveled: distance, heartsRemaining: self.player.health, worldNumber: self.worldNumber, levelNumber: self.currentLevel)
         
         // Update all the score info
         GameData.sharedGameData.getSelectedCharacterData().updateScores(score, worldNumber: self.worldNumber, levelNumber: self.currentLevel)
@@ -1005,7 +1005,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.calculateScores(score)
         
         // Store gold heart count
-        GameData.sharedGameData.getSelectedCharacterData().goldHearts = self.player!.goldHearts
+        GameData.sharedGameData.getSelectedCharacterData().goldHearts = self.player.goldHearts
         
         // Update times played for game
         GameData.sharedGameData.promptRateMeCountdown -= 1
@@ -1208,15 +1208,15 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         else if (firstBody.categoryBitMask & GameScene.groundCategory) != 0 && ((secondBody.categoryBitMask & GameScene.playerCategory) != 0 || (secondBody.categoryBitMask & GameScene.transparentPlayerCategory) != 0) {
             
             // If the player was jumping, stop the jump // TODO integrate with new skill system
-            if self.player!.isJumping {
-                self.player!.isStoppingJump = true
+            if self.player.isJumping {
+                self.player.isStoppingJump = true
             }
             
             // Player is back on the ground
-            self.player!.isOnGround = true
+            self.player.isOnGround = true
             
             // Update skills now that we're back on ground
-            self.player!.updateSkillsBasedOnPlayerPosition()
+            self.player.updateSkillsBasedOnPlayerPosition()
         }
         
         // Ground and Environment Object collision
@@ -1328,10 +1328,10 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     func updateHUD() {
         // HP
         var count = 0
-        let nonGoldHearts = self.player!.health - self.player!.goldHearts
+        let nonGoldHearts = self.player.health - self.player.goldHearts
         for healthNode in self.healthNodes {
             // REJUV when we add the hearts after rejuv we also need to make them gold
-            if self.player!.health <= count {
+            if self.player.health <= count {
                 healthNode.pressButton()
             } else {
                 if count < nonGoldHearts {
@@ -1345,12 +1345,12 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
         
         // Progress
-        if self.player!.isAlive {
+        if self.player.isAlive {
             // Dont want the bar to go backwards
             var playerPositionX: CGFloat = 0.0
             
-            if self.player!.position.x > 0 {
-                playerPositionX = CGFloat(Double(self.player!.position.x))
+            if self.player.position.x > 0 {
+                playerPositionX = CGFloat(Double(self.player.position.x))
             }
             activeProgressBar.size = CGSize(width: playerPositionX / self.totalLevelDistance * (self.frame.size.width / self.progressBarAdjuster), height: self.frame.size.height / 24.0)
             
@@ -1425,9 +1425,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func tearDownPlayer() {
-        self.player!.clearOutActions()
-        self.player!.removeAllActions()
-        self.player!.removeFromParent()
+        self.player.clearOutActions()
+        self.player.removeAllActions()
+        self.player.removeFromParent()
     }
     
     func tearDownEnvObjects() {
@@ -1473,8 +1473,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         pauseButtonAdjustment = self.pauseButton!.size.width + buffer / 1.5
         
         // ****** HEALTH NODES ******
-        //for var i = 1; i <= Int(self.player!.maxHealth); i += 1 {
-        for i in 1...Int(self.player!.maxHealth) {
+        //for var i = 1; i <= Int(self.player.maxHealth); i += 1 {
+        for i in 1...Int(self.player.maxHealth) {
             let healthNode = PlayerHeartButton(scene: self)
             healthNode.position = CGPoint(x: healthNode.size.width * CGFloat(i) + (4.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false) * CGFloat(i)) - (healthNode.size.width / 2.0) + 4 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), y: yPosition)
             self.addChild(healthNode)
@@ -1489,7 +1489,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.addChild(progressBar)
         
         // Create player's PROGRESS bar
-        activeProgressBar = SKSpriteNode(color: UIColor(red: 108 / 255.0, green: 190 / 255.0, blue: 69 / 255.0, alpha: 1.0), size: CGSize(width: CGFloat(self.player!.health / (self.player!.maxHealth)) * (self.frame.size.width / self.progressBarAdjuster), height: self.frame.size.height / 24.0))
+        activeProgressBar = SKSpriteNode(color: UIColor(red: 108 / 255.0, green: 190 / 255.0, blue: 69 / 255.0, alpha: 1.0), size: CGSize(width: CGFloat(self.player.health / (self.player.maxHealth)) * (self.frame.size.width / self.progressBarAdjuster), height: self.frame.size.height / 24.0))
         
         activeProgressBar.position = CGPoint(x: self.progressBar.position.x  - self.progressBar.size.width / 2 + self.activeProgressBar.size.width / 2, y: yPosition)
         self.addChild(activeProgressBar)
@@ -1538,7 +1538,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     // Create all the buttons
     func initializeControls() {
         // skill 1 button
-        self.skill1Button = GameSkillButton(scene: self, upgrade: self.player!.skill1Details)
+        self.skill1Button = GameSkillButton(scene: self, upgrade: self.player.skill1Details)
         self.skill1Button!.zPosition = 7
         self.addChild(self.skill1Button!)
         // For now skill1 will always be hidden and activated by screen press
@@ -1553,46 +1553,46 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         let secondRightMost = CGPoint(x: secondRightMostXPosition, y: secondRightMostYPosition)
         
         // skill 2 button
-        self.skill2Button = GameSkillButton(scene: self, upgrade: self.player!.skill2Details)
+        self.skill2Button = GameSkillButton(scene: self, upgrade: self.player.skill2Details)
         self.skill2Button!.position = rightMost
         self.skill2Button!.zPosition = 7
         self.addChild(self.skill2Button!)
         
         // Hide the button if it isn't unlocked
-        if !GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(self.player!.skill2Details.upgrade) {
+        if !GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(self.player.skill2Details.upgrade) {
             self.skill2Button?.isHidden = true
         }
         
         // Skill 3 button
-        self.skill3Button = GameSkillButton(scene: self, upgrade: self.player!.skill3Details)
+        self.skill3Button = GameSkillButton(scene: self, upgrade: self.player.skill3Details)
         self.skill3Button!.position = secondRightMost
         self.skill3Button!.zPosition = 7
         self.addChild(self.skill3Button!)
         
         // Hide the button if it isn't unlocked
-        if !GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(self.player!.skill3Details.upgrade) {
+        if !GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(self.player.skill3Details.upgrade) {
             self.skill3Button?.isHidden = true
         }
         
         // Skill 4 button
-        self.skill4Button = GameSkillButton(scene: self, upgrade: self.player!.skill4Details)
+        self.skill4Button = GameSkillButton(scene: self, upgrade: self.player.skill4Details)
         self.skill4Button!.position = leftMost
         self.skill4Button!.zPosition = 7
         self.addChild(self.skill4Button!)
         
         // Hide the button if it isn't unlocked
-        if !GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(self.player!.skill4Details.upgrade) {
+        if !GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(self.player.skill4Details.upgrade) {
             self.skill4Button?.isHidden = true
         }
         
         // Skill 5 button
-        self.skill5Button = GameSkillButton(scene: self, upgrade: self.player!.skill5Details)
+        self.skill5Button = GameSkillButton(scene: self, upgrade: self.player.skill5Details)
         self.skill5Button!.position = secondLeftMost
         self.skill5Button!.zPosition = 7
         self.addChild(self.skill5Button!)
         
         // Hide the button if it isn't unlocked
-        if !GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(self.player!.skill5Details.upgrade) {
+        if !GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(self.player.skill5Details.upgrade) {
             self.skill5Button?.isHidden = true
         }
     }
@@ -1825,18 +1825,18 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     func initializePlayer(_ size: CGSize) {
         
-        //NSLog("ground pos \(self.ground.position.y) ground size \(self.ground.size.height) player height \(self.player!.size.height)")
+        //NSLog("ground pos \(self.ground.position.y) ground size \(self.ground.size.height) player height \(self.player.size.height)")
         
         // Set the position of the player right above the ground // TODO move into player class
-        self.player!.defaultPositionY = adjustedGroundPositionY + self.player!.size.height / 2
-        //NSLog("\(self.player!.defaultPositionY)")
-        self.player!.position = CGPoint(x: self.player!.size.width / 2, y: self.player!.defaultPositionY)
-        self.player!.setPlayerAttachmentPositions(adjustedGroundPositionY + self.player!.size.height / 2, position: CGPoint(x: self.player!.size.width / 2, y: self.player!.defaultPositionY))
+        self.player.defaultPositionY = adjustedGroundPositionY + self.player.size.height / 2
+        //NSLog("\(self.player.defaultPositionY)")
+        self.player.position = CGPoint(x: self.player.size.width / 2, y: self.player.defaultPositionY)
+        self.player.setPlayerAttachmentPositions(adjustedGroundPositionY + self.player.size.height / 2, position: CGPoint(x: self.player.size.width / 2, y: self.player.defaultPositionY))
         
-        self.player!.zPosition = 9
+        self.player.zPosition = 9
         
         // Add the player to the scene
-        self.worldView.addChild(self.player!)
+        self.worldView.addChild(self.player)
     }
     
     func initializeTutorial(_ levelSetup: NSDictionary) {
@@ -1954,7 +1954,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         if storyArray != nil {
             for storyDictionary in storyArray! {
                 // Get the version information
-                let key = "story_\(self.currentLevel)_\(count)_\(self.player!.name!)"
+                let key = "story_\(self.currentLevel)_\(count)_\(self.player.name!)"
                 
                 let version = storyDictionary["Version"] as! Double
                 
@@ -2147,51 +2147,51 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 // Case statement of challenge types to test if the challenge was met
                 switch challenge.challengeType {
                 case .FullHealth:
-                    if (self.player!.health >= self.player!.maxHealth) {
+                    if (self.player.health >= self.player.maxHealth) {
                         self.completeChallenge(challenge)
                     }
                 case .OneHeartLeft:
-                    if (self.player!.health == 1) {
+                    if (self.player.health == 1) {
                         self.completeChallenge(challenge)
                     }
                 case .NoHeartsCollected:
-                    if (self.player!.health > 0 && self.collectedLevelEnemyHealth == 0) {
+                    if (self.player.health > 0 && self.collectedLevelEnemyHealth == 0) {
                         self.completeChallenge(challenge)
                     }
                 case .OneHundredPercent:
-                    if (self.player!.health > 0 && self.collectedLevelEnemyHealth == self.totalLevelEnemyHealth) {
+                    if (self.player.health > 0 && self.collectedLevelEnemyHealth == self.totalLevelEnemyHealth) {
                         self.completeChallenge(challenge)
                     }
                 case .OhSoClose:
-                    if (self.player!.health == 0 && self.collectedLevelEnemyHealth == self.totalLevelEnemyHealth) {
+                    if (self.player.health == 0 && self.collectedLevelEnemyHealth == self.totalLevelEnemyHealth) {
                         self.completeChallenge(challenge)
                     }
                 case .DieByEnemies:
-                    if self.player!.health == 0 && self.player!.challengeHurtByEnemy && !self.player!.challengeHurtByObstacle && !self.player!.challengeHurtByProjectile {
+                    if self.player.health == 0 && self.player.challengeHurtByEnemy && !self.player.challengeHurtByObstacle && !self.player.challengeHurtByProjectile {
                         self.completeChallenge(challenge)
                     }
                 case .DieByObstacles:
-                    if self.player!.health == 0 && !self.player!.challengeHurtByEnemy && self.player!.challengeHurtByObstacle && !self.player!.challengeHurtByProjectile {
+                    if self.player.health == 0 && !self.player.challengeHurtByEnemy && self.player.challengeHurtByObstacle && !self.player.challengeHurtByProjectile {
                         self.completeChallenge(challenge)
                     }
                 case .DieByProjectiles:
-                    if self.player!.health == 0 && self.player!.challengeKilledByProjectile {
+                    if self.player.health == 0 && self.player.challengeKilledByProjectile {
                         self.completeChallenge(challenge)
                     }
                 case .DontTouchEnemies:
-                    if self.player!.health > 0 && !self.player!.challengeTouchedAnEnemy {
+                    if self.player.health > 0 && !self.player.challengeTouchedAnEnemy {
                         self.completeChallenge(challenge)
                     }
                 case .DontTouchObstacles:
-                    if self.player!.health > 0 && !self.player!.challengeTouchedAnObstacle {
+                    if self.player.health > 0 && !self.player.challengeTouchedAnObstacle {
                         self.completeChallenge(challenge)
                     }
                 case .DontTouchProjectiles:
-                    if self.player!.health > 0 && !self.player!.challengeTouchedAProjectile {
+                    if self.player.health > 0 && !self.player.challengeTouchedAProjectile {
                         self.completeChallenge(challenge)
                     }
                 case .ReachEndOfLevel:
-                    if self.player!.health > 0 {
+                    if self.player.health > 0 {
                         self.completeChallenge(challenge)
                     }
                 case .Score3Stars:
@@ -2207,11 +2207,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                         self.completeChallenge(challenge)
                     }
                 case .DestroyAllObstacles:
-                    if self.player!.health > 0 && self.totalLevelDestroyableObstacles == self.collectedLevelDestroyableObstacles && self.totalLevelDestroyableObstacles > 0 {
+                    if self.player.health > 0 && self.totalLevelDestroyableObstacles == self.collectedLevelDestroyableObstacles && self.totalLevelDestroyableObstacles > 0 {
                         self.completeChallenge(challenge)
                     }
                 case .DontTouchAnything:
-                    if self.player!.health > 0 && !self.player!.challengeTouchedAnEnemy && !self.player!.challengeTouchedAnObstacle && !self.player!.challengeTouchedAProjectile {
+                    if self.player.health > 0 && !self.player.challengeTouchedAnEnemy && !self.player.challengeTouchedAnObstacle && !self.player.challengeTouchedAProjectile {
                         self.completeChallenge(challenge)
                     }
                 }

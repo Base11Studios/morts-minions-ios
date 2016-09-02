@@ -20,6 +20,10 @@ class Monk : Player {
         super.initializeSkills()
     }
     
+    override init() {
+        super.init()
+    }
+    
     init(worldView: SKNode?, gameScene: GameScene) {
         super.init(atlas: GameTextures.sharedInstance.playerMonkAtlas, textureArrayName: "monkwalking", worldView: worldView, gameScene: gameScene)
         self.name = "monk"

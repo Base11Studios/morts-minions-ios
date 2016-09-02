@@ -152,8 +152,8 @@ class Player : SKSpriteNode {
     var projectiles2 = Array<PlayerProjectile>()
     
     // Sound actions
-    var actionSoundSkill1: SKAction?
-    var actionSoundSkill2: SKAction?
+    var actionSoundSkill1: SKAction = SKAction()
+    var actionSoundSkill2: SKAction = SKAction()
     var actionSoundSkill3: SKAction?
     var actionSoundSkill4: SKAction?
     var actionSoundSkill5: SKAction?
@@ -173,6 +173,10 @@ class Player : SKSpriteNode {
     
     // Range
     var rangeInd: SKSpriteNode?
+    
+    init() {
+        super.init(texture: SKTexture(), color: UIColor.clear(), size: CGSize())
+    }
     
     init(atlas: SKTextureAtlas, textureArrayName: String, worldView: SKNode?, gameScene: GameScene) {
         self.worldView = worldView
@@ -1105,7 +1109,7 @@ class Player : SKSpriteNode {
             }
             
             // Need to turn on grace period 
-            self.startGracePeriod(1.0)
+            self.startGracePeriod(1.2)
         }
     }
     
@@ -1971,29 +1975,30 @@ class Player : SKSpriteNode {
     }
     
     func clearOutActions() {
-        fightAction = SKAction()
-        spriteOverlay2Action = SKAction()
-        actionSoundSkill1 = SKAction()
-        actionSoundSkill2 = SKAction()
-        actionSoundSkill3 = SKAction()
-        actionSoundSkill4 = SKAction()
-        actionSoundSkill5 = SKAction()
-        actionSoundHurt = SKAction()
-        actionSoundContact = SKAction()
-        actionSoundCollision = SKAction()
-        actionSoundJumpedOnObject = SKAction()
+        /*
+        self.fightAction = SKAction()
+        self.spriteOverlay2Action = SKAction()
+        self.actionSoundSkill1 = SKAction()
+        self.actionSoundSkill2 = SKAction()
+        self.actionSoundSkill3 = SKAction()
+        self.actionSoundSkill4 = SKAction()
+        self.actionSoundSkill5 = SKAction()
+        self.actionSoundHurt = SKAction()
+        self.actionSoundContact = SKAction()
+        self.actionSoundCollision = SKAction()
+        self.actionSoundJumpedOnObject = SKAction()
         
         // Group actions
         self.actionGroup1 = SKAction()
         self.actionGroup2 = SKAction()
         self.actionGroup3 = SKAction()
-        self.actionGroup4 = SKAction()
+        self.actionGroup4 = SKAction()*/
         
-        redFlash.removeAllActions()
-        blueFlash.removeAllActions()
-        rangeInd?.removeAllActions()
-        spriteOverlay2?.removeAllActions()
-        weapon.removeAllActions()
+        self.redFlash.removeAllActions()
+        self.blueFlash.removeAllActions()
+        self.rangeInd?.removeAllActions()
+        self.spriteOverlay2?.removeAllActions()
+        self.weapon.removeAllActions()
     }
     
     func playActionSound(action: SKAction?) {

@@ -352,10 +352,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     func presentMainMenuScene() {
-        autoreleasepool {
+        //autoreleasepool {
             self.levelSelectionScene = nil
             self.introScene = nil
-        }
+        //}
         
         if self.mainMenuScene == nil {
             self.presentLoadingScreen(ignoreMusic: true)
@@ -389,12 +389,14 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     func presentLevelSelectionScene() {
-        autoreleasepool {
+        //autoreleasepool {
             // self.gameScene = nil - DONT RELEASE THIS IT WILL CRASH BAD_ACCESS
             self.characterSkillScene = nil
             self.levelSelectionScene = nil
             self.mainMenuScene = nil
-        }
+            //self.gameScene = nil
+            self.introScene = nil
+        //}
         
         self.presentLoadingScreen(ignoreMusic: true)
         
@@ -412,6 +414,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         
         // Move to a background thread to do some long running work
         DispatchQueue.global(attributes: .qosUserInitiated).async {
+            
             // Bounce back to the main thread to update the UI
             self.levelSelectionScene = self.createLevelSelectionScene()
             DispatchQueue.main.async {
@@ -422,8 +425,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
                 
                 // Present the scene - pass through regulator
                 self.presentDBScene(skView, scene: self.levelSelectionScene!, ignoreMusic: false)
-                
-                //self.gameScene = nil
             }
         }
     }
@@ -433,13 +434,13 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         
         self.presentLoadingScreen(ignoreMusic: false)
         
-        autoreleasepool {
+        //autoreleasepool {
             self.gameScene = nil
             self.levelSelectionScene = nil
             self.mainMenuScene = nil
             self.introScene = nil
             self.characterSkillScene = nil
-        }
+        //}
         
         /*
          // Preload the texture atlases we need
@@ -598,12 +599,14 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             self.userNeedsToDecideOnCloudData = false
         }
         
-        if scene.impactsMusic() && !ignoreMusic {
-            if scene.hasOwnMusic() && self.backgroundPlayer != nil {
-                self.backgroundPlayer!.stop()
-            } else if !scene.hasOwnMusic() && self.backgroundPlayer != nil && !self.backgroundPlayer!.isPlaying && GameData.sharedGameData.preferenceMusic {
-                self.backgroundPlayer!.currentTime = 0
-                self.backgroundPlayer!.play()
+        if GameData.sharedGameData.preferenceMusic {
+            if scene.impactsMusic() && !ignoreMusic {
+                if scene.hasOwnMusic() && self.backgroundPlayer != nil {
+                    self.backgroundPlayer?.stop()
+                } else if !scene.hasOwnMusic() && self.backgroundPlayer != nil && !self.backgroundPlayer!.isPlaying && GameData.sharedGameData.preferenceMusic {
+                    self.backgroundPlayer?.currentTime = 0
+                    self.backgroundPlayer?.play()
+                }
             }
         }
         
