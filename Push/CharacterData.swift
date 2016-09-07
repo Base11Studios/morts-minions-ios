@@ -13,7 +13,7 @@ class CharacterData : NSObject { // TODO doesnt have to extend this after objc c
     // Store all level progress here
     var levelProgress: [Int : LevelData] = [:]
     var levelsPerWorld: Int = 16
-    var godMode: Bool = false
+    var godMode: Bool = true
     var lastHeartBoost: Int = 0
     var goldHearts: Int = 0
     var isCharacterUnlocked: Bool = false

@@ -17,9 +17,9 @@ class LabelWithShadow : SKNode, LabelWithShadowProtocol {
     var bottomLeftShadow: SKLabelNode?
     var leftTopShadow: SKLabelNode?
     var rightBottomShadow: SKLabelNode?
-    var label: SKLabelNode
-    var shadowXOffset: CGFloat
-    var shadowYOffset: CGFloat
+    var label: SKLabelNode = SKLabelNode()
+    var shadowXOffset: CGFloat = 0
+    var shadowYOffset: CGFloat = 0
     
     func setText(_ text: String) {
         if self.label.text != text {
@@ -92,6 +92,10 @@ class LabelWithShadow : SKNode, LabelWithShadowProtocol {
     
     convenience init(fontNamed: String, darkFont: Bool) {
         self.init(fontNamed: fontNamed, darkFont: darkFont, borderSize: 1 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+    }
+    
+    override init() {
+        super.init()
     }
     
     init(fontNamed fontName: String, darkFont: Bool, borderSize: CGFloat) {

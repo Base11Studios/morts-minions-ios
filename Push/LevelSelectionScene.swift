@@ -104,7 +104,7 @@ class LevelSelectionScene : DBScene {
         // Operation buttons
         self.backButton = LevelSelectBackButton(scene: self)
         //self.startButton = LevelSelectStartButton(scene: self)
-        self.skillsButton = DBSceneSkillsButton(scene: self, sceneType: DBSceneType.levelSelectionScene, size: DBButtonSize.extrasmall)
+        self.skillsButton = DBSceneSkillsButton(scene: self, size: DBButtonSize.extrasmall)
         
         self.backdropBar.position = CGPoint(x: 0, y: self.size.height / 2 - self.nodeBuffer - self.backdropBar.size.height / 2)
         self.backButton!.position = CGPoint(x: -self.size.width/2 + nodeBuffer + self.backButton!.size.width/2, y: self.backdropBar.position.y)

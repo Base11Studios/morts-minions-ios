@@ -21,19 +21,22 @@ class Flamey : Enemy {
         
         // At the end, switch back to walking and update the animation
         let actionJump: SKAction = SKAction.run({
-            self.isFloating = true // Start jumping again
-            self.isJumping = false
-            self.justStartedFloating = true
+            [weak self] in
             
-            // Apply an impulse upward on object to simulate jump
-            self.physicsBody!.applyImpulse(CGVector(dx: 0.0, dy: self.value1))
-            
-            // Update the animations
-            self.updateAnimation()
-            
-            self.playActionSound()
-            
-        })
+            if self != nil {
+                self?.isFloating = true // Start jumping again
+                self?.isJumping = false
+                self?.justStartedFloating = true
+                
+                // Apply an impulse upward on object to simulate jump
+                self?.physicsBody!.applyImpulse(CGVector(dx: 0.0, dy: self!.value1))
+                
+                // Update the animations
+                self?.updateAnimation()
+                
+                self?.playActionSound()
+            }
+            })
         // Set the appropriate fight action
         self.jumpAction = SKAction.sequence([actionLandJump, actionJump])
     }

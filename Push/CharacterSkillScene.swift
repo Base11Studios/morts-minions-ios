@@ -10,6 +10,9 @@ import Foundation
 
 @objc(CharacterSkillScene)
 class CharacterSkillScene : DBScene {
+    // Scene to return to
+    var returnScene: DBScene
+    
     var worldView: SKSpriteNode
 
     // Skill selector
@@ -62,7 +65,9 @@ class CharacterSkillScene : DBScene {
     var justInitialized: Bool = true
     var needsUpdated: Bool = true
     
-    init(size: CGSize) {
+    init(size: CGSize, returnScene: DBScene) {
+        self.returnScene = returnScene
+        
         // Setup buffer size
         self.bufferSize = floor(ScaleBuddy.sharedInstance.getScaleAmount() * 2.0)
         
