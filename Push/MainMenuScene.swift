@@ -152,7 +152,7 @@ class MainMenuScene : DBScene {
         // Setup the buttons
         self.playButton = MainMenuPlayButton(scene: self)
         self.buyButton = MainMenuBuyButton(scene: self, unlockAmount: 0)
-        self.skillsButton = DBSceneSkillsButton(scene: self, sceneType: DBSceneType.mainMenuScene, size: DBButtonSize.small)
+        self.skillsButton = DBSceneSkillsButton(scene: self, size: DBButtonSize.small)
         self.storeButton = MainMenuStoreButton(scene: self)
         self.settingsButton = MainMenuSettingsButton(scene: self)
         self.gameCenterButton = MainMenuGameCenterButton(scene: self)

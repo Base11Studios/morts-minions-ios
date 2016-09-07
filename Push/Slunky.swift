@@ -43,41 +43,49 @@ class Slunky : Enemy {
         // ** Create an action to attack **
         // At the end, create the projectile
         let actionOpenProjectile: SKAction = SKAction.run({
-            let fireball: Fireball = self.projectiles.popLast() as! Fireball
-    
-            fireball.position = CGPoint(x: self.position.x - 15.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), y: self.position.y - 3.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
-            fireball.defaultYPosition = self.position.y - 3.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+            [weak self] in
             
-            // Change the name back to default so it receives updates
-            fireball.resetName()
-            
-            // Unhide it
-            fireball.isHidden = false
-            
-            // Set physics body back
-            fireball.physicsBody!.categoryBitMask = GameScene.projectileCategory
-            
-            self.playActionSound()
-        })
+            if self != nil {
+                let fireball: Fireball = self?.projectiles.popLast() as! Fireball
+                
+                fireball.position = CGPoint(x: self!.position.x - 15.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), y: self!.position.y - 3.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+                fireball.defaultYPosition = self!.position.y - 3.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+                
+                // Change the name back to default so it receives updates
+                fireball.resetName()
+                
+                // Unhide it
+                fireball.isHidden = false
+                
+                // Set physics body back
+                fireball.physicsBody!.categoryBitMask = GameScene.projectileCategory
+                
+                self?.playActionSound()
+            }
+            })
         
         // At the end, switch back to walking and update the animation
         let actionEndAttack: SKAction = SKAction.run({
-            self.isFighting = false
-            self.isWalking = true
-            self.position = CGPoint(x: self.position.x - self.animationAdjuster, y: self.position.y)
+            [weak self] in
             
-            // Start cooldown back over
-            self.attackCooldown = self.maxAttackCooldown
+            if self != nil {
+                self?.isFighting = false
+                self?.isWalking = true
+                self?.position = CGPoint(x: self!.position.x - self!.animationAdjuster, y: self!.position.y)
+                
+                // Start cooldown back over
+                self?.attackCooldown = self!.maxAttackCooldown
+                
+                // Update the animations
+                self?.updateAnimation()
+            }
             
-            // Update the animations
-            self.updateAnimation()
-            
-        })
+            })
         
         // Set the appropriate fight action
         self.fightAction = SKAction.sequence([SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.fireAtlas, texturesNamed: "slunky_throwing", frameStart: 0, frameEnd: 15), timePerFrame: 0.025, resize: true, restore: false), actionOpenProjectile, actionEndAttack]) // TODO this frame speed should be multiplied by the difference of the enemy speed or something
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

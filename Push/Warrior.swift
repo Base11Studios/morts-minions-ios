@@ -18,7 +18,7 @@ class Warrior : Player {
         self.skill5Details = CharacterSkillDetails(upgrade: CharacterUpgrade.FirstAidKit)
         
         super.initializeSkills()
-
+        
         // Create the rocks for stomp
         for _ in 0 ..< Int(self.getSkill(CharacterUpgrade.Stomp)!.secondaryValue * 5) {
             // Create projectile
@@ -59,7 +59,7 @@ class Warrior : Player {
         
         super.initSounds()
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -81,14 +81,18 @@ class Warrior : Player {
         
         // At the end, switch back to walking and update the animation
         let actionEndAttack: SKAction = SKAction.run({
-            self.isShooting = false
+            [weak self] in
             
-            // Start cooldown back over
-            self.attackCooldown = self.maxAttackCooldown
-            
-            // Update the animations
-            //[self updateAnimation]; TODO might need to change back to texture... or different animation
-        })
+            if self != nil {
+                self?.isShooting = false
+                
+                // Start cooldown back over
+                self?.attackCooldown = self!.maxAttackCooldown
+                
+                // Update the animations
+                //[self updateAnimation]; TODO might need to change back to texture... or different animation
+            }
+            })
         self.weaponFrames = SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.playerWarriorAtlas, texturesNamed: "warriorswording", frameStart: 0, frameEnd: 15)
         
         // Set the appropriate fight action

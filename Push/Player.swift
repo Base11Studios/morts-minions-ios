@@ -154,19 +154,19 @@ class Player : SKSpriteNode {
     // Sound actions
     var actionSoundSkill1: SKAction = SKAction()
     var actionSoundSkill2: SKAction = SKAction()
-    var actionSoundSkill3: SKAction?
-    var actionSoundSkill4: SKAction?
-    var actionSoundSkill5: SKAction?
-    var actionSoundHurt: SKAction?
-    var actionSoundContact: SKAction?
-    var actionSoundCollision: SKAction?
-    var actionSoundJumpedOnObject: SKAction?
+    var actionSoundSkill3: SKAction = SKAction()
+    var actionSoundSkill4: SKAction = SKAction()
+    var actionSoundSkill5: SKAction = SKAction()
+    var actionSoundHurt: SKAction = SKAction()
+    var actionSoundContact: SKAction = SKAction()
+    var actionSoundCollision: SKAction = SKAction()
+    var actionSoundJumpedOnObject: SKAction = SKAction()
     
     // Other actions
-    var actionGroup1: SKAction?
-    var actionGroup2: SKAction?
-    var actionGroup3: SKAction?
-    var actionGroup4: SKAction?
+    var actionGroup1: SKAction = SKAction()
+    var actionGroup2: SKAction = SKAction()
+    var actionGroup3: SKAction = SKAction()
+    var actionGroup4: SKAction = SKAction()
     
     // Alphs
     var forcedAlpha: CGFloat = 1.0
@@ -713,8 +713,7 @@ class Player : SKSpriteNode {
         self.removeAction(forKey: "playerWalking")
         
         // Start the new action
-        self.run(SKAction.sequence([self.actionGroup1!]), withKey: "playerDieing")
-        // REJUV TODO SKAction.removeFromParent() - put back in?
+        self.run(SKAction.sequence([self.actionGroup1]), withKey: "playerDieing")
     }
     
     func rejuvPlayer(position: CGPoint, numberOfHearts: Int) {
@@ -765,7 +764,7 @@ class Player : SKSpriteNode {
         self.removeAction(forKey: "playerWalking")
         
         // Start the new action
-        self.run(SKAction.sequence([self.actionGroup2!, SKAction.removeFromParent()]), withKey: "playerWinning")
+        self.run(SKAction.sequence([self.actionGroup2]), withKey: "playerWinning")
     }
     
     func updateWeapon() {
@@ -1124,7 +1123,11 @@ class Player : SKSpriteNode {
         redFlash.alpha = 0.75
         redFlash.run(SKAction.sequence([
             SKAction.fadeOut(withDuration: 0.25), SKAction.run({
-                self.redFlash.alpha = 0.0
+                [weak self] in
+                
+                if self != nil {
+                    self?.redFlash.alpha = 0.0
+                }
             })]))
     }
     
@@ -1132,7 +1135,11 @@ class Player : SKSpriteNode {
         blueFlash.alpha = 0.75
         blueFlash.run(SKAction.sequence([
             SKAction.fadeOut(withDuration: 0.2), SKAction.run({
-                self.blueFlash.alpha = 0.0
+                [weak self] in
+                
+                if self != nil {
+                    self?.blueFlash.alpha = 0.0
+                }
             })]))
     }
     
@@ -1536,7 +1543,7 @@ class Player : SKSpriteNode {
             
             // Group actions to do in parallel
             self.actionGroup3 = SKAction.group([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 - 5 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), duration: 0.25), SKAction.fadeOut(withDuration: 0.25)])
-            rangeInd!.run(SKAction.sequence([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 + 10 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), duration: 0.05), self.actionGroup3!, SKAction.removeFromParent()]))
+            rangeInd!.run(SKAction.sequence([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 + 10 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), duration: 0.05), self.actionGroup3, SKAction.removeFromParent()]))
             
             // If there is a sec value, launch rocks
             if skill.secondaryValue == 1 {
@@ -1918,7 +1925,7 @@ class Player : SKSpriteNode {
                 
                 // Group actions to do in parallel
                 self.actionGroup3 = SKAction.group([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 - 5, duration: 0.25), SKAction.fadeOut(withDuration: 0.25)])
-                rangeInd.run(SKAction.sequence([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 + 10, duration: 0.05), self.actionGroup3!, SKAction.removeFromParent()]))
+                rangeInd.run(SKAction.sequence([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 + 10, duration: 0.05), self.actionGroup3, SKAction.removeFromParent()]))
                 
                 // Iterate through all enemies and deal damage to them if they are touching the ground
                 for enemy in self.gameScene!.worldViewEnvironmentObjects {

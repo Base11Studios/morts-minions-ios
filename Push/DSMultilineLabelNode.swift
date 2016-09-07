@@ -41,6 +41,10 @@ class DSMultilineLabelNode : SKSpriteNode
     private var _paragraphWidth = CGFloat(0)
     weak private var dbScene: DBScene?
     
+    init() {
+        super.init(texture: SKTexture(), color: UIColor(), size: CGSize())
+    }
+    
     init(scene: DBScene)
     {
         super.init(texture: nil, color: UIColor.green(), size: CGSize(width: 0, height: 0))

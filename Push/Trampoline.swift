@@ -15,7 +15,11 @@ class Trampoline : Obstacle {
         
         self.fightingAnimatedFrames = SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.airAtlas, texturesNamed: "trampoline", frameStart: 0, frameEnd: 15)
         self.fightAction = SKAction.sequence([SKAction.animate(with: self.fightingAnimatedFrames, timePerFrame: 0.025, resize: true, restore: false), SKAction.run({
-                self.texture = self.fightingAnimatedFrames[0]
+            [weak self] in
+            
+            if self != nil {
+                self?.texture = self!.fightingAnimatedFrames[0]
+            }
         })])
     }
     

@@ -41,39 +41,46 @@ class Cannon : Obstacle {
         // ** Create an action to attack **
         // At the beginning, create the projectile
         let actionOpenProjectile: SKAction = SKAction.run({
-            let ball: CannonBall = self.projectiles.popLast() as! CannonBall
+            [weak self] in
             
-            ball.position = CGPoint(x: self.position.x, y: self.position.y + self.size.height * 2/3)
-            ball.defaultYPosition = self.position.y
-            ball.physicsBody!.velocity = CGVector(dx: 0,dy: 0)
-            
-            // Change the name back to default so it receives updates
-            ball.resetName()
-            
-            // Unhide it
-            ball.isHidden = false
-            
-            self.attackCooldown = self.value1
-            
-            ball.physicsBody!.applyImpulse(CGVector(dx: 0, dy: CGFloat(self.value2)))
-            
-            // Set physics body back
-            ball.physicsBody!.categoryBitMask = GameScene.projectileCategory
-            
-            self.playActionSound()
+            if self != nil {
+                let ball: CannonBall = self?.projectiles.popLast() as! CannonBall
+                
+                ball.position = CGPoint(x: self!.position.x, y: self!.position.y + self!.size.height * 2/3)
+                ball.defaultYPosition = self!.position.y
+                ball.physicsBody!.velocity = CGVector(dx: 0,dy: 0)
+                
+                // Change the name back to default so it receives updates
+                ball.resetName()
+                
+                // Unhide it
+                ball.isHidden = false
+                
+                self?.attackCooldown = self!.value1
+                
+                ball.physicsBody!.applyImpulse(CGVector(dx: 0, dy: CGFloat(self!.value2)))
+                
+                // Set physics body back
+                ball.physicsBody!.categoryBitMask = GameScene.projectileCategory
+                
+                self?.playActionSound()
+            }
         })
         
         // At the end, switch back to nothing and update the animation
         let actionEndAttack: SKAction = SKAction.run({
-            self.isFighting = false
-            self.isWalking = true
+            [weak self] in
             
-            // Start cooldown back over
-            self.attackCooldown = self.maxAttackCooldown
-            
-            // Update the animations
-            self.updateAnimation()
-            
+            if self != nil {
+                self?.isFighting = false
+                self?.isWalking = true
+                
+                // Start cooldown back over
+                self?.attackCooldown = self!.maxAttackCooldown
+                
+                // Update the animations
+                self?.updateAnimation()
+            }
         })
         
         // Set the appropriate fight action

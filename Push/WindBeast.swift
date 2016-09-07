@@ -21,7 +21,11 @@ class WindBeast : Enemy {
         super.init(scalar: scalar, imageName: "windbeast_000", textureAtlas: GameTextures.sharedInstance.airAtlas, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
         
         self.startWalkingAction = SKAction.run({
-            self.startWalking()
+            [weak self] in
+            
+            if self != nil {
+                self?.startWalking()
+            }
         })
         self.walkingAnimatedFrames = SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.airAtlas, texturesNamed: "windbeast", frameStart: 0, frameEnd: 15)
         self.walkAction = SKAction.sequence([self.startWalkingAction, SKAction.repeatForever(SKAction.animate(with: self.walkingAnimatedFrames, timePerFrame: 0.06, resize: true, restore: false))])
@@ -31,7 +35,11 @@ class WindBeast : Enemy {
         
         self.weaponFrames = SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.airAtlas, texturesNamed: "windbeast_attack", frameStart: 0, frameEnd: 15)
         self.weaponAction = SKAction.sequence([SKAction.animate(with: self.weaponFrames, timePerFrame: 0.08, resize: true, restore: false), SKAction.run({
-            self.weapon.removeAction(forKey: "weapon_fighting")
+            [weak self] in
+            
+            if self != nil {
+                self?.weapon.removeAction(forKey: "weapon_fighting")
+            }
         })])
         self.addChild(self.weapon)
         
@@ -142,7 +150,7 @@ class WindBeast : Enemy {
     
     override func clearOutActions() {
         super.clearOutActions()
-        
+        self.weapon.removeAction(forKey: "weapon_fighting")
         self.weapon.removeAllActions()
     }
 }

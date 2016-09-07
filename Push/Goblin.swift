@@ -44,34 +44,41 @@ class Goblin : Enemy {
         // ** Create an action to attack **
         // At the end, create the projectile
         let actionOpenProjectile: SKAction = SKAction.run({
-            let arrow: Arrow = self.projectiles.popLast() as! Arrow
-    
-            arrow.position = CGPoint(x: self.position.x - 15.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), y: self.position.y - 3.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
-            arrow.defaultYPosition = self.position.y - 3.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+            [weak self] in
             
-            // Change the name back to default so it receives updates
-            arrow.resetName()
-            
-            // Unhide it
-            arrow.isHidden = false
-            
-            // Set physics body back
-            arrow.physicsBody!.categoryBitMask = GameScene.projectileCategory
-            
-            self.playActionSound()
+            if self != nil {
+                let arrow: Arrow = self?.projectiles.popLast() as! Arrow
+        
+                arrow.position = CGPoint(x: self!.position.x - 15.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), y: self!.position.y - 3.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+                arrow.defaultYPosition = self!.position.y - 3.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+                
+                // Change the name back to default so it receives updates
+                arrow.resetName()
+                
+                // Unhide it
+                arrow.isHidden = false
+                
+                // Set physics body back
+                arrow.physicsBody!.categoryBitMask = GameScene.projectileCategory
+                
+                self?.playActionSound()
+            }
         })
         
         // At the end, switch back to walking and update the animation
         let actionEndAttack: SKAction = SKAction.run({
-            self.isFighting = false
-            self.isWalking = true
+            [weak self] in
             
-            // Start cooldown back over
-            self.attackCooldown = self.maxAttackCooldown
-            
-            // Update the animations
-            self.updateAnimation()
-            
+            if self != nil {
+                self?.isFighting = false
+                self?.isWalking = true
+                
+                // Start cooldown back over
+                self?.attackCooldown = (self?.maxAttackCooldown)!
+                
+                // Update the animations
+                self?.updateAnimation()
+            }
         })
         
         // Set the appropriate fight action

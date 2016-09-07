@@ -12,20 +12,21 @@ import AVFoundation
 import LocalAuthentication
 
 class GameViewController: UIViewController, GKGameCenterControllerDelegate {
-    var levelSelectionScene: LevelSelectionScene?
-    var gameScene: GameScene?
-    var introScene: IntroductionScene?
+    //var levelSelectionScene: LevelSelectionScene?
+    //var gameScene: GameScene?
+    //var introScene: IntroductionScene?
     var loadingScene: LoadingScene?
-    var mainMenuScene: MainMenuScene?
+    //var mainMenuScene: MainMenuScene?
+    //var characterSkillScene: CharacterSkillScene?
     
     var characterSkillSceneCharacter: CharacterType?
-    var characterSkillScene: CharacterSkillScene?
+    
     
     var sceneBeforeSkills: DBSceneType?
     
     // Menu music?
-    var backgroundPlayer: AVAudioPlayer?
-    var buttonSoundPlayer: AVAudioPlayer?
+    var backgroundPlayer: AVAudioPlayer = AVAudioPlayer()
+    var buttonSoundPlayer: AVAudioPlayer = AVAudioPlayer()
     
     var isReloading: Bool = false
     
@@ -93,9 +94,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             ScaleBuddy.sharedInstance.deviceSize = DeviceSizes.originaliPad
         }
         
-        // Present first scene
-        self.presentIntroductionScene()
-        
         // Try to auth user
         GameKitHelper.sharedInstance.authenticateLocalPlayer(false)
         
@@ -111,6 +109,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         // Setup sound props
         self.setSessionPlayerPassive()
         
+        // Present first scene
+        self.presentIntroductionScene()
+        
         // Done loading
         isReloading = false
     }
@@ -122,7 +123,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         
         do {
             backgroundPlayer = try AVAudioPlayer(contentsOf: path)
-            backgroundPlayer!.numberOfLoops = -1
+            backgroundPlayer.numberOfLoops = -1
             self.playMusic(GameData.sharedGameData.preferenceMusic)
         } catch {
             // No music :(
@@ -146,7 +147,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         
         do {
             buttonSoundPlayer = try AVAudioPlayer(contentsOf: path)
-            buttonSoundPlayer!.numberOfLoops = 0
+            buttonSoundPlayer.numberOfLoops = 0
         } catch {
             // No music :(
         }
@@ -204,10 +205,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         self.presentLoadingScreen(ignoreMusic: true)
         
         // Now clear all of the scenes impacted by game data
-        self.characterSkillScene = nil
-        self.characterSkillSceneCharacter = nil
-        self.levelSelectionScene = nil
-        self.mainMenuScene = nil
+        //self.characterSkillScene = nil
+        //self.characterSkillSceneCharacter = nil
+        //self.levelSelectionScene = nil
+        //self.mainMenuScene = nil
         
         // Now load the menu screen
         /*
@@ -249,9 +250,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     func presentIntroductionScene() {
-        if self.introScene == nil {
-            self.introScene = self.createIntroductionScene()
-        }
+        let introScene: IntroductionScene = self.createIntroductionScene()
+        
         /*
          if self.characterSkillScene == nil {
          self.characterSkillScene = self.createCharacterSkillScene()
@@ -260,9 +260,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
          if self.levelSelectionScene == nil {
          self.levelSelectionScene = self.createLevelSelectionScene()
          }*/
+        /*
         if self.mainMenuScene == nil {
             self.mainMenuScene = self.createMainMenuScene()
-        }
+        }*/
         
         self.gvcInitialized = true
         
@@ -270,11 +271,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         skView.isMultipleTouchEnabled = true
         
         // Present the scene - pass through regulator
-        self.presentDBScene(skView, scene: self.introScene!, ignoreMusic: false)
+        self.presentDBScene(skView, scene: introScene, ignoreMusic: false)
     }
     
-    func createCharacterSkillScene() -> CharacterSkillScene {
-        let scene = CharacterSkillScene(size: self.getScreenSize())
+    func createCharacterSkillScene(returnScene: DBScene) -> CharacterSkillScene {
+        let scene = CharacterSkillScene(size: self.getScreenSize(), returnScene: returnScene)
         scene.scaleMode = SKSceneScaleMode.aspectFill
         scene.viewController = self
         
@@ -284,11 +285,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         return scene
     }
     
-    func presentCharacterSkillScene(_ sceneType: DBSceneType) {
+    func presentCharacterSkillScene(returnScene: DBScene) {
         self.presentLoadingScreen(ignoreMusic: true)
         
-        if self.characterSkillSceneCharacter == nil || self.characterSkillScene == nil || self.characterSkillSceneCharacter! != GameData.sharedGameData.selectedCharacter {
-            self.characterSkillScene = nil
+        //if self.characterSkillSceneCharacter == nil || self.characterSkillScene == nil || self.characterSkillSceneCharacter! != GameData.sharedGameData.selectedCharacter {
+        //    self.characterSkillScene = nil
             
             /*
              SKTextureAtlas.preloadTextureAtlases(GameTextures.sharedInstance.menuSceneAtlas) { () -> Void in
@@ -299,17 +300,25 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             // Move to a background thread to do some long running work
             DispatchQueue.global(attributes: .qosUserInitiated).async {
                 // Bounce back to the main thread to update the UI
-                self.characterSkillScene = self.createCharacterSkillScene()
+                let characterSkillScene = self.createCharacterSkillScene(returnScene: returnScene)
+                
                 DispatchQueue.main.async {
-                    self.reallyPresentCharacterSkillScene(sceneType)
+                    let skView: SKView = self.view as! SKView
+                    skView.isMultipleTouchEnabled = true
+                    
+                    // Save off the scene we came from
+                    //self.sceneBeforeSkills = sceneType
+                    
+                    // Present the scene - pass through regulator
+                    self.presentDBScene(skView, scene: characterSkillScene, ignoreMusic: false)
                 }
             }
-        } else {
+        //} else {
             // Character is same, don't need to reload scene
-            self.reallyPresentCharacterSkillScene(sceneType)
-        }
+        //    self.reallyPresentCharacterSkillScene(sceneType)
+        //}
     }
-    
+    /*
     func reallyPresentCharacterSkillScene(_ sceneType: DBSceneType) {
         // Get the view
         let skView: SKView = self.view as! SKView
@@ -320,21 +329,21 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         
         // Present the scene - pass through regulator
         self.presentDBScene(skView, scene: self.characterSkillScene!, ignoreMusic: false)
-    }
+    }*/
     
-    func endCharacterSkillScene() {
+    func endCharacterSkillScene(scene: DBScene) {
         // Get the view
         let skView: SKView = self.view as! SKView
         skView.isMultipleTouchEnabled = true
         
         // Present previous scene
-        if (self.sceneBeforeSkills == DBSceneType.gameScene) {
-            self.presentDBScene(skView, scene: self.gameScene!, ignoreMusic: false)
-        } else if (self.sceneBeforeSkills == DBSceneType.mainMenuScene) {
+        //if (self.sceneBeforeSkills == DBSceneType.gameScene) {
+            self.presentDBScene(skView, scene: scene, ignoreMusic: false)
+        /*} else if (self.sceneBeforeSkills == DBSceneType.mainMenuScene) {
             self.presentDBScene(skView, scene: self.mainMenuScene!, ignoreMusic: false)
         } else if (self.sceneBeforeSkills == DBSceneType.levelSelectionScene) {
             self.presentDBScene(skView, scene: self.levelSelectionScene!, ignoreMusic: false)
-        }
+        }*/
     }
     
     /*
@@ -353,32 +362,32 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     func presentMainMenuScene() {
         //autoreleasepool {
-            self.levelSelectionScene = nil
-            self.introScene = nil
+            //self.levelSelectionScene = nil
+            //self.introScene = nil
         //}
         
-        if self.mainMenuScene == nil {
+        //if self.mainMenuScene == nil {
             self.presentLoadingScreen(ignoreMusic: true)
             
             // Move to a background thread to do some long running work
             DispatchQueue.global(attributes: .qosUserInitiated).async {
-                self.mainMenuScene = self.createMainMenuScene()
+                let mainMenuScene = self.createMainMenuScene()
                 
                 DispatchQueue.main.async {
                     let skView: SKView = self.view as! SKView
                     skView.isMultipleTouchEnabled = true
                     
                     // Present the scene - pass through regulator
-                    self.presentDBScene(skView, scene: self.mainMenuScene!, ignoreMusic: false)
+                    self.presentDBScene(skView, scene: mainMenuScene, ignoreMusic: false)
                 }
             }
-        } else {
+        /*} else {
             let skView: SKView = self.view as! SKView
             skView.isMultipleTouchEnabled = true
             
             // Present the scene - pass through regulator
             self.presentDBScene(skView, scene: self.mainMenuScene!, ignoreMusic: false)
-        }
+        }*/
     }
     
     func createLevelSelectionScene() -> LevelSelectionScene {
@@ -391,11 +400,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     func presentLevelSelectionScene() {
         //autoreleasepool {
             // self.gameScene = nil - DONT RELEASE THIS IT WILL CRASH BAD_ACCESS
-            self.characterSkillScene = nil
-            self.levelSelectionScene = nil
-            self.mainMenuScene = nil
+            //self.characterSkillScene = nil
+            //self.levelSelectionScene = nil
+            //self.mainMenuScene = nil
             //self.gameScene = nil
-            self.introScene = nil
+            //self.introScene = nil
         //}
         
         self.presentLoadingScreen(ignoreMusic: true)
@@ -416,7 +425,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         DispatchQueue.global(attributes: .qosUserInitiated).async {
             
             // Bounce back to the main thread to update the UI
-            self.levelSelectionScene = self.createLevelSelectionScene()
+            let levelSelectionScene = self.createLevelSelectionScene()
             DispatchQueue.main.async {
                 let skView: SKView = self.view as! SKView
                 skView.isMultipleTouchEnabled = true
@@ -424,7 +433,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
                 skView.showsNodeCount = false
                 
                 // Present the scene - pass through regulator
-                self.presentDBScene(skView, scene: self.levelSelectionScene!, ignoreMusic: false)
+                self.presentDBScene(skView, scene: levelSelectionScene, ignoreMusic: false)
             }
         }
     }
@@ -435,11 +444,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         self.presentLoadingScreen(ignoreMusic: false)
         
         //autoreleasepool {
-            self.gameScene = nil
+            /*self.gameScene = nil
             self.levelSelectionScene = nil
             self.mainMenuScene = nil
             self.introScene = nil
-            self.characterSkillScene = nil
+            self.characterSkillScene = nil*/
         //}
         
         /*
@@ -463,9 +472,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         
         // Move to a background thread to do some long running work
         DispatchQueue.global(attributes: .qosUserInitiated).async {
-            self.gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
-            self.gameScene!.scaleMode = SKSceneScaleMode.aspectFill
-            self.gameScene!.viewController = self
+            let gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
+            gameScene.scaleMode = SKSceneScaleMode.aspectFill
+            gameScene.viewController = self
             // Bounce back to the main thread to update the UI
             DispatchQueue.main.async {
                 let skView: SKView = self.view as! SKView
@@ -475,7 +484,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
                 //skView.showsPhysics = true
                 
                 // Present the scene - pass through regulator
-                self.presentDBScene(skView, scene: self.gameScene!, ignoreMusic: false)
+                self.presentDBScene(skView, scene: gameScene, ignoreMusic: false)
             }
         }
     }
@@ -601,11 +610,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         
         if GameData.sharedGameData.preferenceMusic {
             if scene.impactsMusic() && !ignoreMusic {
-                if scene.hasOwnMusic() && self.backgroundPlayer != nil {
-                    self.backgroundPlayer?.stop()
-                } else if !scene.hasOwnMusic() && self.backgroundPlayer != nil && !self.backgroundPlayer!.isPlaying && GameData.sharedGameData.preferenceMusic {
-                    self.backgroundPlayer?.currentTime = 0
-                    self.backgroundPlayer?.play()
+                if scene.hasOwnMusic() && self.backgroundPlayer.isPlaying {
+                    self.backgroundPlayer.stop()
+                } else if !scene.hasOwnMusic() && !self.backgroundPlayer.isPlaying && GameData.sharedGameData.preferenceMusic {
+                    self.backgroundPlayer.currentTime = 0
+                    self.backgroundPlayer.play()
                 }
             }
         }
@@ -614,18 +623,18 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     func playMusic(_ play: Bool) {
-        if play && self.backgroundPlayer != nil && GameData.sharedGameData.preferenceMusic == true && !self.backgroundPlayer!.isPlaying {
-            self.backgroundPlayer!.currentTime = 0
-            self.backgroundPlayer!.play()
-        } else if !play && self.backgroundPlayer != nil && GameData.sharedGameData.preferenceMusic == false && self.backgroundPlayer!.isPlaying {
-            self.backgroundPlayer!.stop()
+        if play && GameData.sharedGameData.preferenceMusic == true && !self.backgroundPlayer.isPlaying {
+            self.backgroundPlayer.currentTime = 0
+            self.backgroundPlayer.play()
+        } else if !play && GameData.sharedGameData.preferenceMusic == false && self.backgroundPlayer.isPlaying {
+            self.backgroundPlayer.stop()
         }
     }
     
     func playButtonSound() {
-        if GameData.sharedGameData.preferenceSoundEffects == true && self.buttonSoundPlayer != nil {
-            self.buttonSoundPlayer!.currentTime = 0
-            self.buttonSoundPlayer!.play()
+        if GameData.sharedGameData.preferenceSoundEffects == true {
+            self.buttonSoundPlayer.currentTime = 0
+            self.buttonSoundPlayer.play()
         }
     }
     

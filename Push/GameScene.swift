@@ -28,8 +28,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     var objectThatHadATouchEventPassedIn: SKSpriteNode? = nil
     
     // Menu & Dialogs
-    var pauseMenu: PauseMenu?
-    var endOfLevelDialog: EndOfLevelDialog?
+    var pauseMenu: PauseMenu = PauseMenu()
+    var endOfLevelDialog: EndOfLevelDialog = EndOfLevelDialog()
     var showPauseMenu = true
     
     var ground: SKSpriteNode = SKSpriteNode()
@@ -908,9 +908,13 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
         
         self.run(SKAction.sequence([self.rejuvHeartDialogDismissAction, SKAction.run({
-            self.displayingEndOfLevel = true
+            [weak self] in
             
-            self.beginLevelEnding()
+            if self != nil {
+                self?.displayingEndOfLevel = true
+            
+                self?.beginLevelEnding()
+            }
         })]), withKey: ACTION_KEY_REJUV_DIALOG)
 
     }
@@ -934,7 +938,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Main combos
         self.rejuvHeartDialogDisplayAction = SKAction.sequence([
             SKAction.run({
-                self.rejuvDialog!.isHidden = false
+                [weak self] in
+                
+                if self != nil {
+                    self?.rejuvDialog!.isHidden = false
+                }
             }),
             SKAction.move(to: CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height / 2), duration: 0.25),
             ])
@@ -942,9 +950,13 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.rejuvHeartDialogDismissAction = SKAction.sequence([
             SKAction.move(to: CGPoint(x: self.frame.size.width / 2, y: 0 - self.rejuvDialog!.calculateAccumulatedFrame().size.height / 2), duration: 0.25),
             SKAction.run({
-                self.rejuvDialog!.isHidden = true
-                self.promptingForRejuv = false
-                self.unpauseGame()
+                [weak self] in
+                
+                if self != nil {
+                    self?.rejuvDialog!.isHidden = true
+                    self?.promptingForRejuv = false
+                    self?.unpauseGame()
+                }
             })
             ])
         
@@ -952,7 +964,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // Other combos
         self.rejuvHeartDialogDismissAndEndLevelAction = SKAction.run({
-            self.dismissRejuvDialogAndEndLevel()
+            [weak self] in
+            
+            if self != nil {
+                self?.dismissRejuvDialogAndEndLevel()
+            }
         })
         
         self.rejuvHeartDialogWaitThenDismissAndEndLevelAction = SKAction.sequence([self.rejuvHeartDialogWaitAction, self.rejuvHeartDialogDismissAndEndLevelAction])
@@ -1026,14 +1042,14 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
         
         // Apply the score (includes challenges)
-        self.endOfLevelDialog!.applyScore(score, completedChallenges: self.completedChallenges, unlockedLevels: levelsUnlocked)
+        self.endOfLevelDialog.applyScore(score, completedChallenges: self.completedChallenges, unlockedLevels: levelsUnlocked)
         
         // Check achievements
         GameKitHelper.sharedInstance.checkAchievements(score)
         self.viewController!.syncAchievements()
         
         // Display it
-        self.endOfLevelDialog!.displayEndOfLevelDialog()
+        self.endOfLevelDialog.displayEndOfLevelDialog()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -1399,17 +1415,22 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     func tearDownScene() {
         // Save this bad boy
-        //self.viewController!.saveData()
+        //self.viewController!.saveData() OLD
         GameData.sharedGameData.save()
-        
+
         // Stop audio
         self.backgroundPlayer?.stop()
         self.backgroundPlayer = nil
         
-        // Remove all actiosn
+        // Remove all actions
+        self.worldView.removeAllActions()
+        //self.worldView.removeAllChildren()
         self.removeAllActions()
+        //self.removeAllChildren()
+        
         self.worldView.removeAllActions()
         self.rejuvDialog!.removeAllActions()
+        
         self.rejuvHeartDialogAction = SKAction()
         self.rejuvHeartDialogWaitAction = SKAction()
         self.rejuvHeartDialogDismissAction = SKAction()
@@ -1418,7 +1439,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.rejuvHeartDialogDismissAndEndLevelAction = SKAction()
         self.rejuvHeartDialogWaitThenDismissAndEndLevelAction = SKAction()
         
-        //self.levelIntroText!.removeAllActions()
+        
+        //self.levelIntroText!.removeAllActions() OLD
         
         self.tearDownEnvObjects()
         self.tearDownPlayer()
@@ -1427,7 +1449,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     func tearDownPlayer() {
         self.player.clearOutActions()
         self.player.removeAllActions()
-        self.player.removeFromParent()
+        //self.player.removeFromParent()
     }
     
     func tearDownEnvObjects() {
@@ -1444,7 +1466,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     func clearEnvironmentObject(environmentObject: EnvironmentObject) {
         environmentObject.clearOutActions()
         environmentObject.removeAllActions()
-        environmentObject.removeFromParent()
+        //environmentObject.removeFromParent()
     }
     
     func removeEnvironmentObject(environmentObject: EnvironmentObject) {
@@ -1602,13 +1624,13 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.pauseMenu = PauseMenu(frameSize: CGSize(width: self.frame.size.width, height: self.frame.size.height), scene: self)
         
         // Put in center of screen
-        self.pauseMenu!.position = CGPoint(x: self.frame.size.width / 2.0, y: self.frame.size.height / 2.0)
-        self.pauseMenu!.zPosition = 14.0
+        self.pauseMenu.position = CGPoint(x: self.frame.size.width / 2.0, y: self.frame.size.height / 2.0)
+        self.pauseMenu.zPosition = 14.0
         
         // Don't want to show the pause menu by default
-        self.pauseMenu!.isHidden = true
+        self.pauseMenu.isHidden = true
         
-        self.addChild(self.pauseMenu!)
+        self.addChild(self.pauseMenu)
     }
     
     func initializeMapObjects() {
@@ -1947,10 +1969,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         let storyArray = levelSetup.value(forKey: "Story") as? Array<[String: AnyObject]>
         
-        // Need to know the prev dialog
-        var previousDialog: StoryDialog?
-        var previousEndDialog: StoryDialog?
-        
         if storyArray != nil {
             for storyDictionary in storyArray! {
                 // Get the version information
@@ -2010,12 +2028,10 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                         if type == "Beginning" {
                             storyDialog = StoryDialog(description: description, frameSize: self.size, dialogNumber: count, scene: self, iconTexture: iconTexture, key: key, version: version, beginning: true)
                             self.storyDialogs!.append(storyDialog)
-                            previousDialog = storyDialog
                             count += 1
                         } else {
                             storyDialog = StoryDialog(description: description, frameSize: self.size, dialogNumber: endCount, scene: self, iconTexture: iconTexture, key: key, version: version, beginning: false)
                             self.storyEndDialogs!.append(storyDialog)
-                            previousEndDialog = storyDialog
                             endCount += 1
                         }
                         
@@ -2071,15 +2087,15 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Completed challenges is an array so changes we make will successfully pass over
         self.endOfLevelDialog = EndOfLevelDialog(frameSize: self.size, scene: self, currentLevel: self.currentLevel, completedChallenges: self.levelChallenges)
         
-        self.endOfLevelDialog!.zPosition = 15
+        self.endOfLevelDialog.zPosition = 15
         
-        self.addChild(self.endOfLevelDialog!)
+        self.addChild(self.endOfLevelDialog)
     }
     
     override func pauseGame() {
         if !self.levelEnded || self.promptingForRejuv {
             if (self.showPauseMenu) {
-                self.pauseMenu!.isHidden = false
+                self.pauseMenu.isHidden = false
             }
             self.physicsWorld.speed = 0.0
             
@@ -2107,7 +2123,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.worldView.isPaused = false
         
         self.physicsWorld.speed = ScaleBuddy.sharedInstance.getGameScaleAmount(false) * 0.9999 //2.0
-        self.pauseMenu!.isHidden = true
+        self.pauseMenu.isHidden = true
         self.skill1Button?.isPaused = false
         self.skill2Button?.isPaused = false
         self.skill3Button?.isPaused = false
@@ -2279,7 +2295,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.levelIntroText!.zPosition = 10
         self.worldView.addChild(self.levelIntroText!)
         self.levelIntroTextAction = SKAction.sequence([SKAction.group([SKAction.fadeIn(withDuration: 0.25), SKAction.scale(by: 2.5, duration: 0.25)]), SKAction.wait(forDuration: 0.75), SKAction.fadeOut(withDuration: 0.25), SKAction.run({
-            self.levelIntroText!.removeFromParent()
+            [weak self] in
+            
+            if self != nil {
+                self?.levelIntroText!.removeFromParent()
+            }
         })])
     }
 }

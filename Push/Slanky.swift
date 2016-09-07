@@ -28,16 +28,19 @@ class Slanky : Enemy {
         
         // At the end, switch back to walking and update the animation
         let actionEndAttack: SKAction = SKAction.run({
-            self.isFighting = false
-            self.isWalking = true
-            self.position = CGPoint(x: self.position.x - self.animationAdjuster, y: self.position.y)
+            [weak self] in
+            
+            if self != nil {
+            self?.isFighting = false
+            self?.isWalking = true
+            self?.position = CGPoint(x: self!.position.x - self!.animationAdjuster, y: self!.position.y)
             
             // Start cooldown back over
-            self.attackCooldown = self.maxAttackCooldown
+            self?.attackCooldown = self!.maxAttackCooldown
             
             // Update the animations
-            self.updateAnimation()
-            
+            self?.updateAnimation()
+            }
         })
         
         // Set the appropriate fight action
@@ -52,15 +55,16 @@ class Slanky : Enemy {
         // Group actions to do in parallel
         self.extraAction = SKAction.sequence([
             SKAction.run({
-                self.rangeIndicator.position = CGPoint(x: self.position.x, y: self.position.y - self.size.height / 2)
-                self.rangeIndicator.alpha = 1.0
+                [weak self] in
+                
+                if self != nil {
+                    self?.rangeIndicator.position = CGPoint(x: self!.position.x, y: self!.position.y - self!.size.height / 2)
+                    self?.rangeIndicator.alpha = 1.0
+                }
             }),
             SKAction.move(by: CGVector(dx: 0, dy: 10 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)), duration: 0.05),
             SKAction.group([SKAction.move(by: CGVector(dx: 0, dy: -15 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)), duration: 0.25),
-                SKAction.fadeOut(withDuration: 0.25)]),
-            SKAction.run({
-                //self.rangeIndicator.alpha = 0
-            })])
+                SKAction.fadeOut(withDuration: 0.25)])])
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -121,7 +125,7 @@ class Slanky : Enemy {
         }
         
         if self.isFighting && self.texture!.isEqual(self.fightingAnimatedFrames[11]) {
-            self.rangeIndicator.run(self.extraAction)
+            self.rangeIndicator.run(self.extraAction, withKey: "extraAction")
             
             // Check for player colls
             if player.isOnGround && abs(self.position.x - player.position.x) < self.lineOfSight {
@@ -135,6 +139,7 @@ class Slanky : Enemy {
     
     override func clearOutActions() {
         super.clearOutActions()
+        self.rangeIndicator.removeAction(forKey: "extraAction")
         self.rangeIndicator.removeAllActions()
     }
 }

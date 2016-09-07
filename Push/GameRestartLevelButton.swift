@@ -10,7 +10,11 @@ import Foundation
 
 @objc(GameRestartButton)
 class GameRestartButton : DBButton {
-    init(scene: GameScene) {
+    init() {
+        super.init(dbScene: nil)
+    }
+    
+    init(scene: GameScene?) {
         super.init(iconName: "button_restart", pressedIconName: nil, buttonSize: DBButtonSize.small, dbScene: scene, atlas: GameTextures.sharedInstance.buttonAtlas)
     }
     

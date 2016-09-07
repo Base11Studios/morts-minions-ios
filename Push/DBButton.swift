@@ -28,13 +28,13 @@ class DBButton : SKSpriteNode {
     var allowAnywhereOnScreen = false
     weak var dbScene: DBScene?
     
-    init(texture: SKTexture?, color: UIColor, size: CGSize, dbScene: DBScene) {
+    init(texture: SKTexture?, color: UIColor, size: CGSize, dbScene: DBScene?) {
         super.init(texture: texture, color: color, size: size)
         self.dbScene = dbScene
     }
     
     // Used for IAP buttons or custom ones
-    init(buttonSize: DBButtonSize, dbScene: DBScene, atlas: SKTextureAtlas) {
+    init(buttonSize: DBButtonSize, dbScene: DBScene?, atlas: SKTextureAtlas) {
         self.dbScene = dbScene
         
         var buttonName: String
@@ -86,7 +86,7 @@ class DBButton : SKSpriteNode {
     }
     
     // Used for text buttons all across app
-    init(iconName: String, pressedIconName: String?, buttonSize: DBButtonSize, dbScene: DBScene, atlas: SKTextureAtlas) {
+    init(iconName: String, pressedIconName: String?, buttonSize: DBButtonSize, dbScene: DBScene?, atlas: SKTextureAtlas) {
         self.dbScene = dbScene
         
         var buttonName: String
@@ -177,7 +177,7 @@ class DBButton : SKSpriteNode {
         }
     }
     
-    init(iconName: String?, labelText: String?, fontSize: CGFloat?, dbScene: DBScene, backgroundAtlas: SKTextureAtlas, iconAtlas: SKTextureAtlas) {
+    init(iconName: String?, labelText: String?, fontSize: CGFloat?, dbScene: DBScene?, backgroundAtlas: SKTextureAtlas, iconAtlas: SKTextureAtlas) {
         self.dbScene = dbScene
         
         // Create a texture from the passed image
@@ -234,7 +234,7 @@ class DBButton : SKSpriteNode {
     }
     
     // Used for world nodes
-    init(buttonName: String, labelText: String?, fontSize: CGFloat?, dbScene: DBScene, atlas: SKTextureAtlas) {
+    init(buttonName: String, labelText: String?, fontSize: CGFloat?, dbScene: DBScene?, atlas: SKTextureAtlas) {
         self.dbScene = dbScene
         
         // Create a texture from the passed image
@@ -280,7 +280,7 @@ class DBButton : SKSpriteNode {
     }
     
     // Used for cooldown
-    init(name: String, pressedName: String, dbScene: DBScene, atlas: SKTextureAtlas) {
+    init(name: String, pressedName: String, dbScene: DBScene?, atlas: SKTextureAtlas) {
         self.dbScene = dbScene
         
         // Create a texture from the passed image
@@ -295,7 +295,7 @@ class DBButton : SKSpriteNode {
     }
     
     // Nothingness
-    init(dbScene: DBScene) {
+    init(dbScene: DBScene?) {
         self.dbScene = dbScene
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize())
     }

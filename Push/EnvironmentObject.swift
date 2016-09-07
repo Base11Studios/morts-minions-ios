@@ -34,7 +34,6 @@ class EnvironmentObject : SKSpriteNode {
     var floatAction = SKAction()
     var jumpAction = SKAction()
     var coilAction = SKAction()
-    var moveAction = SKAction()
     var extraAction: SKAction = SKAction()
     var weaponAction: SKAction = SKAction()
     var startWalkingAction: SKAction = SKAction()
@@ -146,7 +145,11 @@ class EnvironmentObject : SKSpriteNode {
         
         // Group actions to do in parallel
         self.deathAction = SKAction.sequence([SKAction.group([SKAction.rotate(byAngle: 360, duration: 1.0), SKAction.fadeOut(withDuration: 1.0), SKAction.scale(to: 0, duration: 1.0)]), SKAction.run({
-            self.readyToBeDestroyed = true
+            [weak self] in
+            
+            if self != nil {
+                self?.readyToBeDestroyed = true
+            }
         })])
     }
     
@@ -204,16 +207,12 @@ class EnvironmentObject : SKSpriteNode {
     }
     
     func clearOutActions() {
-        deathAction = SKAction()
-        walkAction = SKAction()
-        fightAction = SKAction()
-        floatAction = SKAction()
-        jumpAction = SKAction()
-        coilAction = SKAction()
-        moveAction = SKAction()
-        extraAction = SKAction()
-        weaponAction = SKAction()
-        startWalkingAction = SKAction()
+        self.removeAllNonDeathActions() // walk fight float jump coil
+        self.removeAction(forKey: "enemyDieing") //deathAction
+
+        //self.removeAction(forKey: "extraAction") //extraAction = SKAction() The Slanky remove this himself bc it is on his range indicator
+        //self.removeAction(forKey: "weaponAction") //weaponAction = SKAction() WindBeast removes this himself
+        //self.removeAction(forKey: "startWalkingAction") //startWalkingAction = SKAction() Doesnt run on it's own. Part of walkAction
     }
     
     func update(_ timeSinceLast: CFTimeInterval, withPlayer player: Player) {
@@ -303,7 +302,6 @@ class EnvironmentObject : SKSpriteNode {
         self.removeAction(forKey: "enemyWalking")
         self.removeAction(forKey: "enemyFloating")
         self.removeAction(forKey: "enemyJumping")
-        self.removeAction(forKey: "enemyFloating")
         self.removeAction(forKey: "enemyCoiling")
         self.removeAction(forKey: "enemyFighting")
     }
