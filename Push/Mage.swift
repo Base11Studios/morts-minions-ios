@@ -52,11 +52,11 @@ class Mage : Player {
     
     override func initSounds() {
         if GameData.sharedGameData.preferenceSoundEffects {
-            self.actionSoundSkill1 = SKAction.playSoundFileNamed(SoundType.Air.rawValue, waitForCompletion: false)
-            self.actionSoundSkill2 = SKAction.playSoundFileNamed(SoundType.ProjectileThrow.rawValue, waitForCompletion: false)
-            self.actionSoundSkill3 = SKAction.playSoundFileNamed(SoundType.Explode.rawValue, waitForCompletion: false)
-            self.actionSoundSkill4 = SKAction.playSoundFileNamed(SoundType.Pow.rawValue, waitForCompletion: false)
-            self.actionSoundSkill5 = SKAction.playSoundFileNamed(SoundType.Buzz.rawValue, waitForCompletion: false)
+            self.actionSoundSkill1 = SKAction.playSoundFileNamed(SoundType.Air.rawValue, waitForCompletion: true)
+            self.actionSoundSkill2 = SKAction.playSoundFileNamed(SoundType.ProjectileThrow.rawValue, waitForCompletion: true)
+            self.actionSoundSkill3 = SKAction.playSoundFileNamed(SoundType.Explode.rawValue, waitForCompletion: true)
+            self.actionSoundSkill4 = SKAction.playSoundFileNamed(SoundType.Pow.rawValue, waitForCompletion: true)
+            self.actionSoundSkill5 = SKAction.playSoundFileNamed(SoundType.Buzz.rawValue, waitForCompletion: true)
         }
         
         super.initSounds()

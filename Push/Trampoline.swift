@@ -43,7 +43,7 @@ class Trampoline : Obstacle {
         self.damageToShields = 0
         
         // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Action.rawValue, waitForCompletion: false)
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Action.rawValue, waitForCompletion: true)
     }
     
     override func runAnimation() {

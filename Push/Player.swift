@@ -205,7 +205,7 @@ class Player : SKSpriteNode {
         self.initializeWeapon()
         
         // Initialize sounds
-        self.initSounds()
+        //self.initSounds() We are going to do this on gameScene movement
         
         // Initialize class specific traits
         self.setupTraits()
@@ -248,10 +248,10 @@ class Player : SKSpriteNode {
     
     func initSounds() {
         if GameData.sharedGameData.preferenceSoundEffects {
-            self.actionSoundHurt = SKAction.playSoundFileNamed(SoundType.Hurt.rawValue, waitForCompletion: false)
-            self.actionSoundContact = SKAction.playSoundFileNamed(SoundType.Contact.rawValue, waitForCompletion: false)
-            self.actionSoundCollision = SKAction.playSoundFileNamed(SoundType.Collision.rawValue, waitForCompletion: false)
-            self.actionSoundJumpedOnObject = SKAction.playSoundFileNamed(SoundType.JumpedOnObject.rawValue, waitForCompletion: false)
+            self.actionSoundHurt = SKAction.playSoundFileNamed(SoundType.Hurt.rawValue, waitForCompletion: true)
+            self.actionSoundContact = SKAction.playSoundFileNamed(SoundType.Contact.rawValue, waitForCompletion: true)
+            self.actionSoundCollision = SKAction.playSoundFileNamed(SoundType.Collision.rawValue, waitForCompletion: true)
+            self.actionSoundJumpedOnObject = SKAction.playSoundFileNamed(SoundType.JumpedOnObject.rawValue, waitForCompletion: true)
         }
     }
     
@@ -1981,10 +1981,7 @@ class Player : SKSpriteNode {
         }
     }
     
-    func clearOutActions() {
-        /*
-        self.fightAction = SKAction()
-        self.spriteOverlay2Action = SKAction()
+    func clearOutSound() {
         self.actionSoundSkill1 = SKAction()
         self.actionSoundSkill2 = SKAction()
         self.actionSoundSkill3 = SKAction()
@@ -1994,12 +1991,22 @@ class Player : SKSpriteNode {
         self.actionSoundContact = SKAction()
         self.actionSoundCollision = SKAction()
         self.actionSoundJumpedOnObject = SKAction()
+    }
+    
+    func clearOutActions() {
+        /*
+        self.fightAction = SKAction()
+        self.spriteOverlay2Action = SKAction()
+         */
         
+        
+        /*
         // Group actions
         self.actionGroup1 = SKAction()
         self.actionGroup2 = SKAction()
         self.actionGroup3 = SKAction()
-        self.actionGroup4 = SKAction()*/
+        self.actionGroup4 = SKAction()
+ */
         
         self.redFlash.removeAllActions()
         self.blueFlash.removeAllActions()

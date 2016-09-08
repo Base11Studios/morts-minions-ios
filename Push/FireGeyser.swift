@@ -54,7 +54,7 @@ class FireGeyser : Obstacle {
         
         
         // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Flame.rawValue, waitForCompletion: false)
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Flame.rawValue, waitForCompletion: true)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {

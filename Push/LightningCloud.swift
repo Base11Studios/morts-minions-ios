@@ -61,7 +61,7 @@ class LightningCloud : Obstacle {
         
         
         // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Pew.rawValue, waitForCompletion: false)
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Pew.rawValue, waitForCompletion: true)
     }
     
     override func runAnimation() {

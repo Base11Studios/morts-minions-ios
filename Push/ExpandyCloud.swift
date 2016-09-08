@@ -51,7 +51,7 @@ class ExpandyCloud : Obstacle {
         
         
         // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Action2.rawValue, waitForCompletion: false)
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Action2.rawValue, waitForCompletion: true)
     }
     
     override func update(_ timeSinceLast: CFTimeInterval, withPlayer player: Player) {

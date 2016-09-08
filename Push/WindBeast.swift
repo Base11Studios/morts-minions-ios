@@ -84,7 +84,7 @@ class WindBeast : Enemy {
         self.experience = 1
         
         // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Wind.rawValue, waitForCompletion: false)
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Wind.rawValue, waitForCompletion: true)
     }
     
     override func update(_ timeSinceLast: CFTimeInterval, withPlayer player: Player) {

@@ -56,7 +56,7 @@ class Mole : Enemy {
         self.hasVerticalVelocity = true
         
         // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Surprise.rawValue, waitForCompletion: false)
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Surprise.rawValue, waitForCompletion: true)
     }
     
     override func update(_ timeSinceLast: CFTimeInterval, withPlayer player: Player) {
