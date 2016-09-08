@@ -116,7 +116,7 @@ class Player : SKSpriteNode {
     var damageAvoided: Int = 0
     var spriteOverlay: SKSpriteNode?
     var spriteOverlay2: SKSpriteNode?
-    var spriteOverlay2Action: SKAction?
+    var spriteOverlay2Action: SKAction = SKAction()
     
     // Hovering / Teleport
     var autoHoverStop: Bool = false
@@ -1745,7 +1745,7 @@ class Player : SKSpriteNode {
                     self.startHovering()
                     
                     self.spriteOverlay2!.isHidden = false
-                    self.spriteOverlay2!.run(self.spriteOverlay2Action!, withKey: "hover")
+                    self.spriteOverlay2!.run(self.spriteOverlay2Action, withKey: "hover")
                 }
             }
         case .KiShield:
@@ -2008,8 +2008,8 @@ class Player : SKSpriteNode {
         self.weapon.removeAllActions()
     }
     
-    func playActionSound(action: SKAction?) {
-        if GameData.sharedGameData.preferenceSoundEffects && action != nil {
+    func playActionSound(action: SKAction) {
+        if GameData.sharedGameData.preferenceSoundEffects {
             SoundHelper.sharedInstance.playSoundAction(self, action: action)
         }
     }

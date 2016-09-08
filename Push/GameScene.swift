@@ -143,9 +143,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     var ACTION_KEY_REJUV_DIALOG: String = "rejuvDialog"
     
     // Cool text for level
-    var levelIntroText: LabelWithShadow?
-    var levelIntroTextAction: SKAction?
-    var levelIntroTextShown: Bool? = false
+    //var levelIntroText: LabelWithShadow?
+    //var levelIntroTextAction: SKAction?
+    //var levelIntroTextShown: Bool? = false
     
     // Static ads
     var adsPresented = false
@@ -1424,9 +1424,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // Remove all actions
         self.worldView.removeAllActions()
-        //self.worldView.removeAllChildren()
+        self.worldView.removeAllChildren()
         self.removeAllActions()
-        //self.removeAllChildren()
+        self.removeAllChildren()
         
         self.worldView.removeAllActions()
         self.rejuvDialog!.removeAllActions()
@@ -1449,7 +1449,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     func tearDownPlayer() {
         self.player.clearOutActions()
         self.player.removeAllActions()
-        //self.player.removeFromParent()
+        self.player.removeFromParent()
     }
     
     func tearDownEnvObjects() {
@@ -1466,7 +1466,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     func clearEnvironmentObject(environmentObject: EnvironmentObject) {
         environmentObject.clearOutActions()
         environmentObject.removeAllActions()
-        //environmentObject.removeFromParent()
+        environmentObject.removeFromParent()
     }
     
     func removeEnvironmentObject(environmentObject: EnvironmentObject) {
@@ -2280,7 +2280,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             backgroundPlayer!.play()
         }
     }
-    
+    /*
     func initializeLevelIntroText() {
         self.levelIntroText = LabelWithShadow(fontNamed: "Avenir-Bold", darkFont:false, borderSize: 3)
         
@@ -2301,5 +2301,5 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 self?.levelIntroText!.removeFromParent()
             }
         })])
-    }
+    }*/
 }

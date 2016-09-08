@@ -103,7 +103,7 @@ class Archer : Player {
                     
                     arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 2000.0 * CGFloat(i)))
                     
-                    self?.playActionSound(action: self?.actionSoundSkill2)
+                    self?.playActionSound(action: self!.actionSoundSkill2)
                 }
             }
         })

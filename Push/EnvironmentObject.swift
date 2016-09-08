@@ -131,7 +131,7 @@ class EnvironmentObject : SKSpriteNode {
     var isBeingTargeted: Bool = false
     
     // Sound action
-    var actionSound: SKAction?
+    var actionSound: SKAction = SKAction()
     
     weak var gameScene: GameScene?
     
@@ -389,6 +389,6 @@ class EnvironmentObject : SKSpriteNode {
     }
     
     func playActionSound() {
-        SoundHelper.sharedInstance.playSoundAction(self, action: self.actionSound!)
+        SoundHelper.sharedInstance.playSoundAction(self, action: self.actionSound)
     }
 }
