@@ -16,9 +16,9 @@ class SoundHelper {
         }
     }
     
-    func playSoundAction(_ object: SKNode, action: SKAction?) {
-        if GameData.sharedGameData.preferenceSoundEffects && action != nil {
-            object.run(action!)
+    func playSoundAction(_ object: SKNode, action: SKAction) {
+        if GameData.sharedGameData.preferenceSoundEffects {
+            object.run(action)
         }
     }
 }

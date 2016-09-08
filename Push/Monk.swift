@@ -110,7 +110,7 @@ class Monk : Player {
                 
                 arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 0))
                 
-                self?.playActionSound(action: self?.actionSoundSkill2)
+                self?.playActionSound(action: self!.actionSoundSkill2)
             }
             })
         
