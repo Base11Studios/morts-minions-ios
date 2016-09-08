@@ -207,6 +207,8 @@ class EnvironmentObject : SKSpriteNode {
     }
     
     func clearOutActions() {
+        self.actionSound = SKAction()
+        
         self.removeAllNonDeathActions() // walk fight float jump coil
         self.removeAction(forKey: "enemyDieing") //deathAction
 

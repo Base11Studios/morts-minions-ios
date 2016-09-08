@@ -45,7 +45,7 @@ class FloorLava : Obstacle {
         self.lineOfSight = 300 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         
         // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Burn.rawValue, waitForCompletion: false)
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Burn.rawValue, waitForCompletion: true)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {

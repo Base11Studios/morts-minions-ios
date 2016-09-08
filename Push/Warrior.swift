@@ -50,11 +50,11 @@ class Warrior : Player {
     
     override func initSounds() {
         if GameData.sharedGameData.preferenceSoundEffects {
-            self.actionSoundSkill1 = SKAction.playSoundFileNamed(SoundType.Jump.rawValue, waitForCompletion: false)
-            //self.actionSoundSkill2 = SKAction.playSoundFileNamed(SoundType..rawValue, waitForCompletion: false)
-            self.actionSoundSkill3 = SKAction.playSoundFileNamed(SoundType.Charge.rawValue, waitForCompletion: false)
-            self.actionSoundSkill4 = SKAction.playSoundFileNamed(SoundType.Explode.rawValue, waitForCompletion: false)
-            //self.actionSoundSkill5 = SKAction.playSoundFileNamed(SoundType..rawValue, waitForCompletion: false)
+            self.actionSoundSkill1 = SKAction.playSoundFileNamed(SoundType.Jump.rawValue, waitForCompletion: true)
+            //self.actionSoundSkill2 = SKAction.playSoundFileNamed(SoundType..rawValue, waitForCompletion: true)
+            self.actionSoundSkill3 = SKAction.playSoundFileNamed(SoundType.Charge.rawValue, waitForCompletion: true)
+            self.actionSoundSkill4 = SKAction.playSoundFileNamed(SoundType.Explode.rawValue, waitForCompletion: true)
+            //self.actionSoundSkill5 = SKAction.playSoundFileNamed(SoundType..rawValue, waitForCompletion: true)
         }
         
         super.initSounds()

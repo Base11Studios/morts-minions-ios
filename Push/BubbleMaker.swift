@@ -54,7 +54,7 @@ class BubbleMaker : Obstacle {
         self.damageToShields = 0
         
         // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Bubble.rawValue, waitForCompletion: false)
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Bubble.rawValue, waitForCompletion: true)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {

@@ -54,7 +54,7 @@ class Ember : Enemy {
         self.hasVerticalVelocity = true
         
         // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Lunge.rawValue, waitForCompletion: false)
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Lunge.rawValue, waitForCompletion: true)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {

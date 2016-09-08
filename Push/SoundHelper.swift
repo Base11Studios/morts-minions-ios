@@ -12,7 +12,7 @@ class SoundHelper {
     
     func playSound(_ object: SKNode, sound: SoundType) {
         if GameData.sharedGameData.preferenceSoundEffects {
-            object.run(SKAction.playSoundFileNamed(sound.rawValue, waitForCompletion: false))
+            object.run(SKAction.playSoundFileNamed(sound.rawValue, waitForCompletion: true))
         }
     }
     

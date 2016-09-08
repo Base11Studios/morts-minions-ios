@@ -199,6 +199,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("setStayPaused"), name: "StayPausedNotification", object: nil)
         
+        self.player.initSounds()
+        
         super.didMove(to: view)
     }
     
@@ -208,10 +210,13 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         NotificationCenter.default().removeObserver(self, name: "DontRejuvenatePlayer" as NSNotification.Name, object: nil)
         NotificationCenter.default().removeObserver(self, name: "DismissLoadingDialog" as NSNotification.Name, object: nil)
         NotificationCenter.default().removeObserver(self, name: "ProgressPastInterstitialAd" as NSNotification.Name, object: nil)
+        
         if backgroundPlayer != nil {
             backgroundPlayer!.stop()
             backgroundPlayer = nil
         }
+        
+        self.player.clearOutSound()
         
         super.willMove(from: view)
     }
@@ -895,7 +900,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     func dismissRejuvDialog() {
         //setRejuvDialogDisplayed()
-        self.run(self.rejuvHeartDialogDismissAction, withKey: ACTION_KEY_REJUV_DIALOG)
+        self.rejuvDialog!.run(self.rejuvHeartDialogDismissAction, withKey: ACTION_KEY_REJUV_DIALOG)
         
         if self.playerRejuved == false {
             self.rejuvAllowed = false
@@ -907,7 +912,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.rejuvAllowed = false
         }
         
-        self.run(SKAction.sequence([self.rejuvHeartDialogDismissAction, SKAction.run({
+        self.rejuvDialog!.run(SKAction.sequence([self.rejuvHeartDialogDismissAction, SKAction.run({
             [weak self] in
             
             if self != nil {
@@ -923,7 +928,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Make sure we dismiss the video dialog
         Chartboost.closeImpression()
         
-        self.run(self.rejuvHeartDialogWaitThenDismissAndEndLevelAction, withKey: ACTION_KEY_REJUV_DIALOG)
+        self.rejuvDialog!.run(self.rejuvHeartDialogWaitThenDismissAndEndLevelAction, withKey: ACTION_KEY_REJUV_DIALOG)
     }
     
     func createRejuvDialog() {
@@ -990,6 +995,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func endLevel(_ distance: CGFloat) {
+        self.player.clearOutSound()
+        
         if self.score == nil {
             self.updateLevelData(distance)
         }

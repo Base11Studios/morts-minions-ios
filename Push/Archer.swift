@@ -138,11 +138,11 @@ class Archer : Player {
     
     override func initSounds() {
         if GameData.sharedGameData.preferenceSoundEffects {
-            self.actionSoundSkill1 = SKAction.playSoundFileNamed(SoundType.Jump.rawValue, waitForCompletion: false)
-            self.actionSoundSkill2 = SKAction.playSoundFileNamed(SoundType.ProjectileThrow.rawValue, waitForCompletion: false)
-            //self.actionSoundSkill3 = SKAction.playSoundFileNamed(SoundType..rawValue, waitForCompletion: false)
-            self.actionSoundSkill4 = SKAction.playSoundFileNamed(SoundType.Zoom.rawValue, waitForCompletion: false)
-            self.actionSoundSkill5 = SKAction.playSoundFileNamed(SoundType.Drink.rawValue, waitForCompletion: false)
+            self.actionSoundSkill1 = SKAction.playSoundFileNamed(SoundType.Jump.rawValue, waitForCompletion: true)
+            self.actionSoundSkill2 = SKAction.playSoundFileNamed(SoundType.ProjectileThrow.rawValue, waitForCompletion: true)
+            //self.actionSoundSkill3 = SKAction.playSoundFileNamed(SoundType..rawValue, waitForCompletion: true)
+            self.actionSoundSkill4 = SKAction.playSoundFileNamed(SoundType.Zoom.rawValue, waitForCompletion: true)
+            self.actionSoundSkill5 = SKAction.playSoundFileNamed(SoundType.Drink.rawValue, waitForCompletion: true)
         }
         
         super.initSounds()

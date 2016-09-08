@@ -47,7 +47,7 @@ class Ogre : Enemy {
         
         
         // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Ogre.rawValue, waitForCompletion: false)
+        self.actionSound = SKAction.playSoundFileNamed(SoundType.Ogre.rawValue, waitForCompletion: true)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
