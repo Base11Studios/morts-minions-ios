@@ -298,7 +298,7 @@ class PurchaseMenu: DialogBackground {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func displayPurchaseMenu(_ itemCost: Int, onSuccess: (Bool)->Void, onFailure: ()->Void) {
+    func displayPurchaseMenu(_ itemCost: Int, onSuccess: @escaping (Bool)->Void, onFailure: @escaping ()->Void) {
         self.isHidden = false
         self.itemCost = itemCost
         

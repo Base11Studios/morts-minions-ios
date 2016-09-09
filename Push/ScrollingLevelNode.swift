@@ -165,7 +165,7 @@ class ScrollingLevelNode : SKNode {
             
         } else {
             var timesPlayed: Int
-            if GameData.sharedGameData.getSelectedCharacterData().levelProgress[levelNumber]?.timesLevelPlayed != nil && GameData.sharedGameData.getSelectedCharacterData().levelProgress[levelNumber]?.timesLevelPlayed < 1000000 {
+            if GameData.sharedGameData.getSelectedCharacterData().levelProgress[levelNumber] != nil && GameData.sharedGameData.getSelectedCharacterData().levelProgress[levelNumber]!.timesLevelPlayed < 1000000 {
                 timesPlayed = GameData.sharedGameData.getSelectedCharacterData().levelProgress[levelNumber]!.timesLevelPlayed
             } else {
                 timesPlayed = 0

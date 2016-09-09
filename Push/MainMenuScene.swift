@@ -49,15 +49,15 @@ class MainMenuScene : DBScene {
     
     override func didMove(to view: SKView) {
         // Setup CUSTOM observer for player is not authenticated
-        NotificationCenter.default().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                  selector: #selector(self.playerNotAuthenticated),
-                                                 name: LocalPlayerNotAuthenticated,
+                                                 name: NSNotification.Name(rawValue: LocalPlayerNotAuthenticated),
                                                  object: nil)
         
         // Setup CUSTOM observer for player is authenticated
-        NotificationCenter.default().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                  selector: #selector(self.playerAuthenticated),
-                                                 name: LocalPlayerIsAuthenticated,
+                                                 name: NSNotification.Name(rawValue: LocalPlayerIsAuthenticated),
                                                  object: nil)
         
         // TODO check if enablegamecenter is false... show red trophy?
@@ -87,8 +87,8 @@ class MainMenuScene : DBScene {
     
     override func willMove(from view: SKView) {
         // Setup CUSTOM observer for player is/not authenticated
-        NotificationCenter.default().removeObserver(self, name: NSNotification.Name(rawValue: LocalPlayerNotAuthenticated), object: nil)
-        NotificationCenter.default().removeObserver(self, name: NSNotification.Name(rawValue: LocalPlayerIsAuthenticated), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: LocalPlayerNotAuthenticated), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: LocalPlayerIsAuthenticated), object: nil)
         
         super.willMove(from: view)
     }
@@ -145,7 +145,7 @@ class MainMenuScene : DBScene {
         self.addChild(self.worldView)
         
         // Character info
-        for type in CharacterType.cases() {
+        for type in CharacterType.allCases {
             self.createCharacterInfo(type)
         }
         
@@ -242,7 +242,7 @@ class MainMenuScene : DBScene {
         // Read in level information from file
         // Create the path to the level
         let filePath: String = "main_menu"
-        let path: String = Bundle.main().pathForResource(filePath, ofType: "plist")!
+        let path: String = Bundle.main.path(forResource: filePath, ofType: "plist")!
         
         // Read in the level
         let sceneSetup: NSDictionary = NSDictionary(contentsOfFile: path)!
@@ -488,7 +488,7 @@ class MainMenuScene : DBScene {
     }
     
     func resetCharacterSelection() {
-        for type in CharacterType.cases() {
+        for type in CharacterType.allCases {
             self.charNames[type]!.isHidden = true
             self.charDescriptions[type]!.isHidden = true
         }
@@ -552,7 +552,7 @@ class MainMenuScene : DBScene {
         for level in 1...totalLevels {
             // Create the path to the level
             let filePath: String = "level_\(level)"
-            let path: String = Bundle.main().pathForResource(filePath, ofType: "plist")!
+            let path: String = Bundle.main.pathForResource(filePath, ofType: "plist")!
             
             // Read in the level
             let levelSetup: NSDictionary = NSDictionary(contentsOfFile: path)!

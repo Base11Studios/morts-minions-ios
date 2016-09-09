@@ -138,7 +138,7 @@ class EnvironmentObject : SKSpriteNode {
     init(imageName: String, textureAtlas: SKTextureAtlas, scene: GameScene) {
         let texture = textureAtlas.textureNamed(imageName)
         
-        super.init(texture: texture, color: UIColor.clear(), size: texture.size())
+        super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
         // Get the scene
         self.gameScene = scene

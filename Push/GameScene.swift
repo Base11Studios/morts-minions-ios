@@ -171,30 +171,30 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     override func didMove(to view: SKView) {
-        NotificationCenter.default().addObserver(self, selector: #selector(DBScene.pauseGame), name: "PauseGameScene", object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DBScene.pauseGame), name: NSNotification.Name(rawValue: "PauseGameScene"), object: nil)
         
         // Setup CUSTOM observer for rejuvenating the player
-        NotificationCenter.default().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                          selector: #selector(GameScene.rejuvenatePlayer),
-                                                         name: "RejuvenatePlayer",
+                                                         name: NSNotification.Name(rawValue: "RejuvenatePlayer"),
                                                          object: nil)
         
         // Setup CUSTOM observer for not rejuvenating the player
-        NotificationCenter.default().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                          selector: #selector(GameScene.dismissRejuvDialogWaitAndEndLevel),
-                                                         name: "DontRejuvenatePlayer",
+                                                         name: NSNotification.Name(rawValue: "DontRejuvenatePlayer"),
                                                          object: nil)
         
         // Setup CUSTOM observer for dismissing the loading dialog
-        NotificationCenter.default().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                  selector: #selector(GameScene.stopLoadingOverlay),
-                                                 name: "DismissLoadingDialog",
+                                                 name: NSNotification.Name(rawValue: "DismissLoadingDialog"),
                                                  object: nil)
         
         // Setup CUSTOM observer for dismissing static ad
-        NotificationCenter.default().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                          selector: #selector(GameScene.dismissStaticAds),
-                                                         name: "ProgressPastInterstitialAd",
+                                                         name: NSNotification.Name(rawValue: "ProgressPastInterstitialAd"),
                                                          object: nil)
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("setStayPaused"), name: "StayPausedNotification", object: nil)
@@ -205,11 +205,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     override func willMove(from view: SKView) {
-        NotificationCenter.default().removeObserver(self, name: "PauseGameScene" as NSNotification.Name, object: nil)
-        NotificationCenter.default().removeObserver(self, name: "RejuvenatePlayer" as NSNotification.Name, object: nil)
-        NotificationCenter.default().removeObserver(self, name: "DontRejuvenatePlayer" as NSNotification.Name, object: nil)
-        NotificationCenter.default().removeObserver(self, name: "DismissLoadingDialog" as NSNotification.Name, object: nil)
-        NotificationCenter.default().removeObserver(self, name: "ProgressPastInterstitialAd" as NSNotification.Name, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "PauseGameScene"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "RejuvenatePlayer"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "DontRejuvenatePlayer"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "DismissLoadingDialog"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
         
         if backgroundPlayer != nil {
             backgroundPlayer!.stop()
@@ -234,7 +234,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Read in level information from file
         // Create the path to the level
         let filePath: String = "level_\(level)"
-        let path: String = Bundle.main().pathForResource(filePath, ofType: "plist")!
+        let path: String = Bundle.main.path(forResource: filePath, ofType: "plist")!
         
         // Read in the level
         let levelSetup: NSDictionary = NSDictionary(contentsOfFile: path)!
@@ -1001,7 +1001,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.updateLevelData(distance)
         }
         
-        if storyEndDialogs!.count <= 0 || GameData.sharedGameData.getSelectedCharacterData().levelProgress[self.currentLevel]?.starsEarnedHighScore < 2 {
+        if storyEndDialogs!.count <= 0 || GameData.sharedGameData.getSelectedCharacterData().levelProgress[self.currentLevel]!.starsEarnedHighScore < 2 {
             self.unpauseGame()
             
             // Load the dialog
@@ -1646,14 +1646,14 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // Create the path to the level
         let filePath: String = "level_\(self.currentLevel)"
-        let path: String = Bundle.main().pathForResource(filePath, ofType: "plist")!
+        let path: String = Bundle.main.path(forResource: filePath, ofType: "plist")!
         
         // Read in the level
         let levelSetup: NSDictionary = NSDictionary(contentsOfFile: path)!
         
         // Loop through each entry in the dictionary
         for element in levelSetup {
-            if element.key.hasPrefix("EnvironmentObject") {
+            if (element.key as! String).hasPrefix("EnvironmentObject") {
                 
                 // Create the dictionary referenced by the key
                 let level: NSDictionary = element.value as! NSDictionary
@@ -2262,7 +2262,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     func initializeSound() {
         // For now we are just going to have the sound icons in the game view controller... we will add here later
         if GameData.sharedGameData.preferenceMusic {
-            guard let path = Bundle.main().urlForResource(self.worldName, withExtension: "m4a") else {
+            guard let path = Bundle.main.url(forResource: self.worldName, withExtension: "m4a") else {
                 //NSLog("The path could not be created.")
                 return
             }

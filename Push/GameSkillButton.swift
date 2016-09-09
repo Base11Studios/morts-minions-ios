@@ -135,7 +135,7 @@ class GameSkillButton : DBButton {
         }
         
         // We need to release the button if they ran out of charge counts
-        if self.upgradeDetails?.hasChargeCounter == true && self.upgradeDetails?.chargeCount <= 0 {
+        if self.upgradeDetails!.hasChargeCounter == true && self.upgradeDetails!.chargeCount <= 0 {
             // Stop the button from being pressed
             self.releaseButton()
             

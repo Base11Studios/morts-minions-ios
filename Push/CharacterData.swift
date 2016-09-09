@@ -13,7 +13,7 @@ class CharacterData : NSObject { // TODO doesnt have to extend this after objc c
     // Store all level progress here
     var levelProgress: [Int : LevelData] = [:]
     var levelsPerWorld: Int = 16
-    var godMode: Bool = true
+    var godMode: Bool = false
     var lastHeartBoost: Int = 0
     var goldHearts: Int = 0
     var isCharacterUnlocked: Bool = false
@@ -240,7 +240,7 @@ class CharacterData : NSObject { // TODO doesnt have to extend this after objc c
             // If we're looking at a level > total levels, this is the credits menu. need to have earned 2 stars on this level
             if level > self.totalLevels {
                 // Check if the current level (level - 1) has 2 star earned.
-                if self.levelProgress[level - 1]?.starsEarnedHighScore > 1 {
+                if self.levelProgress[level - 1]!.starsEarnedHighScore > 1 {
                     return false
                 } else {
                     return true
@@ -259,7 +259,7 @@ class CharacterData : NSObject { // TODO doesnt have to extend this after objc c
     
     func beatLevelBeforeToUnlock(_ level: Int) -> Bool {
         // Need 1 if any normal level, need 2 if it is end of level
-        return level == 1 || (self.levelProgress[level-1] != nil && self.levelProgress[level-1]?.starsEarnedHighScore > 0 && level % self.levelsPerWorld != 1) || (self.levelProgress[level-1] != nil && self.levelProgress[level-1]?.starsEarnedHighScore > 1 && level % self.levelsPerWorld == 1)
+        return level == 1 || (self.levelProgress[level-1] != nil && self.levelProgress[level-1]!.starsEarnedHighScore > 0 && level % self.levelsPerWorld != 1) || (self.levelProgress[level-1] != nil && self.levelProgress[level-1]!.starsEarnedHighScore > 1 && level % self.levelsPerWorld == 1)
     }
     
     func isWorldLocked(_ level: Int) -> Bool {
@@ -440,7 +440,7 @@ class CharacterData : NSObject { // TODO doesnt have to extend this after objc c
         var notMet: Bool = false
         
         for i in calcLevelNumber...calcLevelNumber + 15 {
-            if levelProgress[i] == nil || levelProgress[i]?.starsEarnedHighScore < 3 {
+            if levelProgress[i] == nil || levelProgress[i]!.starsEarnedHighScore < 3 {
                 notMet = true
             }
         }
@@ -453,7 +453,7 @@ class CharacterData : NSObject { // TODO doesnt have to extend this after objc c
         var notMet: Bool = false
         
         for i in calcLevelNumber...calcLevelNumber + 15 {
-            if levelProgress[i] == nil || levelProgress[i]?.citrineEarnedHighScore < 1 {
+            if levelProgress[i] == nil || levelProgress[i]!.citrineEarnedHighScore < 1 {
                 notMet = true
             }
         }
@@ -489,7 +489,7 @@ class CharacterData : NSObject { // TODO doesnt have to extend this after objc c
     
     func challengesUnlocked(_ currentLevel: Int) -> Bool {
         // If the 6th level has been played or this is the 6th level
-        if levelProgress[6] != nil && levelProgress[6]?.timesLevelPlayed > 0 || currentLevel == 6 {
+        if levelProgress[6] != nil && levelProgress[6]!.timesLevelPlayed > 0 || currentLevel == 6 {
             return true
         } else {
             return false

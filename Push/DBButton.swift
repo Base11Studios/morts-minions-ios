@@ -13,8 +13,8 @@ class DBButton : SKSpriteNode {
     var unpressedButtonImage: SKTexture?
     var isPressed: Bool = false
     //var unPressedLabel: MultilineLabelWithShadow?
-    var unPressedLabel: protocol<LabelWithShadowProtocol>?
-    var pressedLabel: protocol<LabelWithShadowProtocol>?
+    var unPressedLabel: LabelWithShadowProtocol?
+    var pressedLabel: LabelWithShadowProtocol?
     //var pressedLabel: MultilineLabelWithShadow?
     var unPressedIcon: SKSpriteNode?
     var pressedIcon: SKSpriteNode?

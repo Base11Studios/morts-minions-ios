@@ -23,7 +23,7 @@ class Player : SKSpriteNode {
     var isComingOutOfHiding: Bool = false
     var isComingOutOfTeleport: Bool = false
     var justReceivedUpwardImpulseFromEnvironment: Bool = false
-    
+    var teleportsInsteadOfJumps: Bool = false
     var isOnGround: Bool = true
     
     // World view
@@ -175,7 +175,7 @@ class Player : SKSpriteNode {
     var rangeInd: SKSpriteNode?
     
     init() {
-        super.init(texture: SKTexture(), color: UIColor.clear(), size: CGSize())
+        super.init(texture: SKTexture(), color: UIColor.clear, size: CGSize())
     }
     
     init(atlas: SKTextureAtlas, textureArrayName: String, worldView: SKNode?, gameScene: GameScene) {
@@ -184,7 +184,7 @@ class Player : SKSpriteNode {
         
         let texture = atlas.textureNamed(textureArrayName + ("_000"))
         
-        super.init(texture: texture, color: UIColor.clear(), size: texture.size())
+        super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
         // Set the walking frames for animation
         self.walkingFrames = SpriteKitHelper.getTextureArrayFromAtlas(atlas, texturesNamed: textureArrayName, frameStart: 0, frameEnd: 15)
@@ -639,8 +639,8 @@ class Player : SKSpriteNode {
         }
 
         // determine if the player changed directions in some way
-        if (self.previousVelocity.dx > 0 && self.physicsBody?.velocity.dx <= 0.1) || (self.previousVelocity.dy > 0 && self.physicsBody?.velocity.dy <= 0.1) ||
-            (self.previousVelocity.dx < 0 && self.physicsBody?.velocity.dx >= -0.1) || (self.previousVelocity.dy < 0 && self.physicsBody?.velocity.dy >= -0.1) {
+        if (self.previousVelocity.dx > 0 && self.physicsBody!.velocity.dx <= 0.1) || (self.previousVelocity.dy > 0 && self.physicsBody!.velocity.dy <= 0.1) ||
+            (self.previousVelocity.dx < 0 && self.physicsBody!.velocity.dx >= -0.1) || (self.previousVelocity.dy < 0 && self.physicsBody!.velocity.dy >= -0.1) {
             self.justChangedDirections = true
         } else {
             self.justChangedDirections = false
@@ -663,7 +663,11 @@ class Player : SKSpriteNode {
             }
             else {
                 if self.isActiveJumping && !self.isJumping && self.jumpCooldown <= 0 {  // If the player is activeJumping, and not jumping, then jump // TODO integate with new skill system
-                    self.startJumping(self.jumpForce)
+                    if self.teleportsInsteadOfJumps {
+                        self.startTeleport(self.jumpForce, fromDefaultPosition: true)
+                    } else {
+                        self.startJumping(self.jumpForce)
+                    }
                 }
             }
             
@@ -801,8 +805,11 @@ class Player : SKSpriteNode {
         // Create the velocity vector to apply to the player's velocity
         let relativeVelocity: CGVector = CGVector(dx: self.maxSpeed - self.physicsBody!.velocity.dx, dy: 0.0)
         
+        let isJumping = NSNumber(value: self.isJumping)
+        let isHovering = NSNumber(value: !self.isHovering)
+        
         // Multiply the Y by the jumping boolen. If we aren't jumping, we don't want Y to move.
-        self.physicsBody!.velocity = CGVector(dx: self.physicsBody!.velocity.dx + relativeVelocity.dx * self.velocityRate, dy: (self.physicsBody!.velocity.dy + relativeVelocity.dy * self.velocityRate) * CGFloat(self.isJumping) * CGFloat(!self.isHovering))
+        self.physicsBody!.velocity = CGVector(dx: self.physicsBody!.velocity.dx + relativeVelocity.dx * self.velocityRate, dy: (self.physicsBody!.velocity.dy + relativeVelocity.dy * self.velocityRate) * CGFloat(isJumping) * CGFloat(isHovering))
     }
     
     func startActiveJumping() { // TODO replace with a check to see if the button is being pressed and if the skill is one that is activated on press instead of release
@@ -1474,8 +1481,11 @@ class Player : SKSpriteNode {
                 self.allowDoubleJump = true
             }
             
-            if !self.isJumping {
-                self.startTeleport(CGFloat(skill.value) * ScaleBuddy.sharedInstance.getGameScaleAmount(false), fromDefaultPosition: true)
+            if self.isActiveJumping == false {
+                self.jumpForce = CGFloat(skill.value) * ScaleBuddy.sharedInstance.getGameScaleAmount(false) // 2 ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+                
+                // Start jumping
+                self.startActiveJumping()
             }
         /*case .Fireball:
             
@@ -1633,7 +1643,7 @@ class Player : SKSpriteNode {
             }
             
             // Sort them by distance
-            objectsToFreeze.sort(isOrderedBefore: { (e1: EnvironmentObject, e2: EnvironmentObject) -> Bool in
+            objectsToFreeze.sort(by: { (e1: EnvironmentObject, e2: EnvironmentObject) -> Bool in
                 if e1.position.x < e2.position.x {
                     return true
                 } else {
@@ -1838,6 +1848,11 @@ class Player : SKSpriteNode {
                 self.stopBlocking()
             }
         case .Teleport:
+            if self.isActiveJumping {
+                // No longer jumping
+                self.stopActiveJumping()
+            }
+            
             // If we had a double jump allowed and the player is still jumping, do it
             if self.allowDoubleJump && self.isJumping && self.additionalJumps > 0 {
                 self.stopHovering()
@@ -1998,7 +2013,7 @@ class Player : SKSpriteNode {
         self.fightAction = SKAction()
         self.spriteOverlay2Action = SKAction()
          */
-        
+        self.clearOutSound()
         
         /*
         // Group actions

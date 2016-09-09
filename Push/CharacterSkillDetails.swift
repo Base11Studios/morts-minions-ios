@@ -82,7 +82,7 @@ class CharacterSkillDetails {
             // Now we need to find the skill and set the appropriate information to use it
             // Create the path to the level
             let filePath: String = "upgrades_\(GameData.sharedGameData.selectedCharacter.rawValue)".lowercased()
-            let path: String = Bundle.main().pathForResource(filePath, ofType: "plist")!
+            let path: String = Bundle.main.path(forResource: filePath, ofType: "plist")!
             
             // Read in the level
             let upgradeList = NSMutableArray(contentsOfFile: path) as! Array<Array<[String: AnyObject]>>

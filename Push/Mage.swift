@@ -12,6 +12,7 @@ class Mage : Player {
     // Skills
     override func initializeSkills() {
         self.skill1Details = CharacterSkillDetails(upgrade: CharacterUpgrade.Teleport)
+        self.teleportsInsteadOfJumps = true
         self.skill2Details = CharacterSkillDetails(upgrade: CharacterUpgrade.MagicMissle)
         self.skill3Details = CharacterSkillDetails(upgrade: CharacterUpgrade.Meteor)
         self.skill4Details = CharacterSkillDetails(upgrade: CharacterUpgrade.TimeFreeze)
@@ -80,7 +81,7 @@ class Mage : Player {
         self.weapon.position = self.weaponStartPosition
         
         // Create projectiles
-        for i in 0 ..< Int((self.getSkill(CharacterUpgrade.MagicMissle)!.secondaryValue + 1) * 5) {
+        for _ in 0 ..< Int((self.getSkill(CharacterUpgrade.MagicMissle)!.secondaryValue + 1) * 5) {
             // Create projectile
             let projectile: PlayerMagicMissle = PlayerMagicMissle(gameScene: self.gameScene!, range: self.getSkill(CharacterUpgrade.MagicMissle)!.range * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             

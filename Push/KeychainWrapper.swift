@@ -55,7 +55,7 @@ public class KeychainWrapper {
     public class var serviceName: String {
         get {
             if internalVars.serviceName.isEmpty {
-                internalVars.serviceName = Bundle.main().bundleIdentifier ?? "SwiftKeychainWrapper"
+                internalVars.serviceName = Bundle.main.bundleIdentifier ?? "SwiftKeychainWrapper"
             }
             return internalVars.serviceName
         }
@@ -140,8 +140,8 @@ public class KeychainWrapper {
         keychainQueryDictionary[SecReturnData] = kCFBooleanTrue
 
         // Search
-        let status = withUnsafeMutablePointer(&result) {
-            SecItemCopyMatching(keychainQueryDictionary, UnsafeMutablePointer($0))
+        let status = withUnsafeMutablePointer(to: &result) {
+            SecItemCopyMatching(keychainQueryDictionary as CFDictionary, UnsafeMutablePointer($0))
         }
 
         return status == noErr ? result as? Data : nil
@@ -163,8 +163,8 @@ public class KeychainWrapper {
         keychainQueryDictionary[SecReturnPersistentRef] = kCFBooleanTrue
         
         // Search
-        let status = withUnsafeMutablePointer(&result) {
-            SecItemCopyMatching(keychainQueryDictionary, UnsafeMutablePointer($0))
+        let status = withUnsafeMutablePointer(to: &result) {
+            SecItemCopyMatching(keychainQueryDictionary as CFDictionary, UnsafeMutablePointer($0))
         }
         
         return status == noErr ? result as? Data : nil
@@ -203,12 +203,12 @@ public class KeychainWrapper {
     public class func setData(_ value: Data, forKey keyName: String) -> Bool {
         var keychainQueryDictionary: [String:AnyObject] = self.setupKeychainQueryDictionaryForKey(keyName)
 
-        keychainQueryDictionary[SecValueData] = value
+        keychainQueryDictionary[SecValueData] = value as AnyObject?
 
         // Protect the keychain entry so it's only valid when the device is unlocked
         keychainQueryDictionary[SecAttrAccessible] = kSecAttrAccessibleWhenUnlocked
 
-        let status: OSStatus = SecItemAdd(keychainQueryDictionary, nil)
+        let status: OSStatus = SecItemAdd(keychainQueryDictionary as CFDictionary, nil)
 
         if status == errSecSuccess {
             return true
@@ -227,7 +227,7 @@ public class KeychainWrapper {
         let keychainQueryDictionary: [String:AnyObject] = self.setupKeychainQueryDictionaryForKey(keyName)
 
         // Delete
-        let status: OSStatus =  SecItemDelete(keychainQueryDictionary);
+        let status: OSStatus =  SecItemDelete(keychainQueryDictionary as CFDictionary);
 
         if status == errSecSuccess {
             return true
@@ -244,7 +244,7 @@ public class KeychainWrapper {
         let updateDictionary = [SecValueData:value]
 
         // Update
-        let status: OSStatus = SecItemUpdate(keychainQueryDictionary, updateDictionary)
+        let status: OSStatus = SecItemUpdate(keychainQueryDictionary as CFDictionary, updateDictionary as CFDictionary)
 
         if status == errSecSuccess {
             return true
@@ -262,19 +262,19 @@ public class KeychainWrapper {
         var keychainQueryDictionary: [String:AnyObject] = [SecClass:kSecClassGenericPassword]
 
         // Uniquely identify this keychain accessor
-        keychainQueryDictionary[SecAttrService] = KeychainWrapper.serviceName
+        keychainQueryDictionary[SecAttrService] = KeychainWrapper.serviceName as AnyObject?
 
         // Set the keychain access group if defined
         if !KeychainWrapper.accessGroup.isEmpty {
-            keychainQueryDictionary[SecAttrAccessGroup] = KeychainWrapper.accessGroup
+            keychainQueryDictionary[SecAttrAccessGroup] = KeychainWrapper.accessGroup as AnyObject?
         }
 
         // Uniquely identify the account who will be accessing the keychain
         let encodedIdentifier: Data? = keyName.data(using: String.Encoding.utf8)
 
-        keychainQueryDictionary[SecAttrGeneric] = encodedIdentifier
+        keychainQueryDictionary[SecAttrGeneric] = encodedIdentifier as AnyObject?
 
-        keychainQueryDictionary[SecAttrAccount] = encodedIdentifier
+        keychainQueryDictionary[SecAttrAccount] = encodedIdentifier as AnyObject?
 
         return keychainQueryDictionary
     }
