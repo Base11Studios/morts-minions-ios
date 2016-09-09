@@ -77,7 +77,7 @@ class MainMenuScene : DBScene {
         }
         
         // Get the achievements
-        GameKitHelper.sharedInstance.getAchievements()
+        self.viewController!.getAchievements()
         
         // Cache an ad so we're ready when we need it
         viewController!.cacheInterstitialAd()

@@ -573,7 +573,7 @@ class LevelSelectionScene : DBScene {
         
         // Check for some achievements
         GameKitHelper.sharedInstance.checkCharacterAchievements()
-        self.viewController!.syncAchievements()
+        //self.viewController!.syncAchievements()
         
         //self.displayTutorialTooltip()
         
