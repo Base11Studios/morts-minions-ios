@@ -115,7 +115,7 @@ class Archer : Player {
             if self != nil {
                 self?.isShooting = false
                 
-                if self?.getSkill(CharacterUpgrade.ShootArrow)!.secondaryValue > 0 && Int(self!.getSkill(CharacterUpgrade.ShootArrow)!.secondaryValue) > self?.attacksInSuccession {
+                if self!.getSkill(CharacterUpgrade.ShootArrow)!.secondaryValue > 0 && Int(self!.getSkill(CharacterUpgrade.ShootArrow)!.secondaryValue) > self!.attacksInSuccession {
                     // Shoot again
                     self?.attackCooldown = 0
                     self?.attacksInSuccession += 1

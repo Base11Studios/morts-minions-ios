@@ -79,12 +79,12 @@ class LevelSelectionScene : DBScene {
         super.init(size: size, settings: false, loadingOverlay: true, purchaseMenu: false, rateMe: false)
         
         self.levelSelector.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
-
+        
         // Create a button just to see the size
         let sampleLevelButton: SKSpriteNode = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("button_level_selector"))
         self.levelButtonHeight = sampleLevelButton.size.height
         // Buffer size between buttons
-    
+        
         // Level progress
         self.totalStars = LabelWithShadow(fontNamed: "Avenir-Medium", darkFont: false)
         self.totalCitrine = LabelWithShadow(fontNamed: "Avenir-Medium", darkFont: false)
@@ -93,7 +93,7 @@ class LevelSelectionScene : DBScene {
         self.totalStarsIcon = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("star"))
         self.totalCitrineIcon = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("superstar"))
         self.totalDiamondsIcon = SKSpriteNode(texture: GameTextures.sharedInstance.uxAtlas.textureNamed("gem"))
-
+        
         // Mask and crop nodes
         let maskNode: SKSpriteNode = self.levelSelector.copy() as! SKSpriteNode
         let cropNode: SKCropNode = SKCropNode() // TODO make it SKNode()??
@@ -116,7 +116,7 @@ class LevelSelectionScene : DBScene {
         
         self.centerNodeBackground!.position = CGPoint(x: 0, y: getLevelNodeHeight(sampleLevelButton.size.height))
         self.centerNodeBackground!.setScale(0.8)
-
+        
         self.scrollingLevelsContainer.addChild(self.centerNodeBackground!)
         
         // Add scrolling nodes
@@ -190,12 +190,12 @@ class LevelSelectionScene : DBScene {
         
         // NOTE - BELOW POSITIONING IS FOR 5 WORLDS
         /*
-        var worldAdjuster: CGFloat = 0.4
-        self.earthWorld!.position = CGPointMake((self.earthWorld!.size.width + self.nodeBuffer/2) * -2, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.earthWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
-        self.waterWorld!.position = CGPointMake((self.waterWorld!.size.width + self.nodeBuffer/2) * -1, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.waterWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
-        self.fireWorld!.position = CGPointMake(0, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.fireWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
-        self.airWorld!.position = CGPointMake((self.airWorld!.size.width + self.nodeBuffer/2) * 1, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.airWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
-        self.spiritWorld!.position = CGPointMake((self.spiritWorld!.size.width + self.nodeBuffer/2) * 2, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.spiritWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
+         var worldAdjuster: CGFloat = 0.4
+         self.earthWorld!.position = CGPointMake((self.earthWorld!.size.width + self.nodeBuffer/2) * -2, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.earthWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
+         self.waterWorld!.position = CGPointMake((self.waterWorld!.size.width + self.nodeBuffer/2) * -1, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.waterWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
+         self.fireWorld!.position = CGPointMake(0, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.fireWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
+         self.airWorld!.position = CGPointMake((self.airWorld!.size.width + self.nodeBuffer/2) * 1, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.airWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
+         self.spiritWorld!.position = CGPointMake((self.spiritWorld!.size.width + self.nodeBuffer/2) * 2, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.spiritWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
          */
         
         // Separator
@@ -276,47 +276,47 @@ class LevelSelectionScene : DBScene {
         while moreLevels {
             // Create the path to the level
             let filePath: String = "level_\(level)"
-            if let path: String = Bundle.main().pathForResource(filePath, ofType: "plist") {
+            if let path: String = Bundle.main.path(forResource: filePath, ofType: "plist") {
                 // Read in the level
                 let levelSetup: NSDictionary = NSDictionary(contentsOfFile: path)!
-
+                
                 // Set the total levels for the gamedata
-                if let data: CharacterData = GameData.sharedGameData.archerCharacter {
-                    data.totalLevels = 64 //level TODO SPIRIT set back to level
-                    
-                    // Setup the level data only if it doesnt exist already
-                    if data.levelProgress[level] == nil {
-                        data.initializeLevel(level, maxHearts: 100, maxDistance: 10000)
-                    }
+                var data: CharacterData = GameData.sharedGameData.archerCharacter
+                data.totalLevels = 64 //level TODO SPIRIT set back to level
+                
+                // Setup the level data only if it doesnt exist already
+                if data.levelProgress[level] == nil {
+                    data.initializeLevel(level, maxHearts: 100, maxDistance: 10000)
                 }
-                if let data: CharacterData = GameData.sharedGameData.monkCharacter {
-                    data.totalLevels = 64 //level TODO SPIRIT set back to level
-                    
-                    // Setup the level data only if it doesnt exist already
-                    if data.levelProgress[level] == nil {
-                        data.initializeLevel(level, maxHearts: 100, maxDistance: 10000)
-                    }
+                
+                data = GameData.sharedGameData.monkCharacter
+                data.totalLevels = 64 //level TODO SPIRIT set back to level
+                
+                // Setup the level data only if it doesnt exist already
+                if data.levelProgress[level] == nil {
+                    data.initializeLevel(level, maxHearts: 100, maxDistance: 10000)
                 }
-                if let data: CharacterData = GameData.sharedGameData.mageCharacter {
-                    data.totalLevels = 64 //level TODO SPIRIT set back to level
-                    
-                    // Setup the level data only if it doesnt exist already
-                    if data.levelProgress[level] == nil {
-                        data.initializeLevel(level, maxHearts: 100, maxDistance: 10000)
-                    }
+                
+                data = GameData.sharedGameData.mageCharacter
+                data.totalLevels = 64 //level TODO SPIRIT set back to level
+                
+                // Setup the level data only if it doesnt exist already
+                if data.levelProgress[level] == nil {
+                    data.initializeLevel(level, maxHearts: 100, maxDistance: 10000)
                 }
-                if let data: CharacterData = GameData.sharedGameData.warriorCharacter {
-                    data.totalLevels = 64 //level TODO SPIRIT set back to level
-                    
-                    // Setup the level data only if it doesnt exist already
-                    if data.levelProgress[level] == nil {
-                        data.initializeLevel(level, maxHearts: 100, maxDistance: 10000)
-                    }
+                
+                data = GameData.sharedGameData.warriorCharacter
+                data.totalLevels = 64 //level TODO SPIRIT set back to level
+                
+                // Setup the level data only if it doesnt exist already
+                if data.levelProgress[level] == nil {
+                    data.initializeLevel(level, maxHearts: 100, maxDistance: 10000)
                 }
+                
                 
                 // Update all of the challenges
                 self.updateChallenges(levelSetup, level: level)
-
+                
                 level += 1
             } else {
                 moreLevels = false
@@ -337,7 +337,7 @@ class LevelSelectionScene : DBScene {
                 self.worldSwitchInProgress = false
             } else {
                 // Move to a background thread to do some long running work
-                DispatchQueue.global(attributes: .qosUserInitiated).async {
+                DispatchQueue.global().async {
                     self.switchSelectedWorldWorker(worldNameToSelect: worldNameToSelect)
                     
                     DispatchQueue.main.async {
@@ -436,7 +436,7 @@ class LevelSelectionScene : DBScene {
         for level in levelStart...levelStart + (GameData.sharedGameData.getSelectedCharacterData().levelsPerWorld - 1) {
             // Create the path to the level
             let filePath: String = "level_\(level)"
-            if let path: String = Bundle.main().pathForResource(filePath, ofType: "plist") {
+            if let path: String = Bundle.main.path(forResource: filePath, ofType: "plist") {
                 // Read in the level
                 let levelSetup: NSDictionary = NSDictionary(contentsOfFile: path)!
                 
@@ -521,38 +521,38 @@ class LevelSelectionScene : DBScene {
     }
     
     /*
-    func updateScene() {
-        // Select the world
-        let worldSelected = GameData.sharedGameData.getSelectedCharacterData().lastPlayedWorld
-        
-        if worldSelected == "earth" {
-            self.selectWorld(self.earthWorld!)
-        } else if worldSelected == "water" {
-            self.selectWorld(self.waterWorld!)
-        } else if worldSelected == "fire" {
-            self.selectWorld(self.fireWorld!)
-        } else if worldSelected == "air" {
-            self.selectWorld(self.airWorld!)
-        } else if worldSelected == "spirit" {
-            self.selectWorld(self.spiritWorld!)
-        }
-        
-        self.earthWorld!.updateLevelNode()
-        self.waterWorld!.updateLevelNode()
-        self.fireWorld!.updateLevelNode()
-        self.airWorld!.updateLevelNode()
-        self.spiritWorld!.updateLevelNode()
-
-        // Update the level rewards (includes selected level)
-        self.scrollingEarthLevels!.updateLevelRewards()
-        self.scrollingWaterLevels!.updateLevelRewards()
-        self.scrollingFireLevels!.updateLevelRewards()
-        self.scrollingAirLevels!.updateLevelRewards()
-        self.scrollingSpiritLevels!.updateLevelRewards()
-        
-        // Update rewards
-        self.updateRewards()
-    }*/
+     func updateScene() {
+     // Select the world
+     let worldSelected = GameData.sharedGameData.getSelectedCharacterData().lastPlayedWorld
+     
+     if worldSelected == "earth" {
+     self.selectWorld(self.earthWorld!)
+     } else if worldSelected == "water" {
+     self.selectWorld(self.waterWorld!)
+     } else if worldSelected == "fire" {
+     self.selectWorld(self.fireWorld!)
+     } else if worldSelected == "air" {
+     self.selectWorld(self.airWorld!)
+     } else if worldSelected == "spirit" {
+     self.selectWorld(self.spiritWorld!)
+     }
+     
+     self.earthWorld!.updateLevelNode()
+     self.waterWorld!.updateLevelNode()
+     self.fireWorld!.updateLevelNode()
+     self.airWorld!.updateLevelNode()
+     self.spiritWorld!.updateLevelNode()
+     
+     // Update the level rewards (includes selected level)
+     self.scrollingEarthLevels!.updateLevelRewards()
+     self.scrollingWaterLevels!.updateLevelRewards()
+     self.scrollingFireLevels!.updateLevelRewards()
+     self.scrollingAirLevels!.updateLevelRewards()
+     self.scrollingSpiritLevels!.updateLevelRewards()
+     
+     // Update rewards
+     self.updateRewards()
+     }*/
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")

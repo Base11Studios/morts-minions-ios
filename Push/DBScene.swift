@@ -97,15 +97,15 @@ class DBScene : SKScene {
     
     override func didMove(to view: SKView) {
         // Subscribe to a notification that fires when a product is purchased.
-        NotificationCenter.default().addObserver(self, selector: #selector(DBScene.productPurchased(_:)), name: IAPHelperProductPurchasedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DBScene.productPurchased(_:)), name: NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification), object: nil)
         
         // Subscribe to a notification that fires when a product purchase is cancelled.
-        NotificationCenter.default().addObserver(self, selector: #selector(DBScene.productPurchaseFailed(_:)), name: IAPHelperProductPurchaseFailedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DBScene.productPurchaseFailed(_:)), name: NSNotification.Name(rawValue: IAPHelperProductPurchaseFailedNotification), object: nil)
     }
     
     override func willMove(from view: SKView) {
-        NotificationCenter.default().removeObserver(self, name: NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification), object: nil)
-        NotificationCenter.default().removeObserver(self, name: NSNotification.Name(rawValue: IAPHelperProductPurchaseFailedNotification), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: IAPHelperProductPurchaseFailedNotification), object: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -115,7 +115,7 @@ class DBScene : SKScene {
     func displayTutorialTooltip() -> Void {
     }
     
-    func showPurchaseMenu(_ openedWithNotEnoughGems: Bool, itemCost: Int, onSuccess: (Bool) -> Void, onFailure: () -> Void) {
+    func showPurchaseMenu(_ openedWithNotEnoughGems: Bool, itemCost: Int, onSuccess: @escaping (Bool) -> Void, onFailure: @escaping () -> Void) {
         
         // Load a spinner
         self.startLoadingOverlay()
@@ -192,9 +192,9 @@ class DBScene : SKScene {
     
     // When a product purchase fails
     func productPurchaseFailed(_ notification: Notification) {
-        let failReason = notification.object as! Int
+        let failReason = notification.object as! NSError
         
-        if failReason != SKErrorCode.paymentInvalid.rawValue {
+        if failReason.code != SKError.paymentInvalid.rawValue {
             // TODO if failed because of error, show message in header
             self.purchaseMenu!.updateHeaderPaymentError()
             

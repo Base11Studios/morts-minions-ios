@@ -377,13 +377,12 @@ class CharacterSkillScene : DBScene {
     func addSkillsToScrollingNode() {
         // Create the path to the level - UPGRADE
         let filePath: String = "upgrades_\(GameData.sharedGameData.selectedCharacter.rawValue)".lowercased()
-        let path: String = Bundle.main().pathForResource(filePath, ofType: "plist")!
+        let path: String = Bundle.main.path(forResource: filePath, ofType: "plist")!
         let upgradeList = NSMutableArray(contentsOfFile: path) as! Array<Array<[String: AnyObject]>>
         
         /********* COST */
         // Create the path to the level
-        let costFilePath: String = "upgrades_cost".lowercased()
-        let costPath: String = Bundle.main().pathForResource(costFilePath, ofType: "plist")!
+        let costPath: String = Bundle.main.path(forResource: filePath, ofType: "plist")!
         let costList = NSMutableArray(contentsOfFile: costPath) as! Array<Array<[String: AnyObject]>>
         
         // Loop through each entry in the dictionary

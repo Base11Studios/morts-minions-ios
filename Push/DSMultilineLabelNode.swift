@@ -32,7 +32,7 @@ import SpriteKit
 class DSMultilineLabelNode : SKSpriteNode
 {
     private var _text = ""
-    private var _fontColor = SKColor.white()
+    private var _fontColor = SKColor.white
     private var _fontName = "Avenir"
     private var _fontSize = CGFloat(round(32 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
     private var _horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
@@ -47,7 +47,7 @@ class DSMultilineLabelNode : SKSpriteNode
     
     init(scene: DBScene)
     {
-        super.init(texture: nil, color: UIColor.green(), size: CGSize(width: 0, height: 0))
+        super.init(texture: nil, color: UIColor.green, size: CGSize(width: 0, height: 0))
         self.dbScene = scene
         retexture()
     }
@@ -94,9 +94,9 @@ class DSMultilineLabelNode : SKSpriteNode
         }
         
         let text_attributes = NSMutableDictionary()
-        text_attributes.setObject(font!, forKey: NSFontAttributeName)
-        text_attributes.setObject(paragraph_style, forKey: NSParagraphStyleAttributeName)
-        text_attributes.setObject(_fontColor, forKey: NSForegroundColorAttributeName)
+        text_attributes.setObject(font!, forKey: NSFontAttributeName as NSCopying)
+        text_attributes.setObject(paragraph_style, forKey: NSParagraphStyleAttributeName as NSCopying)
+        text_attributes.setObject(_fontColor, forKey: NSForegroundColorAttributeName as NSCopying)
         
         //var style = NSMutableParagraphStyle()
         //style.paragraphSpacingBefore = 0.0

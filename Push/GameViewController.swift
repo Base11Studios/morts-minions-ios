@@ -35,7 +35,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     // Cloud data flag - is there newer cloud data but we couldn't ask user yet
     var userNeedsToDecideOnCloudData: Bool = false
     
-    override func supportedInterfaceOrientations() -> UIInterfaceOrientationMask {
+    override var supportedInterfaceOrientations : UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.landscape
     }
     
@@ -53,27 +53,27 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     override func viewDidLoad() {
         // Setup observer for cloud data change
-        NotificationCenter.default().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                  selector: #selector(GameViewController.ubiquitousKeyValueStoreDidChangeExternally),
                                                  name:  NSUbiquitousKeyValueStore.didChangeExternallyNotification,
                                                  object: NSUbiquitousKeyValueStore.default())
         
         // Setup CUSTOM observer for cloud has more recent data than local
-        NotificationCenter.default().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                  selector: #selector(GameViewController.handleCloudHasMoreRecentDataThanLocal),
-                                                 name: CloudHasMoreRecentDataThanLocal,
+                                                 name: NSNotification.Name(rawValue: CloudHasMoreRecentDataThanLocal),
                                                  object: nil)
         
         // Setup CUSTOM observer for gamekit auth
-        NotificationCenter.default().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                  selector: #selector(GameViewController.showAuthenticationViewController),
-                                                 name: PresentAuthenticationViewController,
+                                                 name: NSNotification.Name(rawValue: PresentAuthenticationViewController),
                                                  object: nil)
         
         // Setup CUSTOM observer for player is authenticated
-        NotificationCenter.default().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                  selector: #selector(GameViewController.playerAuthenticated),
-                                                 name: LocalPlayerIsAuthenticated,
+                                                 name: NSNotification.Name(rawValue: LocalPlayerIsAuthenticated),
                                                  object: nil)
         
         // Setup the scale helpers
@@ -86,11 +86,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             ScaleBuddy.sharedInstance.playerHorizontalRight = 6
         }
         
-        if UIDevice.current().userInterfaceIdiom == .phone && ScaleBuddy.sharedInstance.screenSize.width == 562.5 {
+        if UIDevice.current.userInterfaceIdiom == .phone && ScaleBuddy.sharedInstance.screenSize.width == 562.5 {
             ScaleBuddy.sharedInstance.deviceSize = DeviceSizes.original4
-        } else if UIDevice.current().userInterfaceIdiom == .phone && ScaleBuddy.sharedInstance.screenSize.width == 667 {
+        } else if UIDevice.current.userInterfaceIdiom == .phone && ScaleBuddy.sharedInstance.screenSize.width == 667 {
             ScaleBuddy.sharedInstance.deviceSize = DeviceSizes.wide6
-        } else if UIDevice.current().userInterfaceIdiom == .pad {
+        } else if UIDevice.current.userInterfaceIdiom == .pad {
             ScaleBuddy.sharedInstance.deviceSize = DeviceSizes.originaliPad
         }
         
@@ -117,7 +117,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     func setupMusic() {
-        guard let path = Bundle.main().urlForResource("menu", withExtension: "m4a") else {
+        guard let path = Bundle.main.url(forResource: "menu", withExtension: "m4a") else {
             return
         }
         
@@ -141,7 +141,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     func setupButtonSound() {
-        guard let path = Bundle.main().urlForResource("click-1", withExtension: "caf") else {
+        guard let path = Bundle.main.url(forResource: "click-1", withExtension: "caf") else {
             return
         }
         
@@ -217,7 +217,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
          }*/
         
         // Move to a background thread to do some long running work
-        DispatchQueue.global(attributes: .qosUserInitiated).async {
+        DispatchQueue.global().async {
             // Bounce back to the main thread to update the UI
             DispatchQueue.main.async {
                 self.presentIntroductionScene()
@@ -230,7 +230,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         self.presentIntroductionScene()
     }
     
-    override func shouldAutorotate() -> Bool {
+    override var shouldAutorotate : Bool {
         return true
     }
     
@@ -238,7 +238,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         super.didReceiveMemoryWarning()
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
     
@@ -298,7 +298,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
              self.reallyPresentCharacterSkillScene(sceneType)
              }*/
             // Move to a background thread to do some long running work
-            DispatchQueue.global(attributes: .qosUserInitiated).async {
+            DispatchQueue.global().async {
                 // Bounce back to the main thread to update the UI
                 let characterSkillScene = self.createCharacterSkillScene(returnScene: returnScene)
                 
@@ -370,7 +370,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             self.presentLoadingScreen(ignoreMusic: true)
             
             // Move to a background thread to do some long running work
-            DispatchQueue.global(attributes: .qosUserInitiated).async {
+            DispatchQueue.global().async {
                 let mainMenuScene = self.createMainMenuScene()
                 
                 DispatchQueue.main.async {
@@ -422,7 +422,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
          //}*/
         
         // Move to a background thread to do some long running work
-        DispatchQueue.global(attributes: .qosUserInitiated).async {
+        DispatchQueue.global().async {
             
             // Bounce back to the main thread to update the UI
             let levelSelectionScene = self.createLevelSelectionScene()
@@ -471,7 +471,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
          */
         
         // Move to a background thread to do some long running work
-        DispatchQueue.global(attributes: .qosUserInitiated).async {
+        DispatchQueue.global().async {
             let gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
             gameScene.scaleMode = SKSceneScaleMode.aspectFill
             gameScene.viewController = self
@@ -536,18 +536,18 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     func getScreenSize() -> CGSize {
         
-        if UIDevice.current().userInterfaceIdiom == .phone {
+        if UIDevice.current.userInterfaceIdiom == .phone {
             let skView: SKView = self.view as! SKView
             
             //NSLog("\(Double(round(100*Double(skView.bounds.height / skView.bounds.width))/100))")
             //NSLog("\(Double(round(100*(9.0 / 16.0))/100))")
-            
-            if Double(round(100*Double(skView.bounds.height / skView.bounds.width))/100) == Double(round(100*(9.0 / 16.0))/100) {
+            let partial = round(100*Double(skView.bounds.height / skView.bounds.width))
+            if Double(partial/100) == Double(round(100*(9.0 / 16.0))/100) {
                 return CGSize(width: 667, height: 375)
             } else {
                 return CGSize(width: 562.5, height: 375)
             }
-        } else if UIDevice.current().userInterfaceIdiom == .pad {
+        } else if UIDevice.current.userInterfaceIdiom == .pad {
             //return CGSizeMake(562.5, 421.875)
             return CGSize(width: 1024, height: 768)
         }
