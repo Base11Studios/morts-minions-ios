@@ -421,6 +421,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     // Create a functon that will be called by posted notifications of interstitial being closed.
     func dismissStaticAds() {
+        // Make sure it closes
+        Chartboost.closeImpression()
+        
         self.displayPregamePops()
         //viewController!.cacheInterstitialAd()
     }
