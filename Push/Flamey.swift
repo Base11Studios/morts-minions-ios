@@ -33,8 +33,6 @@ class Flamey : Enemy {
                 
                 // Update the animations
                 self?.updateAnimation()
-                
-                self?.playActionSound()
             }
             })
         // Set the appropriate fight action

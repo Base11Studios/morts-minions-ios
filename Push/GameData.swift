@@ -48,7 +48,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
     
     // Rating
     var playerHasRatedGame: Bool = false
-    var promptRateMeCountdown: Int = 5
+    var promptRateMeCountdown: Int = 9
     var promptRateMeMax: Int = 5
     
     // Store a copy of the data we got from the cloud in case it was more recent

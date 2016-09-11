@@ -65,7 +65,7 @@ class ExpandyCloud : Obstacle {
             
             self.setScale(self.currentScale)
             
-            self.playActionSound()
+            //self.playActionSound()
         }
         
         super.update(timeSinceLast, withPlayer: player)

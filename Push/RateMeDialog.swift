@@ -68,7 +68,7 @@ class RateMeDialog: DialogBackground {
         self.descriptionNode?.paragraphWidth = self.container.size.width - self.buttonBuffer
         self.descriptionNode?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
         self.descriptionNode?.fontColor = MerpColors.darkFont
-        self.descriptionNode?.text = "If you like Mort's Minions, please leave a positive rating on the App Store. I built this game in my free time with love and support from friends. Help me pursue my passion by spreading the word! Thanks - Dan"
+        self.descriptionNode?.text = "If you like Mort's Minions, please leave a positive rating on the App Store to spread the word. Mort's Minions was crafted in my free time with love and support from friends and family. Thanks! - Dan"
         let descriptionNodeXPosition = self.container.size.width / -2 + self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2
         let descriptionNodeYPosition = self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer
         self.descriptionNode?.position = CGPoint(x: descriptionNodeXPosition, y: descriptionNodeYPosition)
