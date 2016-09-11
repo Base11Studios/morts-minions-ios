@@ -99,8 +99,6 @@ class Slanky : Enemy {
         // Don't move
         self.moveSpeed = 0
         self.velocityRate = 0
-        
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Crash.rawValue, waitForCompletion: true)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
@@ -133,7 +131,7 @@ class Slanky : Enemy {
                 player.frontEngageWithEnvironmentObject(self)
             }
             
-            self.playActionSound()
+            self.playActionSound(action: SoundHelper.sharedInstance.crash)
         }
     }
     

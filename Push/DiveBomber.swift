@@ -51,9 +51,6 @@ class DiveBomber : Enemy {
         
         // Make him hurt
         self.damage = 2
-        
-        // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Lunge.rawValue, waitForCompletion: true)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
@@ -79,7 +76,7 @@ class DiveBomber : Enemy {
             
             self.attackCooldown = 100
             
-            self.playActionSound()
+            self.playActionSound(action: SoundHelper.sharedInstance.lunge)
         }
     }
 }

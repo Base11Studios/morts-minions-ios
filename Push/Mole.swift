@@ -54,9 +54,6 @@ class Mole : Enemy {
         
         // This is for collision detection
         self.hasVerticalVelocity = true
-        
-        // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Surprise.rawValue, waitForCompletion: true)
     }
     
     override func update(_ timeSinceLast: CFTimeInterval, withPlayer player: Player) {
@@ -91,7 +88,7 @@ class Mole : Enemy {
             
             self.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 7000))
             
-            self.playActionSound()
+            self.playActionSound(action: SoundHelper.sharedInstance.surprise)
         }
     }
 }

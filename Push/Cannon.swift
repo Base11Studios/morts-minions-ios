@@ -63,7 +63,7 @@ class Cannon : Obstacle {
                 // Set physics body back
                 ball.physicsBody!.categoryBitMask = GameScene.projectileCategory
                 
-                self?.playActionSound()
+                self?.playActionSound(action: SoundHelper.sharedInstance.action)
             }
         })
         
@@ -113,10 +113,6 @@ class Cannon : Obstacle {
         
         // Don't move
         self.moveSpeed = 0
-        
-        
-        // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Action.rawValue, waitForCompletion: true)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {

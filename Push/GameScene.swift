@@ -202,8 +202,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("setStayPaused"), name: "StayPausedNotification", object: nil)
         
-        self.player.initSounds()
-        
         super.didMove(to: view)
     }
     
@@ -218,8 +216,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             backgroundPlayer!.stop()
             backgroundPlayer = nil
         }
-        
-        self.player.clearOutSound()
         
         super.willMove(from: view)
     }
@@ -997,8 +993,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func endLevel(_ distance: CGFloat) {
-        self.player.clearOutSound()
-        
         if self.score == nil {
             self.updateLevelData(distance)
         }

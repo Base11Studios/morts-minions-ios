@@ -61,10 +61,6 @@ class Firebomber : Enemy {
         
         // Rewards
         self.experience = 1
-        
-        
-        // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.ProjectileThrow.rawValue, waitForCompletion: true)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
@@ -86,7 +82,7 @@ class Firebomber : Enemy {
             
             self.attackCooldown = 100.0
             
-            self.playActionSound()
+            self.playActionSound(action: SoundHelper.sharedInstance.projectileThrow)
         }
     }
 }

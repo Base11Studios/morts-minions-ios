@@ -73,9 +73,6 @@ class Flamey : Enemy {
         
         // This is for collision detection
         self.hasVerticalVelocity = true
-        
-        // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Action.rawValue, waitForCompletion: true)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {

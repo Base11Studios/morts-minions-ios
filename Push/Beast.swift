@@ -62,10 +62,6 @@ class Beast : Enemy {
         
         // Rewards
         self.experience = 1
-        
-        
-        // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Zoom.rawValue, waitForCompletion: true)
     }
     
     override func update(_ timeSinceLast: CFTimeInterval, withPlayer player: Player) {
@@ -142,7 +138,7 @@ class Beast : Enemy {
             self.fly1!.defaultYPosition = self.position.y + self.flyYAdjust
             self.fly1!.startingYPosition = self.fly1!.defaultYPosition
             
-            self.playActionSound()
+            self.playActionSound(action: SoundHelper.sharedInstance.zoom)
         }
         
         // The player is in sight of the enemy
@@ -153,7 +149,7 @@ class Beast : Enemy {
             self.fly2!.defaultYPosition = self.position.y + self.flyYAdjust
             self.fly2!.startingYPosition = self.fly2!.defaultYPosition
             
-            self.playActionSound()
+            self.playActionSound(action: SoundHelper.sharedInstance.zoom)
         }
     }
 }

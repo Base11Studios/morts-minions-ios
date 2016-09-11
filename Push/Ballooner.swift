@@ -63,10 +63,6 @@ class Ballooner : Enemy {
         
         // Rewards
         self.experience = 1
-        
-        
-        // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Action.rawValue, waitForCompletion: true)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
@@ -93,7 +89,7 @@ class Ballooner : Enemy {
             // Set the cooldown
             self.attackCooldown = self.value1
 
-            self.playActionSound()
+            self.playActionSound(action: SoundHelper.sharedInstance.action)
         }
     }
 }
