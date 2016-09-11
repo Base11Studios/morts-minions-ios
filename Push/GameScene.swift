@@ -80,6 +80,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     var healthNodes = Array<PlayerHeartButton>()
     var progressBarAdjuster: CGFloat = 6.5
     
+    // Enemy preloader
+    var environmentObjectPreloader: SKSpriteNode
+    
     // Object Arrays
     var mapObjectArray: [MapObject] = []
     var environmentObjectsToAdd: [EnvironmentObject] = []
@@ -240,6 +243,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         let levelSetup: NSDictionary = NSDictionary(contentsOfFile: path)!
         self.worldName = levelSetup.value(forKey: "World") as! String
         
+        self.environmentObjectPreloader = SKSpriteNode(texture: GameTextures.sharedInstance.getAtlasForWorld(world: self.world).textureNamed("1x1trans" + self.world))
+        
         // Call super init
         super.init(size: size, settings: false, loadingOverlay: true, purchaseMenu: true, rateMe: false)
         
@@ -390,9 +395,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             // Reset the count
             GameData.sharedGameData.adPopCountdown = GameData.sharedGameData.adPopMax
         } else { // Then tutorials
-            if GameData.sharedGameData.adPopCountdown <= 0 {
+            /*if GameData.sharedGameData.adPopCountdown <= 0 {
                 viewController!.cacheInterstitialAd()
-            }
+            }*/
             
             // Now tutorials
             if self.tutorialDialogs!.count > 0 {
@@ -414,9 +419,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func createAds() {
-        // Video reward - cache
-        Chartboost.cacheRewardedVideo(CBLocationMainMenu)
-        
         // Decrease pop count
         GameData.sharedGameData.adPopCountdown -= 1
     }
@@ -424,7 +426,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     // Create a functon that will be called by posted notifications of interstitial being closed.
     func dismissStaticAds() {
         self.displayPregamePops()
-        viewController!.cacheInterstitialAd()
+        //viewController!.cacheInterstitialAd()
     }
     
     func createUxTutorials() {
@@ -656,7 +658,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }*/
         
         // Check for scene pausing by system so we stop the game
-        if self.isPaused || self.view!.isPaused {
+        if self.isPaused || (self.view != nil && self.view!.isPaused) {
             self.pauseGame()
         }
         
@@ -1037,6 +1039,12 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func loadEndOfLevelDialog(_ score: LevelScore) {
+        // Cache ads
+        // Video reward - cache
+        self.viewController!.cacheRewardedVideo()
+        // Interstitial
+        self.viewController!.cacheInterstitialAd()
+        
         // Check for levels completed if they are completed keep them in there
         var levelsUnlocked = Array<Int>()
         
@@ -1500,6 +1508,10 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.pauseButton!.position = CGPoint(x: self.frame.size.width - self.pauseButton!.size.width / 2.0 - buffer / 1.5, y: yPosition)
         self.addChild(self.pauseButton!)
         pauseButtonAdjustment = self.pauseButton!.size.width + buffer / 1.5
+        
+        // Env Object preloader - just put it to the right of pause
+        self.environmentObjectPreloader.position = CGPoint(x: self.pauseButton!.position.x + self.pauseButton!.size.width / 2, y: self.pauseButton!.position.y)
+        self.addChild(self.environmentObjectPreloader)
         
         // ****** HEALTH NODES ******
         //for var i = 1; i <= Int(self.player.maxHealth); i += 1 {
