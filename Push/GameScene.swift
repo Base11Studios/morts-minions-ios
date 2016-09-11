@@ -421,6 +421,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     // Create a functon that will be called by posted notifications of interstitial being closed.
     func dismissStaticAds() {
+        // Make sure it closes
+        Chartboost.closeImpression()
+        
         self.displayPregamePops()
         //viewController!.cacheInterstitialAd()
     }
@@ -1314,14 +1317,14 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 }
             }
             
-            if let updatedEnvObject : EnvironmentObject = envObject {
-                // Create the env object on the right of the screen. TODO change - for testing purposes only right now
-                updatedEnvObject.position = CGPoint(x: position, y: updatedEnvObject.defaultYPosition)
-                
-                // Add the env object to the scene
-                self.environmentObjectsToAdd.append(updatedEnvObject)
-                self.addEnvironmentObject(environmentObject: updatedEnvObject)
-            }
+            let updatedEnvObject : EnvironmentObject = envObject
+            // Create the env object on the right of the screen. TODO change - for testing purposes only right now
+            updatedEnvObject.position = CGPoint(x: position, y: updatedEnvObject.defaultYPosition)
+            
+            // Add the env object to the scene
+            self.environmentObjectsToAdd.append(updatedEnvObject)
+            self.addEnvironmentObject(environmentObject: updatedEnvObject)
+            
         }
     }
     

@@ -205,7 +205,7 @@ class DBButton : SKSpriteNode {
             self.pressedLabel = MultilineLabelWithShadow(fontNamed: "Avenir-Medium", scene: self.dbScene!, darkFont: false, borderSize: 2)
             self.pressedLabel!.setFontSize(fontSize! * 0.9)
             self.pressedLabel!.setText(labelText!)
-            self.pressedLabel!.position = CGPoint(x: 0, y: self.size.height / 2 + self.pressedLabel!.calculateAccumulatedFrame().size.height - ScaleBuddy.sharedInstance.getNodeBuffer() * 0.5)
+            self.pressedLabel!.position = CGPoint(x: 0, y: self.size.height / 2 + self.pressedLabel!.calculateAccumulatedFrame().size.height - ScaleBuddy.sharedInstance.getNodeBuffer() * 2)
             self.pressedLabel!.setHorizontalAlignmentMode(SKLabelHorizontalAlignmentMode.center)
             self.pressedLabel!.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
             self.pressedLabel!.isHidden = true
