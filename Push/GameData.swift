@@ -48,7 +48,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
     
     // Rating
     var playerHasRatedGame: Bool = false
-    var promptRateMeCountdown: Int = 5
+    var promptRateMeCountdown: Int = 9
     var promptRateMeMax: Int = 5
     
     // Store a copy of the data we got from the cloud in case it was more recent
@@ -356,7 +356,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
         let checksum = SecureStringCreator.computeSHA256DigestForData(encodedData)
         
         // Write data to storage
-        try? encodedData.write(to: URL(fileURLWithPath: GameData.filePath()), options: [.dataWritingAtomic])
+        try? encodedData.write(to: URL(fileURLWithPath: GameData.filePath()), options: .atomic)
         
         // Write new checksum to keychain
         KeychainWrapper.setString(checksum as String, forKey: GameData.SSGameDataChecksumKey)
@@ -442,7 +442,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
                 local!.unarchivedCloudData = cloud
                 
                 // Notify user that cloud data is greater, give them choice
-                //NotificationCenter.default().post(name: Notification.Name(rawValue: CloudHasMoreRecentDataThanLocal), object: nil)
+                //NotificationCenter.default.post(name: Notification.Name(rawValue: CloudHasMoreRecentDataThanLocal), object: nil)
             }
             
             return local!
@@ -455,7 +455,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
             newData.unarchivedCloudData = cloud
             
             // Notify user that cloud data is greater, give them choice
-            //NotificationCenter.default().post(name: Notification.Name(rawValue: CloudHasMoreRecentDataThanLocal), object: nil)
+            //NotificationCenter.default.post(name: Notification.Name(rawValue: CloudHasMoreRecentDataThanLocal), object: nil)
             
             return newData
         }
@@ -484,7 +484,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
             //NSLog("Saved file checksum is \(savedFileChecksum)")
             //NSLog("Local data computed checksum is \(checksum)")
             
-            if (savedFileChecksum == nil || savedFileChecksum != checksum) {
+            if (savedFileChecksum == nil || savedFileChecksum != checksum as String) {
                 //NSLog("Saved file checksum is \(savedFileChecksum)")
                 //NSLog("Local data computed checksum is \(checksum)")
                 
@@ -563,7 +563,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
     }
     
     func getAverageLevelScoreAllCharacters() -> Int? {
-        var bestAvg: Double? = nil
+        var bestAvg: Double = 0
         
         // If level 33 (this is level 1 of world 3)
         if !self.warriorCharacter.isLevelLocked(33) {
@@ -571,7 +571,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
             let charAvg: Double = Double(self.warriorCharacter.totalRewardsEarned) / Double(self.warriorCharacter.totalTimesPlayed)
             
             // Take the best avg
-            if bestAvg == nil || charAvg > bestAvg {
+            if charAvg > bestAvg {
                 bestAvg = charAvg
             }
         }
@@ -582,7 +582,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
             let charAvg: Double = Double(self.archerCharacter.totalRewardsEarned) / Double(self.archerCharacter.totalTimesPlayed)
             
             // Take the best avg
-            if bestAvg == nil || charAvg > bestAvg {
+            if charAvg > bestAvg {
                 bestAvg = charAvg
             }
         }
@@ -593,7 +593,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
             let charAvg: Double = Double(self.monkCharacter.totalRewardsEarned) / Double(self.monkCharacter.totalTimesPlayed)
             
             // Take the best avg
-            if bestAvg == nil || charAvg > bestAvg {
+            if charAvg > bestAvg {
                 bestAvg = charAvg
             }
         }
@@ -604,16 +604,12 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
             let charAvg: Double = Double(self.archerCharacter.totalRewardsEarned) / Double(self.archerCharacter.totalTimesPlayed)
             
             // Take the best avg
-            if bestAvg == nil || charAvg > bestAvg {
+            if charAvg > bestAvg {
                 bestAvg = charAvg
             }
         }
         
-        if bestAvg != nil {
-            return Int(bestAvg! * 1000)
-        } else {
-            return nil
-        }
+        return Int(bestAvg * 1000)
     }
     
     func getPlaysToBeatWorld4AllCharacters() -> Int? {
@@ -623,15 +619,15 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
             plays = self.warriorCharacter.playsToBeatWorld4
         }
         
-        if self.archerCharacter.hasBeatWorld4 && (plays == nil || self.archerCharacter.playsToBeatWorld4 < plays) {
+        if plays == nil || self.archerCharacter.hasBeatWorld4 && (self.archerCharacter.playsToBeatWorld4 < plays!) {
             plays = self.archerCharacter.playsToBeatWorld4
         }
         
-        if self.monkCharacter.hasBeatWorld4 && (plays == nil || self.monkCharacter.playsToBeatWorld4 < plays) {
+        if plays == nil || self.monkCharacter.hasBeatWorld4 && (self.monkCharacter.playsToBeatWorld4 < plays!) {
             plays = self.monkCharacter.playsToBeatWorld4
         }
         
-        if self.mageCharacter.hasBeatWorld4 && (plays == nil || self.mageCharacter.playsToBeatWorld4 < plays) {
+        if plays == nil || self.mageCharacter.hasBeatWorld4 && (self.mageCharacter.playsToBeatWorld4 < plays!) {
             plays = self.mageCharacter.playsToBeatWorld4
         }
         
@@ -735,19 +731,19 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
     func getNumberCharactersThatBeatWorld4() -> Int {
         var beat4: Int = 0
         
-        if self.warriorCharacter.levelProgress[64] != nil && self.warriorCharacter.levelProgress[64]?.starsEarnedHighScore >= 2 {
+        if self.warriorCharacter.levelProgress[64] != nil && self.warriorCharacter.levelProgress[64]!.starsEarnedHighScore >= 2 {
             beat4 += 1
         }
         
-        if self.archerCharacter.levelProgress[64] != nil && self.archerCharacter.levelProgress[64]?.starsEarnedHighScore >= 2 {
+        if self.archerCharacter.levelProgress[64] != nil && self.archerCharacter.levelProgress[64]!.starsEarnedHighScore >= 2 {
             beat4 += 1
         }
         
-        if self.mageCharacter.levelProgress[64] != nil && self.mageCharacter.levelProgress[64]?.starsEarnedHighScore >= 2 {
+        if self.mageCharacter.levelProgress[64] != nil && self.mageCharacter.levelProgress[64]!.starsEarnedHighScore >= 2 {
             beat4 += 1
         }
         
-        if self.monkCharacter.levelProgress[64] != nil && self.monkCharacter.levelProgress[64]?.starsEarnedHighScore >= 2 {
+        if self.monkCharacter.levelProgress[64] != nil && self.monkCharacter.levelProgress[64]!.starsEarnedHighScore >= 2 {
             beat4 += 1
         }
         

@@ -20,23 +20,15 @@ class Monk : Player {
         super.initializeSkills()
     }
     
+    override init() {
+        super.init()
+    }
+    
     init(worldView: SKNode?, gameScene: GameScene) {
         super.init(atlas: GameTextures.sharedInstance.playerMonkAtlas, textureArrayName: "monkwalking", worldView: worldView, gameScene: gameScene)
         self.name = "monk"
     }
     
-    override func initSounds() {
-        if GameData.sharedGameData.preferenceSoundEffects {
-            self.actionSoundSkill1 = SKAction.playSoundFileNamed(SoundType.Jump.rawValue, waitForCompletion: false)
-            self.actionSoundSkill2 = SKAction.playSoundFileNamed(SoundType.ProjectileThrow.rawValue, waitForCompletion: false)
-            //self.actionSoundSkill3 = SKAction.playSoundFileNamed(SoundType..rawValue, waitForCompletion: false)
-            self.actionSoundSkill4 = SKAction.playSoundFileNamed(SoundType.Air.rawValue, waitForCompletion: false)
-            self.actionSoundSkill5 = SKAction.playSoundFileNamed(SoundType.Buzz.rawValue, waitForCompletion: false)
-        }
-        
-        super.initSounds()
-    }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -67,6 +59,7 @@ class Monk : Player {
             
             // We dont want this to get updated by gamescene so change the name which is the selector
             projectile.name = "proj_dont_update"
+            projectile.type = EnvironmentObjectType.Ignored
             projectile.isHidden = true
             
             // Set up initial location of projectile
@@ -85,39 +78,46 @@ class Monk : Player {
         // ** Create an action to attack **
         // At the end, create the projectile
         let actionCreateProjectile: SKAction = SKAction.run({
+            [weak self] in
             
-            let arrow: PlayerShockwave = self.projectiles.popLast() as! PlayerShockwave
-            
-            arrow.position = CGPoint(x: self.position.x + arrow.size.width / 2, y: self.position.y + 10 * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + self.weaponStartPosition.y)
-            
-            // Change the name back to default so it receives updates
-            arrow.resetName()
-            
-            // Unhide it
-            arrow.isHidden = false
-            
-            // Set physics body back
-            arrow.physicsBody!.categoryBitMask = GameScene.playerProjectileCategory
-            
-            self.gameScene!.worldViewPlayerProjectiles.append(arrow)
-            
-            arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 0))
-            
-            self.playActionSound(action: self.actionSoundSkill2!)
-        })
+            if self != nil {
+                let arrow: PlayerShockwave = self?.projectiles.popLast() as! PlayerShockwave
+                
+                arrow.position = CGPoint(x: self!.position.x + arrow.size.width / 2, y: self!.position.y + 10 * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + self!.weaponStartPosition.y)
+                
+                // Change the name back to default so it receives updates
+                arrow.resetName()
+                
+                // Unhide it
+                arrow.isHidden = false
+                
+                // Set physics body back
+                arrow.physicsBody!.categoryBitMask = GameScene.playerProjectileCategory
+                
+                self?.gameScene!.worldViewPlayerProjectiles.append(arrow)
+                
+                arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 0))
+                
+                self?.playActionSound(action: SoundHelper.sharedInstance.projectileThrow)
+            }
+            })
         
         // At the end, switch back to walking and update the animation
         let actionEndAttack: SKAction = SKAction.run({
-            self.isShooting = false
+            [weak self] in
             
-            // Start cooldown back over
-            self.attackCooldown = self.maxAttackCooldown
+            if self != nil {
+                self?.isShooting = false
                 
-            self.attacksInSuccession = 0
-            
-            // Update the animations
-            //[self updateAnimation]; TODO might need to change back to texture... or different animation
-        })
+                // Start cooldown back over
+                self?.attackCooldown = self!.maxAttackCooldown
+                
+                self?.attacksInSuccession = 0
+                
+                // Update the animations
+                //[self updateAnimation]; TODO might need to change back to texture... or different animation
+            }
+            })
         
         
         self.weaponFrames = SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.playerMonkAtlas, texturesNamed: "monkcasting", frameStart: 0, frameEnd: 15)
@@ -147,7 +147,7 @@ class Monk : Player {
         self.spriteOverlay2!.position = CGPoint(x: spriteOverlay2XPosition, y: spriteOverlay2YPosition)
         self.spriteOverlay2!.isHidden = true
         self.spriteOverlay2Action = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.playerMonkAtlas, texturesNamed: "hoverboard", frameStart: 0, frameEnd: 15), timePerFrame: 0.05, resize: true, restore: false))
-            
+        
         self.addChild(self.spriteOverlay2!)
     }
     

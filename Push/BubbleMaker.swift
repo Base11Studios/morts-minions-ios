@@ -23,6 +23,7 @@ class BubbleMaker : Obstacle {
             
             // We dont want this to get updated by gamescene so change the name which is the selector
             projectile.name = "proj_dont_update"
+            projectile.type = EnvironmentObjectType.Ignored
             projectile.isHidden = true
             
             projectile.position = CGPoint(x: defaultXPosition, y: defaultYPosition - 300)
@@ -68,7 +69,7 @@ class BubbleMaker : Obstacle {
             
             self.attackCooldown = self.value1
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Bubble)
+            self.playActionSound(action: SoundHelper.sharedInstance.bubble)
         }
         
         super.attack(timeSinceLast, player: player)

@@ -83,7 +83,7 @@ class TutorialDialog: DialogBackground {
                 // Title and desc
                 self.titleNode = DSMultilineLabelNode(fontName: "Avenir-Heavy", scene: scene)
                 self.titleNode?.paragraphWidth = self.speechBubble!.size.width * 0.93
-                self.titleNode?.fontSize = round(21 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+                self.titleNode?.fontSize = round(21 * ScaleBuddy.sharedInstance.getGameScaleAmount(true))
                 self.titleNode?.fontColor = MerpColors.darkFont
                 if prependText {
                     self.titleNode?.text = TextFormatter.formatTextUppercase("I'm \(title)")
@@ -96,7 +96,7 @@ class TutorialDialog: DialogBackground {
                 
                 self.descriptionNode = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
                 self.descriptionNode?.paragraphWidth = self.speechBubble!.size.width * 0.93
-                self.descriptionNode?.fontSize = round(16 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+                self.descriptionNode?.fontSize = round(16 * ScaleBuddy.sharedInstance.getGameScaleAmount(true))
                 self.descriptionNode?.fontColor = MerpColors.darkFont
                 self.descriptionNode?.text = description
                 let descriptionNodeXPosition = self.speechBubble!.position.x - self.speechBubble!.size.width / 2 + self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.speechBubble!.size.width * 0.035
@@ -134,7 +134,7 @@ class TutorialDialog: DialogBackground {
                 self.descriptionNode?.fontColor = MerpColors.darkFont
                 self.descriptionNode?.text = description
                 let descriptionNodeXPosition = self.speechBubble!.position.x - self.speechBubble!.size.width / 2 + self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.speechBubble!.size.width * 0.22
-                let descriptionNodeYPosition = self.titleNode!.position.y - self.titleNode!.size.height / 2 - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer
+                let descriptionNodeYPosition = self.titleNode!.position.y - self.titleNode!.size.height / 2 - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 4
                 self.descriptionNode?.position = CGPoint(x: descriptionNodeXPosition, y: descriptionNodeYPosition)
             }
         } else {
@@ -168,7 +168,7 @@ class TutorialDialog: DialogBackground {
             
             self.descriptionNode = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
             self.descriptionNode?.paragraphWidth = self.container.size.width - self.buttonBuffer
-            self.descriptionNode?.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+            self.descriptionNode?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
             self.descriptionNode?.fontColor = MerpColors.darkFont
             self.descriptionNode?.text = description
             let descriptionNodeXPosition = self.container.size.width / -2 + self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2

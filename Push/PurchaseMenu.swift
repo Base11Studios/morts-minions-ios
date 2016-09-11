@@ -91,7 +91,7 @@ class PurchaseMenu: DialogBackground {
         if GameData.sharedGameData.adsUnlocked {
             self.footerText!.text = "Thank you for your previous purchase! We won't show static ads."
         } else {
-            self.footerText!.text = "* If you purchase any gems, we won't show static ads."
+            self.footerText!.text = "* if you purchase any gems, we won't show static ads."
         }
         self.footerText!.position = CGPoint(x: (-self.totalWidth! + self.footerText!.calculateAccumulatedFrame().size.width) / 2, y: self.buy3Button.position.y - self.buy3Button.size.height / 2 - self.footerText!.calculateAccumulatedFrame().size.height / 2 - self.buffer)
         
@@ -298,7 +298,7 @@ class PurchaseMenu: DialogBackground {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func displayPurchaseMenu(_ itemCost: Int, onSuccess: (Bool)->Void, onFailure: ()->Void) {
+    func displayPurchaseMenu(_ itemCost: Int, onSuccess: @escaping (Bool)->Void, onFailure: @escaping ()->Void) {
         self.isHidden = false
         self.itemCost = itemCost
         

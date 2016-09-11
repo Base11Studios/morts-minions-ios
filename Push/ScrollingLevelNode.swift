@@ -165,18 +165,18 @@ class ScrollingLevelNode : SKNode {
             
         } else {
             var timesPlayed: Int
-            if GameData.sharedGameData.getSelectedCharacterData().levelProgress[levelNumber]?.timesLevelPlayed != nil && GameData.sharedGameData.getSelectedCharacterData().levelProgress[levelNumber]?.timesLevelPlayed < 1000000 {
+            if GameData.sharedGameData.getSelectedCharacterData().levelProgress[levelNumber] != nil && GameData.sharedGameData.getSelectedCharacterData().levelProgress[levelNumber]!.timesLevelPlayed < 1000000 {
                 timesPlayed = GameData.sharedGameData.getSelectedCharacterData().levelProgress[levelNumber]!.timesLevelPlayed
             } else {
                 timesPlayed = 0
             }
             
+            self.timesLevelPlayedLabel!.isHidden = true
             self.timesLevelPlayedLabel!.fontSize = round(18 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             self.timesLevelPlayedLabel!.fontColor = MerpColors.darkFont
             self.timesLevelPlayedLabel!.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
             self.timesLevelPlayedLabel!.verticalAlignmentMode = SKLabelVerticalAlignmentMode.top
             self.timesLevelPlayedLabel!.text = "Level played \(timesPlayed) times"
-            self.timesLevelPlayedLabel!.isHidden = true
             
             // Unlocked label
             self.levelOpenLabel!.setFontSize(round(70 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
@@ -204,16 +204,12 @@ class ScrollingLevelNode : SKNode {
             self.setStarPositionAndAdd(4, node: self.citrineFilled1!)
             
             self.updateStars()
-            self.updateLevelDetails()
-            
+ 
             self.addChild(timesLevelPlayedLabel!)
             self.addChild(challenge1Button!)
             self.addChild(challenge2Button!)
             self.addChild(levelOpenLabel!)
         }
-        
-        // Add stars and determine if locked
-        self.updateLevelNode()
     }
     
     func setStarPositionAndAdd(_ number: Int, node: SKSpriteNode) {
@@ -232,14 +228,6 @@ class ScrollingLevelNode : SKNode {
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    /**
-     Call this anytime to update all node aspects
-     */
-    func updateLevelNode() {
-        // Display the level info
-        self.updateLevelDetails()
     }
     
     func updateStars() {
@@ -312,25 +300,12 @@ class ScrollingLevelNode : SKNode {
         }
     }
     
-    func updateLevelDetails() {
-        var timesPlayed: Int
-        if GameData.sharedGameData.getSelectedCharacterData().levelProgress[levelNumber]?.timesLevelPlayed != nil && GameData.sharedGameData.getSelectedCharacterData().levelProgress[levelNumber]?.timesLevelPlayed < 1000000 {
-            timesPlayed = GameData.sharedGameData.getSelectedCharacterData().levelProgress[levelNumber]!.timesLevelPlayed
-        } else {
-            timesPlayed = 0
-        }
-        
-        // Set the label to ahev the right # of timesPlayed
-        self.timesLevelPlayedLabel!.text = "Level played \(timesPlayed) times"
-    }
-    
     func displayLevelDetails(_ display: Bool) {
         if !self.levelLocked {
             self.timesLevelPlayedLabel!.isHidden = !display
         } else {
             if display {
                 if !GameData.sharedGameData.getSelectedCharacterData().hasEnoughStarsToUnlock(self.levelNumber) {
-                    self.levelLockedDescLabel1!.text = "* need \(GameData.sharedGameData.getSelectedCharacterData().getLevelUnlockRequirements(levelNumber) - GameData.sharedGameData.getSelectedCharacterData().totalStars) more stars"
                     self.levelLockedDescLabel1!.isHidden = false
                 } else {
                     self.levelLockedDescLabel1!.isHidden = true

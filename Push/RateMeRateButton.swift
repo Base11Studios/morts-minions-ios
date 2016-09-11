@@ -22,6 +22,8 @@ class RateMeRateButton : DBButton {
         GameData.sharedGameData.playerHasRatedGame = true
         //GameData.sharedGameData.save()
         dbScene!.hideRateMeMenu()
-        UIApplication.shared().openURL(URL(string: "itms-apps://itunes.apple.com/app/idcom.base11studios.morts-minions")!)
+        
+        //appstore.com/morts-minions
+        UIApplication.shared.openURL(URL(string: "itms-apps://itunes.apple.com/us/app/morts-minions/id1082229199?ls=1&mt=8")!)
     }
 }

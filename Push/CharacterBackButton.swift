@@ -19,6 +19,6 @@ class CharacterBackButton : DBButton {
     }
     
     override func touchesEndedAction() {
-        self.dbScene!.viewController?.endCharacterSkillScene()
+        self.dbScene!.viewController?.endCharacterSkillScene(scene: (self.dbScene as! CharacterSkillScene).returnScene)
     }
 }
