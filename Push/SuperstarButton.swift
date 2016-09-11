@@ -10,6 +10,10 @@ import Foundation
 
 @objc(SuperstarButton)
 class SuperstarButton : DBButton {
+    init() {
+        super.init(dbScene: nil)
+    }
+    
     init(scene: DBScene) {
         super.init(name: "superstarempty", pressedName: "superstar", dbScene: scene, atlas: GameTextures.sharedInstance.buttonAtlas)
         self.isUserInteractionEnabled = false

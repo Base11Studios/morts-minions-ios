@@ -49,15 +49,15 @@ class MainMenuScene : DBScene {
     
     override func didMove(to view: SKView) {
         // Setup CUSTOM observer for player is not authenticated
-        NotificationCenter.default().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                  selector: #selector(self.playerNotAuthenticated),
-                                                 name: LocalPlayerNotAuthenticated,
+                                                 name: NSNotification.Name(rawValue: LocalPlayerNotAuthenticated),
                                                  object: nil)
         
         // Setup CUSTOM observer for player is authenticated
-        NotificationCenter.default().addObserver(self,
+        NotificationCenter.default.addObserver(self,
                                                  selector: #selector(self.playerAuthenticated),
-                                                 name: LocalPlayerIsAuthenticated,
+                                                 name: NSNotification.Name(rawValue: LocalPlayerIsAuthenticated),
                                                  object: nil)
         
         // TODO check if enablegamecenter is false... show red trophy?
@@ -68,7 +68,7 @@ class MainMenuScene : DBScene {
         }
         
         // Reduce count of rate me, if 0, pop it up
-        if GameData.sharedGameData.playerHasRatedGame == false && GameData.sharedGameData.promptRateMeCountdown <= 0 {
+        if (GameData.sharedGameData.playerHasRatedGame == false && GameData.sharedGameData.promptRateMeCountdown <= 0) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
             // Display the rate me dialog
             self.presentUserWithRateMeDialog()
             
@@ -77,18 +77,18 @@ class MainMenuScene : DBScene {
         }
         
         // Get the achievements
-        GameKitHelper.sharedInstance.getAchievements()
+        self.viewController!.getAchievements()
         
         // Cache an ad so we're ready when we need it
-        viewController!.cacheInterstitialAd()
+        self.viewController!.cacheInterstitialAd()
         
         super.didMove(to: view)
     }
     
     override func willMove(from view: SKView) {
         // Setup CUSTOM observer for player is/not authenticated
-        NotificationCenter.default().removeObserver(self, name: NSNotification.Name(rawValue: LocalPlayerNotAuthenticated), object: nil)
-        NotificationCenter.default().removeObserver(self, name: NSNotification.Name(rawValue: LocalPlayerIsAuthenticated), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: LocalPlayerNotAuthenticated), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: LocalPlayerIsAuthenticated), object: nil)
         
         super.willMove(from: view)
     }
@@ -145,14 +145,14 @@ class MainMenuScene : DBScene {
         self.addChild(self.worldView)
         
         // Character info
-        for type in CharacterType.cases() {
+        for type in CharacterType.allCases {
             self.createCharacterInfo(type)
         }
         
         // Setup the buttons
         self.playButton = MainMenuPlayButton(scene: self)
         self.buyButton = MainMenuBuyButton(scene: self, unlockAmount: 0)
-        self.skillsButton = DBSceneSkillsButton(scene: self, sceneType: DBSceneType.mainMenuScene, size: DBButtonSize.small)
+        self.skillsButton = DBSceneSkillsButton(scene: self, size: DBButtonSize.small)
         self.storeButton = MainMenuStoreButton(scene: self)
         self.settingsButton = MainMenuSettingsButton(scene: self)
         self.gameCenterButton = MainMenuGameCenterButton(scene: self)
@@ -242,7 +242,7 @@ class MainMenuScene : DBScene {
         // Read in level information from file
         // Create the path to the level
         let filePath: String = "main_menu"
-        let path: String = Bundle.main().pathForResource(filePath, ofType: "plist")!
+        let path: String = Bundle.main.path(forResource: filePath, ofType: "plist")!
         
         // Read in the level
         let sceneSetup: NSDictionary = NSDictionary(contentsOfFile: path)!
@@ -488,7 +488,7 @@ class MainMenuScene : DBScene {
     }
     
     func resetCharacterSelection() {
-        for type in CharacterType.cases() {
+        for type in CharacterType.allCases {
             self.charNames[type]!.isHidden = true
             self.charDescriptions[type]!.isHidden = true
         }
@@ -552,7 +552,7 @@ class MainMenuScene : DBScene {
         for level in 1...totalLevels {
             // Create the path to the level
             let filePath: String = "level_\(level)"
-            let path: String = Bundle.main().pathForResource(filePath, ofType: "plist")!
+            let path: String = Bundle.main.pathForResource(filePath, ofType: "plist")!
             
             // Read in the level
             let levelSetup: NSDictionary = NSDictionary(contentsOfFile: path)!

@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum CharacterType : String, EnumCollection {
+enum CharacterType : String {
     case Warrior = "warrior"
     case Archer = "archer"
     case Mage = "mage"
@@ -29,5 +29,9 @@ enum CharacterType : String, EnumCollection {
         } else {
             return 0
         }
+    }
+    
+    static var allCases: [CharacterType] {
+        return [.Warrior, .Archer, .Mage, .Monk]
     }
 }

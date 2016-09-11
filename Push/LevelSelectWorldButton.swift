@@ -20,6 +20,6 @@ class LevelSelectWorldButton : DBButton {
     
     override func touchesEndedAction() {
         // Set the newly touched node as the selected one
-        (self.dbScene as! LevelSelectionScene).selectWorld(self.parent as! WorldNode)
+        (self.dbScene as! LevelSelectionScene).switchSelectedWorld(worldNameToSelect: (self.parent as! WorldNode).worldName, initialLoad: false)
     }
 }

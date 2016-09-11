@@ -38,7 +38,7 @@ class StoryDialog: SKSpriteNode {
         
         self.iconBackgroundNode = SKSpriteNode(texture: iconTexture)
         self.descriptionNode = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
-        self.descriptionNode?.paragraphWidth = self.size.width * 0.667
+        self.descriptionNode?.paragraphWidth = self.size.width * 0.80
         self.descriptionNode?.fontSize = round(18 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.descriptionNode?.fontColor = MerpColors.darkFont
         self.descriptionNode?.text = description

@@ -6,28 +6,13 @@
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>You reach the Ignis world. Why would the minions revolt when it seemed like the rulens and minions were living in peace for hundreds of years?</string>
+			<string>You reach Ignis. Why would the minions revolt when it seemed like the rulens and minions were living in peace for hundreds of years?</string>
 			<key>Icon</key>
 			<string>story-ignis</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
 			<string>Beginning</string>
-		</dict>
-	</array>
-	<key>Tutorial</key>
-	<array>
-		<dict>
-			<key>Title</key>
-			<string>Welcome to the Ignis World!</string>
-			<key>Description</key>
-			<string>Timing is critical! Consider upgrading your skills. </string>
-			<key>Type</key>
-			<string>tutorial</string>
-			<key>Key</key>
-			<string>world_water</string>
-			<key>Version</key>
-			<real>1.1</real>
 		</dict>
 	</array>
 	<key>Challenges</key>

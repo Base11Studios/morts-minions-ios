@@ -10,6 +10,9 @@ import Foundation
 
 @objc(CharacterSkillScene)
 class CharacterSkillScene : DBScene {
+    // Scene to return to
+    var returnScene: DBScene
+    
     var worldView: SKSpriteNode
 
     // Skill selector
@@ -62,7 +65,9 @@ class CharacterSkillScene : DBScene {
     var justInitialized: Bool = true
     var needsUpdated: Bool = true
     
-    init(size: CGSize) {
+    init(size: CGSize, returnScene: DBScene) {
+        self.returnScene = returnScene
+        
         // Setup buffer size
         self.bufferSize = floor(ScaleBuddy.sharedInstance.getScaleAmount() * 2.0)
         
@@ -372,13 +377,13 @@ class CharacterSkillScene : DBScene {
     func addSkillsToScrollingNode() {
         // Create the path to the level - UPGRADE
         let filePath: String = "upgrades_\(GameData.sharedGameData.selectedCharacter.rawValue)".lowercased()
-        let path: String = Bundle.main().pathForResource(filePath, ofType: "plist")!
+        let path: String = Bundle.main.path(forResource: filePath, ofType: "plist")!
         let upgradeList = NSMutableArray(contentsOfFile: path) as! Array<Array<[String: AnyObject]>>
         
         /********* COST */
         // Create the path to the level
         let costFilePath: String = "upgrades_cost".lowercased()
-        let costPath: String = Bundle.main().pathForResource(costFilePath, ofType: "plist")!
+        let costPath: String = Bundle.main.path(forResource: costFilePath, ofType: "plist")!
         let costList = NSMutableArray(contentsOfFile: costPath) as! Array<Array<[String: AnyObject]>>
         
         // Loop through each entry in the dictionary
@@ -469,7 +474,7 @@ class CharacterSkillScene : DBScene {
         }
         
         let selectedSkillDescriptionXPosition = -(self.selectedSkillBackground!.size.width - self.nodeBuffer * 2 - (self.selectedSkillDescription?.calculateAccumulatedFrame().width)!) / 2
-        let selectedSkillDescriptionYPosition = topYPosition - self.nodeBuffer * descYPos - self.selectedSkillIcon!.size.height
+        let selectedSkillDescriptionYPosition = topYPosition - self.nodeBuffer * 1.2 * descYPos - self.selectedSkillIcon!.size.height
         self.selectedSkillDescription?.position = CGPoint(x: selectedSkillDescriptionXPosition, y: selectedSkillDescriptionYPosition)
         
         // Buy skill button
@@ -595,6 +600,6 @@ class CharacterSkillScene : DBScene {
     }
     
     override func impactsMusic() -> Bool {
-        return false
+        return true // This was false at one point... to allow for the scene's music to carry forward. It isn't working now because the loading screen kills the music.
     }
 }

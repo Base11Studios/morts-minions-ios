@@ -23,7 +23,7 @@ class Player : SKSpriteNode {
     var isComingOutOfHiding: Bool = false
     var isComingOutOfTeleport: Bool = false
     var justReceivedUpwardImpulseFromEnvironment: Bool = false
-    
+    var teleportsInsteadOfJumps: Bool = false
     var isOnGround: Bool = true
     
     // World view
@@ -116,7 +116,7 @@ class Player : SKSpriteNode {
     var damageAvoided: Int = 0
     var spriteOverlay: SKSpriteNode?
     var spriteOverlay2: SKSpriteNode?
-    var spriteOverlay2Action: SKAction?
+    var spriteOverlay2Action: SKAction = SKAction()
     
     // Hovering / Teleport
     var autoHoverStop: Bool = false
@@ -151,16 +151,21 @@ class Player : SKSpriteNode {
     var projectiles = Array<PlayerProjectile>()
     var projectiles2 = Array<PlayerProjectile>()
     
-    // Sound actions
-    var actionSoundSkill1: SKAction?
-    var actionSoundSkill2: SKAction?
-    var actionSoundSkill3: SKAction?
-    var actionSoundSkill4: SKAction?
-    var actionSoundSkill5: SKAction?
-    var actionSoundHurt: SKAction?
-    var actionSoundContact: SKAction?
-    var actionSoundCollision: SKAction?
-    var actionSoundJumpedOnObject: SKAction?
+    // Other actions
+    var actionGroup1: SKAction = SKAction()
+    var actionGroup2: SKAction = SKAction()
+    var actionGroup3: SKAction = SKAction()
+    var actionGroup4: SKAction = SKAction()
+    
+    // Alphs
+    var forcedAlpha: CGFloat = 1.0
+    
+    // Range
+    var rangeInd: SKSpriteNode?
+    
+    init() {
+        super.init(texture: SKTexture(), color: UIColor.clear, size: CGSize())
+    }
     
     init(atlas: SKTextureAtlas, textureArrayName: String, worldView: SKNode?, gameScene: GameScene) {
         self.worldView = worldView
@@ -168,7 +173,7 @@ class Player : SKSpriteNode {
         
         let texture = atlas.textureNamed(textureArrayName + ("_000"))
         
-        super.init(texture: texture, color: UIColor.clear(), size: texture.size())
+        super.init(texture: texture, color: UIColor.clear, size: texture.size())
         
         // Set the walking frames for animation
         self.walkingFrames = SpriteKitHelper.getTextureArrayFromAtlas(atlas, texturesNamed: textureArrayName, frameStart: 0, frameEnd: 15)
@@ -189,7 +194,7 @@ class Player : SKSpriteNode {
         self.initializeWeapon()
         
         // Initialize sounds
-        self.initSounds()
+        //self.initSounds() We are going to do this on gameScene movement
         
         // Initialize class specific traits
         self.setupTraits()
@@ -228,15 +233,6 @@ class Player : SKSpriteNode {
     }
     
     func setPlayerAttachmentPositions(_ defaultYPosition: CGFloat, position: CGPoint) {
-    }
-    
-    func initSounds() {
-        if GameData.sharedGameData.preferenceSoundEffects {
-            self.actionSoundHurt = SKAction.playSoundFileNamed(SoundType.Hurt.rawValue, waitForCompletion: false)
-            self.actionSoundContact = SKAction.playSoundFileNamed(SoundType.Contact.rawValue, waitForCompletion: false)
-            self.actionSoundCollision = SKAction.playSoundFileNamed(SoundType.Collision.rawValue, waitForCompletion: false)
-            self.actionSoundJumpedOnObject = SKAction.playSoundFileNamed(SoundType.JumpedOnObject.rawValue, waitForCompletion: false)
-        }
     }
     
     func initPlayerDamaged() {
@@ -445,7 +441,7 @@ class Player : SKSpriteNode {
                 if self.graceDamagePeriodCount <= 0 {
                     self.isGraceDamagePeriod = false
                     self.removeAction(forKey: "grace_period")
-                    self.alpha = 1.0
+                    self.alpha = self.forcedAlpha
                 }
             }
             
@@ -623,8 +619,8 @@ class Player : SKSpriteNode {
         }
 
         // determine if the player changed directions in some way
-        if (self.previousVelocity.dx > 0 && self.physicsBody?.velocity.dx <= 0.1) || (self.previousVelocity.dy > 0 && self.physicsBody?.velocity.dy <= 0.1) ||
-            (self.previousVelocity.dx < 0 && self.physicsBody?.velocity.dx >= -0.1) || (self.previousVelocity.dy < 0 && self.physicsBody?.velocity.dy >= -0.1) {
+        if (self.previousVelocity.dx > 0 && self.physicsBody!.velocity.dx <= 0.1) || (self.previousVelocity.dy > 0 && self.physicsBody!.velocity.dy <= 0.1) ||
+            (self.previousVelocity.dx < 0 && self.physicsBody!.velocity.dx >= -0.1) || (self.previousVelocity.dy < 0 && self.physicsBody!.velocity.dy >= -0.1) {
             self.justChangedDirections = true
         } else {
             self.justChangedDirections = false
@@ -647,7 +643,11 @@ class Player : SKSpriteNode {
             }
             else {
                 if self.isActiveJumping && !self.isJumping && self.jumpCooldown <= 0 {  // If the player is activeJumping, and not jumping, then jump // TODO integate with new skill system
-                    self.startJumping(self.jumpForce)
+                    if self.teleportsInsteadOfJumps {
+                        self.startTeleport(self.jumpForce, fromDefaultPosition: true)
+                    } else {
+                        self.startJumping(self.jumpForce)
+                    }
                 }
             }
             
@@ -677,27 +677,30 @@ class Player : SKSpriteNode {
     func checkHealth() {
         // If the enemy has no more health
         if self.health <= 0 && self.isAlive {
-            // Set the indicator that the player is dead
-            self.isAlive = false
-            
-            // Remove the physics body to prevent collisions
-            //self.physicsBody = nil;
-            self.physicsBody!.categoryBitMask = GameScene.deathCategory
-            self.physicsBody!.collisionBitMask = GameScene.groundCategory
-            self.physicsBody!.contactTestBitMask = GameScene.groundCategory
-            
-            // Group actions to do in parallel
-            let group: SKAction = SKAction.group([SKAction.rotate(byAngle: 360, duration: 1.0), SKAction.fadeOut(withDuration: 2.0), SKAction.scale(to: 0, duration: 2.0)])
-            
-            self.removeAction(forKey: "playerWalking")
-            
-            // Start the new action
-            self.run(SKAction.sequence([group]), withKey: "playerDieing")
-            // REJUV TODO SKAction.removeFromParent() - put back in?
+            self.executeDeath()
         }
     }
     
-    func rejuvPlayer(_ position: CGPoint, numberOfHearts: Int) {
+    func executeDeath() {
+        // Set the indicator that the player is dead
+        self.isAlive = false
+        
+        // Remove the physics body to prevent collisions
+        //self.physicsBody = nil;
+        self.physicsBody!.categoryBitMask = GameScene.deathCategory
+        self.physicsBody!.collisionBitMask = GameScene.groundCategory
+        self.physicsBody!.contactTestBitMask = GameScene.groundCategory
+        
+        // Group actions to do in parallel
+        self.actionGroup1 = SKAction.group([SKAction.rotate(byAngle: 360, duration: 1.0), SKAction.fadeOut(withDuration: 2.0), SKAction.scale(to: 0, duration: 2.0)])
+        
+        self.removeAction(forKey: "playerWalking")
+        
+        // Start the new action
+        self.run(SKAction.sequence([self.actionGroup1]), withKey: "playerDieing")
+    }
+    
+    func rejuvPlayer(position: CGPoint, numberOfHearts: Int) {
         //NSLog("\(self.position.x), y \(self.position.y)")
         self.removeAllActions()
         self.position = position
@@ -740,12 +743,12 @@ class Player : SKSpriteNode {
         self.physicsBody!.contactTestBitMask = GameScene.groundCategory
         
         // Group actions to do in parallel
-        let group: SKAction = SKAction.group([SKAction.fadeOut(withDuration: 3.0), SKAction.scale(to: 3, duration: 3.0)])
+        self.actionGroup2 = SKAction.group([SKAction.fadeOut(withDuration: 3.0), SKAction.scale(to: 3, duration: 3.0)])
         
         self.removeAction(forKey: "playerWalking")
         
         // Start the new action
-        self.run(SKAction.sequence([group, SKAction.removeFromParent()]), withKey: "playerWinning")
+        self.run(SKAction.sequence([self.actionGroup2]), withKey: "playerWinning")
     }
     
     func updateWeapon() {
@@ -782,8 +785,11 @@ class Player : SKSpriteNode {
         // Create the velocity vector to apply to the player's velocity
         let relativeVelocity: CGVector = CGVector(dx: self.maxSpeed - self.physicsBody!.velocity.dx, dy: 0.0)
         
+        let isJumping = NSNumber(value: self.isJumping)
+        let isHovering = NSNumber(value: !self.isHovering)
+        
         // Multiply the Y by the jumping boolen. If we aren't jumping, we don't want Y to move.
-        self.physicsBody!.velocity = CGVector(dx: self.physicsBody!.velocity.dx + relativeVelocity.dx * self.velocityRate, dy: (self.physicsBody!.velocity.dy + relativeVelocity.dy * self.velocityRate) * CGFloat(self.isJumping) * CGFloat(!self.isHovering))
+        self.physicsBody!.velocity = CGVector(dx: self.physicsBody!.velocity.dx + relativeVelocity.dx * self.velocityRate, dy: (self.physicsBody!.velocity.dy + relativeVelocity.dy * self.velocityRate) * CGFloat(isJumping) * CGFloat(isHovering))
     }
     
     func startActiveJumping() { // TODO replace with a check to see if the button is being pressed and if the skill is one that is activated on press instead of release
@@ -823,7 +829,7 @@ class Player : SKSpriteNode {
         self.updateSkillsBasedOnPlayerPosition()
         
         // Sound effect!
-        self.playActionSound(action: self.actionSoundSkill1!)
+        self.playActionSound(action: SoundHelper.sharedInstance.jump)
     }
     
     func startTeleport(_ position: CGFloat, fromDefaultPosition: Bool) {
@@ -856,7 +862,7 @@ class Player : SKSpriteNode {
         
         self.updateSkillsBasedOnPlayerPosition()
         
-        self.playActionSound(action: self.actionSoundSkill1!)
+        self.playActionSound(action: SoundHelper.sharedInstance.air)
     }
     
     func stopTeleport() {
@@ -952,6 +958,7 @@ class Player : SKSpriteNode {
     
     func startInvisibility() {
         self.alpha = 0.5
+        self.forcedAlpha = 0.5
         
         // Setup collision details for player
         self.physicsBody!.categoryBitMask = GameScene.transparentPlayerCategory
@@ -968,6 +975,7 @@ class Player : SKSpriteNode {
     
     func stopInvisibility() {
         self.alpha = 1.0
+        self.forcedAlpha = 1.0
         self.gameScene!.transparentObjectsAlreadyDamagedPlayer.removeAll()
     }
     
@@ -1061,7 +1069,7 @@ class Player : SKSpriteNode {
             
             self.animatePlayerDamaged()
             
-            self.playActionSound(action: self.actionSoundHurt!)
+            self.playActionSound(action: SoundHelper.sharedInstance.hurt)
             
             // Vibrate
             //AudioServicesPlaySystemSound(kSystemSoundID_Vibrate)
@@ -1087,7 +1095,7 @@ class Player : SKSpriteNode {
             }
             
             // Need to turn on grace period 
-            self.startGracePeriod(1.0)
+            self.startGracePeriod(1.2)
         }
     }
     
@@ -1102,7 +1110,11 @@ class Player : SKSpriteNode {
         redFlash.alpha = 0.75
         redFlash.run(SKAction.sequence([
             SKAction.fadeOut(withDuration: 0.25), SKAction.run({
-                self.redFlash.alpha = 0.0
+                [weak self] in
+                
+                if self != nil {
+                    self?.redFlash.alpha = 0.0
+                }
             })]))
     }
     
@@ -1110,7 +1122,11 @@ class Player : SKSpriteNode {
         blueFlash.alpha = 0.75
         blueFlash.run(SKAction.sequence([
             SKAction.fadeOut(withDuration: 0.2), SKAction.run({
-                self.blueFlash.alpha = 0.0
+                [weak self] in
+                
+                if self != nil {
+                    self?.blueFlash.alpha = 0.0
+                }
             })]))
     }
     
@@ -1200,12 +1216,12 @@ class Player : SKSpriteNode {
             self.frontEngageWithEnvironmentObject(object)
         } else {
             // We are assuming we jumped on the enemy
-            self.playActionSound(action: self.actionSoundJumpedOnObject!)
+            self.playActionSound(action: SoundHelper.sharedInstance.jumpedOnObject)
             self.playedEngageSound = true
         }
         
         if !self.playedEngageSound {
-            self.playActionSound(action: self.actionSoundCollision!)
+            self.playActionSound(action: SoundHelper.sharedInstance.collision)
             self.playedEngageSound = true
         }
     }
@@ -1244,7 +1260,7 @@ class Player : SKSpriteNode {
         // Take Damage
         self.frontEngageWithEnvironmentObject(object)
 
-        self.playActionSound(action: self.actionSoundContact!)
+        self.playActionSound(action: SoundHelper.sharedInstance.contact)
     }
     
     func contactOrCollisionMethods(_ object: EnvironmentObject) {
@@ -1445,8 +1461,11 @@ class Player : SKSpriteNode {
                 self.allowDoubleJump = true
             }
             
-            if !self.isJumping {
-                self.startTeleport(CGFloat(skill.value) * ScaleBuddy.sharedInstance.getGameScaleAmount(false), fromDefaultPosition: true)
+            if self.isActiveJumping == false {
+                self.jumpForce = CGFloat(skill.value) * ScaleBuddy.sharedInstance.getGameScaleAmount(false) // 2 ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+                
+                // Start jumping
+                self.startActiveJumping()
             }
         /*case .Fireball:
             
@@ -1497,7 +1516,7 @@ class Player : SKSpriteNode {
             
             self.spriteOverlay!.isHidden = false
             
-            self.playActionSound(action: self.actionSoundSkill3!)
+            self.playActionSound(action: SoundHelper.sharedInstance.charge)
         case .Stomp:
             // Set the skill to cooldown // TODO move this into a function
             skill.cooldownInProgress = true
@@ -1507,14 +1526,14 @@ class Player : SKSpriteNode {
             
             // Add stomp animations
             // Create yellow for range
-            let rangeInd = SKSpriteNode(texture: nil, color: SKColor(red: 219/255.0, green: 14/255.0, blue: 14/255.0, alpha: 1.0), size: CGSize(width: skill.range * 2 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), height: 2 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
-            rangeInd.position = CGPoint(x: self.position.x + rangeInd.size.width / 6.0, y: self.defaultPositionY - self.size.height / 2)
-            rangeInd.zPosition = 3
-            self.worldView!.addChild(rangeInd)
+            rangeInd = SKSpriteNode(texture: nil, color: SKColor(red: 219/255.0, green: 14/255.0, blue: 14/255.0, alpha: 1.0), size: CGSize(width: skill.range * 2 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), height: 2 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
+            rangeInd!.position = CGPoint(x: self.position.x + rangeInd!.size.width / 6.0, y: self.defaultPositionY - self.size.height / 2)
+            rangeInd!.zPosition = 3
+            self.worldView!.addChild(rangeInd!)
             
             // Group actions to do in parallel
-            let group: SKAction = SKAction.group([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 - 5 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), duration: 0.25), SKAction.fadeOut(withDuration: 0.25)])
-            rangeInd.run(SKAction.sequence([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 + 10 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), duration: 0.05), group, SKAction.removeFromParent()]))
+            self.actionGroup3 = SKAction.group([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 - 5 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), duration: 0.25), SKAction.fadeOut(withDuration: 0.25)])
+            rangeInd!.run(SKAction.sequence([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 + 10 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), duration: 0.05), self.actionGroup3, SKAction.removeFromParent()]))
             
             // If there is a sec value, launch rocks
             if skill.secondaryValue == 1 {
@@ -1531,10 +1550,10 @@ class Player : SKSpriteNode {
             
             // Iterate through all enemies and deal damage to them if they are touching the ground
             for enemy in self.gameScene!.worldViewEnvironmentObjects {
-                if enemy.name!.hasPrefix("environmentobject_enemy") {
+                if enemy.type == EnvironmentObjectType.Enemy {
                     // The enemy is within the skill range and the enemy is not flying or floating (so they should be on the ground
-                    let enemyWithinRange1 = enemy.position.x + enemy.size.width / 2 > rangeInd.position.x - rangeInd.size.width / 2
-                    let enemyWithinRange2 = enemy.position.x - enemy.size.width / 2 < rangeInd.position.x + rangeInd.size.width / 2
+                    let enemyWithinRange1 = enemy.position.x + enemy.size.width / 2 > rangeInd!.position.x - rangeInd!.size.width / 2
+                    let enemyWithinRange2 = enemy.position.x - enemy.size.width / 2 < rangeInd!.position.x + rangeInd!.size.width / 2
                     if (enemyWithinRange1 && enemyWithinRange2) && !enemy.isFloating && !enemy.isFlying {
                         let multiplier: Double = 1
                         
@@ -1550,7 +1569,7 @@ class Player : SKSpriteNode {
                 }
             }
             
-            self.playActionSound(action: self.actionSoundSkill4!)
+            self.playActionSound(action: SoundHelper.sharedInstance.explode)
         case .ShootArrow:
             // Set the skill to cooldown
             skill.cooldownInProgress = true
@@ -1596,15 +1615,15 @@ class Player : SKSpriteNode {
             // Find all enemies on screen.
             // Iterate through all enemies to find someone close
             for object in self.gameScene!.worldViewEnvironmentObjects {
-                if (object.name!.hasPrefix("environmentobject_enemy") || object.name!.hasPrefix("environmentobject_projectile")) && object.isAlive {
-                    if object.position.x > self.position.x {
+                if (object.type == EnvironmentObjectType.Enemy || object.type == EnvironmentObjectType.Projectile) && object.isAlive {
+                    if object.position.x > self.position.x && abs(object.position.x - self.position.x) < self.gameScene!.size.width {
                         objectsToFreeze.append(object)
                     }
                 }
             }
             
             // Sort them by distance
-            objectsToFreeze.sort(isOrderedBefore: { (e1: EnvironmentObject, e2: EnvironmentObject) -> Bool in
+            objectsToFreeze.sort(by: { (e1: EnvironmentObject, e2: EnvironmentObject) -> Bool in
                 if e1.position.x < e2.position.x {
                     return true
                 } else {
@@ -1629,7 +1648,7 @@ class Player : SKSpriteNode {
                 }
             }
             
-            self.playActionSound(action: self.actionSoundSkill4!)
+            self.playActionSound(action: SoundHelper.sharedInstance.pow)
         case .ProtectorOfTheSky:
             // Set the skill to cooldown
             skill.cooldownInProgress = true
@@ -1648,7 +1667,8 @@ class Player : SKSpriteNode {
                 
                 // Iterate through all enemies to find someone close
                 for object in self.gameScene!.worldViewEnvironmentObjects {
-                    if object.name!.hasPrefix("environmentobject_obstacle") || object.name!.hasPrefix("environmentobject_enemy") && object.isAlive {
+                    if (object.type == EnvironmentObjectType.Enemy ||
+                        object.type == EnvironmentObjectType.Obstacle) && object.isAlive {
                         let modifiedObjectPosition = (abs(object.position.x) - (100 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
                         if closestObject == nil {
                             if modifiedObjectPosition - abs(self.protectorOfTheSky!.position.x) > 0 && object.position.y > self.protectorOfTheSky!.minimumHeight {
@@ -1668,7 +1688,7 @@ class Player : SKSpriteNode {
                 }
             }
             
-            self.playActionSound(action: self.actionSoundSkill4!)
+            self.playActionSound(action: SoundHelper.sharedInstance.zoom)
         case .WalkWithShadows:
             if skill.chargeCount > 0 {
                 skill.skillIsUncharging = true
@@ -1706,7 +1726,7 @@ class Player : SKSpriteNode {
             self.physicsBody!.velocity = CGVector(dx: self.physicsBody!.velocity.dx, dy: 0)
             self.physicsBody!.applyImpulse(CGVector(dx: 0, dy: CGFloat(-skill.value)))
             
-            self.playActionSound(action: self.actionSoundSkill4!)
+            self.playActionSound(action: SoundHelper.sharedInstance.air)
         case .Hover:
             if !self.isOnGround {
                 if skill.chargeCount > 0 {
@@ -1715,7 +1735,7 @@ class Player : SKSpriteNode {
                     self.startHovering()
                     
                     self.spriteOverlay2!.isHidden = false
-                    self.spriteOverlay2!.run(self.spriteOverlay2Action!, withKey: "hover")
+                    self.spriteOverlay2!.run(self.spriteOverlay2Action, withKey: "hover")
                 }
             }
         case .KiShield:
@@ -1738,7 +1758,7 @@ class Player : SKSpriteNode {
             // Reset damage avoided
             self.damageAvoided = 0
             
-            self.playActionSound(action: self.actionSoundSkill5!)
+            self.playActionSound(action: SoundHelper.sharedInstance.buzz)
         case .ForceField:
             self.projectileDamageReduction = 10
             self.enemyDamageReduction = 10
@@ -1759,7 +1779,7 @@ class Player : SKSpriteNode {
             // Reset damage avoided
             self.damageAvoided = 0
             
-            self.playActionSound(action: self.actionSoundSkill5!)
+            self.playActionSound(action: SoundHelper.sharedInstance.buzz)
         case .HealthPotion:
             // Set the skill to cooldown // TODO move this into a function
             skill.cooldownInProgress = true
@@ -1774,7 +1794,7 @@ class Player : SKSpriteNode {
                 self.health = self.health + Int(skill.secondaryValue)
             }
             
-            self.playActionSound(action: self.actionSoundSkill5!)
+            self.playActionSound(action: SoundHelper.sharedInstance.drink)
         case .Meteor:
             // Set the skill to cooldown // TODO move this into a function
             skill.cooldownInProgress = true
@@ -1792,7 +1812,7 @@ class Player : SKSpriteNode {
                 self.launchMeteorFromSky(range: (skill.range + 200) * ScaleBuddy.sharedInstance.getGameScaleAmount(false), velocity: CGFloat(skill.secondaryValue), heightBoost: 150 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             }
             
-            self.playActionSound(action: self.actionSoundSkill3!)
+            self.playActionSound(action: SoundHelper.sharedInstance.explode)
         default: break
         }
     }
@@ -1808,12 +1828,17 @@ class Player : SKSpriteNode {
                 self.stopBlocking()
             }
         case .Teleport:
+            if self.isActiveJumping {
+                // No longer jumping
+                self.stopActiveJumping()
+            }
+            
             // If we had a double jump allowed and the player is still jumping, do it
             if self.allowDoubleJump && self.isJumping && self.additionalJumps > 0 {
                 self.stopHovering()
                 self.allowDoubleJump = false
                 self.additionalJumps -= 1
-                self.startTeleport(CGFloat(skill.secondaryValue), fromDefaultPosition: false)
+                self.startTeleport(CGFloat(skill.secondaryValue) * ScaleBuddy.sharedInstance.getGameScaleAmount(false), fromDefaultPosition: false)
             }
         case .Jump:
             if self.isActiveJumping {
@@ -1894,12 +1919,12 @@ class Player : SKSpriteNode {
                 self.worldView!.addChild(rangeInd)
                 
                 // Group actions to do in parallel
-                let group: SKAction = SKAction.group([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 - 5, duration: 0.25), SKAction.fadeOut(withDuration: 0.25)])
-                rangeInd.run(SKAction.sequence([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 + 10, duration: 0.05), group, SKAction.removeFromParent()]))
+                self.actionGroup3 = SKAction.group([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 - 5, duration: 0.25), SKAction.fadeOut(withDuration: 0.25)])
+                rangeInd.run(SKAction.sequence([SKAction.moveTo(y: self.defaultPositionY - self.size.height / 2 + 10, duration: 0.05), self.actionGroup3, SKAction.removeFromParent()]))
                 
                 // Iterate through all enemies and deal damage to them if they are touching the ground
                 for enemy in self.gameScene!.worldViewEnvironmentObjects {
-                    if enemy.name!.hasPrefix("environmentobject_enemy") {
+                    if enemy.type == EnvironmentObjectType.Enemy {
                         // The enemy is within the skill range and the enemy is not flying or floating (so they should be on the ground
                         let enemyWithinRange1 = enemy.position.x + enemy.size.width / 2 > rangeInd.position.x - rangeInd.size.width / 2
                         let enemyWithinRange2 = enemy.position.x - enemy.size.width / 2 < rangeInd.position.x + rangeInd.size.width / 2
@@ -1920,7 +1945,7 @@ class Player : SKSpriteNode {
                 
                 // Iterate through all obstacles and deal damage to them if they are touching the ground
                 for obstacle in self.gameScene!.worldViewEnvironmentObjects {
-                    if obstacle.name!.hasPrefix("environmentobject_obstacle") {
+                    if obstacle.type == EnvironmentObjectType.Obstacle {
                         // The enemy is within the skill range and the enemy is not flying or floating (so they should be on the ground
                         let obstacleWithinRange1 = obstacle.position.x + obstacle.size.width / 2 > rangeInd.position.x - rangeInd.size.width / 2
                         let obstacleWithinRange2 = obstacle.position.x - obstacle.size.width / 2 < rangeInd.position.x + rangeInd.size.width / 2
@@ -1952,11 +1977,29 @@ class Player : SKSpriteNode {
     }
     
     func clearOutActions() {
-        fightAction = SKAction()
-        spriteOverlay2Action = SKAction()
+        /*
+        self.fightAction = SKAction()
+        self.spriteOverlay2Action = SKAction()
+         */
+        
+        /*
+        // Group actions
+        self.actionGroup1 = SKAction()
+        self.actionGroup2 = SKAction()
+        self.actionGroup3 = SKAction()
+        self.actionGroup4 = SKAction()
+ */
+        
+        self.redFlash.removeAllActions()
+        self.blueFlash.removeAllActions()
+        self.rangeInd?.removeAllActions()
+        self.spriteOverlay2?.removeAllActions()
+        self.weapon.removeAllActions()
     }
     
     func playActionSound(action: SKAction) {
-        SoundHelper.sharedInstance.playSoundAction(self, action: action)
+        if GameData.sharedGameData.preferenceSoundEffects {
+            SoundHelper.sharedInstance.playSoundAction(self, action: action)
+        }
     }
 }

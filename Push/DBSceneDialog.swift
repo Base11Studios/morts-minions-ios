@@ -73,7 +73,7 @@ class DBSceneDialog: DialogBackground {
             self.descriptionNode2 = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
             self.container.addChild(self.descriptionNode2!)
             self.descriptionNode2?.paragraphWidth = self.container.size.width - self.buttonBuffer
-            self.descriptionNode2?.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+            self.descriptionNode2?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
             self.descriptionNode2?.fontColor = MerpColors.darkFont
             self.descriptionNode2?.text = description2!
             let descriptionNode2XPosition = self.container.size.width / -2 + self.descriptionNode2!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2
@@ -85,7 +85,7 @@ class DBSceneDialog: DialogBackground {
             self.descriptionNode3 = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
             self.container.addChild(self.descriptionNode3!)
             self.descriptionNode3?.paragraphWidth = self.container.size.width - self.buttonBuffer
-            self.descriptionNode3?.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+            self.descriptionNode3?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
             self.descriptionNode3?.fontColor = MerpColors.darkFont
             self.descriptionNode3?.text = description3!
             let descriptionNode3XPosition = self.container.size.width / -2 + self.descriptionNode3!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2

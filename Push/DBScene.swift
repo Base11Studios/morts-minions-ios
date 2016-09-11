@@ -97,15 +97,15 @@ class DBScene : SKScene {
     
     override func didMove(to view: SKView) {
         // Subscribe to a notification that fires when a product is purchased.
-        NotificationCenter.default().addObserver(self, selector: #selector(DBScene.productPurchased(_:)), name: IAPHelperProductPurchasedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DBScene.productPurchased(_:)), name: NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification), object: nil)
         
         // Subscribe to a notification that fires when a product purchase is cancelled.
-        NotificationCenter.default().addObserver(self, selector: #selector(DBScene.productPurchaseFailed(_:)), name: IAPHelperProductPurchaseFailedNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DBScene.productPurchaseFailed(_:)), name: NSNotification.Name(rawValue: IAPHelperProductPurchaseFailedNotification), object: nil)
     }
     
     override func willMove(from view: SKView) {
-        NotificationCenter.default().removeObserver(self, name: NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification), object: nil)
-        NotificationCenter.default().removeObserver(self, name: NSNotification.Name(rawValue: IAPHelperProductPurchaseFailedNotification), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: IAPHelperProductPurchasedNotification), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: IAPHelperProductPurchaseFailedNotification), object: nil)
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -115,7 +115,7 @@ class DBScene : SKScene {
     func displayTutorialTooltip() -> Void {
     }
     
-    func showPurchaseMenu(_ openedWithNotEnoughGems: Bool, itemCost: Int, onSuccess: (Bool) -> Void, onFailure: () -> Void) {
+    func showPurchaseMenu(_ openedWithNotEnoughGems: Bool, itemCost: Int, onSuccess: @escaping (Bool) -> Void, onFailure: @escaping () -> Void) {
         
         // Load a spinner
         self.startLoadingOverlay()
@@ -192,9 +192,9 @@ class DBScene : SKScene {
     
     // When a product purchase fails
     func productPurchaseFailed(_ notification: Notification) {
-        let failReason = notification.object as! Int
+        let failReason = notification.object as! NSError
         
-        if failReason != SKErrorCode.paymentInvalid.rawValue {
+        if failReason.code != SKError.paymentInvalid.rawValue {
             // TODO if failed because of error, show message in header
             self.purchaseMenu!.updateHeaderPaymentError()
             
@@ -281,7 +281,7 @@ class DBScene : SKScene {
     }
     
     func initializeCredits() {
-        self.credits = DBSceneDialog(title: "Credits", description: "Game created by Dan Bellinski", descriptionSize: 18, description2: "Thanks to my wife, Megan, for inspiration", description3: "Thanks to my beta testers: Brett, Eric, Tyler, Ryan, A.J., Jason, Megan, Rita, Kim, Chris, Kas, Neehar and everyone else", description4: "© 2016 Base11 Studios, Ltd", frameSize: self.size, scene: self, iconTexture: GameTextures.sharedInstance.buttonAtlas.textureNamed("trophygold"))
+        self.credits = DBSceneDialog(title: "Credits", description: "Game created by Dan Bellinski", descriptionSize: 18, description2: "Thanks to my wife, Megan, for inspiration", description3: "Thanks to my friends: Brett, Eric, Tyler, Ryan, A.J., Megan, Rita, Kim, Chris, KaS, Jason, Neehar and everyone else that helped", description4: "© 2016 Base11 Studios, Ltd", frameSize: self.size, scene: self, iconTexture: GameTextures.sharedInstance.buttonAtlas.textureNamed("trophygold"))
         self.credits!.zPosition = 30
         self.addChild(self.credits!)
     }

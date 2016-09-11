@@ -21,6 +21,7 @@ class FireGeyser : Obstacle {
             
         // We dont want this to get updated by gamescene so change the name which is the selector
         flame!.name = "proj_dont_update"
+        flame!.type = EnvironmentObjectType.Ignored
         flame!.isHidden = true
             
         flame!.position = CGPoint(x: defaultXPosition, y: defaultYPosition - 300)
@@ -71,11 +72,12 @@ class FireGeyser : Obstacle {
             
             self.attackCooldown = self.value1
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Flame)
+            self.playActionSound(action: SoundHelper.sharedInstance.flame)
         }
         
         if self.flameCooldown <= 0.0 {
             flame!.name = "proj_dont_update"
+            flame!.type = EnvironmentObjectType.Ignored
             flame!.isHidden = true
             flame!.position = CGPoint(x: self.position.x, y: self.position.y - 300)
             self.flameCooldown = 100.0

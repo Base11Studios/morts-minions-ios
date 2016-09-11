@@ -50,6 +50,8 @@ class Obstacle : EnvironmentObject {
     
     func resetName() {
         self.name = "environmentobject_obstacle_\(UUID().uuidString)"
+        // Type
+        self.type = EnvironmentObjectType.Obstacle
     }
     
     func initializeAttributes() {
