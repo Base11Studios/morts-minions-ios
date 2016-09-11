@@ -60,7 +60,7 @@ class Slunky : Enemy {
                 // Set physics body back
                 fireball.physicsBody!.categoryBitMask = GameScene.projectileCategory
                 
-                self?.playActionSound()
+                self?.playActionSound(action: SoundHelper.sharedInstance.projectileThrow)
             }
             })
         
@@ -118,10 +118,6 @@ class Slunky : Enemy {
         // Don't move
         self.moveSpeed = 0
         self.velocityRate = 0
-        
-        
-        // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.ProjectileThrow.rawValue, waitForCompletion: true)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {

@@ -103,7 +103,7 @@ class Archer : Player {
                     
                     arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 2000.0 * CGFloat(i)))
                     
-                    self?.playActionSound(action: self!.actionSoundSkill2)
+                    self?.playActionSound(action: SoundHelper.sharedInstance.projectileThrow)
                 }
             }
         })
@@ -134,18 +134,6 @@ class Archer : Player {
         
         // Set the appropriate fight action
         self.fightAction = SKAction.sequence([SKAction.animate(with: self.weaponFrames, timePerFrame: 0.01, resize: true, restore: false), actionCreateProjectile, actionEndAttack])
-    }
-    
-    override func initSounds() {
-        if GameData.sharedGameData.preferenceSoundEffects {
-            self.actionSoundSkill1 = SKAction.playSoundFileNamed(SoundType.Jump.rawValue, waitForCompletion: true)
-            self.actionSoundSkill2 = SKAction.playSoundFileNamed(SoundType.ProjectileThrow.rawValue, waitForCompletion: true)
-            //self.actionSoundSkill3 = SKAction.playSoundFileNamed(SoundType..rawValue, waitForCompletion: true)
-            self.actionSoundSkill4 = SKAction.playSoundFileNamed(SoundType.Zoom.rawValue, waitForCompletion: true)
-            self.actionSoundSkill5 = SKAction.playSoundFileNamed(SoundType.Drink.rawValue, waitForCompletion: true)
-        }
-        
-        super.initSounds()
     }
     
     static func getDefaultSkills() -> NSMutableArray {

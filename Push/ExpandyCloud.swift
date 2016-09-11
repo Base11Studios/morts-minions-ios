@@ -48,10 +48,6 @@ class ExpandyCloud : Obstacle {
         self.defaultYPosition = self.defaultYPosition + CGFloat(self.value1) * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         
         self.setScale(self.currentScale * self.maxScale)
-        
-        
-        // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Action2.rawValue, waitForCompletion: true)
     }
     
     override func update(_ timeSinceLast: CFTimeInterval, withPlayer player: Player) {
@@ -64,8 +60,6 @@ class ExpandyCloud : Obstacle {
             }
             
             self.setScale(self.currentScale)
-            
-            //self.playActionSound()
         }
         
         super.update(timeSinceLast, withPlayer: player)

@@ -51,10 +51,6 @@ class FireGeyser : Obstacle {
         // Damage
         self.damage = 0
         self.damageToShields = 0
-        
-        
-        // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Flame.rawValue, waitForCompletion: true)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
@@ -76,7 +72,7 @@ class FireGeyser : Obstacle {
             
             self.attackCooldown = self.value1
             
-            self.playActionSound()
+            self.playActionSound(action: SoundHelper.sharedInstance.flame)
         }
         
         if self.flameCooldown <= 0.0 {
