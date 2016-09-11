@@ -382,7 +382,8 @@ class CharacterSkillScene : DBScene {
         
         /********* COST */
         // Create the path to the level
-        let costPath: String = Bundle.main.path(forResource: filePath, ofType: "plist")!
+        let costFilePath: String = "upgrades_cost".lowercased()
+        let costPath: String = Bundle.main.path(forResource: costFilePath, ofType: "plist")!
         let costList = NSMutableArray(contentsOfFile: costPath) as! Array<Array<[String: AnyObject]>>
         
         // Loop through each entry in the dictionary

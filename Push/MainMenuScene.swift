@@ -68,7 +68,7 @@ class MainMenuScene : DBScene {
         }
         
         // Reduce count of rate me, if 0, pop it up
-        if GameData.sharedGameData.playerHasRatedGame == false && GameData.sharedGameData.promptRateMeCountdown <= 0 {
+        if (GameData.sharedGameData.playerHasRatedGame == false && GameData.sharedGameData.promptRateMeCountdown <= 0) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
             // Display the rate me dialog
             self.presentUserWithRateMeDialog()
             
