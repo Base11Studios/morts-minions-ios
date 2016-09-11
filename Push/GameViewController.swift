@@ -97,6 +97,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         // Try to auth user
         GameKitHelper.sharedInstance.authenticateLocalPlayer(false)
         
+        // Cache ads and such
+        self.cacheInterstitialAd()
+        self.cacheRewardedVideo()
+        
         // Set restoration identifier
         self.restorationIdentifier = "GameViewController"
         
@@ -452,23 +456,23 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         //}
         
         /*
-         // Preload the texture atlases we need
-         let world = GameData.sharedGameData.getSelectedCharacterData().getWorldForLevel(level)
-         
-         SKTextureAtlas.preloadTextureAtlases([GameTextures.sharedInstance.waterStoryTutorialAtlas]) { () -> Void in
-         self.gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
-         self.gameScene!.scaleMode = SKSceneScaleMode.aspectFill
-         self.gameScene!.viewController = self
-         let skView: SKView = self.view as! SKView
-         skView.isMultipleTouchEnabled = true
-         //skView.showsFPS = true
-         //skView.showsNodeCount = true
-         //skView.showsPhysics = true
-         
-         // Present the scene - pass through regulator
-         self.presentDBScene(skView, scene: self.gameScene!)
-         }
-         */
+        // Preload the texture atlases we need
+        let world = GameData.sharedGameData.getSelectedCharacterData().getWorldForLevel(level)
+        
+        SKTextureAtlas.preloadTextureAtlases(GameTextures.sharedInstance.getAtlasArrayForWorld(world: world)) { () -> Void in
+            let gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
+            gameScene.scaleMode = SKSceneScaleMode.aspectFill
+            gameScene.viewController = self
+            let skView: SKView = self.view as! SKView
+            skView.isMultipleTouchEnabled = true
+            //skView.showsFPS = true
+            //skView.showsNodeCount = true
+            //skView.showsPhysics = true
+            
+            // Present the scene - pass through regulator
+            self.presentDBScene(skView, scene: gameScene, ignoreMusic: false)
+        }
+ */
         
         // Move to a background thread to do some long running work
         DispatchQueue.global().async {
@@ -661,6 +665,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         if !GameData.sharedGameData.adsUnlocked {
             Chartboost.cacheInterstitial(CBLocationMainMenu)
         }
+    }
+    
+    func cacheRewardedVideo() {
+        Chartboost.cacheRewardedVideo(CBLocationMainMenu)
     }
     
     // Game Center

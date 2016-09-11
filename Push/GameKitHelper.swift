@@ -27,8 +27,12 @@ class GameKitHelper: NSObject {
     var waitingForAchievementsToReport: Bool = false
     var achievementsCompleted = Array<GKAchievement>()
     var triedToAuthenticate: Bool = true
+    var lastAchievementReturnAttempt: Date
     
     override init() {
+        let calendar = NSCalendar.autoupdatingCurrent
+        self.lastAchievementReturnAttempt = calendar.date(byAdding: Calendar.Component.minute, value: -2, to: Date())!
+        
         super.init()
     }
     
@@ -534,8 +538,13 @@ class GameKitHelper: NSObject {
     }
     
     func getAchievements() {
-        if enableGameCenter && !self.waitingForAchievementsToReport && (!self.waitingForAchievementsToReturn || self.lastAchievementReturnAttempt + 1 minute < now ) {
+        // Add a minute to last attempt
+        let calendar = NSCalendar.autoupdatingCurrent
+        let untilDate = calendar.date(byAdding: Calendar.Component.minute, value: 1, to: self.lastAchievementReturnAttempt)
+        
+        if enableGameCenter && !self.waitingForAchievementsToReport && (!self.waitingForAchievementsToReturn || untilDate! < Date() ) {
             self.waitingForAchievementsToReturn = true
+            self.lastAchievementReturnAttempt = Date()
             
             GKAchievement.loadAchievements(completionHandler: { (achievements: [GKAchievement]?, error: Error?) in
                 if error == nil {
