@@ -1314,14 +1314,14 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 }
             }
             
-            if let updatedEnvObject : EnvironmentObject = envObject {
-                // Create the env object on the right of the screen. TODO change - for testing purposes only right now
-                updatedEnvObject.position = CGPoint(x: position, y: updatedEnvObject.defaultYPosition)
-                
-                // Add the env object to the scene
-                self.environmentObjectsToAdd.append(updatedEnvObject)
-                self.addEnvironmentObject(environmentObject: updatedEnvObject)
-            }
+            let updatedEnvObject : EnvironmentObject = envObject
+            // Create the env object on the right of the screen. TODO change - for testing purposes only right now
+            updatedEnvObject.position = CGPoint(x: position, y: updatedEnvObject.defaultYPosition)
+            
+            // Add the env object to the scene
+            self.environmentObjectsToAdd.append(updatedEnvObject)
+            self.addEnvironmentObject(environmentObject: updatedEnvObject)
+            
         }
     }
     

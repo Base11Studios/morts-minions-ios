@@ -262,7 +262,7 @@ class CharacterSkillScene : DBScene {
     
     func createUxTutorials() {
         var displayedBuySkill: Bool = false
-        var displayedResetSkill: Bool = false
+        //var displayedResetSkill: Bool = false
         var tutorialAck: Double?
         var tutorialKey: String
         var tutorialVersion: Double
@@ -319,7 +319,7 @@ class CharacterSkillScene : DBScene {
                 tutorial.containerBackground.position = CGPoint(x: self.resetSkillsButton!.position.x - self.resetSkillsButton!.size.width / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.width / 2 - self.nodeBuffer, y: self.resetSkillsButton!.position.y + self.resetSkillsButton!.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2)
                 self.uxTutorialTooltips!.append(tutorial)
                 
-                displayedResetSkill = true
+                //displayedResetSkill = true
                 self.addChild(tutorial)
             }
         }

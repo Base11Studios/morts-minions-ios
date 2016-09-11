@@ -409,26 +409,6 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
         return self.getDesiredGameData(unarchivedLocal, cloud: unarchivedCloud)
     }
     
-    // Loads correct save data automatically. We're not going to use this. Instead, if cloud has newer data, ask user.
-    /*class func getDesiredGameData(local: GameData?, cloud: GameData?) -> GameData {
-        if local != nil && cloud != nil { // Both set, get newest
-            let localTime = local!.timeLastUpdated
-            let cloudTime = cloud!.timeLastUpdated
-            
-            if cloudTime.compare(localTime) == NSComparisonResult.OrderedDescending {
-                return cloud!
-            } else {
-                return local!
-            }
-        } else if local != nil { // only localdata
-            return local!
-        } else if cloud != nil { // only clouddata
-            return cloud!
-        } else { // neither
-            return GameData()
-        }
-    }*/
-    
     // Always loads local or new but if there is cloud sends notification to user that they can load it up if desired
     class func getDesiredGameData(_ local: GameData?, cloud: GameData?) -> GameData {
         // If there is cloud and local, return local.

@@ -19,7 +19,11 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>1</string>
+	<string>3</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<true/>
+	<key>ITSEncryptionExportComplianceCode</key>
+	<string>ad00b040-cd8d-4e5f-bf3e-424804eb7782</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -55,8 +59,5 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
-	<key>ITSAppUsesNonExemptEncryption</key><true/> 
-	<key>ITSEncryptionExportComplianceCode</key>
-	<string>ad00b040-cd8d-4e5f-bf3e-424804eb7782</string>
 </dict>
 </plist>
