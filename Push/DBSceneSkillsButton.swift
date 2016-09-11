@@ -10,10 +10,11 @@ import Foundation
 
 @objc(DBSceneSkillsButton)
 class DBSceneSkillsButton : DBButton {
-    var sceneType: DBSceneType
+    init() {
+        super.init(dbScene: nil)
+    }
     
-    init(scene: DBScene, sceneType: DBSceneType, size: DBButtonSize) {
-        self.sceneType = sceneType
+    init(scene: DBScene, size: DBButtonSize) {
         super.init(iconName: "button_skills", pressedIconName: nil, buttonSize: size, dbScene: scene, atlas: GameTextures.sharedInstance.buttonAtlas)
     }
 
@@ -22,6 +23,6 @@ class DBSceneSkillsButton : DBButton {
     }
     
     override func touchesEndedAction() {
-        self.dbScene!.viewController!.presentCharacterSkillScene(self.sceneType)
+        self.dbScene!.viewController!.presentCharacterSkillScene(returnScene: self.dbScene!)
     }
 }

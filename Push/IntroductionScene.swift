@@ -30,7 +30,7 @@ class IntroductionScene : DBScene {
         self.worldView.addChild(logo)
         
         // Add the click here text
-        let clickHereLabel = LabelWithShadow(fontNamed: "Avenir-Black", darkFont: false, borderSize: 1 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+        let clickHereLabel = LabelWithShadow(fontNamed: "Avenir-Black", darkFont: true, borderSize: 1 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         clickHereLabel.name = "hudLabel"
         clickHereLabel.setText("Click anywhere to start")
         clickHereLabel.setFontSize(20 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))

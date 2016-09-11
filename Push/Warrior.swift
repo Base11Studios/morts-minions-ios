@@ -18,15 +18,16 @@ class Warrior : Player {
         self.skill5Details = CharacterSkillDetails(upgrade: CharacterUpgrade.FirstAidKit)
         
         super.initializeSkills()
-
+        
         // Create the rocks for stomp
-        for i in 0 ..< Int(self.getSkill(CharacterUpgrade.Stomp)!.secondaryValue * 5) {
+        for _ in 0 ..< Int(self.getSkill(CharacterUpgrade.Stomp)!.secondaryValue * 5) {
             // Create projectile
             let projectile: PlayerRock = PlayerRock(gameScene: self.gameScene!)
             projectile.physicsBody!.velocity = CGVector()
             
             // We dont want this to get updated by gamescene so change the name which is the selector
             projectile.name = "proj_dont_update"
+            projectile.type = EnvironmentObjectType.Ignored
             projectile.isHidden = true
             
             // Set up initial location of projectile
@@ -47,18 +48,6 @@ class Warrior : Player {
         self.name = "warrior"
     }
     
-    override func initSounds() {
-        if GameData.sharedGameData.preferenceSoundEffects {
-            self.actionSoundSkill1 = SKAction.playSoundFileNamed(SoundType.Jump.rawValue, waitForCompletion: false)
-            //self.actionSoundSkill2 = SKAction.playSoundFileNamed(SoundType..rawValue, waitForCompletion: false)
-            self.actionSoundSkill3 = SKAction.playSoundFileNamed(SoundType.Charge.rawValue, waitForCompletion: false)
-            self.actionSoundSkill4 = SKAction.playSoundFileNamed(SoundType.Explode.rawValue, waitForCompletion: false)
-            //self.actionSoundSkill5 = SKAction.playSoundFileNamed(SoundType..rawValue, waitForCompletion: false)
-        }
-        
-        super.initSounds()
-    }
-
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -80,14 +69,18 @@ class Warrior : Player {
         
         // At the end, switch back to walking and update the animation
         let actionEndAttack: SKAction = SKAction.run({
-            self.isShooting = false
+            [weak self] in
             
-            // Start cooldown back over
-            self.attackCooldown = self.maxAttackCooldown
-            
-            // Update the animations
-            //[self updateAnimation]; TODO might need to change back to texture... or different animation
-        })
+            if self != nil {
+                self?.isShooting = false
+                
+                // Start cooldown back over
+                self?.attackCooldown = self!.maxAttackCooldown
+                
+                // Update the animations
+                //[self updateAnimation]; TODO might need to change back to texture... or different animation
+            }
+            })
         self.weaponFrames = SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.playerWarriorAtlas, texturesNamed: "warriorswording", frameStart: 0, frameEnd: 15)
         
         // Set the appropriate fight action

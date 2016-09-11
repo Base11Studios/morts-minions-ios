@@ -21,14 +21,18 @@ class GameKitHelper: NSObject {
     static let sharedInstance = GameKitHelper()
     
     var authenticationViewController: UIViewController?
-    var lastError: NSError?
+    var lastError: Error?
     var enableGameCenter: Bool = true
     var waitingForAchievementsToReturn: Bool = false
     var waitingForAchievementsToReport: Bool = false
-    var achievementsCompleted: [GKAchievement] = [GKAchievement]()
+    var achievementsCompleted = Array<GKAchievement>()
     var triedToAuthenticate: Bool = true
+    var lastAchievementReturnAttempt: Date
     
     override init() {
+        let calendar = NSCalendar.autoupdatingCurrent
+        self.lastAchievementReturnAttempt = calendar.date(byAdding: Calendar.Component.minute, value: -2, to: Date())!
+        
         super.init()
     }
     
@@ -36,13 +40,13 @@ class GameKitHelper: NSObject {
         if !GameData.sharedGameData.getSelectedCharacterData().godMode {
             let localPlayer: GKLocalPlayer = GKLocalPlayer.localPlayer()
             if localPlayer.isAuthenticated {
-                NotificationCenter.default().post(name: Notification.Name(rawValue: LocalPlayerIsAuthenticated), object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: LocalPlayerIsAuthenticated), object: nil)
                 return
             }
 
-            localPlayer.authenticateHandler = {(viewController : UIViewController?, error : NSError?) -> Void in
+            localPlayer.authenticateHandler = {(viewController : UIViewController?, error : Error?) -> Void in
                 if (error != nil) {
-                    self.lastError = error!.copy() as? NSError
+                    self.lastError = error
                 } else {
                     self.lastError = nil
                 }
@@ -52,10 +56,10 @@ class GameKitHelper: NSObject {
                     self.setupAuthenticationViewController(viewController!)
                 } else if GKLocalPlayer.localPlayer().isAuthenticated {
                     self.enableGameCenter = true
-                    NotificationCenter.default().post(name: Notification.Name(rawValue: LocalPlayerIsAuthenticated), object: nil)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: LocalPlayerIsAuthenticated), object: nil)
                 } else {
                     if promptUserOfFailure {
-                        NotificationCenter.default().post(name: Notification.Name(rawValue: LocalPlayerNotAuthenticated), object: nil)
+                        NotificationCenter.default.post(name: Notification.Name(rawValue: LocalPlayerNotAuthenticated), object: nil)
                     }
                     self.enableGameCenter = false
                     self.triedToAuthenticate = true
@@ -68,7 +72,7 @@ class GameKitHelper: NSObject {
     
     func setupAuthenticationViewController(_ authenticationViewController: UIViewController) {
         self.authenticationViewController = authenticationViewController
-        NotificationCenter.default().post(name: Notification.Name(rawValue: PresentAuthenticationViewController), object: self)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: PresentAuthenticationViewController), object: self)
     }
     
     func updateScores() {
@@ -76,35 +80,35 @@ class GameKitHelper: NSObject {
             // Gems collected
             let gems: Int = GameData.sharedGameData.totalGemsCollected
             
-            if GameData.sharedGameData.bestRecordedGemsCollected == nil || gems > GameData.sharedGameData.bestRecordedGemsCollected {
+            if GameData.sharedGameData.bestRecordedGemsCollected == nil || gems > GameData.sharedGameData.bestRecordedGemsCollected! {
                 GameData.sharedGameData.bestRecordedGemsCollected = gems
             }
             
             // Game Progress
             let progress: Int = GameData.sharedGameData.getGameProgressAllCharacters()
             
-            if GameData.sharedGameData.bestRecordedGameProgress == nil || progress > GameData.sharedGameData.bestRecordedGameProgress {
+            if GameData.sharedGameData.bestRecordedGameProgress == nil || progress > GameData.sharedGameData.bestRecordedGameProgress! {
                 GameData.sharedGameData.bestRecordedGameProgress = progress
             }
             
             // Longest Streak
             let streak: Int = GameData.sharedGameData.getLongestCitrineStreakAllCharacters()
             
-            if GameData.sharedGameData.bestRecordedLongestSuperstarStreak == nil || streak > GameData.sharedGameData.bestRecordedLongestSuperstarStreak {
+            if GameData.sharedGameData.bestRecordedLongestSuperstarStreak == nil || streak > GameData.sharedGameData.bestRecordedLongestSuperstarStreak! {
                 GameData.sharedGameData.bestRecordedLongestSuperstarStreak = streak
             }
             
             // Average level score
             let average: Int? = GameData.sharedGameData.getAverageLevelScoreAllCharacters()
             
-            if average != nil && GameData.sharedGameData.bestRecordedAverageLevelScore == nil || average > GameData.sharedGameData.bestRecordedAverageLevelScore {
+            if average != nil && GameData.sharedGameData.bestRecordedAverageLevelScore == nil || average! > GameData.sharedGameData.bestRecordedAverageLevelScore! {
                 GameData.sharedGameData.bestRecordedAverageLevelScore = average
             }
             
             // Plays to beat 4
             let plays4: Int? = GameData.sharedGameData.getPlaysToBeatWorld4AllCharacters()
             
-            if plays4 != nil && GameData.sharedGameData.bestRecordedPlaysToBeatWorld4 == nil || plays4 > GameData.sharedGameData.bestRecordedPlaysToBeatWorld4 {
+            if plays4 != nil && GameData.sharedGameData.bestRecordedPlaysToBeatWorld4 == nil || plays4! > GameData.sharedGameData.bestRecordedPlaysToBeatWorld4! {
                 GameData.sharedGameData.bestRecordedPlaysToBeatWorld4 = plays4
             }
             
@@ -159,7 +163,7 @@ class GameKitHelper: NSObject {
         
         // Report scores if we have something new
         if !scores.isEmpty {
-            GKScore.report(scores, withCompletionHandler: { (error: NSError?) in
+            GKScore.report(scores, withCompletionHandler: { (error: Error?) in
                 //NSLog("\(error.debugDescription)")
             })
         }
@@ -534,10 +538,15 @@ class GameKitHelper: NSObject {
     }
     
     func getAchievements() {
-        if enableGameCenter && !self.waitingForAchievementsToReport {
+        // Add a minute to last attempt
+        let calendar = NSCalendar.autoupdatingCurrent
+        let untilDate = calendar.date(byAdding: Calendar.Component.minute, value: 1, to: self.lastAchievementReturnAttempt)
+        
+        if enableGameCenter && !self.waitingForAchievementsToReport && (!self.waitingForAchievementsToReturn || untilDate! < Date() ) {
             self.waitingForAchievementsToReturn = true
+            self.lastAchievementReturnAttempt = Date()
             
-            GKAchievement.loadAchievements(completionHandler: { (achievements: [GKAchievement]?, error: NSError?) in
+            GKAchievement.loadAchievements(completionHandler: { (achievements: [GKAchievement]?, error: Error?) in
                 if error == nil {
                     if achievements != nil {
                         self.achievementsCompleted = achievements!
@@ -550,9 +559,9 @@ class GameKitHelper: NSObject {
     }
     
     func syncAchievements() {
-        for achievement in GameData.sharedGameData.achievementsCompleted {
+        //for achievement in GameData.sharedGameData.achievementsCompleted {
             //NSLog("Achievement obtained \(achievement)")
-        }
+        //}
         
         if enableGameCenter && !self.waitingForAchievementsToReturn {
             var achievements = Array<GKAchievement>() // This will be sent to GameCenter
@@ -577,7 +586,7 @@ class GameKitHelper: NSObject {
             if !achievements.isEmpty {
                 self.waitingForAchievementsToReport = true
                 // Report to GameKit
-                GKAchievement.report(achievements, withCompletionHandler: { (error: NSError?) in
+                GKAchievement.report(achievements, withCompletionHandler: { (error: Error?) in
                     self.waitingForAchievementsToReport = false
                 })
             }

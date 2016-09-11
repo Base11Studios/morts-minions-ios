@@ -13,19 +13,19 @@ class GameTextures {
     
     // MARK: - Public class properties
     internal var earthAtlas = SKTextureAtlas()
-    //internal var earthLevelAtlases = [SKTextureAtlas]()
+    internal var earthLevelAtlases = [SKTextureAtlas]()
     
     internal var waterAtlas = SKTextureAtlas()
-    //internal var waterLevelAtlases = [SKTextureAtlas]()
+    internal var waterLevelAtlases = [SKTextureAtlas]()
     
     internal var fireAtlas = SKTextureAtlas()
-    //internal var fireLevelAtlases = [SKTextureAtlas]()
+    internal var fireLevelAtlases = [SKTextureAtlas]()
     
     internal var airAtlas = SKTextureAtlas()
-    //internal var airLevelAtlases = [SKTextureAtlas]()
+    internal var airLevelAtlases = [SKTextureAtlas]()
     
     internal var spiritAtlas = SKTextureAtlas()
-    //internal var spiritLevelAtlases = [SKTextureAtlas]()
+    internal var spiritLevelAtlases = [SKTextureAtlas]()
     
     internal var projectilesAtlas = SKTextureAtlas()
     
@@ -44,7 +44,9 @@ class GameTextures {
     
     internal var splashAndStoryAtlas = SKTextureAtlas()
     
-   // internal var menuSceneAtlas = [SKTextureAtlas()]
+    internal var waterStoryTutorialAtlas = SKTextureAtlas()
+    
+    internal var menuSceneAtlas = [SKTextureAtlas()]
     
     // MARK: - Init
     init() {
@@ -74,8 +76,7 @@ class GameTextures {
         
         self.splashAndStoryAtlas = SKTextureAtlas(named: "splashandstory")
         
-        /*
-        //self.notSortedYetAtlas = SKTextureAtlas(named: "notsortedyet") // TODO REMOVE
+        self.waterStoryTutorialAtlas = SKTextureAtlas(named: "water-story-tutorial")
         
         // Create arrays used for gameplay
         self.earthLevelAtlases.append(self.earthAtlas)
@@ -85,17 +86,19 @@ class GameTextures {
         self.spiritLevelAtlases.append(self.spiritAtlas)
         
         self.addCommonAtlasToAllLevelAtlases(self.projectilesAtlas)
-        self.addCommonAtlasToAllLevelAtlases(self.playerAtlas)
         self.addCommonAtlasToAllLevelAtlases(self.buttonAtlas)
-        self.addCommonAtlasToAllLevelAtlases(self.gameHudAndMenuAtlas)
+        self.addCommonAtlasToAllLevelAtlases(self.buttonGameAtlas)
+        self.addCommonAtlasToAllLevelAtlases(self.uxGameAtlas)
+        self.addCommonAtlasToAllLevelAtlases(self.uxAtlas)
         
         // Menu scene
-        self.menuSceneAtlas.append(self.menuAtlas)
-        self.menuSceneAtlas.append(self.gameHudAndMenuAtlas)
+        self.menuSceneAtlas.append(self.uxAtlas)
+        self.menuSceneAtlas.append(self.uxMenuAtlas)
         self.menuSceneAtlas.append(self.buttonAtlas)
-        */
+        self.menuSceneAtlas.append(self.buttonMenuAtlas)
+ 
     }
-    /*
+    
     func addCommonAtlasToAllLevelAtlases(_ atlas: SKTextureAtlas) {
         self.earthLevelAtlases.append(atlas)
         self.waterLevelAtlases.append(atlas)
@@ -103,5 +106,36 @@ class GameTextures {
         self.airLevelAtlases.append(atlas)
         self.spiritLevelAtlases.append(atlas)
     }
-     */
+ 
+    func getAtlasArrayForWorld(world: String) -> [SKTextureAtlas] {
+        if world == "earth" {
+            return self.earthLevelAtlases
+        } else if world == "water" {
+            return self.waterLevelAtlases
+        } else if world == "fire" {
+            return self.fireLevelAtlases
+        } else if world == "air" {
+            return self.airLevelAtlases
+        } else if world == "spirit" {
+            return self.spiritLevelAtlases
+        }
+        
+        return [SKTextureAtlas]()
+    }
+    
+    func getAtlasForWorld(world: String) -> SKTextureAtlas {
+        if world == "earth" {
+            return self.earthAtlas
+        } else if world == "water" {
+            return self.waterAtlas
+        } else if world == "fire" {
+            return self.fireAtlas
+        } else if world == "air" {
+            return self.airAtlas
+        } else if world == "spirit" {
+            return self.spiritAtlas
+        }
+        
+        return SKTextureAtlas()
+    }
 }

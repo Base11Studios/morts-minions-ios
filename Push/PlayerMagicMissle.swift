@@ -61,7 +61,8 @@ class PlayerMagicMissle: PlayerProjectile {
         
         // Iterate through all enemies to find someone close
         for object in self.gameScene!.worldViewEnvironmentObjects {
-            if object.name!.hasPrefix("environmentobject_obstacle") || object.name!.hasPrefix("environmentobject_enemy") && object.isAlive && !object.isBeingTargeted {
+            if (object.type == EnvironmentObjectType.Enemy ||
+                object.type == EnvironmentObjectType.Obstacle) && object.isAlive && !object.isBeingTargeted {
                 if closestObject == nil {
                     if object.position.x - 20 * ScaleBuddy.sharedInstance.getGameScaleAmount(false) > self.position.x && abs(self.position.y - object.position.y) <= self.range {
                         closestObject = object

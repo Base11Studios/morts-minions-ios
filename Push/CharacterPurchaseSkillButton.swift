@@ -58,7 +58,7 @@ class CharacterPurchaseSkillButton : DBButton {
             } else {
                 enoughSkillPoints = false
                 
-                var difference = (dbScene as! CharacterSkillScene).scrollingNode!.selectedSkillNode!.skillCost - skillPoints
+                let difference = (dbScene as! CharacterSkillScene).scrollingNode!.selectedSkillNode!.skillCost - skillPoints
                 
                 if usingStars {
                     self.errorText = "* need \(difference) more star"

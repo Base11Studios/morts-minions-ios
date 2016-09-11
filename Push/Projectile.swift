@@ -50,6 +50,8 @@ class Projectile : EnvironmentObject {
     
     func resetName() {
         self.name = "environmentobject_projectile_\(UUID().uuidString)"
+        // Type
+        self.type = EnvironmentObjectType.Projectile
     }
     
     func initializeAttributes() {
