@@ -25,7 +25,6 @@ class WorldNode : SKSpriteNode {
     weak var relatedLevelSelector: ScrollingLevelNodeRow?
     var selected: Bool = false {
         didSet {
-            self.relatedLevelSelector!.isHidden = !selected
             self.levelSelectedNode.isHidden = !selected
         }
     }
@@ -40,11 +39,9 @@ class WorldNode : SKSpriteNode {
     var trophyIcon: SKSpriteNode
     var trophyCount: LabelWithShadow
     
-    init(levelNumber: Int, worldNumber: Int, worldName: String, relatedLevelSelector: ScrollingLevelNodeRow, dbScene: LevelSelectionScene){
+    init(levelNumber: Int, worldNumber: Int, worldName: String, dbScene: LevelSelectionScene){
         // Init
         self.dbScene = dbScene
-        
-        self.relatedLevelSelector = relatedLevelSelector
         
         // Level background
         self.worldName = worldName

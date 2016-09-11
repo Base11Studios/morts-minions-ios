@@ -17,7 +17,7 @@ class SceneTutorialTooltipOkButton : DBButton {
     // Callbacks
     var onComplete: ()-> Void = {}
 
-    init(scene: DBScene, container: SKNode, key: String, version: Double, onComplete: ()->Void) {
+    init(scene: DBScene, container: SKNode, key: String, version: Double, onComplete: @escaping ()->Void) {
         self.onComplete = onComplete
         self.container = container
         self.key = key

@@ -49,8 +49,8 @@ class DiveBomber : Enemy {
         // This is for collision detection
         self.hasVerticalVelocity = true
         
-        // Sound
-        self.actionSound = SKAction.playSoundFileNamed(SoundType.Lunge.rawValue, waitForCompletion: false)
+        // Make him hurt
+        self.damage = 2
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
@@ -76,7 +76,7 @@ class DiveBomber : Enemy {
             
             self.attackCooldown = 100
             
-            self.playActionSound()
+            self.playActionSound(action: SoundHelper.sharedInstance.lunge)
         }
     }
 }

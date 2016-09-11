@@ -4,33 +4,6 @@
 <dict>
 	<key>World</key>
 	<string>earth</string>
-	<key>Story</key>
-	<array>
-		<dict>
-			<key>Description</key>
-			<string>ending story 1</string>
-			<key>Icon</key>
-			<string>tutorial_monk</string>
-			<key>Key</key>
-			<string>story_11-1</string>
-			<key>Version</key>
-			<integer>1</integer>
-			<key>Type</key>
-			<string>End</string>
-		</dict>
-		<dict>
-			<key>Description</key>
-			<string>ending st 2</string>
-			<key>Icon</key>
-			<string>tutorial_mage</string>
-			<key>Key</key>
-			<string>story_11-2</string>
-			<key>Version</key>
-			<integer>1</integer>
-			<key>Type</key>
-			<string>End</string>
-		</dict>
-	</array>
 	<key>Challenges</key>
 	<array>
 		<dict>

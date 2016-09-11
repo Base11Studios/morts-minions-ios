@@ -45,23 +45,9 @@ class GameSkillButton : DBButton {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        var buttonPressed: Bool = false
-        
         // Allow anywhere on screen
         if self.allowAnywhereOnScreen {
-            buttonPressed = true
             self.allowAnywhereOnScreen = false
-        }
-        
-        // For loop on touches and set boolean on which buttons contain a point
-        for touch: UITouch in touches {
-            
-            // Get the location of the touch
-            let location: CGPoint = touch.location(in: self.parent!)
-            
-            if self.contains(location) {
-                buttonPressed = true
-            }
         }
         
         // Press button
@@ -74,20 +60,20 @@ class GameSkillButton : DBButton {
     
     override func touchesBeganAction() {
         if self.upgradeDetails!.activatesOnPress {
-            (self.dbScene as! GameScene).player!.activateSkill(self.upgradeDetails!)
+            (self.dbScene as! GameScene).player.activateSkill(self.upgradeDetails!)
         }
     }
     
     override func touchesReleasedAction() {
         if self.upgradeDetails!.activatesOnPress {
-            (self.dbScene as! GameScene).player!.deactivateSkill(self.upgradeDetails!)
+            (self.dbScene as! GameScene).player.deactivateSkill(self.upgradeDetails!)
         }
     }
     
     override func touchesEndedAction() {
         // If this is a release skill, activate the skill
         if !self.upgradeDetails!.cooldownInProgress && self.upgradeDetails!.activatesOnRelease {
-            (self.dbScene as! GameScene).player!.activateSkill(self.upgradeDetails!)
+            (self.dbScene as! GameScene).player.activateSkill(self.upgradeDetails!)
             
             // Create a cooldown animation on the button
             self.createCooldownButtonForCooldown()
@@ -98,7 +84,7 @@ class GameSkillButton : DBButton {
         
         // If this is a press skill, deactivate it
         if self.upgradeDetails!.activatesOnPress {
-            (self.dbScene as! GameScene).player!.deactivateSkill(self.upgradeDetails!)
+            (self.dbScene as! GameScene).player.deactivateSkill(self.upgradeDetails!)
         }
     }
     
@@ -149,7 +135,7 @@ class GameSkillButton : DBButton {
         }
         
         // We need to release the button if they ran out of charge counts
-        if self.upgradeDetails?.hasChargeCounter == true && self.upgradeDetails?.chargeCount <= 0 {
+        if self.upgradeDetails!.hasChargeCounter == true && self.upgradeDetails!.chargeCount <= 0 {
             // Stop the button from being pressed
             self.releaseButton()
             

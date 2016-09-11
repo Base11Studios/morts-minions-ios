@@ -60,9 +60,6 @@ class ExpandyCloud : Obstacle {
             }
             
             self.setScale(self.currentScale)
-            
-            // TODO also adjust physics body
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Action2)
         }
         
         super.update(timeSinceLast, withPlayer: player)

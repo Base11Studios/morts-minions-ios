@@ -30,7 +30,7 @@ class CloudNotificationTest: XCTestCase {
     */
 
     func testExample() {
-        NotificationCenter.default().post(name: Notification.Name(rawValue: "NSUbiquitousKeyValueStoreDidChangeExternallyNotification"),object: nil);
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "NSUbiquitousKeyValueStoreDidChangeExternallyNotification"),object: nil);
     }
 
     func testPerformanceExample() {

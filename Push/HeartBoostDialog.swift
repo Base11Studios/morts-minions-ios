@@ -63,7 +63,7 @@ class HeartBoostDialog: DialogBackground {
         self.descriptionNode = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
         self.container.addChild(self.descriptionNode!)
         self.descriptionNode?.paragraphWidth = self.container.size.width - self.buttonBuffer
-        self.descriptionNode?.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+        self.descriptionNode?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
         self.descriptionNode?.fontColor = MerpColors.darkFont
         self.descriptionNode?.text = "add hearts to your character for this play."
         

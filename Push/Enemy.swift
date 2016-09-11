@@ -64,6 +64,7 @@ class Enemy : EnvironmentObject {
     
     func resetName() {
         self.name = "environmentobject_enemy_\(UUID().uuidString)"
+        self.type = EnvironmentObjectType.Enemy
     }
 
     func initializeAttributes() {
@@ -166,6 +167,9 @@ class Enemy : EnvironmentObject {
             moveX = false
         }
         
-        self.physicsBody!.velocity = CGVector(dx: (self.physicsBody!.velocity.dx + relativeVelocity.dx * self.velocityRate) * CGFloat(moveX), dy: (self.physicsBody!.velocity.dy + relativeVelocity.dy * self.velocityRate) * CGFloat(self.isFloating))
+        let isFloating = NSNumber(value: self.isFloating)
+        let intMoveX = NSNumber(value: moveX)
+        
+        self.physicsBody!.velocity = CGVector(dx: (self.physicsBody!.velocity.dx + relativeVelocity.dx * self.velocityRate) * CGFloat(intMoveX), dy: (self.physicsBody!.velocity.dy + relativeVelocity.dy * self.velocityRate) * CGFloat(isFloating))
     }
 }

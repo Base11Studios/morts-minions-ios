@@ -10,7 +10,11 @@ import Foundation
 
 @objc(GameResumeButton)
 class GameResumeButton : DBButton {
-    init(scene: DBScene) {
+    init() {
+        super.init(dbScene: nil)
+    }
+    
+    init(scene: DBScene?) {
         super.init(iconName: "button_resume", pressedIconName: nil, buttonSize: DBButtonSize.small, dbScene: scene, atlas: GameTextures.sharedInstance.buttonAtlas)
     }
     

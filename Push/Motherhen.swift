@@ -24,6 +24,7 @@ class Motherhen : Enemy {
             
             // We dont want this to get updated by gamescene so change the name which is the selector
             projectile.name = "proj_dont_update"
+            projectile.type = EnvironmentObjectType.Ignored
             projectile.isHidden = true
             
             projectile.position = CGPoint(x: defaultXPosition, y: defaultYPosition)
@@ -87,7 +88,7 @@ class Motherhen : Enemy {
             
             self.attackCooldown = self.value2
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.ProjectileThrow)
+            self.playActionSound(action: SoundHelper.sharedInstance.projectileThrow)
         }
     }
 }
