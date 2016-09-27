@@ -88,7 +88,7 @@ class Mole : Enemy {
             
             self.physicsBody!.applyImpulse(CGVector(dx: 0, dy: 7000))
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Surprise)
+            self.playActionSound(action: SoundHelper.sharedInstance.surprise)
         }
     }
 }

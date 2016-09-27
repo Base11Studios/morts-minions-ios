@@ -14,15 +14,18 @@ class WindBeast : Enemy {
     var weaponFrames = Array<SKTexture>()
     var weapon: SKSpriteNode = SKSpriteNode()
     var weaponStartPosition: CGPoint = CGPoint()
-    var weaponAction: SKAction = SKAction()
-    var startWalkingAction: SKAction = SKAction()
+    
     var shouldAttack: Bool = false
     
     required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
         super.init(scalar: scalar, imageName: "windbeast_000", textureAtlas: GameTextures.sharedInstance.airAtlas, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
         
         self.startWalkingAction = SKAction.run({
-            self.startWalking()
+            [weak self] in
+            
+            if self != nil {
+                self?.startWalking()
+            }
         })
         self.walkingAnimatedFrames = SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.airAtlas, texturesNamed: "windbeast", frameStart: 0, frameEnd: 15)
         self.walkAction = SKAction.sequence([self.startWalkingAction, SKAction.repeatForever(SKAction.animate(with: self.walkingAnimatedFrames, timePerFrame: 0.06, resize: true, restore: false))])
@@ -32,7 +35,11 @@ class WindBeast : Enemy {
         
         self.weaponFrames = SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.airAtlas, texturesNamed: "windbeast_attack", frameStart: 0, frameEnd: 15)
         self.weaponAction = SKAction.sequence([SKAction.animate(with: self.weaponFrames, timePerFrame: 0.08, resize: true, restore: false), SKAction.run({
-            self.weapon.removeAction(forKey: "weapon_fighting")
+            [weak self] in
+            
+            if self != nil {
+                self?.weapon.removeAction(forKey: "weapon_fighting")
+            }
         })])
         self.addChild(self.weapon)
         
@@ -124,7 +131,7 @@ class WindBeast : Enemy {
             // Start the weapon animation
             self.weapon.run(self.weaponAction, withKey: "weapon_fighting")
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Wind)
+            self.playActionSound(action: SoundHelper.sharedInstance.wind)
         }
         
         if self.isFighting && self.weapon.texture!.isEqual(self.weaponFrames[9]) {
@@ -136,5 +143,11 @@ class WindBeast : Enemy {
             
             self.isFighting = false
         }
+    }
+    
+    override func clearOutActions() {
+        super.clearOutActions()
+        self.weapon.removeAction(forKey: "weapon_fighting")
+        self.weapon.removeAllActions()
     }
 }

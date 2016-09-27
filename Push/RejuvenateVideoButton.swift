@@ -57,9 +57,12 @@ class RejuvenateVideoButton : DBButton {
         // Remove the current animation
         (self.dbScene as! GameScene).setRejuvDialogDisplayed()
         // Store on the app delegate that we're going to try to load something
-        let appDelegate = UIApplication.shared().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.presentingVideo = true
         self.dbScene!.viewController!.showRewardedVideo()
+        
+        // Start loading screen
+        self.dbScene!.startLoadingOverlay()
         
         self.forceDisabled = true
         self.checkDisabled()

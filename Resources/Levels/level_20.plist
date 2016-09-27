@@ -23,9 +23,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>pirahna</string>
+			<string>El Pirahna</string>
 			<key>Description</key>
-			<string>once i see you, you&apos;re toast</string>
+			<string>Once I see you, you&apos;re toast.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

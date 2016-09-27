@@ -78,7 +78,7 @@ class Lungey : Enemy {
             
             self.updateAnimation()
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Lunge)
+            self.playActionSound(action: SoundHelper.sharedInstance.lunge)
         }
     }
 }

@@ -23,9 +23,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>ogre</string>
+			<string>Mr. Ogre</string>
 			<key>Description</key>
-			<string>more height more warts</string>
+			<string>More height more warts.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

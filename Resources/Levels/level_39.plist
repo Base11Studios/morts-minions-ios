@@ -2,6 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Story</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>You catch your breath after a battle and notice one of the Imal’s shields depicts a graphic scene: An imal with legs in chains building a rulen house.</string>
+			<key>Icon</key>
+			<string>story-w3-chains</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>You find another shield. A dead imal over the fire and rulens eating it. You may be closer to finding a reason for this revolution.</string>
+			<key>Icon</key>
+			<string>story-w3-eating</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+	</array>
 	<key>Challenges</key>
 	<array>
 		<dict>

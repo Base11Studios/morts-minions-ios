@@ -12,6 +12,7 @@ class Mage : Player {
     // Skills
     override func initializeSkills() {
         self.skill1Details = CharacterSkillDetails(upgrade: CharacterUpgrade.Teleport)
+        self.teleportsInsteadOfJumps = true
         self.skill2Details = CharacterSkillDetails(upgrade: CharacterUpgrade.MagicMissle)
         self.skill3Details = CharacterSkillDetails(upgrade: CharacterUpgrade.Meteor)
         self.skill4Details = CharacterSkillDetails(upgrade: CharacterUpgrade.TimeFreeze)
@@ -22,19 +23,20 @@ class Mage : Player {
         self.maxAutoHoverStopCountdown = self.getSkill(CharacterUpgrade.Teleport)!.tertiaryValue
         
         // Create the meteors
-        for i in 0 ..< Int(self.getSkill(CharacterUpgrade.Meteor)!.value * 5) {
+        for _ in 0 ..< Int(self.getSkill(CharacterUpgrade.Meteor)!.value * 5) {
             // Create projectile
             let projectile: PlayerMeteor = PlayerMeteor(gameScene: self.gameScene!, groundCollision: GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(CharacterUpgrade.MeteorBlast))
             projectile.physicsBody!.velocity = CGVector()
             
             // We dont want this to get updated by gamescene so change the name which is the selector
             projectile.name = "proj_dont_update"
+            projectile.type = EnvironmentObjectType.Ignored
             projectile.isHidden = true
             
             // Set up initial location of projectile
             projectile.position = CGPoint(x: self.position.x + self.weaponStartPosition.x, y: self.position.y + self.weaponStartPosition.y - 2.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             
-            projectile.zPosition = 9
+            projectile.zPosition = 4
             
             // Override
             projectile.physicsBody!.categoryBitMask = GameScene.harmlessObjectCategory
@@ -48,7 +50,7 @@ class Mage : Player {
         super.init(atlas: GameTextures.sharedInstance.playerMageAtlas, textureArrayName: "magewalking", worldView: worldView, gameScene: gameScene)
         self.name = "mage"
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -67,7 +69,7 @@ class Mage : Player {
         self.weapon.position = self.weaponStartPosition
         
         // Create projectiles
-        for i in 0 ..< Int((self.getSkill(CharacterUpgrade.MagicMissle)!.secondaryValue + 1) * 5) {
+        for _ in 0 ..< Int((self.getSkill(CharacterUpgrade.MagicMissle)!.secondaryValue + 1) * 5) {
             // Create projectile
             let projectile: PlayerMagicMissle = PlayerMagicMissle(gameScene: self.gameScene!, range: self.getSkill(CharacterUpgrade.MagicMissle)!.range * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             
@@ -75,6 +77,7 @@ class Mage : Player {
             
             // We dont want this to get updated by gamescene so change the name which is the selector
             projectile.name = "proj_dont_update"
+            projectile.type = EnvironmentObjectType.Ignored
             projectile.isHidden = true
             
             // Set up initial location of projectile
@@ -92,42 +95,52 @@ class Mage : Player {
         // ** Create an action to attack **
         // At the end, create the projectile
         let actionCreateProjectile: SKAction = SKAction.run({
-            let arrow: PlayerMagicMissle = self.projectiles.popLast() as! PlayerMagicMissle
+            [weak self] in
             
-            arrow.position = CGPoint(x: self.position.x + self.weaponStartPosition.x, y: self.position.y + self.weaponStartPosition.y - 2.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
-            
-            // Change the name back to default so it receives updates
-            arrow.resetName()
-            
-            // Unhide it
-            arrow.isHidden = false
-            
-            // Set physics body back
-            arrow.physicsBody!.categoryBitMask = GameScene.playerProjectileCategory
-            
-            self.gameScene!.worldViewPlayerProjectiles.append(arrow)
-            
-            arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 0))
-        })
+            if self != nil {
+                let arrow: PlayerMagicMissle = self!.projectiles.popLast() as! PlayerMagicMissle
+                
+                arrow.position = CGPoint(x: self!.position.x + self!.weaponStartPosition.x, y: self!.position.y + self!.weaponStartPosition.y - 2.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+                
+                // Change the name back to default so it receives updates
+                arrow.resetName()
+                
+                // Unhide it
+                arrow.isHidden = false
+                
+                // Set physics body back
+                arrow.physicsBody!.categoryBitMask = GameScene.playerProjectileCategory
+                
+                self?.gameScene!.worldViewPlayerProjectiles.append(arrow)
+                
+                arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 0))
+                
+                self?.playActionSound(action: SoundHelper.sharedInstance.projectileThrow)
+            }
+            })
         
         // At the end, switch back to walking and update the animation
         let actionEndAttack: SKAction = SKAction.run({
-            self.isShooting = false
+            [weak self] in
             
-            if self.getSkill(CharacterUpgrade.MagicMissle)!.secondaryValue > 0 && Int(self.getSkill(CharacterUpgrade.MagicMissle)!.secondaryValue) > self.attacksInSuccession {
-                // Shoot again
-                self.attackCooldown = 0
-                self.attacksInSuccession += 1
-            } else {
-                // Start cooldown back over
-                self.attackCooldown = self.maxAttackCooldown
+            if self != nil {
+                self?.isShooting = false
                 
-                self.attacksInSuccession = 0
+                if self!.getSkill(CharacterUpgrade.MagicMissle)!.secondaryValue > 0 && Int(self!.getSkill(CharacterUpgrade.MagicMissle)!.secondaryValue) > self!.attacksInSuccession {
+                    // Shoot again
+                    self?.attackCooldown = 0
+                    self?.attacksInSuccession += 1
+                } else {
+                    // Start cooldown back over
+                    self?.attackCooldown = self!.maxAttackCooldown
+                    
+                    self?.attacksInSuccession = 0
+                }
+                
+                // Update the animations
+                //[self updateAnimation]; TODO might need to change back to texture... or different animation
             }
-            
-            // Update the animations
-            //[self updateAnimation]; TODO might need to change back to texture... or different animation
-        })
+            })
         self.weaponFrames = SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.playerMageAtlas, texturesNamed: "magestaffing", frameStart: 0, frameEnd: 15)
         
         // Set the appropriate fight action

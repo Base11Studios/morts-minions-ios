@@ -68,7 +68,7 @@ class FloorLava : Obstacle {
                 (self.scene as! GameScene).ground.color = MerpColors.fireGroundLava
                 self.state = self.state + 1
                 self.attackCooldown = self.value1
-                SoundHelper.sharedInstance.playSound(self, sound: SoundType.Burn)
+                self.playActionSound(action: SoundHelper.sharedInstance.burn)
             case 3:
                 // Turn off lava
                 (self.scene as! GameScene).ground.color = self.originalGroundColor!

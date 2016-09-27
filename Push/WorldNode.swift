@@ -25,7 +25,6 @@ class WorldNode : SKSpriteNode {
     weak var relatedLevelSelector: ScrollingLevelNodeRow?
     var selected: Bool = false {
         didSet {
-            self.relatedLevelSelector!.isHidden = !selected
             self.levelSelectedNode.isHidden = !selected
         }
     }
@@ -40,11 +39,9 @@ class WorldNode : SKSpriteNode {
     var trophyIcon: SKSpriteNode
     var trophyCount: LabelWithShadow
     
-    init(levelNumber: Int, worldNumber: Int, worldName: String, relatedLevelSelector: ScrollingLevelNodeRow, dbScene: LevelSelectionScene){
+    init(levelNumber: Int, worldNumber: Int, worldName: String, dbScene: LevelSelectionScene){
         // Init
         self.dbScene = dbScene
-        
-        self.relatedLevelSelector = relatedLevelSelector
         
         // Level background
         self.worldName = worldName
@@ -122,8 +119,8 @@ class WorldNode : SKSpriteNode {
             self.trophyCount.setText("\(GameData.sharedGameData.getSelectedCharacterData().challengesEarnedForWorld(self.worldNumber))")
             
             // Positioning
-            let modNodeBuffer: CGFloat = nodeBuffer * 0.75 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
-            let trophyY = -self.size.height / 2 - self.trophyIcon.size.height / 2 - modNodeBuffer
+            let modNodeBuffer: CGFloat = nodeBuffer * 0.1 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+            let trophyY = -self.levelSelectedNode.size.height / 2 - self.trophyIcon.size.height / 2 - modNodeBuffer
             let trophyWidth = self.trophyIcon.size.width + self.trophyIcon.calculateAccumulatedFrame().size.width
             
             self.trophyIcon.position = CGPoint(x: 0 + (trophyWidth / 2 - self.trophyIcon.size.width / 2), y: trophyY)

@@ -32,8 +32,8 @@ import SpriteKit
 class DSMultilineLabelNode : SKSpriteNode
 {
     private var _text = ""
-    private var _fontColor = SKColor.white()
-    private var _fontName = "Helvetica"
+    private var _fontColor = SKColor.white
+    private var _fontName = "Avenir"
     private var _fontSize = CGFloat(round(32 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
     private var _horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
     private var _verticalAlignmentMode = SKLabelVerticalAlignmentMode.top
@@ -41,9 +41,13 @@ class DSMultilineLabelNode : SKSpriteNode
     private var _paragraphWidth = CGFloat(0)
     weak private var dbScene: DBScene?
     
+    init() {
+        super.init(texture: SKTexture(), color: UIColor(), size: CGSize())
+    }
+    
     init(scene: DBScene)
     {
-        super.init(texture: nil, color: UIColor.green(), size: CGSize(width: 0, height: 0))
+        super.init(texture: nil, color: UIColor.green, size: CGSize(width: 0, height: 0))
         self.dbScene = scene
         retexture()
     }
@@ -81,7 +85,7 @@ class DSMultilineLabelNode : SKSpriteNode
         paragraph_style.lineBreakMode = NSLineBreakMode.byWordWrapping
         paragraph_style.alignment = horizontalNSTextAlignment
         paragraph_style.lineSpacing = _paragraphSpacing;
-        paragraph_style.maximumLineHeight = _fontSize + (2.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false));
+        paragraph_style.maximumLineHeight = _fontSize + (3.5 * ScaleBuddy.sharedInstance.getGameScaleAmount(false));
         
         var font = UIFont(name: _fontName, size: _fontSize)
         if (font == nil)
@@ -90,9 +94,13 @@ class DSMultilineLabelNode : SKSpriteNode
         }
         
         let text_attributes = NSMutableDictionary()
-        text_attributes.setObject(font!, forKey: NSFontAttributeName)
-        text_attributes.setObject(paragraph_style, forKey: NSParagraphStyleAttributeName)
-        text_attributes.setObject(_fontColor, forKey: NSForegroundColorAttributeName)
+        text_attributes.setObject(font!, forKey: NSFontAttributeName as NSCopying)
+        text_attributes.setObject(paragraph_style, forKey: NSParagraphStyleAttributeName as NSCopying)
+        text_attributes.setObject(_fontColor, forKey: NSForegroundColorAttributeName as NSCopying)
+        
+        //var style = NSMutableParagraphStyle()
+        //style.paragraphSpacingBefore = 0.0
+        //text_attributes.setObject(style, forKey: NSParagraphStyleAttributeName)
         
         if(self.dbScene == nil)
         {
@@ -230,8 +238,10 @@ class DSMultilineLabelNode : SKSpriteNode
         }
         set(value)
         {
-            _text = value
-            retexture()
+            if _text != value {
+                _text = value
+                retexture()
+            }
         }
     }
     

@@ -41,7 +41,7 @@ class EndOfLevelDialog: DialogBackground {
     var upgradeSkillsButton: DBSceneSkillsButton
     var levelHintDescription: DSMultilineLabelNode
     
-    var currentLevel: Int
+    var currentLevel: Int = 0
     
     var stars = Array<SKSpriteNode>()
     
@@ -69,6 +69,41 @@ class EndOfLevelDialog: DialogBackground {
     
     weak var dbScene: DBScene?
     
+    init() {
+        self.menuButton = GameMenuButton()
+        self.retryLevelButton = GameRetryLevelButton()
+        self.nextLevelButton = GameNextLevelButton()
+        self.page1ContinueButton = GameEndContinueButton()
+        self.page2ContinueButton = GameEndContinueButton()
+        self.upgradeSkillsButton = DBSceneSkillsButton()
+        
+        // Scores
+        self.totalScoreLabel = SKLabelNode()
+        
+        // Titles
+        self.endedLabel = SKLabelNode()
+        self.challengeTitle = SKLabelNode()
+        
+        // Challenges
+        self.challengeRewardNumber = LabelWithShadow()
+        self.challengeRewardTitle = SKLabelNode()
+        self.challengeRewardIcon = SKSpriteNode()
+        
+        // Rewards
+        self.starButton1 = StarButton()
+        self.starButton2 = StarButton()
+        self.starButton3 = StarButton()
+        self.superstarButton1 = SuperstarButton()
+        
+        // Skills
+        self.levelHintDescription = DSMultilineLabelNode()
+        
+        // Challenges
+        self.challengeContainer = ChallengeContainer()
+        
+        super.init(frameSize: CGSize())
+    }
+    
     init(frameSize : CGSize, scene: GameScene, currentLevel: Int, completedChallenges: Array<LevelChallenge>) {
         // Inits
         let buttonBuffer: CGFloat = ScaleBuddy.sharedInstance.getNodeBuffer()
@@ -80,7 +115,7 @@ class EndOfLevelDialog: DialogBackground {
         self.nextLevelButton = GameNextLevelButton(scene: scene, level: currentLevel + 1)
         self.page1ContinueButton = GameEndContinueButton(scene: scene)
         self.page2ContinueButton = GameEndContinueButton(scene: scene)
-        self.upgradeSkillsButton = DBSceneSkillsButton(scene: scene, sceneType: DBSceneType.gameScene, size: DBButtonSize.small)
+        self.upgradeSkillsButton = DBSceneSkillsButton(scene: scene, size: DBButtonSize.small)
         
         // Scores
         totalScoreLabel = SKLabelNode(fontNamed: "Avenir-Heavy")
@@ -107,17 +142,17 @@ class EndOfLevelDialog: DialogBackground {
         // Challenges
         self.challengeContainer = ChallengeContainer(scene: scene, challenges: completedChallenges)
         
+        // Challenges
+        if GameData.sharedGameData.getSelectedCharacterData().challengesUnlocked(self.currentLevel) {
+            self.challengeTitle.text = "Challenge Completion"
+        } else {
+            self.challengeContainerPlaceholder = SKSpriteNode(texture: SKTexture(imageNamed: "splash-warrior"))
+            self.challengeTitle.text = "Select Your Move"
+        }
+        
         super.init(frameSize: frameSize)
         
         self.onCompleteUxTooltip = {[weak self] in self!.displayTutorialTooltip()}
-        
-        // Challenges
-        if self.showChallenges() {
-            self.challengeTitle.text = "challenge completion"
-        } else {
-            self.challengeContainerPlaceholder = SKSpriteNode(texture: SKTexture(imageNamed: "splash-warrior"))
-            self.challengeTitle.text = "select your move"
-        }
         
         // Now stars
         // Add the stars. Loop through each attribute to build the final set
@@ -125,7 +160,7 @@ class EndOfLevelDialog: DialogBackground {
         stars.append(self.starButton2)
         stars.append(self.starButton3)
         stars.append(self.superstarButton1)
-
+        
         let sampleSize = starButton1.size
         
         // Score Labels
@@ -136,7 +171,7 @@ class EndOfLevelDialog: DialogBackground {
         self.totalScoreLabel.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
         
         // Title labels
-        self.endedLabel.text = "level \(currentLevel) score"
+        self.endedLabel.text = "Level \(currentLevel) Score"
         self.endedLabel.fontSize = round(28 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.endedLabel.fontColor = MerpColors.darkFont
         self.endedLabel.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
@@ -149,7 +184,7 @@ class EndOfLevelDialog: DialogBackground {
         self.challengeTitle.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
         
         // Challenge labels
-        self.challengeRewardTitle.text = "gems earned: "
+        self.challengeRewardTitle.text = "Gems earned: "
         self.challengeRewardTitle.fontSize = round(18 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.challengeRewardTitle.fontColor = MerpColors.darkFont
         self.challengeRewardTitle.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
@@ -202,7 +237,7 @@ class EndOfLevelDialog: DialogBackground {
         
         // Now create stuff dependent on the page width
         self.levelHintDescription.paragraphWidth = self.pageWidth
-        self.levelHintDescription.text = "tip: upgrade your skills below"
+        self.levelHintDescription.text = "Tip: upgrade your skills below."
         
         // Get the page height
         let page1TotalHeight: CGFloat = self.endedLabel.calculateAccumulatedFrame().size.height + self.totalScoreLabel.calculateAccumulatedFrame().size.height + self.levelHintDescription.calculateAccumulatedFrame().size.height + self.page1ContinueButton.size.height + self.starButton1.size.height + self.buttonBuffer * 6
@@ -287,13 +322,9 @@ class EndOfLevelDialog: DialogBackground {
         
         self.isHidden = true
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    func showChallenges() -> Bool {
-        return GameData.sharedGameData.getSelectedCharacterData().challengesUnlocked(self.currentLevel)
     }
     
     func createUxTutorials(_ currentLevel: Int) {
@@ -306,9 +337,10 @@ class EndOfLevelDialog: DialogBackground {
         tutorialVersion = 1.0
         tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
         
-        if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "score = distance traveled + minion hearts collected.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
+        if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Score = distance traveled + minions defeated.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: 0, y: self.totalScoreLabel.position.y - self.totalScoreLabel.calculateAccumulatedFrame().size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
+            tutorial.color = MerpColors.nothing
             self.uxTutorialTooltips!.append(tutorial)
             self.page1.addChild(tutorial)
         }
@@ -318,9 +350,10 @@ class EndOfLevelDialog: DialogBackground {
         tutorialVersion = 1.0
         tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
         
-        if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "earn stars and superstars by getting a better score.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
+        if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Earn stars and superstars by getting a better score.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: 0, y: self.starButton2.position.y - self.starButton2.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
+            tutorial.color = MerpColors.nothing
             self.uxTutorialTooltips!.append(tutorial)
             self.page1.addChild(tutorial)
         }
@@ -331,9 +364,10 @@ class EndOfLevelDialog: DialogBackground {
         tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
         
         // We don't want to show this until the character has 2 skills total
-        if (currentLevel >= 5 && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.TeleCharge.rawValue) && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.RubberSneakers.rawValue) && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion))) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "having trouble? go upgrade your jump skill below.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.bottomCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
+        if (currentLevel >= 5 && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.TeleCharge.rawValue) && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.RubberSneakers.rawValue) && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion))) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Having trouble? go upgrade your jump skill below.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.bottomCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: self.upgradeSkillsButton.position.x, y: self.upgradeSkillsButton.position.y + self.upgradeSkillsButton.size.height / 2 + tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2)
+            tutorial.color = MerpColors.nothing
             self.uxTutorialTooltips!.append(tutorial)
             self.page1.addChild(tutorial)
         }
@@ -345,7 +379,7 @@ class EndOfLevelDialog: DialogBackground {
             let tooltip = self.uxTutorialTooltips!.first
             self.uxTutorialTooltips!.remove(at: 0)
             tooltip!.zPosition = 14.0
-  
+            
             tooltip!.isHidden = false
         }
     }
@@ -371,16 +405,26 @@ class EndOfLevelDialog: DialogBackground {
         // Update score text
         totalScoreLabel.text = "\(Int(floor(score.totalCompletePercent*100)))%"
         
+        levelHintDescription.text = ""
+        
         // Update tip
         if unlockedLevels.count == 0 {
             if score.starsRewarded <= 2 {
                 switch score.levelNumber {
                 case 5, 6:
-                    levelHintDescription.text = "tip: goblin troubles? make sure you upgrade your jump skill"
+                    levelHintDescription.text = "Tip: goblin troubles? Make sure you upgrade your jump skill."
                 case 10, 11:
-                    levelHintDescription.text = "tip: ogre troubles? upgrade your jump skill again"
+                    levelHintDescription.text = "Tip: ogre troubles? Upgrade your jump skill again."
+                case 19, 20:
+                    levelHintDescription.text = "Tip: invest in a skill that gets you far off the sea floor."
                 case 17, 18:
-                    levelHintDescription.text = "tip: pirate crab troubles? purchase skills that can damage him"
+                    levelHintDescription.text = "Tip: pirate crab troubles? Purchase skills that can damage him."
+                case 33, 34:
+                    levelHintDescription.text = "Tip: timing is critical! Consider upgrading your skills."
+                case 49, 50:
+                    levelHintDescription.text = "Tip: max out your air time skills."
+                case 16, 32, 48:
+                    levelHintDescription.text = "Tip: get 2 stars to unlock the next world."
                 default:
                     levelHintDescription.text = ""
                 }
@@ -389,47 +433,47 @@ class EndOfLevelDialog: DialogBackground {
                     let tipNum = Int(arc4random_uniform(3))
                     switch tipNum {
                     case 0:
-                        levelHintDescription.text = "tip: reset your skills and try new strategies"
+                        levelHintDescription.text = "Tip: reset your skills and try new strategies."
                     case 1:
-                        levelHintDescription.text = "tip: you don't need 3 stars on every level"
+                        levelHintDescription.text = "Tip: you don't need 3 stars on every level."
                     case 2:
-                        levelHintDescription.text = "tip: replay earlier levels to get more stars for new skills"
+                        levelHintDescription.text = "Tip: replay earlier levels to get more stars for new skills."
                     default:
-                        levelHintDescription.text = "tip: reset your skills and try new strategies"
+                        levelHintDescription.text = "Tip: reset your skills and try new strategies."
                     }
                 }
             } else if score.starsRewarded == 3 && score.citrineRewarded == 0 {
                 let tipNum = Int(arc4random_uniform(3))
                 switch tipNum {
                 case 0:
-                    levelHintDescription.text = "rock on!"
+                    levelHintDescription.text = "Rock on!"
                 case 1:
-                    levelHintDescription.text = "wow, you are so good!"
+                    levelHintDescription.text = "Wow, you are so good!"
                 case 2:
-                    levelHintDescription.text = "way to go!"
+                    levelHintDescription.text = "Way to go!"
                 default:
-                    levelHintDescription.text = "rock on!"
+                    levelHintDescription.text = "Rock on!"
                 }
             } else if score.starsRewarded == 3 && score.citrineRewarded == 1 {
                 let tipNum = Int(arc4random_uniform(3))
                 switch tipNum {
                 case 0:
-                    levelHintDescription.text = "this is just fantastic!"
+                    levelHintDescription.text = "This is just fantastic!"
                 case 1:
-                    levelHintDescription.text = "super duper!"
+                    levelHintDescription.text = "Super duper!"
                 case 2:
-                    levelHintDescription.text = "i'm impressed!"
+                    levelHintDescription.text = "I'm impressed!"
                 default:
-                    levelHintDescription.text = "this is just fantastic!"
+                    levelHintDescription.text = "This is just fantastic!"
                 }
             }
             
         } else if unlockedLevels.count == 1 {
             levelHintDescription.fontSize += round(8 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
-            levelHintDescription.text = "level \(unlockedLevels[0]) unlocked!"
+            levelHintDescription.text = "Level \(unlockedLevels[0]) unlocked!"
         } else if unlockedLevels.count == 2 {
             levelHintDescription.fontSize += round(8 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
-            levelHintDescription.text = "levels \(unlockedLevels[0]) & \(unlockedLevels[1]) unlocked!"
+            levelHintDescription.text = "Levels \(unlockedLevels[0]) & \(unlockedLevels[1]) unlocked!"
         }
         
         self.updateScorePositioning()
@@ -448,7 +492,7 @@ class EndOfLevelDialog: DialogBackground {
             // Look through list of challenges and switch it to completed
             for levelChallenge in self.challengeContainer.challengeDisplays {
                 if levelChallenge.challenge.challengeType == completedChallenge.challengeType {
-                    // Highlight it / Complete it 
+                    // Highlight it / Complete it
                     levelChallenge.highlightChallenge()
                     
                     // Add this to the gemsEarned
@@ -460,7 +504,7 @@ class EndOfLevelDialog: DialogBackground {
         // Update reward display
         self.challengeRewardNumber.setText("\(self.gemsEarned)")
         self.updateChallengeRewardPositions()
-
+        
         // Mark that we have a score now
         self.hasValidScore = true
     }
@@ -474,40 +518,61 @@ class EndOfLevelDialog: DialogBackground {
                 SKAction.fadeIn(withDuration: 1.5),
                 SKAction.wait(forDuration: endSpeed),
                 SKAction.run({
-                    self.container.isHidden = false
-                    self.containerBackground.isHidden = false
-                    self.endedLabel.isHidden = false
+                    [weak self] in
                     
-                    self.page1.isHidden = false
-                    self.page2.isHidden = true
-                }),
-                SKAction.wait(forDuration: endSpeed),
-                SKAction.run({
-                    self.totalScoreLabel.isHidden = false
-                }),
-                SKAction.wait(forDuration: endSpeed),
-                SKAction.run({
-                    for node in self.stars {
-                        node.isHidden = false
+                    if self != nil {
+                        self?.container.isHidden = false
+                        self?.containerBackground.isHidden = false
+                        self?.endedLabel.isHidden = false
+                        
+                        self?.page1.isHidden = false
+                        self?.page2.isHidden = true
                     }
+                    }),
+                SKAction.wait(forDuration: endSpeed),
+                SKAction.run({
+                    [weak self] in
                     
-                    if self.scoredAtLeast3 {
-                        SoundHelper.sharedInstance.playSound(self, sound: SoundType.Celebrate)
+                    if self != nil {
+                        self?.totalScoreLabel.isHidden = false
                     }
-                }),
+                    }),
                 SKAction.wait(forDuration: endSpeed),
                 SKAction.run({
-                    self.levelHintDescription.isHidden = false
-                }),
+                    [weak self] in
+                    
+                    if self != nil {
+                        for node in self!.stars {
+                            node.isHidden = false
+                        }
+                        
+                        if self!.scoredAtLeast3 {
+                            SoundHelper.sharedInstance.playSound(self!, sound: SoundType.Celebrate)
+                        }
+                    }
+                    }),
                 SKAction.wait(forDuration: endSpeed),
                 SKAction.run({
-                    self.upgradeSkillsButton.isHidden = false
-                    self.displayTutorialTooltip()
-                    self.page1ContinueButton.isHidden = false
-                }),
+                    [weak self] in
+                    
+                    if self != nil {
+                        self?.levelHintDescription.isHidden = false
+                    }
+                    }),
+                SKAction.wait(forDuration: endSpeed),
+                SKAction.run({
+                    [weak self] in
+                    
+                    if self != nil {
+                        self?.upgradeSkillsButton.isHidden = false
+                        self?.displayTutorialTooltip()
+                        self?.page1ContinueButton.isHidden = false
+                    }
+                    }),
                 SKAction.run({
                     // Save Data
-                    self.dbScene!.viewController!.saveData()
+                    //self.dbScene!.viewController!.saveData()
+                    GameData.sharedGameData.save()
                 })
                 ]),withKey: "playerWinning")
         }
@@ -525,51 +590,79 @@ class EndOfLevelDialog: DialogBackground {
             // Start the new action
             self.run(SKAction.sequence([
                 SKAction.run({
-                    self.page1.isHidden = true
-                    self.page2.isHidden = false
-                    self.challengeTitle.isHidden = false
-                }),
-                SKAction.wait(forDuration: endSpeed),
-                SKAction.run({
-                    self.challengeContainer.isHidden = false
-                        
-                    if self.challengeContainer.justUnlockedChallenge() {
-                        SoundHelper.sharedInstance.playSound(self, sound: SoundType.Celebrate)
+                    [weak self] in
+                    
+                    if self != nil {
+                        self?.page1.isHidden = true
+                        self?.page2.isHidden = false
+                        self?.challengeTitle.isHidden = false
                     }
-                }),
+                    }),
                 SKAction.wait(forDuration: endSpeed),
                 SKAction.run({
-                    self.challengeRewardIcon.isHidden = false
-                    self.challengeRewardNumber.isHidden = false
-                    self.challengeRewardTitle.isHidden = false
-                }),
+                    [weak self] in
+                    
+                    if self != nil {
+                        self?.challengeContainer.isHidden = false
+                        
+                        if self!.challengeContainer.justUnlockedChallenge() {
+                            SoundHelper.sharedInstance.playSound(self!, sound: SoundType.Celebrate)
+                        }
+                    }
+                    }),
                 SKAction.wait(forDuration: endSpeed),
                 SKAction.run({
-                    self.menuButton.isHidden = false
-                    self.retryLevelButton.isHidden = false
-                    self.nextLevelButton.isHidden = false
-                })
+                    [weak self] in
+                    
+                    if self != nil {
+                        self?.challengeRewardIcon.isHidden = false
+                        self?.challengeRewardNumber.isHidden = false
+                        self?.challengeRewardTitle.isHidden = false
+                    }
+                    }),
+                SKAction.wait(forDuration: endSpeed),
+                SKAction.run({
+                    [weak self] in
+                    
+                    if self != nil {
+                        self?.menuButton.isHidden = false
+                        self?.retryLevelButton.isHidden = false
+                        self?.nextLevelButton.isHidden = false
+                    }
+                    })
                 ]),withKey: "playerWinning")
         }
         else {
             // Start the new action
             self.run(SKAction.sequence([
                 SKAction.run({
-                    self.page1.isHidden = true
-                    self.page2.isHidden = false
-                    self.challengeTitle.isHidden = false
-                }),
+                    [weak self] in
+                    
+                    if self != nil {
+                        self?.page1.isHidden = true
+                        self?.page2.isHidden = false
+                        self?.challengeTitle.isHidden = false
+                    }
+                    }),
                 SKAction.wait(forDuration: endSpeed),
                 SKAction.run({
-                    self.challengeContainerPlaceholder!.isHidden = false
-
-                }),
+                    [weak self] in
+                    
+                    if self != nil {
+                        self?.challengeContainerPlaceholder!.isHidden = false
+                    }
+                    
+                    }),
                 SKAction.wait(forDuration: endSpeed),
                 SKAction.run({
-                    self.menuButton.isHidden = false
-                    self.retryLevelButton.isHidden = false
-                    self.nextLevelButton.isHidden = false
-                })
+                    [weak self] in
+                    
+                    if self != nil {
+                        self?.menuButton.isHidden = false
+                        self?.retryLevelButton.isHidden = false
+                        self?.nextLevelButton.isHidden = false
+                    }
+                    })
                 ]),withKey: "playerWinning")
         }
     }

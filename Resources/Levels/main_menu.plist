@@ -6,13 +6,13 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>what&apos;s new in version 0.6</string>
+			<string>Welcome!</string>
 			<key>Description</key>
-			<string>credits/about, small UX improvements, major performance enhancements and bug fixes. video rewards.</string>
+			<string>Welcome to Mort&apos;s Minions! Select a character and start your adventure today!</string>
 			<key>Key</key>
 			<string>whats_new_main_menu</string>
 			<key>Version</key>
-			<integer>6</integer>
+			<integer>10</integer>
 		</dict>
 	</array>
 </dict>

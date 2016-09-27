@@ -57,4 +57,8 @@ class ScaleBuddy {
     func getNodeBuffer() -> CGFloat {
         return 10.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
     }
+    
+    func getDescriptionFontSize() -> CGFloat {
+        return round((12 + (2 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))) * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+    }
 }

@@ -50,6 +50,8 @@ class Obstacle : EnvironmentObject {
     
     func resetName() {
         self.name = "environmentobject_obstacle_\(UUID().uuidString)"
+        // Type
+        self.type = EnvironmentObjectType.Obstacle
     }
     
     func initializeAttributes() {
@@ -75,7 +77,7 @@ class Obstacle : EnvironmentObject {
     }
     
     func setDefaultPhysicsBodyValues() {
-        self.physicsBody!.isDynamic = true
+        self.physicsBody!.isDynamic = false
         self.physicsBody!.allowsRotation = false
         self.physicsBody!.usesPreciseCollisionDetection = OptimizerBuddy.sharedInstance.usePreciseCollisionDetection()
         self.physicsBody!.affectedByGravity = true
@@ -83,7 +85,7 @@ class Obstacle : EnvironmentObject {
         // Collisions
         if self.collidesWithPlayer {
             self.physicsBody!.categoryBitMask = GameScene.obstacleCategory
-            self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.groundCategory | GameScene.transparentPlayerCategory
+            self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.groundCategory /*| GameScene.transparentPlayerCategory*/
             self.physicsBody!.contactTestBitMask = GameScene.playerCategory | GameScene.groundCategory | GameScene.transparentPlayerCategory
         } else {
             self.physicsBody!.categoryBitMask = GameScene.transparentObstacleCategory

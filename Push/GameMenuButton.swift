@@ -10,6 +10,10 @@ import Foundation
 
 @objc(GameMenuButton)
 class GameMenuButton : DBButton {
+    init() {
+        super.init(dbScene: nil)
+    }
+    
     init(scene: GameScene) {
         super.init(iconName: "button_menu", pressedIconName: nil, buttonSize: DBButtonSize.small, dbScene: scene, atlas: GameTextures.sharedInstance.buttonAtlas)
     }
@@ -21,6 +25,8 @@ class GameMenuButton : DBButton {
     override func touchesEndedAction() {
         // End the scene
         (self.dbScene as! GameScene).endSceneLevelSelect()
+        
+        //NSLog("exited")
     }
 }
 

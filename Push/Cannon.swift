@@ -23,6 +23,7 @@ class Cannon : Obstacle {
             
             // We dont want this to get updated by gamescene so change the name which is the selector
             projectile.name = "proj_dont_update"
+            projectile.type = EnvironmentObjectType.Ignored
             projectile.isHidden = true
             
             projectile.position = CGPoint(x: defaultXPosition, y: defaultYPosition)
@@ -40,39 +41,46 @@ class Cannon : Obstacle {
         // ** Create an action to attack **
         // At the beginning, create the projectile
         let actionOpenProjectile: SKAction = SKAction.run({
-            let ball: CannonBall = self.projectiles.popLast() as! CannonBall
+            [weak self] in
             
-            ball.position = CGPoint(x: self.position.x, y: self.position.y + self.size.height * 2/3)
-            ball.defaultYPosition = self.position.y
-            ball.physicsBody!.velocity = CGVector(dx: 0,dy: 0)
-            
-            // Change the name back to default so it receives updates
-            ball.resetName()
-            
-            // Unhide it
-            ball.isHidden = false
-            
-            self.attackCooldown = self.value1
-            
-            ball.physicsBody!.applyImpulse(CGVector(dx: 0, dy: CGFloat(self.value2)))
-            
-            // Set physics body back
-            ball.physicsBody!.categoryBitMask = GameScene.projectileCategory
-            
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.ProjectileThrow)
+            if self != nil {
+                let ball: CannonBall = self?.projectiles.popLast() as! CannonBall
+                
+                ball.position = CGPoint(x: self!.position.x, y: self!.position.y + self!.size.height * 2/3)
+                ball.defaultYPosition = self!.position.y
+                ball.physicsBody!.velocity = CGVector(dx: 0,dy: 0)
+                
+                // Change the name back to default so it receives updates
+                ball.resetName()
+                
+                // Unhide it
+                ball.isHidden = false
+                
+                self?.attackCooldown = self!.value1
+                
+                ball.physicsBody!.applyImpulse(CGVector(dx: 0, dy: CGFloat(self!.value2)))
+                
+                // Set physics body back
+                ball.physicsBody!.categoryBitMask = GameScene.projectileCategory
+                
+                self?.playActionSound(action: SoundHelper.sharedInstance.action)
+            }
         })
         
         // At the end, switch back to nothing and update the animation
         let actionEndAttack: SKAction = SKAction.run({
-            self.isFighting = false
-            self.isWalking = true
+            [weak self] in
             
-            // Start cooldown back over
-            self.attackCooldown = self.maxAttackCooldown
-            
-            // Update the animations
-            self.updateAnimation()
-            
+            if self != nil {
+                self?.isFighting = false
+                self?.isWalking = true
+                
+                // Start cooldown back over
+                self?.attackCooldown = self!.maxAttackCooldown
+                
+                // Update the animations
+                self?.updateAnimation()
+            }
         })
         
         // Set the appropriate fight action

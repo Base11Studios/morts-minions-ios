@@ -57,12 +57,13 @@ class Archer : Player {
         self.weapon.position = self.weaponStartPosition
         
         // Create projectiles
-        for i in 0 ..< (Int(self.getSkill(CharacterUpgrade.ShootArrow)!.value * (self.getSkill(CharacterUpgrade.ShootArrow)!.secondaryValue + 1)) * 5) {
+        for _ in 0 ..< (Int(self.getSkill(CharacterUpgrade.ShootArrow)!.value * (self.getSkill(CharacterUpgrade.ShootArrow)!.secondaryValue + 1)) * 5) {
             // Create projectile
             let projectile: PlayerArrow = PlayerArrow(gameScene: self.gameScene!)
             
             // We dont want this to get updated by gamescene so change the name which is the selector
             projectile.name = "proj_dont_update"
+            projectile.type = EnvironmentObjectType.Ignored
             projectile.isHidden = true
             
             // Set up initial location of projectile
@@ -81,44 +82,53 @@ class Archer : Player {
         // ** Create an action to attack **
         // At the end, create the projectile
         let actionCreateProjectile: SKAction = SKAction.run({
+            [weak self] in
             
-            for i in 0 ..< Int(self.getSkill(CharacterUpgrade.ShootArrow)!.value) {
-                let arrow: PlayerArrow = self.projectiles.popLast() as! PlayerArrow
-                
-                arrow.position = CGPoint(x: self.position.x + self.weaponStartPosition.x, y: self.position.y + self.weaponStartPosition.y - 2.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
-                
-                // Change the name back to default so it receives updates
-                arrow.resetName()
-                
-                // Unhide it
-                arrow.isHidden = false
-                
-                // Set physics body back
-                arrow.physicsBody!.categoryBitMask = GameScene.playerProjectileCategory
-                
-                self.gameScene!.worldViewPlayerProjectiles.append(arrow)
-                
-                arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 2000.0 * CGFloat(i)))
+            if self != nil {
+                for i in 0 ..< Int(self!.getSkill(CharacterUpgrade.ShootArrow)!.value) {
+                    let arrow: PlayerArrow = self?.projectiles.popLast() as! PlayerArrow
+                    
+                    arrow.position = CGPoint(x: self!.position.x + self!.weaponStartPosition.x, y: self!.position.y + self!.weaponStartPosition.y - 2.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+                    
+                    // Change the name back to default so it receives updates
+                    arrow.resetName()
+                    
+                    // Unhide it
+                    arrow.isHidden = false
+                    
+                    // Set physics body back
+                    arrow.physicsBody!.categoryBitMask = GameScene.playerProjectileCategory
+                    
+                    self?.gameScene!.worldViewPlayerProjectiles.append(arrow)
+                    
+                    arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 2000.0 * CGFloat(i)))
+                    
+                    self?.playActionSound(action: SoundHelper.sharedInstance.projectileThrow)
+                }
             }
         })
         
         // At the end, switch back to walking and update the animation
         let actionEndAttack: SKAction = SKAction.run({
-            self.isShooting = false
+            [weak self] in
             
-            if self.getSkill(CharacterUpgrade.ShootArrow)!.secondaryValue > 0 && Int(self.getSkill(CharacterUpgrade.ShootArrow)!.secondaryValue) > self.attacksInSuccession {
-                // Shoot again
-                self.attackCooldown = 0
-                self.attacksInSuccession += 1
-            } else {
-                // Start cooldown back over
-                self.attackCooldown = self.maxAttackCooldown
+            if self != nil {
+                self?.isShooting = false
                 
-                self.attacksInSuccession = 0
+                if self!.getSkill(CharacterUpgrade.ShootArrow)!.secondaryValue > 0 && Int(self!.getSkill(CharacterUpgrade.ShootArrow)!.secondaryValue) > self!.attacksInSuccession {
+                    // Shoot again
+                    self?.attackCooldown = 0
+                    self?.attacksInSuccession += 1
+                } else {
+                    // Start cooldown back over
+                    self?.attackCooldown = self!.maxAttackCooldown
+                    
+                    self?.attacksInSuccession = 0
+                }
+                
+                // Update the animations
+                //[self updateAnimation]; TODO might need to change back to texture... or different animation
             }
-            
-            // Update the animations
-            //[self updateAnimation]; TODO might need to change back to texture... or different animation
         })
         self.weaponFrames = SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.playerArcherAtlas, texturesNamed: "archershooting", frameStart: 0, frameEnd: 15)
         
@@ -162,5 +172,17 @@ class Archer : Player {
     
     override func createPhysicsBody() {
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.9, height: self.size.height * 1), center: CGPoint(x: self.size.width * 0.05, y: self.size.height * 0.0))
+    }
+    
+    override func executeDeath() {
+        super.executeDeath()
+        
+        self.protectorOfTheSky?.isHidden = true
+    }
+    
+    override func rejuvPlayer(position: CGPoint, numberOfHearts: Int) {
+        super.rejuvPlayer(position: position, numberOfHearts: numberOfHearts)
+        
+        self.protectorOfTheSky?.isHidden = false
     }
 }

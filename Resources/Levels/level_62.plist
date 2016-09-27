@@ -21,9 +21,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>challenge yourself!</string>
+			<string>Challenge Yourself!</string>
 			<key>Description</key>
-			<string>visit easier levels and complete the challenges you missed to earn stars and gems! </string>
+			<string>Visit easier levels and complete the challenges you missed to earn stars and gems! </string>
 			<key>Type</key>
 			<string>tutorial</string>
 			<key>Key</key>

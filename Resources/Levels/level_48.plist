@@ -2,6 +2,39 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Story</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>In a clearing between the Ignis mountains, you find another letter from Mort.</string>
+			<key>Icon</key>
+			<string>story-ignis-mountains</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>“You have failed to see the relationship from the imal’s eyes. The silence of their obedience gave the illusion of peace. Why does it take such drastic measures to see what you’re doing is wrong?”</string>
+			<key>Icon</key>
+			<string>story-letter</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>You continue to the last world, Astra, to reach Mort.</string>
+			<key>Icon</key>
+			<string>story-mort-walk-astra</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+	</array>
 	<key>Challenges</key>
 	<array>
 		<dict>

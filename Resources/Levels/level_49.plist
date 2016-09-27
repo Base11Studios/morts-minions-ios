@@ -2,19 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Tutorial</key>
+	<key>Story</key>
 	<array>
 		<dict>
-			<key>Title</key>
-			<string>welcome to the air world</string>
 			<key>Description</key>
-			<string>finally the last world (until the next major release :)). max out your air time skills. </string>
-			<key>Type</key>
-			<string>tutorial</string>
-			<key>Key</key>
-			<string>world_air</string>
+			<string>You reach Astra and contemplate Mort’s words. Did we go too far with our rule over the minions? Mort’s mission is not about power, but about justice.</string>
+			<key>Icon</key>
+			<string>story-astra</string>
 			<key>Version</key>
-			<real>1.1</real>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
 		</dict>
 	</array>
 	<key>Challenges</key>

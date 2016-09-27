@@ -1,6 +1,9 @@
 import Foundation
 
 class PlayerProjectile : SKSpriteNode {
+    // Type
+    var type: EnvironmentObjectType = EnvironmentObjectType.Ignored
+    
     // Attributes
     var damage: NSInteger = 0
     var timeAlive: Double = 0.0
@@ -71,6 +74,8 @@ class PlayerProjectile : SKSpriteNode {
     
     func resetName() {
         self.name = "playerProjectile"
+        // Type
+        self.type = EnvironmentObjectType.PlayerProjectile
     }
     
     func update(_ timeSinceLast: CFTimeInterval, withPlayer player: Player) {

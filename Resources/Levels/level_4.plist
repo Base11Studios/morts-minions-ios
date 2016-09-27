@@ -2,6 +2,29 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>Story</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>You’re c_name, leader and c_role, member of a family of leaders known across the 4 worlds - Terra, Aqua, Ignis and Astra.</string>
+			<key>Icon</key>
+			<string>story-c_role</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>You have set out to protect your home and defeat the minions on Terra.</string>
+			<key>Icon</key>
+			<string>story-terra</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+	</array>
 	<key>Challenges</key>
 	<array>
 		<dict>

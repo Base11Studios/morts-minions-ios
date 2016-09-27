@@ -110,7 +110,7 @@ class HeartBoostContainer : SKNode {
             } else {
                 self.heartBoostText!.text = "boost \(self.selectedHeartBoost!.heartBoost) hearts for \(self.selectedHeartBoost!.boostCost) diamond"
             }
-            self.heartBoostText!.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+            self.heartBoostText!.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
         } else {
             self.heartBoostText!.text = "select a heart boost"
             self.heartBoostText!.fontSize = round(17 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))

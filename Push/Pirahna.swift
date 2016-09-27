@@ -68,7 +68,7 @@ class Pirahna : Enemy {
             
             self.attackCooldown = 100
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Lunge)
+            self.playActionSound(action: SoundHelper.sharedInstance.lunge)
         }
     }
 }

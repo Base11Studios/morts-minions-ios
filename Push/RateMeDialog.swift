@@ -57,7 +57,7 @@ class RateMeDialog: DialogBackground {
         self.titleNode?.paragraphWidth = self.container.size.width - self.buttonBuffer - self.iconBackgroundNode!.size.width
         self.titleNode?.fontSize = round(28 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.titleNode?.fontColor = MerpColors.darkFont
-        self.titleNode?.text = "please rate the game!"
+        self.titleNode?.text = "Please Rate the Game!"
         let titleNodeXPosition = self.iconBackgroundNode!.position.x + self.iconBackgroundNode!.size.width / 2 + self.titleNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2
         let titleNodeYPosition = self.container.size.height / 2 - self.titleNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2
         self.titleNode?.position = CGPoint(x: titleNodeXPosition, y: titleNodeYPosition)
@@ -66,9 +66,9 @@ class RateMeDialog: DialogBackground {
         self.container.addChild(self.descriptionNode!)
         
         self.descriptionNode?.paragraphWidth = self.container.size.width - self.buttonBuffer
-        self.descriptionNode?.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+        self.descriptionNode?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
         self.descriptionNode?.fontColor = MerpColors.darkFont
-        self.descriptionNode?.text = "if you like mort's minions, please leave a positive rating on the app store. i built this game in my free time with the approval of my wife. help me pursue my passion by spreading the word! thanks - dan"
+        self.descriptionNode?.text = "If you like Mort's Minions, please leave a positive rating on the App Store to spread the word. Mort's Minions was crafted in my free time with love and support from friends and family. Thanks! - Dan"
         let descriptionNodeXPosition = self.container.size.width / -2 + self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2
         let descriptionNodeYPosition = self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer
         self.descriptionNode?.position = CGPoint(x: descriptionNodeXPosition, y: descriptionNodeYPosition)
