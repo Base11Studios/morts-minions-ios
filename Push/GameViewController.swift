@@ -10,17 +10,12 @@ import Foundation
 import GameKit
 import AVFoundation
 import LocalAuthentication
+//ADDDimport GoogleMobileAds
 
 class GameViewController: UIViewController, GKGameCenterControllerDelegate {
-    //var levelSelectionScene: LevelSelectionScene?
-    //var gameScene: GameScene?
-    //var introScene: IntroductionScene?
     var loadingScene: LoadingScene?
-    //var mainMenuScene: MainMenuScene?
-    //var characterSkillScene: CharacterSkillScene?
     
     var characterSkillSceneCharacter: CharacterType?
-    
     
     var sceneBeforeSkills: DBSceneType?
     
@@ -31,6 +26,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     var isReloading: Bool = false
     
     var gvcInitialized: Bool = false
+    
+    var firstTime: Bool = true
     
     // Cloud data flag - is there newer cloud data but we couldn't ask user yet
     var userNeedsToDecideOnCloudData: Bool = false
@@ -49,6 +46,13 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    override func willMove(toParentViewController parent: UIViewController?) {
+        NotificationCenter.default.removeObserver(self, name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: CloudHasMoreRecentDataThanLocal), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: PresentAuthenticationViewController), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: LocalPlayerIsAuthenticated), object: nil)
     }
     
     override func viewDidLoad() {
@@ -94,30 +98,52 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             ScaleBuddy.sharedInstance.deviceSize = DeviceSizes.originaliPad
         }
         
-        // Try to auth user
-        GameKitHelper.sharedInstance.authenticateLocalPlayer(false)
-        
-        // Cache ads and such
-        self.cacheInterstitialAd()
-        self.cacheRewardedVideo()
-        
-        // Set restoration identifier
-        self.restorationIdentifier = "GameViewController"
-        
-        // Setup Music
-        self.setupMusic()
-        
-        // Setup sound
-        self.setupButtonSound()
-        
-        // Setup sound props
-        self.setSessionPlayerPassive()
-        
-        // Present first scene
-        self.presentIntroductionScene()
-        
-        // Done loading
-        isReloading = false
+        if firstTime {
+            self.firstTime = true // ADDD SET TO FALSE
+            
+            // Setup the scale helpers
+            ScaleBuddy.sharedInstance.screenSize = self.getScreenSize()
+            if ScaleBuddy.sharedInstance.screenSize.width == 667 {
+                ScaleBuddy.sharedInstance.playerHorizontalLeft = 8
+                ScaleBuddy.sharedInstance.playerHorizontalRight = 3.5
+            } else if ScaleBuddy.sharedInstance.screenSize.width == 562.5 || ScaleBuddy.sharedInstance.screenSize.width == 1024 {
+                ScaleBuddy.sharedInstance.playerHorizontalLeft = 10
+                ScaleBuddy.sharedInstance.playerHorizontalRight = 6
+            }
+            
+            if UIDevice.current.userInterfaceIdiom == .phone && ScaleBuddy.sharedInstance.screenSize.width == 562.5 {
+                ScaleBuddy.sharedInstance.deviceSize = DeviceSizes.original4
+            } else if UIDevice.current.userInterfaceIdiom == .phone && ScaleBuddy.sharedInstance.screenSize.width == 667 {
+                ScaleBuddy.sharedInstance.deviceSize = DeviceSizes.wide6
+            } else if UIDevice.current.userInterfaceIdiom == .pad {
+                ScaleBuddy.sharedInstance.deviceSize = DeviceSizes.originaliPad
+            }
+            
+            // Try to auth user
+            GameKitHelper.sharedInstance.authenticateLocalPlayer(false)
+            
+            // Cache ads and such
+            self.cacheInterstitialAd()
+            self.cacheRewardedVideo()
+            
+            // Set restoration identifier
+            self.restorationIdentifier = "GameViewController"
+            
+            // Setup Music
+            self.setupMusic()
+            
+            // Setup sound
+            self.setupButtonSound()
+            
+            // Setup sound props
+            self.setSessionPlayerPassive()
+            
+            // Present first scene
+            self.presentIntroductionScene()
+            
+            // Done loading
+            isReloading = false
+        }
     }
     
     func setupMusic() {
@@ -649,6 +675,14 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     func showRewardedVideo() {
         // Show rewarded video pre-roll message and video ad at location MainMenu. See Chartboost.h for available location options.
         Chartboost.showRewardedVideo(CBLocationGameOver)
+        
+        /*ADDD
+        if GADRewardBasedVideoAd.sharedInstance().isReady {
+            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
+            return true
+        } else {
+            return false
+        }*/
     }
     
     func showInterstitialAd() {
@@ -668,6 +702,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     }
     
     func cacheRewardedVideo() {
+        /*ADDDlet request = GADRequest()
+        // Requests test ads on test devices.
+
+        request.testDevices = ["fa25ccf46baf21a9189bbb36e020a8ef"]
+        GADRewardBasedVideoAd.sharedInstance().load(request, withAdUnitID: "ca-app-pub-4505737160765142/2684998717")*/
         Chartboost.cacheRewardedVideo(CBLocationMainMenu)
     }
     

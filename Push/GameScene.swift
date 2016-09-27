@@ -1060,7 +1060,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func loadEndOfLevelDialog(_ score: LevelScore) {
-        // Cache ads
         // Video reward - cache
         self.viewController!.cacheRewardedVideo()
         // Interstitial
@@ -2294,6 +2293,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func initializeSound() {
+        // Init sound helper
+        SoundHelper.sharedInstance.turnOn()
+        
         // For now we are just going to have the sound icons in the game view controller... we will add here later
         if GameData.sharedGameData.preferenceMusic {
             guard let path = Bundle.main.url(forResource: self.worldName, withExtension: "m4a") else {

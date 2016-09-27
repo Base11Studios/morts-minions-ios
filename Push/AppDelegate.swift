@@ -7,9 +7,10 @@
 //
 
 import UIKit
+//ADDDimport GoogleMobileAds
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate/*, GADRewardBasedVideoAdDelegateADDD*/ {
 
     var window: UIWindow?
     
@@ -25,6 +26,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
     func applicationDidFinishLaunching(_ application: UIApplication) {
         // Initialize the Chartboost library
         Chartboost.start(withAppId: "576a8abe04b01657f1e18be5", appSignature: "54c4763f89ea9ff96502d320787de1cb9ceb7c21", delegate: self)
+        // Admob
+        //ADDDGADRewardBasedVideoAd.sharedInstance().delegate = self
+        
+        //ADDDGADMobileAds.configure(withApplicationID: "ca-app-pub-4505737160765142~1208265512");
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -114,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
         // Remove the loading dialog
         self.dismissLoadingDialog()
         
-        if self.completedVideo == false && self.presentingVideo == true && !self.dismissingVideo {
+        if self.completedVideo == false /*&& self.presentingVideo == true && !self.dismissingVideo*/ {
             self.endVideoUnsuccessfully()
         }
     }
@@ -214,5 +219,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
     func didClickInterstitial(_ location: String!) {
         AdSupporter.sharedInstance.showPauseMenu = true
     }
+    
+    
+    
+    /*ADDD
+    /// ADMOB
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd!, didRewardUserWith reward: GADAdReward!) {
+        self.endVideoSuccessfully()
+    }
+    
+    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd: GADRewardBasedVideoAd!) {
+        NSLog("crap")
+    }
+    
+    func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd!) {
+        NSLog("crap")
+    }
+    
+    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd!) {
+        // If video was completed, dont do anything, otherwise send dismiss dialog if not done
+        if !self.completedVideo && self.presentingVideo && !self.dismissingVideo {
+            self.endVideoUnsuccessfully()
+        } else if !self.dismissingVideo && self.completedVideo {
+            self.endVideoSuccessfully()
+        }
+    }
+    
+    func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd!) {
+        NSLog("crap")
+    }
+    
+    func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd!) {
+        NSLog("crap")
+    }
+    
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd!, didFailToLoadWithError error: Error!) {
+        /*// Remove the loading dialog
+        self.dismissLoadingDialog()
+        
+        if self.completedVideo == false /*&& self.presentingVideo == true && !self.dismissingVideo*/ {
+            self.endVideoUnsuccessfully()
+        }*/
+    }
+    */
 }
 
