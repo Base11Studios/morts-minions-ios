@@ -23,14 +23,14 @@ class ChallengeDialog: DialogBackground {
         self.title.fontColor = MerpColors.darkFont
         self.title.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
         self.title.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
-        self.title.text = "level challenges"
+        self.title.text = "Level Challenges"
         
         self.dialogDescription = SKLabelNode(fontNamed: "Avenir-Medium")
         self.dialogDescription.fontSize = 14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         self.dialogDescription.fontColor = MerpColors.darkFont
         self.dialogDescription.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.left
         self.dialogDescription.verticalAlignmentMode = SKLabelVerticalAlignmentMode.center
-        self.dialogDescription.text = "complete challenges to earn gems!"
+        self.dialogDescription.text = "Complete challenges to earn gems!"
         
         self.okButton = GameChallengeOkButton(scene: scene)
         self.challengeContainer = ChallengeContainer(scene: scene, challenges: challenges)

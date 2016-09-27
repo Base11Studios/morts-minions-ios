@@ -2,19 +2,17 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>Tutorial</key>
+	<key>Story</key>
 	<array>
 		<dict>
-			<key>Title</key>
-			<string>welcome to the fire world</string>
 			<key>Description</key>
-			<string>timing is critical! consider upgrading your skills. </string>
-			<key>Type</key>
-			<string>tutorial</string>
-			<key>Key</key>
-			<string>world_water</string>
+			<string>You reach Ignis. Why would the minions revolt when it seemed like the rulens and minions were living in peace for hundreds of years?</string>
+			<key>Icon</key>
+			<string>story-ignis</string>
 			<key>Version</key>
-			<real>1.1</real>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
 		</dict>
 	</array>
 	<key>Challenges</key>

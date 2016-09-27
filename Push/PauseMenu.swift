@@ -13,6 +13,15 @@ class PauseMenu: DialogBackground {
     var restartButton: GameRestartButton
     var resumeButton: GameResumeButton
     
+    init() {
+        // Create the buttons
+        self.quitButton = GameQuitButton()
+        self.restartButton = GameRestartButton()
+        self.resumeButton = GameResumeButton()
+        
+        super.init(frameSize: CGSize())
+    }
+    
     init(frameSize : CGSize, scene: GameScene) {
         // Create the buttons
         self.quitButton = GameQuitButton(scene: scene)

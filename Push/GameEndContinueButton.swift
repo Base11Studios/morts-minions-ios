@@ -9,6 +9,10 @@
 import Foundation
 
 class GameEndContinueButton : DBButton {
+    init() {
+        super.init(dbScene: nil)
+    }
+    
     init(scene: GameScene) {
         super.init(iconName: "button_okay", pressedIconName: nil, buttonSize: DBButtonSize.small, dbScene: scene, atlas: GameTextures.sharedInstance.buttonAtlas)
     }
@@ -18,6 +22,6 @@ class GameEndContinueButton : DBButton {
     }
     
     override func touchesEndedAction() {
-        (self.dbScene as! GameScene).endOfLevelDialog!.showNextPage()
+        (self.dbScene as! GameScene).endOfLevelDialog.showNextPage()
     }
 }

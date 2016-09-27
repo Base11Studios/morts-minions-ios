@@ -9,26 +9,17 @@
 import Foundation
 
 @objc(GameNextLevelButton)
-class GameNextLevelButton : DBButton {
-    /*
-    init(scene: GameScene) {
-        super.init(iconName: "button_next", pressedIconName: nil, buttonSize: DBButtonSize.Small, dbScene: scene)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func touchesEndedAction() {
-        (self.dbScene as! GameScene).endSceneNextLevel()
-    }*/
-    
+class GameNextLevelButton : DBButton {    
     var text: LabelWithShadow?
     
     var gemIconScale: CGFloat = 0.825
     var buffer: CGFloat = 6.0
     var level: Int = 0
     var maxLevel: Int = 64
+    
+    init() {
+        super.init(dbScene: nil)
+    }
     
     init(scene: GameScene, level: Int) {
         self.level = level

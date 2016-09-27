@@ -62,7 +62,7 @@ class PurchaseMenu: DialogBackground {
         self.headerText = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
         self.footerText = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
         
-        self.buffer = 10.0
+        self.buffer = 10.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         
         super.init(frameSize: frameSize)
         
@@ -80,7 +80,7 @@ class PurchaseMenu: DialogBackground {
         self.headerText!.paragraphWidth = self.buy2Button.size.width * 2 + buffer
         self.headerText!.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.headerText!.fontColor = MerpColors.darkFont
-        self.headerText!.text = "accelerate your experience. buy gems to unlock characters and use revives."
+        self.headerText!.text = "Accelerate your experience. Buy gems to unlock characters and use revives."
         self.headerText!.position = CGPoint(x: (-self.totalWidth! + self.headerText!.calculateAccumulatedFrame().size.width) / 2, y: self.buy1Button.position.y + self.buy1Button.size.height / 2 + self.headerText!.calculateAccumulatedFrame().size.height / 2 + self.buffer)
         
         // Footer
@@ -89,7 +89,7 @@ class PurchaseMenu: DialogBackground {
         self.footerText!.fontColor = MerpColors.darkFont
         
         if GameData.sharedGameData.adsUnlocked {
-            self.footerText!.text = "thank you for your previous purchase! we won't show static ads."
+            self.footerText!.text = "Thank you for your previous purchase! We won't show static ads."
         } else {
             self.footerText!.text = "* if you purchase any gems, we won't show static ads."
         }
@@ -107,12 +107,12 @@ class PurchaseMenu: DialogBackground {
         
         // Title
         self.title.fontSize = round(28 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
-        self.title.text = "purchase gems"
+        self.title.text = "Purchase Gems"
         self.title.fontColor = MerpColors.darkFont
         self.title.horizontalAlignmentMode = SKLabelHorizontalAlignmentMode.center
         self.title.verticalAlignmentMode = SKLabelVerticalAlignmentMode.bottom
         
-        self.title.position = CGPoint(x: self.buy1Button.position.x - self.buy1Button.size.width / 2 + self.title.calculateAccumulatedFrame().size.width / 2, y: self.headerText!.position.y + self.headerText!.calculateAccumulatedFrame().size.height / 2 + self.title.calculateAccumulatedFrame().size.height / 2 - buffer)
+        self.title.position = CGPoint(x: self.buy1Button.position.x - self.buy1Button.size.width / 2 + self.title.calculateAccumulatedFrame().size.width / 2, y: self.headerText!.position.y + self.headerText!.calculateAccumulatedFrame().size.height / 2 + self.title.calculateAccumulatedFrame().size.height / 2)
         
         // Diamonds label
         self.totalGemsText.setText("\(GameData.sharedGameData.totalDiamonds)")
@@ -145,18 +145,18 @@ class PurchaseMenu: DialogBackground {
         if !errorConnecting {
             if openedWithNotEnoughGems {
                 self.headerFontColor(false)
-                self.headerText!.text = "darn, you need \(itemCost) gems to make the purchase. buy more gems below."
+                self.headerText!.text = "Darn, you need \(itemCost) gems to make the purchase. Buy more gems below."
             } else {
                 self.headerFontColor(false)
-                self.headerText!.text = "accelerate your experience. buy gems to unlock characters and use revives."
+                self.headerText!.text = "Accelerate your experience. Buy gems to unlock characters and use revives."
             }
         } else {
             if openedWithNotEnoughGems {
                 self.headerFontColor(true)
-                self.headerText!.text = "darn, you need \(itemCost) gems. we could not connect to the store. try again."
+                self.headerText!.text = "Darn, you need \(itemCost) gems. We could not connect to the store. Try again."
             } else {
                 self.headerFontColor(true)
-                self.headerText!.text = "unfortunately we could not connect to the store. please try again."
+                self.headerText!.text = "Unfortunately we could not connect to the store. Please try again."
             }
         }
         
@@ -165,28 +165,28 @@ class PurchaseMenu: DialogBackground {
     
     func updateHeaderPaymentError() {
         self.headerFontColor(true)
-        self.headerText!.text = "we were unable to complete the payment transaction. please try again."
+        self.headerText!.text = "We were unable to complete the payment transaction. Please try again."
         
         self.resetHeaderPosition()
     }
     
     func updateHeaderPaymentNotAllowed() {
         self.headerFontColor(true)
-        self.headerText!.text = "unfortunately your apple ID is not allowed to make payments."
+        self.headerText!.text = "Unfortunately your apple ID is not allowed to make payments."
         
         self.resetHeaderPosition()
     }
     
     func updateHeaderPaymentNoProducts() {
         self.headerFontColor(true)
-        self.headerText!.text = "no products are available for purchase at this time. try again later."
+        self.headerText!.text = "No products are available for purchase at this time. Try again later."
         
         self.resetHeaderPosition()
     }
     
     func updateHeaderPaymentSuccess(_ gemsPurchased: Int) {
         self.headerFontColor(false)
-        self.headerText!.text = "successfuly purchased \(gemsPurchased) gems. thank you for your purchase!"
+        self.headerText!.text = "Successfuly purchased \(gemsPurchased) gems. Thank you for your purchase!"
         
         self.resetHeaderPosition()
     }
@@ -210,7 +210,7 @@ class PurchaseMenu: DialogBackground {
     func updateFooter() {
         // Footer
         if GameData.sharedGameData.adsUnlocked {
-            self.footerText!.text = "thank you for your previous purchase! we won't show static ads."
+            self.footerText!.text = "Thank you for your previous purchase! We won't show static ads."
         } else {
             self.footerText!.text = "* if you purchase any gems, we won't show static ads."
         }
@@ -298,7 +298,7 @@ class PurchaseMenu: DialogBackground {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func displayPurchaseMenu(_ itemCost: Int, onSuccess: (Bool)->Void, onFailure: ()->Void) {
+    func displayPurchaseMenu(_ itemCost: Int, onSuccess: @escaping (Bool)->Void, onFailure: @escaping ()->Void) {
         self.isHidden = false
         self.itemCost = itemCost
         

@@ -138,7 +138,7 @@ class Beast : Enemy {
             self.fly1!.defaultYPosition = self.position.y + self.flyYAdjust
             self.fly1!.startingYPosition = self.fly1!.defaultYPosition
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Zoom)
+            self.playActionSound(action: SoundHelper.sharedInstance.zoom)
         }
         
         // The player is in sight of the enemy
@@ -149,7 +149,7 @@ class Beast : Enemy {
             self.fly2!.defaultYPosition = self.position.y + self.flyYAdjust
             self.fly2!.startingYPosition = self.fly2!.defaultYPosition
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Zoom)
+            self.playActionSound(action: SoundHelper.sharedInstance.zoom)
         }
     }
 }

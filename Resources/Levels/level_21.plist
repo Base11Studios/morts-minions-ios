@@ -21,9 +21,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>want to be challenged?</string>
+			<string>Want to be Challenged?</string>
 			<key>Description</key>
-			<string>don&apos;t forget to complete challenges and collect gems. use gems to make purchases.</string>
+			<string>Don&apos;t forget to complete challenges and collect gems. Use gems to make purchases.</string>
 			<key>Type</key>
 			<string>tutorial</string>
 			<key>Key</key>

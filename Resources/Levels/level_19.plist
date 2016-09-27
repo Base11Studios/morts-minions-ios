@@ -23,9 +23,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>getting difficult?</string>
+			<string>Getting Difficult?</string>
 			<key>Description</key>
-			<string>go back to easier levels and collect a superstar by scoring 100%. these can be used for skill upgrades.</string>
+			<string>Go back to easier levels and collect a superstar by scoring 100%. These can be used for skill upgrades.</string>
 			<key>Type</key>
 			<string>tutorial</string>
 			<key>Key</key>
@@ -127,7 +127,7 @@
 		<string>Shark</string>
 		<key>Location</key>
 		<real>2500</real>
-		<key>New item</key>
+		<key>Value1</key>
 		<integer>60</integer>
 	</dict>
 	<key>EnvironmentObject - 3</key>

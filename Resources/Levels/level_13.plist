@@ -23,9 +23,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>moley</string>
+			<string>Moley</string>
 			<key>Description</key>
-			<string>look for my helmet</string>
+			<string>Look for my cool helmet!</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

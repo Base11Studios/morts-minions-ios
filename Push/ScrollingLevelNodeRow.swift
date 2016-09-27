@@ -22,13 +22,17 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
     var numberOfLevels: Int = 0
     var worldName: String = "earth"
     
+    // Scene
+    weak var dbScene: DBScene?
+    
     init(size: CGSize, worldName: String, scene: DBScene) {
         self.size = size
         self.worldName = worldName
+        self.dbScene = scene
         
         // Super initializer
         super.init()
-
+        
         self.xOffset = self.calculateAccumulatedFrame().origin.x
         
         // Set the level selected to the last played level on the game data
@@ -39,25 +43,20 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
         
         // TODO need to move to the node for last played level??
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func addChild(_ node: SKNode) {
-        if self.children.count == 0 {
-            self.levelSelectedNode = node as? ScrollingLevelNode
+        if self.children.count + 1 == self.levelSelected {
+            self.levelSelectedNode = (node as! ScrollingLevelNode)
         }
         super.addChild(node)
         self.xOffset = self.calculateAccumulatedFrame().origin.x
     }
     
     func minXPosition() -> CGFloat {
-        let parentSize: CGSize = self.parent!.frame.size
-        //NSLog("PARENT SIZE %f", parentSize.width)
-        //NSLog("CALC SIZE %f", self.calculateAccumulatedFrame().size.width)
-        //NSLog("OFFSET SIZE %f", self.xOffset)
-        //NSLog("WID/2 SIZE %f", self.size.width / 2)
         let minPosition: CGFloat = -(self.calculateAccumulatedFrame().size.width + self.xOffset) + self.levelSelectedNode!.levelSelectionBackground.size.width / 2.0 + self.buttonBuffer
         return minPosition
     }
@@ -80,8 +79,7 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
             self.gestureRecognizer!.delegate = self
             
             // Add to scene
-            let dbScene = self.scene! as! DBScene
-            dbScene.gestureRecognizers.append(self.gestureRecognizer!)
+            self.dbScene!.gestureRecognizers.append(self.gestureRecognizer!)
             
             view?.addGestureRecognizer(self.gestureRecognizer!)
         }
@@ -125,27 +123,34 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
                     moveTo.timingMode = SKActionTimingMode.easeOut
                     
                     let moveToNearestChild = SKAction.run({
-                        var closestChild: ScrollingLevelNode? = nil
+                        [weak self] in
                         
-                        for node: ScrollingLevelNode in self.children as! [ScrollingLevelNode] {
-                            if closestChild == nil || abs(fabs(self.position.x) - fabs(closestChild!.position.x)) > fabs(fabs(self.position.x) - fabs(node.position.x)) {
-                                closestChild = node
+                        if self != nil {
+                            var closestChild: ScrollingLevelNode? = nil
+                            
+                            for node: ScrollingLevelNode in self?.children as! [ScrollingLevelNode] {
+                                if closestChild == nil || abs(fabs(self!.position.x) - fabs(closestChild!.position.x)) > fabs(fabs(self!.position.x) - fabs(node.position.x)) {
+                                    closestChild = node
+                                }
+                                
                             }
-                            
+                            let endPanAction: SKAction = SKAction.run({
+                                [weak self] in
+                                
+                                if self != nil {
+                                    self?.isMoving = false
+                                    self?.levelSelectedNode = closestChild!
+                                    self?.levelSelected = closestChild!.levelNumber
+                                    self?.displayLevelDetails(closestChild!.levelNumber)
+                                    
+                                    SoundHelper.sharedInstance.playSound(self!, sound: SoundType.Click)
+                                }
+                                })
+                            let doMove: SKAction = SKAction.move(to: CGPoint(x: -closestChild!.position.x, y: 0), duration: self!.kScrollDuration)
+                            doMove.timingMode = SKActionTimingMode.easeOut
+                            self?.run(SKAction.sequence([doMove, endPanAction]))
                         }
-                        let endPanAction: SKAction = SKAction.run({
-                            self.isMoving = false
-                            self.levelSelectedNode = closestChild!
-                            self.levelSelected = closestChild!.levelNumber
-                            self.displayLevelDetails(closestChild!.levelNumber)
-                            
-                            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Click)
                         })
-                        let doMove: SKAction = SKAction.move(to: CGPoint(x: -closestChild!.position.x, y: 0), duration: self.kScrollDuration)
-                        doMove.timingMode = SKActionTimingMode.easeOut
-                        self.run(SKAction.sequence([doMove, endPanAction]))
-                        
-                    })
                     self.run(SKAction.sequence([moveTo, moveToNearestChild]), withKey: "centerOnNode")
                 }
             }
@@ -168,9 +173,9 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
         let grandParent: SKNode = self.parent!.parent!
         
         /*
-        if grandParent == nil {
-            grandParent = self.parent!
-        }*/
+         if grandParent == nil {
+         grandParent = self.parent!
+         }*/
         
         let touchLocation: CGPoint = touch.location(in: grandParent)
         if !self.parent!.frame.contains(touchLocation) {
@@ -179,35 +184,34 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
         return true
     }
     
-    func moveToNode(_ node: ScrollingLevelNode) {
+    func moveToNode(_ node: ScrollingLevelNode, immediately: Bool) {
+        var duration: Double = kScrollDuration
+        if immediately {
+            duration = 0
+        }
+        
         self.isMoving = true
         self.levelSelectedNode!.displayLevelDetails(false)
         
         let endMoveAction: SKAction = SKAction.run({
-            self.isMoving = false
-            self.levelSelectedNode = node
-            self.levelSelected = node.levelNumber
-            self.displayLevelDetails(node.levelNumber)
-        })
-        let doMove: SKAction = SKAction.move(to: CGPoint(x: -node.position.x, y: 0), duration: kScrollDuration)
-        doMove.timingMode = SKActionTimingMode.easeOut
-        self.run(SKAction.sequence([doMove, endMoveAction]))
-    }
-    
-    func updateLevelRewards() {
-        let lastPlayedLevel: Int = GameData.sharedGameData.getSelectedCharacterData().getLastPlayedLevelByWorld(self.worldName)
-        
-        for node in self.children as! [ScrollingLevelNode] {
-            node.updateLevelNode()
+            [weak self] in
             
-            if node.levelNumber == lastPlayedLevel {
-                // Select it somehow
-                self.levelSelectedNode = node
+            if self != nil {
+                self?.isMoving = false
+                self?.levelSelectedNode = node
+                self?.levelSelected = node.levelNumber
+                self?.displayLevelDetails(node.levelNumber)
+                self?.isHidden = false
+                (self?.dbScene! as! LevelSelectionScene).revealLevels()
             }
+            })
+        let doMove: SKAction = SKAction.move(to: CGPoint(x: -node.position.x, y: 0), duration: duration)
+        if !immediately {
+            doMove.timingMode = SKActionTimingMode.easeOut
+        } else {
+            doMove.timingMode = SKActionTimingMode.linear
         }
-        
-        // Scroll to the level selected
-        self.moveToNode(self.levelSelectedNode!)
+        self.run(SKAction.sequence([doMove, endMoveAction]))
     }
     
     func displayLevelDetails(_ level: Int) {

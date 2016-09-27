@@ -23,7 +23,7 @@ public let IAPHelperProductPurchaseFailedNotification = "IAPHelperProductPurchas
 public typealias ProductIdentifier = String
 
 /// Completion handler called when products are fetched.
-public typealias RequestProductsCompletionHandler = (success: Bool, products: [SKProduct]) -> ()
+public typealias RequestProductsCompletionHandler = (_ success: Bool, _ products: [SKProduct]) -> ()
 
 
 /// A Helper class for In-App-Purchases, it can fetch products, tell you if a product has been purchased,
@@ -33,12 +33,12 @@ public class IAPHelper : NSObject  {
   /// MARK: - Private Properties
   
   // Used to keep track of the possible products and which ones have been purchased.
-  private let productIdentifiers: Set<ProductIdentifier>
+    let productIdentifiers: Set<ProductIdentifier>
   //private var purchasedProductIdentifiers = Set<ProductIdentifier>()
   
   // Used by SKProductsRequestDelegate
-  private var productsRequest: SKProductsRequest?
-  private var completionHandler: RequestProductsCompletionHandler?
+    var productsRequest: SKProductsRequest?
+    var completionHandler: RequestProductsCompletionHandler?
   
   /// MARK: - User facing API
   
@@ -61,7 +61,7 @@ public class IAPHelper : NSObject  {
   }
   
   /// Gets the list of SKProducts from the Apple server calls the handler with the list of products.
-  public func requestProductsWithCompletionHandler(_ handler: RequestProductsCompletionHandler) {
+  public func requestProductsWithCompletionHandler(_ handler: @escaping RequestProductsCompletionHandler) {
     completionHandler = handler
     productsRequest = SKProductsRequest(productIdentifiers: productIdentifiers)
     productsRequest?.delegate = self
@@ -100,20 +100,20 @@ extension IAPHelper: SKProductsRequestDelegate {
   public func productsRequest(_ request: SKProductsRequest, didReceive response: SKProductsResponse) {
     let products = response.products
     
-    completionHandler?(success: true, products: products)
+    self.completionHandler?(true, products)
     
     clearRequest()
   }
   
-  public func request(_ request: SKRequest, didFailWithError error: NSError) {
-    completionHandler?(success: false, products: [SKProduct]())
+  public func request(_ request: SKRequest, didFailWithError error: Error) {
+    self.completionHandler?(false, [SKProduct]())
     
     clearRequest()
   }
   
   private func clearRequest() {
-    productsRequest = nil
-    completionHandler = nil
+    self.productsRequest = nil
+    self.completionHandler = nil
   }
 }
 
@@ -160,11 +160,11 @@ extension IAPHelper: SKPaymentTransactionObserver {
   private func provideContentForProductIdentifier(_ productIdentifier: String) {
     //purchasedProductIdentifiers.insert(productIdentifier)
 
-    NotificationCenter.default().post(name: Notification.Name(rawValue: IAPHelperProductPurchasedNotification), object: productIdentifier)
+    NotificationCenter.default.post(name: Notification.Name(rawValue: IAPHelperProductPurchasedNotification), object: productIdentifier)
   }
   
   private func failedTransaction(_ transaction: SKPaymentTransaction) {
-    NotificationCenter.default().post(name: Notification.Name(rawValue: IAPHelperProductPurchaseFailedNotification), object: transaction.error?.code)
+    NotificationCenter.default.post(name: Notification.Name(rawValue: IAPHelperProductPurchaseFailedNotification), object: transaction.error)
     
     SKPaymentQueue.default().finishTransaction(transaction)
   }

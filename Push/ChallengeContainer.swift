@@ -10,7 +10,7 @@ import Foundation
 
 class ChallengeContainer : SKNode {
     // Challenges
-    var challenges: Array<LevelChallenge>
+    var challenges: Array<LevelChallenge> = Array<LevelChallenge>()
     var challengeDisplays: Array<DisplayChallenge> = Array<DisplayChallenge>()
     
     // Scene
@@ -21,6 +21,10 @@ class ChallengeContainer : SKNode {
     
     // True width - accounts for word space not used
     var trueWidth: CGFloat = 0.0
+    
+    override init() {
+        super.init()
+    }
     
     init(scene: DBScene, challenges: Array<LevelChallenge>) {
         // Init

@@ -6,9 +6,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>fire bomber</string>
+			<string>Fire Bomber</string>
 			<key>Description</key>
-			<string>i can fly even with fire strapped to my back</string>
+			<string>I can fly even with fire strapped to my back.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

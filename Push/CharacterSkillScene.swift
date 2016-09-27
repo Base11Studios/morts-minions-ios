@@ -10,6 +10,9 @@ import Foundation
 
 @objc(CharacterSkillScene)
 class CharacterSkillScene : DBScene {
+    // Scene to return to
+    var returnScene: DBScene
+    
     var worldView: SKSpriteNode
 
     // Skill selector
@@ -62,7 +65,9 @@ class CharacterSkillScene : DBScene {
     var justInitialized: Bool = true
     var needsUpdated: Bool = true
     
-    init(size: CGSize) {
+    init(size: CGSize, returnScene: DBScene) {
+        self.returnScene = returnScene
+        
         // Setup buffer size
         self.bufferSize = floor(ScaleBuddy.sharedInstance.getScaleAmount() * 2.0)
         
@@ -249,14 +254,15 @@ class CharacterSkillScene : DBScene {
         /*
         self.scrollingNode!.disableScrollingOnView(view)
         */
-        self.viewController!.saveData()
+        //self.viewController!.saveData()
+        GameData.sharedGameData.save()
         
         super.willMove(from: view)
     }
     
     func createUxTutorials() {
         var displayedBuySkill: Bool = false
-        var displayedResetSkill: Bool = false
+        //var displayedResetSkill: Bool = false
         var tutorialAck: Double?
         var tutorialKey: String
         var tutorialVersion: Double
@@ -268,7 +274,7 @@ class CharacterSkillScene : DBScene {
         
         // Show the first skill being unlocked already
         if ((tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion))) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "this is your first skill. it was unlocked for you so it is already activated.", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: "This is your first skill. It was unlocked for you so it is already activated.", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
             
             // First skill - convert it to the right coords
             let point: CGPoint = self.convert(self.scrollingNode!.firstSkill!.position, from: self.scrollingNode!.firstSkill!.parent!)
@@ -288,7 +294,7 @@ class CharacterSkillScene : DBScene {
         
         // We don't want to show this if the character has the upgrade skills already
         if (GameData.sharedGameData.getSelectedCharacterData().levelProgress[4] != nil && GameData.sharedGameData.getSelectedCharacterData().levelProgress[4]!.timesLevelPlayed > 0 && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.TeleCharge.rawValue) && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.RubberSneakers.rawValue) && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion))) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "use stars to buy and upgrade skills. upgrade jump at least once by level 5.", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Use stars to buy and upgrade skills. Upgrade jump at least once by level 5.", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
             
             // First upgrade for jump - convert it to the right coords
             let point: CGPoint = self.convert(self.scrollingNode!.firstJumpUpgradeSkill!.position, from: self.scrollingNode!.firstJumpUpgradeSkill!.parent!)
@@ -309,11 +315,11 @@ class CharacterSkillScene : DBScene {
             
             // We don't want to show this until the character has 2 skills total
             if GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.count > 1 && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-                let tutorial = UXTutorialDialog(frameSize: self.size, description: "reset your skills for free to get back all stars and superstars spent. unlimited resets!", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.rightTop], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
+                let tutorial = UXTutorialDialog(frameSize: self.size, description: "Reset your skills for free to get back all stars and superstars spent. Unlimited resets!", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.rightTop], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
                 tutorial.containerBackground.position = CGPoint(x: self.resetSkillsButton!.position.x - self.resetSkillsButton!.size.width / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.width / 2 - self.nodeBuffer, y: self.resetSkillsButton!.position.y + self.resetSkillsButton!.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2)
                 self.uxTutorialTooltips!.append(tutorial)
                 
-                displayedResetSkill = true
+                //displayedResetSkill = true
                 self.addChild(tutorial)
             }
         }
@@ -371,13 +377,13 @@ class CharacterSkillScene : DBScene {
     func addSkillsToScrollingNode() {
         // Create the path to the level - UPGRADE
         let filePath: String = "upgrades_\(GameData.sharedGameData.selectedCharacter.rawValue)".lowercased()
-        let path: String = Bundle.main().pathForResource(filePath, ofType: "plist")!
+        let path: String = Bundle.main.path(forResource: filePath, ofType: "plist")!
         let upgradeList = NSMutableArray(contentsOfFile: path) as! Array<Array<[String: AnyObject]>>
         
         /********* COST */
         // Create the path to the level
         let costFilePath: String = "upgrades_cost".lowercased()
-        let costPath: String = Bundle.main().pathForResource(costFilePath, ofType: "plist")!
+        let costPath: String = Bundle.main.path(forResource: costFilePath, ofType: "plist")!
         let costList = NSMutableArray(contentsOfFile: costPath) as! Array<Array<[String: AnyObject]>>
         
         // Loop through each entry in the dictionary
@@ -394,7 +400,7 @@ class CharacterSkillScene : DBScene {
                 let cost = costColumn[j]
                 
                 // Read in upgrade info from dictionary
-                let upgradeName = TextFormatter.formatText(upgrade["Name"] as! String)
+                let upgradeName = TextFormatter.formatTextUppercase(upgrade["Name"] as! String)
                 let upgradeId = CharacterUpgrade(rawValue: upgrade["Id"] as! String)!
                 let upgradeCost = cost["Cost"] as! Int
                 let upgradeCurrency = Currency(rawValue: cost["Currency"] as! String)!
@@ -468,7 +474,7 @@ class CharacterSkillScene : DBScene {
         }
         
         let selectedSkillDescriptionXPosition = -(self.selectedSkillBackground!.size.width - self.nodeBuffer * 2 - (self.selectedSkillDescription?.calculateAccumulatedFrame().width)!) / 2
-        let selectedSkillDescriptionYPosition = topYPosition - self.nodeBuffer * descYPos - self.selectedSkillIcon!.size.height
+        let selectedSkillDescriptionYPosition = topYPosition - self.nodeBuffer * 1.2 * descYPos - self.selectedSkillIcon!.size.height
         self.selectedSkillDescription?.position = CGPoint(x: selectedSkillDescriptionXPosition, y: selectedSkillDescriptionYPosition)
         
         // Buy skill button
@@ -594,6 +600,6 @@ class CharacterSkillScene : DBScene {
     }
     
     override func impactsMusic() -> Bool {
-        return false
+        return true // This was false at one point... to allow for the scene's music to carry forward. It isn't working now because the loading screen kills the music.
     }
 }

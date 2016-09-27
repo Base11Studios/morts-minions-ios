@@ -103,7 +103,7 @@ class VerticalScrollingSkillNode : SKNode, UIGestureRecognizerDelegate {
     
     func enableScrollingOnView(_ view: UIView) {
         if self.gestureRecognizer == nil {
-            self.gestureRecognizer = UIPanGestureRecognizer(target: self, action: "handlePanFrom:")
+            self.gestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(VerticalScrollingSkillNode.handlePanFrom(_:)))
             self.gestureRecognizer!.delegate = self
             view.addGestureRecognizer(self.gestureRecognizer!)
         }

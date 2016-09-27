@@ -15,7 +15,7 @@ class UXTutorialDialog: DialogBackground {
     weak var dbScene: DBScene?
     var onComplete: (()-> Void)? = {}
     
-    init(frameSize: CGSize, description: String, scene: DBScene, size: String, indicators: Array<UxTutorialIndicatorPosition>, key: String, version: Double, onComplete: ()->Void) {
+    init(frameSize: CGSize, description: String, scene: DBScene, size: String, indicators: Array<UxTutorialIndicatorPosition>, key: String, version: Double, onComplete: @escaping ()->Void) {
         var widthOffset: CGFloat = 0
         var heightOffset: CGFloat = 0
         var xOffset: CGFloat = 0
@@ -23,7 +23,7 @@ class UXTutorialDialog: DialogBackground {
         self.dbScene = scene
         self.onComplete = onComplete
         
-        var offsetSize: CGFloat = 4 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+        let offsetSize: CGFloat = 4 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         
         // First just get offsets
         if indicators.contains(UxTutorialIndicatorPosition.leftBottom) ||

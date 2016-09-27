@@ -22,12 +22,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
     // Static rewards
     var tryingToShowStaticAds: Bool = false
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+    func applicationDidFinishLaunching(_ application: UIApplication) {
         // Initialize the Chartboost library
         Chartboost.start(withAppId: "576a8abe04b01657f1e18be5", appSignature: "54c4763f89ea9ff96502d320787de1cb9ceb7c21", delegate: self)
-        
-        // Override point for customization after application launch.
-        return true
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -35,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
         
         // Send out a notification that we need to pause the game
-        NotificationCenter.default().post(name: Notification.Name(rawValue: "PauseGameScene"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "PauseGameScene"), object: nil)
     }
 
     func applicationDidEnterBackground(_ application: UIApplication) {
@@ -51,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
         
         // We need to keep the game paused when we resume
-        NotificationCenter.default().post(name: Notification.Name(rawValue: "StayPausedNotification"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "StayPausedNotification"), object: nil)
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
@@ -81,6 +78,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
     
     // Called after a rewarded video has been displayed on the screen.
     func didDisplayRewardedVideo(_ location: String!) {
+        // Remove the loading dialog
+        self.dismissLoadingDialog()
+        
         // Store something to show we presented a video
         self.presentingVideo = true
         self.dismissingVideo = false
@@ -89,9 +89,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
     
     // Called after a rewarded video has been loaded from the Chartboost API
     // servers and cached locally.
-    /*func didCacheRewardedVideo(location: String!) {
-        self.videoIsCached = true
-    }*/
+    func didCacheRewardedVideo(_ location: String!) {
+        //self.videoIsCached = true
+    }
     
     /*
      * didCompleteRewardedVideo
@@ -103,7 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
      *
      */
     func didCompleteRewardedVideo(_ location: String!, withReward reward: Int32) {
-        NSLog("completed rewarded video view at location %@ with reward amount %d", location, reward);
+        //NSLog("completed rewarded video view at location %@ with reward amount %d", location, reward);
         
         self.endVideoSuccessfully()
     }
@@ -111,6 +111,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
     // Called after a rewarded video has attempted to load from the Chartboost API
     // servers but failed.
     func didFail(toLoadRewardedVideo location: String!, withError error: CBLoadError) {
+        // Remove the loading dialog
+        self.dismissLoadingDialog()
+        
         if self.completedVideo == false && self.presentingVideo == true && !self.dismissingVideo {
             self.endVideoUnsuccessfully()
         }
@@ -144,9 +147,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
         }
     }
     
+    private func dismissLoadingDialog() {
+        // Send notification that gamescene will pick up
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "DismissLoadingDialog"), object: nil)
+    }
+    
     private func endVideoSuccessfully() {
         // Send notification that gamescene will pick up
-        NotificationCenter.default().post(name: Notification.Name(rawValue: "RejuvenatePlayer"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "RejuvenatePlayer"), object: nil)
         
         // Reset flags
         self.presentingVideo = false
@@ -156,7 +164,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
     
     private func endVideoUnsuccessfully() {
         // Send notification that the gamescene will pick up
-        NotificationCenter.default().post(name: Notification.Name(rawValue: "DontRejuvenatePlayer"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "DontRejuvenatePlayer"), object: nil)
         
         // Reset flags
         self.presentingVideo = false
@@ -188,12 +196,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate {
     
     // Called after an interstitial has attempted to load from the Chartboost API
     // servers but failed.
-    //func didFailToLoadInterstitial(location: String!, withError error: CBLoadError) {}
+    func didFail(toLoadInterstitial location: String!, withError error: CBLoadError) {
+        // Move on to tutorials
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
+    }
     
     // Called after an interstitial has been dismissed.
     func didDismissInterstitial(_ location: String!) {
         // Move on to tutorials
-        NotificationCenter.default().post(name: Notification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
     }
     
     // Called after an interstitial has been closed.

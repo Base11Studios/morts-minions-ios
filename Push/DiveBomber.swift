@@ -48,6 +48,9 @@ class DiveBomber : Enemy {
         
         // This is for collision detection
         self.hasVerticalVelocity = true
+        
+        // Make him hurt
+        self.damage = 2
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
@@ -73,7 +76,7 @@ class DiveBomber : Enemy {
             
             self.attackCooldown = 100
             
-            SoundHelper.sharedInstance.playSound(self, sound: SoundType.Lunge)
+            self.playActionSound(action: SoundHelper.sharedInstance.lunge)
         }
     }
 }

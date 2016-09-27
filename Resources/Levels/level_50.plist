@@ -6,9 +6,9 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>storm cloud</string>
+			<string>Storm Cloud</string>
 			<key>Description</key>
-			<string>it isn&apos;t safe to fly through a storm cloud</string>
+			<string>It isn&apos;t safe to fly through a storm cloud.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>

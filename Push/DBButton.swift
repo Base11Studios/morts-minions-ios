@@ -12,8 +12,10 @@ class DBButton : SKSpriteNode {
     var pressedButtonImage: SKTexture?
     var unpressedButtonImage: SKTexture?
     var isPressed: Bool = false
-    var unPressedLabel: LabelWithShadow?
-    var pressedLabel: LabelWithShadow?
+    //var unPressedLabel: MultilineLabelWithShadow?
+    var unPressedLabel: LabelWithShadowProtocol?
+    var pressedLabel: LabelWithShadowProtocol?
+    //var pressedLabel: MultilineLabelWithShadow?
     var unPressedIcon: SKSpriteNode?
     var pressedIcon: SKSpriteNode?
     var disabledNode: SKSpriteNode?
@@ -26,13 +28,13 @@ class DBButton : SKSpriteNode {
     var allowAnywhereOnScreen = false
     weak var dbScene: DBScene?
     
-    init(texture: SKTexture?, color: UIColor, size: CGSize, dbScene: DBScene) {
+    init(texture: SKTexture?, color: UIColor, size: CGSize, dbScene: DBScene?) {
         super.init(texture: texture, color: color, size: size)
         self.dbScene = dbScene
     }
     
     // Used for IAP buttons or custom ones
-    init(buttonSize: DBButtonSize, dbScene: DBScene, atlas: SKTextureAtlas) {
+    init(buttonSize: DBButtonSize, dbScene: DBScene?, atlas: SKTextureAtlas) {
         self.dbScene = dbScene
         
         var buttonName: String
@@ -84,7 +86,7 @@ class DBButton : SKSpriteNode {
     }
     
     // Used for text buttons all across app
-    init(iconName: String, pressedIconName: String?, buttonSize: DBButtonSize, dbScene: DBScene, atlas: SKTextureAtlas) {
+    init(iconName: String, pressedIconName: String?, buttonSize: DBButtonSize, dbScene: DBScene?, atlas: SKTextureAtlas) {
         self.dbScene = dbScene
         
         var buttonName: String
@@ -175,7 +177,7 @@ class DBButton : SKSpriteNode {
         }
     }
     
-    init(iconName: String?, labelText: String?, fontSize: CGFloat?, dbScene: DBScene, backgroundAtlas: SKTextureAtlas, iconAtlas: SKTextureAtlas) {
+    init(iconName: String?, labelText: String?, fontSize: CGFloat?, dbScene: DBScene?, backgroundAtlas: SKTextureAtlas, iconAtlas: SKTextureAtlas) {
         self.dbScene = dbScene
         
         // Create a texture from the passed image
@@ -190,27 +192,27 @@ class DBButton : SKSpriteNode {
         
         if labelText != nil && fontSize != nil {
             // Regular label
-            self.unPressedLabel = LabelWithShadow(darkFont:false)
+            self.unPressedLabel = MultilineLabelWithShadow(fontNamed: "Avenir-Medium", scene: self.dbScene!, darkFont: false, borderSize: 1)
             self.unPressedLabel!.setFontSize(fontSize! / 2)
             self.unPressedLabel!.setText(labelText!)
-            self.unPressedLabel!.position = CGPoint(x: 0, y: self.size.height / 2 + self.unPressedLabel!.calculateAccumulatedFrame().size.height)
+            self.unPressedLabel!.position = CGPoint(x: 0, y: self.size.height / 2 + self.unPressedLabel!.calculateAccumulatedFrame().size.height - ScaleBuddy.sharedInstance.getNodeBuffer() * 0.5)
             self.unPressedLabel!.setHorizontalAlignmentMode(SKLabelHorizontalAlignmentMode.center)
             self.unPressedLabel!.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
             self.unPressedLabel!.isHidden = false
             self.unPressedLabel!.zPosition = 1.0
             
             // Pressed label
-            self.pressedLabel = LabelWithShadow(darkFont:false)
+            self.pressedLabel = MultilineLabelWithShadow(fontNamed: "Avenir-Medium", scene: self.dbScene!, darkFont: false, borderSize: 2)
             self.pressedLabel!.setFontSize(fontSize! * 0.9)
             self.pressedLabel!.setText(labelText!)
-            self.pressedLabel!.position = CGPoint(x: 0, y: self.size.height / 2 + self.pressedLabel!.calculateAccumulatedFrame().size.height)
+            self.pressedLabel!.position = CGPoint(x: 0, y: self.size.height / 2 + self.pressedLabel!.calculateAccumulatedFrame().size.height - ScaleBuddy.sharedInstance.getNodeBuffer() * 2)
             self.pressedLabel!.setHorizontalAlignmentMode(SKLabelHorizontalAlignmentMode.center)
             self.pressedLabel!.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
             self.pressedLabel!.isHidden = true
             self.pressedLabel!.zPosition = 1.0
             
-            self.addChild(self.unPressedLabel!)
-            self.addChild(self.pressedLabel!)
+            self.addChild(self.unPressedLabel as! SKNode)
+            self.addChild(self.pressedLabel as! SKNode)
         }
         
         if iconName != nil {
@@ -232,7 +234,7 @@ class DBButton : SKSpriteNode {
     }
     
     // Used for world nodes
-    init(buttonName: String, labelText: String?, fontSize: CGFloat?, dbScene: DBScene, atlas: SKTextureAtlas) {
+    init(buttonName: String, labelText: String?, fontSize: CGFloat?, dbScene: DBScene?, atlas: SKTextureAtlas) {
         self.dbScene = dbScene
         
         // Create a texture from the passed image
@@ -266,8 +268,8 @@ class DBButton : SKSpriteNode {
             self.pressedLabel!.isHidden = true
             self.pressedLabel!.zPosition = 1.0
             
-            self.addChild(self.unPressedLabel!)
-            self.addChild(self.pressedLabel!)
+            self.addChild(self.unPressedLabel as! SKNode)
+            self.addChild(self.pressedLabel as! SKNode)
         }
         
         // Disabled info
@@ -278,7 +280,7 @@ class DBButton : SKSpriteNode {
     }
     
     // Used for cooldown
-    init(name: String, pressedName: String, dbScene: DBScene, atlas: SKTextureAtlas) {
+    init(name: String, pressedName: String, dbScene: DBScene?, atlas: SKTextureAtlas) {
         self.dbScene = dbScene
         
         // Create a texture from the passed image
@@ -293,7 +295,7 @@ class DBButton : SKSpriteNode {
     }
     
     // Nothingness
-    init(dbScene: DBScene) {
+    init(dbScene: DBScene?) {
         self.dbScene = dbScene
         super.init(texture: SKTexture(), color: UIColor(), size: CGSize())
     }
