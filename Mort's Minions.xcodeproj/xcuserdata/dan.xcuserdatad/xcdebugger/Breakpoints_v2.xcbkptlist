@@ -234,11 +234,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Push/GameViewController.swift"
-            timestampString = "496640976.718652"
+            timestampString = "496722202.358629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "431"
-            endingLineNumber = "431"
+            startingLineNumber = "434"
+            endingLineNumber = "434"
             landmarkName = "presentLevelSelectionScene()"
             landmarkType = "7">
             <Locations>
@@ -282,11 +282,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Push/GameViewController.swift"
-            timestampString = "496640976.718652"
+            timestampString = "496722202.358629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "441"
-            endingLineNumber = "441"
+            startingLineNumber = "444"
+            endingLineNumber = "444"
             landmarkName = "presentLevelSelectionScene()"
             landmarkType = "7">
             <Locations>
@@ -330,11 +330,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Push/GameViewController.swift"
-            timestampString = "496640976.718652"
+            timestampString = "496722202.358629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "440"
-            endingLineNumber = "440"
+            startingLineNumber = "443"
+            endingLineNumber = "443"
             landmarkName = "presentLevelSelectionScene()"
             landmarkType = "7">
          </BreakpointContent>
@@ -346,11 +346,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Push/GameViewController.swift"
-            timestampString = "496640976.718652"
+            timestampString = "496722202.358629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "460"
-            endingLineNumber = "460"
+            startingLineNumber = "463"
+            endingLineNumber = "463"
             landmarkName = "presentLevelSelectionScene()"
             landmarkType = "7">
          </BreakpointContent>
@@ -442,11 +442,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Push/GameViewController.swift"
-            timestampString = "496640976.718652"
+            timestampString = "496722202.358629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "474"
-            endingLineNumber = "474"
+            startingLineNumber = "477"
+            endingLineNumber = "477"
             landmarkName = "presentGameSceneLevel(_:justRestarted:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -458,11 +458,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Push/GameViewController.swift"
-            timestampString = "496640976.718652"
+            timestampString = "496722202.358629"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "433"
-            endingLineNumber = "433"
+            startingLineNumber = "436"
+            endingLineNumber = "436"
             landmarkName = "presentLevelSelectionScene()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1597,6 +1597,84 @@
             endingLineNumber = "44"
             landmarkName = "init()"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Push/GameViewController.swift"
+            timestampString = "496721848.860862"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "16"
+            endingLineNumber = "16"
+            landmarkName = "GameViewController"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mort_s_Minions.GameViewController.init () -&gt; Mort_s_Minions.GameViewController"
+                  moduleName = "Mort&apos;s Minions"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dan/Development/iOS/Push-Swift-3.0/Push/Push/GameViewController.swift"
+                  timestampString = "496722202.564382"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "48">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mort_s_Minions.GameViewController.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Mort_s_Minions.GameViewController&gt;"
+                  moduleName = "Mort&apos;s Minions"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dan/Development/iOS/Push-Swift-3.0/Push/Push/GameViewController.swift"
+                  timestampString = "496722202.565687"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "52">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mort_s_Minions.GameViewController.characterSkillSceneCharacter.getter : Swift.Optional&lt;Mort_s_Minions.CharacterType&gt;"
+                  moduleName = "Mort&apos;s Minions"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dan/Development/iOS/Push-Swift-3.0/Push/Push/GameViewController.swift"
+                  timestampString = "496722202.567076"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "16">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Mort_s_Minions.GameViewController.characterSkillSceneCharacter.setter : Swift.Optional&lt;Mort_s_Minions.CharacterType&gt;"
+                  moduleName = "Mort&apos;s Minions"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dan/Development/iOS/Push-Swift-3.0/Push/Push/GameViewController.swift"
+                  timestampString = "496722202.568363"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "18"
+                  endingLineNumber = "18"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

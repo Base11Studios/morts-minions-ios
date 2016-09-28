@@ -579,9 +579,9 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
         }
         
         // If level 33 (this is level 1 of world 3)
-        if !self.archerCharacter.isLevelLocked(33) {
+        if !self.mageCharacter.isLevelLocked(33) {
             // Get this characters average
-            let charAvg: Double = Double(self.archerCharacter.totalRewardsEarned) / Double(self.archerCharacter.totalTimesPlayed)
+            let charAvg: Double = Double(self.mageCharacter.totalRewardsEarned) / Double(self.mageCharacter.totalTimesPlayed)
             
             // Take the best avg
             if charAvg > bestAvg {
