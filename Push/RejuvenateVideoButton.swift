@@ -61,6 +61,7 @@ class RejuvenateVideoButton : DBButton {
             // Store on the app delegate that we're going to try to load something
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.presentingVideo = true
+            appDelegate.dismissingVideo = false
             self.dbScene!.viewController!.showRewardedVideo()
             
             // Start loading screen

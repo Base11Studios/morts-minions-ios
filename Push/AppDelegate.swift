@@ -119,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate/*, GAD
         // Remove the loading dialog
         self.dismissLoadingDialog()
         
-        if self.completedVideo == false /*&& self.presentingVideo == true && !self.dismissingVideo*/ {
+        if self.completedVideo == false && self.presentingVideo == true && !self.dismissingVideo {
             self.endVideoUnsuccessfully()
         }
     }

@@ -13,7 +13,7 @@ import LocalAuthentication
 //ADDDimport GoogleMobileAds
 
 class GameViewController: UIViewController, GKGameCenterControllerDelegate {
-    var loadingScene: LoadingScene?
+    //var loadingScene: LoadingScene
     
     var characterSkillSceneCharacter: CharacterType?
     
@@ -137,6 +137,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             
             // Setup sound props
             self.setSessionPlayerPassive()
+            
+            // Create loading
+            //self.loadingScene = self.createLoadingScene()
             
             // Present first scene
             self.presentIntroductionScene()
@@ -525,20 +528,20 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         let skView: SKView = self.view as! SKView
         
         // Present the scene - pass through regulator
-        self.presentDBScene(skView, scene: self.loadingScene!, ignoreMusic: false)
+        self.presentDBScene(skView, scene: self.createLoadingScene(), ignoreMusic: false)
         
         presentGameSceneLevel(level, justRestarted: justRestarted)
     }
     
     func presentLoadingScreen(ignoreMusic: Bool) {
-        if self.loadingScene == nil {
-            self.loadingScene = self.createLoadingScene()
-        }
+        //if self.loadingScene == nil {
+        //    self.loadingScene = self.createLoadingScene()
+        //}
         
         let skView: SKView = self.view as! SKView
         
         // Present the scene - pass through regulator
-        self.presentDBScene(skView, scene: self.loadingScene!, ignoreMusic: ignoreMusic)
+        self.presentDBScene(skView, scene: self.createLoadingScene(), ignoreMusic: ignoreMusic)
     }
     
     func createLoadingScene() -> LoadingScene {
