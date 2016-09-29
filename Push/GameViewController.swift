@@ -670,8 +670,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     func playButtonSound() {
         if GameData.sharedGameData.preferenceSoundEffects == true {
-            self.buttonSoundPlayer.currentTime = 0
-            self.buttonSoundPlayer.play()
+            //self.buttonSoundPlayer.currentTime = 0
+            //self.buttonSoundPlayer.play()
         }
     }
     
@@ -710,7 +710,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
 
         request.testDevices = ["fa25ccf46baf21a9189bbb36e020a8ef"]
         GADRewardBasedVideoAd.sharedInstance().load(request, withAdUnitID: "ca-app-pub-4505737160765142/2684998717")*/
-        Chartboost.cacheRewardedVideo(CBLocationMainMenu)
+        Chartboost.cacheRewardedVideo(CBLocationGameOver)
     }
     
     // Game Center

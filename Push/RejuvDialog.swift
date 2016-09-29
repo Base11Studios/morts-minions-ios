@@ -90,4 +90,11 @@ class RejuvDialog: DialogBackground {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func toggleRejuvVideo() {
+        if !Chartboost.hasRewardedVideo(CBLocationGameOver) || GameData.sharedGameData.getSelectedCharacterData().hasFreeRejuvenations() {
+            self.rejuvVideoButton!.forceDisabled = true
+            self.rejuvVideoButton!.checkDisabled()
+        }
+    }
 }

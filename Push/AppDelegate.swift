@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate/*, GAD
 
     func applicationDidFinishLaunching(_ application: UIApplication) {
         // Initialize the Chartboost library
-        Chartboost.start(withAppId: "576a8abe04b01657f1e18be5", appSignature: "54c4763f89ea9ff96502d320787de1cb9ceb7c21", delegate: self)
+        //Chartboost.start(withAppId: "576a8abe04b01657f1e18be5", appSignature: "54c4763f89ea9ff96502d320787de1cb9ceb7c21", delegate: self)
         // Admob
         //ADDDGADRewardBasedVideoAd.sharedInstance().delegate = self
         
@@ -115,14 +115,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate/*, GAD
     
     // Called after a rewarded video has attempted to load from the Chartboost API
     // servers but failed.
-    func didFail(toLoadRewardedVideo location: String!, withError error: CBLoadError) {
+    /*func didFail(toLoadRewardedVideo location: String!, withError error: CBLoadError) {
         // Remove the loading dialog
         self.dismissLoadingDialog()
         
         if self.completedVideo == false && self.presentingVideo == true && !self.dismissingVideo {
             self.endVideoUnsuccessfully()
         }
-    }
+    }*/
     
     // Called after a rewarded video has been dismissed.
     func didDismissRewardedVideo(_ location: String!) {
@@ -203,7 +203,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate/*, GAD
     // servers but failed.
     func didFail(toLoadInterstitial location: String!, withError error: CBLoadError) {
         // Move on to tutorials
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
+        //NotificationCenter.default.post(name: Notification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
     }
     
     // Called after an interstitial has been dismissed.

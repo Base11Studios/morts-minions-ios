@@ -584,7 +584,7 @@ class LevelSelectionScene : DBScene {
         super.willMove(from: view)
         
         // TODO may need to have all the worlds on here
-        self.selectedWorld!.relatedLevelSelector!.disableScrollingOnView(self.sceneView)
+        self.selectedWorld!.relatedLevelSelector!.disableScrollingOnView(view)
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

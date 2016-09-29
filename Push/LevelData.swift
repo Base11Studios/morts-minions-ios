@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LevelData : NSObject {
+class LevelData: NSCoding {
     // Experience gainers
     var heartsCollected: Int = 0
     var maxHeartsToCollect: Int = 0
@@ -56,7 +56,7 @@ class LevelData : NSObject {
         self.maxDistanceToTravel = maxDistance
     }
     
-    func encodeWithCoder(_ encoder: NSCoder) {
+    func encode(with encoder: NSCoder) {
         encoder.encode(self.heartsCollected, forKey: SSLevelHeartsCollectedKey)
         encoder.encode(self.maxHeartsToCollect, forKey: SSLevelMaxHeartsToCollectKey)
         encoder.encode(Double(self.distanceTraveled), forKey: SSLevelDistanceTraveledKey)
@@ -76,7 +76,7 @@ class LevelData : NSObject {
         encoder.encode(self.challengeCompletion, forKey: SSLevelChallengeCompletionKey)
     }
     
-    init(coder decoder: NSCoder) {
+    required init(coder decoder: NSCoder) {
         self.heartsCollected = decoder.decodeInteger(forKey: SSLevelHeartsCollectedKey)
         self.maxHeartsToCollect = decoder.decodeInteger(forKey: SSLevelMaxHeartsToCollectKey)
         self.distanceTraveled = CGFloat(decoder.decodeDouble(forKey: SSLevelDistanceTraveledKey))
