@@ -8,7 +8,7 @@
 
 import Foundation
 
-class LevelData: NSCoding {
+class LevelData : NSObject, NSCoding {
     // Experience gainers
     var heartsCollected: Int = 0
     var maxHeartsToCollect: Int = 0

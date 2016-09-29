@@ -12,7 +12,7 @@ import Foundation
 let CloudHasMoreRecentDataThanLocal: String = "cloud_has_more_recent_data_than_local"
 
 @objc(GameData)
-class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
+class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObject
     // Singleton
     static var sharedGameData = GameData.loadInstance()
     
@@ -156,7 +156,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
     // Achievements
     let SSGameDataAchievementsCompleted: String = "achievementsCompletedKey"
     
-    func encodeWithCoder(_ encoder: NSCoder) {
+    func encode(with encoder: NSCoder) {
         encoder.encode(self.timeLastUpdated, forKey: GameData.SSGameDataLastUpdated)
         encoder.encode(self.warriorCharacter, forKey: SSGameDataWarriorCharacterKey)
         encoder.encode(self.archerCharacter, forKey: SSGameDataArcherCharacterKey)
@@ -215,6 +215,8 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
         warriorCharacter.isCharacterUnlocked = true
         
         archerCharacter = CharacterData(defaultUpgrades: Archer.getDefaultSkills())
+        archerCharacter.isCharacterUnlocked = true
+        
         mageCharacter = CharacterData(defaultUpgrades: Mage.getDefaultSkills())
         monkCharacter = CharacterData(defaultUpgrades: Monk.getDefaultSkills())
         selectedCharacter = .Warrior
@@ -225,7 +227,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
         super.init()
     }
 
-    init(coder decoder: NSCoder) {
+    required init(coder decoder: NSCoder) {
         if let decodedTimeLastUpdate = decoder.decodeObject(forKey: GameData.SSGameDataLastUpdated) as? Date {
             self.timeLastUpdated = decodedTimeLastUpdate
         } else {
@@ -246,6 +248,9 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
         } else {
             archerCharacter = CharacterData(defaultUpgrades: Archer.getDefaultSkills())
         }
+        
+        // Make sure archerCharacter is unlocked
+        archerCharacter.isCharacterUnlocked = true
         
         if let decodedChar = decoder.decodeObject(forKey: SSGameDataMageCharacterKey) as? CharacterData {
             mageCharacter = decodedChar
