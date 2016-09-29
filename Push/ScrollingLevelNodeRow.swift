@@ -94,6 +94,7 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
             let idx = dbScene.gestureRecognizers.index(of: self.gestureRecognizer!)
             dbScene.gestureRecognizers.remove(at: idx!)
             
+            self.gestureRecognizer?.delegate = nil
             self.gestureRecognizer = nil
         }
     }

@@ -48,7 +48,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
     
     // Rating
     var playerHasRatedGame: Bool = false
-    var promptRateMeCountdown: Int = 9
+    var promptRateMeCountdown: Int = 20
     var promptRateMeMax: Int = 5
     
     // Store a copy of the data we got from the cloud in case it was more recent
@@ -63,8 +63,8 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
     
     // Played
     var timesPlayed: Int = 0
-    var adPopCountdown: Int = 24
-    var adPopMax: Int = 4
+    var adPopCountdown: Int = 5
+    var adPopMax: Int = 1
     
     // Cloud vs local
     var cloudSyncing: Bool = true

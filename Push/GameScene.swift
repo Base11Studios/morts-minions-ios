@@ -899,6 +899,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.rejuvDialog!.removeAllActions()
         self.removeAction(forKey: ACTION_KEY_REJUV_DIALOG)
         self.rejuvDialog!.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height / 2)
+        self.unhideRejuvDialog()
+    }
+    
+    func unhideRejuvDialog() {
+        self.rejuvDialog!.toggleRejuvVideo()
         self.rejuvDialog!.isHidden = false
     }
     
@@ -959,6 +964,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 [weak self] in
                 
                 if self != nil {
+                    self?.rejuvDialog!.toggleRejuvVideo()
                     self?.rejuvDialog!.isHidden = false
                 }
             }),
@@ -1910,10 +1916,10 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Need to know the prev dialog
         var previousDialog: TutorialDialog?
         
-        let firstPop: Int = 16
-        let secondPop: Int = 20
+        let firstPop: Int = 3
+        let secondPop: Int = 4
         
-        // If timesplayed == 16 or 20, pop character talking to user
+        // If timesplayed == 16 or 24, pop character talking to user
         if !GameData.sharedGameData.adsUnlocked && (GameData.sharedGameData.timesPlayed == firstPop || GameData.sharedGameData.timesPlayed == secondPop) {
             // Get the version information
             let key = "timesPlayedAdvertisement\(GameData.sharedGameData.timesPlayed)"
