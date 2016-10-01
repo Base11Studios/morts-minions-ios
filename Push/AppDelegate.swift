@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate /*GADR
 
     func applicationDidFinishLaunching(_ application: UIApplication) {
         // Initialize the Chartboost library
-        Chartboost.start(withAppId: "576a8abe04b01657f1e18be5", appSignature: "54c4763f89ea9ff96502d320787de1cb9ceb7c21", delegate: self)
+        //Chartboost.start(withAppId: "576a8abe04b01657f1e18be5", appSignature: "54c4763f89ea9ff96502d320787de1cb9ceb7c21", delegate: self)
         // Admob
         //GADRewardBasedVideoAd.sharedInstance().delegate = self
         

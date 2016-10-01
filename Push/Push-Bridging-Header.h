@@ -8,3 +8,5 @@
 #import <GameKit/GameKit.h>
 #import <Chartboost/Chartboost.h>
 #import <AdSupport/AdSupport.h>
+#import <VungleSDK/VungleSDK.h>
+#import <MoPub-Bridging-Header.h>

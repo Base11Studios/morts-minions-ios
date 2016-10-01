@@ -12,8 +12,11 @@ import AVFoundation
 import LocalAuthentication
 import GoogleMobileAds
 
-class GameViewController: UIViewController, GKGameCenterControllerDelegate {
+class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPInterstitialAdControllerDelegate {
     //var loadingScene: LoadingScene
+    
+    //MoPubSDK
+    var interstitial: MPInterstitialAdController?
     
     var characterSkillSceneCharacter: CharacterType?
     
@@ -698,13 +701,23 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             AdSupporter.sharedInstance.adReady = false
             
             // Show interstitial at main menu
-            Chartboost.showInterstitial(CBLocationMainMenu)
+            //Chartboost.showInterstitial(CBLocationMainMenu)
+            if self.interstitial!.ready {
+                self.interstitial!.show(from: self)
+            }
         }
     }
     
     func cacheInterstitialAd() {
         if !GameData.sharedGameData.adsUnlocked {
-            Chartboost.cacheInterstitial(CBLocationMainMenu)
+            // Instantiate the interstitial using the class convenience method.
+            
+            self.interstitial = MPInterstitialAdController(forAdUnitId: "af95a96f865b431197a07916fa38fffd")
+            
+            // Fetch the interstitial ad.
+            self.interstitial!.loadAd()
+            
+            //Chartboost.cacheInterstitial(CBLocationMainMenu)
         }
     }
     
