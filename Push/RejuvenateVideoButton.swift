@@ -7,7 +7,7 @@
 //
 
 import Foundation
-//ADDDimport GoogleMobileAds
+import GoogleMobileAds
 
 @objc(RejuvenateVideoButton)
 class RejuvenateVideoButton : DBButton {
@@ -55,7 +55,7 @@ class RejuvenateVideoButton : DBButton {
     override func touchesEndedAction() {
         self.setScale(1)
         
-        //ADDDif GADRewardBasedVideoAd.sharedInstance().isReady {
+        if self.dbScene!.viewController!.videoAdReady() {
             // Remove the current animation
             (self.dbScene as! GameScene).setRejuvDialogDisplayed()
             // Store on the app delegate that we're going to try to load something
@@ -66,7 +66,7 @@ class RejuvenateVideoButton : DBButton {
             
             // Start loading screen
             self.dbScene!.startLoadingOverlay()
-        //}
+        }
         
         self.forceDisabled = true
         self.checkDisabled()

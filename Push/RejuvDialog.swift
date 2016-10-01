@@ -22,7 +22,11 @@ class RejuvDialog: DialogBackground {
     var iconBackgroundNode: SKSpriteNode?
     var iconNode: SKSpriteNode?
     
+    weak var dbScene: DBScene?
+    
     init(frameSize : CGSize, scene: GameScene, gemCost: Int) {
+        self.dbScene = scene
+        
         self.gemContainer = GemContainer(scene: scene, blueGem: true, loadsPurchaseMenu: false)
         
         super.init(frameSize: frameSize)
@@ -92,7 +96,7 @@ class RejuvDialog: DialogBackground {
     }
     
     func toggleRejuvVideo() {
-        if !Chartboost.hasRewardedVideo(CBLocationGameOver) || GameData.sharedGameData.getSelectedCharacterData().hasFreeRejuvenations() {
+        if !self.dbScene!.viewController!.videoAdReady() || GameData.sharedGameData.getSelectedCharacterData().hasFreeRejuvenations() {
             self.rejuvVideoButton!.forceDisabled = true
             self.rejuvVideoButton!.checkDisabled()
         }
