@@ -7,10 +7,10 @@
 //
 
 import UIKit
-//ADDDimport GoogleMobileAds
+//import GoogleMobileAds
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate/*, GADRewardBasedVideoAdDelegateADDD*/ {
+class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate /*GADRewardBasedVideoAdDelegate*/ {
 
     var window: UIWindow?
     
@@ -25,11 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate/*, GAD
 
     func applicationDidFinishLaunching(_ application: UIApplication) {
         // Initialize the Chartboost library
-        //Chartboost.start(withAppId: "576a8abe04b01657f1e18be5", appSignature: "54c4763f89ea9ff96502d320787de1cb9ceb7c21", delegate: self)
+        Chartboost.start(withAppId: "576a8abe04b01657f1e18be5", appSignature: "54c4763f89ea9ff96502d320787de1cb9ceb7c21", delegate: self)
         // Admob
-        //ADDDGADRewardBasedVideoAd.sharedInstance().delegate = self
+        //GADRewardBasedVideoAd.sharedInstance().delegate = self
         
-        //ADDDGADMobileAds.configure(withApplicationID: "ca-app-pub-4505737160765142~1208265512");
+        //GADMobileAds.configure(withApplicationID: "ca-app-pub-4505737160765142~1208265512");
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -222,7 +222,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate/*, GAD
     
     
     
-    /*ADDD
+    /*
     /// ADMOB
     func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd!, didRewardUserWith reward: GADAdReward!) {
         self.endVideoSuccessfully()
