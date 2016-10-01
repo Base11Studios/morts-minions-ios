@@ -77,7 +77,7 @@ class MainMenuScene : DBScene {
         }
         
         // Get the achievements
-        self.viewController!.getAchievements()
+        //self.viewController!.getAchievements()
         
         // Cache an ad so we're ready when we need it
         self.viewController!.cacheInterstitialAd()

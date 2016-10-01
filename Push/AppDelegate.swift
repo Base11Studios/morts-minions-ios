@@ -181,6 +181,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate /*GADR
     // a given CBLocation. You can then do things like mute effects and sounds.
     // func willDisplayVideo(location: String!) {}
     
+    /*
     // ******************************** INTERSTITIAL ADS **********************
     // Called before requesting an interstitial via the Chartboost API server.
     //func shouldRequestInterstitial(location: String!) -> Bool {return true}
@@ -219,48 +220,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate /*GADR
     func didClickInterstitial(_ location: String!) {
         AdSupporter.sharedInstance.showPauseMenu = true
     }
-    
-    
-    
-    /*
-    /// ADMOB
-    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd!, didRewardUserWith reward: GADAdReward!) {
-        self.endVideoSuccessfully()
-    }
-    
-    func rewardBasedVideoAdDidReceive(_ rewardBasedVideoAd: GADRewardBasedVideoAd!) {
-        NSLog("crap")
-    }
-    
-    func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd!) {
-        NSLog("crap")
-    }
-    
-    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd!) {
-        // If video was completed, dont do anything, otherwise send dismiss dialog if not done
-        if !self.completedVideo && self.presentingVideo && !self.dismissingVideo {
-            self.endVideoUnsuccessfully()
-        } else if !self.dismissingVideo && self.completedVideo {
-            self.endVideoSuccessfully()
-        }
-    }
-    
-    func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd!) {
-        NSLog("crap")
-    }
-    
-    func rewardBasedVideoAdDidStartPlaying(_ rewardBasedVideoAd: GADRewardBasedVideoAd!) {
-        NSLog("crap")
-    }
-    
-    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd!, didFailToLoadWithError error: Error!) {
-        /*// Remove the loading dialog
-        self.dismissLoadingDialog()
-        
-        if self.completedVideo == false /*&& self.presentingVideo == true && !self.dismissingVideo*/ {
-            self.endVideoUnsuccessfully()
-        }*/
-    }
-    */
+ */
 }
 

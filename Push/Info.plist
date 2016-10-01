@@ -32,6 +32,10 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>vungle.com</key>
+			<string></string>
+			<key>mopub.com</key>
+			<string></string>
 			<key>chartboost.com</key>
 			<string></string>
 		</dict>

@@ -126,6 +126,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
             GameKitHelper.sharedInstance.authenticateLocalPlayer(false)
             
             // Cache ads and such
+            // Instantiate the interstitial using the class convenience method.
+            self.interstitial = MPInterstitialAdController(forAdUnitId: "af95a96f865b431197a07916fa38fffd")
+            self.interstitial!.delegate = self
+            
             self.cacheInterstitialAd()
             self.cacheRewardedVideo()
             
@@ -263,7 +267,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.presentIntroductionScene()
     }
     
     override var shouldAutorotate : Bool {
@@ -697,9 +700,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
     
     func showInterstitialAd() {
         if !GameData.sharedGameData.adsUnlocked {
-            // App delegate needs to record we're trying to show
-            AdSupporter.sharedInstance.adReady = false
-            
             // Show interstitial at main menu
             //Chartboost.showInterstitial(CBLocationMainMenu)
             if self.interstitial!.ready {
@@ -708,11 +708,13 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         }
     }
     
+    func interstitialAdReady() -> Bool {
+        return self.interstitial!.ready
+    }
+    
     func cacheInterstitialAd() {
         if !GameData.sharedGameData.adsUnlocked {
-            // Instantiate the interstitial using the class convenience method.
             
-            self.interstitial = MPInterstitialAdController(forAdUnitId: "af95a96f865b431197a07916fa38fffd")
             
             // Fetch the interstitial ad.
             self.interstitial!.loadAd()
@@ -755,5 +757,57 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         GameData.sharedGameData.save()
         //}
         
+    }
+    
+    // ******************************** INTERSTITIAL ADS **********************
+    /**
+     * Sent after an interstitial ad object has been dismissed from the screen, returning control
+     * to your application.
+     *
+     * Your implementation of this method should resume any application activity that was paused
+     * prior to the interstitial being presented on-screen.
+     *
+     * @param interstitial The interstitial ad object sending the message.
+     */
+    func interstitialDidDisappear(_ interstitial: MPInterstitialAdController!) {
+        // Move on to tutorials
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
+    }
+    
+    /** @name Detecting When an Interstitial Ad Expires */
+    
+    /**
+     * Sent when a loaded interstitial ad is no longer eligible to be displayed.
+     *
+     * Interstitial ads from certain networks may expire their content at any time,
+     * even if the content is currently on-screen. This method notifies you when the currently-
+     * loaded interstitial has expired and is no longer eligible for display.
+     *
+     * If the ad was on-screen when it expired, you can expect that the ad will already have been
+     * dismissed by the time this message is sent.
+     *
+     * Your implementation may include a call to `loadAd` to fetch a new ad, if desired.
+     *
+     * @param interstitial The interstitial ad object sending the message.
+     */
+    func interstitialDidExpire(_ interstitial: MPInterstitialAdController!) {
+        self.cacheInterstitialAd()
+    }
+    
+    /**
+     * Sent when the user taps the interstitial ad and the ad is about to perform its target action.
+     *
+     * This action may include displaying a modal or leaving your application. Certain ad networks
+     * may not expose a "tapped" callback so you should not rely on this callback to perform
+     * critical tasks.
+     *
+     * @param interstitial The interstitial ad object sending the message.
+     */
+    func interstitialDidReceiveTapEvent(_ interstitial: MPInterstitialAdController!) {
+        AdSupporter.sharedInstance.showPauseMenu = true
+    }
+    
+    func interstitialDidAppear(_ interstitial: MPInterstitialAdController!) {
+        NSLog("test")
     }
 }

@@ -63,8 +63,8 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     
     // Played
     var timesPlayed: Int = 0
-    var adPopCountdown: Int = 30
-    var adPopMax: Int = 10
+    var adPopCountdown: Int = 3
+    var adPopMax: Int = 1
     
     // Cloud vs local
     var cloudSyncing: Bool = true
