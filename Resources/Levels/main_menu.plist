@@ -6,13 +6,17 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>Welcome!</string>
+			<string>What&apos;s New?</string>
 			<key>Description</key>
-			<string>Welcome to Mort&apos;s Minions! Select a character and start your adventure today!</string>
+			<string>Version 1.0.1: Squashed bugs. Video rewards now working on iOS 10.</string>
 			<key>Key</key>
 			<string>whats_new_main_menu</string>
 			<key>Version</key>
-			<integer>10</integer>
+			<integer>101</integer>
+			<key>FirstPlayDescription</key>
+			<string>Welcome to Mort&apos;s Minions! Select a character and start your adventure today!</string>
+			<key>FirstPlayTitle</key>
+			<string>Welcome!</string>
 		</dict>
 	</array>
 </dict>

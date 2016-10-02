@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSCalendarsUsageDescription</key>
-	<string>Adding events</string>
-	<key>NSCameraUsageDescription</key>
-	<string>Taking selfies</string>
-	<key>NSMotionUsageDescription</key>
-	<string>Taking selfies</string>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Interactive ad controls</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -27,7 +19,7 @@
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleVersion</key>
-	<string>6</string>
+	<string>8</string>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<true/>
 	<key>ITSEncryptionExportComplianceCode</key>
@@ -41,9 +33,10 @@
 		<key>NSExceptionDomains</key>
 		<dict>
 			<key>chartboost.com</key>
-			<string></string>
-			<key>adcolony.com</key>
-			<string></string>
+			<dict>
+				<key>NSIncludesSubdomains</key>
+				<true/>
+			</dict>
 		</dict>
 	</dict>
 	<key>UILaunchStoryboardName</key>
@@ -54,15 +47,6 @@
 	<array>
 		<string>armv7</string>
 		<string>gamekit</string>
-	</array>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>fb</string>
-		<string>twitter</string>
-		<string>instagram</string>
-		<string>tumblr</string>
 	</array>
 	<key>UIRequiresFullScreen</key>
 	<true/>
@@ -78,5 +62,7 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 	</array>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

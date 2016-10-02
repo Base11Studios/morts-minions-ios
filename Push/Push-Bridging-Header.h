@@ -9,5 +9,5 @@
 #import <Chartboost/Chartboost.h>
 #import <AdSupport/AdSupport.h>
 #import <VungleSDK/VungleSDK.h>
-#import <AdColony/AdColony.h>
 #import <MoPub-Bridging-Header.h>
+#import <GoogleMobileAds/GoogleMobileAds.h>

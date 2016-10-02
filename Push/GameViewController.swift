@@ -10,6 +10,7 @@ import Foundation
 import GameKit
 import AVFoundation
 import LocalAuthentication
+import GoogleMobileAds
 
 class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPInterstitialAdControllerDelegate, MPRewardedVideoDelegate {
     //var loadingScene: LoadingScene
@@ -693,7 +694,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         //return GADRewardBasedVideoAd.sharedInstance().isReady
     }
     
-    func showRewardedVideo() -> Bool {
+    func showRewardedVideo() {
         self.presentingVideo = true
         self.dismissingVideo = false
         
@@ -703,12 +704,12 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         
         // Show rewarded video pre-roll message and video ad at location MainMenu. See Chartboost.h for available location options.
         //Chartboost.showRewardedVideo(CBLocationGameOver)
-        return true
+
         /*if self.videoAdReady() {
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
-            return true
+
         } else {
-            return false
+
         }*/
     }
     
