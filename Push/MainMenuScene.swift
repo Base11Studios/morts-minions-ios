@@ -283,8 +283,15 @@ class MainMenuScene : DBScene {
                     iconTexture = GameTextures.sharedInstance.splashAndStoryAtlas.textureNamed("tutorialicon")
                     
                     // Create dialog
-                    let title = TextFormatter.formatText(tutorialTipDictionary["Title"] as! String)
-                    let description = TextFormatter.formatText(tutorialTipDictionary["Description"] as! String)
+                    var title = ""
+                    var description = ""
+                    if storedTutorial == nil {
+                        title = TextFormatter.formatText(tutorialTipDictionary["FirstPlayTitle"] as! String)
+                        description = TextFormatter.formatText(tutorialTipDictionary["FirstPlayDescription"] as! String)
+                    } else {
+                        title = TextFormatter.formatText(tutorialTipDictionary["Title"] as! String)
+                        description = TextFormatter.formatText(tutorialTipDictionary["Description"] as! String)
+                    }
                     
                     let tutorialDialog = WhatsNewDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, key: key, version: version)
                     

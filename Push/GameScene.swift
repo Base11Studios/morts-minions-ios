@@ -165,6 +165,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     var worldViewEnvironmentObjects = Array<EnvironmentObject>()
     var worldViewPlayerProjectiles = Array<PlayerProjectile>()
     
+    // Used for displaying pregame pops
+    var firstMoveToScene: Bool = true
+    
     // Point functions
     func dbAdd(_ a: CGPoint, b: CGPoint) -> CGPoint {
         return CGPoint(x: a.x + b.x, y: a.y + b.y)
@@ -204,6 +207,13 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("setStayPaused"), name: "StayPausedNotification", object: nil)
         
         super.didMove(to: view)
+        
+        if self.firstMoveToScene {
+            self.firstMoveToScene = false
+            
+            // Kick off display of pre-game pops
+            self.displayPregamePops()
+        }
     }
     
     override func willMove(from view: SKView) {
@@ -365,8 +375,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         //GameData.sharedGameData.save()
         
-        // Kick off display of pre-game pops
-        self.displayPregamePops()
+        self.showPauseMenu = false
+        self.pauseGame()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -1934,7 +1944,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             
             // Create dialog
             let title = "Unlock Ads"
-            let description = "Purchase gems and we won't show static ads."
+            let description = "Purchase gems and we won't show pre-level ads."
             
             let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: true, key: key, version: version, prependText: false)
             
