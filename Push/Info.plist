@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSCalendarsUsageDescription</key>
+	<string>Adding events</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Taking selfies</string>
+	<key>NSMotionUsageDescription</key>
+	<string>Taking selfies</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Interactive ad controls</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -32,11 +40,9 @@
 		<true/>
 		<key>NSExceptionDomains</key>
 		<dict>
-			<key>vungle.com</key>
-			<string></string>
-			<key>mopub.com</key>
-			<string></string>
 			<key>chartboost.com</key>
+			<string></string>
+			<key>adcolony.com</key>
 			<string></string>
 		</dict>
 	</dict>
@@ -51,6 +57,13 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>fb</string>
+		<string>twitter</string>
+		<string>instagram</string>
+		<string>tumblr</string>
+	</array>
 	<key>UIRequiresFullScreen</key>
 	<true/>
 	<key>UIStatusBarHidden</key>

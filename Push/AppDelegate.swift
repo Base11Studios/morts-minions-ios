@@ -7,21 +7,19 @@
 //
 
 import UIKit
-//import GoogleMobileAds
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate /*GADRewardBasedVideoAdDelegate*/ {
 
     var window: UIWindow?
     
+    /*
     // Video rewards
     var presentingVideo: Bool = false
     var completedVideo: Bool = false
     var dismissingVideo: Bool = false
     var videoIsCached: Bool = false
-    
-    // Static rewards
-    var tryingToShowStaticAds: Bool = false
+     */
 
     func applicationDidFinishLaunching(_ application: UIApplication) {
         // Initialize the Chartboost library
@@ -73,6 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate /*GADR
         return UIInterfaceOrientationMask.landscape;
     }
     
+    /*
     // ************************* REWARDED VIDEO CALLBACKS *************
     
     // Called after videos have been successfully prefetched.
@@ -176,7 +175,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate /*GADR
         self.completedVideo = false
         self.dismissingVideo = true
     }
-    
+    */
     // Implement to be notified of when a video will be displayed on the screen for
     // a given CBLocation. You can then do things like mute effects and sounds.
     // func willDisplayVideo(location: String!) {}
