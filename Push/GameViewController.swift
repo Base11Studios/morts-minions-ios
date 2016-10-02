@@ -10,13 +10,18 @@ import Foundation
 import GameKit
 import AVFoundation
 import LocalAuthentication
-import GoogleMobileAds
 
-class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPInterstitialAdControllerDelegate {
+class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPInterstitialAdControllerDelegate, MPRewardedVideoDelegate {
     //var loadingScene: LoadingScene
+    let REWARD_AD_ID = "b0ddefd0a8a14252a14a64da0728dade"
     
     //MoPubSDK
     var interstitial: MPInterstitialAdController?
+    
+    // Video rewards
+    var presentingVideo: Bool = false
+    var completedVideo: Bool = false
+    var dismissingVideo: Bool = false
     
     var characterSkillSceneCharacter: CharacterType?
     
@@ -129,6 +134,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
             // Instantiate the interstitial using the class convenience method.
             self.interstitial = MPInterstitialAdController(forAdUnitId: "af95a96f865b431197a07916fa38fffd")
             self.interstitial!.delegate = self
+            MoPub.sharedInstance().initializeRewardedVideo(withGlobalMediationSettings: [], delegate: self)
             
             self.cacheInterstitialAd()
             self.cacheRewardedVideo()
@@ -682,13 +688,21 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
     }
     
     func videoAdReady() -> Bool {
-        return Chartboost.hasRewardedVideo(CBLocationGameOver)
+        return MPRewardedVideo.hasAdAvailable(forAdUnitID: REWARD_AD_ID)
+        //return Chartboost.hasRewardedVideo(CBLocationGameOver)
         //return GADRewardBasedVideoAd.sharedInstance().isReady
     }
     
     func showRewardedVideo() -> Bool {
+        self.presentingVideo = true
+        self.dismissingVideo = false
+        
+        if MPRewardedVideo.hasAdAvailable(forAdUnitID: REWARD_AD_ID) {
+            MPRewardedVideo.presentAd(forAdUnitID: REWARD_AD_ID, from: self)
+        }
+        
         // Show rewarded video pre-roll message and video ad at location MainMenu. See Chartboost.h for available location options.
-        Chartboost.showRewardedVideo(CBLocationGameOver)
+        //Chartboost.showRewardedVideo(CBLocationGameOver)
         return true
         /*if self.videoAdReady() {
             GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
@@ -713,8 +727,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
     }
     
     func cacheInterstitialAd() {
-        if !GameData.sharedGameData.adsUnlocked {
-            
+        if !GameData.sharedGameData.adsUnlocked && !self.interstitialAdReady() {
             
             // Fetch the interstitial ad.
             self.interstitial!.loadAd()
@@ -724,12 +737,15 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
     }
     
     func cacheRewardedVideo() {
+        if !self.videoAdReady() {
+            MPRewardedVideo.loadAd(withAdUnitID: REWARD_AD_ID, withMediationSettings: [])
+        }
         /*let request = GADRequest()
         // Requests test ads on test devices.
 
         request.testDevices = ["fa25ccf46baf21a9189bbb36e020a8ef"]
         GADRewardBasedVideoAd.sharedInstance().load(request, withAdUnitID: "ca-app-pub-4505737160765142/2684998717")*/
-        Chartboost.cacheRewardedVideo(CBLocationGameOver)
+        //Chartboost.cacheRewardedVideo(CBLocationGameOver)
     }
     
     // Game Center
@@ -809,5 +825,68 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
     
     func interstitialDidAppear(_ interstitial: MPInterstitialAdController!) {
         NSLog("test")
+    }
+    
+    // ************************* REWARDED VIDEO CALLBACKS *************
+    
+    // Or will appear?
+    func rewardedVideoAdDidAppear(forAdUnitID adUnitID: String!) {
+        // Remove the loading dialog
+        //self.dismissLoadingDialog() Shouldn't need anymore
+        
+        // Store something to show we presented a video
+        self.presentingVideo = true
+        self.dismissingVideo = false
+        self.completedVideo = false
+    }
+    
+    func rewardedVideoAdShouldReward(forAdUnitID adUnitID: String!, reward: MPRewardedVideoReward!) {
+        self.endVideoSuccessfully()
+    }
+    
+    // Or will disappear??
+    func rewardedVideoAdDidDisappear(forAdUnitID adUnitID: String!) {
+        // If video was completed, dont do anything, otherwise send dismiss dialog if not done
+        if !self.completedVideo && self.presentingVideo && !self.dismissingVideo {
+            self.endVideoUnsuccessfully()
+        } else if !self.dismissingVideo && self.completedVideo {
+            self.endVideoSuccessfully()
+        }
+    }
+    
+    func rewardedVideoAdDidExpire(forAdUnitID adUnitID: String!) {
+        self.cacheRewardedVideo()
+    }
+    
+    func rewardedVideoAdDidReceiveTapEvent(forAdUnitID adUnitID: String!) {
+        // Store that the video was completed.
+        if self.presentingVideo && !self.completedVideo {
+            self.completedVideo = true
+        }
+    }
+    
+    private func dismissLoadingDialog() {
+        // Send notification that gamescene will pick up
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "DismissLoadingDialog"), object: nil)
+    }
+    
+    private func endVideoSuccessfully() {
+        // Send notification that gamescene will pick up
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "RejuvenatePlayer"), object: nil)
+        
+        // Reset flags
+        self.presentingVideo = false
+        self.completedVideo = false
+        self.dismissingVideo = true
+    }
+    
+    private func endVideoUnsuccessfully() {
+        // Send notification that the gamescene will pick up
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "DontRejuvenatePlayer"), object: nil)
+        
+        // Reset flags
+        self.presentingVideo = false
+        self.completedVideo = false
+        self.dismissingVideo = true
     }
 }
