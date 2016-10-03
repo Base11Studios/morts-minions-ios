@@ -439,6 +439,6 @@ class DBButton : SKSpriteNode {
     }
     
     func playSound() {
-        self.dbScene!.viewController!.playButtonSound()
+        self.dbScene?.viewController?.playButtonSound()
     }
 }
