@@ -683,8 +683,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
     
     func playButtonSound() {
         if GameData.sharedGameData.preferenceSoundEffects == true {
-            //self.buttonSoundPlayer.currentTime = 0
-            //self.buttonSoundPlayer.play()
+            self.buttonSoundPlayer.currentTime = 0
+            self.buttonSoundPlayer.play()
         }
     }
     
