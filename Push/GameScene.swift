@@ -1944,7 +1944,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             
             // Create dialog
             let title = "Unlock Ads"
-            let description = "Purchase gems and we won't show pre-level ads."
+            let description = "Purchase gems and we won't show level ads."
             
             let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: true, key: key, version: version, prependText: false)
             

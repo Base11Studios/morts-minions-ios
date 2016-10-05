@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r7">
+    <folder id="0">
+        <file id="0" name="teleport2.png" width="86" height="24" pivot_x="0" pivot_y="1"/>
+        <file id="1" name="teleport1.png" width="77" height="18" pivot_x="0" pivot_y="1"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <animation id="0" name="NewAnimation" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+                <key id="1" time="198">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                </key>
+                <key id="2" time="507">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                </key>
+                <key id="3" time="697">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="3" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="teleport2">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="-42.857143" y="9.52381" angle="0"/>
+                </key>
+                <key id="1" time="198" spin="0">
+                    <object folder="0" file="0" x="-42.857143" y="9.52381" angle="0"/>
+                </key>
+                <key id="2" time="507" spin="0">
+                    <object folder="0" file="0" x="-42.857143" y="9.52381" angle="0"/>
+                </key>
+                <key id="3" time="697" spin="0">
+                    <object folder="0" file="0" x="-42.857143" y="9.52381" angle="0"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="teleport1">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-37.878788" y="6.896104" angle="0"/>
+                </key>
+                <key id="1" time="198" spin="0">
+                    <object folder="0" file="1" x="-37.707555" y="-11.795898" angle="0"/>
+                </key>
+                <key id="2" time="507" spin="0">
+                    <object folder="0" file="1" x="-37.878788" y="6.896104" angle="0"/>
+                </key>
+                <key id="3" time="697" spin="0">
+                    <object folder="0" file="1" x="-38.050021" y="25.917946" angle="0"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>
