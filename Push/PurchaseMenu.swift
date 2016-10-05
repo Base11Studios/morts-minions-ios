@@ -89,9 +89,9 @@ class PurchaseMenu: DialogBackground {
         self.footerText!.fontColor = MerpColors.darkFont
         
         if GameData.sharedGameData.adsUnlocked {
-            self.footerText!.text = "Thank you for your previous purchase! We won't show pre-level ads."
+            self.footerText!.text = "Thank you for your previous purchase! We won't show level ads."
         } else {
-            self.footerText!.text = "* if you purchase any gems, we won't show pre-level ads."
+            self.footerText!.text = "* if you purchase any gems, we won't show level ads."
         }
         self.footerText!.position = CGPoint(x: (-self.totalWidth! + self.footerText!.calculateAccumulatedFrame().size.width) / 2, y: self.buy3Button.position.y - self.buy3Button.size.height / 2 - self.footerText!.calculateAccumulatedFrame().size.height / 2 - self.buffer)
         
@@ -210,9 +210,9 @@ class PurchaseMenu: DialogBackground {
     func updateFooter() {
         // Footer
         if GameData.sharedGameData.adsUnlocked {
-            self.footerText!.text = "Thank you for your previous purchase! We won't show pre-level ads."
+            self.footerText!.text = "Thank you for your previous purchase! We won't show level ads."
         } else {
-            self.footerText!.text = "* if you purchase any gems, we won't show pre-level ads."
+            self.footerText!.text = "* if you purchase any gems, we won't show level ads."
         }
         self.footerText!.position = CGPoint(x: (-self.totalWidth! + self.footerText!.calculateAccumulatedFrame().size.width) / 2, y: self.buy3Button.position.y - self.buy3Button.size.height / 2 - self.footerText!.calculateAccumulatedFrame().size.height / 2 - self.buffer)
     }

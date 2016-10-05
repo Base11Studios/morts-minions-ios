@@ -825,7 +825,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
     }
     
     func interstitialDidAppear(_ interstitial: MPInterstitialAdController!) {
-        NSLog("test")
+        //NSLog("test")
     }
     
     // ************************* REWARDED VIDEO CALLBACKS *************
