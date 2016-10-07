@@ -80,8 +80,8 @@ class MainMenuBuyButton : DBButton {
         } else {
             // If the user does not have enough gems, show purchase menu
             // Need weak reference to prevent retain cycle
-            let onSuccessPurchase: (Bool) -> Void = {[weak self] (ugh: Bool) in self!.purchaseCharacter(ugh: ugh)}
-            self.dbScene!.showPurchaseMenu(true, itemCost: unlockCost, onSuccess: onSuccessPurchase, onFailure: {}) // TODO REJUV
+            //let onSuccessPurchase: (Bool) -> Void = {[weak self] (ugh: Bool) in self!.purchaseCharacter(ugh: ugh)}
+            self.dbScene!.showPurchaseMenu(true, itemCost: unlockCost, onSuccess: {_ in }, onFailure: {}) // TODO REJUV
         }
     }
     

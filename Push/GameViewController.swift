@@ -872,6 +872,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
     }
     
     private func endVideoSuccessfully() {
+        // Update last watched flag to current time
+        GameData.sharedGameData.lastVideoAdWatch = Date()
+        
         // Send notification that gamescene will pick up
         NotificationCenter.default.post(name: Notification.Name(rawValue: "RejuvenatePlayer"), object: nil)
         
