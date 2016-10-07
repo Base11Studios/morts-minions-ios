@@ -1927,8 +1927,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Need to know the prev dialog
         var previousDialog: TutorialDialog?
         
-        let firstPop: Int = 20
-        let secondPop: Int = 25
+        let firstPop: Int = 16
+        let secondPop: Int = 22
         
         // If timesplayed == 16 or 24, pop character talking to user
         if !GameData.sharedGameData.adsUnlocked && (GameData.sharedGameData.timesPlayed == firstPop || GameData.sharedGameData.timesPlayed == secondPop) {
