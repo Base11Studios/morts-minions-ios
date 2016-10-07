@@ -62,6 +62,7 @@ class CharacterPurchaseSuperstarButton : DBButton {
     }
     
     override func touchesEndedAction() {
+        /*
         self.setScale(1)
         
         // If the user has enough gems, unlock it
@@ -84,6 +85,7 @@ class CharacterPurchaseSuperstarButton : DBButton {
             // If the user does not have enough gems, show purchase menu
             self.dbScene!.showPurchaseMenu(true, itemCost: unlockCost, onSuccess: {_ in }, onFailure: {}) // TODO REJUV - implement callbacks
         }
+ */
     }
     
     override func touchesReleasedAction() {

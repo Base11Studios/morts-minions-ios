@@ -16,6 +16,9 @@ class DBScene : SKScene {
     // This list of available in-app purchases
     var products = [SKProduct]()
     
+    // Trade
+    var tradeMenu: TradeMenu?
+    
     // Rate me
     var rateMeDialog: RateMeDialog?
     
@@ -42,7 +45,7 @@ class DBScene : SKScene {
     // Tutorial callback (default)
     var onCompleteUxTooltip: (() -> Void)? = {}
     
-    init(size: CGSize, settings: Bool, loadingOverlay: Bool, purchaseMenu: Bool, rateMe: Bool) {
+    init(size: CGSize, settings: Bool, loadingOverlay: Bool, purchaseMenu: Bool, rateMe: Bool, trade: Bool) {
         super.init(size: size)
         
         // Need weak reference to prevent retain cycle
@@ -65,6 +68,9 @@ class DBScene : SKScene {
         if rateMe {
             self.initializeRateMeDialog()
         }
+        if trade {
+            self.initializeTradeMenu()
+        }
     }
     
     func initializeSettingsMenu() {
@@ -79,6 +85,13 @@ class DBScene : SKScene {
         self.purchaseMenu!.zPosition = 20
         self.purchaseMenu!.isHidden = true
         self.addChild(self.purchaseMenu!)
+    }
+    
+    func initializeTradeMenu() {
+        self.tradeMenu = TradeMenu(frameSize: size, scene: self)
+        self.tradeMenu!.zPosition = 18
+        self.tradeMenu!.isHidden = true
+        self.addChild(self.tradeMenu!)
     }
     
     func initializeRateMeDialog() {
@@ -156,6 +169,16 @@ class DBScene : SKScene {
         self.purchaseMenu!.dismissPurchaseMenu()
     }
     
+    func showTradeMenu() -> Void {
+        // Update the gem display
+        self.tradeMenu!.updateGemCounts()
+        self.tradeMenu!.isHidden = false
+    }
+    
+    func hideTradeMenu() {
+        self.tradeMenu!.isHidden = true
+    }
+    
     // When a product is purchased, this notification fires -> Here we want to add the proper permissions and give gems
     func productPurchased(_ notification: Notification) {
         // Record gems purchased
@@ -206,6 +229,7 @@ class DBScene : SKScene {
     
     func updateGemCounts() {
         purchaseMenu?.updateGemCounts()
+        tradeMenu?.updateGemCounts()
     }
     
     func startLoadingOverlay() {

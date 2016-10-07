@@ -18,7 +18,7 @@ class LoadingScene : DBScene {
         self.worldView = SKSpriteNode(color: MerpColors.background, size: size)
         
         // Super
-        super.init(size: size, settings: false, loadingOverlay: false, purchaseMenu: false, rateMe: false)
+        super.init(size: size, settings: false, loadingOverlay: false, purchaseMenu: false, rateMe: false, trade: false)
         
         // Center the "camera"
         self.worldView.position = CGPoint(x: self.size.width / 2.0, y: self.size.height / 2.0)

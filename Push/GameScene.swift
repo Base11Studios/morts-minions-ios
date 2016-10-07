@@ -253,7 +253,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.environmentObjectPreloader = SKSpriteNode(texture: GameTextures.sharedInstance.getAtlasForWorld(world: self.world).textureNamed("1x1trans" + self.world))
         
         // Call super init
-        super.init(size: size, settings: false, loadingOverlay: true, purchaseMenu: true, rateMe: false)
+        super.init(size: size, settings: false, loadingOverlay: true, purchaseMenu: true, rateMe: false, trade: false)
         
         // Level intro text
         //self.initializeLevelIntroText()

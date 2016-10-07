@@ -138,7 +138,7 @@ class MainMenuScene : DBScene {
         self.comingSoon = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("comingsoon"))
         
         // Call super init
-        super.init(size: size, settings: true, loadingOverlay: true, purchaseMenu: true, rateMe: true)
+        super.init(size: size, settings: true, loadingOverlay: true, purchaseMenu: true, rateMe: true, trade: false)
         
         // Center the "camera"
         self.worldView.position = CGPoint(x: self.size.width / 2.0, y: self.size.height / 2.0)
