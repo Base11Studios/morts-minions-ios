@@ -69,12 +69,12 @@ class RejuvDialog: DialogBackground {
         self.rejuvVideoButton = RejuvenateVideoButton(scene: scene)
         
         // Progress
-        self.videoCountdownBackground = SKSpriteNode(color: UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 0.6), size: CGSize(width: self.rejuvGemsButton!.size.width, height: self.frame.size.height / 24.0))
+        self.videoCountdownBackground = SKSpriteNode(color: UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 0.6), size: CGSize(width: self.rejuvGemsButton!.size.width - self.buttonBuffer / 2, height: self.frame.size.height / 24.0))
         
-        self.videoCountdownProgress = SKSpriteNode(color: UIColor(red: 251 / 255.0, green: 197 / 255.0, blue: 0 / 255.0, alpha: 1.0), size: (self.getTimeDiff() / 180.0) * self.rejuvGemsButton!.size.width, height: self.frame.size.height / 24.0)
+        self.videoCountdownProgress = SKSpriteNode(color: UIColor(red: 251 / 255.0, green: 197 / 255.0, blue: 0 / 255.0, alpha: 1.0), size: CGSize(width: (self.getTimeDiff() / CGFloat(180.0)) * self.videoCountdownBackground!.size.width, height: self.frame.size.height / 24.0))
         
-        self.videoCountdownBackground.isHidden = true
-        self.videoCountdownProgress.isHidden = true
+        self.videoCountdownBackground!.isHidden = true
+        self.videoCountdownProgress!.isHidden = true
         
         self.container.addChild(self.iconBackgroundNode!)
         self.iconBackgroundNode!.addChild(self.iconNode!)
@@ -121,14 +121,14 @@ class RejuvDialog: DialogBackground {
         return requiredDate < GameData.sharedGameData.lastVideoAdWatch
     }
     
-    func getTimeDiff() -> Double {
+    func getTimeDiff() -> CGFloat {
         if !showVideoCountdown() {
             return 0
         } else {
             let calendar = NSCalendar.autoupdatingCurrent
             let compareDate = calendar.date(byAdding: Calendar.Component.minute, value: -3, to: Date())!
             
-            return GameData.sharedGameData.lastVideoAdWatch.timeIntervalSince(compareDate)
+            return CGFloat(GameData.sharedGameData.lastVideoAdWatch.timeIntervalSince(compareDate))
         }
     }
     
@@ -143,7 +143,7 @@ class RejuvDialog: DialogBackground {
             self.videoCountdownProgress!.isHidden = false
             
             // Update counter
-            self.videoCountdownProgress = SKSpriteNode(color: UIColor(red: 108 / 255.0, green: 190 / 255.0, blue: 69 / 255.0, alpha: 1.0), size: (self.getTimeDiff() / 180.0) * self.rejuvGemsButton!.size.width, height: self.frame.size.height / 24.0)
+            self.videoCountdownProgress = SKSpriteNode(color: UIColor(red: 251 / 255.0, green: 197 / 255.0, blue: 0 / 255.0, alpha: 1.0), size: CGSize(width: (self.getTimeDiff() / CGFloat(180.0)) * self.videoCountdownBackground!.size.width, height: self.frame.size.height / 24.0))
             self.videoCountdownProgress!.position = CGPoint(x: self.rejuvVideoButton!.position.x - (self.videoCountdownBackground!.size.width - self.videoCountdownProgress!.size.width) / 2, y: videoCountdownBackground!.position.y)
         }
     }
