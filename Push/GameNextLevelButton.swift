@@ -15,7 +15,7 @@ class GameNextLevelButton : DBButton {
     var gemIconScale: CGFloat = 0.825
     var buffer: CGFloat = 6.0
     var level: Int = 0
-    var maxLevel: Int = 64
+    var maxLevel: Int = 65 /*MAX*/
     
     init() {
         super.init(dbScene: nil)

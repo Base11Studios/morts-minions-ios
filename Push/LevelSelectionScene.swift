@@ -171,7 +171,7 @@ class LevelSelectionScene : DBScene {
         self.switchSelectedWorld(worldNameToSelect: GameData.sharedGameData.getSelectedCharacterData().lastPlayedWorld, initialLoad: true)
         
         // NOTE - HIDING SPIRIT TEMPORARILY WHILE IN PROGRESS
-        self.spiritWorld!.isHidden = true
+        //self.spiritWorld!.isHidden = true
         
         // Worlds
         self.earthWorld?.setScale(0.85)
@@ -182,11 +182,12 @@ class LevelSelectionScene : DBScene {
         
         // Worlds
         let worldAdjuster: CGFloat = 1.0
-        let fourAdjuster = (self.earthWorld!.size.width / 2)
+        let fourAdjuster = (self.earthWorld!.size.width)
         self.earthWorld!.position = CGPoint(x: (self.earthWorld!.size.width + self.nodeBuffer/2) * -2 + fourAdjuster, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.earthWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
         self.waterWorld!.position = CGPoint(x: (self.waterWorld!.size.width + self.nodeBuffer/2) * -1 + fourAdjuster, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.waterWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
         self.fireWorld!.position = CGPoint(x: 0 + fourAdjuster, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.fireWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
         self.airWorld!.position = CGPoint(x: (self.airWorld!.size.width + self.nodeBuffer/2) * 1 + fourAdjuster, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.airWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
+        self.spiritWorld!.position = CGPoint(x: (self.airWorld!.size.width + self.nodeBuffer/2) * 2 + fourAdjuster, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.spiritWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
         
         // NOTE - BELOW POSITIONING IS FOR 5 WORLDS
         /*
@@ -282,7 +283,7 @@ class LevelSelectionScene : DBScene {
                 
                 // Set the total levels for the gamedata
                 var data: CharacterData = GameData.sharedGameData.archerCharacter
-                data.totalLevels = 64 //level TODO SPIRIT set back to level
+                data.totalLevels = 65 /*MAX*/
                 
                 // Setup the level data only if it doesnt exist already
                 if data.levelProgress[level] == nil {
@@ -290,7 +291,7 @@ class LevelSelectionScene : DBScene {
                 }
                 
                 data = GameData.sharedGameData.monkCharacter
-                data.totalLevels = 64 //level TODO SPIRIT set back to level
+                data.totalLevels = 65 /*MAX*/
                 
                 // Setup the level data only if it doesnt exist already
                 if data.levelProgress[level] == nil {
@@ -298,7 +299,7 @@ class LevelSelectionScene : DBScene {
                 }
                 
                 data = GameData.sharedGameData.mageCharacter
-                data.totalLevels = 64 //level TODO SPIRIT set back to level
+                data.totalLevels = 65 /*MAX*/
                 
                 // Setup the level data only if it doesnt exist already
                 if data.levelProgress[level] == nil {
@@ -306,7 +307,7 @@ class LevelSelectionScene : DBScene {
                 }
                 
                 data = GameData.sharedGameData.warriorCharacter
-                data.totalLevels = 64 //level TODO SPIRIT set back to level
+                data.totalLevels = 65 /*MAX*/
                 
                 // Setup the level data only if it doesnt exist already
                 if data.levelProgress[level] == nil {

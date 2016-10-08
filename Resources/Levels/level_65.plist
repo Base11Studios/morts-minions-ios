@@ -44,7 +44,21 @@
 		<key>Object</key>
 		<string>LevelEnd</string>
 		<key>Location</key>
-		<integer>1500</integer>
+		<integer>5000</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Ghost</string>
+		<key>Location</key>
+		<real>1500</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Mimic</string>
+		<key>Location</key>
+		<integer>900</integer>
 	</dict>
 </dict>
 </plist>

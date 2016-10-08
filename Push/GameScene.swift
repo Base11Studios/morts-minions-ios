@@ -345,7 +345,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.initializePauseMenu()
         
         // Create credits if needed
-        if self.currentLevel == 64 {
+        if self.currentLevel == 65 /*MAX*/ {
             self.initializeCredits()
         }
         
@@ -361,7 +361,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Determine level status
         var lockedLevelsAdded: Int = 0
         var checkLevel = level
-        while checkLevel < 64 && lockedLevelsAdded < 2 {
+        while checkLevel < 65 /*MAX*/ && lockedLevelsAdded < 2 {
             if GameData.sharedGameData.getSelectedCharacterData().isLevelLocked(checkLevel + 1) {
                 self.levelCompletion.append(checkLevel + 1)
                 lockedLevelsAdded += 1
@@ -1540,8 +1540,14 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         let yPosition: CGFloat = self.frame.size.height - 20.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         
         // Pause button
-        self.pauseButton = GamePauseButton(scene: self)
-        self.pauseButton!.alpha = 0.25
+        if self.worldName == "spirit" {
+            self.pauseButton = GamePauseButton(scene: self, light: true)
+            self.pauseButton!.alpha = 0.85
+        } else {
+            self.pauseButton = GamePauseButton(scene: self, light: false)
+            self.pauseButton!.alpha = 0.25
+        }
+        
         self.pauseButton!.size = CGSize(width: self.pauseButton!.size.width * 0.55, height: self.pauseButton!.size.height * 0.55)
         self.pauseButton!.position = CGPoint(x: self.frame.size.width - self.pauseButton!.size.width / 2.0 - buffer / 1.5, y: yPosition)
         self.addChild(self.pauseButton!)
@@ -1563,7 +1569,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // ******* PROGRESS BAR *******
         // Create background PROGRESS bar
-        progressBar = SKSpriteNode(color: UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 0.6), size: CGSize(width: self.frame.size.width / self.progressBarAdjuster, height: self.frame.size.height / 24.0))
+        if self.worldName != "spirit" {
+            progressBar = SKSpriteNode(color: UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 0.6), size: CGSize(width: self.frame.size.width / self.progressBarAdjuster, height: self.frame.size.height / 24.0))
+        } else {
+            progressBar = SKSpriteNode(color: UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.85), size: CGSize(width: self.frame.size.width / self.progressBarAdjuster, height: self.frame.size.height / 24.0))
+        }
         progressBar.position = CGPoint(x: self.frame.size.width - (self.frame.size.width / (self.progressBarAdjuster * 2) + buffer) - pauseButtonAdjustment, y: yPosition)
         self.addChild(progressBar)
         

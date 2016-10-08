@@ -12,9 +12,9 @@ import Foundation
 class Mimic : Enemy {
     
     required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
-        super.init(scalar: scalar, imageName: "smallworm_000", textureAtlas: GameTextures.sharedInstance.spiritAtlas, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
+        super.init(scalar: scalar, imageName: "mimic_000", textureAtlas: GameTextures.sharedInstance.spiritAtlas, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
         
-        self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "smallworm", frameStart: 0, frameEnd: 15), timePerFrame: 0.075, resize: true, restore: false))
+        self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "mimic", frameStart: 0, frameEnd: 15), timePerFrame: 0.075, resize: true, restore: false))
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -31,7 +31,7 @@ class Mimic : Enemy {
         self.isFloating = true
         
         // Attributes
-        self.maxHealth = 2
+        self.maxHealth = 1
         self.health = self.maxHealth
         
         // Rewards

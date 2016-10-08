@@ -11,7 +11,6 @@ import Foundation
 @objc(Ghost)
 class Ghost : Enemy {
     
-    
     required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
         super.init(scalar: scalar, imageName: "ghost_000", textureAtlas: GameTextures.sharedInstance.spiritAtlas, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
         
