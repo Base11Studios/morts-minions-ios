@@ -31,6 +31,20 @@ enum CharacterType : String {
         }
     }
     
+    static func getCharacterName(_ id: CharacterType) -> String {
+        if id == Warrior {
+            return "Jim"
+        } else if id == Archer {
+            return "May"
+        } else if id == Mage {
+            return "Gary"
+        } else if id == Monk {
+            return "Leonard"
+        } else {
+            return ""
+        }
+    }
+    
     static var allCases: [CharacterType] {
         return [.Warrior, .Archer, .Mage, .Monk]
     }

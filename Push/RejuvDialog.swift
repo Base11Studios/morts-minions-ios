@@ -22,6 +22,9 @@ class RejuvDialog: DialogBackground {
     var iconBackgroundNode: SKSpriteNode?
     var iconNode: SKSpriteNode?
     
+    var videoCountdownBackground: SKSpriteNode?
+    var videoCountdownProgress: SKSpriteNode?
+    
     weak var dbScene: DBScene?
     
     init(frameSize : CGSize, scene: GameScene, gemCost: Int) {
@@ -65,13 +68,25 @@ class RejuvDialog: DialogBackground {
         self.rejuvGemsButton = RejuvenateGemButton(scene: scene, unlockAmount: gemCost)
         self.rejuvVideoButton = RejuvenateVideoButton(scene: scene)
         
+        // Progress
+        self.videoCountdownBackground = SKSpriteNode(color: UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 0.6), size: CGSize(width: self.rejuvGemsButton!.size.width - self.buttonBuffer / 2, height: self.frame.size.height / 24.0))
+        
+        self.videoCountdownProgress = SKSpriteNode(color: UIColor(red: 251 / 255.0, green: 197 / 255.0, blue: 0 / 255.0, alpha: 1.0), size: CGSize(width: (self.getTimeDiff() / CGFloat(180.0)) * self.videoCountdownBackground!.size.width, height: self.frame.size.height / 24.0))
+        
+        self.videoCountdownBackground!.isHidden = true
+        self.videoCountdownProgress!.isHidden = true
+        
         self.container.addChild(self.iconBackgroundNode!)
         self.iconBackgroundNode!.addChild(self.iconNode!)
         self.container.addChild(self.rejuvGemsButton!)
         self.container.addChild(self.rejuvVideoButton!)
         self.container.addChild(self.gemContainer)
+        //if showVideoCountdown() {
+            self.container.addChild(self.videoCountdownBackground!)
+            self.container.addChild(self.videoCountdownProgress!)
+        //}
         
-        let height = self.iconBackgroundNode!.size.height + self.rejuvGemsButton!.calculateAccumulatedFrame().size.height + self.buttonBuffer * 1
+        let height = self.iconBackgroundNode!.size.height + self.rejuvGemsButton!.calculateAccumulatedFrame().size.height + self.buttonBuffer * 1 + self.videoCountdownBackground!.size.height + self.buttonBuffer / 2
         let width = max(self.rejuvGemsButton!.size.width + self.rejuvVideoButton!.size.width + self.buttonBuffer, self.iconBackgroundNode!.size.width + self.buttonBuffer / 2 + self.titleNode!.calculateAccumulatedFrame().size.width)
         
         self.iconBackgroundNode?.position = CGPoint(x: width / -2 + self.iconBackgroundNode!.size.width / 2, y: height / 2 - self.iconBackgroundNode!.size.height / 2)
@@ -85,6 +100,9 @@ class RejuvDialog: DialogBackground {
         
         self.rejuvVideoButton!.position = CGPoint(x: self.rejuvVideoButton!.size.width / 2 + self.buttonBuffer / 2, y: self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.buttonBuffer - self.rejuvVideoButton!.calculateAccumulatedFrame().size.height / 2)
         
+        self.videoCountdownBackground!.position = CGPoint(x: self.rejuvVideoButton!.position.x, y: self.rejuvVideoButton!.position.y - self.rejuvVideoButton!.size.height / 2 - self.buttonBuffer / 2 - self.videoCountdownBackground!.size.height / 2)
+        self.videoCountdownProgress!.position = CGPoint(x: self.rejuvVideoButton!.position.x - (self.videoCountdownBackground!.size.width - self.videoCountdownProgress!.size.width) / 2, y: videoCountdownBackground!.position.y)
+        
         // Reset the container size
         self.resetContainerSize()
         
@@ -95,10 +113,38 @@ class RejuvDialog: DialogBackground {
         fatalError("init(coder:) has not been implemented")
     }
     
+    func showVideoCountdown() -> Bool {
+        // Get date 3 minutes ago. If time last watched > that, dont allow
+        let calendar = NSCalendar.autoupdatingCurrent
+        let requiredDate = calendar.date(byAdding: Calendar.Component.minute, value: -3, to: Date())!
+        
+        return requiredDate < GameData.sharedGameData.lastVideoAdWatch
+    }
+    
+    func getTimeDiff() -> CGFloat {
+        if !showVideoCountdown() {
+            return 0
+        } else {
+            let calendar = NSCalendar.autoupdatingCurrent
+            let compareDate = calendar.date(byAdding: Calendar.Component.minute, value: -3, to: Date())!
+            
+            return CGFloat(GameData.sharedGameData.lastVideoAdWatch.timeIntervalSince(compareDate))
+        }
+    }
+    
     func toggleRejuvVideo() {
-        if !self.dbScene!.viewController!.videoAdReady() || GameData.sharedGameData.getSelectedCharacterData().hasFreeRejuvenations() {
+        if !self.dbScene!.viewController!.videoAdReady() || GameData.sharedGameData.getSelectedCharacterData().hasFreeRejuvenations() || showVideoCountdown() {
             self.rejuvVideoButton!.forceDisabled = true
             self.rejuvVideoButton!.checkDisabled()
+        }
+        
+        if showVideoCountdown() {
+            self.videoCountdownBackground!.isHidden = false
+            self.videoCountdownProgress!.isHidden = false
+            
+            // Update counter
+            self.videoCountdownProgress = SKSpriteNode(color: UIColor(red: 251 / 255.0, green: 197 / 255.0, blue: 0 / 255.0, alpha: 1.0), size: CGSize(width: (self.getTimeDiff() / CGFloat(180.0)) * self.videoCountdownBackground!.size.width, height: self.frame.size.height / 24.0))
+            self.videoCountdownProgress!.position = CGPoint(x: self.rejuvVideoButton!.position.x - (self.videoCountdownBackground!.size.width - self.videoCountdownProgress!.size.width) / 2, y: videoCountdownBackground!.position.y)
         }
     }
 }
