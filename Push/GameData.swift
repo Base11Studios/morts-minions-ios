@@ -12,7 +12,7 @@ import Foundation
 let CloudHasMoreRecentDataThanLocal: String = "cloud_has_more_recent_data_than_local"
 
 @objc(GameData)
-class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
+class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObject
     // Singleton
     static var sharedGameData = GameData.loadInstance()
     
@@ -48,7 +48,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
     
     // Rating
     var playerHasRatedGame: Bool = false
-    var promptRateMeCountdown: Int = 9
+    var promptRateMeCountdown: Int = 20
     var promptRateMeMax: Int = 5
     
     // Store a copy of the data we got from the cloud in case it was more recent
@@ -63,8 +63,8 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
     
     // Played
     var timesPlayed: Int = 0
-    var adPopCountdown: Int = 24
-    var adPopMax: Int = 4
+    var adPopCountdown: Int = 30
+    var adPopMax: Int = 10
     
     // Cloud vs local
     var cloudSyncing: Bool = true
@@ -156,7 +156,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
     // Achievements
     let SSGameDataAchievementsCompleted: String = "achievementsCompletedKey"
     
-    func encodeWithCoder(_ encoder: NSCoder) {
+    func encode(with encoder: NSCoder) {
         encoder.encode(self.timeLastUpdated, forKey: GameData.SSGameDataLastUpdated)
         encoder.encode(self.warriorCharacter, forKey: SSGameDataWarriorCharacterKey)
         encoder.encode(self.archerCharacter, forKey: SSGameDataArcherCharacterKey)
@@ -215,6 +215,8 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
         warriorCharacter.isCharacterUnlocked = true
         
         archerCharacter = CharacterData(defaultUpgrades: Archer.getDefaultSkills())
+        archerCharacter.isCharacterUnlocked = true
+        
         mageCharacter = CharacterData(defaultUpgrades: Mage.getDefaultSkills())
         monkCharacter = CharacterData(defaultUpgrades: Monk.getDefaultSkills())
         selectedCharacter = .Warrior
@@ -225,7 +227,7 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
         super.init()
     }
 
-    init(coder decoder: NSCoder) {
+    required init(coder decoder: NSCoder) {
         if let decodedTimeLastUpdate = decoder.decodeObject(forKey: GameData.SSGameDataLastUpdated) as? Date {
             self.timeLastUpdated = decodedTimeLastUpdate
         } else {
@@ -246,6 +248,9 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
         } else {
             archerCharacter = CharacterData(defaultUpgrades: Archer.getDefaultSkills())
         }
+        
+        // Make sure archerCharacter is unlocked
+        archerCharacter.isCharacterUnlocked = true
         
         if let decodedChar = decoder.decodeObject(forKey: SSGameDataMageCharacterKey) as? CharacterData {
             mageCharacter = decodedChar
@@ -579,9 +584,9 @@ class GameData : NSObject { // TODO doesnt need to inheirit from NSObject
         }
         
         // If level 33 (this is level 1 of world 3)
-        if !self.archerCharacter.isLevelLocked(33) {
+        if !self.mageCharacter.isLevelLocked(33) {
             // Get this characters average
-            let charAvg: Double = Double(self.archerCharacter.totalRewardsEarned) / Double(self.archerCharacter.totalTimesPlayed)
+            let charAvg: Double = Double(self.mageCharacter.totalRewardsEarned) / Double(self.mageCharacter.totalTimesPlayed)
             
             // Take the best avg
             if charAvg > bestAvg {

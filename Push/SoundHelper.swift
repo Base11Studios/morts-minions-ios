@@ -40,6 +40,7 @@ class SoundHelper {
     var victorySecondary = SKAction.playSoundFileNamed(SoundType.VictorySecondary.rawValue, waitForCompletion: true)
     var wind = SKAction.playSoundFileNamed(SoundType.Wind.rawValue, waitForCompletion: true)
     var zoom = SKAction.playSoundFileNamed(SoundType.Zoom.rawValue, waitForCompletion: true)
+    var turnt = false
     
     func playSound(_ object: SKNode, sound: SoundType) {
         if GameData.sharedGameData.preferenceSoundEffects {
@@ -51,5 +52,10 @@ class SoundHelper {
         if GameData.sharedGameData.preferenceSoundEffects {
             object.run(action)
         }
+    }
+    
+    // Doing this to create the class
+    func turnOn() {
+        self.turnt = true
     }
 }
