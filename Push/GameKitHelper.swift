@@ -549,6 +549,7 @@ class GameKitHelper: NSObject {
             GKAchievement.loadAchievements(completionHandler: { (achievements: [GKAchievement]?, error: Error?) in
                 if error == nil {
                     if achievements != nil {
+                        self.achievementsCompleted.removeAll()
                         self.achievementsCompleted = achievements!
                     }
                     

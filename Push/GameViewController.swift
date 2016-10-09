@@ -10,17 +10,21 @@ import Foundation
 import GameKit
 import AVFoundation
 import LocalAuthentication
+import GoogleMobileAds
 
-class GameViewController: UIViewController, GKGameCenterControllerDelegate {
-    //var levelSelectionScene: LevelSelectionScene?
-    //var gameScene: GameScene?
-    //var introScene: IntroductionScene?
-    var loadingScene: LoadingScene?
-    //var mainMenuScene: MainMenuScene?
-    //var characterSkillScene: CharacterSkillScene?
+class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPInterstitialAdControllerDelegate, MPRewardedVideoDelegate {
+    //var loadingScene: LoadingScene
+    let REWARD_AD_ID = "b0ddefd0a8a14252a14a64da0728dade"
+    
+    //MoPubSDK
+    var interstitial: MPInterstitialAdController?
+    
+    // Video rewards
+    var presentingVideo: Bool = false
+    var completedVideo: Bool = false
+    var dismissingVideo: Bool = false
     
     var characterSkillSceneCharacter: CharacterType?
-    
     
     var sceneBeforeSkills: DBSceneType?
     
@@ -31,6 +35,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     var isReloading: Bool = false
     
     var gvcInitialized: Bool = false
+    
+    var firstTime: Bool = true
     
     // Cloud data flag - is there newer cloud data but we couldn't ask user yet
     var userNeedsToDecideOnCloudData: Bool = false
@@ -49,6 +55,13 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    override func willMove(toParentViewController parent: UIViewController?) {
+        NotificationCenter.default.removeObserver(self, name: NSUbiquitousKeyValueStore.didChangeExternallyNotification, object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: CloudHasMoreRecentDataThanLocal), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: PresentAuthenticationViewController), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: LocalPlayerIsAuthenticated), object: nil)
     }
     
     override func viewDidLoad() {
@@ -94,30 +107,60 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
             ScaleBuddy.sharedInstance.deviceSize = DeviceSizes.originaliPad
         }
         
-        // Try to auth user
-        GameKitHelper.sharedInstance.authenticateLocalPlayer(false)
-        
-        // Cache ads and such
-        self.cacheInterstitialAd()
-        self.cacheRewardedVideo()
-        
-        // Set restoration identifier
-        self.restorationIdentifier = "GameViewController"
-        
-        // Setup Music
-        self.setupMusic()
-        
-        // Setup sound
-        self.setupButtonSound()
-        
-        // Setup sound props
-        self.setSessionPlayerPassive()
-        
-        // Present first scene
-        self.presentIntroductionScene()
-        
-        // Done loading
-        isReloading = false
+        if firstTime {
+            self.firstTime = true // ADDD SET TO FALSE
+            
+            // Setup the scale helpers
+            ScaleBuddy.sharedInstance.screenSize = self.getScreenSize()
+            if ScaleBuddy.sharedInstance.screenSize.width == 667 {
+                ScaleBuddy.sharedInstance.playerHorizontalLeft = 8
+                ScaleBuddy.sharedInstance.playerHorizontalRight = 3.5
+            } else if ScaleBuddy.sharedInstance.screenSize.width == 562.5 || ScaleBuddy.sharedInstance.screenSize.width == 1024 {
+                ScaleBuddy.sharedInstance.playerHorizontalLeft = 10
+                ScaleBuddy.sharedInstance.playerHorizontalRight = 6
+            }
+            
+            if UIDevice.current.userInterfaceIdiom == .phone && ScaleBuddy.sharedInstance.screenSize.width == 562.5 {
+                ScaleBuddy.sharedInstance.deviceSize = DeviceSizes.original4
+            } else if UIDevice.current.userInterfaceIdiom == .phone && ScaleBuddy.sharedInstance.screenSize.width == 667 {
+                ScaleBuddy.sharedInstance.deviceSize = DeviceSizes.wide6
+            } else if UIDevice.current.userInterfaceIdiom == .pad {
+                ScaleBuddy.sharedInstance.deviceSize = DeviceSizes.originaliPad
+            }
+            
+            // Try to auth user
+            GameKitHelper.sharedInstance.authenticateLocalPlayer(false)
+            
+            // Cache ads and such
+            // Instantiate the interstitial using the class convenience method.
+            self.interstitial = MPInterstitialAdController(forAdUnitId: "af95a96f865b431197a07916fa38fffd")
+            self.interstitial!.delegate = self
+            MoPub.sharedInstance().initializeRewardedVideo(withGlobalMediationSettings: [], delegate: self)
+            
+            self.cacheInterstitialAd()
+            self.cacheRewardedVideo()
+            
+            // Set restoration identifier
+            self.restorationIdentifier = "GameViewController"
+            
+            // Setup Music
+            self.setupMusic()
+            
+            // Setup sound
+            self.setupButtonSound()
+            
+            // Setup sound props
+            self.setSessionPlayerPassive()
+            
+            // Create loading
+            //self.loadingScene = self.createLoadingScene()
+            
+            // Present first scene
+            self.presentIntroductionScene()
+            
+            // Done loading
+            isReloading = false
+        }
     }
     
     func setupMusic() {
@@ -231,7 +274,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        self.presentIntroductionScene()
     }
     
     override var shouldAutorotate : Bool {
@@ -499,20 +541,20 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         let skView: SKView = self.view as! SKView
         
         // Present the scene - pass through regulator
-        self.presentDBScene(skView, scene: self.loadingScene!, ignoreMusic: false)
+        self.presentDBScene(skView, scene: self.createLoadingScene(), ignoreMusic: false)
         
         presentGameSceneLevel(level, justRestarted: justRestarted)
     }
     
     func presentLoadingScreen(ignoreMusic: Bool) {
-        if self.loadingScene == nil {
-            self.loadingScene = self.createLoadingScene()
-        }
+        //if self.loadingScene == nil {
+        //    self.loadingScene = self.createLoadingScene()
+        //}
         
         let skView: SKView = self.view as! SKView
         
         // Present the scene - pass through regulator
-        self.presentDBScene(skView, scene: self.loadingScene!, ignoreMusic: ignoreMusic)
+        self.presentDBScene(skView, scene: self.createLoadingScene(), ignoreMusic: ignoreMusic)
     }
     
     func createLoadingScene() -> LoadingScene {
@@ -646,29 +688,65 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         }
     }
     
+    func videoAdReady() -> Bool {
+        return MPRewardedVideo.hasAdAvailable(forAdUnitID: REWARD_AD_ID)
+        //return Chartboost.hasRewardedVideo(CBLocationGameOver)
+        //return GADRewardBasedVideoAd.sharedInstance().isReady
+    }
+    
     func showRewardedVideo() {
+        self.presentingVideo = true
+        self.dismissingVideo = false
+        
+        if MPRewardedVideo.hasAdAvailable(forAdUnitID: REWARD_AD_ID) {
+            MPRewardedVideo.presentAd(forAdUnitID: REWARD_AD_ID, from: self)
+        }
+        
         // Show rewarded video pre-roll message and video ad at location MainMenu. See Chartboost.h for available location options.
-        Chartboost.showRewardedVideo(CBLocationGameOver)
+        //Chartboost.showRewardedVideo(CBLocationGameOver)
+
+        /*if self.videoAdReady() {
+            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
+
+        } else {
+
+        }*/
     }
     
     func showInterstitialAd() {
         if !GameData.sharedGameData.adsUnlocked {
-            // App delegate needs to record we're trying to show
-            AdSupporter.sharedInstance.adReady = false
-            
             // Show interstitial at main menu
-            Chartboost.showInterstitial(CBLocationMainMenu)
+            //Chartboost.showInterstitial(CBLocationMainMenu)
+            if self.interstitial!.ready {
+                self.interstitial!.show(from: self)
+            }
         }
     }
     
+    func interstitialAdReady() -> Bool {
+        return self.interstitial!.ready
+    }
+    
     func cacheInterstitialAd() {
-        if !GameData.sharedGameData.adsUnlocked {
-            Chartboost.cacheInterstitial(CBLocationMainMenu)
+        if !GameData.sharedGameData.adsUnlocked && !self.interstitialAdReady() {
+            
+            // Fetch the interstitial ad.
+            self.interstitial!.loadAd()
+            
+            //Chartboost.cacheInterstitial(CBLocationMainMenu)
         }
     }
     
     func cacheRewardedVideo() {
-        Chartboost.cacheRewardedVideo(CBLocationMainMenu)
+        if !self.videoAdReady() {
+            MPRewardedVideo.loadAd(withAdUnitID: REWARD_AD_ID, withMediationSettings: [])
+        }
+        /*let request = GADRequest()
+        // Requests test ads on test devices.
+
+        request.testDevices = ["fa25ccf46baf21a9189bbb36e020a8ef"]
+        GADRewardBasedVideoAd.sharedInstance().load(request, withAdUnitID: "ca-app-pub-4505737160765142/2684998717")*/
+        //Chartboost.cacheRewardedVideo(CBLocationGameOver)
     }
     
     // Game Center
@@ -696,5 +774,120 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate {
         GameData.sharedGameData.save()
         //}
         
+    }
+    
+    // ******************************** INTERSTITIAL ADS **********************
+    /**
+     * Sent after an interstitial ad object has been dismissed from the screen, returning control
+     * to your application.
+     *
+     * Your implementation of this method should resume any application activity that was paused
+     * prior to the interstitial being presented on-screen.
+     *
+     * @param interstitial The interstitial ad object sending the message.
+     */
+    func interstitialDidDisappear(_ interstitial: MPInterstitialAdController!) {
+        // Move on to tutorials
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
+    }
+    
+    /** @name Detecting When an Interstitial Ad Expires */
+    
+    /**
+     * Sent when a loaded interstitial ad is no longer eligible to be displayed.
+     *
+     * Interstitial ads from certain networks may expire their content at any time,
+     * even if the content is currently on-screen. This method notifies you when the currently-
+     * loaded interstitial has expired and is no longer eligible for display.
+     *
+     * If the ad was on-screen when it expired, you can expect that the ad will already have been
+     * dismissed by the time this message is sent.
+     *
+     * Your implementation may include a call to `loadAd` to fetch a new ad, if desired.
+     *
+     * @param interstitial The interstitial ad object sending the message.
+     */
+    func interstitialDidExpire(_ interstitial: MPInterstitialAdController!) {
+        self.cacheInterstitialAd()
+    }
+    
+    /**
+     * Sent when the user taps the interstitial ad and the ad is about to perform its target action.
+     *
+     * This action may include displaying a modal or leaving your application. Certain ad networks
+     * may not expose a "tapped" callback so you should not rely on this callback to perform
+     * critical tasks.
+     *
+     * @param interstitial The interstitial ad object sending the message.
+     */
+    func interstitialDidReceiveTapEvent(_ interstitial: MPInterstitialAdController!) {
+        AdSupporter.sharedInstance.showPauseMenu = true
+    }
+    
+    func interstitialDidAppear(_ interstitial: MPInterstitialAdController!) {
+        //NSLog("test")
+    }
+    
+    // ************************* REWARDED VIDEO CALLBACKS *************
+    
+    // Or will appear?
+    func rewardedVideoAdDidAppear(forAdUnitID adUnitID: String!) {
+        // Remove the loading dialog
+        //self.dismissLoadingDialog() Shouldn't need anymore
+        
+        // Store something to show we presented a video
+        self.presentingVideo = true
+        self.dismissingVideo = false
+        self.completedVideo = false
+    }
+    
+    func rewardedVideoAdShouldReward(forAdUnitID adUnitID: String!, reward: MPRewardedVideoReward!) {
+        self.endVideoSuccessfully()
+    }
+    
+    // Or will disappear??
+    func rewardedVideoAdDidDisappear(forAdUnitID adUnitID: String!) {
+        // If video was completed, dont do anything, otherwise send dismiss dialog if not done
+        if !self.completedVideo && self.presentingVideo && !self.dismissingVideo {
+            self.endVideoUnsuccessfully()
+        } else if !self.dismissingVideo && self.completedVideo {
+            self.endVideoSuccessfully()
+        }
+    }
+    
+    func rewardedVideoAdDidExpire(forAdUnitID adUnitID: String!) {
+        self.cacheRewardedVideo()
+    }
+    
+    func rewardedVideoAdDidReceiveTapEvent(forAdUnitID adUnitID: String!) {
+        // Store that the video was completed.
+        if self.presentingVideo && !self.completedVideo {
+            self.completedVideo = true
+        }
+    }
+    
+    private func dismissLoadingDialog() {
+        // Send notification that gamescene will pick up
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "DismissLoadingDialog"), object: nil)
+    }
+    
+    private func endVideoSuccessfully() {
+        // Send notification that gamescene will pick up
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "RejuvenatePlayer"), object: nil)
+        
+        // Reset flags
+        self.presentingVideo = false
+        self.completedVideo = false
+        self.dismissingVideo = true
+    }
+    
+    private func endVideoUnsuccessfully() {
+        // Send notification that the gamescene will pick up
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "DontRejuvenatePlayer"), object: nil)
+        
+        // Reset flags
+        self.presentingVideo = false
+        self.completedVideo = false
+        self.dismissingVideo = true
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 
 @objc(CharacterData)
-class CharacterData : NSObject { // TODO doesnt have to extend this after objc conversion
+class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this after objc conversion
     // Store all level progress here
     var levelProgress: [Int : LevelData] = [:]
     var levelsPerWorld: Int = 16
@@ -123,7 +123,7 @@ class CharacterData : NSObject { // TODO doesnt have to extend this after objc c
     let SSGameDataLongestCitrineStreakKey: String = "longestCitrineStreak"
     let SSGameDataPlaysToBeatWorld4Key: String = "playsToBeatWorld4"
     
-    func encodeWithCoder(_ encoder: NSCoder) {
+    func encode(with encoder: NSCoder) {
         encoder.encode(self.levelProgress, forKey: SSGameDataLevelProgressKey)
         encoder.encode(self.spentStars, forKey: SSGameDataSpentStarsKey)
         encoder.encode(self.spentCitrine, forKey: SSGameDataSpentCitrineKey)
@@ -159,7 +159,7 @@ class CharacterData : NSObject { // TODO doesnt have to extend this after objc c
         super.init()
     }
     
-    init(coder decoder: NSCoder) {
+    required init(coder decoder: NSCoder) {
         if let levelProgress: [Int : LevelData] = decoder.decodeObject(forKey: SSGameDataLevelProgressKey) as? [Int : LevelData] {
             self.levelProgress = levelProgress
         } else {

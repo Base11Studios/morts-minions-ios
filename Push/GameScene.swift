@@ -135,6 +135,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     var rejuvHeartDialogAction: SKAction = SKAction()
     var rejuvHeartDialogDisplayAction: SKAction = SKAction()
     var rejuvHeartDialogDismissAction: SKAction = SKAction()
+    var rejuvHeartDialogDismissStayPausedAction: SKAction = SKAction()
     var rejuvHeartDialogDismissAndEndLevelAction: SKAction = SKAction()
     var rejuvHeartDialogWaitThenDismissAndEndLevelAction: SKAction = SKAction()
     var rejuvHeartDialogWaitAction: SKAction = SKAction()
@@ -163,6 +164,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     var worldViewForegrounds = Array<SKSpriteNode>()
     var worldViewEnvironmentObjects = Array<EnvironmentObject>()
     var worldViewPlayerProjectiles = Array<PlayerProjectile>()
+    
+    // Used for displaying pregame pops
+    var firstMoveToScene: Bool = true
     
     // Point functions
     func dbAdd(_ a: CGPoint, b: CGPoint) -> CGPoint {
@@ -203,6 +207,13 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         //NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("setStayPaused"), name: "StayPausedNotification", object: nil)
         
         super.didMove(to: view)
+        
+        if self.firstMoveToScene {
+            self.firstMoveToScene = false
+            
+            // Kick off display of pre-game pops
+            self.displayPregamePops()
+        }
     }
     
     override func willMove(from view: SKView) {
@@ -364,8 +375,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         //GameData.sharedGameData.save()
         
-        // Kick off display of pre-game pops
-        self.displayPregamePops()
+        self.showPauseMenu = false
+        self.pauseGame()
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -379,7 +390,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.showPauseMenu = false
             self.pauseGame()
             self.storyDialogs![0].isHidden = false
-        } else if (GameData.sharedGameData.adPopCountdown <= 0 /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/) && AdSupporter.sharedInstance.adReady && !self.adsPresented && !GameData.sharedGameData.adsUnlocked {
+        } else if (GameData.sharedGameData.adPopCountdown <= 0 /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/) && viewController!.interstitialAdReady() && !self.adsPresented && !GameData.sharedGameData.adsUnlocked {
             // Then ads
             // Show the ad
             viewController!.showInterstitialAd()
@@ -422,7 +433,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     // Create a functon that will be called by posted notifications of interstitial being closed.
     func dismissStaticAds() {
         // Make sure it closes
-        Chartboost.closeImpression()
+        //Chartboost.closeImpression()
         
         self.displayPregamePops()
         //viewController!.cacheInterstitialAd()
@@ -875,7 +886,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     // Call when we're ready to rejuvenate
     func rejuvenatePlayer() {
         // Make sure we dismiss the video dialog
-        Chartboost.closeImpression()
+        //Chartboost.closeImpression()
         
         // Rejuvenate player and remove dialog through 1 sec slideout
         var hearts = 2
@@ -889,19 +900,35 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             hearts += 1
         }
         self.rejuvPlayer(hearts)
-        self.dismissRejuvDialog()
+        self.dismissRejuvDialogStayPaused()
+        self.showPauseMenu = true
+        self.pauseGame()
     }
     
     func setRejuvDialogDisplayed() {
         self.rejuvDialog!.removeAllActions()
         self.removeAction(forKey: ACTION_KEY_REJUV_DIALOG)
         self.rejuvDialog!.position = CGPoint(x: self.frame.size.width / 2, y: self.frame.size.height / 2)
+        self.unhideRejuvDialog()
+    }
+    
+    func unhideRejuvDialog() {
+        self.rejuvDialog!.toggleRejuvVideo()
         self.rejuvDialog!.isHidden = false
     }
     
     func dismissRejuvDialog() {
         //setRejuvDialogDisplayed()
         self.rejuvDialog!.run(self.rejuvHeartDialogDismissAction, withKey: ACTION_KEY_REJUV_DIALOG)
+        
+        if self.playerRejuved == false {
+            self.rejuvAllowed = false
+        }
+    }
+    
+    func dismissRejuvDialogStayPaused() {
+        //setRejuvDialogDisplayed()
+        self.rejuvDialog!.run(self.rejuvHeartDialogDismissStayPausedAction, withKey: ACTION_KEY_REJUV_DIALOG)
         
         if self.playerRejuved == false {
             self.rejuvAllowed = false
@@ -927,7 +954,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     func dismissRejuvDialogWaitAndEndLevel() {
         // Make sure we dismiss the video dialog
-        Chartboost.closeImpression()
+        //Chartboost.closeImpression()
         
         self.rejuvDialog!.run(self.rejuvHeartDialogWaitThenDismissAndEndLevelAction, withKey: ACTION_KEY_REJUV_DIALOG)
     }
@@ -947,6 +974,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 [weak self] in
                 
                 if self != nil {
+                    self?.rejuvDialog!.toggleRejuvVideo()
                     self?.rejuvDialog!.isHidden = false
                 }
             }),
@@ -963,7 +991,19 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                     self?.promptingForRejuv = false
                     self?.unpauseGame()
                 }
-            })
+                })
+            ])
+        
+        self.rejuvHeartDialogDismissStayPausedAction = SKAction.sequence([
+            SKAction.move(to: CGPoint(x: self.frame.size.width / 2, y: 0 - self.rejuvDialog!.calculateAccumulatedFrame().size.height / 2), duration: 0.25),
+            SKAction.run({
+                [weak self] in
+                
+                if self != nil {
+                    self?.rejuvDialog!.isHidden = true
+                    self?.promptingForRejuv = false
+                }
+                })
             ])
         
         self.rejuvHeartDialogWaitAction = SKAction.wait(forDuration: 3)
@@ -1036,7 +1076,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func loadEndOfLevelDialog(_ score: LevelScore) {
-        // Cache ads
         // Video reward - cache
         self.viewController!.cacheRewardedVideo()
         // Interstitial
@@ -1442,10 +1481,12 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         self.worldView.removeAllActions()
         self.rejuvDialog!.removeAllActions()
+        self.endOfLevelDialog.removeAllActions()
         
         self.rejuvHeartDialogAction = SKAction()
         self.rejuvHeartDialogWaitAction = SKAction()
         self.rejuvHeartDialogDismissAction = SKAction()
+        self.rejuvHeartDialogDismissStayPausedAction = SKAction()
         self.rejuvHeartDialogDisplayAction = SKAction()
         self.rejuvHeartDialogAction = SKAction()
         self.rejuvHeartDialogDismissAndEndLevelAction = SKAction()
@@ -1886,10 +1927,10 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Need to know the prev dialog
         var previousDialog: TutorialDialog?
         
-        let firstPop: Int = 16
-        let secondPop: Int = 20
+        let firstPop: Int = 20
+        let secondPop: Int = 25
         
-        // If timesplayed == 16 or 20, pop character talking to user
+        // If timesplayed == 16 or 24, pop character talking to user
         if !GameData.sharedGameData.adsUnlocked && (GameData.sharedGameData.timesPlayed == firstPop || GameData.sharedGameData.timesPlayed == secondPop) {
             // Get the version information
             let key = "timesPlayedAdvertisement\(GameData.sharedGameData.timesPlayed)"
@@ -1903,7 +1944,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             
             // Create dialog
             let title = "Unlock Ads"
-            let description = "Purchase gems and we won't show static ads."
+            let description = "Purchase gems and we won't show level ads."
             
             let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: true, key: key, version: version, prependText: false)
             
@@ -2124,7 +2165,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.skill4Button?.isPaused = true
         }
         
-        self.backgroundPlayer?.volume = 0.3
+        self.backgroundPlayer?.volume = 0.0
     }
     
     func setStayPaused() {
@@ -2269,6 +2310,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func initializeSound() {
+        // Init sound helper
+        SoundHelper.sharedInstance.turnOn()
+        
         // For now we are just going to have the sound icons in the game view controller... we will add here later
         if GameData.sharedGameData.preferenceMusic {
             guard let path = Bundle.main.url(forResource: self.worldName, withExtension: "m4a") else {

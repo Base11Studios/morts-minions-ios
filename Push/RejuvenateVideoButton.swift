@@ -54,15 +54,15 @@ class RejuvenateVideoButton : DBButton {
     override func touchesEndedAction() {
         self.setScale(1)
         
-        // Remove the current animation
-        (self.dbScene as! GameScene).setRejuvDialogDisplayed()
-        // Store on the app delegate that we're going to try to load something
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        appDelegate.presentingVideo = true
-        self.dbScene!.viewController!.showRewardedVideo()
-        
-        // Start loading screen
-        self.dbScene!.startLoadingOverlay()
+        if self.dbScene!.viewController!.videoAdReady() {
+            // Remove the current animation
+            (self.dbScene as! GameScene).setRejuvDialogDisplayed()
+
+            self.dbScene!.viewController!.showRewardedVideo()
+            
+            // Start loading screen
+            //self.dbScene!.startLoadingOverlay()
+        }
         
         self.forceDisabled = true
         self.checkDisabled()
