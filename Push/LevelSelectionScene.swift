@@ -76,7 +76,7 @@ class LevelSelectionScene : DBScene {
         self.backdropBar = SKSpriteNode(texture: SKTexture(imageNamed: "backdrop_bar"))
         
         // Call super init
-        super.init(size: size, settings: false, loadingOverlay: true, purchaseMenu: false, rateMe: false)
+        super.init(size: size, settings: false, loadingOverlay: true, purchaseMenu: false, rateMe: false, trade: false)
         
         self.levelSelector.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         
@@ -502,14 +502,14 @@ class LevelSelectionScene : DBScene {
         self.totalStarsIcon?.position = CGPoint(x: self.skillsButton!.position.x - self.skillsButton!.size.width/2 - self.totalStarsIcon!.size.width / 2 - nodeBuffer * 2, y: self.backdropBar.position.y)
         
         // Star label
-        self.totalStars?.setText("\(GameData.sharedGameData.getSelectedCharacterData().totalStars)")
+        self.totalStars?.setText("\(GameData.sharedGameData.getSelectedCharacterData().unspentStars)")
         self.totalStars?.position = CGPoint(x: self.totalStarsIcon!.position.x - self.totalStarsIcon!.size.width/2 - nodeBuffer/5, y: self.backdropBar.position.y)
         
         // Citrine icon
         self.totalCitrineIcon?.position = CGPoint(x: self.totalStars!.position.x - self.totalStars!.calculateAccumulatedFrame().width - nodeBuffer * 1 - self.totalCitrineIcon!.size.width/2, y: self.backdropBar.position.y)
         
         // Citrine label
-        self.totalCitrine?.setText("\(GameData.sharedGameData.getSelectedCharacterData().totalCitrine)")
+        self.totalCitrine?.setText("\(GameData.sharedGameData.getSelectedCharacterData().unspentCitrine)")
         self.totalCitrine?.position = CGPoint(x: self.totalCitrineIcon!.position.x - self.totalCitrineIcon!.size.width/2 - nodeBuffer/5, y: self.backdropBar.position.y)
         
         // Diamonds icon
