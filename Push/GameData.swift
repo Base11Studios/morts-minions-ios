@@ -49,7 +49,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     // Rating
     var playerHasRatedGame: Bool = false
     var promptRateMeCountdown: Int = 20
-    var promptRateMeMax: Int = 5
+    var promptRateMeMax: Int = 6
     
     // Store a copy of the data we got from the cloud in case it was more recent
     var unarchivedCloudData: GameData?
@@ -68,6 +68,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     
     // Ads
     var lastVideoAdWatch: Date
+    var videoAdCooldown: Int = -2
     
     // Cloud vs local
     var cloudSyncing: Bool = true
@@ -230,7 +231,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         self.timeLastUpdated = Date(timeIntervalSince1970: TimeInterval(0))
         
         let calendar = NSCalendar.autoupdatingCurrent
-        self.lastVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: -3, to: Date())!
+        self.lastVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: GameData.sharedGameData.videoAdCooldown, to: Date())!
         
         super.init()
     }
@@ -246,7 +247,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
             self.lastVideoAdWatch = decodedLastVideoAdWatch
         } else {
             let calendar = NSCalendar.autoupdatingCurrent
-            self.lastVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: -3, to: Date())!
+            self.lastVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: GameData.sharedGameData.videoAdCooldown, to: Date())!
         }
         
         if let decodedChar = decoder.decodeObject(forKey: SSGameDataWarriorCharacterKey) as? CharacterData {

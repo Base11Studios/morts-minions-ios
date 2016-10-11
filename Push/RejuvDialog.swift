@@ -116,7 +116,7 @@ class RejuvDialog: DialogBackground {
     func showVideoCountdown() -> Bool {
         // Get date 3 minutes ago. If time last watched > that, dont allow
         let calendar = NSCalendar.autoupdatingCurrent
-        let requiredDate = calendar.date(byAdding: Calendar.Component.minute, value: -3, to: Date())!
+        let requiredDate = calendar.date(byAdding: Calendar.Component.minute, value: GameData.sharedGameData.videoAdCooldown, to: Date())!
         
         return requiredDate < GameData.sharedGameData.lastVideoAdWatch
     }
@@ -126,7 +126,7 @@ class RejuvDialog: DialogBackground {
             return 0
         } else {
             let calendar = NSCalendar.autoupdatingCurrent
-            let compareDate = calendar.date(byAdding: Calendar.Component.minute, value: -3, to: Date())!
+            let compareDate = calendar.date(byAdding: Calendar.Component.minute, value: GameData.sharedGameData.videoAdCooldown, to: Date())!
             
             return CGFloat(GameData.sharedGameData.lastVideoAdWatch.timeIntervalSince(compareDate))
         }
