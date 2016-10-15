@@ -1046,11 +1046,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Push/CharacterSkillScene.swift"
-            timestampString = "497492236.102913"
+            timestampString = "498229651.940417"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "430"
-            endingLineNumber = "430"
+            startingLineNumber = "371"
+            endingLineNumber = "371"
             landmarkName = "addSkillsToScrollingNode()"
             landmarkType = "7">
          </BreakpointContent>
@@ -1572,11 +1572,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Push/CharacterData.swift"
-            timestampString = "497474942.333726"
+            timestampString = "498229651.940417"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "132"
-            endingLineNumber = "132"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "encode(with:)"
             landmarkType = "7">
          </BreakpointContent>

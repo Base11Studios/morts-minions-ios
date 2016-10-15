@@ -11,83 +11,13 @@
 		</dict>
 		<dict>
 			<key>Cost</key>
-			<integer>3</integer>
-			<key>Currency</key>
-			<string>stars</string>
-		</dict>
-		<dict>
-			<key>Cost</key>
-			<integer>5</integer>
+			<integer>2</integer>
 			<key>Currency</key>
 			<string>stars</string>
 		</dict>
 		<dict>
 			<key>Cost</key>
 			<integer>3</integer>
-			<key>Currency</key>
-			<string>citrine</string>
-		</dict>
-		<dict>
-			<key>Cost</key>
-			<integer>7</integer>
-			<key>Currency</key>
-			<string>stars</string>
-		</dict>
-		<dict>
-			<key>Cost</key>
-			<integer>6</integer>
-			<key>Currency</key>
-			<string>citrine</string>
-		</dict>
-	</array>
-	<array>
-		<dict>
-			<key>Cost</key>
-			<integer>8</integer>
-			<key>Currency</key>
-			<string>stars</string>
-		</dict>
-		<dict>
-			<key>Cost</key>
-			<integer>4</integer>
-			<key>Currency</key>
-			<string>stars</string>
-		</dict>
-		<dict>
-			<key>Cost</key>
-			<integer>6</integer>
-			<key>Currency</key>
-			<string>stars</string>
-		</dict>
-		<dict>
-			<key>Cost</key>
-			<integer>4</integer>
-			<key>Currency</key>
-			<string>citrine</string>
-		</dict>
-		<dict>
-			<key>Cost</key>
-			<integer>8</integer>
-			<key>Currency</key>
-			<string>stars</string>
-		</dict>
-		<dict>
-			<key>Cost</key>
-			<integer>6</integer>
-			<key>Currency</key>
-			<string>citrine</string>
-		</dict>
-	</array>
-	<array>
-		<dict>
-			<key>Cost</key>
-			<integer>10</integer>
-			<key>Currency</key>
-			<string>stars</string>
-		</dict>
-		<dict>
-			<key>Cost</key>
-			<integer>6</integer>
 			<key>Currency</key>
 			<string>stars</string>
 		</dict>
@@ -101,25 +31,31 @@
 			<key>Cost</key>
 			<integer>4</integer>
 			<key>Currency</key>
-			<string>citrine</string>
-		</dict>
-		<dict>
-			<key>Cost</key>
-			<integer>12</integer>
-			<key>Currency</key>
 			<string>stars</string>
 		</dict>
 		<dict>
 			<key>Cost</key>
-			<integer>7</integer>
+			<integer>14</integer>
 			<key>Currency</key>
-			<string>citrine</string>
+			<string>stars</string>
 		</dict>
 	</array>
 	<array>
 		<dict>
 			<key>Cost</key>
-			<integer>13</integer>
+			<integer>4</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>3</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>4</integer>
 			<key>Currency</key>
 			<string>stars</string>
 		</dict>
@@ -131,7 +67,39 @@
 		</dict>
 		<dict>
 			<key>Cost</key>
-			<integer>12</integer>
+			<integer>5</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>14</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>Cost</key>
+			<integer>8</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>4</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>4</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>11</integer>
 			<key>Currency</key>
 			<string>stars</string>
 		</dict>
@@ -139,8 +107,54 @@
 			<key>Cost</key>
 			<integer>5</integer>
 			<key>Currency</key>
-			<string>citrine</string>
+			<string>stars</string>
 		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>15</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>Cost</key>
+			<integer>12</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>4</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>5</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>12</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>6</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>16</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+	</array>
+	<array>
 		<dict>
 			<key>Cost</key>
 			<integer>16</integer>
@@ -149,27 +163,7 @@
 		</dict>
 		<dict>
 			<key>Cost</key>
-			<integer>7</integer>
-			<key>Currency</key>
-			<string>citrine</string>
-		</dict>
-	</array>
-	<array>
-		<dict>
-			<key>Cost</key>
-			<integer>15</integer>
-			<key>Currency</key>
-			<string>stars</string>
-		</dict>
-		<dict>
-			<key>Cost</key>
-			<integer>12</integer>
-			<key>Currency</key>
-			<string>stars</string>
-		</dict>
-		<dict>
-			<key>Cost</key>
-			<integer>15</integer>
+			<integer>5</integer>
 			<key>Currency</key>
 			<string>stars</string>
 		</dict>
@@ -177,19 +171,25 @@
 			<key>Cost</key>
 			<integer>6</integer>
 			<key>Currency</key>
-			<string>citrine</string>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>13</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>7</integer>
+			<key>Currency</key>
+			<string>stars</string>
 		</dict>
 		<dict>
 			<key>Cost</key>
 			<integer>18</integer>
 			<key>Currency</key>
 			<string>stars</string>
-		</dict>
-		<dict>
-			<key>Cost</key>
-			<integer>10</integer>
-			<key>Currency</key>
-			<string>citrine</string>
 		</dict>
 	</array>
 </array>
