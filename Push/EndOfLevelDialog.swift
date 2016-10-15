@@ -24,7 +24,7 @@ class EndOfLevelDialog: DialogBackground {
     var starButton1: StarButton
     var starButton2: StarButton
     var starButton3: StarButton
-    var superstarButton1: SuperstarButton
+    var superstarButton1: StarButton
     
     // Labels
     var totalScoreLabel: SKLabelNode
@@ -93,7 +93,7 @@ class EndOfLevelDialog: DialogBackground {
         self.starButton1 = StarButton()
         self.starButton2 = StarButton()
         self.starButton3 = StarButton()
-        self.superstarButton1 = SuperstarButton()
+        self.superstarButton1 = StarButton()
         
         // Skills
         self.levelHintDescription = DSMultilineLabelNode()
@@ -134,7 +134,7 @@ class EndOfLevelDialog: DialogBackground {
         self.starButton1 = StarButton(scene: scene)
         self.starButton2 = StarButton(scene: scene)
         self.starButton3 = StarButton(scene: scene)
-        self.superstarButton1 = SuperstarButton(scene: scene)
+        self.superstarButton1 = StarButton(scene: scene)
         
         // Skills
         self.levelHintDescription = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
@@ -351,7 +351,7 @@ class EndOfLevelDialog: DialogBackground {
         tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
         
         if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Earn stars and superstars by getting a better score.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Earn stars by getting a better score.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: 0, y: self.starButton2.position.y - self.starButton2.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
             tutorial.color = MerpColors.nothing
             self.uxTutorialTooltips!.append(tutorial)

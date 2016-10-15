@@ -10,7 +10,7 @@ import Foundation
 
 class TradeMenu: DialogBackground {
     var buy1Button: TradeGemsForStarsButton
-    //var buy2Button: TradeGemsForStarsButton
+    var buy2Button: TradeGemsForStarsButton
     
     var backButton: TradeBackButton
     
@@ -51,8 +51,8 @@ class TradeMenu: DialogBackground {
     
     init(frameSize : CGSize, scene: DBScene) {
         // Create the buttons
-        self.buy1Button = TradeGemsForStarsButton(scene: scene, amount: 3, cost: 50, type: "star")
-        //self.buy2Button = TradeGemsForStarsButton(scene: scene, amount: 1, cost: 50, type: "superstar")
+        self.buy1Button = TradeGemsForStarsButton(scene: scene, amount: 1, cost: 20, type: "star")
+        self.buy2Button = TradeGemsForStarsButton(scene: scene, amount: 3, cost: 50, type: "star")
         
         self.backButton = TradeBackButton(scene: scene)
         
@@ -63,7 +63,7 @@ class TradeMenu: DialogBackground {
         self.totalStarsIcon = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("star"))
         
         //self.totalSuperstarsText = LabelWithShadow(fontNamed: "Avenir-Medium", darkFont: false, borderSize: 1 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
-        //self.totalSuperstarsIcon = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("superstar"))
+        //.totalSuperstarsIcon = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("superstar"))
         
         self.title = SKLabelNode(fontNamed: "Avenir-Medium")
         
@@ -92,16 +92,14 @@ class TradeMenu: DialogBackground {
         self.totalStarsText.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
         self.totalStarsText.setText("\(GameData.sharedGameData.totalDiamonds)")
         
-        /*
         // SS icon
-        self.totalSuperstarsIcon.setScale(0.74)
+        //self.totalSuperstarsIcon.setScale(0.74)
         
         // SS label
-        self.totalSuperstarsText.setFontSize(round(25 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
-        self.totalSuperstarsText.setHorizontalAlignmentMode(SKLabelHorizontalAlignmentMode.right)
-        self.totalSuperstarsText.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
-        self.totalSuperstarsText.setText("\(GameData.sharedGameData.totalDiamonds)")
-        */
+        //self.totalSuperstarsText.setFontSize(round(25 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
+        //self.totalSuperstarsText.setHorizontalAlignmentMode(SKLabelHorizontalAlignmentMode.right)
+        //self.totalSuperstarsText.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
+        //self.totalSuperstarsText.setText("\(GameData.sharedGameData.totalDiamonds)")
         
         // Title
         self.title.fontSize = round(28 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
@@ -112,15 +110,15 @@ class TradeMenu: DialogBackground {
         
         // Header and footer
         // Header
-        self.headerText!.paragraphWidth = self.buy1Button.size.width + buffer
+        self.headerText!.paragraphWidth = self.buy2Button.size.width * 2 + buffer
         self.headerText!.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.headerText!.fontColor = MerpColors.darkFont
-        self.headerText!.text = "Use gems to boost " + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) + "'s stars and superstars."
+        self.headerText!.text = "Use gems to boost " + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) + "'s stars."
         
         // Positioning
-        let buttonAndBufferWidth = self.buy1Button.size.width / 2 + buffer / 2
-        let buttonAndBufferHeight = self.buy1Button.size.height / 2 + buffer / 2
-        self.totalWidth = self.buy1Button.size.width// + buffer
+        let buttonAndBufferWidth = self.buy2Button.size.width / 2 + buffer / 2
+        let buttonAndBufferHeight = self.buy2Button.size.height / 2 + buffer / 2
+        self.totalWidth = self.buy2Button.size.width * 2 + buffer
         self.totalHeight = self.buy1Button.size.height + self.backButton.size.height + self.title.calculateAccumulatedFrame().size.height + self.headerText!.calculateAccumulatedFrame().size.height + self.buttonBuffer * 3
         
         self.title.position = CGPoint(x: -buttonAndBufferWidth - self.buy1Button.size.width / 2 + self.title.calculateAccumulatedFrame().size.width / 2, y: self.totalHeight! / 2 - self.title.calculateAccumulatedFrame().size.height / 2)
@@ -128,13 +126,13 @@ class TradeMenu: DialogBackground {
         self.headerText!.position = CGPoint(x: (-self.totalWidth! + self.headerText!.calculateAccumulatedFrame().size.width) / 2, y: self.title.position.y - self.title.calculateAccumulatedFrame().size.height / 2 - self.headerText!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
         
         self.buy1Button.position = CGPoint(x: -buttonAndBufferWidth, y: self.headerText!.position.y - self.headerText!.calculateAccumulatedFrame().size.height / 2 - self.buy1Button.size.height / 2 - self.buttonBuffer)
-        //self.buy2Button.position = CGPoint(x: buttonAndBufferWidth, y: self.buy1Button.position.y)
+        self.buy2Button.position = CGPoint(x: buttonAndBufferWidth, y: self.buy1Button.position.y)
         
         // Footer
-        self.backButton.position = CGPoint(x: self.buy1Button.position.x + self.buy1Button.size.width / 2 - self.backButton.size.width / 2, y: self.buy1Button.position.y - self.buy1Button.size.height / 2 - self.backButton.size.height / 2 - self.buffer)
+        self.backButton.position = CGPoint(x: self.buy2Button.position.x + self.buy2Button.size.width / 2 - self.backButton.size.width / 2, y: self.buy2Button.position.y - self.buy2Button.size.height / 2 - self.backButton.size.height / 2 - self.buffer)
         
         self.container.addChild(self.buy1Button)
-        //self.container.addChild(self.buy2Button)
+        self.container.addChild(self.buy2Button)
         self.container.addChild(self.totalGemsIcon)
         self.container.addChild(self.totalGemsText)
         self.container.addChild(self.totalStarsIcon)
@@ -160,7 +158,7 @@ class TradeMenu: DialogBackground {
         //self.totalSuperstarsText.setText("\(GameData.sharedGameData.getSelectedCharacterData().unspentCitrine)")
         
         // Diamonds icon
-        self.totalStarsIcon.position = CGPoint(x: self.buy1Button.size.width / 2 + buffer / 2 + self.buy1Button.size.width / 2 - self.totalStarsIcon.size.width/2, y: self.title.position.y)
+        self.totalStarsIcon.position = CGPoint(x: self.buy2Button.size.width / 2 + buffer / 2 + self.buy2Button.size.width / 2 - self.totalStarsIcon.size.width/2, y: self.title.position.y)
         
         self.totalStarsText.position = CGPoint(x: self.totalStarsIcon.position.x - self.totalStarsIcon.size.width/2 - buffer/5, y: self.totalStarsIcon.position.y)
         

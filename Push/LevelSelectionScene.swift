@@ -37,10 +37,10 @@ class LevelSelectionScene : DBScene {
     
     // Character stars
     var totalStars: LabelWithShadow?
-    var totalCitrine: LabelWithShadow?
+    //var totalCitrine: LabelWithShadow?
     var totalDiamonds: LabelWithShadow?
     var totalStarsIcon: SKSpriteNode?
-    var totalCitrineIcon: SKSpriteNode?
+    //var totalCitrineIcon: SKSpriteNode?
     var totalDiamondsIcon: SKSpriteNode?
     
     var totalLevels: Int = 0
@@ -87,11 +87,11 @@ class LevelSelectionScene : DBScene {
         
         // Level progress
         self.totalStars = LabelWithShadow(fontNamed: "Avenir-Medium", darkFont: false)
-        self.totalCitrine = LabelWithShadow(fontNamed: "Avenir-Medium", darkFont: false)
+        //self.totalCitrine = LabelWithShadow(fontNamed: "Avenir-Medium", darkFont: false)
         self.totalDiamonds = LabelWithShadow(fontNamed: "Avenir-Medium", darkFont: false)
         
         self.totalStarsIcon = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("star"))
-        self.totalCitrineIcon = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("superstar"))
+        //self.totalCitrineIcon = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("superstar"))
         self.totalDiamondsIcon = SKSpriteNode(texture: GameTextures.sharedInstance.uxAtlas.textureNamed("gem"))
         
         // Mask and crop nodes
@@ -141,6 +141,7 @@ class LevelSelectionScene : DBScene {
         self.totalStars?.setHorizontalAlignmentMode(SKLabelHorizontalAlignmentMode.right)
         self.totalStars?.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
         
+        /*
         // Citrine icon
         self.totalCitrineIcon?.setScale(0.74)
         
@@ -148,6 +149,7 @@ class LevelSelectionScene : DBScene {
         self.totalCitrine?.setFontSize(round(25 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
         self.totalCitrine?.setHorizontalAlignmentMode(SKLabelHorizontalAlignmentMode.right)
         self.totalCitrine?.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
+        */
         
         // Diamonds icon
         self.totalDiamondsIcon?.setScale(0.74)
@@ -217,8 +219,8 @@ class LevelSelectionScene : DBScene {
         self.levelSelector.addChild(self.totalStars!)
         self.levelSelector.addChild(self.totalStarsIcon!)
         
-        self.levelSelector.addChild(self.totalCitrine!)
-        self.levelSelector.addChild(self.totalCitrineIcon!)
+        //self.levelSelector.addChild(self.totalCitrine!)
+        //self.levelSelector.addChild(self.totalCitrineIcon!)
         
         self.levelSelector.addChild(self.totalDiamonds!)
         self.levelSelector.addChild(self.totalDiamondsIcon!)
@@ -505,15 +507,17 @@ class LevelSelectionScene : DBScene {
         self.totalStars?.setText("\(GameData.sharedGameData.getSelectedCharacterData().unspentStars)")
         self.totalStars?.position = CGPoint(x: self.totalStarsIcon!.position.x - self.totalStarsIcon!.size.width/2 - nodeBuffer/5, y: self.backdropBar.position.y)
         
+        /*
         // Citrine icon
         self.totalCitrineIcon?.position = CGPoint(x: self.totalStars!.position.x - self.totalStars!.calculateAccumulatedFrame().width - nodeBuffer * 1 - self.totalCitrineIcon!.size.width/2, y: self.backdropBar.position.y)
         
         // Citrine label
         self.totalCitrine?.setText("\(GameData.sharedGameData.getSelectedCharacterData().unspentCitrine)")
         self.totalCitrine?.position = CGPoint(x: self.totalCitrineIcon!.position.x - self.totalCitrineIcon!.size.width/2 - nodeBuffer/5, y: self.backdropBar.position.y)
+        */
         
         // Diamonds icon
-        self.totalDiamondsIcon?.position = CGPoint(x: self.totalCitrine!.position.x - self.totalCitrine!.calculateAccumulatedFrame().width - nodeBuffer * 1 - self.totalDiamondsIcon!.size.width/2, y: self.backdropBar.position.y)
+        self.totalDiamondsIcon?.position = CGPoint(x: self.totalStars!.position.x - self.totalStars!.calculateAccumulatedFrame().width - nodeBuffer * 1 - self.totalDiamondsIcon!.size.width/2, y: self.backdropBar.position.y)
         
         // Diamonds label
         self.totalDiamonds?.setText("\(GameData.sharedGameData.totalDiamonds)")
