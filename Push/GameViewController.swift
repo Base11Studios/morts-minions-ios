@@ -15,7 +15,7 @@ import Appodeal
 
 class GameViewController: UIViewController, GKGameCenterControllerDelegate, AppodealInterstitialDelegate, AppodealRewardedVideoDelegate/*, MPInterstitialAdControllerDelegate, MPRewardedVideoDelegate*/ {
     //var loadingScene: LoadingScene
-    let REWARD_AD_ID = "b0ddefd0a8a14252a14a64da0728dade"
+    //let REWARD_AD_ID = "b0ddefd0a8a14252a14a64da0728dade"
     
     //MoPubSDK
     //var interstitial: MPInterstitialAdController?
@@ -850,6 +850,13 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, Appo
     }
     
     // ************************* REWARDED VIDEO CALLBACKS *************
+    
+    func rewardedVideoDidLoadAd(){
+        print("load")
+    }
+    func rewardedVideoDidFailToLoadAd(){
+        print("load failed")
+    }
     
     // Or will appear?
     //func rewardedVideoAdDidAppear(forAdUnitID adUnitID: String!) {
