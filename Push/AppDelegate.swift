@@ -7,27 +7,21 @@
 //
 
 import UIKit
+import Appodeal
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate /*GADRewardBasedVideoAdDelegate*/ {
+class AppDelegate: UIResponder, UIApplicationDelegate /*GADRewardBasedVideoAdDelegate*/ {
 
     var window: UIWindow?
-    
-    /*
-    // Video rewards
-    var presentingVideo: Bool = false
-    var completedVideo: Bool = false
-    var dismissingVideo: Bool = false
-    var videoIsCached: Bool = false
-     */
 
     func applicationDidFinishLaunching(_ application: UIApplication) {
-        // Initialize the Chartboost library
-        //Chartboost.start(withAppId: "576a8abe04b01657f1e18be5", appSignature: "54c4763f89ea9ff96502d320787de1cb9ceb7c21", delegate: self)
-        // Admob
         //GADRewardBasedVideoAd.sharedInstance().delegate = self
         
         //GADMobileAds.configure(withApplicationID: "ca-app-pub-4505737160765142~1208265512");
+        let adTypes: AppodealAdType = [AppodealAdType.interstitial, /*.skippableVideo,*/ AppodealAdType.rewardedVideo];
+        Appodeal.initialize(withApiKey:"e5ac706b45d36d6a998c42fb1aec1e0d4b469e9986cedc58", types: adTypes);
+        //Appodeal.setAutocache(false, types: [AppodealAdType.interstitial, AppodealAdType.rewardedVideo])
+        //Appodeal.setTestingEnabled(true)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
@@ -70,155 +64,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate, ChartboostDelegate /*GADR
     func application(_ application: UIApplication, supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
         return UIInterfaceOrientationMask.landscape;
     }
-    
-    /*
-    // ************************* REWARDED VIDEO CALLBACKS *************
-    
-    // Called after videos have been successfully prefetched.
-    //func didPrefetchVideos() {}
-    
-    // Called before a rewarded video will be displayed on the screen.
-    // func shouldDisplayRewardedVideo(location: String!) -> Bool {}
-    
-    // Called after a rewarded video has been displayed on the screen.
-    func didDisplayRewardedVideo(_ location: String!) {
-        // Remove the loading dialog
-        self.dismissLoadingDialog()
-        
-        // Store something to show we presented a video
-        self.presentingVideo = true
-        self.dismissingVideo = false
-        self.completedVideo = false
-    }
-    
-    // Called after a rewarded video has been loaded from the Chartboost API
-    // servers and cached locally.
-    func didCacheRewardedVideo(_ location: String!) {
-        //self.videoIsCached = true
-    }
-    
-    /*
-     * didCompleteRewardedVideo
-     *
-     * This is called when a rewarded video has been viewed
-     *
-     * Is fired on:
-     * - Rewarded video completed view
-     *
-     */
-    func didCompleteRewardedVideo(_ location: String!, withReward reward: Int32) {
-        //NSLog("completed rewarded video view at location %@ with reward amount %d", location, reward);
-        
-        self.endVideoSuccessfully()
-    }
-    
-    // Called after a rewarded video has attempted to load from the Chartboost API
-    // servers but failed.
-    /*func didFail(toLoadRewardedVideo location: String!, withError error: CBLoadError) {
-        // Remove the loading dialog
-        self.dismissLoadingDialog()
-        
-        if self.completedVideo == false && self.presentingVideo == true && !self.dismissingVideo {
-            self.endVideoUnsuccessfully()
-        }
-    }*/
-    
-    // Called after a rewarded video has been dismissed.
-    func didDismissRewardedVideo(_ location: String!) {
-        // If video was completed, dont do anything, otherwise send dismiss dialog if not done
-        if !self.completedVideo && self.presentingVideo && !self.dismissingVideo {
-            self.endVideoUnsuccessfully()
-        } else if !self.dismissingVideo && self.completedVideo {
-            self.endVideoSuccessfully()
-        }
-    }
-    
-    // Called after a rewarded video has been closed.
-    func didCloseRewardedVideo(_ location: String!) {
-        // If video was completed, dont do anything, otherwise send dismiss dialog if not done
-        if !self.completedVideo && self.presentingVideo && !self.dismissingVideo {
-            self.endVideoUnsuccessfully()
-        } else if !self.dismissingVideo && self.completedVideo {
-            self.endVideoSuccessfully()
-        }
-    }
-    
-    // Called after a rewarded video has been clicked.
-    func didClickRewardedVideo(_ location: String!) {
-        // Store that the video was completed.
-        if self.presentingVideo && !self.completedVideo {
-            self.completedVideo = true
-        }
-    }
-    
-    private func dismissLoadingDialog() {
-        // Send notification that gamescene will pick up
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "DismissLoadingDialog"), object: nil)
-    }
-    
-    private func endVideoSuccessfully() {
-        // Send notification that gamescene will pick up
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "RejuvenatePlayer"), object: nil)
-        
-        // Reset flags
-        self.presentingVideo = false
-        self.completedVideo = false
-        self.dismissingVideo = true
-    }
-    
-    private func endVideoUnsuccessfully() {
-        // Send notification that the gamescene will pick up
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "DontRejuvenatePlayer"), object: nil)
-        
-        // Reset flags
-        self.presentingVideo = false
-        self.completedVideo = false
-        self.dismissingVideo = true
-    }
-    */
-    // Implement to be notified of when a video will be displayed on the screen for
-    // a given CBLocation. You can then do things like mute effects and sounds.
-    // func willDisplayVideo(location: String!) {}
-    
-    /*
-    // ******************************** INTERSTITIAL ADS **********************
-    // Called before requesting an interstitial via the Chartboost API server.
-    //func shouldRequestInterstitial(location: String!) -> Bool {return true}
-    
-    // Called before an interstitial will be displayed on the screen.
-    //func shouldDisplayInterstitial(location: String!) -> Bool {return true}
-    
-    // Called after an interstitial has been displayed on the screen.
-    func didDisplayInterstitial(_ location: String!) {
-        AdSupporter.sharedInstance.adReady = false
-    }
-    
-    // Called after an interstitial has been loaded from the Chartboost API
-    // servers and cached locally.
-    func didCacheInterstitial(_ location: String!) {
-        AdSupporter.sharedInstance.adReady = true
-    }
-    
-    // Called after an interstitial has attempted to load from the Chartboost API
-    // servers but failed.
-    func didFail(toLoadInterstitial location: String!, withError error: CBLoadError) {
-        // Move on to tutorials
-        //NotificationCenter.default.post(name: Notification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
-    }
-    
-    // Called after an interstitial has been dismissed.
-    func didDismissInterstitial(_ location: String!) {
-        // Move on to tutorials
-        NotificationCenter.default.post(name: Notification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
-    }
-    
-    // Called after an interstitial has been closed.
-    //func didCloseInterstitial(location: String!) {}
-    
-    // Called after an interstitial has been clicked.
-    func didClickInterstitial(_ location: String!) {
-        AdSupporter.sharedInstance.showPauseMenu = true
-    }
- */
 }
 
