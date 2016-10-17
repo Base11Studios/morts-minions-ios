@@ -811,6 +811,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, Appo
     //func interstitialDidDisappear(_ interstitial: MPInterstitialAdController!) {
     func interstitialDidDismiss(){
         // Move on to tutorials
+        print("dismissed")
         NotificationCenter.default.post(name: Notification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
     }
     
@@ -847,6 +848,12 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, Appo
     //func interstitialDidReceiveTapEvent(_ interstitial: MPInterstitialAdController!) {
     func interstitialDidClick(){
         AdSupporter.sharedInstance.showPauseMenu = true
+    }
+    func interstitialDidFailToLoadAd() {
+        print("failed to load")
+    }
+    func interstitialWillPresent() {
+        // As a last resort here we could change the pause menu to unpause
     }
     
     // ************************* REWARDED VIDEO CALLBACKS *************
