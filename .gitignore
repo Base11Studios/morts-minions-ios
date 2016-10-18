@@ -4,3 +4,7 @@
 *.mov
 *.screenflow
 *.m4v
+Resources/Frameworks/
+Resources/Frameworks/*
+Resources\Frameworks\
+Resources\Frameworks\*
