@@ -45,6 +45,9 @@ class DBScene : SKScene {
     // Tutorial callback (default)
     var onCompleteUxTooltip: (() -> Void)? = {}
     
+    // Skills reset
+    var resetSkills: Bool = false
+    
     init(size: CGSize, settings: Bool, loadingOverlay: Bool, purchaseMenu: Bool, rateMe: Bool, trade: Bool) {
         super.init(size: size)
         

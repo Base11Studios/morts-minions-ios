@@ -78,6 +78,9 @@ class LevelSelectionScene : DBScene {
         // Call super init
         super.init(size: size, settings: false, loadingOverlay: true, purchaseMenu: false, rateMe: false, trade: false)
         
+        // Reset skils first
+        self.resetSkills = GameData.sharedGameData.checkAndResetCharacterSkills()
+        
         self.levelSelector.position = CGPoint(x: self.size.width / 2, y: self.size.height / 2)
         
         // Create a button just to see the size
@@ -250,6 +253,16 @@ class LevelSelectionScene : DBScene {
             let point2: CGPoint = self.convert(point, to: tutorial.containerBackground)
             
             tutorial.containerBackground.position = CGPoint(x: point2.x, y: point2.y - self.selectedWorld!.relatedLevelSelector!.levelSelectedNode!.calculateAccumulatedFrame().size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2 + self.nodeBuffer * 7)
+            self.uxTutorialTooltips!.append(tutorial)
+            self.addChild(tutorial)
+        }
+        
+        // Show the first skill being unlocked already
+        if self.resetSkills || GameData.sharedGameData.getSelectedCharacterData().godMode {
+
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) + "'s skills were reset but we kept all of your stars! Re-add " + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) + "'s skills before playing.", scene: self, size: "Medium", indicators: [], key: "", version: 1.0, onComplete: onCompleteUxTooltip!)
+
+            tutorial.containerBackground.position = CGPoint(x: 0, y: 0)
             self.uxTutorialTooltips!.append(tutorial)
             self.addChild(tutorial)
         }

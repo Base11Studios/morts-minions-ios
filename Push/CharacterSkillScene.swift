@@ -85,6 +85,9 @@ class CharacterSkillScene : DBScene {
         // Call super init
         super.init(size: size, settings: false, loadingOverlay: true, purchaseMenu: true, rateMe: false, trade: true)
         
+        // Reset skils first
+        self.resetSkills = GameData.sharedGameData.checkAndResetCharacterSkills()
+        
         // Level selector view ( this is the background & parent that everything is added to)
         self.skillSelectorBackground = ScaleBuddy.sharedInstance.getScreenAdjustedSpriteWithModifier("skill_prop_outline", textureAtlas: GameTextures.sharedInstance.uxMenuAtlas, modifier: 2.4)
         self.skillSelector = SKSpriteNode(color: MerpColors.background, size: CGSize(width: self.skillSelectorBackground!.size.width - nodeBuffer * 1.5, height: self.skillSelectorBackground!.size.height - nodeBuffer * 1.3))
@@ -341,6 +344,16 @@ class CharacterSkillScene : DBScene {
                 
                 self.addChild(tutorial)
             }
+        }
+        
+        // Show the first skill being unlocked already
+        if self.resetSkills || GameData.sharedGameData.getSelectedCharacterData().godMode {
+            
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) + "'s skills were reset but we kept all of your stars! Re-add " + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) + "'s skills before playing.", scene: self, size: "Medium", indicators: [], key: "", version: 1.0, onComplete: onCompleteUxTooltip!)
+            
+            tutorial.containerBackground.position = CGPoint(x: 0, y: 0)
+            self.uxTutorialTooltips!.append(tutorial)
+            self.addChild(tutorial)
         }
         
         /*

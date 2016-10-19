@@ -750,4 +750,43 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         
         return beat4
     }
+    
+    func checkAndResetCharacterSkills() -> Bool {
+        var reset = false
+        
+        var tutorialAck: Double?
+        var tutorialKey: String
+        var tutorialVersion: Double
+        
+        // First Skill
+        tutorialKey = "ResetAllCharactersSkills3" + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter)
+        tutorialVersion = 1.0
+        tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
+        
+        if tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion) {
+            if GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.count > 1 {
+                // Let's reset characters if needed
+                GameData.sharedGameData.resetCharacterSkills(char: GameData.sharedGameData.selectedCharacter)
+                reset = true
+            }
+            
+            // Ack the reset and save
+            GameData.sharedGameData.tutorialsAcknowledged[tutorialKey] = tutorialVersion
+            self.save()
+        }
+        
+        return reset
+    }
+    
+    func resetCharacterSkills(char: CharacterType) {
+        if char == CharacterType.Warrior {
+            warriorCharacter.resetCharacterSkills()
+        } else if char == CharacterType.Archer {
+            archerCharacter.resetCharacterSkills()
+        } else if char == CharacterType.Monk {
+            monkCharacter.resetCharacterSkills()
+        } else if char == CharacterType.Mage {
+            mageCharacter.resetCharacterSkills()
+        }
+    }
 }
