@@ -759,7 +759,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         var tutorialVersion: Double
         
         // First Skill
-        tutorialKey = "ResetAllCharactersSkills3" + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter)
+        tutorialKey = "ResetAllCharactersSkills" + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter)
         tutorialVersion = 1.0
         tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
         
