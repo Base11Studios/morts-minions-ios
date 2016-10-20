@@ -83,44 +83,44 @@ class WhatsNewDialog: DialogBackground {
         let descriptionNodeYPosition = self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer
         self.descriptionNode?.position = CGPoint(x: descriptionNodeXPosition, y: descriptionNodeYPosition)
         
-        if description2 != nil {
+        if description2 != nil && description2 != "" {
             self.descriptionNode2 = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
             self.container.addChild(self.descriptionNode2!)
             self.descriptionNode2?.paragraphWidth = self.container.size.width - self.buttonBuffer
             self.descriptionNode2?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
             self.descriptionNode2?.fontColor = MerpColors.darkFont
-            self.descriptionNode2?.text = description
-            self.descriptionNode2?.position = CGPoint(x: self.descriptionNode!.position.x, y: self.descriptionNode!.position.y - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode2!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2)
+            self.descriptionNode2?.text = description2!
+            self.descriptionNode2?.position = CGPoint(x: self.descriptionNode!.position.x - self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.descriptionNode2!.calculateAccumulatedFrame().size.width / 2, y: self.descriptionNode!.position.y - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode2!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2)
         }
         
-        if description3 != nil {
+        if description3 != nil && description3 != "" {
             self.descriptionNode3 = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
             self.container.addChild(self.descriptionNode3!)
             self.descriptionNode3?.paragraphWidth = self.container.size.width - self.buttonBuffer
             self.descriptionNode3?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
             self.descriptionNode3?.fontColor = MerpColors.darkFont
-            self.descriptionNode3?.text = description
-            self.descriptionNode3?.position = CGPoint(x: self.descriptionNode!.position.x, y: self.descriptionNode2!.position.y - self.descriptionNode2!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode3!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2)
+            self.descriptionNode3?.text = description3!
+            self.descriptionNode3?.position = CGPoint(x: self.descriptionNode!.position.x - self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.descriptionNode3!.calculateAccumulatedFrame().size.width / 2, y: self.descriptionNode2!.position.y - self.descriptionNode2!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode3!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2)
         }
         
-        if description4 != nil {
+        if description4 != nil && description4 != "" {
             self.descriptionNode4 = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
             self.container.addChild(self.descriptionNode4!)
             self.descriptionNode4?.paragraphWidth = self.container.size.width - self.buttonBuffer
             self.descriptionNode4?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
             self.descriptionNode4?.fontColor = MerpColors.darkFont
-            self.descriptionNode4?.text = description
-            self.descriptionNode4?.position = CGPoint(x: self.descriptionNode!.position.x, y: self.descriptionNode3!.position.y - self.descriptionNode3!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode4!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2)
+            self.descriptionNode4?.text = description4!
+            self.descriptionNode4?.position = CGPoint(x: self.descriptionNode!.position.x - self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.descriptionNode4!.calculateAccumulatedFrame().size.width / 2, y: self.descriptionNode3!.position.y - self.descriptionNode3!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode4!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2)
         }
         
-        if description5 != nil {
+        if description5 != nil && description5 != "" {
             self.descriptionNode5 = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
             self.container.addChild(self.descriptionNode5!)
             self.descriptionNode5?.paragraphWidth = self.container.size.width - self.buttonBuffer
             self.descriptionNode5?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
             self.descriptionNode5?.fontColor = MerpColors.darkFont
-            self.descriptionNode5?.text = description
-            self.descriptionNode5?.position = CGPoint(x: self.descriptionNode!.position.x, y: self.descriptionNode4!.position.y - self.descriptionNode4!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode5!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2)
+            self.descriptionNode5?.text = description5!
+            self.descriptionNode5?.position = CGPoint(x: self.descriptionNode!.position.x - self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.descriptionNode5!.calculateAccumulatedFrame().size.width / 2, y: self.descriptionNode4!.position.y - self.descriptionNode4!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode5!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2)
         }
         
         self.container.addChild(self.iconBackgroundNode!)
