@@ -3639,8 +3639,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Resources/Frameworks",
-					"$(PROJECT_DIR)/Resources/Frameworks/VungleSDK.embeddedframework",
 					"$(PROJECT_DIR)/Resources/Frameworks/MoPubSDK/AdNetworkSupport/Chartboost/SDK",
 					"$(PROJECT_DIR)/Resources/Frameworks/MoPubSDK/AdNetworkSupport/GoogleAdMob/SDK",
 					"$(PROJECT_DIR)/Resources/Frameworks/MoPubSDK/AdNetworkSupport/Vungle/SDK/VungleSDK.embeddedframework",
@@ -3676,8 +3674,6 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/Resources/Frameworks",
-					"$(PROJECT_DIR)/Resources/Frameworks/VungleSDK.embeddedframework",
 					"$(PROJECT_DIR)/Resources/Frameworks/MoPubSDK/AdNetworkSupport/Chartboost/SDK",
 					"$(PROJECT_DIR)/Resources/Frameworks/MoPubSDK/AdNetworkSupport/GoogleAdMob/SDK",
 					"$(PROJECT_DIR)/Resources/Frameworks/MoPubSDK/AdNetworkSupport/Vungle/SDK/VungleSDK.embeddedframework",
