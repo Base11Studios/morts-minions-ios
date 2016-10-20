@@ -285,15 +285,23 @@ class MainMenuScene : DBScene {
                     // Create dialog
                     var title = ""
                     var description = ""
+                    var description2 = ""
+                    var description3 = ""
+                    var description4 = ""
+                    var description5 = ""
                     if storedTutorial == nil {
                         title = TextFormatter.formatText(tutorialTipDictionary["FirstPlayTitle"] as! String)
                         description = TextFormatter.formatText(tutorialTipDictionary["FirstPlayDescription"] as! String)
                     } else {
                         title = TextFormatter.formatText(tutorialTipDictionary["Title"] as! String)
                         description = TextFormatter.formatText(tutorialTipDictionary["Description"] as! String)
+                        description2 = TextFormatter.formatText(tutorialTipDictionary["Description2"] as! String)
+                        description3 = TextFormatter.formatText(tutorialTipDictionary["Description3"] as! String)
+                        description4 = TextFormatter.formatText(tutorialTipDictionary["Description4"] as! String)
+                        description5 = TextFormatter.formatText(tutorialTipDictionary["Description5"] as! String)
                     }
                     
-                    let tutorialDialog = WhatsNewDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, key: key, version: version)
+                    let tutorialDialog = WhatsNewDialog(title: title, description: description, description2: description2, description3: description3, description4: description4, description5: description5, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, key: key, version: version)
                     
                     tutorialDialog.zPosition = 20
                     
