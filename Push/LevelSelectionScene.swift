@@ -594,6 +594,8 @@ class LevelSelectionScene : DBScene {
         
         //self.displayTutorialTooltip()
         
+        self.updateRewards()
+        
         super.didMove(to: view)
     }
     
