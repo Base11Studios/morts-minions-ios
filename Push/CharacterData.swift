@@ -504,7 +504,7 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
     
     func challengesUnlocked(_ currentLevel: Int) -> Bool {
         // If the 6th level has been played or this is the 6th level
-        if levelProgress[6] != nil && levelProgress[6]!.timesLevelPlayed > 0 || currentLevel == 6 {
+        if levelProgress[4] != nil && levelProgress[4]!.timesLevelPlayed > 0 || currentLevel == 4 {
             return true
         } else {
             return false

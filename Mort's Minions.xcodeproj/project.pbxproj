@@ -47,6 +47,7 @@
 		3723590B1D208BB100F117B5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3723590A1D208BB100F117B5 /* Foundation.framework */; };
 		3723590D1D208BD300F117B5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3723590C1D208BD300F117B5 /* UIKit.framework */; };
 		372359161D20AED700F117B5 /* RejuvenateVideoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372359151D20AED700F117B5 /* RejuvenateVideoButton.swift */; };
+		372477071DCBFDDC005E7B22 /* RejuvenateCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372477061DCBFDDC005E7B22 /* RejuvenateCloseButton.swift */; };
 		3727D2921DB6DBEB00E8C9B5 /* ChartboostInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3727D0F41DB6DBEA00E8C9B5 /* ChartboostInterstitialCustomEvent.m */; };
 		3727D2931DB6DBEB00E8C9B5 /* ChartboostRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3727D0F61DB6DBEA00E8C9B5 /* ChartboostRewardedVideoCustomEvent.m */; };
 		3727D2941DB6DBEB00E8C9B5 /* MPChartboostRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 3727D0F81DB6DBEA00E8C9B5 /* MPChartboostRouter.m */; };
@@ -600,6 +601,7 @@
 		3723590A1D208BB100F117B5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		3723590C1D208BD300F117B5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		372359151D20AED700F117B5 /* RejuvenateVideoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RejuvenateVideoButton.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		372477061DCBFDDC005E7B22 /* RejuvenateCloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RejuvenateCloseButton.swift; sourceTree = "<group>"; };
 		3727D0F31DB6DBEA00E8C9B5 /* ChartboostInterstitialCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartboostInterstitialCustomEvent.h; sourceTree = "<group>"; };
 		3727D0F41DB6DBEA00E8C9B5 /* ChartboostInterstitialCustomEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChartboostInterstitialCustomEvent.m; sourceTree = "<group>"; };
 		3727D0F51DB6DBEA00E8C9B5 /* ChartboostRewardedVideoCustomEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChartboostRewardedVideoCustomEvent.h; sourceTree = "<group>"; };
@@ -1425,6 +1427,7 @@
 		372359031D1AAE0000F117B5 /* Rejuv */ = {
 			isa = PBXGroup;
 			children = (
+				372477061DCBFDDC005E7B22 /* RejuvenateCloseButton.swift */,
 				372359151D20AED700F117B5 /* RejuvenateVideoButton.swift */,
 				372359041D1AAE9400F117B5 /* RejuvenateGemButton.swift */,
 			);
@@ -3312,6 +3315,7 @@
 				37D2D1041C45EC7900B97691 /* Cannon.swift in Sources */,
 				376A89A41D332DDF00ACCCA3 /* PlayerSmallMeteor.swift in Sources */,
 				37E1985E1BD4580B00AC5178 /* Seahorse.swift in Sources */,
+				372477071DCBFDDC005E7B22 /* RejuvenateCloseButton.swift in Sources */,
 				3727D2CD1DB6DBEB00E8C9B5 /* MPInterstitialViewController.m in Sources */,
 				376CBA541CC3DF5100BE2756 /* PlayerShockwave.swift in Sources */,
 				3727D2DA1DB6DBEB00E8C9B5 /* MRError.m in Sources */,

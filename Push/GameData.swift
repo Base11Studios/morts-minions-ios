@@ -68,7 +68,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     
     // Ads
     var lastVideoAdWatch: Date
-    static var videoAdCooldown: Int = -2
+    static var videoAdCooldown: Int = -3
     
     // Cloud vs local
     var cloudSyncing: Bool = true

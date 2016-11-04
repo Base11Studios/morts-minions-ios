@@ -411,6 +411,8 @@ class EndOfLevelDialog: DialogBackground {
         if unlockedLevels.count == 0 {
             if score.starsRewarded <= 2 {
                 switch score.levelNumber {
+                case 1, 2, 3, 4:
+                    levelHintDescription.text = "Tip: hold down on the screen to jump continuously."
                 case 5, 6:
                     levelHintDescription.text = "Tip: goblin troubles? Make sure you upgrade your jump skill."
                 case 10, 11:
@@ -430,7 +432,7 @@ class EndOfLevelDialog: DialogBackground {
                 }
                 
                 if levelHintDescription.text == "" || Int(arc4random_uniform(10)) > 6 {
-                    let tipNum = Int(arc4random_uniform(3))
+                    let tipNum = Int(arc4random_uniform(4))
                     switch tipNum {
                     case 0:
                         levelHintDescription.text = "Tip: reset your skills and try new strategies."
@@ -438,6 +440,8 @@ class EndOfLevelDialog: DialogBackground {
                         levelHintDescription.text = "Tip: you don't need 3 stars on every level."
                     case 2:
                         levelHintDescription.text = "Tip: replay earlier levels to get more stars for new skills."
+                    case 3:
+                        levelHintDescription.text = "Tip: hold down on the screen to jump continuously."
                     default:
                         levelHintDescription.text = "Tip: reset your skills and try new strategies."
                     }
@@ -458,13 +462,13 @@ class EndOfLevelDialog: DialogBackground {
                 let tipNum = Int(arc4random_uniform(3))
                 switch tipNum {
                 case 0:
-                    levelHintDescription.text = "This is just fantastic!"
+                    levelHintDescription.text = "You are just fantastic!"
                 case 1:
                     levelHintDescription.text = "Super duper!"
                 case 2:
                     levelHintDescription.text = "I'm impressed!"
                 default:
-                    levelHintDescription.text = "This is just fantastic!"
+                    levelHintDescription.text = "You are just fantastic!"
                 }
             }
             

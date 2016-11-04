@@ -13,6 +13,7 @@ class RejuvDialog: DialogBackground {
     // Rejuv Buttons
     var rejuvGemsButton: RejuvenateGemButton?
     var rejuvVideoButton: RejuvenateVideoButton?
+    var closeButton: RejuvenateCloseButton?
     
     // Gem Container
     var gemContainer: GemContainer
@@ -67,6 +68,7 @@ class RejuvDialog: DialogBackground {
         
         self.rejuvGemsButton = RejuvenateGemButton(scene: scene, unlockAmount: gemCost)
         self.rejuvVideoButton = RejuvenateVideoButton(scene: scene)
+        self.closeButton = RejuvenateCloseButton(scene: scene)
         
         // Progress
         self.videoCountdownBackground = SKSpriteNode(color: UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 0.6), size: CGSize(width: self.rejuvGemsButton!.size.width - self.buttonBuffer / 2, height: self.frame.size.height / 24.0))
@@ -84,9 +86,10 @@ class RejuvDialog: DialogBackground {
         //if showVideoCountdown() {
             self.container.addChild(self.videoCountdownBackground!)
             self.container.addChild(self.videoCountdownProgress!)
+        self.container.addChild(self.closeButton!)
         //}
         
-        let height = self.iconBackgroundNode!.size.height + self.rejuvGemsButton!.calculateAccumulatedFrame().size.height + self.buttonBuffer * 1 + self.videoCountdownBackground!.size.height + self.buttonBuffer / 2
+        let height = self.iconBackgroundNode!.size.height + self.rejuvGemsButton!.calculateAccumulatedFrame().size.height + self.buttonBuffer * 1 + /*self.videoCountdownBackground!.size.height +*/ self.buttonBuffer / 2 + self.closeButton!.size.height
         let width = max(self.rejuvGemsButton!.size.width + self.rejuvVideoButton!.size.width + self.buttonBuffer, self.iconBackgroundNode!.size.width + self.buttonBuffer / 2 + self.titleNode!.calculateAccumulatedFrame().size.width)
         
         self.iconBackgroundNode?.position = CGPoint(x: width / -2 + self.iconBackgroundNode!.size.width / 2, y: height / 2 - self.iconBackgroundNode!.size.height / 2)
@@ -96,12 +99,14 @@ class RejuvDialog: DialogBackground {
         // Gem container is opposite side of title
         self.gemContainer.position = CGPoint(x: (width / 2) - self.gemContainer.calculateAccumulatedFrame().size.width / 2, y: self.titleNode!.position.y - self.gemContainer.size.height / 2)
         
-        self.rejuvGemsButton!.position = CGPoint(x: -self.rejuvGemsButton!.size.width / 2 - self.buttonBuffer / 2, y: self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.buttonBuffer - self.rejuvGemsButton!.calculateAccumulatedFrame().size.height / 2)
+        self.rejuvGemsButton!.position = CGPoint(x: self.rejuvGemsButton!.size.width / 2 + self.buttonBuffer / 2, y: self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.buttonBuffer - self.rejuvGemsButton!.calculateAccumulatedFrame().size.height / 2)
         
-        self.rejuvVideoButton!.position = CGPoint(x: self.rejuvVideoButton!.size.width / 2 + self.buttonBuffer / 2, y: self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.buttonBuffer - self.rejuvVideoButton!.calculateAccumulatedFrame().size.height / 2)
+        self.rejuvVideoButton!.position = CGPoint(x: -self.rejuvVideoButton!.size.width / 2 - self.buttonBuffer / 2, y: self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.buttonBuffer - self.rejuvVideoButton!.calculateAccumulatedFrame().size.height / 2)
         
         self.videoCountdownBackground!.position = CGPoint(x: self.rejuvVideoButton!.position.x, y: self.rejuvVideoButton!.position.y - self.rejuvVideoButton!.size.height / 2 - self.buttonBuffer / 2 - self.videoCountdownBackground!.size.height / 2)
         self.videoCountdownProgress!.position = CGPoint(x: self.rejuvVideoButton!.position.x - (self.videoCountdownBackground!.size.width - self.videoCountdownProgress!.size.width) / 2, y: videoCountdownBackground!.position.y)
+        
+        self.closeButton!.position = CGPoint(x: self.rejuvGemsButton!.position.x + (self.rejuvGemsButton!.size.width - self.closeButton!.size.width) / 2, y: self.rejuvGemsButton!.position.y - self.rejuvGemsButton!.size.height / 2 - self.buttonBuffer / 2 - self.closeButton!.size.height / 2)
         
         // Reset the container size
         self.resetContainerSize()

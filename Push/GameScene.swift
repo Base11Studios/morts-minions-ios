@@ -940,6 +940,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.rejuvAllowed = false
         }
         
+        self.rejuvDialog!.removeAllActions() // Test
         self.rejuvDialog!.run(SKAction.sequence([self.rejuvHeartDialogDismissAction, SKAction.run({
             [weak self] in
             

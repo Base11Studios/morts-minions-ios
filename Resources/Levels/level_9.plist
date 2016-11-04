@@ -47,6 +47,8 @@
 		<string>Goblin</string>
 		<key>Location</key>
 		<integer>6460</integer>
+		<key>Value1</key>
+		<integer>2</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 14 - 7</key>
 	<dict>
@@ -96,6 +98,8 @@
 		<string>Goblin</string>
 		<key>Location</key>
 		<integer>4800</integer>
+		<key>Value1</key>
+		<integer>2</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 7</key>
 	<dict>
@@ -145,6 +149,8 @@
 		<string>Goblin</string>
 		<key>Location</key>
 		<integer>2860</integer>
+		<key>Value1</key>
+		<integer>1</integer>
 	</dict>
 	<key>EnvironmentObject - 5</key>
 	<dict>
@@ -180,6 +186,8 @@
 		<string>Goblin</string>
 		<key>Location</key>
 		<integer>1000</integer>
+		<key>Value1</key>
+		<integer>1</integer>
 	</dict>
 </dict>
 </plist>

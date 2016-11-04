@@ -83,7 +83,7 @@
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<integer>4160</integer>
+		<real>4180</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 4</key>
 	<dict>
@@ -97,7 +97,7 @@
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<real>3880</real>
+		<real>3860</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 2</key>
 	<dict>
