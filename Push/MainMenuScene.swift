@@ -305,19 +305,6 @@ class MainMenuScene : DBScene {
                     
                     tutorialDialog.zPosition = 20
                     
-                    if count == 0 {
-                        // This one is a "play" button
-                        tutorialDialog.updateAsPlayOnly()
-                    } else if count == 1 {
-                        // This one is a "play" button and "previous" and the previous one needs to change to a "next" only button
-                        tutorialDialog.updateAsPlayAndPrevious()
-                        previousDialog!.updateAsNextOnly()
-                    } else if count >= 2 {
-                        // This one is a "play" button and "previous" and the previous one needs to change to a "next" and "previous" button
-                        tutorialDialog.updateAsPlayAndPrevious()
-                        previousDialog!.updateAsPreviousAndNext()
-                    }
-                    
                     self.tutorialDialogs!.append(tutorialDialog)
                     //self.addChild(tutorialDialog)
                     previousDialog = tutorialDialog
