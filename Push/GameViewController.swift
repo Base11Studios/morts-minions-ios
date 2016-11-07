@@ -743,7 +743,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, Appo
     }
     
     func interstitialAdReady() -> Bool {
-        return Appodeal.isReadyForShow(with: AppodealShowStyle.interstitial)
+        // Get date 5 minutes ago. If time last watched > that, dont allow
+        let calendar = NSCalendar.autoupdatingCurrent
+        let requiredDate = calendar.date(byAdding: Calendar.Component.minute, value: -5, to: Date())!
+        
+        return Appodeal.isReadyForShow(with: AppodealShowStyle.interstitial) && requiredDate > GameData.sharedGameData.lastIntroVideoAdWatch
 
         //return self.interstitial!.ready
     }
@@ -810,6 +814,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, Appo
      */
     //func interstitialDidDisappear(_ interstitial: MPInterstitialAdController!) {
     func interstitialDidDismiss(){
+        // Update last watched flag to current time
+        GameData.sharedGameData.lastIntroVideoAdWatch = Date()
+        
         // Move on to tutorials
         print("dismissed")
         NotificationCenter.default.post(name: Notification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)

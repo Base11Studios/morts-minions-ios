@@ -68,6 +68,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     
     // Ads
     var lastVideoAdWatch: Date
+    var lastIntroVideoAdWatch: Date
     
     // Cloud vs local
     var cloudSyncing: Bool = true
@@ -137,6 +138,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     // Ads
     let SSGameDataAdPopCountownKey: String = "adPopCountdownKey"
     let SSGameDataLastVideoAdWatch: String = "lastVideoAdWatch"
+    let SSGameDataLastIntroVideoAdWatch: String = "lastIntroVideoAdWatch"
     
     // Data keys gamecenter
     let SSGameDataBRGemsCollectedKey: String = "brGemsCollected"
@@ -176,6 +178,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         // Ads
         encoder.encode(self.adPopCountdown, forKey: SSGameDataAdPopCountownKey)
         encoder.encode(self.lastVideoAdWatch, forKey: SSGameDataLastVideoAdWatch)
+        encoder.encode(self.lastIntroVideoAdWatch, forKey: SSGameDataLastIntroVideoAdWatch)
         
         // Rating info
         encoder.encode(self.playerHasRatedGame, forKey: SSGameDataPlayerHasRatedGameKey)
@@ -231,6 +234,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         
         let calendar = NSCalendar.autoupdatingCurrent
         self.lastVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: -3, to: Date())!
+        self.lastIntroVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: -5, to: Date())!
         
         super.init()
     }
@@ -247,6 +251,13 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         } else {
             let calendar = NSCalendar.autoupdatingCurrent
             self.lastVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: -3, to: Date())!
+        }
+        
+        if let decodedLastIntroVideoAdWatch = decoder.decodeObject(forKey: SSGameDataLastIntroVideoAdWatch) as? Date {
+            self.lastIntroVideoAdWatch = decodedLastIntroVideoAdWatch
+        } else {
+            let calendar = NSCalendar.autoupdatingCurrent
+            self.lastIntroVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: -5, to: Date())!
         }
         
         if let decodedChar = decoder.decodeObject(forKey: SSGameDataWarriorCharacterKey) as? CharacterData {
