@@ -177,6 +177,7 @@
 		374439341BCBED9B0003C17C /* Ogre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374439331BCBED9B0003C17C /* Ogre.swift */; };
 		374439361BCC04430003C17C /* Goblin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374439351BCC04430003C17C /* Goblin.swift */; };
 		3744393B1BCC09B90003C17C /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3744393A1BCC09B90003C17C /* Arrow.swift */; };
+		37484D321DD11E4B0046B969 /* RejuvenateCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37484D311DD11E4B0046B969 /* RejuvenateCloseButton.swift */; };
 		374A11AD1DA14A6C00523102 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A11AC1DA14A6C00523102 /* CoreTelephony.framework */; };
 		374A11AF1DA14A7B00523102 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A11AE1DA14A7B00523102 /* EventKit.framework */; };
 		374A11B11DA14A8100523102 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A11B01DA14A8100523102 /* EventKitUI.framework */; };
@@ -574,6 +575,7 @@
 		374439331BCBED9B0003C17C /* Ogre.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ogre.swift; sourceTree = "<group>"; };
 		374439351BCC04430003C17C /* Goblin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Goblin.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3744393A1BCC09B90003C17C /* Arrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Arrow.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		37484D311DD11E4B0046B969 /* RejuvenateCloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RejuvenateCloseButton.swift; sourceTree = "<group>"; };
 		374A11AC1DA14A6C00523102 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		374A11AE1DA14A7B00523102 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		374A11B01DA14A8100523102 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
@@ -929,6 +931,7 @@
 		372359031D1AAE0000F117B5 /* Rejuv */ = {
 			isa = PBXGroup;
 			children = (
+				37484D311DD11E4B0046B969 /* RejuvenateCloseButton.swift */,
 				372359151D20AED700F117B5 /* RejuvenateVideoButton.swift */,
 				372359041D1AAE9400F117B5 /* RejuvenateGemButton.swift */,
 			);
@@ -2091,6 +2094,7 @@
 				37CE7FFD1CA388CC00B4DFA9 /* Egg.swift in Sources */,
 				373CEA7B1C15BF8400197B83 /* Fly.swift in Sources */,
 				373A20D41C75F17300F3D15E /* UXTutorialDialog.swift in Sources */,
+				37484D321DD11E4B0046B969 /* RejuvenateCloseButton.swift in Sources */,
 				3767AAE61CBC69B30011F7A5 /* SettingsBackButton.swift in Sources */,
 				377E5E841C2B957500B2FB89 /* GameTutorialPlayButton.swift in Sources */,
 				376A89A61D333D4000ACCCA3 /* PlayerMagicMissle.swift in Sources */,

@@ -69,6 +69,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     // Ads
     var lastVideoAdWatch: Date
     static var videoAdCooldown: Int = -3
+    static var introVideoAdCooldown: Int = -6
     var lastIntroVideoAdWatch: Date
     
     // Cloud vs local
@@ -258,7 +259,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
             self.lastIntroVideoAdWatch = decodedLastIntroVideoAdWatch
         } else {
             let calendar = NSCalendar.autoupdatingCurrent
-            self.lastIntroVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: -5, to: Date())!
+            self.lastIntroVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: GameData.introVideoAdCooldown, to: Date())!
         }
         
         if let decodedChar = decoder.decodeObject(forKey: SSGameDataWarriorCharacterKey) as? CharacterData {

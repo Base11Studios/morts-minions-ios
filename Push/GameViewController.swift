@@ -745,7 +745,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, Appo
     func interstitialAdReady() -> Bool {
         // Get date 5 minutes ago. If time last watched > that, dont allow
         let calendar = NSCalendar.autoupdatingCurrent
-        let requiredDate = calendar.date(byAdding: Calendar.Component.minute, value: -5, to: Date())!
+        let requiredDate = calendar.date(byAdding: Calendar.Component.minute, value: GameData.introVideoAdCooldown, to: Date())!
         
         return Appodeal.isReadyForShow(with: AppodealShowStyle.interstitial) && requiredDate > GameData.sharedGameData.lastIntroVideoAdWatch
 
