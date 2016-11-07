@@ -4,6 +4,21 @@
 <dict>
 	<key>World</key>
 	<string>earth</string>
+	<key>Tutorial</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Did You Know?</string>
+			<key>Description</key>
+			<string>Hold down on the screen to jump continuously!</string>
+			<key>Type</key>
+			<string>tutorial</string>
+			<key>Key</key>
+			<string>jumpcontinuously</string>
+			<key>Version</key>
+			<real>1.1</real>
+		</dict>
+	</array>
 	<key>Challenges</key>
 	<array>
 		<dict>
@@ -31,7 +46,7 @@
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<real>6840</real>
+		<real>6860</real>
 	</dict>
 	<key>EnvironmentObject - 5 - 3 - 3</key>
 	<dict>
@@ -45,7 +60,7 @@
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<real>6600</real>
+		<real>6580</real>
 	</dict>
 	<key>EnvironmentObject - 5 - 4</key>
 	<dict>

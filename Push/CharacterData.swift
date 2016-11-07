@@ -45,6 +45,7 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
                 // Iterate through levelprogress
                 for (_, data) in self.levelProgress {
                     stars += data.starsEarnedHighScore
+                    stars += data.citrineEarnedHighScore /*stars only*/
                 }
                 
                 // Also add the boosted ones we purchased
@@ -355,8 +356,10 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
         // Need to get 2 of 3 stars on average
         var levelReqs: Int = (level-1) * 2
         
-        // Every 4 levels, need at least one 3 star
-        levelReqs += Int(floor(Double(level)/4.0))
+        if (level > 16) { // Keep the first world easy
+            // Every 3 levels, need at least one 3 star
+            levelReqs += Int(floor(Double(level)/3.0))
+        }
         
         return levelReqs
     }
@@ -412,7 +415,7 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
         
         // Plays to beat world 4
         //NSLog("\(self.getLevelNumberForWorld(levelNumber))")
-        if !self.hasBeatWorld4 && worldNumber == 4 && self.getLevelNumberForWorld(levelNumber) == self.levelsPerWorld && score.starsRewarded == 1 {
+        if !self.hasBeatWorld4 && worldNumber == 4 && self.getLevelNumberForWorld(levelNumber) == 64 && score.starsRewarded >= 2 {
             self.hasBeatWorld4 = true
             self.playsToBeatWorld4 = self.totalTimesPlayed
         }
@@ -501,7 +504,7 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
     
     func challengesUnlocked(_ currentLevel: Int) -> Bool {
         // If the 6th level has been played or this is the 6th level
-        if levelProgress[6] != nil && levelProgress[6]!.timesLevelPlayed > 0 || currentLevel == 6 {
+        if levelProgress[4] != nil && levelProgress[4]!.timesLevelPlayed > 0 || currentLevel == 4 {
             return true
         } else {
             return false

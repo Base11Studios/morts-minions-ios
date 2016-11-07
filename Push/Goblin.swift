@@ -22,7 +22,12 @@ class Goblin : Enemy {
         // Setup animations for walking only
         self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.earthAtlas, texturesNamed: "goblinstanding", frameStart: 0, frameEnd: 15), timePerFrame: 0.06, resize: true, restore: false))
         
-        for _ in 1...2 {
+        var numProjectiles: Int = Int(self.value1)
+        if numProjectiles == 0 {
+            numProjectiles = 2
+        }
+        
+        for _ in 1...numProjectiles {
             // Create projectile
             let projectile: Arrow = Arrow(scalar: 1.0, defaultYPosition: defaultYPosition + self.size.height/2 - 9.0, defaultXPosition: defaultXPosition, parent: parent, value1: 0, value2: 0, scene: scene)
             

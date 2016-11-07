@@ -63,11 +63,12 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     
     // Played
     var timesPlayed: Int = 0
-    var adPopCountdown: Int = 1//28
-    var adPopMax: Int = 1//8 6
+    var adPopCountdown: Int = 30
+    var adPopMax: Int = 10
     
     // Ads
     var lastVideoAdWatch: Date
+    static var videoAdCooldown: Int = -3
     var lastIntroVideoAdWatch: Date
     
     // Cloud vs local
@@ -233,8 +234,8 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         self.timeLastUpdated = Date(timeIntervalSince1970: TimeInterval(0))
         
         let calendar = NSCalendar.autoupdatingCurrent
-        self.lastVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: -3, to: Date())!
-        self.lastIntroVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: -5, to: Date())!
+        self.lastVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: GameData.videoAdCooldown, to: Date())!
+        self.lastIntroVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: GameData.introVideoAdCooldown, to: Date())!
         
         super.init()
     }
@@ -250,7 +251,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
             self.lastVideoAdWatch = decodedLastVideoAdWatch
         } else {
             let calendar = NSCalendar.autoupdatingCurrent
-            self.lastVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: -3, to: Date())!
+            self.lastVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: GameData.videoAdCooldown, to: Date())!
         }
         
         if let decodedLastIntroVideoAdWatch = decoder.decodeObject(forKey: SSGameDataLastIntroVideoAdWatch) as? Date {
@@ -759,5 +760,44 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         }
         
         return beat4
+    }
+    
+    func checkAndResetCharacterSkills() -> Bool {
+        var reset = false
+        
+        var tutorialAck: Double?
+        var tutorialKey: String
+        var tutorialVersion: Double
+        
+        // First Skill
+        tutorialKey = "ResetAllCharactersSkills" + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter)
+        tutorialVersion = 1.0
+        tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
+        
+        if tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion) {
+            if GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.count > 1 {
+                // Let's reset characters if needed
+                GameData.sharedGameData.resetCharacterSkills(char: GameData.sharedGameData.selectedCharacter)
+                reset = true
+            }
+            
+            // Ack the reset and save
+            GameData.sharedGameData.tutorialsAcknowledged[tutorialKey] = tutorialVersion
+            self.save()
+        }
+        
+        return reset
+    }
+    
+    func resetCharacterSkills(char: CharacterType) {
+        if char == CharacterType.Warrior {
+            warriorCharacter.resetCharacterSkills()
+        } else if char == CharacterType.Archer {
+            archerCharacter.resetCharacterSkills()
+        } else if char == CharacterType.Monk {
+            monkCharacter.resetCharacterSkills()
+        } else if char == CharacterType.Mage {
+            mageCharacter.resetCharacterSkills()
+        }
     }
 }

@@ -33,9 +33,9 @@ class CharacterSkillScene : DBScene {
     var selectedSkillErrorText: DSMultilineLabelNode?
     
     var totalUnspentStars: LabelWithShadow?
-    var totalUnspentCitrine: LabelWithShadow?
+    //var totalUnspentCitrine: LabelWithShadow?
     var totalUnspentStarsIcon: SKSpriteNode?
-    var totalUnspentCitrineIcon: SKSpriteNode?
+    //var totalUnspentCitrineIcon: SKSpriteNode?
     var totalUnspentDiamonds: LabelWithShadow?
     var totalUnspentDiamondsIcon: SKSpriteNode?
     
@@ -49,12 +49,6 @@ class CharacterSkillScene : DBScene {
     var resetSkillsButton: CharacterResetSkillsButton?
     var backButton: CharacterBackButton?
     var tradeButton: CharacterTradeButton?
-    
-    // Superstar purchase
-    var buySuperstarButton: CharacterPurchaseSuperstarButton?
-    var buySuperstarText: LabelWithShadow?
-    var buySuperstarText2: LabelWithShadow?
-    var buySuperstarIcon: SKSpriteNode?
 
     // Buffer
     var nodeBuffer: CGFloat = ScaleBuddy.sharedInstance.getNodeBuffer()
@@ -85,6 +79,9 @@ class CharacterSkillScene : DBScene {
         // Call super init
         super.init(size: size, settings: false, loadingOverlay: true, purchaseMenu: true, rateMe: false, trade: true)
         
+        // Reset skils first
+        self.resetSkills = GameData.sharedGameData.checkAndResetCharacterSkills()
+        
         // Level selector view ( this is the background & parent that everything is added to)
         self.skillSelectorBackground = ScaleBuddy.sharedInstance.getScreenAdjustedSpriteWithModifier("skill_prop_outline", textureAtlas: GameTextures.sharedInstance.uxMenuAtlas, modifier: 2.4)
         self.skillSelector = SKSpriteNode(color: MerpColors.background, size: CGSize(width: self.skillSelectorBackground!.size.width - nodeBuffer * 1.5, height: self.skillSelectorBackground!.size.height - nodeBuffer * 1.3))
@@ -102,27 +99,10 @@ class CharacterSkillScene : DBScene {
         // Level Selector
         self.initSkillSelector()
         
-        // Set selected skill info
-        // Background and container
-        //self.selectedSkillBackground = SKSpriteNode(color: UIColor(red: 108 / 255.0, green: 190 / 255.0, blue: 69 / 255.0, alpha: 1.0), size: CGSizeMake(self.size.width - self.skillSelectorBackground!.size.width - self.nodeBuffer * 3, self.skillSelectorBackground!.size.height))
-        
         // Reset skills button... using the height for alignment of other elements
         self.resetSkillsButton = CharacterResetSkillsButton(scene: self)
         self.backButton = CharacterBackButton(scene: self)
         self.tradeButton = CharacterTradeButton(scene: self)
-        
-        // Superstar buy
-        /*self.buySuperstarButton = CharacterPurchaseSuperstarButton(scene: self, unlockAmount: GameData.sharedGameData.getSelectedCharacterData().getNextSuperstarPurchaseCost())
-        self.buySuperstarText = LabelWithShadow(fontNamed: "Avenir-Medium", darkFont: true, borderSize: 1 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
-        self.buySuperstarText!.setText("buy 1")
-        self.buySuperstarText!.setFontSize(round(26 * ScaleBuddy.sharedInstance.getGameScaleAmount(true)))
-        
-        self.buySuperstarText!.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.top)
-        self.buySuperstarIcon = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("superstar"))
-        
-        self.buySuperstarText2 = LabelWithShadow(fontNamed: "Avenir-Medium", darkFont: true, borderSize: 1 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
-        self.buySuperstarText2!.setFontSize(round(26 * ScaleBuddy.sharedInstance.getGameScaleAmount(true)))
-        self.buySuperstarText2!.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.top)*/
         
         self.buySkillButton = CharacterPurchaseSkillButton(scene: self)
         self.removeSkillButton = CharacterRemoveSkillButton(scene: self)
@@ -135,8 +115,8 @@ class CharacterSkillScene : DBScene {
         
         self.totalUnspentStars = LabelWithShadow(fontNamed: "Avenir-Medium", darkFont: false)
         self.totalUnspentDiamonds = LabelWithShadow(fontNamed: "Avenir-Medium", darkFont: false)
-        self.totalUnspentCitrine = LabelWithShadow(fontNamed: "Avenir-Medium", darkFont: false)
-        self.totalUnspentCitrineIcon = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("superstar"))
+        //self.totalUnspentCitrine = LabelWithShadow(fontNamed: "Avenir-Medium", darkFont: false)
+        //self.totalUnspentCitrineIcon = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("superstar"))
         self.totalUnspentStarsIcon = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("star"))
         self.totalUnspentDiamondsIcon = SKSpriteNode(texture: GameTextures.sharedInstance.uxAtlas.textureNamed("gem"))
         
@@ -178,21 +158,15 @@ class CharacterSkillScene : DBScene {
         //self.updateSuperstarPurchasing()
         
         self.worldView.addChild(self.totalUnspentStars!)
-        self.worldView.addChild(self.totalUnspentCitrine!)
+        //self.worldView.addChild(self.totalUnspentCitrine!)
         self.worldView.addChild(self.totalUnspentDiamonds!)
         self.worldView.addChild(self.totalUnspentStarsIcon!)
-        self.worldView.addChild(self.totalUnspentCitrineIcon!)
+        //self.worldView.addChild(self.totalUnspentCitrineIcon!)
         self.worldView.addChild(self.totalUnspentDiamondsIcon!)
     
         self.worldView.addChild(self.resetSkillsButton!)
         self.worldView.addChild(self.tradeButton!)
         self.worldView.addChild(self.backButton!)
-        /*
-        self.worldView.addChild(self.buySuperstarButton!)
-        self.worldView.addChild(self.buySuperstarText!)
-        self.worldView.addChild(self.buySuperstarText2!)
-        self.worldView.addChild(self.buySuperstarIcon!)
-         */
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -335,12 +309,22 @@ class CharacterSkillScene : DBScene {
             tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
             
             if self.superStarPurchasingUnlocked() && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-                let tutorial = UXTutorialDialog(frameSize: self.size, description: "Trade your gems for stars and superstars for skill upgrades!", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.rightTop], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
+                let tutorial = UXTutorialDialog(frameSize: self.size, description: "Trade your gems for stars for skill upgrades!", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.rightTop], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
                 tutorial.containerBackground.position = CGPoint(x: self.tradeButton!.position.x - self.tradeButton!.size.width / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.width / 2 - self.nodeBuffer, y: self.tradeButton!.position.y + self.tradeButton!.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2)
                 self.uxTutorialTooltips!.append(tutorial)
                 
                 self.addChild(tutorial)
             }
+        }
+        
+        // Show the first skill being unlocked already
+        if self.resetSkills || GameData.sharedGameData.getSelectedCharacterData().godMode {
+            
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) + "'s skills were reset but we kept all of your stars! Re-add " + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) + "'s skills before playing.", scene: self, size: "Medium", indicators: [], key: "", version: 1.0, onComplete: onCompleteUxTooltip!)
+            
+            tutorial.containerBackground.position = CGPoint(x: 0, y: 0)
+            self.uxTutorialTooltips!.append(tutorial)
+            self.addChild(tutorial)
         }
         
         /*
@@ -368,29 +352,13 @@ class CharacterSkillScene : DBScene {
         }
     }
     
-    func checkShowSuperstarPurchasing() {
-        if superStarPurchasingUnlocked() {
-            self.buySuperstarButton!.isHidden = false
-            self.buySuperstarText!.isHidden = false
-            self.buySuperstarText2!.isHidden = false
-            self.buySuperstarIcon!.isHidden = false
-        } else {
-            self.buySuperstarButton!.isHidden = true
-            self.buySuperstarText!.isHidden = true
-            self.buySuperstarText2!.isHidden = true
-            self.buySuperstarIcon!.isHidden = true
-        }
-    }
-    
     func superStarPurchasingUnlocked() -> Bool {
-        return false // For now we're removing this functionality
-        /*
-        // Level 9 needs to be unlocked and you need to have earned at least 1 gem
-        if !GameData.sharedGameData.getSelectedCharacterData().isLevelLocked(9) /*&& GameData.sharedGameData.getTotalGemsEarned() > 0*/ || GameData.sharedGameData.getSelectedCharacterData().godMode {
+        // Level 6 needs to be unlocked
+        if !GameData.sharedGameData.getSelectedCharacterData().isLevelLocked(6) /*&& GameData.sharedGameData.getTotalGemsEarned() > 0*/ || GameData.sharedGameData.getSelectedCharacterData().godMode {
             return true
         } else {
             return false
-        }*/
+        }
     }
     
     override func updateGemCounts() {
@@ -577,6 +545,7 @@ class CharacterSkillScene : DBScene {
         self.totalUnspentStars?.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
         self.totalUnspentStars?.position = CGPoint(x: self.totalUnspentStarsIcon!.position.x - self.totalUnspentStarsIcon!.size.width/2 - nodeBuffer/5, y: self.resetSkillsButton!.position.y)
         
+        /*
         // Citrine icon
         self.totalUnspentCitrineIcon?.setScale(0.74)
         self.totalUnspentCitrineIcon?.position = CGPoint(x: self.totalUnspentStars!.position.x - self.totalUnspentStars!.calculateAccumulatedFrame().width - nodeBuffer * 1 - self.totalUnspentCitrineIcon!.size.width/2, y: self.resetSkillsButton!.position.y)
@@ -587,10 +556,11 @@ class CharacterSkillScene : DBScene {
         self.totalUnspentCitrine?.setHorizontalAlignmentMode(SKLabelHorizontalAlignmentMode.right)
         self.totalUnspentCitrine?.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
         self.totalUnspentCitrine?.position = CGPoint(x: self.totalUnspentCitrineIcon!.position.x - self.totalUnspentCitrineIcon!.size.width/2 - nodeBuffer/5, y: self.resetSkillsButton!.position.y)
+        */
         
         // Diamonds icon
         self.totalUnspentDiamondsIcon?.setScale(0.74)
-        self.totalUnspentDiamondsIcon?.position = CGPoint(x: self.totalUnspentCitrine!.position.x - self.totalUnspentCitrine!.calculateAccumulatedFrame().width - nodeBuffer * 1 - self.totalUnspentDiamondsIcon!.size.width/2, y: self.resetSkillsButton!.position.y)
+        self.totalUnspentDiamondsIcon?.position = CGPoint(x: self.totalUnspentStars!.position.x - self.totalUnspentStars!.calculateAccumulatedFrame().width - nodeBuffer * 1 - self.totalUnspentDiamondsIcon!.size.width/2, y: self.resetSkillsButton!.position.y)
         
         // Diamons label
         self.totalUnspentDiamonds?.setText("\(GameData.sharedGameData.totalDiamonds)")
@@ -599,31 +569,6 @@ class CharacterSkillScene : DBScene {
         self.totalUnspentDiamonds?.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
         self.totalUnspentDiamonds?.position = CGPoint(x: self.totalUnspentDiamondsIcon!.position.x - self.totalUnspentDiamondsIcon!.size.width/2 - nodeBuffer/5, y: self.resetSkillsButton!.position.y)
     }
-    
-    /*
-    func updateSuperstarPurchasing() {
-        //self.buySuperstarText2!.setText("(\(GameData.sharedGameData.getSelectedCharacterData().purchasedSuperstars))")
-        
-        // Positioning of buy superstar button - happen after reselectskillnode
-        // Width of 3
-        let superstarBuyWidth = self.buySuperstarIcon!.size.width + self.buySuperstarText!.calculateAccumulatedFrame().size.width + self.buySuperstarButton!.size.width + self.buySuperstarText2!.calculateAccumulatedFrame().size.width + self.nodeBuffer / 2
-        
-        self.buySuperstarText!.position = CGPoint(x: self.selectedSkillBackground!.position.x - superstarBuyWidth / 2 + self.buySuperstarText!.calculateAccumulatedFrame().size.width / 2, y: self.selectedSkillBackground!.position.y - self.selectedSkillBackground!.size.height / 2 - self.nodeBuffer * 1.4)
-        
-        var iconYPosAdjust: CGFloat = 0
-        
-        if ScaleBuddy.sharedInstance.deviceSize == DeviceSizes.original4 || ScaleBuddy.sharedInstance.deviceSize == DeviceSizes.originaliPad {
-            self.buySuperstarIcon!.setScale(0.65)
-            iconYPosAdjust = 2
-        } else {
-            self.buySuperstarIcon!.setScale(0.775)
-        }
-        self.buySuperstarIcon!.position = CGPoint(x: self.buySuperstarText!.position.x + self.buySuperstarText!.calculateAccumulatedFrame().size.width / 2 + self.buySuperstarIcon!.size.width / 2, y: self.selectedSkillBackground!.position.y - self.selectedSkillBackground!.size.height / 2 - self.buySuperstarButton!.size.height / 2 - self.nodeBuffer + iconYPosAdjust)
-        
-        self.buySuperstarText2!.position = CGPoint(x: self.buySuperstarIcon!.position.x + self.buySuperstarIcon!.size.width / 2 + self.nodeBuffer / 2 + self.buySuperstarText2!.calculateAccumulatedFrame().size.width / 2, y: self.selectedSkillBackground!.position.y - self.selectedSkillBackground!.size.height / 2 - self.nodeBuffer * 1.4)
-        
-        self.buySuperstarButton!.position = CGPoint(x: self.buySuperstarText2!.position.x + self.buySuperstarText2!.calculateAccumulatedFrame().size.width / 2 + self.nodeBuffer / 2 + self.buySuperstarButton!.size.width / 2, y: self.selectedSkillBackground!.position.y - self.selectedSkillBackground!.size.height / 2 - self.buySuperstarButton!.size.height / 2 - self.nodeBuffer)
-    }*/
     
     override func impactsMusic() -> Bool {
         return true // This was false at one point... to allow for the scene's music to carry forward. It isn't working now because the loading screen kills the music.

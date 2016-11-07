@@ -6,13 +6,21 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>What&apos;s New?</string>
+			<string>What&apos;s New in 1.1?</string>
 			<key>Description</key>
-			<string>Version 2.0: New trade menu on your character skills screen. Trade your hard earned gems for stars and superstars to get ahead. </string>
+			<string>- Limited time all characters now free! Play once to unlock.</string>
+			<key>Description2</key>
+			<string>- Now earn more stars when getting 100% on a level!</string>
+			<key>Description3</key>
+			<string>- Skills are easier to obtain early on.</string>
+			<key>Description4</key>
+			<string>- Trade your gems for stars in the trade menu on your character&apos;s skills page.</string>
+			<key>Description5</key>
+			<string></string>
 			<key>Key</key>
 			<string>whats_new_main_menu</string>
 			<key>Version</key>
-			<integer>101</integer>
+			<integer>110</integer>
 			<key>FirstPlayDescription</key>
 			<string>Welcome to Mort&apos;s Minions! Select a character and start your adventure today!</string>
 			<key>FirstPlayTitle</key>

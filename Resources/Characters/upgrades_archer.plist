@@ -23,9 +23,9 @@
 			<key>Value</key>
 			<integer>5000</integer>
 			<key>TutorialVersion</key>
-			<integer>1</integer>
+			<integer>4</integer>
 			<key>TutorialText</key>
-			<string>Press screen to jump. Hold down to keep jumping.</string>
+			<string>Hold anywhere on the screen to jump continuously or tap to jump once.</string>
 		</dict>
 		<dict>
 			<key>Name</key>

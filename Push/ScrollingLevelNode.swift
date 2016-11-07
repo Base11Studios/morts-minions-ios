@@ -94,8 +94,8 @@ class ScrollingLevelNode : SKNode {
             self.starEmpty1 = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("starempty"))
             self.starEmpty2 = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("starempty"))
             self.starEmpty3 = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("starempty"))
-            self.citrineFilled1 = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("superstar"))
-            self.citrineEmpty1 = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("superstarempty"))
+            self.citrineFilled1 = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("star"))
+            self.citrineEmpty1 = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("starempty"))
             
             self.sampleStar = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("star"))
             self.sampleStar!.setScale(0.7)

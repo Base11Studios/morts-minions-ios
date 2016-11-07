@@ -22,9 +22,9 @@ enum CharacterType : String {
             return 0
         } else if id == Mage {
             //return 150
-            return 199
+            return 0
         } else if id == Monk {
-            return 199
+            return 0
             //return 150
         } else {
             return 0
