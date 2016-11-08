@@ -8,13 +8,13 @@
 			<key>Title</key>
 			<string>What&apos;s New in 1.1?</string>
 			<key>Description</key>
-			<string>- Limited time all characters now free! Play once to unlock.</string>
+			<string>- Limited time all heroes now free! Play once to unlock.</string>
 			<key>Description2</key>
 			<string>- Now earn more stars when getting 100% on a level!</string>
 			<key>Description3</key>
 			<string>- Skills are easier to obtain early on.</string>
 			<key>Description4</key>
-			<string>- Trade your gems for stars in the trade menu on your character&apos;s skills page.</string>
+			<string>- Trade your gems for stars in the trade menu on your hero&apos;s skills page.</string>
 			<key>Description5</key>
 			<string></string>
 			<key>Key</key>
@@ -22,7 +22,7 @@
 			<key>Version</key>
 			<integer>110</integer>
 			<key>FirstPlayDescription</key>
-			<string>Welcome to Mort&apos;s Minions! Select a character and start your adventure today!</string>
+			<string>Welcome to Mort&apos;s Minions! Select a hero and start your adventure today!</string>
 			<key>FirstPlayTitle</key>
 			<string>Welcome!</string>
 		</dict>
