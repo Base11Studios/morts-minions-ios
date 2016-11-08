@@ -1404,7 +1404,13 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     func updateHUD() {
         // HP
         var count = 0
-        let nonGoldHearts = self.player.health - self.player.goldHearts
+        var nonGoldHearts = self.player.health - self.player.goldHearts
+        
+        // If the player hasn't lost any list
+        if (self.player.maxHealth - self.player.goldHearts) >= self.player.health {
+            nonGoldHearts -= GameData.sharedGameData.heartBoostCount
+        }
+        
         for healthNode in self.healthNodes {
             // REJUV when we add the hearts after rejuv we also need to make them gold
             if self.player.health <= count {
