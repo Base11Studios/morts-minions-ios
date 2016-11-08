@@ -80,7 +80,7 @@ class MainMenuScene : DBScene {
         //self.viewController!.getAchievements()
         
         // Cache an ad so we're ready when we need it
-        self.viewController!.cacheInterstitialAd()
+        //self.viewController!.cacheInterstitialAd()
         
         super.didMove(to: view)
     }

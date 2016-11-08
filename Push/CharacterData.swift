@@ -29,12 +29,10 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
     // Purchased superstars
     var purchasedSuperstars: Int = 0
     var purchasedStars: Int = 0
-    
-    // Heart boost
-    var countDownToBoost: Int = 0
-    
+
     // Free Rejuvenates
     var freeRejuvenations: Int = 1
+    var freeHeartBoosts: Int = 1
     
     var totalStars: Int {
         get {
@@ -119,8 +117,8 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
     let SSGameDataGoldHeartsKey: String = "goldHeartsKey"
     
     // Other
-    let SSGameDataHeartBoostCounterKey: String = "heartBoostCounterKey"
     let SSGameDataFreeRejuvenationsKey: String = "freeRejuvenationsKey"
+    let SSGameDataFreeHeartBoostsKey: String = "freeHeartBoostsKey"
     
     // Gamecenter score keys
     let SSGameDataCitrineStreakKey: String = "citrineStreak"
@@ -140,8 +138,8 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
         encoder.encode(self.goldHearts, forKey: SSGameDataGoldHeartsKey)
         encoder.encode(self.purchasedSuperstars, forKey: SSGameDataCharacterPurcahsedSuperstarsKey)
         encoder.encode(self.purchasedStars, forKey: SSGameDataCharacterPurchasedStarsKey)
-        encoder.encode(self.countDownToBoost, forKey: SSGameDataHeartBoostCounterKey)
-        encoder.encode(self.countDownToBoost, forKey: SSGameDataFreeRejuvenationsKey)
+        encoder.encode(self.freeHeartBoosts, forKey: SSGameDataFreeHeartBoostsKey)
+        encoder.encode(self.freeRejuvenations, forKey: SSGameDataFreeRejuvenationsKey)
         
         // Level states
         encoder.encode(self.lastPlayedLevelByWorld, forKey: SSGameDataLastPlayedLevelByWorldKey)
@@ -209,10 +207,14 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
             self.purchasedStars = decoder.decodeInteger(forKey: SSGameDataCharacterPurchasedStarsKey)
         }
         
-        if decoder.containsValue(forKey: SSGameDataHeartBoostCounterKey) {
-            self.countDownToBoost = decoder.decodeInteger(forKey: SSGameDataHeartBoostCounterKey)
+        if decoder.containsValue(forKey: SSGameDataFreeHeartBoostsKey) {
+            self.freeHeartBoosts = decoder.decodeInteger(forKey: SSGameDataFreeHeartBoostsKey)
+            
+            if self.freeHeartBoosts > 1 {
+                self.freeHeartBoosts = 1
+            }
         } else {
-            self.countDownToBoost = 0
+            self.freeHeartBoosts = 1
         }
         
         if decoder.containsValue(forKey: SSGameDataFreeRejuvenationsKey) {
@@ -519,7 +521,19 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
         }
     }
     
+    func hasFreeHeartBoosts() -> Bool {
+        if self.freeHeartBoosts > 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func useFreeRejuvenation() {
         self.freeRejuvenations -= 1
+    }
+    
+    func useFreeHeartBoost() {
+        self.freeHeartBoosts -= 1
     }
 }

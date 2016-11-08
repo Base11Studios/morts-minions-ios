@@ -69,8 +69,14 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     // Ads
     var lastVideoAdWatch: Date
     static var videoAdCooldown: Int = -3
-    static var introVideoAdCooldown: Int = -6
-    var lastIntroVideoAdWatch: Date
+    
+    // Heart Boost
+    static var heartBoostCooldown: Int = -60
+    var heartBoostLastUsed: Date
+    var heartBoostCount: Int = 0
+    static var heartBoostPromptCooldown: Int = -1// TODO -10
+    var heartBoostLastPrompted: Date
+    static var adsPurchasedHeartBoostMultiplier: Int = 3
     
     // Cloud vs local
     var cloudSyncing: Bool = true
@@ -140,7 +146,9 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     // Ads
     let SSGameDataAdPopCountownKey: String = "adPopCountdownKey"
     let SSGameDataLastVideoAdWatch: String = "lastVideoAdWatch"
-    let SSGameDataLastIntroVideoAdWatch: String = "lastIntroVideoAdWatch"
+    let SSGameDataHeartBoostLastUsed: String = "heartBoostLastUsed"
+    let SSGameDataHeartBoostLastPrompted: String = "heartBoostLastPrompted"
+    let SSGameDataHeartBoostCountKey: String = "heartBoostCount"
     
     // Data keys gamecenter
     let SSGameDataBRGemsCollectedKey: String = "brGemsCollected"
@@ -180,7 +188,9 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         // Ads
         encoder.encode(self.adPopCountdown, forKey: SSGameDataAdPopCountownKey)
         encoder.encode(self.lastVideoAdWatch, forKey: SSGameDataLastVideoAdWatch)
-        encoder.encode(self.lastIntroVideoAdWatch, forKey: SSGameDataLastIntroVideoAdWatch)
+        encoder.encode(self.heartBoostLastUsed, forKey: SSGameDataHeartBoostLastUsed)
+        encoder.encode(self.heartBoostLastPrompted, forKey: SSGameDataHeartBoostLastPrompted)
+        encoder.encode(self.heartBoostCount, forKey: SSGameDataHeartBoostCountKey)
         
         // Rating info
         encoder.encode(self.playerHasRatedGame, forKey: SSGameDataPlayerHasRatedGameKey)
@@ -236,7 +246,8 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         
         let calendar = NSCalendar.autoupdatingCurrent
         self.lastVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: GameData.videoAdCooldown, to: Date())!
-        self.lastIntroVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: GameData.introVideoAdCooldown, to: Date())!
+        self.heartBoostLastUsed = calendar.date(byAdding: Calendar.Component.minute, value: GameData.heartBoostCooldown * GameData.adsPurchasedHeartBoostMultiplier, to: Date())!
+        self.heartBoostLastPrompted = calendar.date(byAdding: Calendar.Component.minute, value: GameData.heartBoostPromptCooldown, to: Date())!
         
         super.init()
     }
@@ -255,11 +266,22 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
             self.lastVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: GameData.videoAdCooldown, to: Date())!
         }
         
-        if let decodedLastIntroVideoAdWatch = decoder.decodeObject(forKey: SSGameDataLastIntroVideoAdWatch) as? Date {
-            self.lastIntroVideoAdWatch = decodedLastIntroVideoAdWatch
+        if let decodedHeartBoostLastUsed = decoder.decodeObject(forKey: SSGameDataHeartBoostLastUsed) as? Date {
+            self.heartBoostLastUsed = decodedHeartBoostLastUsed
         } else {
             let calendar = NSCalendar.autoupdatingCurrent
-            self.lastIntroVideoAdWatch = calendar.date(byAdding: Calendar.Component.minute, value: GameData.introVideoAdCooldown, to: Date())!
+            self.heartBoostLastUsed = calendar.date(byAdding: Calendar.Component.minute, value: GameData.heartBoostCooldown * GameData.adsPurchasedHeartBoostMultiplier, to: Date())!
+        }
+        
+        if let decodedHeartBoostLastPrompted = decoder.decodeObject(forKey: SSGameDataHeartBoostLastPrompted) as? Date {
+            self.heartBoostLastPrompted = decodedHeartBoostLastPrompted
+        } else {
+            let calendar = NSCalendar.autoupdatingCurrent
+            self.heartBoostLastPrompted = calendar.date(byAdding: Calendar.Component.minute, value: GameData.heartBoostPromptCooldown, to: Date())!
+        }
+        
+        if decoder.containsValue(forKey: SSGameDataHeartBoostCountKey) {
+            self.heartBoostCount = decoder.decodeInteger(forKey: SSGameDataHeartBoostCountKey)
         }
         
         if let decodedChar = decoder.decodeObject(forKey: SSGameDataWarriorCharacterKey) as? CharacterData {
@@ -799,6 +821,22 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
             monkCharacter.resetCharacterSkills()
         } else if char == CharacterType.Mage {
             mageCharacter.resetCharacterSkills()
+        }
+    }
+    
+    func getHeartBoostCooldown() -> Int {
+        if !self.adsUnlocked {
+            return GameData.heartBoostCooldown
+        } else {
+            return GameData.heartBoostCooldown * GameData.adsPurchasedHeartBoostMultiplier
+        }
+    }
+    
+    func configureHeartBoost(enable: Bool) {
+        if enable {
+            self.heartBoostCount = 1
+        } else {
+            self.heartBoostCount = 0
         }
     }
 }

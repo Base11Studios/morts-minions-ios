@@ -178,6 +178,9 @@
 		374439361BCC04430003C17C /* Goblin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374439351BCC04430003C17C /* Goblin.swift */; };
 		3744393B1BCC09B90003C17C /* Arrow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3744393A1BCC09B90003C17C /* Arrow.swift */; };
 		37484D321DD11E4B0046B969 /* RejuvenateCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37484D311DD11E4B0046B969 /* RejuvenateCloseButton.swift */; };
+		37484D341DD170650046B969 /* HeartBoostVideoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37484D331DD170650046B969 /* HeartBoostVideoButton.swift */; };
+		37484D361DD170730046B969 /* HeartBoostGemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37484D351DD170730046B969 /* HeartBoostGemButton.swift */; };
+		37484D381DD170900046B969 /* HeartBoostCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37484D371DD170900046B969 /* HeartBoostCloseButton.swift */; };
 		374A11AD1DA14A6C00523102 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A11AC1DA14A6C00523102 /* CoreTelephony.framework */; };
 		374A11AF1DA14A7B00523102 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A11AE1DA14A7B00523102 /* EventKit.framework */; };
 		374A11B11DA14A8100523102 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A11B01DA14A8100523102 /* EventKitUI.framework */; };
@@ -281,7 +284,6 @@
 		379FB9861CA9E1F70026F0B7 /* Lungey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FB9851CA9E1F70026F0B7 /* Lungey.swift */; };
 		379FB9881CB015D40026F0B7 /* FirePole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FB9871CB015D40026F0B7 /* FirePole.swift */; };
 		37A0481C1CE170360015E4C8 /* HeartBoostDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A0481B1CE170360015E4C8 /* HeartBoostDialog.swift */; };
-		37A0481F1CE171DC0015E4C8 /* GameBoostPlayButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A0481E1CE171DC0015E4C8 /* GameBoostPlayButton.swift */; };
 		37A38E781DD101DB00287FB2 /* __vungle.db in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E591DD101DB00287FB2 /* __vungle.db */; };
 		37A38E791DD101DB00287FB2 /* Appodeal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E5A1DD101DB00287FB2 /* Appodeal.bundle */; };
 		37A38E7A1DD101DB00287FB2 /* MPAdBrowserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E5B1DD101DB00287FB2 /* MPAdBrowserController.xib */; };
@@ -576,6 +578,9 @@
 		374439351BCC04430003C17C /* Goblin.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Goblin.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		3744393A1BCC09B90003C17C /* Arrow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = Arrow.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		37484D311DD11E4B0046B969 /* RejuvenateCloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RejuvenateCloseButton.swift; sourceTree = "<group>"; };
+		37484D331DD170650046B969 /* HeartBoostVideoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBoostVideoButton.swift; sourceTree = "<group>"; };
+		37484D351DD170730046B969 /* HeartBoostGemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBoostGemButton.swift; sourceTree = "<group>"; };
+		37484D371DD170900046B969 /* HeartBoostCloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBoostCloseButton.swift; sourceTree = "<group>"; };
 		374A11AC1DA14A6C00523102 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		374A11AE1DA14A7B00523102 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		374A11B01DA14A8100523102 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
@@ -687,7 +692,6 @@
 		379FB9851CA9E1F70026F0B7 /* Lungey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lungey.swift; sourceTree = "<group>"; };
 		379FB9871CB015D40026F0B7 /* FirePole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirePole.swift; sourceTree = "<group>"; };
 		37A0481B1CE170360015E4C8 /* HeartBoostDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBoostDialog.swift; sourceTree = "<group>"; };
-		37A0481E1CE171DC0015E4C8 /* GameBoostPlayButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameBoostPlayButton.swift; sourceTree = "<group>"; };
 		37A38E591DD101DB00287FB2 /* __vungle.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = __vungle.db; sourceTree = "<group>"; };
 		37A38E5A1DD101DB00287FB2 /* Appodeal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Appodeal.bundle; sourceTree = "<group>"; };
 		37A38E5B1DD101DB00287FB2 /* MPAdBrowserController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPAdBrowserController.xib; sourceTree = "<group>"; };
@@ -1399,7 +1403,9 @@
 		37A0481D1CE171C90015E4C8 /* Boost */ = {
 			isa = PBXGroup;
 			children = (
-				37A0481E1CE171DC0015E4C8 /* GameBoostPlayButton.swift */,
+				37484D351DD170730046B969 /* HeartBoostGemButton.swift */,
+				37484D331DD170650046B969 /* HeartBoostVideoButton.swift */,
+				37484D371DD170900046B969 /* HeartBoostCloseButton.swift */,
 			);
 			name = Boost;
 			sourceTree = "<group>";
@@ -2093,6 +2099,7 @@
 				37DD89EC1C53378600588E38 /* Starfish.swift in Sources */,
 				37CE7FFD1CA388CC00B4DFA9 /* Egg.swift in Sources */,
 				373CEA7B1C15BF8400197B83 /* Fly.swift in Sources */,
+				37484D341DD170650046B969 /* HeartBoostVideoButton.swift in Sources */,
 				373A20D41C75F17300F3D15E /* UXTutorialDialog.swift in Sources */,
 				37484D321DD11E4B0046B969 /* RejuvenateCloseButton.swift in Sources */,
 				3767AAE61CBC69B30011F7A5 /* SettingsBackButton.swift in Sources */,
@@ -2115,6 +2122,7 @@
 				37BB695E1C32034F00B59D73 /* TipType.swift in Sources */,
 				37CE80051CA4B4F500B4DFA9 /* DiveBomber.swift in Sources */,
 				373CEA711C147B9600197B83 /* SpikeTrap.swift in Sources */,
+				37484D361DD170730046B969 /* HeartBoostGemButton.swift in Sources */,
 				37E894A31CBADAEB008788EF /* RateMeNeverButton.swift in Sources */,
 				373F21B11BE47A6A00934722 /* CharacterResetSkillsButton.swift in Sources */,
 				373F218C1BE0DD1200934722 /* GameRetryLevelButton.swift in Sources */,
@@ -2200,7 +2208,6 @@
 				37B6D9E01BCDE064001496F3 /* Player.swift in Sources */,
 				3744393B1BCC09B90003C17C /* Arrow.swift in Sources */,
 				37688B561CA5ED2F0075E652 /* Balloon.swift in Sources */,
-				37A0481F1CE171DC0015E4C8 /* GameBoostPlayButton.swift in Sources */,
 				37B567951DA5A9520013A4AC /* TradeMenu.swift in Sources */,
 				376CBA5A1CCD3D7600BE2756 /* Achievements.swift in Sources */,
 				37E198541BD06D6400AC5178 /* Mimic.swift in Sources */,
@@ -2208,6 +2215,7 @@
 				373CEA791C15286500197B83 /* Beast.swift in Sources */,
 				373CEAAD1C1BCA2200197B83 /* SpikeShield.swift in Sources */,
 				37EF958E1BD92F5F00321B8B /* GameMenuButton.swift in Sources */,
+				37484D381DD170900046B969 /* HeartBoostCloseButton.swift in Sources */,
 				374439321BCBE1C00003C17C /* CharacterType.swift in Sources */,
 				37E894A61CBAE474008788EF /* RateMeDialog.swift in Sources */,
 				377AC58D1C0A76DE00C29A69 /* MerpColors.swift in Sources */,

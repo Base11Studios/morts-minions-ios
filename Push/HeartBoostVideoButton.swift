@@ -8,8 +8,8 @@
 
 import Foundation
 
-@objc(RejuvenateVideoButton)
-class RejuvenateVideoButton : DBButton {
+@objc(HeartBoostVideoButton)
+class HeartBoostVideoButton : DBButton {
     var gemIcon: SKSpriteNode
     var amount: LabelWithShadow
     
@@ -55,10 +55,7 @@ class RejuvenateVideoButton : DBButton {
         self.setScale(1)
         
         if self.dbScene!.viewController!.videoAdReady() {
-            // Remove the current animation
-            (self.dbScene as! GameScene).setRejuvDialogDisplayed()
-
-            self.dbScene!.viewController!.showRewardedVideo(location: GameViewController.AD_LOCATION_REVIVE)
+            self.dbScene!.viewController!.showRewardedVideo(location: GameViewController.AD_LOCATION_HEART_BOOST)
             
             // Start loading screen
             //self.dbScene!.startLoadingOverlay()

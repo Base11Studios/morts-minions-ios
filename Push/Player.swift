@@ -284,8 +284,8 @@ class Player : SKSpriteNode {
         
         // Attributes
         self.goldHearts = GameData.sharedGameData.getSelectedCharacterData().goldHearts
-        self.maxHealth = 3
-        self.health = 3
+        self.maxHealth = 3// + GameData.sharedGameData.heartBoostCount
+        self.health = 3// + GameData.sharedGameData.heartBoostCount
         self.damage = 1
         self.originalDamage = 1
         self.shieldDamage = 1

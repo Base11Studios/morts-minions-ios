@@ -20,6 +20,7 @@ class RejuvDialog: DialogBackground {
     
     // Other items
     var titleNode: DSMultilineLabelNode?
+    var descriptionNode: DSMultilineLabelNode?
     var iconBackgroundNode: SKSpriteNode?
     var iconNode: SKSpriteNode?
     
@@ -59,12 +60,16 @@ class RejuvDialog: DialogBackground {
         
         // Title and desc
         self.titleNode = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
+        self.descriptionNode = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
         self.container.addChild(self.titleNode!)
     
         self.titleNode?.paragraphWidth = self.container.size.width - self.buttonBuffer - self.iconBackgroundNode!.size.width
         self.titleNode?.fontSize = round(28 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.titleNode?.fontColor = MerpColors.darkFont
-        self.titleNode?.text = "Revive?"
+        self.titleNode?.text = "Continue?"
+        
+        self.descriptionNode?.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+        self.descriptionNode?.fontColor = MerpColors.darkFont
         
         self.rejuvGemsButton = RejuvenateGemButton(scene: scene, unlockAmount: gemCost)
         self.rejuvVideoButton = RejuvenateVideoButton(scene: scene)
@@ -88,9 +93,13 @@ class RejuvDialog: DialogBackground {
             self.container.addChild(self.videoCountdownProgress!)
         self.container.addChild(self.closeButton!)
         //}
-        
-        let height = self.iconBackgroundNode!.size.height + self.rejuvGemsButton!.calculateAccumulatedFrame().size.height + self.buttonBuffer * 1 + /*self.videoCountdownBackground!.size.height +*/ self.buttonBuffer / 2 + self.closeButton!.size.height
+    
         let width = max(self.rejuvGemsButton!.size.width + self.rejuvVideoButton!.size.width + self.buttonBuffer, self.iconBackgroundNode!.size.width + self.buttonBuffer / 2 + self.titleNode!.calculateAccumulatedFrame().size.width)
+        
+        self.descriptionNode?.paragraphWidth = width
+        self.descriptionNode?.text = "Watch a video or use gems to continue the level without starting over."
+        
+        let height = self.iconBackgroundNode!.size.height + self.rejuvGemsButton!.calculateAccumulatedFrame().size.height + self.buttonBuffer * 1 + /*self.videoCountdownBackground!.size.height +*/ self.buttonBuffer + self.closeButton!.size.height + self.descriptionNode!.calculateAccumulatedFrame().size.height
         
         self.iconBackgroundNode?.position = CGPoint(x: width / -2 + self.iconBackgroundNode!.size.width / 2, y: height / 2 - self.iconBackgroundNode!.size.height / 2)
         
@@ -99,9 +108,11 @@ class RejuvDialog: DialogBackground {
         // Gem container is opposite side of title
         self.gemContainer.position = CGPoint(x: (width / 2) - self.gemContainer.calculateAccumulatedFrame().size.width / 2, y: self.titleNode!.position.y - self.gemContainer.size.height / 2)
         
-        self.rejuvGemsButton!.position = CGPoint(x: self.rejuvGemsButton!.size.width / 2 + self.buttonBuffer / 2, y: self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.buttonBuffer - self.rejuvGemsButton!.calculateAccumulatedFrame().size.height / 2)
+        self.descriptionNode!.position = CGPoint(x: -width / 2 + self.descriptionNode!.calculateAccumulatedFrame().size.width / 2, y: self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.buttonBuffer - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2)
         
-        self.rejuvVideoButton!.position = CGPoint(x: -self.rejuvVideoButton!.size.width / 2 - self.buttonBuffer / 2, y: self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.buttonBuffer - self.rejuvVideoButton!.calculateAccumulatedFrame().size.height / 2)
+        self.rejuvGemsButton!.position = CGPoint(x: self.rejuvGemsButton!.size.width / 2 + self.buttonBuffer / 2, y: self.descriptionNode!.position.y - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer - self.rejuvGemsButton!.calculateAccumulatedFrame().size.height / 2)
+        
+        self.rejuvVideoButton!.position = CGPoint(x: -self.rejuvVideoButton!.size.width / 2 - self.buttonBuffer / 2, y: self.descriptionNode!.position.y - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer - self.rejuvVideoButton!.calculateAccumulatedFrame().size.height / 2)
         
         self.videoCountdownBackground!.position = CGPoint(x: self.rejuvVideoButton!.position.x, y: self.rejuvVideoButton!.position.y - self.rejuvVideoButton!.size.height / 2 - self.buttonBuffer / 2 - self.videoCountdownBackground!.size.height / 2)
         self.videoCountdownProgress!.position = CGPoint(x: self.rejuvVideoButton!.position.x - (self.videoCountdownBackground!.size.width - self.videoCountdownProgress!.size.width) / 2, y: videoCountdownBackground!.position.y)

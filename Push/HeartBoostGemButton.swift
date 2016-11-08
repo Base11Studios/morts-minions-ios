@@ -8,8 +8,8 @@
 
 import Foundation
 
-@objc(RejuvenateGemButton)
-class RejuvenateGemButton : DBButton {
+@objc(HeartBoostGemButton)
+class HeartBoostGemButton : DBButton {
     var unlockAmount: Int
     
     var gemIcon: SKSpriteNode
@@ -36,7 +36,7 @@ class RejuvenateGemButton : DBButton {
         
         self.updateUnlockAmount(self.unlockAmount)
         
-        if !GameData.sharedGameData.getSelectedCharacterData().hasFreeRejuvenations() {
+        if !GameData.sharedGameData.getSelectedCharacterData().hasFreeHeartBoosts() {
             self.addChild(self.gemIcon)
         }
         
@@ -44,7 +44,7 @@ class RejuvenateGemButton : DBButton {
     }
     
     func updateUnlockAmount(_ amount: Int) {
-        if GameData.sharedGameData.getSelectedCharacterData().hasFreeRejuvenations() {
+        if GameData.sharedGameData.getSelectedCharacterData().hasFreeHeartBoosts() {
             self.amount.setText("free")
             self.amount.position = CGPoint(x: 0, y: 0)
         } else {
@@ -71,54 +71,41 @@ class RejuvenateGemButton : DBButton {
     override func touchesEndedAction() {
         self.setScale(1)
         
-        // Remove the current animation
-        (self.dbScene as! GameScene).setRejuvDialogDisplayed()
-        
-        if GameData.sharedGameData.getSelectedCharacterData().hasFreeRejuvenations() {
-            // Reduce free rejuvenation
-            GameData.sharedGameData.getSelectedCharacterData().useFreeRejuvenation()
+        if GameData.sharedGameData.getSelectedCharacterData().hasFreeHeartBoosts() {
+            // Reduce free hb
+            GameData.sharedGameData.getSelectedCharacterData().useFreeHeartBoost()
             //GameData.sharedGameData.save()
             
-            // Rejuvenate the player for free
-            self.purchaseRejuvenate(false)
+            // Heart boost for free
+            self.purchaseBoost(false)
         } else {
             if self.unlockAmount <= GameData.sharedGameData.totalDiamonds { // Unlock it
-                self.purchaseRejuvenate(true)
+                self.purchaseBoost(true)
             } else {
                 // If the user does not have enough gems, show purchase menu
                 // Need weak reference to prevent retain cycle
-                let onSuccessPurchase: (Bool) -> Void = {[weak self] (flag: Bool) in self!.purchaseRejuvenate(flag)}
+                let onSuccessPurchase: (Bool) -> Void = {[weak self] (flag: Bool) in self!.purchaseBoost(flag)}
                 // Need weak reference to prevent retain cycle
-                let onFailedPurchase: () -> Void = {[weak self] in self!.dismissRejuvenate()}
+                let onFailedPurchase: () -> Void = {[weak self] in self!.dismissBoost()}
                 self.dbScene!.showPurchaseMenu(true, itemCost: self.unlockAmount, onSuccess: onSuccessPurchase, onFailure: onFailedPurchase)
-                
-                // TODO when purchase menu is dismissed and gems were not purchased, reset timer action and do 3 second wait + dismiss
-                // TODO when purchase menu is dismissed if gems were purchased, rejuvenate player and remove dialog through 1 sec slideout
             }
         }
     }
     
-    func purchaseRejuvenate(_ useGems: Bool) -> Void {
+    func purchaseBoost(_ useGems: Bool) -> Void {
         if useGems {
             GameData.sharedGameData.totalDiamonds = GameData.sharedGameData.totalDiamonds - self.unlockAmount
             
-            // Rejuvenate player and remove dialog through 1 sec slideout
-            (self.dbScene as! GameScene).rejuvenatePlayer()
-            
-            // Save data
-            //GameData.sharedGameData.save()
+            (self.dbScene as! GameScene).enableHeartBoost()
         } else {
-            // Rejuvenate player and remove dialog through 1 sec slideout
-            (self.dbScene as! GameScene).rejuvenatePlayer()
+            (self.dbScene as! GameScene).enableHeartBoost()
         }
         
         return
     }
     
-    func dismissRejuvenate() -> Void {
-        // Completely dismiss rejuvenate - this happens if you just call the rejuvenateplayer on the gamescene
-        /* Let's not do anything if the video watching fails.. let them try another option and close manually */
-        //(self.dbScene as! GameScene).dismissRejuvDialogWaitAndEndLevel()
+    func dismissBoost() -> Void {
+        // TODO anything?
     }
     
     override func touchesReleasedAction() {
