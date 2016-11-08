@@ -1970,7 +1970,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             for tutorialTipDictionary in tutorialArray! {
                 // Get the version information
                 var key = tutorialTipDictionary["Key"] as! String
-                key = "level_\(self.currentLevel)_" + key // Make it level specific
+                key = "level_\(self.currentLevel)_" + key + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) // Make it level specific and character specific
                 
                 let version = tutorialTipDictionary["Version"] as! Double
                 
