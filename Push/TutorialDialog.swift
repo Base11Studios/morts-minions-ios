@@ -12,6 +12,7 @@ class TutorialDialog: DialogBackground {
     var nextButton: GameTutorialNextButton
     var previousButton: GameTutorialPreviousButton
     var playButton: GameTutorialPlayButton
+    var storeButton: GameTutorialStoreButton
     var titleNode: DSMultilineLabelNode?
     var descriptionNode: DSMultilineLabelNode?
     var speechBubble: SKSpriteNode?
@@ -29,6 +30,7 @@ class TutorialDialog: DialogBackground {
         self.nextButton = GameTutorialNextButton(dialogNumber: dialogNumber, scene: scene)
         self.previousButton = GameTutorialPreviousButton(dialogNumber: dialogNumber, scene: scene)
         self.playButton = GameTutorialPlayButton(dialogNumber: dialogNumber, scene: scene)
+        self.storeButton = GameTutorialStoreButton(dialogNumber: dialogNumber, scene: scene)
         
         super.init(frameSize: frameSize)
         
@@ -42,6 +44,7 @@ class TutorialDialog: DialogBackground {
         
         self.nextButton.position = CGPoint(x: self.container.size.width / 2 - self.nextButton.size.width / 2 - self.buttonBuffer / 2, y: self.container.size.height / -2 + self.nextButton.size.height / 2 + self.buttonBuffer / 2)
         self.previousButton.position = CGPoint(x: self.nextButton.position.x - self.previousButton.size.width - self.buttonBuffer, y: self.nextButton.position.y)
+        self.storeButton.position = CGPoint(x: self.nextButton.position.x - self.storeButton.size.width - self.buttonBuffer, y: self.nextButton.position.y)
         self.playButton.position = CGPoint(x: self.nextButton.position.x, y: self.nextButton.position.y)
         
         // Icon
@@ -183,7 +186,7 @@ class TutorialDialog: DialogBackground {
         self.iconBackgroundNode!.addChild(self.iconNode!)
         
         
-        
+        self.container.addChild(self.storeButton)
         self.container.addChild(self.nextButton)
         self.container.addChild(self.previousButton)
         self.container.addChild(self.playButton)
@@ -191,6 +194,7 @@ class TutorialDialog: DialogBackground {
         // By default this is a "play" button
         self.nextButton.isHidden = true
         self.previousButton.isHidden = true
+        self.storeButton.isHidden = true
         self.playButton.isHidden = false
         
         // Reset the container size
@@ -207,23 +211,34 @@ class TutorialDialog: DialogBackground {
         self.nextButton.isHidden = true
         self.previousButton.isHidden = true
         self.playButton.isHidden = false
+        self.storeButton.isHidden = true
+    }
+    
+    func updateAsPlayAndStore() {
+        self.nextButton.isHidden = true
+        self.previousButton.isHidden = true
+        self.playButton.isHidden = false
+        self.storeButton.isHidden = false
     }
     
     func updateAsPlayAndPrevious() {
         self.nextButton.isHidden = true
         self.previousButton.isHidden = false
         self.playButton.isHidden = false
+        self.storeButton.isHidden = true
     }
     
     func updateAsNextOnly() {
         self.nextButton.isHidden = false
         self.previousButton.isHidden = true
         self.playButton.isHidden = true
+        self.storeButton.isHidden = true
     }
     
     func updateAsPreviousAndNext() {
         self.nextButton.isHidden = false
         self.previousButton.isHidden = false
         self.playButton.isHidden = true
+        self.storeButton.isHidden = true
     }
 }

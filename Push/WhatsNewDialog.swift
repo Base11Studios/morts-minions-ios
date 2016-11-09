@@ -39,6 +39,8 @@ class WhatsNewDialog: DialogBackground {
         self.containerBackground.size = CGSize(width: self.container.size.width + 2, height: self.container.size.height + 4)
         self.container.position = CGPoint(x: 0, y: 1)
         
+        var minHeight = self.container.size.height
+        
         // Icon
         self.iconBackgroundNode = SKSpriteNode(texture: GameTextures.sharedInstance.buttonAtlas.textureNamed("square_button_medium"))
         
@@ -112,6 +114,9 @@ class WhatsNewDialog: DialogBackground {
             height += self.descriptionNode5!.calculateAccumulatedFrame().size.height + self.buttonBuffer / 2
         }
         
+        if height < minHeight {
+            height = minHeight
+        }
         
         // POSITIONING
         let iconBackgroundNodeXPosition = self.container.size.width / -2 + self.iconBackgroundNode!.size.width / 2 + self.buttonBuffer / 2
@@ -126,30 +131,30 @@ class WhatsNewDialog: DialogBackground {
         let descriptionNodeYPosition = self.iconBackgroundNode!.position.y - self.iconBackgroundNode!.size.height / 2 - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer
         self.descriptionNode?.position = CGPoint(x: descriptionNodeXPosition, y: descriptionNodeYPosition)
         
-        self.playButton.position = CGPoint(x: self.container.size.width / 2 - self.playButton.size.width / 2 - self.buttonBuffer / 2, y: self.descriptionNode!.position.y - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.playButton.size.height / 2 - self.buttonBuffer / 2)
+        self.playButton.position = CGPoint(x: self.container.size.width / 2 - self.playButton.size.width / 2 - self.buttonBuffer / 2, y: -height / 2 + self.playButton.size.height / 2)
         
         if descriptionNode2 != nil {
             self.descriptionNode2?.position = CGPoint(x: self.descriptionNode!.position.x - self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.descriptionNode2!.calculateAccumulatedFrame().size.width / 2, y: self.descriptionNode!.position.y - self.descriptionNode!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode2!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2)
             
-            self.playButton.position = CGPoint(x: self.container.size.width / 2 - self.playButton.size.width / 2 - self.buttonBuffer / 2, y: self.descriptionNode2!.position.y - self.descriptionNode2!.calculateAccumulatedFrame().size.height / 2 - self.playButton.size.height / 2 - self.buttonBuffer / 2)
+            self.playButton.position = CGPoint(x: self.container.size.width / 2 - self.playButton.size.width / 2 - self.buttonBuffer / 2, y: -height / 2 + self.playButton.size.height / 2)
         }
         
         if descriptionNode3 != nil {
             self.descriptionNode3?.position = CGPoint(x: self.descriptionNode!.position.x - self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.descriptionNode3!.calculateAccumulatedFrame().size.width / 2, y: self.descriptionNode2!.position.y - self.descriptionNode2!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode3!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2)
             
-            self.playButton.position = CGPoint(x: self.container.size.width / 2 - self.playButton.size.width / 2 - self.buttonBuffer / 2, y: self.descriptionNode3!.position.y - self.descriptionNode3!.calculateAccumulatedFrame().size.height / 2 - self.playButton.size.height / 2 - self.buttonBuffer / 2)
+            self.playButton.position = CGPoint(x: self.container.size.width / 2 - self.playButton.size.width / 2 - self.buttonBuffer / 2, y: -height / 2 + self.playButton.size.height / 2)
         }
         
         if descriptionNode4 != nil {
             self.descriptionNode4?.position = CGPoint(x: self.descriptionNode!.position.x - self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.descriptionNode4!.calculateAccumulatedFrame().size.width / 2, y: self.descriptionNode3!.position.y - self.descriptionNode3!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode4!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2)
             
-            self.playButton.position = CGPoint(x: self.container.size.width / 2 - self.playButton.size.width / 2 - self.buttonBuffer / 2, y: self.descriptionNode4!.position.y - self.descriptionNode4!.calculateAccumulatedFrame().size.height / 2 - self.playButton.size.height / 2 - self.buttonBuffer / 2)
+            self.playButton.position = CGPoint(x: self.container.size.width / 2 - self.playButton.size.width / 2 - self.buttonBuffer / 2, y: -height / 2 + self.playButton.size.height / 2)
         }
         
         if descriptionNode5 != nil {
             self.descriptionNode5?.position = CGPoint(x: self.descriptionNode!.position.x - self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.descriptionNode5!.calculateAccumulatedFrame().size.width / 2, y: self.descriptionNode4!.position.y - self.descriptionNode4!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode5!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer / 2)
             
-            self.playButton.position = CGPoint(x: self.container.size.width / 2 - self.playButton.size.width / 2 - self.buttonBuffer / 2, y: self.descriptionNode5!.position.y - self.descriptionNode5!.calculateAccumulatedFrame().size.height / 2 - self.playButton.size.height / 2 - self.buttonBuffer / 2)
+            self.playButton.position = CGPoint(x: self.container.size.width / 2 - self.playButton.size.width / 2 - self.buttonBuffer / 2, y: -height / 2 + self.playButton.size.height / 2)
         }
         
         self.container.addChild(self.iconBackgroundNode!)
@@ -160,7 +165,7 @@ class WhatsNewDialog: DialogBackground {
         self.playButton.isHidden = false
         
         // Reset the container size
-        self.resetContainerSize()
+        self.resetContainerSize(width: nil, height: height)
         
         self.isHidden = true
     }

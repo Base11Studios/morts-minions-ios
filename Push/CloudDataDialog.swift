@@ -93,7 +93,8 @@ class CloudDataDialog: DialogBackground {
     
     func changeToLocalConfirm() {
         self.titleNode?.text = "Are You Sure?"
-        self.titleNode?.position = CGPoint(x: self.iconBackgroundNode!.position.x + self.iconBackgroundNode!.size.width / 2 + self.titleNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2, y: self.titleNode!.position.y)
+        let titleNodeYPosition = self.iconBackgroundNode!.position.y + self.iconBackgroundNode!.size.height / 2 - self.titleNode!.calculateAccumulatedFrame().size.height / 2// - self.buttonBuffer / 2
+        self.titleNode?.position = CGPoint(x: self.iconBackgroundNode!.position.x + self.iconBackgroundNode!.size.width / 2 + self.titleNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2, y: titleNodeYPosition)
         
         self.descriptionNode?.text = "If you do not load the iCloud save, your saves on this device will not be backed up to iCloud."
         let descriptionNodeXPosition = self.container.size.width / -2 + self.descriptionNode!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer * 1.5

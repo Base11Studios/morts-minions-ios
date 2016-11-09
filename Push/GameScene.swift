@@ -1947,36 +1947,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Need to know the prev dialog
         var previousDialog: TutorialDialog?
         
-        let firstPop: Int = 20
-        let secondPop: Int = 25
-        
-        // If timesplayed == 16 or 24, pop character talking to user
-        if !GameData.sharedGameData.adsUnlocked && (GameData.sharedGameData.timesPlayed == firstPop || GameData.sharedGameData.timesPlayed == secondPop) {
-            // Get the version information
-            let key = "timesPlayedAdvertisement\(GameData.sharedGameData.timesPlayed)"
-            let version = 1.0
-            let iconTexture: SKTexture
-            if GameData.sharedGameData.timesPlayed == firstPop {
-                iconTexture = SKTexture(imageNamed: "tutorial_monk")
-            } else {
-                iconTexture = SKTexture(imageNamed: "tutorial_mage")
-            }
-            
-            // Create dialog
-            let title = "Unlock Ads"
-            let description = "Purchase gems and get longer boosts!"
-            
-            let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: true, key: key, version: version, prependText: false)
-            
-            tutorialDialog.zPosition = 20
-            tutorialDialog.updateAsPlayOnly()
-            
-            self.tutorialDialogs!.append(tutorialDialog)
-            //self.addChild(tutorialDialog)
-            previousDialog = tutorialDialog
-            count += 1
-        }
-        
         if tutorialArray != nil {
             for tutorialTipDictionary in tutorialArray! {
                 // Get the version information
@@ -2015,7 +1985,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                     
                     let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: isCharacter, key: key, version: version, prependText: true)
                     
-                    tutorialDialog.zPosition = 20
+                    tutorialDialog.zPosition = 19
                     
                     if count == 0 {
                         // This one is a "play" button
@@ -2036,6 +2006,46 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                     count += 1
                 }
             }
+        }
+        
+        // Occasionally we advertise in house purchases. Skip the first time, so start at frequency * 2
+        var frequencyAds: Int = 10
+
+        if !GameData.sharedGameData.adsUnlocked && GameData.sharedGameData.timesPlayed > frequencyAds && GameData.sharedGameData.timesPlayed % frequencyAds == 0 {
+            // Get the version information
+            let key = "timesPlayedAdvertisement\(GameData.sharedGameData.timesPlayed)"
+            let version = 1.0
+            let iconTexture: SKTexture
+            var description = "Any purchase gives longer hero boosts!"
+            
+            if GameData.sharedGameData.timesPlayed % (frequencyAds * 2) == 0 {
+                iconTexture = SKTexture(imageNamed: "tutorial_monk")
+            } else {
+                iconTexture = SKTexture(imageNamed: "tutorial_mage")
+                description = "Support future updates with a purchase!"
+            }
+            
+            // Create dialog
+            let title = "Buy Gems!"
+            
+            let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: true, key: key, version: version, prependText: false)
+            
+            tutorialDialog.zPosition = 19
+            
+            if count == 1 {
+                // the previous one needs to change to a "next" only button
+                previousDialog!.updateAsNextOnly()
+            } else if count >= 2 {
+                // the previous one needs to change to a "next" and "previous" button
+                previousDialog!.updateAsPreviousAndNext()
+            }
+            
+            tutorialDialog.updateAsPlayAndStore()
+            
+            self.tutorialDialogs!.append(tutorialDialog)
+            //self.addChild(tutorialDialog)
+            previousDialog = tutorialDialog
+            count += 1
         }
     }
     

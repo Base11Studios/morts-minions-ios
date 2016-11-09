@@ -181,6 +181,7 @@
 		37484D341DD170650046B969 /* HeartBoostVideoButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37484D331DD170650046B969 /* HeartBoostVideoButton.swift */; };
 		37484D361DD170730046B969 /* HeartBoostGemButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37484D351DD170730046B969 /* HeartBoostGemButton.swift */; };
 		37484D381DD170900046B969 /* HeartBoostCloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37484D371DD170900046B969 /* HeartBoostCloseButton.swift */; };
+		37484D3A1DD2B7C20046B969 /* GameTutorialStoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37484D391DD2B7C20046B969 /* GameTutorialStoreButton.swift */; };
 		374A11AD1DA14A6C00523102 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A11AC1DA14A6C00523102 /* CoreTelephony.framework */; };
 		374A11AF1DA14A7B00523102 /* EventKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A11AE1DA14A7B00523102 /* EventKit.framework */; };
 		374A11B11DA14A8100523102 /* EventKitUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A11B01DA14A8100523102 /* EventKitUI.framework */; };
@@ -581,6 +582,7 @@
 		37484D331DD170650046B969 /* HeartBoostVideoButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBoostVideoButton.swift; sourceTree = "<group>"; };
 		37484D351DD170730046B969 /* HeartBoostGemButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBoostGemButton.swift; sourceTree = "<group>"; };
 		37484D371DD170900046B969 /* HeartBoostCloseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBoostCloseButton.swift; sourceTree = "<group>"; };
+		37484D391DD2B7C20046B969 /* GameTutorialStoreButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTutorialStoreButton.swift; sourceTree = "<group>"; };
 		374A11AC1DA14A6C00523102 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		374A11AE1DA14A7B00523102 /* EventKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKit.framework; path = System/Library/Frameworks/EventKit.framework; sourceTree = SDKROOT; };
 		374A11B01DA14A8100523102 /* EventKitUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = EventKitUI.framework; path = System/Library/Frameworks/EventKitUI.framework; sourceTree = SDKROOT; };
@@ -1387,6 +1389,7 @@
 			isa = PBXGroup;
 			children = (
 				377E5E801C2B957400B2FB89 /* GameTutorialNextButton.swift */,
+				37484D391DD2B7C20046B969 /* GameTutorialStoreButton.swift */,
 				377E5E811C2B957500B2FB89 /* GameTutorialPlayButton.swift */,
 				377E5E821C2B957500B2FB89 /* GameTutorialPreviousButton.swift */,
 			);
@@ -2232,6 +2235,7 @@
 				37656B3E1D2D505300506183 /* MainMenuCreditsButton.swift in Sources */,
 				372824381BC1BEDD00524DF7 /* Projectile.swift in Sources */,
 				370020BC1C9E41B4007432E4 /* Slanky.swift in Sources */,
+				37484D3A1DD2B7C20046B969 /* GameTutorialStoreButton.swift in Sources */,
 				37BB69661C33253200B59D73 /* WorldNode.swift in Sources */,
 				375336761C8E0141009FE27E /* MainMenuBuyButton.swift in Sources */,
 				37FF3E751C9B6B2C00A93FAD /* ChallengeContainer.swift in Sources */,

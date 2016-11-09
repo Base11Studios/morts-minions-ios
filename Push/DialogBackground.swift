@@ -40,8 +40,22 @@ class DialogBackground: SKSpriteNode {
     }
     
     func resetContainerSize() {
+        self.resetContainerSize(width: nil, height: nil)
+    }
+    
+    func resetContainerSize(width: CGFloat?, height: CGFloat?) {
+        var calcWidth: CGFloat = self.container.calculateAccumulatedFrame().width + self.buttonBuffer * 2
+        if width != nil {
+            calcWidth = width! + self.buttonBuffer * 2
+        }
+        
+        var calcHeight: CGFloat = self.container.calculateAccumulatedFrame().height + buttonBuffer * 2
+        if height != nil {
+            calcHeight = height! + self.buttonBuffer * 2
+        }
+        
         // Set the container size
-        self.container.size = CGSize(width: self.container.calculateAccumulatedFrame().width + self.buttonBuffer * 2, height: self.container.calculateAccumulatedFrame().height + buttonBuffer * 2)
+        self.container.size = CGSize(width: calcWidth, height: calcHeight)
         self.container.position = CGPoint(x: 0, y: 1)
         self.containerBackground.size = CGSize(width: self.container.size.width + 2, height: self.container.size.height + 4)
     }
