@@ -154,6 +154,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     // Heart boost
     var heartBoostReady = false
     var heartBoostDialog: HeartBoostDialog?
+    var startingReviveHearts: Int = 0
     
     // Background
     var numberBackgroundNodes: Int = 4
@@ -329,6 +330,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // Initialize the Player
         self.initializePlayer(size)
+        
+        // We need to know how many gold hearts we started with
+        self.startingReviveHearts = self.player.goldHearts
         
         // Create the controls
         self.initializeControls()
@@ -1397,6 +1401,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
     }
     
+    
     func moveWorld(_ delta: CGPoint) {
         self.worldView.position = dbSub(self.worldView.position, b: delta)
     }
@@ -1407,7 +1412,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         var nonGoldHearts = self.player.health - self.player.goldHearts
         
         // If the player hasn't lost any list
-        if (self.player.maxHealth - self.player.goldHearts) >= self.player.health {
+        if (self.player.maxHealth) <= self.player.health + self.startingReviveHearts {
             nonGoldHearts -= GameData.sharedGameData.heartBoostCount
         }
         

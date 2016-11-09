@@ -74,7 +74,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     static var heartBoostCooldown: Int = -60
     var heartBoostLastUsed: Date
     var heartBoostCount: Int = 0
-    static var heartBoostPromptCooldown: Int = -1// TODO -10
+    static var heartBoostPromptCooldown: Int = -10
     var heartBoostLastPrompted: Date
     static var adsPurchasedHeartBoostMultiplier: Int = 3
     
