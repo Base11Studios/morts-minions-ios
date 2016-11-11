@@ -2017,16 +2017,18 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             let version = 1.0
             let iconTexture: SKTexture
             var description = "Any purchase gives longer hero boosts!"
+            // Create dialog
+            var title = "Buy Gems!"
             
             if GameData.sharedGameData.timesPlayed % (frequencyAds * 2) == 0 {
                 iconTexture = SKTexture(imageNamed: "tutorial_monk")
             } else {
                 iconTexture = SKTexture(imageNamed: "tutorial_mage")
+                title = "Be a Pal!"
                 description = "Support future updates with a purchase!"
             }
             
-            // Create dialog
-            let title = "Buy Gems!"
+            
             
             let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: true, key: key, version: version, prependText: false)
             

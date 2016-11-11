@@ -294,7 +294,7 @@ class CharacterSkillScene : DBScene {
             
             // We don't want to show this until the character has 2 skills total
             if GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.count > 1 && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-                let tutorial = UXTutorialDialog(frameSize: self.size, description: "Reset your skills for free to get back all stars and superstars spent. Unlimited resets!", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.rightTop], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
+                let tutorial = UXTutorialDialog(frameSize: self.size, description: "Reset your skills for free to get back all stars spent. Unlimited resets!", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.rightTop], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
                 tutorial.containerBackground.position = CGPoint(x: self.resetSkillsButton!.position.x - self.resetSkillsButton!.size.width / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.width / 2 - self.nodeBuffer, y: self.resetSkillsButton!.position.y + self.resetSkillsButton!.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2)
                 self.uxTutorialTooltips!.append(tutorial)
                 

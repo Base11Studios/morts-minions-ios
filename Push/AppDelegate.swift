@@ -18,12 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate /*GADRewardBasedVideoAdDel
         //GADRewardBasedVideoAd.sharedInstance().delegate = self
         
         //GADMobileAds.configure(withApplicationID: "ca-app-pub-4505737160765142~1208265512");
-        //Appodeal.setAutocache(false, types: [AppodealAdType.interstitial, AppodealAdType.rewardedVideo])
         let adTypes: AppodealAdType = [/*AppodealAdType.interstitial,*/ /*.skippableVideo,*/ AppodealAdType.rewardedVideo];
+        
+        Appodeal.setAutocache(true, types: adTypes)
+        Appodeal.setTestingEnabled(false)
+        
         //Appodeal.setLocationTracking(false)
         Appodeal.initialize(withApiKey:"e5ac706b45d36d6a998c42fb1aec1e0d4b469e9986cedc58", types: adTypes);
-        
-        //Appodeal.setTestingEnabled(true)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

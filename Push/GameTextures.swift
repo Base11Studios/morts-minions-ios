@@ -44,20 +44,35 @@ class GameTextures {
     
     internal var splashAndStoryAtlas = SKTextureAtlas()
     
-    internal var waterStoryTutorialAtlas = SKTextureAtlas()
-    
     internal var menuSceneAtlas = [SKTextureAtlas()]
     
     // MARK: - Init
     init() {
         
-        // Create texture atlases
-        self.earthAtlas = SKTextureAtlas(named: "earth")
-        self.waterAtlas = SKTextureAtlas(named: "water")
-        self.fireAtlas = SKTextureAtlas(named: "fire")
-        self.airAtlas = SKTextureAtlas(named: "air")
-        self.spiritAtlas = SKTextureAtlas(named: "spirit")
+    }
+    
+    func initButtonAtlases() {
         
+    }
+    
+    func initMenuAtlases() {
+        self.buttonAtlas = SKTextureAtlas(named: "buttons")
+        
+        self.buttonMenuAtlas = SKTextureAtlas(named: "buttonsmenu")
+        
+        self.uxAtlas = SKTextureAtlas(named: "ux")
+        self.uxMenuAtlas = SKTextureAtlas(named: "uxmenu")
+        
+        self.splashAndStoryAtlas = SKTextureAtlas(named: "splashandstory")
+        
+        // Menu scene
+        self.menuSceneAtlas.append(self.uxAtlas)
+        self.menuSceneAtlas.append(self.uxMenuAtlas)
+        self.menuSceneAtlas.append(self.buttonAtlas)
+        self.menuSceneAtlas.append(self.buttonMenuAtlas)
+    }
+    
+    func initGameAtlases() {
         // Common
         self.projectilesAtlas = SKTextureAtlas(named: "projectiles")
         
@@ -66,17 +81,24 @@ class GameTextures {
         self.playerMageAtlas = SKTextureAtlas(named: "playermage")
         self.playerArcherAtlas = SKTextureAtlas(named: "playerarcher")
         
-        self.buttonAtlas = SKTextureAtlas(named: "buttons")
         self.buttonGameAtlas = SKTextureAtlas(named: "buttonsgame")
-        self.buttonMenuAtlas = SKTextureAtlas(named: "buttonsmenu")
         
-        self.uxAtlas = SKTextureAtlas(named: "ux")
-        self.uxMenuAtlas = SKTextureAtlas(named: "uxmenu")
         self.uxGameAtlas = SKTextureAtlas(named: "uxgame")
         
-        self.splashAndStoryAtlas = SKTextureAtlas(named: "splashandstory")
-        
-        self.waterStoryTutorialAtlas = SKTextureAtlas(named: "water-story-tutorial")
+        self.addCommonAtlasToAllLevelAtlases(self.projectilesAtlas)
+        self.addCommonAtlasToAllLevelAtlases(self.buttonAtlas)
+        self.addCommonAtlasToAllLevelAtlases(self.buttonGameAtlas)
+        self.addCommonAtlasToAllLevelAtlases(self.uxGameAtlas)
+        self.addCommonAtlasToAllLevelAtlases(self.uxAtlas)
+    }
+    
+    func initSpecificWorldAtlases() {
+        // Create texture atlases
+        self.earthAtlas = SKTextureAtlas(named: "earth")
+        self.waterAtlas = SKTextureAtlas(named: "water")
+        self.fireAtlas = SKTextureAtlas(named: "fire")
+        self.airAtlas = SKTextureAtlas(named: "air")
+        self.spiritAtlas = SKTextureAtlas(named: "spirit")
         
         // Create arrays used for gameplay
         self.earthLevelAtlases.append(self.earthAtlas)
@@ -84,19 +106,6 @@ class GameTextures {
         self.fireLevelAtlases.append(self.fireAtlas)
         self.airLevelAtlases.append(self.airAtlas)
         self.spiritLevelAtlases.append(self.spiritAtlas)
-        
-        self.addCommonAtlasToAllLevelAtlases(self.projectilesAtlas)
-        self.addCommonAtlasToAllLevelAtlases(self.buttonAtlas)
-        self.addCommonAtlasToAllLevelAtlases(self.buttonGameAtlas)
-        self.addCommonAtlasToAllLevelAtlases(self.uxGameAtlas)
-        self.addCommonAtlasToAllLevelAtlases(self.uxAtlas)
-        
-        // Menu scene
-        self.menuSceneAtlas.append(self.uxAtlas)
-        self.menuSceneAtlas.append(self.uxMenuAtlas)
-        self.menuSceneAtlas.append(self.buttonAtlas)
-        self.menuSceneAtlas.append(self.buttonMenuAtlas)
- 
     }
     
     func addCommonAtlasToAllLevelAtlases(_ atlas: SKTextureAtlas) {
@@ -106,7 +115,7 @@ class GameTextures {
         self.airLevelAtlases.append(atlas)
         self.spiritLevelAtlases.append(atlas)
     }
- 
+    
     func getAtlasArrayForWorld(world: String) -> [SKTextureAtlas] {
         if world == "earth" {
             return self.earthLevelAtlases

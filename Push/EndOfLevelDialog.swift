@@ -351,7 +351,7 @@ class EndOfLevelDialog: DialogBackground {
         tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
         
         if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Earn stars by getting a better score.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Earn more stars by getting a better score.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: 0, y: self.starButton2.position.y - self.starButton2.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
             tutorial.color = MerpColors.nothing
             self.uxTutorialTooltips!.append(tutorial)
