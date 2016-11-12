@@ -2590,7 +2590,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				"Texture Atlas Format" = RGBA4444_COMPRESSED;
+				"Texture Atlas Format" = RGBA8888_COMPRESSED;
 				"Texture Atlas Maximum Size" = 4096x4096;
 			};
 			name = Debug;
@@ -2652,7 +2652,7 @@
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
-				"Texture Atlas Format" = RGBA4444_COMPRESSED;
+				"Texture Atlas Format" = RGBA8888_COMPRESSED;
 				"Texture Atlas Maximum Size" = 4096x4096;
 			};
 			name = Release;
