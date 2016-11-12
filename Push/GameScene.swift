@@ -2025,7 +2025,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             } else {
                 iconTexture = SKTexture(imageNamed: "tutorial_mage")
                 title = "Be a Pal!"
-                description = "Support future updates with a purchase!"
+                description = "Support indie games by purchasing gems!"
             }
             
             

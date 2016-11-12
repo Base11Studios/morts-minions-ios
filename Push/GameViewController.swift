@@ -302,7 +302,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
     }
     
     func createIntroductionScene() -> IntroductionScene {
-        GameTextures.sharedInstance.initMenuAtlases()
         let scene: IntroductionScene = IntroductionScene(size: getScreenSize())
         scene.scaleMode = SKSceneScaleMode.aspectFill
         scene.viewController = self
@@ -532,9 +531,6 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
         
         // Move to a background thread to do some long running work
         DispatchQueue.global().async {
-            GameTextures.sharedInstance.initGameAtlases()
-            GameTextures.sharedInstance.initSpecificWorldAtlases()
-            
             let gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
             gameScene.scaleMode = SKSceneScaleMode.aspectFill
             gameScene.viewController = self
@@ -895,10 +891,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
     // ************************* REWARDED VIDEO CALLBACKS *************
     
     func rewardedVideoDidLoadAd(){
-        print("load")
+        //print("load")
     }
     func rewardedVideoDidFailToLoadAd(){
-        print("load failed")
+        //print("load failed")
     }
     
     // Or will appear?
