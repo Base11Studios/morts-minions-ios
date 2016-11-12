@@ -261,7 +261,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         let levelSetup: NSDictionary = NSDictionary(contentsOfFile: path)!
         self.worldName = levelSetup.value(forKey: "World") as! String
         
-        self.environmentObjectPreloader = SKSpriteNode(texture: GameTextures.sharedInstance.getAtlasForWorld(world: self.world).textureNamed("1x1trans" + self.world))
+        self.environmentObjectPreloader = SKSpriteNode(texture: GameTextures.sharedInstance.getAtlasForWorld(world: self.world).textureNamed("1x1trans"))
         
         // Call super init
         super.init(size: size, settings: false, loadingOverlay: true, purchaseMenu: true, rateMe: false, trade: false)

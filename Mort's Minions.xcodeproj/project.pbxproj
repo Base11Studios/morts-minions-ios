@@ -323,6 +323,37 @@
 		37B6D9E01BCDE064001496F3 /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B6D9DF1BCDE064001496F3 /* Player.swift */; };
 		37B6D9E21BCDE40B001496F3 /* Warrior.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B6D9E11BCDE40B001496F3 /* Warrior.swift */; };
 		37B6D9E41BCDE9FD001496F3 /* Archer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B6D9E31BCDE9FD001496F3 /* Archer.swift */; };
+		37BAE40C1DD7352500DD4ECC /* buttons2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE40B1DD7352500DD4ECC /* buttons2.atlas */; };
+		37BAE67E1DD73FD600DD4ECC /* air2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE40D1DD73FD500DD4ECC /* air2.atlas */; };
+		37BAE67F1DD73FD600DD4ECC /* airbackgrounds2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE40E1DD73FD500DD4ECC /* airbackgrounds2.atlas */; };
+		37BAE6801DD73FD600DD4ECC /* buttons2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE40F1DD73FD500DD4ECC /* buttons2.atlas */; };
+		37BAE6811DD73FD600DD4ECC /* buttonsgame2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE4101DD73FD500DD4ECC /* buttonsgame2.atlas */; };
+		37BAE6821DD73FD600DD4ECC /* buttonsmenu2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE4111DD73FD500DD4ECC /* buttonsmenu2.atlas */; };
+		37BAE6831DD73FD600DD4ECC /* earth2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE4121DD73FD500DD4ECC /* earth2.atlas */; };
+		37BAE6841DD73FD600DD4ECC /* earthbackgrounds2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE4131DD73FD500DD4ECC /* earthbackgrounds2.atlas */; };
+		37BAE8111DD73FD700DD4ECC /* fire2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE6671DD73FD600DD4ECC /* fire2.atlas */; };
+		37BAE8121DD73FD700DD4ECC /* firebackgrounds2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE6681DD73FD600DD4ECC /* firebackgrounds2.atlas */; };
+		37BAE8131DD73FD700DD4ECC /* playerarcher2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE6691DD73FD600DD4ECC /* playerarcher2.atlas */; };
+		37BAE8141DD73FD700DD4ECC /* playermage2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE66A1DD73FD600DD4ECC /* playermage2.atlas */; };
+		37BAE8151DD73FD700DD4ECC /* playermonk2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE66B1DD73FD600DD4ECC /* playermonk2.atlas */; };
+		37BAE8161DD73FD700DD4ECC /* playerwarrior2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE66C1DD73FD600DD4ECC /* playerwarrior2.atlas */; };
+		37BAE8171DD73FD700DD4ECC /* projectiles2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE66D1DD73FD600DD4ECC /* projectiles2.atlas */; };
+		37BAE8181DD73FD700DD4ECC /* spirit2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE66E1DD73FD600DD4ECC /* spirit2.atlas */; };
+		37BAE8191DD73FD700DD4ECC /* splashandstory2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE66F1DD73FD600DD4ECC /* splashandstory2.atlas */; };
+		37BAE81A1DD73FD700DD4ECC /* story-astra2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE6701DD73FD600DD4ECC /* story-astra2.atlas */; };
+		37BAE81B1DD73FD700DD4ECC /* story-ignis2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE6711DD73FD600DD4ECC /* story-ignis2.atlas */; };
+		37BAE81C1DD73FD700DD4ECC /* story-shared2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE6721DD73FD600DD4ECC /* story-shared2.atlas */; };
+		37BAE81D1DD73FD700DD4ECC /* story-terra2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE6731DD73FD600DD4ECC /* story-terra2.atlas */; };
+		37BAE81E1DD73FD700DD4ECC /* story-water2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE6741DD73FD600DD4ECC /* story-water2.atlas */; };
+		37BAE81F1DD73FD700DD4ECC /* tutorial-astra2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE6751DD73FD600DD4ECC /* tutorial-astra2.atlas */; };
+		37BAE8201DD73FD700DD4ECC /* tutorial-ignis2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE6761DD73FD600DD4ECC /* tutorial-ignis2.atlas */; };
+		37BAE8211DD73FD700DD4ECC /* tutorial-terra2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE6771DD73FD600DD4ECC /* tutorial-terra2.atlas */; };
+		37BAE8221DD73FD700DD4ECC /* tutorial-water2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE6781DD73FD600DD4ECC /* tutorial-water2.atlas */; };
+		37BAE8231DD73FD700DD4ECC /* ux2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE6791DD73FD600DD4ECC /* ux2.atlas */; };
+		37BAE8241DD73FD700DD4ECC /* uxgame2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE67A1DD73FD600DD4ECC /* uxgame2.atlas */; };
+		37BAE8251DD73FD700DD4ECC /* uxmenu2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE67B1DD73FD600DD4ECC /* uxmenu2.atlas */; };
+		37BAE8261DD73FD700DD4ECC /* water2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE67C1DD73FD600DD4ECC /* water2.atlas */; };
+		37BAE8271DD73FD700DD4ECC /* waterbackgrounds2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE67D1DD73FD600DD4ECC /* waterbackgrounds2.atlas */; };
 		37BB695E1C32034F00B59D73 /* TipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BB695D1C32034F00B59D73 /* TipType.swift */; };
 		37BB69661C33253200B59D73 /* WorldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BB69651C33253200B59D73 /* WorldNode.swift */; };
 		37BB69821C34A96500B59D73 /* LevelSelectWorldButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BB69811C34A96500B59D73 /* LevelSelectWorldButton.swift */; };
@@ -372,7 +403,6 @@
 		37EF958E1BD92F5F00321B8B /* GameMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EF958D1BD92F5F00321B8B /* GameMenuButton.swift */; };
 		37F518191D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F518181D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift */; };
 		37F8C2981C397418002FB339 /* GameTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2971C397418002FB339 /* GameTextures.swift */; };
-		37F8C2B91C3989D1002FB339 /* notsortedyet.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37F8C2AD1C3989D1002FB339 /* notsortedyet.atlas */; };
 		37F8C2C21C3CA614002FB339 /* Crab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2C11C3CA613002FB339 /* Crab.swift */; };
 		37F8C2C41C3DFF83002FB339 /* Shark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2C31C3DFF83002FB339 /* Shark.swift */; };
 		37F8C2C61C3E0A3D002FB339 /* Pirahna.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2C51C3E0A3D002FB339 /* Pirahna.swift */; };
@@ -732,6 +762,37 @@
 		37B6D9DF1BCDE064001496F3 /* Player.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 		37B6D9E11BCDE40B001496F3 /* Warrior.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Warrior.swift; sourceTree = "<group>"; };
 		37B6D9E31BCDE9FD001496F3 /* Archer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Archer.swift; sourceTree = "<group>"; };
+		37BAE40B1DD7352500DD4ECC /* buttons2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = buttons2.atlas; sourceTree = "<group>"; };
+		37BAE40D1DD73FD500DD4ECC /* air2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = air2.atlas; sourceTree = "<group>"; };
+		37BAE40E1DD73FD500DD4ECC /* airbackgrounds2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = airbackgrounds2.atlas; sourceTree = "<group>"; };
+		37BAE40F1DD73FD500DD4ECC /* buttons2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = buttons2.atlas; sourceTree = "<group>"; };
+		37BAE4101DD73FD500DD4ECC /* buttonsgame2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = buttonsgame2.atlas; sourceTree = "<group>"; };
+		37BAE4111DD73FD500DD4ECC /* buttonsmenu2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = buttonsmenu2.atlas; sourceTree = "<group>"; };
+		37BAE4121DD73FD500DD4ECC /* earth2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = earth2.atlas; sourceTree = "<group>"; };
+		37BAE4131DD73FD500DD4ECC /* earthbackgrounds2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = earthbackgrounds2.atlas; sourceTree = "<group>"; };
+		37BAE6671DD73FD600DD4ECC /* fire2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = fire2.atlas; sourceTree = "<group>"; };
+		37BAE6681DD73FD600DD4ECC /* firebackgrounds2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = firebackgrounds2.atlas; sourceTree = "<group>"; };
+		37BAE6691DD73FD600DD4ECC /* playerarcher2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = playerarcher2.atlas; sourceTree = "<group>"; };
+		37BAE66A1DD73FD600DD4ECC /* playermage2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = playermage2.atlas; sourceTree = "<group>"; };
+		37BAE66B1DD73FD600DD4ECC /* playermonk2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = playermonk2.atlas; sourceTree = "<group>"; };
+		37BAE66C1DD73FD600DD4ECC /* playerwarrior2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = playerwarrior2.atlas; sourceTree = "<group>"; };
+		37BAE66D1DD73FD600DD4ECC /* projectiles2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = projectiles2.atlas; sourceTree = "<group>"; };
+		37BAE66E1DD73FD600DD4ECC /* spirit2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = spirit2.atlas; sourceTree = "<group>"; };
+		37BAE66F1DD73FD600DD4ECC /* splashandstory2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = splashandstory2.atlas; sourceTree = "<group>"; };
+		37BAE6701DD73FD600DD4ECC /* story-astra2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "story-astra2.atlas"; sourceTree = "<group>"; };
+		37BAE6711DD73FD600DD4ECC /* story-ignis2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "story-ignis2.atlas"; sourceTree = "<group>"; };
+		37BAE6721DD73FD600DD4ECC /* story-shared2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "story-shared2.atlas"; sourceTree = "<group>"; };
+		37BAE6731DD73FD600DD4ECC /* story-terra2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "story-terra2.atlas"; sourceTree = "<group>"; };
+		37BAE6741DD73FD600DD4ECC /* story-water2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "story-water2.atlas"; sourceTree = "<group>"; };
+		37BAE6751DD73FD600DD4ECC /* tutorial-astra2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "tutorial-astra2.atlas"; sourceTree = "<group>"; };
+		37BAE6761DD73FD600DD4ECC /* tutorial-ignis2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "tutorial-ignis2.atlas"; sourceTree = "<group>"; };
+		37BAE6771DD73FD600DD4ECC /* tutorial-terra2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "tutorial-terra2.atlas"; sourceTree = "<group>"; };
+		37BAE6781DD73FD600DD4ECC /* tutorial-water2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "tutorial-water2.atlas"; sourceTree = "<group>"; };
+		37BAE6791DD73FD600DD4ECC /* ux2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = ux2.atlas; sourceTree = "<group>"; };
+		37BAE67A1DD73FD600DD4ECC /* uxgame2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = uxgame2.atlas; sourceTree = "<group>"; };
+		37BAE67B1DD73FD600DD4ECC /* uxmenu2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = uxmenu2.atlas; sourceTree = "<group>"; };
+		37BAE67C1DD73FD600DD4ECC /* water2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = water2.atlas; sourceTree = "<group>"; };
+		37BAE67D1DD73FD600DD4ECC /* waterbackgrounds2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = waterbackgrounds2.atlas; sourceTree = "<group>"; };
 		37BB695D1C32034F00B59D73 /* TipType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipType.swift; sourceTree = "<group>"; };
 		37BB69651C33253200B59D73 /* WorldNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldNode.swift; sourceTree = "<group>"; };
 		37BB69811C34A96500B59D73 /* LevelSelectWorldButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectWorldButton.swift; sourceTree = "<group>"; };
@@ -782,7 +843,6 @@
 		37EF958D1BD92F5F00321B8B /* GameMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuButton.swift; sourceTree = "<group>"; };
 		37F518181D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWithShadowProtocol.swift; sourceTree = "<group>"; };
 		37F8C2971C397418002FB339 /* GameTextures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GameTextures.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		37F8C2AD1C3989D1002FB339 /* notsortedyet.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = notsortedyet.atlas; sourceTree = "<group>"; };
 		37F8C2C11C3CA613002FB339 /* Crab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crab.swift; sourceTree = "<group>"; };
 		37F8C2C31C3DFF83002FB339 /* Shark.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Shark.swift; sourceTree = "<group>"; };
 		37F8C2C51C3E0A3D002FB339 /* Pirahna.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Pirahna.swift; sourceTree = "<group>"; };
@@ -1483,7 +1543,37 @@
 		37BFC4941ABA336C0038C350 /* Atlases */ = {
 			isa = PBXGroup;
 			children = (
-				37F8C2AD1C3989D1002FB339 /* notsortedyet.atlas */,
+				37BAE40D1DD73FD500DD4ECC /* air2.atlas */,
+				37BAE40E1DD73FD500DD4ECC /* airbackgrounds2.atlas */,
+				37BAE40F1DD73FD500DD4ECC /* buttons2.atlas */,
+				37BAE4101DD73FD500DD4ECC /* buttonsgame2.atlas */,
+				37BAE4111DD73FD500DD4ECC /* buttonsmenu2.atlas */,
+				37BAE4121DD73FD500DD4ECC /* earth2.atlas */,
+				37BAE4131DD73FD500DD4ECC /* earthbackgrounds2.atlas */,
+				37BAE6671DD73FD600DD4ECC /* fire2.atlas */,
+				37BAE6681DD73FD600DD4ECC /* firebackgrounds2.atlas */,
+				37BAE6691DD73FD600DD4ECC /* playerarcher2.atlas */,
+				37BAE66A1DD73FD600DD4ECC /* playermage2.atlas */,
+				37BAE66B1DD73FD600DD4ECC /* playermonk2.atlas */,
+				37BAE66C1DD73FD600DD4ECC /* playerwarrior2.atlas */,
+				37BAE66D1DD73FD600DD4ECC /* projectiles2.atlas */,
+				37BAE66E1DD73FD600DD4ECC /* spirit2.atlas */,
+				37BAE66F1DD73FD600DD4ECC /* splashandstory2.atlas */,
+				37BAE6701DD73FD600DD4ECC /* story-astra2.atlas */,
+				37BAE6711DD73FD600DD4ECC /* story-ignis2.atlas */,
+				37BAE6721DD73FD600DD4ECC /* story-shared2.atlas */,
+				37BAE6731DD73FD600DD4ECC /* story-terra2.atlas */,
+				37BAE6741DD73FD600DD4ECC /* story-water2.atlas */,
+				37BAE6751DD73FD600DD4ECC /* tutorial-astra2.atlas */,
+				37BAE6761DD73FD600DD4ECC /* tutorial-ignis2.atlas */,
+				37BAE6771DD73FD600DD4ECC /* tutorial-terra2.atlas */,
+				37BAE6781DD73FD600DD4ECC /* tutorial-water2.atlas */,
+				37BAE6791DD73FD600DD4ECC /* ux2.atlas */,
+				37BAE67A1DD73FD600DD4ECC /* uxgame2.atlas */,
+				37BAE67B1DD73FD600DD4ECC /* uxmenu2.atlas */,
+				37BAE67C1DD73FD600DD4ECC /* water2.atlas */,
+				37BAE67D1DD73FD600DD4ECC /* waterbackgrounds2.atlas */,
+				37BAE40B1DD7352500DD4ECC /* buttons2.atlas */,
 			);
 			path = Atlases;
 			sourceTree = "<group>";
@@ -1923,19 +2013,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37BAE8171DD73FD700DD4ECC /* projectiles2.atlas in Resources */,
 				371320231D6FB3D8001A1135 /* air.m4a in Resources */,
 				37A38E821DD101DB00287FB2 /* MPDAAIcon@2x.png in Resources */,
 				37A38E811DD101DB00287FB2 /* MPDAAIcon.png in Resources */,
 				371320241D6FB3D8001A1135 /* earth.m4a in Resources */,
 				371320251D6FB3D8001A1135 /* fire.m4a in Resources */,
+				37BAE81B1DD73FD700DD4ECC /* story-ignis2.atlas in Resources */,
 				371320261D6FB3D8001A1135 /* menu.m4a in Resources */,
+				37BAE8141DD73FD700DD4ECC /* playermage2.atlas in Resources */,
 				371320271D6FB3D8001A1135 /* water.m4a in Resources */,
 				370102701D4BF06B002B4368 /* air-3.caf in Resources */,
 				376CBA501CC30E9900BE2756 /* pew-4.caf in Resources */,
 				376CBA3B1CC2E4DA00BE2756 /* defeat-1.caf in Resources */,
 				376CBA3D1CC2E4DA00BE2756 /* victory-1.caf in Resources */,
+				37BAE81F1DD73FD700DD4ECC /* tutorial-astra2.atlas in Resources */,
 				376CBA3E1CC2E4DA00BE2756 /* victory-2.caf in Resources */,
 				376CBA3F1CC2E4DA00BE2756 /* celebrate-1.caf in Resources */,
+				37BAE8201DD73FD700DD4ECC /* tutorial-ignis2.atlas in Resources */,
 				376CBA311CC18D8E00BE2756 /* exert-5.caf in Resources */,
 				376CBA251CC10F4B00BE2756 /* drink-2.caf in Resources */,
 				376CBA191CC10D5400BE2756 /* charge-1.caf in Resources */,
@@ -1955,12 +2050,16 @@
 				376CBA061CC0880400BE2756 /* crash-1.caf in Resources */,
 				376CBA071CC0880400BE2756 /* surprise-1.caf in Resources */,
 				376CB9FF1CC085F700BE2756 /* action-1.caf in Resources */,
+				37BAE40C1DD7352500DD4ECC /* buttons2.atlas in Resources */,
 				376CBA001CC085F700BE2756 /* wind-1.caf in Resources */,
+				37BAE8111DD73FD700DD4ECC /* fire2.atlas in Resources */,
 				376CBA011CC085F700BE2756 /* wind-2.caf in Resources */,
 				376CB9FA1CC083CB00BE2756 /* ogre-1.caf in Resources */,
 				376CB9FB1CC083CB00BE2756 /* zoom-1.caf in Resources */,
 				376CB9EA1CC0687300BE2756 /* air-1.caf in Resources */,
 				376CB9ED1CC0687300BE2756 /* click-1.caf in Resources */,
+				37BAE8131DD73FD700DD4ECC /* playerarcher2.atlas in Resources */,
+				37BAE8271DD73FD700DD4ECC /* waterbackgrounds2.atlas in Resources */,
 				376CB9EE1CC0687300BE2756 /* collide-1.caf in Resources */,
 				376CB9EF1CC0687300BE2756 /* collide-2.caf in Resources */,
 				37A38E801DD101DB00287FB2 /* MPCloseButtonX@3x.png in Resources */,
@@ -1973,11 +2072,14 @@
 				37A38E7B1DD101DB00287FB2 /* MPCloseBtn.png in Resources */,
 				3739641E1C664F780018C8C9 /* level_30.plist in Resources */,
 				373964471C664F910018C8C9 /* upgrades_mage.plist in Resources */,
+				37BAE6831DD73FD600DD4ECC /* earth2.atlas in Resources */,
 				373964141C664F780018C8C9 /* level_20.plist in Resources */,
 				373964331C664F780018C8C9 /* level_51.plist in Resources */,
+				37BAE67E1DD73FD600DD4ECC /* air2.atlas in Resources */,
 				3739643D1C664F780018C8C9 /* level_61.plist in Resources */,
 				373964361C664F780018C8C9 /* level_54.plist in Resources */,
 				373964481C664F910018C8C9 /* upgrades_monk.plist in Resources */,
+				37BAE6801DD73FD600DD4ECC /* buttons2.atlas in Resources */,
 				37A38E8E1DD101DB00287FB2 /* StartApp.bundle in Resources */,
 				373964311C664F780018C8C9 /* level_49.plist in Resources */,
 				37A38E951DD101DB00287FB2 /* vg_privacy.png in Resources */,
@@ -1988,28 +2090,38 @@
 				37A38E851DD101DB00287FB2 /* MPMutedBtn@2x.png in Resources */,
 				3739642C1C664F780018C8C9 /* level_44.plist in Resources */,
 				3739641F1C664F780018C8C9 /* level_31.plist in Resources */,
+				37BAE8241DD73FD700DD4ECC /* uxgame2.atlas in Resources */,
 				37A38E861DD101DB00287FB2 /* MPMutedBtn@3x.png in Resources */,
 				373964121C664F780018C8C9 /* level_18.plist in Resources */,
 				3739640C1C664F780018C8C9 /* level_13.plist in Resources */,
+				37BAE8151DD73FD700DD4ECC /* playermonk2.atlas in Resources */,
 				3739643A1C664F780018C8C9 /* level_58.plist in Resources */,
 				373964041C664F780018C8C9 /* level_5.plist in Resources */,
 				3739641D1C664F780018C8C9 /* level_29.plist in Resources */,
-				37F8C2B91C3989D1002FB339 /* notsortedyet.atlas in Resources */,
 				373964491C664F910018C8C9 /* upgrades_warrior.plist in Resources */,
 				373964461C664F910018C8C9 /* upgrades_archer.plist in Resources */,
 				373964271C664F780018C8C9 /* level_39.plist in Resources */,
 				3739642E1C664F780018C8C9 /* level_46.plist in Resources */,
 				37A38E881DD101DB00287FB2 /* MPPlayBtn@2x.png in Resources */,
+				37BAE6841DD73FD600DD4ECC /* earthbackgrounds2.atlas in Resources */,
 				3739641B1C664F780018C8C9 /* level_27.plist in Resources */,
 				373964341C664F780018C8C9 /* level_52.plist in Resources */,
+				37BAE8191DD73FD700DD4ECC /* splashandstory2.atlas in Resources */,
 				37A38E941DD101DB00287FB2 /* vg_mute_on.png in Resources */,
 				373964211C664F780018C8C9 /* level_33.plist in Resources */,
 				3739642D1C664F780018C8C9 /* level_45.plist in Resources */,
+				37BAE8251DD73FD700DD4ECC /* uxmenu2.atlas in Resources */,
+				37BAE81D1DD73FD700DD4ECC /* story-terra2.atlas in Resources */,
 				373964071C664F780018C8C9 /* level_8.plist in Resources */,
+				37BAE81E1DD73FD700DD4ECC /* story-water2.atlas in Resources */,
+				37BAE8161DD73FD700DD4ECC /* playerwarrior2.atlas in Resources */,
 				373964111C664F780018C8C9 /* level_17.plist in Resources */,
 				3739642B1C664F780018C8C9 /* level_43.plist in Resources */,
 				3739641A1C664F780018C8C9 /* level_26.plist in Resources */,
+				37BAE8211DD73FD700DD4ECC /* tutorial-terra2.atlas in Resources */,
+				37BAE6821DD73FD600DD4ECC /* buttonsmenu2.atlas in Resources */,
 				373964051C664F780018C8C9 /* level_6.plist in Resources */,
+				37BAE81A1DD73FD700DD4ECC /* story-astra2.atlas in Resources */,
 				373964151C664F780018C8C9 /* level_21.plist in Resources */,
 				373964261C664F780018C8C9 /* level_38.plist in Resources */,
 				37A38E901DD101DB00287FB2 /* UnityAds.bundle in Resources */,
@@ -2017,6 +2129,7 @@
 				3739643C1C664F780018C8C9 /* level_60.plist in Resources */,
 				373964031C664F780018C8C9 /* level_4.plist in Resources */,
 				373964251C664F780018C8C9 /* level_37.plist in Resources */,
+				37BAE6811DD73FD600DD4ECC /* buttonsgame2.atlas in Resources */,
 				37A38E7A1DD101DB00287FB2 /* MPAdBrowserController.xib in Resources */,
 				37A38E8F1DD101DB00287FB2 /* TapjoyResources.bundle in Resources */,
 				3739643B1C664F780018C8C9 /* level_59.plist in Resources */,
@@ -2028,6 +2141,7 @@
 				37A38E911DD101DB00287FB2 /* vg_close.png in Resources */,
 				373964371C664F780018C8C9 /* level_55.plist in Resources */,
 				3739641C1C664F780018C8C9 /* level_28.plist in Resources */,
+				37BAE8181DD73FD700DD4ECC /* spirit2.atlas in Resources */,
 				37A38E841DD101DB00287FB2 /* MPMutedBtn.png in Resources */,
 				37A38E871DD101DB00287FB2 /* MPPlayBtn.png in Resources */,
 				37A38E931DD101DB00287FB2 /* vg_mute_off.png in Resources */,
@@ -2035,6 +2149,7 @@
 				371CD94F1BDEABF500AE4975 /* images.xcassets in Resources */,
 				373964241C664F780018C8C9 /* level_36.plist in Resources */,
 				373964081C664F780018C8C9 /* level_9.plist in Resources */,
+				37BAE67F1DD73FD600DD4ECC /* airbackgrounds2.atlas in Resources */,
 				3739640A1C664F780018C8C9 /* level_11.plist in Resources */,
 				371CD9581BDEC3C200AE4975 /* LS.storyboard in Resources */,
 				373964381C664F780018C8C9 /* level_56.plist in Resources */,
@@ -2046,13 +2161,17 @@
 				3739640D1C664F780018C8C9 /* level_14.plist in Resources */,
 				373964301C664F780018C8C9 /* level_48.plist in Resources */,
 				373964231C664F780018C8C9 /* level_35.plist in Resources */,
+				37BAE8261DD73FD700DD4ECC /* water2.atlas in Resources */,
 				3739640E1C664F780018C8C9 /* level_15.plist in Resources */,
 				373964011C664F780018C8C9 /* level_2.plist in Resources */,
 				3739640B1C664F780018C8C9 /* level_12.plist in Resources */,
 				37656B401D2EAF0500506183 /* level_65.plist in Resources */,
 				37A38E921DD101DB00287FB2 /* vg_cta.png in Resources */,
 				37A38E831DD101DB00287FB2 /* MPDAAIcon@3x.png in Resources */,
+				37BAE81C1DD73FD700DD4ECC /* story-shared2.atlas in Resources */,
+				37BAE8121DD73FD700DD4ECC /* firebackgrounds2.atlas in Resources */,
 				37A38E7F1DD101DB00287FB2 /* MPCloseButtonX@2x.png in Resources */,
+				37BAE8221DD73FD700DD4ECC /* tutorial-water2.atlas in Resources */,
 				373964161C664F780018C8C9 /* level_22.plist in Resources */,
 				376A654F1AB38A3500F31421 /* Main.storyboard in Resources */,
 				373964351C664F780018C8C9 /* level_53.plist in Resources */,
@@ -2063,6 +2182,7 @@
 				373964171C664F780018C8C9 /* level_23.plist in Resources */,
 				37300A941CD7FE4D009C3E87 /* main_menu.plist in Resources */,
 				373964281C664F780018C8C9 /* level_40.plist in Resources */,
+				37BAE8231DD73FD700DD4ECC /* ux2.atlas in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

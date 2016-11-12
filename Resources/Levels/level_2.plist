@@ -176,7 +176,7 @@
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<integer>1700</integer>
+		<real>1720</real>
 	</dict>
 	<key>EnvironmentObject - 2</key>
 	<dict>
