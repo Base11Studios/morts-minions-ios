@@ -439,10 +439,10 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func intializeHeartBoost() {
-        self.heartBoostReady = GameData.sharedGameData.timesPlayed > 16 && self.viewController!.heartBoostReady()
+        self.heartBoostReady = GameData.sharedGameData.timesPlayed > 14 && self.viewController!.heartBoostReady()
         
         if self.heartBoostReady {
-            self.heartBoostDialog = HeartBoostDialog(frameSize: self.size, scene: self, gemCost: 10)
+            self.heartBoostDialog = HeartBoostDialog(frameSize: self.size, scene: self, gemCost: 12)
             self.heartBoostDialog!.zPosition = 14
             self.addChild(self.heartBoostDialog!)
         }
@@ -1951,7 +1951,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             for tutorialTipDictionary in tutorialArray! {
                 // Get the version information
                 var key = tutorialTipDictionary["Key"] as! String
-                key = "level_\(self.currentLevel)_" + key + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) // Make it level specific and character specific
+                key = "level_\(self.currentLevel)_" + key// + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) // Make it level specific and character specific
                 
                 let version = tutorialTipDictionary["Version"] as! Double
                 

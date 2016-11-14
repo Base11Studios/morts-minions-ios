@@ -354,6 +354,8 @@
 		37BAE8251DD73FD700DD4ECC /* uxmenu2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE67B1DD73FD600DD4ECC /* uxmenu2.atlas */; };
 		37BAE8261DD73FD700DD4ECC /* water2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE67C1DD73FD600DD4ECC /* water2.atlas */; };
 		37BAE8271DD73FD700DD4ECC /* waterbackgrounds2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37BAE67D1DD73FD600DD4ECC /* waterbackgrounds2.atlas */; };
+		37BAE8291DD90C5800DD4ECC /* PlayerBoulder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BAE8281DD90C5800DD4ECC /* PlayerBoulder.swift */; };
+		37BAE82B1DD9144300DD4ECC /* PlayerSmallBoulder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BAE82A1DD9144300DD4ECC /* PlayerSmallBoulder.swift */; };
 		37BB695E1C32034F00B59D73 /* TipType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BB695D1C32034F00B59D73 /* TipType.swift */; };
 		37BB69661C33253200B59D73 /* WorldNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BB69651C33253200B59D73 /* WorldNode.swift */; };
 		37BB69821C34A96500B59D73 /* LevelSelectWorldButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37BB69811C34A96500B59D73 /* LevelSelectWorldButton.swift */; };
@@ -793,6 +795,8 @@
 		37BAE67B1DD73FD600DD4ECC /* uxmenu2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = uxmenu2.atlas; sourceTree = "<group>"; };
 		37BAE67C1DD73FD600DD4ECC /* water2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = water2.atlas; sourceTree = "<group>"; };
 		37BAE67D1DD73FD600DD4ECC /* waterbackgrounds2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = waterbackgrounds2.atlas; sourceTree = "<group>"; };
+		37BAE8281DD90C5800DD4ECC /* PlayerBoulder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerBoulder.swift; sourceTree = "<group>"; };
+		37BAE82A1DD9144300DD4ECC /* PlayerSmallBoulder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerSmallBoulder.swift; sourceTree = "<group>"; };
 		37BB695D1C32034F00B59D73 /* TipType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TipType.swift; sourceTree = "<group>"; };
 		37BB69651C33253200B59D73 /* WorldNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorldNode.swift; sourceTree = "<group>"; };
 		37BB69811C34A96500B59D73 /* LevelSelectWorldButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectWorldButton.swift; sourceTree = "<group>"; };
@@ -1595,8 +1599,10 @@
 				37DD89EE1C554A0000588E38 /* PlayerProjectile.swift */,
 				376CBA321CC2AFED00BE2756 /* PlayerDamageField.swift */,
 				3764F7361C5A568B000CFFFD /* PlayerEagle.swift */,
+				37BAE8281DD90C5800DD4ECC /* PlayerBoulder.swift */,
 				376A89A11D332A8B00ACCCA3 /* PlayerMeteor.swift */,
 				376A89A51D333D4000ACCCA3 /* PlayerMagicMissle.swift */,
+				37BAE82A1DD9144300DD4ECC /* PlayerSmallBoulder.swift */,
 				376A89A31D332DDF00ACCCA3 /* PlayerSmallMeteor.swift */,
 				3764F73B1C5C4425000CFFFD /* PlayerRock.swift */,
 				37DD89F01C554CD500588E38 /* PlayerArrow.swift */,
@@ -2312,6 +2318,7 @@
 				37EAF9321C82293D0086D28E /* SecureStringCreator.swift in Sources */,
 				3719AA161BF30F27004A4003 /* CharacterSkillDetails.swift in Sources */,
 				375336801C92F026009FE27E /* GameKitHelper.swift in Sources */,
+				37BAE82B1DD9144300DD4ECC /* PlayerSmallBoulder.swift in Sources */,
 				372824401BC1F50600524DF7 /* Sqworm.swift in Sources */,
 				375247321CE2C865009D8197 /* CharacterRemoveSkillButton.swift in Sources */,
 				373F21B31BE67C6100934722 /* CharacterUpgrade.swift in Sources */,
@@ -2323,6 +2330,7 @@
 				37CE7FFB1CA3850F00B4DFA9 /* Motherhen.swift in Sources */,
 				373F21871BE04A0A00934722 /* GameViewController.swift in Sources */,
 				37CE80011CA38E9B00B4DFA9 /* WindBeast.swift in Sources */,
+				37BAE8291DD90C5800DD4ECC /* PlayerBoulder.swift in Sources */,
 				370020CF1C9F3F23007432E4 /* Ember.swift in Sources */,
 				37F8C2CF1C40A986002FB339 /* BubbleMaker.swift in Sources */,
 				372359051D1AAE9400F117B5 /* RejuvenateGemButton.swift in Sources */,

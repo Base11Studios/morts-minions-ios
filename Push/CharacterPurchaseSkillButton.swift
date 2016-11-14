@@ -13,7 +13,7 @@ class CharacterPurchaseSkillButton : DBButton {
     var errorText: String? = nil
     
     init(scene: CharacterSkillScene) {
-        super.init(iconName: "button_buy", pressedIconName: nil, buttonSize: DBButtonSize.extrasmall, dbScene: scene, atlas: GameTextures.sharedInstance.buttonAtlas)
+        super.init(iconName: "button_unlock", pressedIconName: nil, buttonSize: DBButtonSize.extrasmall, dbScene: scene, atlas: GameTextures.sharedInstance.buttonAtlas)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -77,7 +77,7 @@ class CharacterPurchaseSkillButton : DBButton {
                 parentPurchased = true
             } else {
                 parentPurchased = false
-                self.errorText = "* buy the previous upgrade"
+                self.errorText = "* unlock the previous upgrade"
             }
             
             if !enoughSkillPoints || !parentPurchased

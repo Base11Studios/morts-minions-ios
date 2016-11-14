@@ -10,7 +10,7 @@
 			<key>Title</key>
 			<string>Did You Know?</string>
 			<key>Description</key>
-			<string>Hold down on the screen to jump continuously!</string>
+			<string>Hold down on the screen to jump/teleport continuously!</string>
 			<key>Type</key>
 			<string>tutorial</string>
 			<key>Key</key>

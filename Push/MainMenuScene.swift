@@ -277,7 +277,7 @@ class MainMenuScene : DBScene {
                 // If the player has already seen this version, don't bother showing it!
                 let storedTutorial: Double? = GameData.sharedGameData.tutorialsAcknowledged[key]
                 
-                if storedTutorial == nil || floor(storedTutorial!) != floor(version) {
+                if storedTutorial == nil || floor(storedTutorial!) != floor(version) || GameData.sharedGameData.getSelectedCharacterData().godMode {
                     var iconTexture: SKTexture
                     
                     iconTexture = GameTextures.sharedInstance.splashAndStoryAtlas.textureNamed("tutorialicon")

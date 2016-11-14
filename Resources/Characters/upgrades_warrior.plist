@@ -235,123 +235,93 @@
 	<array>
 		<dict>
 			<key>Name</key>
-			<string>Charge</string>
+			<string>Hurl Boulder</string>
 			<key>IconName</key>
-			<string>iconcharge</string>
+			<string>iconhurlboulder</string>
 			<key>Type</key>
 			<string>skill</string>
 			<key>Id</key>
-			<string>charge</string>
-			<key>Cost</key>
-			<integer>16</integer>
-			<key>Currency</key>
-			<string>stars</string>
+			<string>throwboulder</string>
 			<key>Description</key>
-			<string>Jim charges ahead at 200% speed for 0.5 seconds. Colliding head on with an obstacle or minion will stop Jim but cause no damage to him. Skill is available to use every 20 seconds.</string>
+			<string>Jim is able to hurl a boulder at his oncoming enemies. Skill available to use every 24 seconds.</string>
 			<key>ActivationMethod</key>
 			<string>release</string>
 			<key>Cooldown</key>
-			<integer>20</integer>
-			<key>ActiveLength</key>
-			<real>0.5</real>
+			<integer>24</integer>
 			<key>Value</key>
-			<integer>2</integer>
-			<key>SecondaryValue</key>
 			<integer>1</integer>
 			<key>TutorialVersion</key>
 			<integer>1</integer>
 			<key>TutorialText</key>
-			<string>Press the button to activate charge.</string>
+			<string>Press the button to activate hurl boulder.</string>
 		</dict>
 		<dict>
 			<key>Name</key>
-			<string>Speed Boost</string>
+			<string>Hurl Quicker</string>
 			<key>Type</key>
 			<string>boost</string>
 			<key>TargetSkill</key>
-			<string>charge</string>
+			<string>throwboulder</string>
 			<key>Id</key>
-			<string>speedboost</string>
-			<key>Cost</key>
-			<integer>6</integer>
-			<key>Currency</key>
-			<string>stars</string>
+			<string>throwmoreoften</string>
 			<key>Description</key>
-			<string>Increases Jim&apos;s speed to 300% when charging.</string>
+			<string>Jim is now able to hurl boulders every 20 seconds.</string>
+			<key>Cooldown</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Hurl 2 Boulders</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>throwboulder</string>
+			<key>Id</key>
+			<string>throw2boulders</string>
+			<key>Description</key>
+			<string>Jim is now able to hurl 2 boulders at once.</string>
 			<key>Value</key>
 			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>Name</key>
-			<string>Great Stamina</string>
+			<string>Hurl 3 Boulders</string>
 			<key>Type</key>
 			<string>boost</string>
 			<key>TargetSkill</key>
-			<string>charge</string>
+			<string>throwboulder</string>
 			<key>Id</key>
-			<string>greatstamina</string>
-			<key>Cost</key>
-			<integer>10</integer>
-			<key>Currency</key>
-			<string>stars</string>
+			<string>throw3boulders</string>
 			<key>Description</key>
-			<string>Jim is now able to charge for 1 second.</string>
-			<key>ActiveLength</key>
-			<real>0.5</real>
-		</dict>
-		<dict>
-			<key>Name</key>
-			<string>Power Charge</string>
-			<key>Type</key>
-			<string>boost</string>
-			<key>TargetSkill</key>
-			<string>charge</string>
-			<key>Id</key>
-			<string>powercharge</string>
-			<key>Cost</key>
-			<integer>5</integer>
-			<key>Currency</key>
-			<string>citrine</string>
-			<key>Description</key>
-			<string>Jim causes double damage to the minion or obstacle that he collides with while charging.</string>
+			<string>Jim is now able to hurl 3 boulders at once.</string>
 			<key>Value</key>
 			<integer>1</integer>
-			<key>SecondaryValue</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>Name</key>
-			<string>Great Stamina 2</string>
+			<string>Hurl Quicker 2</string>
 			<key>Type</key>
 			<string>boost</string>
 			<key>TargetSkill</key>
-			<string>charge</string>
+			<string>throwboulder</string>
 			<key>Id</key>
-			<string>greatstamina2</string>
-			<key>Cost</key>
-			<integer>12</integer>
-			<key>Currency</key>
-			<string>stars</string>
+			<string>throwmoreoften2</string>
 			<key>Description</key>
-			<string>Jim is now able to charge for 2 seconds.</string>
-			<key>ActiveLength</key>
-			<integer>1</integer>
+			<string>Jim is now able to hurl boulders every 16 seconds.</string>
+			<key>Cooldown</key>
+			<integer>4</integer>
 		</dict>
 		<dict>
 			<key>Name</key>
-			<string>Super Strength</string>
+			<string>Exploding Boulders</string>
 			<key>Type</key>
 			<string>enhancement</string>
 			<key>TargetSkill</key>
-			<string>charge</string>
+			<string>throwboulder</string>
 			<key>Id</key>
-			<string>ragingstrength</string>
-			<key>Cost</key>
-			<integer>8</integer>
-			<key>Currency</key>
-			<string>citrine</string>
+			<string>explodingboulders</string>
 			<key>Description</key>
-			<string>Jim turns it up a notch charging furiously ahead, reflecting all projectiles without taking damage from them.</string>
+			<string>The boulders Jim hurls explode on contact with the ground, showering the area with rocks.</string>
 		</dict>
 	</array>
 	<array>

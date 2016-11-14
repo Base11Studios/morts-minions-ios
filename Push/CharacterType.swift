@@ -45,6 +45,20 @@ enum CharacterType : String {
         }
     }
     
+    static func getJumpSkillName(_ id: CharacterType) -> String {
+        if id == Warrior {
+            return "jump"
+        } else if id == Archer {
+            return "jump"
+        } else if id == Mage {
+            return "teleport"
+        } else if id == Monk {
+            return "jump"
+        } else {
+            return "jump"
+        }
+    }
+    
     static var allCases: [CharacterType] {
         return [.Warrior, .Archer, .Mage, .Monk]
     }

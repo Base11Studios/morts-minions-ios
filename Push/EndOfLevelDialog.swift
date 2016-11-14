@@ -365,7 +365,10 @@ class EndOfLevelDialog: DialogBackground {
         
         // We don't want to show this until the character has 2 skills total
         if (currentLevel >= 5 && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.TeleCharge.rawValue) && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.RubberSneakers.rawValue) && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion))) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Having trouble? go upgrade your jump skill below.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.bottomCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
+            
+            var description = "Having trouble? go upgrade your " + CharacterType.getJumpSkillName(GameData.sharedGameData.selectedCharacter) + " skill below."
+            
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: description, scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.bottomCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: self.upgradeSkillsButton.position.x, y: self.upgradeSkillsButton.position.y + self.upgradeSkillsButton.size.height / 2 + tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2)
             tutorial.color = MerpColors.nothing
             self.uxTutorialTooltips!.append(tutorial)
@@ -412,11 +415,11 @@ class EndOfLevelDialog: DialogBackground {
             if score.starsRewarded <= 2 {
                 switch score.levelNumber {
                 case 1, 2, 3, 4:
-                    levelHintDescription.text = "Tip: hold down on the screen to jump continuously."
+                    levelHintDescription.text = "Tip: hold down on the screen to " + CharacterType.getJumpSkillName(GameData.sharedGameData.selectedCharacter) + " continuously."
                 case 5, 6:
-                    levelHintDescription.text = "Tip: goblin troubles? Make sure you upgrade your jump skill."
+                    levelHintDescription.text = "Tip: goblin troubles? Make sure you upgrade your " + CharacterType.getJumpSkillName(GameData.sharedGameData.selectedCharacter) + " skill."
                 case 10, 11:
-                    levelHintDescription.text = "Tip: ogre troubles? Upgrade your jump skill again."
+                    levelHintDescription.text = "Tip: ogre troubles? Upgrade your " + CharacterType.getJumpSkillName(GameData.sharedGameData.selectedCharacter) + " skill again."
                 case 19, 20:
                     levelHintDescription.text = "Tip: invest in a skill that gets you far off the sea floor."
                 case 17, 18:
@@ -441,7 +444,7 @@ class EndOfLevelDialog: DialogBackground {
                     case 2:
                         levelHintDescription.text = "Tip: replay earlier levels to get more stars for new skills."
                     case 3:
-                        levelHintDescription.text = "Tip: hold down on the screen to jump continuously."
+                        levelHintDescription.text = "Tip: hold down on the screen to " + CharacterType.getJumpSkillName(GameData.sharedGameData.selectedCharacter) + " continuously."
                     default:
                         levelHintDescription.text = "Tip: reset your skills and try new strategies."
                     }

@@ -262,9 +262,11 @@ class LevelSelectionScene : DBScene {
         // Show the first skill being unlocked already
         if self.resetSkills || GameData.sharedGameData.getSelectedCharacterData().godMode {
 
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) + "'s skills were reset but we kept all of your stars! Re-add " + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) + "'s skills before playing.", scene: self, size: "Medium", indicators: [], key: "", version: 1.0, onComplete: onCompleteUxTooltip!)
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) + "'s skills were reset but we kept all of your stars! Re-add " + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) + "'s skills before playing.", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.rightTop], key: "", version: 1.0, onComplete: onCompleteUxTooltip!)
+            
+            tutorial.containerBackground.position = CGPoint(x: self.skillsButton!.position.x - self.skillsButton!.size.width / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.width / 2 - self.nodeBuffer, y: self.skillsButton!.position.y + self.skillsButton!.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2)
 
-            tutorial.containerBackground.position = CGPoint(x: 0, y: 0)
+            //tutorial.containerBackground.position = CGPoint(x: 0, y: 0)
             self.uxTutorialTooltips!.append(tutorial)
             self.addChild(tutorial)
         }
@@ -273,10 +275,14 @@ class LevelSelectionScene : DBScene {
     override func displayTutorialTooltip() -> Void {
         // If the UX tut array has objects, pop one, display it.
         if (self.uxTutorialTooltips!.count > 0) {
+            self.selectedWorld!.relatedLevelSelector!.disableScrollingOnView(self.sceneView)
+            
             let tooltip = self.uxTutorialTooltips!.first
             self.uxTutorialTooltips!.remove(at: 0)
             tooltip!.zPosition = 14.0
             tooltip!.isHidden = false
+        } else {
+            self.selectedWorld!.relatedLevelSelector!.enableScrollingOnView(self.sceneView)
         }
     }
     

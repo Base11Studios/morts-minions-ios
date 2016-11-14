@@ -14,13 +14,13 @@ class Warrior : Player {
         self.skill1Details = CharacterSkillDetails(upgrade: CharacterUpgrade.Jump)
         self.skill2Details = CharacterSkillDetails(upgrade: CharacterUpgrade.Block)
         self.skill3Details = CharacterSkillDetails(upgrade: CharacterUpgrade.Stomp)
-        self.skill4Details = CharacterSkillDetails(upgrade: CharacterUpgrade.Charge)
+        self.skill4Details = CharacterSkillDetails(upgrade: CharacterUpgrade.ThrowBoulder)
         self.skill5Details = CharacterSkillDetails(upgrade: CharacterUpgrade.FirstAidKit)
         
         super.initializeSkills()
         
         // Create the rocks for stomp
-        for _ in 0 ..< Int(self.getSkill(CharacterUpgrade.Stomp)!.secondaryValue * 5) {
+        for _ in 0 ..< Int(self.getSkill(CharacterUpgrade.Stomp)!.value * 5) {
             // Create projectile
             let projectile: PlayerRock = PlayerRock(gameScene: self.gameScene!)
             projectile.physicsBody!.velocity = CGVector()
@@ -54,8 +54,8 @@ class Warrior : Player {
     
     override func setupTraits() {
         // Attacking
-        self.maxAttackCooldown = 0.25
-        self.attackCooldown = 0.0
+        self.maxAttackCooldown = 5000.0
+        self.attackCooldown = 5000.0 // Set really high so it doesnt trigger on its own
         self.weaponStartPosition = CGPoint(x: 11, y: 2)
     }
     
@@ -65,7 +65,59 @@ class Warrior : Player {
         self.addChild(self.weapon)
         self.weapon.position = self.weaponStartPosition
         
+        // Create projectiles
+        for _ in 0 ..< Int(self.getSkill(CharacterUpgrade.ThrowBoulder)!.value * 5) {
+            // Create projectile
+            let projectile: PlayerBoulder = PlayerBoulder(gameScene: self.gameScene!, groundCollision: GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(CharacterUpgrade.ExplodingBoulders))
+            
+            // We dont want this to get updated by gamescene so change the name which is the selector
+            projectile.name = "proj_dont_update"
+            projectile.type = EnvironmentObjectType.Ignored
+            projectile.isHidden = true
+            
+            // Set up initial location of projectile
+            projectile.position = CGPoint(x: self.position.x + self.weaponStartPosition.x, y: self.position.y + self.weaponStartPosition.y - 2.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+            
+            projectile.zPosition = 9
+            
+            // Override
+            projectile.physicsBody!.categoryBitMask = GameScene.harmlessObjectCategory
+            
+            self.worldView!.addChild(projectile)
+            
+            self.projectiles.append(projectile)
+        }
+        
         // ** Create an action to attack **
+        // At the end, create the projectile
+        let actionCreateProjectile: SKAction = SKAction.run({
+            [weak self] in
+            
+            if self != nil {
+                for i in 0 ..< Int(self!.getSkill(CharacterUpgrade.ThrowBoulder)!.value) {
+                    let boulder: PlayerBoulder = self?.projectiles.popLast() as! PlayerBoulder
+                    
+                    boulder.position = CGPoint(x: self!.position.x + self!.weaponStartPosition.x, y: self!.position.y + self!.weaponStartPosition.y - 2.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+                    
+                    // Change the name back to default so it receives updates
+                    boulder.resetName()
+                    
+                    // Unhide it
+                    boulder.isHidden = false
+                    
+                    // Set physics body back
+                    boulder.physicsBody!.categoryBitMask = GameScene.playerProjectileCategory
+                    
+                    self?.gameScene!.worldViewPlayerProjectiles.append(boulder)
+                    
+                    boulder.zPosition = 4
+                    boulder.physicsBody!.velocity = CGVector()
+                    boulder.physicsBody!.applyImpulse(CGVector(dx: 6000.0 + (525 * CGFloat(i)), dy: 4250.0 + (1200 * CGFloat(i))))
+                    
+                    self?.playActionSound(action: SoundHelper.sharedInstance.projectileThrow)
+                }
+            }
+        })
         
         // At the end, switch back to walking and update the animation
         let actionEndAttack: SKAction = SKAction.run({
@@ -74,17 +126,18 @@ class Warrior : Player {
             if self != nil {
                 self?.isShooting = false
                 
-                // Start cooldown back over
                 self?.attackCooldown = self!.maxAttackCooldown
+                    
+                self?.attacksInSuccession = 0
                 
                 // Update the animations
                 //[self updateAnimation]; TODO might need to change back to texture... or different animation
             }
-            })
+        })
         self.weaponFrames = SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.playerWarriorAtlas, texturesNamed: "warriorswording", frameStart: 0, frameEnd: 15)
         
         // Set the appropriate fight action
-        self.fightAction = SKAction.sequence([SKAction.animate(with: self.weaponFrames, timePerFrame: 0.025, resize: true, restore: false), actionEndAttack])
+        self.fightAction = SKAction.sequence([SKAction.animate(with: self.weaponFrames, timePerFrame: 0.01, resize: true, restore: false), actionCreateProjectile, actionEndAttack])
         
         // Charge overlay
         self.spriteOverlay = SKSpriteNode(texture: GameTextures.sharedInstance.playerWarriorAtlas.textureNamed("charge"))

@@ -273,7 +273,9 @@ class CharacterSkillScene : DBScene {
         
         // We don't want to show this if the character has the upgrade skills already
         if (GameData.sharedGameData.getSelectedCharacterData().levelProgress[4] != nil && GameData.sharedGameData.getSelectedCharacterData().levelProgress[4]!.timesLevelPlayed > 0 && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.TeleCharge.rawValue) && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.RubberSneakers.rawValue) && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion))) || GameData.sharedGameData.getSelectedCharacterData().godMode {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Use stars to buy and upgrade skills. Upgrade jump at least once by level 5.", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
+            
+            var description = "Use stars to unlock and upgrade skills. Upgrade " + CharacterType.getJumpSkillName(GameData.sharedGameData.selectedCharacter) + " at least once by level 5."
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: description, scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
             
             // First upgrade for jump - convert it to the right coords
             let point: CGPoint = self.convert(self.scrollingNode!.firstJumpUpgradeSkill!.position, from: self.scrollingNode!.firstJumpUpgradeSkill!.parent!)
@@ -293,7 +295,7 @@ class CharacterSkillScene : DBScene {
             tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
             
             // We don't want to show this until the character has 2 skills total
-            if GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.count > 1 && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
+            if GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.count > 2 && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
                 let tutorial = UXTutorialDialog(frameSize: self.size, description: "Reset your skills for free to get back all stars spent. Unlimited resets!", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.rightTop], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
                 tutorial.containerBackground.position = CGPoint(x: self.resetSkillsButton!.position.x - self.resetSkillsButton!.size.width / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.width / 2 - self.nodeBuffer, y: self.resetSkillsButton!.position.y + self.resetSkillsButton!.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2)
                 self.uxTutorialTooltips!.append(tutorial)
