@@ -41,126 +41,126 @@
 		<key>Object</key>
 		<string>LevelEnd</string>
 		<key>Location</key>
-		<integer>5650</integer>
+		<integer>4800</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 5</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<integer>5500</integer>
+		<integer>4700</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 5 - 2</key>
 	<dict>
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<integer>5224</integer>
+		<integer>4424</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 6</key>
 	<dict>
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<integer>5200</integer>
+		<integer>4400</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 7</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<real>5050</real>
+		<integer>4250</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 8</key>
 	<dict>
 		<key>Object</key>
 		<string>Panther</string>
 		<key>Location</key>
-		<integer>4800</integer>
+		<real>4000</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 9</key>
 	<dict>
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<real>4180</real>
+		<integer>3380</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 4</key>
 	<dict>
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<integer>4020</integer>
+		<integer>3220</integer>
 	</dict>
 	<key>EnvironmentObject - 4</key>
 	<dict>
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<real>3860</real>
+		<integer>3060</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 2</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<real>3740</real>
+		<real>2940</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 3</key>
 	<dict>
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<integer>3600</integer>
+		<real>2800</real>
 	</dict>
 	<key>EnvironmentObject - 5</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<integer>3000</integer>
+		<integer>2400</integer>
 	</dict>
 	<key>EnvironmentObject - 6</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<integer>2800</integer>
+		<integer>2200</integer>
 	</dict>
 	<key>EnvironmentObject - 7</key>
 	<dict>
 		<key>Object</key>
 		<string>Panther</string>
 		<key>Location</key>
-		<integer>2000</integer>
+		<integer>1800</integer>
 	</dict>
 	<key>EnvironmentObject - 8</key>
 	<dict>
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<integer>1000</integer>
+		<integer>800</integer>
 	</dict>
 	<key>EnvironmentObject</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<integer>1400</integer>
+		<integer>1200</integer>
 	</dict>
 	<key>EnvironmentObject - 2</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<integer>1200</integer>
+		<integer>1000</integer>
 	</dict>
 	<key>EnvironmentObject - 3</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<integer>1000</integer>
+		<integer>800</integer>
 	</dict>
 </dict>
 </plist>
