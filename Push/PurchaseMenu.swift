@@ -80,7 +80,7 @@ class PurchaseMenu: DialogBackground {
         self.headerText!.paragraphWidth = self.buy2Button.size.width * 2 + buffer
         self.headerText!.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.headerText!.fontColor = MerpColors.darkFont
-        self.headerText!.text = "Accelerate your experience. Buy gems to unlock characters and use revives."
+        self.headerText!.text = "Accelerate your experience. Buy gems to boost your hero."
         self.headerText!.position = CGPoint(x: (-self.totalWidth! + self.headerText!.calculateAccumulatedFrame().size.width) / 2, y: self.buy1Button.position.y + self.buy1Button.size.height / 2 + self.headerText!.calculateAccumulatedFrame().size.height / 2 + self.buffer)
         
         // Footer
@@ -89,9 +89,9 @@ class PurchaseMenu: DialogBackground {
         self.footerText!.fontColor = MerpColors.darkFont
         
         if GameData.sharedGameData.adsUnlocked {
-            self.footerText!.text = "Thank you for your previous purchase! We won't show level ads."
+            self.footerText!.text = "Thank you for your purchase! Your hero boosts are longer."
         } else {
-            self.footerText!.text = "* if you purchase any gems, we won't show level ads."
+            self.footerText!.text = "* Purchase any gems and get longer hero boosts!"
         }
         self.footerText!.position = CGPoint(x: (-self.totalWidth! + self.footerText!.calculateAccumulatedFrame().size.width) / 2, y: self.buy3Button.position.y - self.buy3Button.size.height / 2 - self.footerText!.calculateAccumulatedFrame().size.height / 2 - self.buffer)
         
@@ -145,18 +145,18 @@ class PurchaseMenu: DialogBackground {
         if !errorConnecting {
             if openedWithNotEnoughGems {
                 self.headerFontColor(false)
-                self.headerText!.text = "Darn, you need \(itemCost) gems to make the purchase. Buy more gems below."
+                self.headerText!.text = "Darn, you need \(itemCost) gems to make the purchase. Buy more below."
             } else {
                 self.headerFontColor(false)
-                self.headerText!.text = "Accelerate your experience. Buy gems to unlock characters and use revives."
+                self.headerText!.text = "Accelerate your experience. Buy gems to boost your hero."
             }
         } else {
             if openedWithNotEnoughGems {
                 self.headerFontColor(true)
-                self.headerText!.text = "Darn, you need \(itemCost) gems. We could not connect to the store. Try again."
+                self.headerText!.text = "Darn, you need \(itemCost) gems. We couldn't connect to the store. Try again."
             } else {
                 self.headerFontColor(true)
-                self.headerText!.text = "Unfortunately we could not connect to the store. Please try again."
+                self.headerText!.text = "Unfortunately we couldn't connect to the store. Please try again."
             }
         }
         
@@ -210,9 +210,9 @@ class PurchaseMenu: DialogBackground {
     func updateFooter() {
         // Footer
         if GameData.sharedGameData.adsUnlocked {
-            self.footerText!.text = "Thank you for your previous purchase! We won't show level ads."
+            self.footerText!.text = "Thank you for your purchase! Your hero boosts are longer."
         } else {
-            self.footerText!.text = "* if you purchase any gems, we won't show level ads."
+            self.footerText!.text = "* Purchase any gems and get longer hero boosts!"
         }
         self.footerText!.position = CGPoint(x: (-self.totalWidth! + self.footerText!.calculateAccumulatedFrame().size.width) / 2, y: self.buy3Button.position.y - self.buy3Button.size.height / 2 - self.footerText!.calculateAccumulatedFrame().size.height / 2 - self.buffer)
     }

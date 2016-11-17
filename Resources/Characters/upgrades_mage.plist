@@ -21,9 +21,9 @@
 			<key>TertiaryValue</key>
 			<real>0.35</real>
 			<key>TutorialVersion</key>
-			<integer>3</integer>
+			<integer>4</integer>
 			<key>TutorialText</key>
-			<string>Press screen to teleport. Hold down to keep teleporting.</string>
+			<string>Hold anywhere on the screen to teleport continuously or tap to teleport once.</string>
 		</dict>
 		<dict>
 			<key>Name</key>

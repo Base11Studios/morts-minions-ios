@@ -24,7 +24,7 @@ class EndOfLevelDialog: DialogBackground {
     var starButton1: StarButton
     var starButton2: StarButton
     var starButton3: StarButton
-    var superstarButton1: SuperstarButton
+    var superstarButton1: StarButton
     
     // Labels
     var totalScoreLabel: SKLabelNode
@@ -93,7 +93,7 @@ class EndOfLevelDialog: DialogBackground {
         self.starButton1 = StarButton()
         self.starButton2 = StarButton()
         self.starButton3 = StarButton()
-        self.superstarButton1 = SuperstarButton()
+        self.superstarButton1 = StarButton()
         
         // Skills
         self.levelHintDescription = DSMultilineLabelNode()
@@ -134,7 +134,7 @@ class EndOfLevelDialog: DialogBackground {
         self.starButton1 = StarButton(scene: scene)
         self.starButton2 = StarButton(scene: scene)
         self.starButton3 = StarButton(scene: scene)
-        self.superstarButton1 = SuperstarButton(scene: scene)
+        self.superstarButton1 = StarButton(scene: scene)
         
         // Skills
         self.levelHintDescription = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
@@ -351,7 +351,7 @@ class EndOfLevelDialog: DialogBackground {
         tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
         
         if (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Earn stars and superstars by getting a better score.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Earn more stars by getting a better score.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: 0, y: self.starButton2.position.y - self.starButton2.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer)
             tutorial.color = MerpColors.nothing
             self.uxTutorialTooltips!.append(tutorial)
@@ -365,7 +365,10 @@ class EndOfLevelDialog: DialogBackground {
         
         // We don't want to show this until the character has 2 skills total
         if (currentLevel >= 5 && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.TeleCharge.rawValue) && !GameData.sharedGameData.getSelectedCharacterData().unlockedUpgrades.contains(CharacterUpgrade.RubberSneakers.rawValue) && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion))) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
-            let tutorial = UXTutorialDialog(frameSize: self.size, description: "Having trouble? go upgrade your jump skill below.", scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.bottomCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
+            
+            var description = "Having trouble? go upgrade your " + CharacterType.getJumpSkillName(GameData.sharedGameData.selectedCharacter) + " skill below."
+            
+            let tutorial = UXTutorialDialog(frameSize: self.size, description: description, scene: self.dbScene!, size: "Medium", indicators: [UxTutorialIndicatorPosition.bottomCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip)
             tutorial.position = CGPoint(x: self.upgradeSkillsButton.position.x, y: self.upgradeSkillsButton.position.y + self.upgradeSkillsButton.size.height / 2 + tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2)
             tutorial.color = MerpColors.nothing
             self.uxTutorialTooltips!.append(tutorial)
@@ -411,10 +414,12 @@ class EndOfLevelDialog: DialogBackground {
         if unlockedLevels.count == 0 {
             if score.starsRewarded <= 2 {
                 switch score.levelNumber {
+                case 1, 2, 3, 4:
+                    levelHintDescription.text = "Tip: hold down on the screen to " + CharacterType.getJumpSkillName(GameData.sharedGameData.selectedCharacter) + " continuously."
                 case 5, 6:
-                    levelHintDescription.text = "Tip: goblin troubles? Make sure you upgrade your jump skill."
+                    levelHintDescription.text = "Tip: goblin troubles? Make sure you upgrade your " + CharacterType.getJumpSkillName(GameData.sharedGameData.selectedCharacter) + " skill."
                 case 10, 11:
-                    levelHintDescription.text = "Tip: ogre troubles? Upgrade your jump skill again."
+                    levelHintDescription.text = "Tip: ogre troubles? Upgrade your " + CharacterType.getJumpSkillName(GameData.sharedGameData.selectedCharacter) + " skill again."
                 case 19, 20:
                     levelHintDescription.text = "Tip: invest in a skill that gets you far off the sea floor."
                 case 17, 18:
@@ -430,7 +435,7 @@ class EndOfLevelDialog: DialogBackground {
                 }
                 
                 if levelHintDescription.text == "" || Int(arc4random_uniform(10)) > 6 {
-                    let tipNum = Int(arc4random_uniform(3))
+                    let tipNum = Int(arc4random_uniform(4))
                     switch tipNum {
                     case 0:
                         levelHintDescription.text = "Tip: reset your skills and try new strategies."
@@ -438,6 +443,8 @@ class EndOfLevelDialog: DialogBackground {
                         levelHintDescription.text = "Tip: you don't need 3 stars on every level."
                     case 2:
                         levelHintDescription.text = "Tip: replay earlier levels to get more stars for new skills."
+                    case 3:
+                        levelHintDescription.text = "Tip: hold down on the screen to " + CharacterType.getJumpSkillName(GameData.sharedGameData.selectedCharacter) + " continuously."
                     default:
                         levelHintDescription.text = "Tip: reset your skills and try new strategies."
                     }
@@ -458,13 +465,13 @@ class EndOfLevelDialog: DialogBackground {
                 let tipNum = Int(arc4random_uniform(3))
                 switch tipNum {
                 case 0:
-                    levelHintDescription.text = "This is just fantastic!"
+                    levelHintDescription.text = "You are just fantastic!"
                 case 1:
                     levelHintDescription.text = "Super duper!"
                 case 2:
                     levelHintDescription.text = "I'm impressed!"
                 default:
-                    levelHintDescription.text = "This is just fantastic!"
+                    levelHintDescription.text = "You are just fantastic!"
                 }
             }
             

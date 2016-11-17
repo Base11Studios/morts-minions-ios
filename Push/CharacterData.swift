@@ -29,12 +29,10 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
     // Purchased superstars
     var purchasedSuperstars: Int = 0
     var purchasedStars: Int = 0
-    
-    // Heart boost
-    var countDownToBoost: Int = 0
-    
+
     // Free Rejuvenates
     var freeRejuvenations: Int = 1
+    var freeHeartBoosts: Int = 1
     
     var totalStars: Int {
         get {
@@ -45,6 +43,7 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
                 // Iterate through levelprogress
                 for (_, data) in self.levelProgress {
                     stars += data.starsEarnedHighScore
+                    stars += data.citrineEarnedHighScore /*stars only*/
                 }
                 
                 // Also add the boosted ones we purchased
@@ -118,8 +117,8 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
     let SSGameDataGoldHeartsKey: String = "goldHeartsKey"
     
     // Other
-    let SSGameDataHeartBoostCounterKey: String = "heartBoostCounterKey"
     let SSGameDataFreeRejuvenationsKey: String = "freeRejuvenationsKey"
+    let SSGameDataFreeHeartBoostsKey: String = "freeHeartBoostsKey"
     
     // Gamecenter score keys
     let SSGameDataCitrineStreakKey: String = "citrineStreak"
@@ -139,8 +138,8 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
         encoder.encode(self.goldHearts, forKey: SSGameDataGoldHeartsKey)
         encoder.encode(self.purchasedSuperstars, forKey: SSGameDataCharacterPurcahsedSuperstarsKey)
         encoder.encode(self.purchasedStars, forKey: SSGameDataCharacterPurchasedStarsKey)
-        encoder.encode(self.countDownToBoost, forKey: SSGameDataHeartBoostCounterKey)
-        encoder.encode(self.countDownToBoost, forKey: SSGameDataFreeRejuvenationsKey)
+        encoder.encode(self.freeHeartBoosts, forKey: SSGameDataFreeHeartBoostsKey)
+        encoder.encode(self.freeRejuvenations, forKey: SSGameDataFreeRejuvenationsKey)
         
         // Level states
         encoder.encode(self.lastPlayedLevelByWorld, forKey: SSGameDataLastPlayedLevelByWorldKey)
@@ -208,10 +207,14 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
             self.purchasedStars = decoder.decodeInteger(forKey: SSGameDataCharacterPurchasedStarsKey)
         }
         
-        if decoder.containsValue(forKey: SSGameDataHeartBoostCounterKey) {
-            self.countDownToBoost = decoder.decodeInteger(forKey: SSGameDataHeartBoostCounterKey)
+        if decoder.containsValue(forKey: SSGameDataFreeHeartBoostsKey) {
+            self.freeHeartBoosts = decoder.decodeInteger(forKey: SSGameDataFreeHeartBoostsKey)
+            
+            if self.freeHeartBoosts > 1 {
+                self.freeHeartBoosts = 1
+            }
         } else {
-            self.countDownToBoost = 0
+            self.freeHeartBoosts = 1
         }
         
         if decoder.containsValue(forKey: SSGameDataFreeRejuvenationsKey) {
@@ -355,8 +358,10 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
         // Need to get 2 of 3 stars on average
         var levelReqs: Int = (level-1) * 2
         
-        // Every 4 levels, need at least one 3 star
-        levelReqs += Int(floor(Double(level)/4.0))
+        if (level > 16) { // Keep the first world easy
+            // Every 3 levels, need at least one 3 star
+            levelReqs += Int(floor(Double(level)/3.0))
+        }
         
         return levelReqs
     }
@@ -412,7 +417,7 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
         
         // Plays to beat world 4
         //NSLog("\(self.getLevelNumberForWorld(levelNumber))")
-        if !self.hasBeatWorld4 && worldNumber == 4 && self.getLevelNumberForWorld(levelNumber) == self.levelsPerWorld && score.starsRewarded == 1 {
+        if !self.hasBeatWorld4 && worldNumber == 4 && self.getLevelNumberForWorld(levelNumber) == 64 && score.starsRewarded >= 2 {
             self.hasBeatWorld4 = true
             self.playsToBeatWorld4 = self.totalTimesPlayed
         }
@@ -501,7 +506,7 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
     
     func challengesUnlocked(_ currentLevel: Int) -> Bool {
         // If the 6th level has been played or this is the 6th level
-        if levelProgress[6] != nil && levelProgress[6]!.timesLevelPlayed > 0 || currentLevel == 6 {
+        if levelProgress[4] != nil && levelProgress[4]!.timesLevelPlayed > 0 || currentLevel == 4 {
             return true
         } else {
             return false
@@ -516,7 +521,19 @@ class CharacterData : NSObject, NSCoding { // TODO doesnt have to extend this af
         }
     }
     
+    func hasFreeHeartBoosts() -> Bool {
+        if self.freeHeartBoosts > 0 {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     func useFreeRejuvenation() {
         self.freeRejuvenations -= 1
+    }
+    
+    func useFreeHeartBoost() {
+        self.freeHeartBoosts -= 1
     }
 }

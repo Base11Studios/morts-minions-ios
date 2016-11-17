@@ -26,9 +26,9 @@ class LevelData : NSObject, NSCoding {
     var availableChallenges = NSMutableSet() //[String : Bool] = [:]
 
     // Rewards
-    var tier1Percent: CGFloat = 0.50
-    var tier2Percent: CGFloat = 0.70
-    var tier3Percent: CGFloat = 0.90
+    var tier1Percent: CGFloat = 0.45
+    var tier2Percent: CGFloat = 0.65
+    var tier3Percent: CGFloat = 0.85
     var citrinePercent: CGFloat = 1.0
     
     // Random statistics

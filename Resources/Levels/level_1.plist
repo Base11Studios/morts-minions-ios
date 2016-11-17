@@ -62,91 +62,93 @@
 		<key>Object</key>
 		<string>LevelEnd</string>
 		<key>Location</key>
-		<integer>5200</integer>
+		<integer>4250</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 3 - 3</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<integer>5050</integer>
+		<integer>4150</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 3</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<integer>4900</integer>
+		<integer>4000</integer>
 	</dict>
 	<key>EnvironmentObject - 7 - 2</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<integer>4800</integer>
+		<integer>3900</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2</key>
 	<dict>
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<integer>4200</integer>
+		<integer>3320</integer>
 	</dict>
 	<key>EnvironmentObject - 4</key>
 	<dict>
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<integer>4100</integer>
+		<integer>3200</integer>
+		<key>New item</key>
+		<string>was 600 more than prev</string>
 	</dict>
 	<key>EnvironmentObject - 5</key>
 	<dict>
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<integer>3500</integer>
+		<integer>2700</integer>
 	</dict>
 	<key>EnvironmentObject - 6</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<real>3620</real>
+		<integer>2820</integer>
 	</dict>
 	<key>EnvironmentObject - 7</key>
 	<dict>
 		<key>Object</key>
 		<string>SpikeTrap</string>
 		<key>Location</key>
-		<integer>2900</integer>
+		<integer>2100</integer>
 	</dict>
 	<key>EnvironmentObject - 8</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<integer>2300</integer>
+		<integer>1800</integer>
 	</dict>
 	<key>EnvironmentObject</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<integer>2200</integer>
+		<integer>1700</integer>
 	</dict>
 	<key>EnvironmentObject - 2</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<integer>1600</integer>
+		<integer>1300</integer>
 	</dict>
 	<key>EnvironmentObject - 3</key>
 	<dict>
 		<key>Object</key>
 		<string>Sqworm</string>
 		<key>Location</key>
-		<real>1000</real>
+		<integer>800</integer>
 	</dict>
 </dict>
 </plist>

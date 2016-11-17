@@ -22,9 +22,9 @@ enum CharacterType : String {
             return 0
         } else if id == Mage {
             //return 150
-            return 199
+            return 0
         } else if id == Monk {
-            return 199
+            return 0
             //return 150
         } else {
             return 0
@@ -42,6 +42,20 @@ enum CharacterType : String {
             return "Leonard"
         } else {
             return ""
+        }
+    }
+    
+    static func getJumpSkillName(_ id: CharacterType) -> String {
+        if id == Warrior {
+            return "jump"
+        } else if id == Archer {
+            return "jump"
+        } else if id == Mage {
+            return "teleport"
+        } else if id == Monk {
+            return "jump"
+        } else {
+            return "jump"
         }
     }
     

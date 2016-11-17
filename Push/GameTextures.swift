@@ -50,33 +50,33 @@ class GameTextures {
     
     // MARK: - Init
     init() {
+        self.buttonAtlas = SKTextureAtlas(named: "buttons2")
         
         // Create texture atlases
-        self.earthAtlas = SKTextureAtlas(named: "earth")
-        self.waterAtlas = SKTextureAtlas(named: "water")
-        self.fireAtlas = SKTextureAtlas(named: "fire")
-        self.airAtlas = SKTextureAtlas(named: "air")
-        self.spiritAtlas = SKTextureAtlas(named: "spirit")
+        self.earthAtlas = SKTextureAtlas(named: "earth2")
+        self.waterAtlas = SKTextureAtlas(named: "water2")
+        self.fireAtlas = SKTextureAtlas(named: "fire2")
+        self.airAtlas = SKTextureAtlas(named: "air2")
+        self.spiritAtlas = SKTextureAtlas(named: "spirit2")
         
         // Common
-        self.projectilesAtlas = SKTextureAtlas(named: "projectiles")
+        self.projectilesAtlas = SKTextureAtlas(named: "projectiles2")
         
-        self.playerWarriorAtlas = SKTextureAtlas(named: "playerwarrior")
-        self.playerMonkAtlas = SKTextureAtlas(named: "playermonk")
-        self.playerMageAtlas = SKTextureAtlas(named: "playermage")
-        self.playerArcherAtlas = SKTextureAtlas(named: "playerarcher")
+        self.playerWarriorAtlas = SKTextureAtlas(named: "playerwarrior2")
+        self.playerMonkAtlas = SKTextureAtlas(named: "playermonk2")
+        self.playerMageAtlas = SKTextureAtlas(named: "playermage2")
+        self.playerArcherAtlas = SKTextureAtlas(named: "playerarcher2")
         
-        self.buttonAtlas = SKTextureAtlas(named: "buttons")
-        self.buttonGameAtlas = SKTextureAtlas(named: "buttonsgame")
-        self.buttonMenuAtlas = SKTextureAtlas(named: "buttonsmenu")
         
-        self.uxAtlas = SKTextureAtlas(named: "ux")
-        self.uxMenuAtlas = SKTextureAtlas(named: "uxmenu")
-        self.uxGameAtlas = SKTextureAtlas(named: "uxgame")
+        self.buttonGameAtlas = SKTextureAtlas(named: "buttonsgame2")
+        self.buttonMenuAtlas = SKTextureAtlas(named: "buttonsmenu2")
         
-        self.splashAndStoryAtlas = SKTextureAtlas(named: "splashandstory")
+        self.uxAtlas = SKTextureAtlas(named: "ux2")
+        self.uxMenuAtlas = SKTextureAtlas(named: "uxmenu2")
+        self.uxGameAtlas = SKTextureAtlas(named: "uxgame2")
         
-        self.waterStoryTutorialAtlas = SKTextureAtlas(named: "water-story-tutorial")
+        self.splashAndStoryAtlas = SKTextureAtlas(named: "splashandstory2")
+        
         
         // Create arrays used for gameplay
         self.earthLevelAtlases.append(self.earthAtlas)

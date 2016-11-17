@@ -284,8 +284,8 @@ class Player : SKSpriteNode {
         
         // Attributes
         self.goldHearts = GameData.sharedGameData.getSelectedCharacterData().goldHearts
-        self.maxHealth = 3
-        self.health = 3
+        self.maxHealth = 3// + GameData.sharedGameData.heartBoostCount
+        self.health = 3// + GameData.sharedGameData.heartBoostCount
         self.damage = 1
         self.originalDamage = 1
         self.shieldDamage = 1
@@ -728,7 +728,7 @@ class Player : SKSpriteNode {
         
         self.startHiding() // Set all the bit masks so we don't get placed on top of something
         self.stopHiding() // Leave hiding but don't pop out until past everything
-        self.startGracePeriod(2.0) // Don't take damage for 1.2 seconds
+        self.startGracePeriod(2.8) // Don't take damage for 1.2 seconds
         self.startPlayerWalkingAnimation() // Start walk animation again
     }
     
@@ -1571,6 +1571,14 @@ class Player : SKSpriteNode {
             
             self.playActionSound(action: SoundHelper.sharedInstance.explode)
         case .ShootArrow:
+            // Set the skill to cooldown
+            skill.cooldownInProgress = true
+            
+            // This is how long until it can be used again
+            skill.activeCooldownCount = skill.maxCooldownCount
+            
+            self.attackCooldown = 0.0
+        case .ThrowBoulder:
             // Set the skill to cooldown
             skill.cooldownInProgress = true
             

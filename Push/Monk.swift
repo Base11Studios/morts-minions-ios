@@ -37,7 +37,7 @@ class Monk : Player {
         // Attacking
         self.maxAttackCooldown = 5000.0
         self.attackCooldown = 5000.0 // Set really high so it doesnt trigger on its own
-        self.weaponStartPosition = CGPoint(x: 12, y: -7)
+        self.weaponStartPosition = CGPoint(x: 8, y: -7)
     }
     
     override func initializeWeapon() {

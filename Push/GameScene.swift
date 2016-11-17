@@ -151,8 +151,10 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     //var levelIntroTextAction: SKAction?
     //var levelIntroTextShown: Bool? = false
     
-    // Static ads
-    var adsPresented = false
+    // Heart boost
+    var heartBoostReady = false
+    var heartBoostDialog: HeartBoostDialog?
+    var startingReviveHearts: Int = 0
     
     // Background
     var numberBackgroundNodes: Int = 4
@@ -186,11 +188,19 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                                                          name: NSNotification.Name(rawValue: "RejuvenatePlayer"),
                                                          object: nil)
         
+        /* Let's not do anything if the video watching fails.. let them try another option and close manually
         // Setup CUSTOM observer for not rejuvenating the player
         NotificationCenter.default.addObserver(self,
                                                          selector: #selector(GameScene.dismissRejuvDialogWaitAndEndLevel),
                                                          name: NSNotification.Name(rawValue: "DontRejuvenatePlayer"),
                                                          object: nil)
+        */
+        
+        // Setup CUSTOM observer for adding heart boost to the player
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(GameScene.enableHeartBoost),
+                                               name: NSNotification.Name(rawValue: "PlayerHeartBoost"),
+                                               object: nil)
         
         // Setup CUSTOM observer for dismissing the loading dialog
         NotificationCenter.default.addObserver(self,
@@ -219,7 +229,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     override func willMove(from view: SKView) {
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "PauseGameScene"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "RejuvenatePlayer"), object: nil)
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "DontRejuvenatePlayer"), object: nil)
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "PlayerHeartBoost"), object: nil)
+        //NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "DontRejuvenatePlayer"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "DismissLoadingDialog"), object: nil)
         NotificationCenter.default.removeObserver(self, name: NSNotification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
         
@@ -250,7 +261,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         let levelSetup: NSDictionary = NSDictionary(contentsOfFile: path)!
         self.worldName = levelSetup.value(forKey: "World") as! String
         
-        self.environmentObjectPreloader = SKSpriteNode(texture: GameTextures.sharedInstance.getAtlasForWorld(world: self.world).textureNamed("1x1trans" + self.world))
+        self.environmentObjectPreloader = SKSpriteNode(texture: GameTextures.sharedInstance.getAtlasForWorld(world: self.world).textureNamed("1x1trans"))
         
         // Call super init
         super.init(size: size, settings: false, loadingOverlay: true, purchaseMenu: true, rateMe: false, trade: false)
@@ -266,6 +277,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // Sound
         self.initializeSound()
+        
+        // Heart Boost -- MUST BE BEFORE PLAYER
+        self.intializeHeartBoost()
         
         // Initialize Player
         if GameData.sharedGameData.selectedCharacter == .Warrior {
@@ -317,14 +331,14 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Initialize the Player
         self.initializePlayer(size)
         
+        // We need to know how many gold hearts we started with
+        self.startingReviveHearts = self.player.goldHearts
+        
         // Create the controls
         self.initializeControls()
         
         // Create HUD
         self.initializeHUD()
-        
-        // Add hearts to player for rejuv boost. When we initialized player, if they had any carried over gold hearts it would be set in goldHearts
-        self.addHeartsToPlayer(self.player.goldHearts)
         
         // Set the boundaries for player and background interaction
         horizontalPlayerLimitRight = self.frame.size.width / ScaleBuddy.sharedInstance.playerHorizontalRight
@@ -355,8 +369,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Create UX
         self.createUxTutorials()
         
-        // Create Ads
-        self.createAds()
         
         // Determine level status
         var lockedLevelsAdded: Int = 0
@@ -390,21 +402,15 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.showPauseMenu = false
             self.pauseGame()
             self.storyDialogs![0].isHidden = false
-        } else if (GameData.sharedGameData.adPopCountdown <= 0 /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/) && viewController!.interstitialAdReady() && !self.adsPresented && !GameData.sharedGameData.adsUnlocked {
+        } else if self.heartBoostReady {
             // Then ads
-            // Show the ad
-            viewController!.showInterstitialAd()
+            self.displayHeartBoostDialog()
             
-            self.adsPresented = true
+            self.heartBoostReady = false
             self.showPauseMenu = false
             self.pauseGame()
-            
-            // Reset the count
-            GameData.sharedGameData.adPopCountdown = GameData.sharedGameData.adPopMax
         } else { // Then tutorials
-            /*if GameData.sharedGameData.adPopCountdown <= 0 {
-                viewController!.cacheInterstitialAd()
-            }*/
+            self.addAllPlayerHearts()
             
             // Now tutorials
             if self.tutorialDialogs!.count > 0 {
@@ -425,9 +431,39 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
     }
     
-    func createAds() {
-        // Decrease pop count
-        GameData.sharedGameData.adPopCountdown -= 1
+    func enableHeartBoost() {
+        GameData.sharedGameData.heartBoostLastUsed = Date()
+        GameData.sharedGameData.configureHeartBoost(enable: true)
+        self.heartBoostDialog!.isHidden = true
+        self.displayPregamePops()
+    }
+    
+    func intializeHeartBoost() {
+        self.heartBoostReady = GameData.sharedGameData.timesPlayed > 14 && self.viewController!.heartBoostReady()
+        
+        if self.heartBoostReady {
+            self.heartBoostDialog = HeartBoostDialog(frameSize: self.size, scene: self, gemCost: 12)
+            self.heartBoostDialog!.zPosition = 14
+            self.addChild(self.heartBoostDialog!)
+        }
+    }
+    
+    func addAllPlayerHearts() {
+        // Add hearts to player for rejuv boost. When we initialized player, if they had any carried over gold hearts it would be set in goldHearts
+        if GameData.sharedGameData.heartBoostCount > 0 {
+            self.addHeartsToPlayer(GameData.sharedGameData.heartBoostCount, special: true)
+        }
+        
+        // Add hearts to player for rejuv boost. When we initialized player, if they had any carried over gold hearts it would be set in goldHearts
+        if self.player.goldHearts > 0 {
+            self.addHeartsToPlayer(self.player.goldHearts, special: true)
+        }
+    }
+    
+    func displayHeartBoostDialog() {
+        GameData.sharedGameData.heartBoostLastPrompted = Date()
+        self.heartBoostDialog!.toggleheartBoostVideo()
+        self.heartBoostDialog!.isHidden = false
     }
     
     // Create a functon that will be called by posted notifications of interstitial being closed.
@@ -582,41 +618,17 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
     }
     
-    /*
-    func displayHeartBoostDialog() {
-        // We are ready for a boost prompt or we used one last level
-        let boostCount = GameData.sharedGameData.getSelectedCharacterData().countDownToBoost
-        let lastBoost = GameData.sharedGameData.getSelectedCharacterData().lastHeartBoost
-        
-        if (boostCount <= 0 || lastBoost > 0) && (GameData.sharedGameData.getSelectedCharacterData().levelProgress[5] != nil) && (GameData.sharedGameData.getSelectedCharacterData().levelProgress[5]!.timesLevelPlayed > 0 || !GameData.sharedGameData.getSelectedCharacterData().isLevelLocked(7)) {
-            GameData.sharedGameData.getSelectedCharacterData().countDownToBoost = 3 // reset counter
-            
-            // Display boost
-            //self.heartBoostDialog!.hidden = false
-            
-            // TODO the button on the dialog will call addheartstoplayer if they bought any (actually that gem button will) then at the OK it will call endheartboost
-        } else {
-            GameData.sharedGameData.getSelectedCharacterData().countDownToBoost -= 1
-            self.endHeartBoostDialog()
-        }
-    }*/
-    
-    func addHeartsToPlayer(_ hearts: Int) {
+    func addHeartsToPlayer(_ hearts: Int, special: Bool) {
         //GameData.sharedGameData.getSelectedCharacterData().lastHeartBoost = hearts
         
         if hearts > 0 {
             // Need to add the hearts to the player. Need to update player and update UX and update GameData.sharedGameData.getSelectedCharacterData().lastHeartBoost
             self.player.updateMaxHearts(hearts)
-            self.addHeartsToHud(hearts)
+            self.addHeartsToHud(hearts, special: special)
         }
     }
-    
-    func endHeartBoostDialog() {
-        //self.heartBoostDialog!.hidden = true
-        self.displayTutorialTooltip()
-    }
-    
-    func addHeartsToHud(_ hearts: Int) {
+
+    func addHeartsToHud(_ hearts: Int, special: Bool) {
         // However many, create that many more heart buttons
         let currentHearts = self.healthNodes.count
         let maxHealth = Int(self.player.maxHealth)
@@ -940,6 +952,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.rejuvAllowed = false
         }
         
+        self.rejuvDialog!.removeAllActions() // Test
         self.rejuvDialog!.run(SKAction.sequence([self.rejuvHeartDialogDismissAction, SKAction.run({
             [weak self] in
             
@@ -1077,9 +1090,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     func loadEndOfLevelDialog(_ score: LevelScore) {
         // Video reward - cache
-        self.viewController!.cacheRewardedVideo()
+        //self.viewController!.cacheRewardedVideo()
         // Interstitial
-        self.viewController!.cacheInterstitialAd()
+        //self.viewController!.cacheInterstitialAd()
         
         // Check for levels completed if they are completed keep them in there
         var levelsUnlocked = Array<Int>()
@@ -1388,6 +1401,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
     }
     
+    
     func moveWorld(_ delta: CGPoint) {
         self.worldView.position = dbSub(self.worldView.position, b: delta)
     }
@@ -1395,7 +1409,13 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     func updateHUD() {
         // HP
         var count = 0
-        let nonGoldHearts = self.player.health - self.player.goldHearts
+        var nonGoldHearts = self.player.health - self.player.goldHearts
+        
+        // If the player hasn't lost any list
+        if (self.player.maxHealth) <= self.player.health + self.startingReviveHearts {
+            nonGoldHearts -= GameData.sharedGameData.heartBoostCount
+        }
+        
         for healthNode in self.healthNodes {
             // REJUV when we add the hearts after rejuv we also need to make them gold
             if self.player.health <= count {
@@ -1937,41 +1957,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Need to know the prev dialog
         var previousDialog: TutorialDialog?
         
-        let firstPop: Int = 16
-        let secondPop: Int = 22
-        
-        // If timesplayed == 16 or 24, pop character talking to user
-        if !GameData.sharedGameData.adsUnlocked && (GameData.sharedGameData.timesPlayed == firstPop || GameData.sharedGameData.timesPlayed == secondPop) {
-            // Get the version information
-            let key = "timesPlayedAdvertisement\(GameData.sharedGameData.timesPlayed)"
-            let version = 1.0
-            let iconTexture: SKTexture
-            if GameData.sharedGameData.timesPlayed == firstPop {
-                iconTexture = SKTexture(imageNamed: "tutorial_monk")
-            } else {
-                iconTexture = SKTexture(imageNamed: "tutorial_mage")
-            }
-            
-            // Create dialog
-            let title = "Unlock Ads"
-            let description = "Purchase gems and we won't show level ads."
-            
-            let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: true, key: key, version: version, prependText: false)
-            
-            tutorialDialog.zPosition = 20
-            tutorialDialog.updateAsPlayOnly()
-            
-            self.tutorialDialogs!.append(tutorialDialog)
-            //self.addChild(tutorialDialog)
-            previousDialog = tutorialDialog
-            count += 1
-        }
-        
         if tutorialArray != nil {
             for tutorialTipDictionary in tutorialArray! {
                 // Get the version information
                 var key = tutorialTipDictionary["Key"] as! String
-                key = "level_\(self.currentLevel)_" + key // Make it level specific
+                key = "level_\(self.currentLevel)_" + key// + CharacterType.getCharacterName(GameData.sharedGameData.selectedCharacter) // Make it level specific and character specific
                 
                 let version = tutorialTipDictionary["Version"] as! Double
                 
@@ -2005,7 +1995,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                     
                     let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: isCharacter, key: key, version: version, prependText: true)
                     
-                    tutorialDialog.zPosition = 20
+                    tutorialDialog.zPosition = 19
                     
                     if count == 0 {
                         // This one is a "play" button
@@ -2026,6 +2016,48 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                     count += 1
                 }
             }
+        }
+        
+        // Occasionally we advertise in house purchases. Skip the first time, so start at frequency * 2
+        var frequencyAds: Int = 10
+
+        if !GameData.sharedGameData.adsUnlocked && GameData.sharedGameData.timesPlayed > frequencyAds && GameData.sharedGameData.timesPlayed % frequencyAds == 0 {
+            // Get the version information
+            let key = "timesPlayedAdvertisement\(GameData.sharedGameData.timesPlayed)"
+            let version = 1.0
+            let iconTexture: SKTexture
+            var description = "Any purchase gives longer hero boosts!"
+            // Create dialog
+            var title = "Buy Gems!"
+            
+            if GameData.sharedGameData.timesPlayed % (frequencyAds * 2) == 0 {
+                iconTexture = SKTexture(imageNamed: "tutorial_monk")
+            } else {
+                iconTexture = SKTexture(imageNamed: "tutorial_mage")
+                title = "Be a Pal!"
+                description = "Support indie games by purchasing gems!"
+            }
+            
+            
+            
+            let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: true, key: key, version: version, prependText: false)
+            
+            tutorialDialog.zPosition = 19
+            
+            if count == 1 {
+                // the previous one needs to change to a "next" only button
+                previousDialog!.updateAsNextOnly()
+            } else if count >= 2 {
+                // the previous one needs to change to a "next" and "previous" button
+                previousDialog!.updateAsPreviousAndNext()
+            }
+            
+            tutorialDialog.updateAsPlayAndStore()
+            
+            self.tutorialDialogs!.append(tutorialDialog)
+            //self.addChild(tutorialDialog)
+            previousDialog = tutorialDialog
+            count += 1
         }
     }
     

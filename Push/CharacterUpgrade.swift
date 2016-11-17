@@ -36,6 +36,14 @@ enum CharacterUpgrade : String {
     case RagingStrength = "ragingstrength"
     case PowerCharge = "powercharge"
     
+    // Throw Boulder
+    case ThrowBoulder = "throwboulder"
+    case Throw2Boulders = "throw2boulders"
+    case Throw3Boulders = "throw3boulders"
+    case ThrowMoreOften = "throwmoreoften"
+    case ThrowMoreOften2 = "throwmoreoften2"
+    case ExplodingBoulders = "explodingboulders"
+    
     // Fireball
     case Fireball = "fireball"
     

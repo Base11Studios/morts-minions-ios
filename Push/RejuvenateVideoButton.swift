@@ -30,7 +30,7 @@ class RejuvenateVideoButton : DBButton {
         self.amount.setFontSize(round(36 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
         self.amount.setVerticalAlignmentMode(SKLabelVerticalAlignmentMode.center)
         
-        self.amount.setText("free")
+        self.amount.setText("watch")
         
         let height = self.gemIcon.size.height + self.amount.calculateAccumulatedFrame().size.height + self.nodeBuffer
         self.gemIcon.position = CGPoint(x: 0, y: height / 2 - self.gemIcon.size.height / 2)
@@ -58,7 +58,7 @@ class RejuvenateVideoButton : DBButton {
             // Remove the current animation
             (self.dbScene as! GameScene).setRejuvDialogDisplayed()
 
-            self.dbScene!.viewController!.showRewardedVideo()
+            self.dbScene!.viewController!.showRewardedVideo(location: GameViewController.AD_LOCATION_REVIVE)
             
             // Start loading screen
             //self.dbScene!.startLoadingOverlay()

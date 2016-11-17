@@ -117,7 +117,8 @@ class RejuvenateGemButton : DBButton {
     
     func dismissRejuvenate() -> Void {
         // Completely dismiss rejuvenate - this happens if you just call the rejuvenateplayer on the gamescene
-        (self.dbScene as! GameScene).dismissRejuvDialogWaitAndEndLevel()
+        /* Let's not do anything if the video watching fails.. let them try another option and close manually */
+        //(self.dbScene as! GameScene).dismissRejuvDialogWaitAndEndLevel()
     }
     
     override func touchesReleasedAction() {

@@ -59,7 +59,7 @@ class Mage : Player {
         // Attacking
         self.maxAttackCooldown = 5000.0
         self.attackCooldown = 5000.0 // Set really high so it doesnt trigger on its own
-        self.weaponStartPosition = CGPoint(x: 15, y: -5)
+        self.weaponStartPosition = CGPoint(x: 11, y: -5)
     }
     
     override func initializeWeapon() {
