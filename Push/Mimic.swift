@@ -23,7 +23,7 @@ class Mimic : Enemy {
     
     override func setupTraitsWithScalar(_ scalar: Double) {
         // Add physics to the enemy
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width/1.3, height: self.size.height/1.3), center: CGPoint(x: -(self.size.width/11.0), y: -self.size.height/14.0))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.65, height: self.size.height * 0.6), center: CGPoint(x: 0, y: self.size.height * 0.15))
         setDefaultPhysicsBodyValues()
         
         // Physics overrides

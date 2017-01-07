@@ -9,6 +9,7 @@
 import Foundation
 
 class WizardEnergyBall : Projectile {
+    var yGrowth: CGFloat = 0
     
     required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
 
@@ -23,13 +24,17 @@ class WizardEnergyBall : Projectile {
     
     override func setupTraitsWithScalar(_ scalar: Double) {
         // Add physics to the enemy
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.8, height: self.size.height * 0.8), center: CGPoint(x: self.size.width * 0.0, y: self.size.height * 0.0))
         self.setDefaultPhysicsBodyValues()
-        self.velocityRate = 0.2
+        self.velocityRate = 0.25
         
         // Attributes
         self.maxHealth = 1
         self.health = self.maxHealth
+        
+        self.walkSpeed = 350
+        self.runSpeed = self.walkSpeed
+        self.moveSpeed = self.walkSpeed
         
         // Damage
         self.damage = 1
@@ -37,5 +42,13 @@ class WizardEnergyBall : Projectile {
         
         // Rewards
         self.experience = 0
+        
+        self.startingYPosition = self.defaultYPosition
+    }
+    
+    override func updateAfterPhysics() {
+        super.updateAfterPhysics()
+        
+        self.defaultYPosition = self.defaultYPosition + (self.yGrowth * ScaleBuddy.sharedInstance.getGameScaleAmount(false) * 1.5)
     }
 }

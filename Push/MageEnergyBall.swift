@@ -23,7 +23,7 @@ class MageEnergyBall : Projectile {
     
     override func setupTraitsWithScalar(_ scalar: Double) {
         // Add physics to the enemy
-        self.physicsBody = SKPhysicsBody(rectangleOf: self.size)
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.8, height: self.size.height * 0.8), center: CGPoint(x: self.size.width * 0.0, y: self.size.height * 0.0))
         self.setDefaultPhysicsBodyValues()
         self.velocityRate = 0.2
         
@@ -35,6 +35,10 @@ class MageEnergyBall : Projectile {
         self.damage = 1
         self.damageToShields = 1
         
+        self.walkSpeed = 350
+        self.runSpeed = self.walkSpeed
+        self.moveSpeed = self.walkSpeed
+        
         // Rewards
         self.experience = 0
         // Sine wave
@@ -44,6 +48,6 @@ class MageEnergyBall : Projectile {
     override func updateAfterPhysics() {
         super.updateAfterPhysics()
         
-        self.defaultYPosition = self.startingYPosition + (20 * ScaleBuddy.sharedInstance.getGameScaleAmount(false) * sin(CGFloat(self.timeAlive)*3))
+        self.defaultYPosition = self.startingYPosition + (40 * ScaleBuddy.sharedInstance.getGameScaleAmount(false) * sin(CGFloat(self.timeAlive)*4))
     }
 }

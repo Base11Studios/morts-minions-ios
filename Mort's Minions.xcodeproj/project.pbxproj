@@ -189,6 +189,15 @@
 		374A11B51DA14A9A00523102 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A11B41DA14A9A00523102 /* Social.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		374A11B61DA14AB100523102 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376267DB1D9FE6C800981E41 /* WebKit.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		374A66111CFE70C400AA0F96 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 374A66101CFE70C400AA0F96 /* LocalAuthentication.framework */; };
+		374F90011E212169003613D5 /* Ameba.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374F8FFD1E212169003613D5 /* Ameba.swift */; };
+		374F90021E212169003613D5 /* Mager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374F8FFE1E212169003613D5 /* Mager.swift */; };
+		374F90031E212169003613D5 /* Wisp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374F8FFF1E212169003613D5 /* Wisp.swift */; };
+		374F90041E212169003613D5 /* Wizard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374F90001E212169003613D5 /* Wizard.swift */; };
+		374F90071E21217A003613D5 /* MageEnergyBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374F90051E21217A003613D5 /* MageEnergyBall.swift */; };
+		374F90081E21217A003613D5 /* WizardEnergyBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374F90061E21217A003613D5 /* WizardEnergyBall.swift */; };
+		374F900B1E21221C003613D5 /* Darkness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374F900A1E21221C003613D5 /* Darkness.swift */; };
+		374F900D1E21275E003613D5 /* spiritbackground2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 374F900C1E21275E003613D5 /* spiritbackground2.atlas */; };
+		374F900F1E21AF68003613D5 /* BlackHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374F900E1E21AF68003613D5 /* BlackHole.swift */; };
 		375247321CE2C865009D8197 /* CharacterRemoveSkillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375247311CE2C865009D8197 /* CharacterRemoveSkillButton.swift */; };
 		375247341CE425F4009D8197 /* ChallengeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375247331CE425F4009D8197 /* ChallengeButton.swift */; };
 		375247361CE93861009D8197 /* DeviceSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375247351CE93861009D8197 /* DeviceSizes.swift */; };
@@ -621,6 +630,15 @@
 		374A11B21DA14A8C00523102 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		374A11B41DA14A9A00523102 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
 		374A66101CFE70C400AA0F96 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		374F8FFD1E212169003613D5 /* Ameba.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ameba.swift; sourceTree = "<group>"; };
+		374F8FFE1E212169003613D5 /* Mager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Mager.swift; sourceTree = "<group>"; };
+		374F8FFF1E212169003613D5 /* Wisp.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wisp.swift; sourceTree = "<group>"; };
+		374F90001E212169003613D5 /* Wizard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wizard.swift; sourceTree = "<group>"; };
+		374F90051E21217A003613D5 /* MageEnergyBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MageEnergyBall.swift; sourceTree = "<group>"; };
+		374F90061E21217A003613D5 /* WizardEnergyBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WizardEnergyBall.swift; sourceTree = "<group>"; };
+		374F900A1E21221C003613D5 /* Darkness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Darkness.swift; sourceTree = "<group>"; };
+		374F900C1E21275E003613D5 /* spiritbackground2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = spiritbackground2.atlas; sourceTree = "<group>"; };
+		374F900E1E21AF68003613D5 /* BlackHole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackHole.swift; sourceTree = "<group>"; };
 		375247311CE2C865009D8197 /* CharacterRemoveSkillButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterRemoveSkillButton.swift; sourceTree = "<group>"; };
 		375247331CE425F4009D8197 /* ChallengeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeButton.swift; sourceTree = "<group>"; };
 		375247351CE93861009D8197 /* DeviceSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSizes.swift; sourceTree = "<group>"; };
@@ -989,6 +1007,7 @@
 		371EAD331AC654B100E4ABBA /* Obstacle */ = {
 			isa = PBXGroup;
 			children = (
+				374F90091E2121EA003613D5 /* Spirit */,
 				37CE80061CA4B5EB00B4DFA9 /* Air */,
 				370020C71C9EF13B007432E4 /* Fire */,
 				37F8C2CB1C3F579B002FB339 /* Water */,
@@ -1261,6 +1280,14 @@
 			name = EnvironmentObject;
 			sourceTree = "<group>";
 		};
+		374F90091E2121EA003613D5 /* Spirit */ = {
+			isa = PBXGroup;
+			children = (
+				374F900A1E21221C003613D5 /* Darkness.swift */,
+			);
+			name = Spirit;
+			sourceTree = "<group>";
+		};
 		3753367B1C92EEA6009FE27E /* GameKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1427,6 +1454,8 @@
 			children = (
 				373CEA7A1C15BF8400197B83 /* Fly.swift */,
 				372824371BC1BEDD00524DF7 /* Projectile.swift */,
+				374F90051E21217A003613D5 /* MageEnergyBall.swift */,
+				374F90061E21217A003613D5 /* WizardEnergyBall.swift */,
 				37688B591CA6C1220075E652 /* Lightning.swift */,
 				372824391BC1CF0000524DF7 /* FallingBomb.swift */,
 				37CE7FFC1CA388CC00B4DFA9 /* Egg.swift */,
@@ -1547,6 +1576,7 @@
 		37BFC4941ABA336C0038C350 /* Atlases */ = {
 			isa = PBXGroup;
 			children = (
+				374F900C1E21275E003613D5 /* spiritbackground2.atlas */,
 				37BAE40D1DD73FD500DD4ECC /* air2.atlas */,
 				37BAE40E1DD73FD500DD4ECC /* airbackgrounds2.atlas */,
 				37BAE40F1DD73FD500DD4ECC /* buttons2.atlas */,
@@ -1638,8 +1668,13 @@
 		37E1984F1BD06CE000AC5178 /* Spirit */ = {
 			isa = PBXGroup;
 			children = (
+				374F8FFD1E212169003613D5 /* Ameba.swift */,
+				374F8FFE1E212169003613D5 /* Mager.swift */,
+				374F8FFF1E212169003613D5 /* Wisp.swift */,
+				374F90001E212169003613D5 /* Wizard.swift */,
 				37E198531BD06D6400AC5178 /* Mimic.swift */,
 				37E198551BD0781200AC5178 /* Ghost.swift */,
+				374F900E1E21AF68003613D5 /* BlackHole.swift */,
 			);
 			name = Spirit;
 			sourceTree = "<group>";
@@ -2027,6 +2062,7 @@
 				371320251D6FB3D8001A1135 /* fire.m4a in Resources */,
 				37BAE81B1DD73FD700DD4ECC /* story-ignis2.atlas in Resources */,
 				371320261D6FB3D8001A1135 /* menu.m4a in Resources */,
+				374F900D1E21275E003613D5 /* spiritbackground2.atlas in Resources */,
 				37BAE8141DD73FD700DD4ECC /* playermage2.atlas in Resources */,
 				371320271D6FB3D8001A1135 /* water.m4a in Resources */,
 				370102701D4BF06B002B4368 /* air-3.caf in Resources */,
@@ -2209,11 +2245,14 @@
 				3767AAE01CBC610E0011F7A5 /* SettingsSoundEffectsButton.swift in Sources */,
 				37EA5A741D2712AD000DF187 /* GemContainer.swift in Sources */,
 				370020BE1C9EEDE1007432E4 /* Prowler.swift in Sources */,
+				374F90081E21217A003613D5 /* WizardEnergyBall.swift in Sources */,
 				37FF3E6C1C958CDA00A93FAD /* CloudDataCloudButton.swift in Sources */,
 				370020C41C9EEEB7007432E4 /* Fireball.swift in Sources */,
 				37EA5A721D2607D5000DF187 /* AdSupporter.swift in Sources */,
 				37CE7FFF1CA38CAD00B4DFA9 /* Flappy.swift in Sources */,
 				373F219C1BE3098300934722 /* ScrollingSkillNodeRow.swift in Sources */,
+				374F90071E21217A003613D5 /* MageEnergyBall.swift in Sources */,
+				374F90031E212169003613D5 /* Wisp.swift in Sources */,
 				37B5679E1DA6D5C60013A4AC /* TradeGemsForStarsButton.swift in Sources */,
 				372358FC1D16F98100F117B5 /* DBSceneDialog.swift in Sources */,
 				3730C16B1C8A665E00D22A1E /* IAPPurchaseBackButton.swift in Sources */,
@@ -2280,6 +2319,7 @@
 				373A20D11C6F5DBB00F3D15E /* OptimizerBuddy.swift in Sources */,
 				370020C01C9EEE1C007432E4 /* Flamey.swift in Sources */,
 				37CE800A1CA4BCE400B4DFA9 /* Steady.swift in Sources */,
+				374F900F1E21AF68003613D5 /* BlackHole.swift in Sources */,
 				37F8C2CA1C3F542A002FB339 /* Schooly.swift in Sources */,
 				37EF958C1BD92F4C00321B8B /* GameResumeButton.swift in Sources */,
 				37F8C2D11C40AB74002FB339 /* Bubble.swift in Sources */,
@@ -2295,6 +2335,7 @@
 				37FF3E7F1C9CBA3700A93FAD /* GameEndContinueButton.swift in Sources */,
 				373CEAA31C165EA800197B83 /* Monk.swift in Sources */,
 				375336741C8DF496009FE27E /* MainMenuStoreButton.swift in Sources */,
+				374F90041E212169003613D5 /* Wizard.swift in Sources */,
 				373F218E1BE0DF0700934722 /* GameRestartLevelButton.swift in Sources */,
 				370020C91C9EF155007432E4 /* SpikeRock.swift in Sources */,
 				37EF957E1BD9056900321B8B /* LevelSelectBackButton.swift in Sources */,
@@ -2336,6 +2377,7 @@
 				372359051D1AAE9400F117B5 /* RejuvenateGemButton.swift in Sources */,
 				37688B5A1CA6C1220075E652 /* Lightning.swift in Sources */,
 				3772FC031BCC2CCE00A60E18 /* CharacterData.swift in Sources */,
+				374F90021E212169003613D5 /* Mager.swift in Sources */,
 				37B6D9E01BCDE064001496F3 /* Player.swift in Sources */,
 				3744393B1BCC09B90003C17C /* Arrow.swift in Sources */,
 				37688B561CA5ED2F0075E652 /* Balloon.swift in Sources */,
@@ -2390,6 +2432,7 @@
 				37F8C2C81C3F3681002FB339 /* Jellyfish.swift in Sources */,
 				373A20DB1C76933000F3D15E /* UxTutorialIndicatorPosition.swift in Sources */,
 				373F21941BE19BF200934722 /* LoadingScene.swift in Sources */,
+				374F900B1E21221C003613D5 /* Darkness.swift in Sources */,
 				3730C1641C86511800D22A1E /* HeartBoostContainer.swift in Sources */,
 				37300A911CD7FC45009C3E87 /* MainMenuWhatsNewPreviousButton.swift in Sources */,
 				3728243A1BC1CF0000524DF7 /* FallingBomb.swift in Sources */,
@@ -2416,6 +2459,7 @@
 				376CBA441CC304CC00BE2756 /* SoundHelper.swift in Sources */,
 				37688B581CA6C00B0075E652 /* LightningCloud.swift in Sources */,
 				37FF3E7D1C9B871900A93FAD /* GameChallengeOkButton.swift in Sources */,
+				374F90011E212169003613D5 /* Ameba.swift in Sources */,
 				37E8949D1CB323BA008788EF /* AppDelegate.swift in Sources */,
 				37CE800C1CA4C18900B4DFA9 /* ExpandyCloud.swift in Sources */,
 				376CBA331CC2AFED00BE2756 /* PlayerDamageField.swift in Sources */,

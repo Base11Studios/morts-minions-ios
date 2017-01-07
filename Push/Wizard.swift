@@ -21,7 +21,7 @@ class Wizard : Enemy {
         // Setup animations for walking only
         self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "wizard_standing", frameStart: 0, frameEnd: 15), timePerFrame: 0.06, resize: true, restore: false))
         
-        for _ in 1...12 {
+        for var i in 1...4 {
             // Create projectile
             let projectile: WizardEnergyBall = WizardEnergyBall(scalar: 1.0, defaultYPosition: defaultYPosition + self.size.height/2 - 9.0, defaultXPosition: defaultXPosition, parent: parent, value1: 0, value2: 0, scene: scene)
             
@@ -29,6 +29,7 @@ class Wizard : Enemy {
             projectile.name = "proj_dont_update"
             projectile.type = EnvironmentObjectType.Ignored
             projectile.isHidden = true
+            projectile.yGrowth = CGFloat(i % 2)
             
             projectile.position = CGPoint(x: defaultXPosition, y: defaultYPosition)
             
@@ -87,7 +88,7 @@ class Wizard : Enemy {
             })
         
         // Set the appropriate fight action
-        self.fightAction = SKAction.sequence([SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "wizard", frameStart: 0, frameEnd: 15), timePerFrame: 0.025, resize: true, restore: false), actionOpenProjectile, actionEndAttack]) // TODO this frame speed should be multiplied by the difference of the enemy speed or something
+        self.fightAction = SKAction.sequence([SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "wizard", frameStart: 0, frameEnd: 7), timePerFrame: 0.025, resize: true, restore: false), actionOpenProjectile, SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "wizard", frameStart: 8, frameEnd: 15), timePerFrame: 0.025, resize: true, restore: false), actionEndAttack]) // TODO this frame speed should be multiplied by the difference of the enemy speed or something
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -96,7 +97,7 @@ class Wizard : Enemy {
     
     override func setupTraitsWithScalar(_ scalar: Double) {
         // Add physics to the enemy
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.50, height: self.size.height), center: CGPoint(x: self.size.width * 0.15, y: 0))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.65, height: self.size.height * 0.9), center: CGPoint(x: self.size.width * 0.15, y: -0.05))
         
         setDefaultPhysicsBodyValues()
         

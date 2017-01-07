@@ -69,7 +69,7 @@ class Projectile : EnvironmentObject {
         
         // Movement speed
         self.walkSpeed = 275.0// * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
-        self.runSpeed = 275.0// * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+        self.runSpeed = self.walkSpeed// * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         self.moveSpeed = self.walkSpeed
         
         // Acceleration

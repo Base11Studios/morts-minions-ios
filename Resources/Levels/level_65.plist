@@ -51,14 +51,14 @@
 		<key>Object</key>
 		<string>Ghost</string>
 		<key>Location</key>
-		<integer>4000</integer>
+		<integer>1900</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3</key>
 	<dict>
 		<key>Object</key>
 		<string>Mimic</string>
 		<key>Location</key>
-		<integer>4000</integer>
+		<integer>1600</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2</key>
 	<dict>
@@ -76,7 +76,7 @@
 		<key>Location</key>
 		<real>2000</real>
 		<key>Value1</key>
-		<integer>2</integer>
+		<real>1.25</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 2</key>
 	<dict>
@@ -103,7 +103,16 @@
 		<key>Location</key>
 		<integer>1300</integer>
 		<key>Value1</key>
-		<real>0.5</real>
+		<real>0.85</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Darkness</string>
+		<key>Location</key>
+		<integer>800</integer>
+		<key>Value1</key>
+		<integer>50</integer>
 	</dict>
 </dict>
 </plist>

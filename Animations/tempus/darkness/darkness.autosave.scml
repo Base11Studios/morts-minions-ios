@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r7">
+    <folder id="0">
+        <file id="0" name="darkness_inner.png" width="131" height="138" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="darkness_outer.png" width="177" height="186" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <animation id="0" name="NewAnimation" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+                <key id="1" time="249">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                </key>
+                <key id="2" time="501">
+                    <object_ref id="0" timeline="0" key="2" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="2" z_index="1"/>
+                </key>
+                <key id="3" time="750">
+                    <object_ref id="0" timeline="0" key="3" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="3" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="darkness_inner">
+                <key id="0">
+                    <object folder="0" file="0" x="1.5" y="-1"/>
+                </key>
+                <key id="1" time="249">
+                    <object folder="0" file="0" x="1" y="-0.5" angle="90"/>
+                </key>
+                <key id="2" time="501">
+                    <object folder="0" file="0" x="0.5" angle="180"/>
+                </key>
+                <key id="3" time="750">
+                    <object folder="0" file="0" x="0" y="0.5" angle="270"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="darkness_outer">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="-2.5" y="2" scale_x="1.1" scale_y="1.1"/>
+                </key>
+                <key id="1" time="249" spin="0">
+                    <object folder="0" file="1" x="-2.5" y="2" scale_x="1.175" scale_y="1.175"/>
+                </key>
+                <key id="2" time="501" spin="0">
+                    <object folder="0" file="1" x="-2.5" y="2" scale_x="1.25" scale_y="1.25"/>
+                </key>
+                <key id="3" time="750" spin="0">
+                    <object folder="0" file="1" x="-2.5" y="2" scale_x="1.175" scale_y="1.175"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

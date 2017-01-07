@@ -23,17 +23,17 @@ class Ameba : Enemy {
     
     override func setupTraitsWithScalar(_ scalar: Double) {
         // Add physics to the enemy
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.9, height: self.size.height * 0.7), center: CGPoint(x: self.size.width * -0.05, y: self.size.height * -0.15))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.8, height: self.size.height * 0.85), center: CGPoint(x: self.size.width * 0, y: self.size.height * -0.075))
         
         setDefaultPhysicsBodyValues()
         
         // Physics overrides
-        self.moveSpeed = 100
+        self.moveSpeed = 150
         
         // Attributes
         self.maxHealth = 1
         self.health = self.maxHealth
-        self.lineOfSight = 450 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+        self.lineOfSight = 350 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         
         // Damage
         self.damage = 1

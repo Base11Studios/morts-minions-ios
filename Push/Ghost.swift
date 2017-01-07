@@ -24,7 +24,7 @@ class Ghost : Enemy {
     override func setupTraitsWithScalar(_ scalar: Double) {
         // Add physics to the enemy
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size) // TODO modify for hat
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.85, height: self.size.height), center: CGPoint(x: -0.075, y: 0.0))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.85, height: self.size.height * 0.85), center: CGPoint(x: self.size.width * -0.075, y: self.size.height * 0))
         
         self.setDefaultPhysicsBodyValues()
         

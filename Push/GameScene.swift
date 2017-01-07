@@ -63,6 +63,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     static let transparentObstacleCategory: UInt32 = 0x1 << 9
     static let harmlessObjectCategory: UInt32 = 0x1 << 10
     
+    // Z Positioning
+    static let PLAYER_Z: CGFloat = 9
+    
     // Positioning
     var horizontalPlayerLimitRight: CGFloat = 0
     var horizontalPlayerLimitLeft: CGFloat = 0
@@ -1942,7 +1945,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.player.position = CGPoint(x: self.player.size.width / 2, y: self.player.defaultPositionY)
         self.player.setPlayerAttachmentPositions(adjustedGroundPositionY + self.player.size.height / 2, position: CGPoint(x: self.player.size.width / 2, y: self.player.defaultPositionY))
         
-        self.player.zPosition = 9
+        self.player.zPosition = GameScene.PLAYER_Z
         
         // Add the player to the scene
         self.worldView.addChild(self.player)
