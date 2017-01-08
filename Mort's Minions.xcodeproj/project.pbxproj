@@ -198,6 +198,7 @@
 		374F900B1E21221C003613D5 /* Darkness.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374F900A1E21221C003613D5 /* Darkness.swift */; };
 		374F900D1E21275E003613D5 /* spiritbackground2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 374F900C1E21275E003613D5 /* spiritbackground2.atlas */; };
 		374F900F1E21AF68003613D5 /* BlackHole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374F900E1E21AF68003613D5 /* BlackHole.swift */; };
+		374F90111E21B56E003613D5 /* DarkEnergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374F90101E21B56E003613D5 /* DarkEnergy.swift */; };
 		375247321CE2C865009D8197 /* CharacterRemoveSkillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375247311CE2C865009D8197 /* CharacterRemoveSkillButton.swift */; };
 		375247341CE425F4009D8197 /* ChallengeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375247331CE425F4009D8197 /* ChallengeButton.swift */; };
 		375247361CE93861009D8197 /* DeviceSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375247351CE93861009D8197 /* DeviceSizes.swift */; };
@@ -639,6 +640,7 @@
 		374F900A1E21221C003613D5 /* Darkness.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Darkness.swift; sourceTree = "<group>"; };
 		374F900C1E21275E003613D5 /* spiritbackground2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = spiritbackground2.atlas; sourceTree = "<group>"; };
 		374F900E1E21AF68003613D5 /* BlackHole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BlackHole.swift; sourceTree = "<group>"; };
+		374F90101E21B56E003613D5 /* DarkEnergy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkEnergy.swift; sourceTree = "<group>"; };
 		375247311CE2C865009D8197 /* CharacterRemoveSkillButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterRemoveSkillButton.swift; sourceTree = "<group>"; };
 		375247331CE425F4009D8197 /* ChallengeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeButton.swift; sourceTree = "<group>"; };
 		375247351CE93861009D8197 /* DeviceSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSizes.swift; sourceTree = "<group>"; };
@@ -1674,6 +1676,7 @@
 				374F90001E212169003613D5 /* Wizard.swift */,
 				37E198531BD06D6400AC5178 /* Mimic.swift */,
 				37E198551BD0781200AC5178 /* Ghost.swift */,
+				374F90101E21B56E003613D5 /* DarkEnergy.swift */,
 				374F900E1E21AF68003613D5 /* BlackHole.swift */,
 			);
 			name = Spirit;
@@ -2383,6 +2386,7 @@
 				37688B561CA5ED2F0075E652 /* Balloon.swift in Sources */,
 				37B567951DA5A9520013A4AC /* TradeMenu.swift in Sources */,
 				376CBA5A1CCD3D7600BE2756 /* Achievements.swift in Sources */,
+				374F90111E21B56E003613D5 /* DarkEnergy.swift in Sources */,
 				37E198541BD06D6400AC5178 /* Mimic.swift in Sources */,
 				37B6D9E21BCDE40B001496F3 /* Warrior.swift in Sources */,
 				373CEA791C15286500197B83 /* Beast.swift in Sources */,

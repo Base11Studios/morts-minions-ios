@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<spriter_data scml_version="1.0" generator="BrashMonkey Spriter" generator_version="r7">
+    <folder id="0">
+        <file id="0" name="blackhole_envelope.png" width="174" height="173" pivot_x="0.5" pivot_y="0.5"/>
+        <file id="1" name="blackhole_head.png" width="64" height="64" pivot_x="0.5" pivot_y="0.5"/>
+    </folder>
+    <entity id="0" name="entity_000">
+        <animation id="0" name="NewAnimation" length="1000" interval="100">
+            <mainline>
+                <key id="0">
+                    <object_ref id="0" timeline="0" key="0" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="0" z_index="1"/>
+                </key>
+                <key id="1" time="499">
+                    <object_ref id="0" timeline="0" key="1" z_index="0"/>
+                    <object_ref id="1" timeline="1" key="1" z_index="1"/>
+                </key>
+            </mainline>
+            <timeline id="0" name="blackhole_envelope">
+                <key id="0" spin="0">
+                    <object folder="0" file="0" x="0" y="-1.5"/>
+                </key>
+                <key id="1" time="499" spin="0">
+                    <object folder="0" file="0" x="0" y="-1.5" scale_x="0.75" scale_y="0.75"/>
+                </key>
+            </timeline>
+            <timeline id="1" name="blackhole_head">
+                <key id="0" spin="0">
+                    <object folder="0" file="1" x="1" y="-1"/>
+                </key>
+                <key id="1" time="499" spin="0">
+                    <object folder="0" file="1" x="1" y="-1"/>
+                </key>
+            </timeline>
+        </animation>
+    </entity>
+</spriter_data>

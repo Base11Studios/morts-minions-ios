@@ -103,16 +103,36 @@
 		<key>Location</key>
 		<integer>1300</integer>
 		<key>Value1</key>
-		<real>0.85</real>
+		<real>0.65</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2</key>
 	<dict>
 		<key>Object</key>
-		<string>Darkness</string>
+		<string>BlackHole</string>
+		<key>Location</key>
+		<integer>1000</integer>
+		<key>Value1</key>
+		<integer>90</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>BlackHole</string>
 		<key>Location</key>
 		<integer>800</integer>
 		<key>Value1</key>
+		<integer>70</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<integer>600</integer>
+		<key>Value1</key>
 		<integer>50</integer>
+		<key>Value2</key>
+		<integer>350</integer>
 	</dict>
 </dict>
 </plist>
