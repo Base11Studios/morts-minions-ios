@@ -25,6 +25,7 @@ class Player : SKSpriteNode {
     var justReceivedUpwardImpulseFromEnvironment: Bool = false
     var teleportsInsteadOfJumps: Bool = false
     var isOnGround: Bool = true
+    var jumpDisabled: Bool = false
     
     // World view
     weak var worldView: SKNode?
@@ -117,6 +118,9 @@ class Player : SKSpriteNode {
     var spriteOverlay: SKSpriteNode?
     var spriteOverlay2: SKSpriteNode?
     var spriteOverlay2Action: SKAction = SKAction()
+    
+    // States
+    //var jumpDisabledIndicator: SKSpriteNode
     
     // Hovering / Teleport
     var autoHoverStop: Bool = false
@@ -885,7 +889,7 @@ class Player : SKSpriteNode {
     
     func updateSkillsBasedOnPlayerPosition() {
         // Loop through the player skills and disable any that are ground only. Enable any that are air only
-        if (self.skill1Details.restriction == .Ground && !self.isOnGround) || (self.skill1Details.restriction == .Air && self.isOnGround) {
+        if (self.skill1Details.restriction == .Ground && !self.isOnGround) || (self.skill1Details.restriction == .Air && self.isOnGround) || (self.jumpDisabled) {
             self.skill1Details.isDisabled = true
         } else {
             self.skill1Details.isDisabled = false
@@ -1331,6 +1335,10 @@ class Player : SKSpriteNode {
             else if skill.deactivatesOnEnemyContact && self.touchedAnEnemyThisFrame {
                 self.deactivateSkill(skill)
             }
+            // Skill got disabled
+            else if skill.isDisabled {
+                self.deactivateSkill(skill)
+            }
         }
         
         if skill.skillIsUncharging {
@@ -1453,6 +1461,9 @@ class Player : SKSpriteNode {
                     
                     // Start jumping
                     self.startActiveJumping()
+                    
+                    skill.skillIsActive = true
+                    skill.activeLength = 10000
                 }
             }
         case .Teleport:
@@ -1466,6 +1477,9 @@ class Player : SKSpriteNode {
                 
                 // Start jumping
                 self.startActiveJumping()
+                
+                skill.skillIsActive = true
+                skill.activeLength = 10000
             }
         /*case .Fireball:
             
@@ -1839,6 +1853,8 @@ class Player : SKSpriteNode {
             if self.isActiveJumping {
                 // No longer jumping
                 self.stopActiveJumping()
+                
+                skill.skillIsActive = false
             }
             
             // If we had a double jump allowed and the player is still jumping, do it
@@ -1852,6 +1868,8 @@ class Player : SKSpriteNode {
             if self.isActiveJumping {
                 // No longer jumping
                 self.stopActiveJumping()
+                
+                skill.skillIsActive = false
             }
             
             // If we had a double jump allowed and the player is still jumping, do it

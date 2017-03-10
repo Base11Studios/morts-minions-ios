@@ -21,7 +21,7 @@ class Mager : Enemy {
         // Setup animations for walking only
         self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "mage_standing", frameStart: 0, frameEnd: 15), timePerFrame: 0.06, resize: true, restore: false))
         
-        for _ in 1...12 {
+        for _ in 1...6 {
             // Create projectile
             let projectile: MageEnergyBall = MageEnergyBall(scalar: 1.0, defaultYPosition: defaultYPosition + self.size.height/2 - 9.0, defaultXPosition: defaultXPosition, parent: parent, value1: 0, value2: 0, scene: scene)
             
@@ -73,7 +73,12 @@ class Mager : Enemy {
                 self?.isWalking = true
                 self?.position = CGPoint(x: self!.position.x - self!.animationAdjuster, y: self!.position.y)
                 
-                self?.attackCooldown = self!.maxAttackCooldown
+                if self!.projectiles.count % 2 == 0 { // Only on even put cooldown back... this should cause a double fire
+                    // Start cooldown back over
+                    self?.attackCooldown = self!.maxAttackCooldown
+                } else {
+                    self?.attackCooldown = 0
+                }
                 
                 // Update the animations
                 self?.updateAnimation()

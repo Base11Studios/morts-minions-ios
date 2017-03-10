@@ -51,21 +51,21 @@
 		<key>Object</key>
 		<string>Ghost</string>
 		<key>Location</key>
-		<integer>1900</integer>
+		<integer>4200</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3</key>
 	<dict>
 		<key>Object</key>
 		<string>Mimic</string>
 		<key>Location</key>
-		<integer>1600</integer>
+		<integer>3800</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2</key>
 	<dict>
 		<key>Object</key>
 		<string>Wizard</string>
 		<key>Location</key>
-		<real>1200</real>
+		<real>3400</real>
 		<key>Value1</key>
 		<integer>2</integer>
 	</dict>
@@ -74,7 +74,7 @@
 		<key>Object</key>
 		<string>Mager</string>
 		<key>Location</key>
-		<real>2000</real>
+		<integer>3000</integer>
 		<key>Value1</key>
 		<real>1.25</real>
 	</dict>
@@ -83,7 +83,7 @@
 		<key>Object</key>
 		<string>Ameba</string>
 		<key>Location</key>
-		<integer>900</integer>
+		<integer>2600</integer>
 		<key>Value1</key>
 		<integer>0</integer>
 	</dict>
@@ -92,7 +92,7 @@
 		<key>Object</key>
 		<string>Ameba</string>
 		<key>Location</key>
-		<integer>900</integer>
+		<integer>2600</integer>
 		<key>Value1</key>
 		<integer>1</integer>
 	</dict>
@@ -101,7 +101,7 @@
 		<key>Object</key>
 		<string>Wisp</string>
 		<key>Location</key>
-		<integer>1300</integer>
+		<integer>2300</integer>
 		<key>Value1</key>
 		<real>0.65</real>
 	</dict>
@@ -110,7 +110,7 @@
 		<key>Object</key>
 		<string>BlackHole</string>
 		<key>Location</key>
-		<integer>1000</integer>
+		<integer>2000</integer>
 		<key>Value1</key>
 		<integer>90</integer>
 	</dict>
@@ -119,7 +119,7 @@
 		<key>Object</key>
 		<string>BlackHole</string>
 		<key>Location</key>
-		<integer>800</integer>
+		<integer>1700</integer>
 		<key>Value1</key>
 		<integer>70</integer>
 	</dict>
@@ -128,11 +128,38 @@
 		<key>Object</key>
 		<string>DarkEnergy</string>
 		<key>Location</key>
-		<integer>600</integer>
+		<integer>1450</integer>
 		<key>Value1</key>
 		<integer>50</integer>
 		<key>Value2</key>
 		<integer>350</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>KingTempus</string>
+		<key>Location</key>
+		<integer>1200</integer>
+		<key>Value1</key>
+		<integer>20</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>MeteorMaker</string>
+		<key>Location</key>
+		<integer>950</integer>
+		<key>Value1</key>
+		<integer>1</integer>
+		<key>Value2</key>
+		<integer>2</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Creatch</string>
+		<key>Location</key>
+		<integer>950</integer>
 	</dict>
 </dict>
 </plist>

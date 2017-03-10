@@ -65,6 +65,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     // Z Positioning
     static let PLAYER_Z: CGFloat = 9
+    static let ENEMY_Z: CGFloat = 4
     
     // Positioning
     var horizontalPlayerLimitRight: CGFloat = 0
@@ -726,6 +727,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             if envObject.type == EnvironmentObjectType.Enemy ||
                 envObject.type == EnvironmentObjectType.Obstacle ||
                 envObject.type == EnvironmentObjectType.Projectile {
+                envObject.zPosition = GameScene.ENEMY_Z
+                
                 if envObject.position.x - self.player.position.x < updatePosition {
                     //self.addEnvironmentObject(environmentObject: envObject)
                     envObject.physicsBody!.isDynamic = true

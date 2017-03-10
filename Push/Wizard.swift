@@ -21,7 +21,7 @@ class Wizard : Enemy {
         // Setup animations for walking only
         self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "wizard_standing", frameStart: 0, frameEnd: 15), timePerFrame: 0.06, resize: true, restore: false))
         
-        for var i in 1...4 {
+        for var i in 1...6 {
             // Create projectile
             let projectile: WizardEnergyBall = WizardEnergyBall(scalar: 1.0, defaultYPosition: defaultYPosition + self.size.height/2 - 9.0, defaultXPosition: defaultXPosition, parent: parent, value1: 0, value2: 0, scene: scene)
             
