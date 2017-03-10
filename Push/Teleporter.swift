@@ -30,7 +30,7 @@ class Teleporter : Obstacle {
         self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.9, height: self.size.height * 0.8), center: CGPoint(x: 0, y: self.size.height * 0.0))
         
         // Determine interactions with player
-        self.collidesWithPlayer = true
+        self.collidesWithPlayer = false
         self.playerCanDamage = false
         
         // Set physics
@@ -47,7 +47,7 @@ class Teleporter : Obstacle {
     override func update(_ timeSinceLast: CFTimeInterval, withPlayer player: Player) {
         super.update(timeSinceLast, withPlayer: player)
         
-        if self.justCollidedWithPlayer && !self.hasResetPlayer {
+        if self.playerContacted && !self.hasResetPlayer {
             player.resetYToGround = true
             self.hasResetPlayer = true
         }

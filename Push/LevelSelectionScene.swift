@@ -186,23 +186,23 @@ class LevelSelectionScene : DBScene {
         self.spiritWorld?.setScale(0.85)
         
         // Worlds
-        let worldAdjuster: CGFloat = 1.0
-        let fourAdjuster = (self.earthWorld!.size.width)
+        //let worldAdjuster: CGFloat = 1.0
+        /*let fourAdjuster = 0//(self.earthWorld!.size.width)
         self.earthWorld!.position = CGPoint(x: (self.earthWorld!.size.width + self.nodeBuffer/2) * -2 + fourAdjuster, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.earthWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
         self.waterWorld!.position = CGPoint(x: (self.waterWorld!.size.width + self.nodeBuffer/2) * -1 + fourAdjuster, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.waterWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
         self.fireWorld!.position = CGPoint(x: 0 + fourAdjuster, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.fireWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
         self.airWorld!.position = CGPoint(x: (self.airWorld!.size.width + self.nodeBuffer/2) * 1 + fourAdjuster, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.airWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
         self.spiritWorld!.position = CGPoint(x: (self.airWorld!.size.width + self.nodeBuffer/2) * 2 + fourAdjuster, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.spiritWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
-        
+        */
         // NOTE - BELOW POSITIONING IS FOR 5 WORLDS
-        /*
+        
          var worldAdjuster: CGFloat = 0.4
-         self.earthWorld!.position = CGPointMake((self.earthWorld!.size.width + self.nodeBuffer/2) * -2, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.earthWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
-         self.waterWorld!.position = CGPointMake((self.waterWorld!.size.width + self.nodeBuffer/2) * -1, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.waterWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
-         self.fireWorld!.position = CGPointMake(0, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.fireWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
-         self.airWorld!.position = CGPointMake((self.airWorld!.size.width + self.nodeBuffer/2) * 1, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.airWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
-         self.spiritWorld!.position = CGPointMake((self.spiritWorld!.size.width + self.nodeBuffer/2) * 2, self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.spiritWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
-         */
+        self.earthWorld!.position = CGPoint(x: (self.earthWorld!.size.width + self.nodeBuffer/2) * -2, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.earthWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
+        self.waterWorld!.position = CGPoint(x: (self.waterWorld!.size.width + self.nodeBuffer/2) * -1, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.waterWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
+        self.fireWorld!.position = CGPoint(x: 0, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.fireWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
+        self.airWorld!.position = CGPoint(x: (self.airWorld!.size.width + self.nodeBuffer/2) * 1, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.airWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
+        self.spiritWorld!.position = CGPoint(x: (self.spiritWorld!.size.width + self.nodeBuffer/2) * 2, y: self.backdropBar.position.y - self.backdropBar.size.height / 2 - self.spiritWorld!.size.height / 2 - self.nodeBuffer*worldAdjuster)
+        
         
         // Separator
         self.worldSeparator = SKSpriteNode(texture: SKTexture(imageNamed: "underline_bar"))
