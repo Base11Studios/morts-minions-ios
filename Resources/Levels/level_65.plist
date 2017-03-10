@@ -148,11 +148,9 @@
 		<key>Object</key>
 		<string>MeteorMaker</string>
 		<key>Location</key>
-		<integer>950</integer>
+		<integer>1100</integer>
 		<key>Value1</key>
-		<integer>1</integer>
-		<key>Value2</key>
-		<integer>2</integer>
+		<integer>200</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 2</key>
 	<dict>
@@ -160,6 +158,33 @@
 		<string>Creatch</string>
 		<key>Location</key>
 		<integer>950</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<integer>800</integer>
+		<key>Value1</key>
+		<integer>25</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>600</integer>
+		<key>Value1</key>
+		<integer>90</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>PulseOrb</string>
+		<key>Location</key>
+		<integer>700</integer>
+		<key>Value1</key>
+		<integer>60</integer>
 	</dict>
 </dict>
 </plist>

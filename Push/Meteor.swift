@@ -11,7 +11,7 @@ import Foundation
 class Meteor : Projectile {
     
     required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
-        super.init(scalar: scalar, imageName: "obsmeteor", textureAtlas: GameTextures.sharedInstance.projectilesAtlas, frameSpeed: 0.15, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
+        super.init(scalar: scalar, imageName: "obsmeteor", textureAtlas: GameTextures.sharedInstance.spiritAtlas, frameSpeed: 0.15, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -27,7 +27,7 @@ class Meteor : Projectile {
         self.physicsBody!.affectedByGravity = true // FALLS
         self.physicsBody!.mass = 5.0
         self.velocityRate = 0.2
-        self.physicsBody!.restitution = 0.75
+        self.physicsBody!.restitution = 0.5
         
         self.moveSpeed = 120
         self.walkSpeed = 120

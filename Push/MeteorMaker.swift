@@ -14,12 +14,9 @@ class MeteorMaker : Obstacle {
     var projectiles = Array<Projectile>()
     
     required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
-        super.init(scalar: scalar, imageName: "trans1x1", textureAtlas: GameTextures.sharedInstance.waterAtlas, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
+        super.init(scalar: scalar, imageName: "1x1trans", textureAtlas: GameTextures.sharedInstance.spiritAtlas, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
         
-        var numProjectiles: Int = Int(self.value1)
-        if numProjectiles == 0 {
-            numProjectiles = 2
-        }
+        let numProjectiles = 1
         
         for _ in 1...numProjectiles {
             // Create projectile
@@ -30,7 +27,7 @@ class MeteorMaker : Obstacle {
             projectile.type = EnvironmentObjectType.Ignored
             projectile.isHidden = true
             
-            projectile.position = CGPoint(x: defaultXPosition, y: defaultYPosition - 300)
+            projectile.position = CGPoint(x: defaultXPosition, y: defaultYPosition + 300)
             
             self.gameScene!.addEnvironmentObject(environmentObject: projectile)
             
@@ -56,10 +53,12 @@ class MeteorMaker : Obstacle {
         // Damage
         self.damage = 0
         self.damageToShields = 0
+        
+        self.lineOfSight = CGFloat(self.value1)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
-        if self.attackCooldown <= 0.0 && self.projectiles.count > 0 {
+        if self.attackCooldown <= 0.0 && self.projectiles.count > 0 && (self.position.x - player.position.x) < self.lineOfSight {
             let meteor: Meteor = self.projectiles.popLast() as! Meteor
             
             meteor.position = CGPoint(x: self.position.x, y: self.position.y + 350 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
@@ -71,7 +70,7 @@ class MeteorMaker : Obstacle {
             // Unhide it
             meteor.isHidden = false
             
-            self.attackCooldown = self.value2
+            self.attackCooldown = 1000
             
             self.playActionSound(action: SoundHelper.sharedInstance.projectileThrow)
         }

@@ -203,6 +203,9 @@
 		374F90151E246112003613D5 /* KingTempus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374F90141E246112003613D5 /* KingTempus.swift */; };
 		3750E0D51E7338D40025803D /* Meteor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3750E0D41E7338D30025803D /* Meteor.swift */; };
 		3750E0D71E733B9D0025803D /* MeteorMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3750E0D61E733B9D0025803D /* MeteorMaker.swift */; };
+		3750E0D91E734CF50025803D /* DarkTower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3750E0D81E734CF50025803D /* DarkTower.swift */; };
+		3750E0DB1E734E790025803D /* Teleporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3750E0DA1E734E790025803D /* Teleporter.swift */; };
+		3750E0DD1E734FA10025803D /* PulseOrb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3750E0DC1E734FA10025803D /* PulseOrb.swift */; };
 		375247321CE2C865009D8197 /* CharacterRemoveSkillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375247311CE2C865009D8197 /* CharacterRemoveSkillButton.swift */; };
 		375247341CE425F4009D8197 /* ChallengeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375247331CE425F4009D8197 /* ChallengeButton.swift */; };
 		375247361CE93861009D8197 /* DeviceSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375247351CE93861009D8197 /* DeviceSizes.swift */; };
@@ -649,6 +652,9 @@
 		374F90141E246112003613D5 /* KingTempus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KingTempus.swift; sourceTree = "<group>"; };
 		3750E0D41E7338D30025803D /* Meteor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Meteor.swift; sourceTree = "<group>"; };
 		3750E0D61E733B9D0025803D /* MeteorMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorMaker.swift; sourceTree = "<group>"; };
+		3750E0D81E734CF50025803D /* DarkTower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkTower.swift; sourceTree = "<group>"; };
+		3750E0DA1E734E790025803D /* Teleporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teleporter.swift; sourceTree = "<group>"; };
+		3750E0DC1E734FA10025803D /* PulseOrb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseOrb.swift; sourceTree = "<group>"; };
 		375247311CE2C865009D8197 /* CharacterRemoveSkillButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterRemoveSkillButton.swift; sourceTree = "<group>"; };
 		375247331CE425F4009D8197 /* ChallengeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeButton.swift; sourceTree = "<group>"; };
 		375247351CE93861009D8197 /* DeviceSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSizes.swift; sourceTree = "<group>"; };
@@ -1294,6 +1300,9 @@
 			isa = PBXGroup;
 			children = (
 				3750E0D61E733B9D0025803D /* MeteorMaker.swift */,
+				3750E0DA1E734E790025803D /* Teleporter.swift */,
+				3750E0DC1E734FA10025803D /* PulseOrb.swift */,
+				3750E0D81E734CF50025803D /* DarkTower.swift */,
 				374F900A1E21221C003613D5 /* Darkness.swift */,
 			);
 			name = Spirit;
@@ -2370,6 +2379,7 @@
 				3753368D1C94273D009FE27E /* LevelChallenge.swift in Sources */,
 				370020D11CA05243007432E4 /* Danger.swift in Sources */,
 				3753368B1C941487009FE27E /* ChallengeType.swift in Sources */,
+				3750E0DB1E734E790025803D /* Teleporter.swift in Sources */,
 				373F21921BE195F000934722 /* PauseMenu.swift in Sources */,
 				37EF95761BD869A300321B8B /* MainMenuPlayButton.swift in Sources */,
 				371855E01BD9A60F00E9037C /* IntroductionScene.swift in Sources */,
@@ -2450,6 +2460,7 @@
 				37300A8A1CD7FBB5009C3E87 /* WhatsNewDialog.swift in Sources */,
 				37F8C2C21C3CA614002FB339 /* Crab.swift in Sources */,
 				37F8C2C81C3F3681002FB339 /* Jellyfish.swift in Sources */,
+				3750E0D91E734CF50025803D /* DarkTower.swift in Sources */,
 				373A20DB1C76933000F3D15E /* UxTutorialIndicatorPosition.swift in Sources */,
 				373F21941BE19BF200934722 /* LoadingScene.swift in Sources */,
 				374F900B1E21221C003613D5 /* Darkness.swift in Sources */,
@@ -2458,6 +2469,7 @@
 				3728243A1BC1CF0000524DF7 /* FallingBomb.swift in Sources */,
 				37EF95781BD87DF200321B8B /* LevelSelectionScene.swift in Sources */,
 				37300A901CD7FC45009C3E87 /* MainMenuWhatsNewNextButton.swift in Sources */,
+				3750E0DD1E734FA10025803D /* PulseOrb.swift in Sources */,
 				373F21981BE1A65A00934722 /* VerticalScrollingSkillNode.swift in Sources */,
 				375336721C8DEBC3009FE27E /* LoadingOverlay.swift in Sources */,
 				375319211D5BD198006FC9EE /* MultilineLabelWithShadow.swift in Sources */,

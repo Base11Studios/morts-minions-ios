@@ -1779,55 +1779,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
     }
     
-    /*func initializeScrollingBackground(_ size: CGSize) {
-        var backgroundYPosition: CGFloat = 0
-        var foregroundYPosition: CGFloat = self.adjustedGroundPositionY
-        
-        // This is our scrolling background code.
-        if self.worldName == "earth" {
-            self.backgroundColor = MerpColors.earthBackground
-            backgroundYPosition = self.adjustedGroundPositionY
-        } else if self.worldName == "water" {
-            self.backgroundColor = MerpColors.waterBackground
-            backgroundYPosition = self.adjustedGroundPositionY
-        } else if self.worldName == "fire" {
-            self.backgroundColor = MerpColors.fireBackground
-        } else if self.worldName == "air" {
-            self.backgroundColor = MerpColors.airBackground
-        } else if self.worldName == "spirit" {
-            self.backgroundColor = MerpColors.spiritBackground
-        }
-        
-        // Background
-        for j in 0 ..< 2 {
-            for i in 0 ..< 2 {
-                let bg = getLevelBackground(j, number: i+1)
-                
-                if self.worldName == "earth" || self.worldName == "water" {
-                    backgroundYPosition = self.adjustedGroundPositionY
-                } else if self.worldName == "fire" || self.worldName == "air" || self.worldName == "spirit" {
-                    backgroundYPosition = size.height - bg.size.height
-                }
-                
-                bg.anchorPoint = CGPoint.zero
-                
-                switch j {
-                case 0:
-                    bg.name = "background"
-                    bg.position = CGPoint(x: CGFloat(i) * (bg.size.width - 2), y: backgroundYPosition)
-                case 1:
-                    bg.name = "foreground"
-                    bg.position = CGPoint(x: CGFloat(i) * (bg.size.width - 2), y: foregroundYPosition)
-                default:
-                    bg.name = "background"
-                    bg.position = CGPoint(x: CGFloat(i) * (bg.size.width - 2), y: backgroundYPosition)
-                }
-                
-                self.worldView.addChild(bg)
-            }
-        }
-    }*/
-    
     func initializeScrollingBackground(_ size: CGSize) {
         var backgroundYPosition: CGFloat = 0
         let foregroundYPosition: CGFloat = self.adjustedGroundPositionY

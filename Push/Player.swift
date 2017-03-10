@@ -26,6 +26,7 @@ class Player : SKSpriteNode {
     var teleportsInsteadOfJumps: Bool = false
     var isOnGround: Bool = true
     var jumpDisabled: Bool = false
+    var resetYToGround: Bool = false
     
     // World view
     weak var worldView: SKNode?
@@ -653,6 +654,12 @@ class Player : SKSpriteNode {
                         self.startJumping(self.jumpForce)
                     }
                 }
+            }
+            
+            // If the player is supposed to reset back to ground, do it
+            if self.resetYToGround {
+                self.position = CGPoint(x: self.position.x, y: self.defaultPositionY)
+                self.resetYToGround = false
             }
             
             // Move the weapon with the player animation

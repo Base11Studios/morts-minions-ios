@@ -36,7 +36,7 @@ class MerpColors {
     static var waterBackground = SKColor(red: 218 / 255.0, green: 240 / 255.0, blue: 243 / 255.0, alpha: 1.0)
     static var fireBackground = SKColor(red: 122 / 255.0, green: 0 / 255.0, blue: 0 / 255.0, alpha: 1.0)
     static var airBackground = SKColor(red: 190 / 255.0, green: 223 / 255.0, blue: 245 / 255.0, alpha: 1.0)
-    static var spiritBackground = SKColor(red: 26 / 255.0, green: 26 / 255.0, blue: 26 / 255.0, alpha: 1.0)
+    static var spiritBackground = SKColor(red: 34 / 255.0, green: 34 / 255.0, blue: 34 / 255.0, alpha: 1.0)
     
     // Lava
     static var fireGroundAlert = SKColor(red: 255/255.0, green: 204/255.0, blue: 49/255.0, alpha: 1)
@@ -45,8 +45,3 @@ class MerpColors {
     
     static var highlightColor = SKColor(red: 251 / 255.0, green: 197 / 255.0, blue: 0 / 255.0, alpha: 1.0)
 }
-
-/*
-self.container = SKSpriteNode(texture: nil, color: SKColor(red: 60 / 255.0, green: 60 / 255.0, blue: 60 / 255.0, alpha: 1.0), size: CGSizeMake(1, 1))
-self.containerBackground = SKSpriteNode(texture: nil, color: SKColor(red: 255 / 255.0, green: 255 / 255.0, blue: 255 / 255.0, alpha: 1.0), size: CGSizeMake(1, 1))
-*/
