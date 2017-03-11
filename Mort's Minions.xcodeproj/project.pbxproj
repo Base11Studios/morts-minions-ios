@@ -20,6 +20,9 @@
 		370020D11CA05243007432E4 /* Danger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370020D01CA05243007432E4 /* Danger.swift */; };
 		370020D31CA0B498007432E4 /* FloorLava.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370020D21CA0B498007432E4 /* FloorLava.swift */; };
 		370102701D4BF06B002B4368 /* air-3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3701026F1D4BF059002B4368 /* air-3.caf */; };
+		370A16991E742EF7004A2FE0 /* level_68.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A16981E742EF7004A2FE0 /* level_68.plist */; };
+		370A169B1E74307D004A2FE0 /* level_69.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A169A1E74307D004A2FE0 /* level_69.plist */; };
+		370A169D1E7431E6004A2FE0 /* level_70.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A169C1E7431E6004A2FE0 /* level_70.plist */; };
 		3713201D1D6BBF02001A1135 /* EnvironmentObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3713201C1D6BBF02001A1135 /* EnvironmentObjectType.swift */; };
 		371320231D6FB3D8001A1135 /* air.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3713201E1D6FB149001A1135 /* air.m4a */; };
 		371320241D6FB3D8001A1135 /* earth.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3713201F1D6FB149001A1135 /* earth.m4a */; };
@@ -206,6 +209,8 @@
 		3750E0D91E734CF50025803D /* DarkTower.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3750E0D81E734CF50025803D /* DarkTower.swift */; };
 		3750E0DB1E734E790025803D /* Teleporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3750E0DA1E734E790025803D /* Teleporter.swift */; };
 		3750E0DD1E734FA10025803D /* PulseOrb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3750E0DC1E734FA10025803D /* PulseOrb.swift */; };
+		3750E0DF1E7425580025803D /* level_66.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3750E0DE1E7425580025803D /* level_66.plist */; };
+		3750E0E11E7427760025803D /* level_67.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3750E0E01E7427760025803D /* level_67.plist */; };
 		375247321CE2C865009D8197 /* CharacterRemoveSkillButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375247311CE2C865009D8197 /* CharacterRemoveSkillButton.swift */; };
 		375247341CE425F4009D8197 /* ChallengeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375247331CE425F4009D8197 /* ChallengeButton.swift */; };
 		375247361CE93861009D8197 /* DeviceSizes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 375247351CE93861009D8197 /* DeviceSizes.swift */; };
@@ -470,6 +475,9 @@
 		370020D01CA05243007432E4 /* Danger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Danger.swift; sourceTree = "<group>"; };
 		370020D21CA0B498007432E4 /* FloorLava.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorLava.swift; sourceTree = "<group>"; };
 		3701026F1D4BF059002B4368 /* air-3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "air-3.caf"; sourceTree = "<group>"; };
+		370A16981E742EF7004A2FE0 /* level_68.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_68.plist; path = Levels/level_68.plist; sourceTree = "<group>"; };
+		370A169A1E74307D004A2FE0 /* level_69.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_69.plist; path = Levels/level_69.plist; sourceTree = "<group>"; };
+		370A169C1E7431E6004A2FE0 /* level_70.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_70.plist; path = Levels/level_70.plist; sourceTree = "<group>"; };
 		3713201C1D6BBF02001A1135 /* EnvironmentObjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentObjectType.swift; sourceTree = "<group>"; };
 		3713201E1D6FB149001A1135 /* air.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = air.m4a; sourceTree = "<group>"; };
 		3713201F1D6FB149001A1135 /* earth.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = earth.m4a; sourceTree = "<group>"; };
@@ -655,6 +663,8 @@
 		3750E0D81E734CF50025803D /* DarkTower.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DarkTower.swift; sourceTree = "<group>"; };
 		3750E0DA1E734E790025803D /* Teleporter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Teleporter.swift; sourceTree = "<group>"; };
 		3750E0DC1E734FA10025803D /* PulseOrb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulseOrb.swift; sourceTree = "<group>"; };
+		3750E0DE1E7425580025803D /* level_66.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_66.plist; path = Levels/level_66.plist; sourceTree = "<group>"; };
+		3750E0E01E7427760025803D /* level_67.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_67.plist; path = Levels/level_67.plist; sourceTree = "<group>"; };
 		375247311CE2C865009D8197 /* CharacterRemoveSkillButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterRemoveSkillButton.swift; sourceTree = "<group>"; };
 		375247331CE425F4009D8197 /* ChallengeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChallengeButton.swift; sourceTree = "<group>"; };
 		375247351CE93861009D8197 /* DeviceSizes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceSizes.swift; sourceTree = "<group>"; };
@@ -1111,6 +1121,11 @@
 				373963FD1C664F780018C8C9 /* level_63.plist */,
 				373963FE1C664F780018C8C9 /* level_64.plist */,
 				37656B3F1D2EAF0500506183 /* level_65.plist */,
+				3750E0DE1E7425580025803D /* level_66.plist */,
+				3750E0E01E7427760025803D /* level_67.plist */,
+				370A16981E742EF7004A2FE0 /* level_68.plist */,
+				370A169A1E74307D004A2FE0 /* level_69.plist */,
+				370A169C1E7431E6004A2FE0 /* level_70.plist */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -2105,6 +2120,7 @@
 				37A38E7D1DD101DB00287FB2 /* MPCloseBtn@3x.png in Resources */,
 				376CBA1D1CC10D5400BE2756 /* explode-3.caf in Resources */,
 				376CBA1E1CC10D5400BE2756 /* pow-1.caf in Resources */,
+				370A169B1E74307D004A2FE0 /* level_69.plist in Resources */,
 				376CBA0D1CC08B3800BE2756 /* action-2.caf in Resources */,
 				376CBA0E1CC08B3800BE2756 /* bubble-1.caf in Resources */,
 				37A38E891DD101DB00287FB2 /* MPPlayBtn@3x.png in Resources */,
@@ -2150,6 +2166,7 @@
 				373964311C664F780018C8C9 /* level_49.plist in Resources */,
 				37A38E951DD101DB00287FB2 /* vg_privacy.png in Resources */,
 				373964131C664F780018C8C9 /* level_19.plist in Resources */,
+				3750E0E11E7427760025803D /* level_67.plist in Resources */,
 				3739640F1C664F780018C8C9 /* level_16.plist in Resources */,
 				3739643F1C664F780018C8C9 /* level_63.plist in Resources */,
 				373964321C664F780018C8C9 /* level_50.plist in Resources */,
@@ -2162,6 +2179,7 @@
 				3739640C1C664F780018C8C9 /* level_13.plist in Resources */,
 				37BAE8151DD73FD700DD4ECC /* playermonk2.atlas in Resources */,
 				3739643A1C664F780018C8C9 /* level_58.plist in Resources */,
+				370A169D1E7431E6004A2FE0 /* level_70.plist in Resources */,
 				373964041C664F780018C8C9 /* level_5.plist in Resources */,
 				3739641D1C664F780018C8C9 /* level_29.plist in Resources */,
 				373964491C664F910018C8C9 /* upgrades_warrior.plist in Resources */,
@@ -2201,6 +2219,7 @@
 				3739643B1C664F780018C8C9 /* level_59.plist in Resources */,
 				3739642F1C664F780018C8C9 /* level_47.plist in Resources */,
 				373964401C664F780018C8C9 /* level_64.plist in Resources */,
+				3750E0DF1E7425580025803D /* level_66.plist in Resources */,
 				373964091C664F780018C8C9 /* level_10.plist in Resources */,
 				373964021C664F780018C8C9 /* level_3.plist in Resources */,
 				37A38E7C1DD101DB00287FB2 /* MPCloseBtn@2x.png in Resources */,
@@ -2229,6 +2248,7 @@
 				373964231C664F780018C8C9 /* level_35.plist in Resources */,
 				37BAE8261DD73FD700DD4ECC /* water2.atlas in Resources */,
 				3739640E1C664F780018C8C9 /* level_15.plist in Resources */,
+				370A16991E742EF7004A2FE0 /* level_68.plist in Resources */,
 				373964011C664F780018C8C9 /* level_2.plist in Resources */,
 				3739640B1C664F780018C8C9 /* level_12.plist in Resources */,
 				37656B401D2EAF0500506183 /* level_65.plist in Resources */,

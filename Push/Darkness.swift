@@ -37,8 +37,8 @@ class Darkness : Obstacle {
         self.lineOfSight = 100 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         
         // Damage
-        self.damage = 0
-        self.damageToShields = 0
+        self.damage = 1
+        self.damageToShields = 1
         
         self.defaultYPosition = self.defaultYPosition + CGFloat(self.value1) * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         

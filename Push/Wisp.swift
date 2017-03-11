@@ -38,7 +38,7 @@ class Wisp : Enemy {
         self.lineOfSight = 300 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         
         // Damage
-        self.damage = 2
+        self.damage = 1
         self.damageToShields = 1
         
         // Rewards
