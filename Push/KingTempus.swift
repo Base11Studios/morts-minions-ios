@@ -30,7 +30,7 @@ class KingTempus : Enemy {
         
         for _ in 1...numProjectiles {
             // Create projectile
-            let projectile: Arrow = Arrow(scalar: 1.0, defaultYPosition: defaultYPosition + self.size.height/2 - 9.0, defaultXPosition: defaultXPosition, parent: parent, value1: 0, value2: 0, scene: scene)
+            let projectile: KingBolt = KingBolt(scalar: 1.0, defaultYPosition: defaultYPosition + self.size.height/2 - 9.0, defaultXPosition: defaultXPosition, parent: parent, value1: 0, value2: 0, scene: scene)
             
             // We dont want this to get updated by gamescene so change the name which is the selector
             projectile.name = "proj_dont_update"
@@ -53,19 +53,22 @@ class KingTempus : Enemy {
             [weak self] in
             
             if self != nil {
-                let arrow: Arrow = self?.projectiles.popLast() as! Arrow
+                let bolt: KingBolt = self?.projectiles.popLast() as! KingBolt
                 
-                arrow.position = CGPoint(x: self!.position.x - 15.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), y: self!.position.y - 3.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
-                arrow.defaultYPosition = self!.position.y - 3.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+                bolt.position = CGPoint(x: self!.position.x - 15.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), y: self!.position.y - 3.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+                bolt.defaultYPosition = self!.position.y - 3.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+                
+                // Bolt direction
+                bolt.yGrowth = CGFloat((Double(arc4random_uniform(201) + 1) / 100.0) - 1.0)
                 
                 // Change the name back to default so it receives updates
-                arrow.resetName()
+                bolt.resetName()
                 
                 // Unhide it
-                arrow.isHidden = false
+                bolt.isHidden = false
                 
                 // Set physics body back
-                arrow.physicsBody!.categoryBitMask = GameScene.projectileCategory
+                bolt.physicsBody!.categoryBitMask = GameScene.projectileCategory
                 
                 self?.playActionSound(action: SoundHelper.sharedInstance.projectileThrow)
             }
@@ -105,7 +108,7 @@ class KingTempus : Enemy {
         self.physicsBody!.mass = self.defaultMass * 10
         
         // Attributes
-        self.maxHealth = 1
+        self.maxHealth = 2
         self.health = self.maxHealth
         self.lineOfSight = 350 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         

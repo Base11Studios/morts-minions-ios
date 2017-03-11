@@ -23,6 +23,7 @@
 		370A16991E742EF7004A2FE0 /* level_68.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A16981E742EF7004A2FE0 /* level_68.plist */; };
 		370A169B1E74307D004A2FE0 /* level_69.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A169A1E74307D004A2FE0 /* level_69.plist */; };
 		370A169D1E7431E6004A2FE0 /* level_70.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A169C1E7431E6004A2FE0 /* level_70.plist */; };
+		370A169F1E743471004A2FE0 /* KingBolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370A169E1E743471004A2FE0 /* KingBolt.swift */; };
 		3713201D1D6BBF02001A1135 /* EnvironmentObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3713201C1D6BBF02001A1135 /* EnvironmentObjectType.swift */; };
 		371320231D6FB3D8001A1135 /* air.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3713201E1D6FB149001A1135 /* air.m4a */; };
 		371320241D6FB3D8001A1135 /* earth.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3713201F1D6FB149001A1135 /* earth.m4a */; };
@@ -478,6 +479,7 @@
 		370A16981E742EF7004A2FE0 /* level_68.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_68.plist; path = Levels/level_68.plist; sourceTree = "<group>"; };
 		370A169A1E74307D004A2FE0 /* level_69.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_69.plist; path = Levels/level_69.plist; sourceTree = "<group>"; };
 		370A169C1E7431E6004A2FE0 /* level_70.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_70.plist; path = Levels/level_70.plist; sourceTree = "<group>"; };
+		370A169E1E743471004A2FE0 /* KingBolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KingBolt.swift; sourceTree = "<group>"; };
 		3713201C1D6BBF02001A1135 /* EnvironmentObjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentObjectType.swift; sourceTree = "<group>"; };
 		3713201E1D6FB149001A1135 /* air.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = air.m4a; sourceTree = "<group>"; };
 		3713201F1D6FB149001A1135 /* earth.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = earth.m4a; sourceTree = "<group>"; };
@@ -1491,6 +1493,7 @@
 				373CEA7A1C15BF8400197B83 /* Fly.swift */,
 				372824371BC1BEDD00524DF7 /* Projectile.swift */,
 				374F90051E21217A003613D5 /* MageEnergyBall.swift */,
+				370A169E1E743471004A2FE0 /* KingBolt.swift */,
 				374F90061E21217A003613D5 /* WizardEnergyBall.swift */,
 				37688B591CA6C1220075E652 /* Lightning.swift */,
 				372824391BC1CF0000524DF7 /* FallingBomb.swift */,
@@ -2456,6 +2459,7 @@
 				372824381BC1BEDD00524DF7 /* Projectile.swift in Sources */,
 				370020BC1C9E41B4007432E4 /* Slanky.swift in Sources */,
 				37484D3A1DD2B7C20046B969 /* GameTutorialStoreButton.swift in Sources */,
+				370A169F1E743471004A2FE0 /* KingBolt.swift in Sources */,
 				37BB69661C33253200B59D73 /* WorldNode.swift in Sources */,
 				375336761C8E0141009FE27E /* MainMenuBuyButton.swift in Sources */,
 				37FF3E751C9B6B2C00A93FAD /* ChallengeContainer.swift in Sources */,

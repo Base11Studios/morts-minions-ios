@@ -14,7 +14,7 @@ class Enemy : EnvironmentObject {
     
     static func getHealth(_ enemyClass: AnyClass) -> Int {
         // If the class has more than 1 HP, have to add it here, otherwise 1 is default
-        if enemyClass is Crab.Type || enemyClass is Prowler.Type  {
+        if enemyClass is Crab.Type || enemyClass is Prowler.Type || enemyClass is KingTempus.Type  {
             return 2
         }
         
