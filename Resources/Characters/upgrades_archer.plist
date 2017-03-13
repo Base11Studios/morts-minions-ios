@@ -462,8 +462,8 @@
 			<string>citrine</string>
 			<key>Description</key>
 			<string>Unleashes the eagle&apos;s primal instincts giving her the ability to track down minions.</string>
-			<key>SecondaryValue</key>
-			<integer>1</integer>
+			<key>Range</key>
+			<integer>400</integer>
 		</dict>
 	</array>
 	<array>
@@ -582,6 +582,100 @@
 			<string>May brings bigger health potions, with each vial restoring 3 total hearts.</string>
 			<key>SecondaryValue</key>
 			<integer>1</integer>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>fairy guardian</string>
+			<key>IconName</key>
+			<string>iconprotectorofthesky</string>
+			<key>Type</key>
+			<string>skill</string>
+			<key>Id</key>
+			<string>fairyguardian</string>
+			<key>Description</key>
+			<string>[Passive] May befriends a fairy to protect her from harm. The guardian will stop danger close to May every 28 seconds.</string>
+			<key>ActivationMethod</key>
+			<string>passive</string>
+			<key>Cooldown</key>
+			<integer>28</integer>
+			<key>Value</key>
+			<real>0.4</real>
+			<key>TutorialVersion</key>
+			<integer>1</integer>
+			<key>TutorialText</key>
+			<string>This is a passive skill. You automatically get the benefits without having to do any work!</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>fairy defense 1</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>fairyguardian</string>
+			<key>Id</key>
+			<string>fairydefense1</string>
+			<key>Description</key>
+			<string>Increases the fairy&apos;s defenses, allowing her to protect every 22 seconds.</string>
+			<key>Cooldown</key>
+			<integer>6</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>fairy defense 2</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>fairyguardian</string>
+			<key>Id</key>
+			<string>fairydefense2</string>
+			<key>Description</key>
+			<string>Further increases the fairy&apos;s defenses, allowing her to protect every 18 seconds.</string>
+			<key>Cooldown</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>fairy size 1</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>fairyguardian</string>
+			<key>Id</key>
+			<string>fairysize1</string>
+			<key>Description</key>
+			<string>Increases the fairy&apos;s size, allowing her to stop more danger.</string>
+			<key>Value</key>
+			<real>0.125</real>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>fairy defense 3</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>fairyguardian</string>
+			<key>Id</key>
+			<string>fairydefense3</string>
+			<key>Description</key>
+			<string>Further increases the fairy&apos;s defenses, allowing her to protect every 14 seconds.</string>
+			<key>Cooldown</key>
+			<integer>4</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>fairy size 2</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>fairyguardian</string>
+			<key>Id</key>
+			<string>fairysize2</string>
+			<key>Description</key>
+			<string>Further increases the fairy&apos;s size, allowing her to stop even more danger.</string>
+			<key>Value</key>
+			<real>0.1</real>
 		</dict>
 	</array>
 </array>

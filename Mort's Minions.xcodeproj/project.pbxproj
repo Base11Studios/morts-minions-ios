@@ -343,6 +343,7 @@
 		37A38E941DD101DB00287FB2 /* vg_mute_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E751DD101DB00287FB2 /* vg_mute_on.png */; };
 		37A38E951DD101DB00287FB2 /* vg_privacy.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E761DD101DB00287FB2 /* vg_privacy.png */; };
 		37A38E971DD101F200287FB2 /* Appodeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A38E961DD101F200287FB2 /* Appodeal.framework */; };
+		37B0F66B1E76FF9A00FD1A91 /* PlayerFairy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B0F66A1E76FF9A00FD1A91 /* PlayerFairy.swift */; };
 		37B567951DA5A9520013A4AC /* TradeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B567941DA5A9520013A4AC /* TradeMenu.swift */; };
 		37B567981DA6D0780013A4AC /* TradeBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B567971DA6D0780013A4AC /* TradeBackButton.swift */; };
 		37B5679C1DA6D1E50013A4AC /* CharacterTradeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5679B1DA6D1E50013A4AC /* CharacterTradeButton.swift */; };
@@ -811,6 +812,7 @@
 		37A38E751DD101DB00287FB2 /* vg_mute_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_mute_on.png; sourceTree = "<group>"; };
 		37A38E761DD101DB00287FB2 /* vg_privacy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_privacy.png; sourceTree = "<group>"; };
 		37A38E961DD101F200287FB2 /* Appodeal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Appodeal.framework; sourceTree = "<group>"; };
+		37B0F66A1E76FF9A00FD1A91 /* PlayerFairy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFairy.swift; sourceTree = "<group>"; };
 		37B567941DA5A9520013A4AC /* TradeMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeMenu.swift; sourceTree = "<group>"; };
 		37B567971DA6D0780013A4AC /* TradeBackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeBackButton.swift; sourceTree = "<group>"; };
 		37B5679B1DA6D1E50013A4AC /* CharacterTradeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTradeButton.swift; sourceTree = "<group>"; };
@@ -1680,6 +1682,7 @@
 				37DD89EE1C554A0000588E38 /* PlayerProjectile.swift */,
 				376CBA321CC2AFED00BE2756 /* PlayerDamageField.swift */,
 				3764F7361C5A568B000CFFFD /* PlayerEagle.swift */,
+				37B0F66A1E76FF9A00FD1A91 /* PlayerFairy.swift */,
 				37BAE8281DD90C5800DD4ECC /* PlayerBoulder.swift */,
 				376A89A11D332A8B00ACCCA3 /* PlayerMeteor.swift */,
 				376A89A51D333D4000ACCCA3 /* PlayerMagicMissle.swift */,
@@ -2469,6 +2472,7 @@
 				37DD89F11C554CD500588E38 /* PlayerArrow.swift in Sources */,
 				375247341CE425F4009D8197 /* ChallengeButton.swift in Sources */,
 				377E5E831C2B957500B2FB89 /* GameTutorialNextButton.swift in Sources */,
+				37B0F66B1E76FF9A00FD1A91 /* PlayerFairy.swift in Sources */,
 				373F21AF1BE46AA700934722 /* CharacterPurchaseSkillButton.swift in Sources */,
 				37DD89EF1C554A0000588E38 /* PlayerProjectile.swift in Sources */,
 				37656B3E1D2D505300506183 /* MainMenuCreditsButton.swift in Sources */,

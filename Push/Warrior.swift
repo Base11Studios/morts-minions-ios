@@ -16,6 +16,7 @@ class Warrior : Player {
         self.skill3Details = CharacterSkillDetails(upgrade: CharacterUpgrade.Stomp)
         self.skill4Details = CharacterSkillDetails(upgrade: CharacterUpgrade.ThrowBoulder)
         self.skill5Details = CharacterSkillDetails(upgrade: CharacterUpgrade.FirstAidKit)
+        self.skill6Details = CharacterSkillDetails(upgrade: CharacterUpgrade.FairyGuardian)
         
         super.initializeSkills()
         

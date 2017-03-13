@@ -20,6 +20,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     var skill3Button: GameSkillButton?
     var skill4Button: GameSkillButton?
     var skill5Button: GameSkillButton?
+    var skill6Button: GameSkillButton?
     
     // GUI Button
     var pauseButton: GamePauseButton?
@@ -718,6 +719,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.skill3Button!.update(self.player, timeSinceLast: timeSinceLast)
         self.skill4Button!.update(self.player, timeSinceLast: timeSinceLast)
         self.skill5Button!.update(self.player, timeSinceLast: timeSinceLast)
+        self.skill6Button!.update(self.player, timeSinceLast: timeSinceLast)
         
         let updatePosition = (self.frame.size.width - horizontalPlayerLimitRight) + (100 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         let projectileDestroyPosition = (self.frame.size.width - horizontalPlayerLimitRight) + (20 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
@@ -1148,6 +1150,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 } else if !self.skill5Button!.isHidden && self.skill5Button!.contains(location) {
                     self.skill5Button?.touchesBegan(touches, with: event)
                     self.objectThatHadATouchEventPassedIn = self.skill5Button
+                } else if !self.skill6Button!.isHidden && self.skill6Button!.contains(location) {
+                    self.skill6Button?.touchesBegan(touches, with: event)
+                    self.objectThatHadATouchEventPassedIn = self.skill6Button
                 } else if !self.pauseButton!.isHidden && self.pauseButton!.contains(location) {
                     self.pauseButton?.touchesBegan(touches, with: event)
                     self.objectThatHadATouchEventPassedIn = self.pauseButton
@@ -1710,6 +1715,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         if !GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(self.player.skill5Details.upgrade) {
             self.skill5Button?.isHidden = true
         }
+        
+        // Skill 6 button - never show
+        self.skill6Button = GameSkillButton(scene: self, upgrade: self.player.skill6Details)
+        self.addChild(self.skill6Button!)
+        self.skill6Button?.isHidden = true
     }
     
     func initializePauseMenu() {
@@ -1890,12 +1900,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func initializePlayer(_ size: CGSize) {
-        
-        //NSLog("ground pos \(self.ground.position.y) ground size \(self.ground.size.height) player height \(self.player.size.height)")
-        
         // Set the position of the player right above the ground // TODO move into player class
         self.player.defaultPositionY = adjustedGroundPositionY + self.player.size.height / 2
-        //NSLog("\(self.player.defaultPositionY)")
+        
         self.player.position = CGPoint(x: self.player.size.width / 2, y: self.player.defaultPositionY)
         self.player.setPlayerAttachmentPositions(adjustedGroundPositionY + self.player.size.height / 2, position: CGPoint(x: self.player.size.width / 2, y: self.player.defaultPositionY))
         
@@ -2162,6 +2169,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.skill2Button?.isPaused = true
             self.skill3Button?.isPaused = true
             self.skill4Button?.isPaused = true
+            self.skill5Button?.isPaused = true
+            self.skill6Button?.isPaused = true
         }
         
         self.backgroundPlayer?.volume = 0.0
@@ -2184,6 +2193,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.skill2Button?.isPaused = false
         self.skill3Button?.isPaused = false
         self.skill4Button?.isPaused = false
+        self.skill5Button?.isPaused = false
+        self.skill6Button?.isPaused = false
         
         self.backgroundPlayer?.volume = 1.0
     }
@@ -2197,6 +2208,10 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             return self.skill3Button!
         } else if self.skill4Button!.upgradeDetails?.upgrade == skillAsUpgrade {
             return self.skill4Button!
+        } else if self.skill5Button!.upgradeDetails?.upgrade == skillAsUpgrade {
+            return self.skill5Button!
+        } else if self.skill6Button!.upgradeDetails?.upgrade == skillAsUpgrade {
+            return self.skill6Button!
         } else {
             return nil
         }

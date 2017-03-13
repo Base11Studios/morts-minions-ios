@@ -17,6 +17,7 @@ class Mage : Player {
         self.skill3Details = CharacterSkillDetails(upgrade: CharacterUpgrade.Meteor)
         self.skill4Details = CharacterSkillDetails(upgrade: CharacterUpgrade.TimeFreeze)
         self.skill5Details = CharacterSkillDetails(upgrade: CharacterUpgrade.ForceField)
+        self.skill6Details = CharacterSkillDetails(upgrade: CharacterUpgrade.FairyGuardian)
         
         super.initializeSkills()
         

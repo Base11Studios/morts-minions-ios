@@ -8,12 +8,12 @@
 
 import Foundation
 
-class PlayerEagle: PlayerProjectile {
+class PlayerFairy: PlayerProjectile {
     var nextPosition: CGPoint
     var stopPositionAdjustment: Bool = false
     var flyUpwardsFirst: Bool
     var minimumHeight: CGFloat = 0
-    var maxYChangeWhenHoming: CGFloat = 3 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+    var maxYChangeWhenHoming: CGFloat = 5 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
     var lastAdjustedYPosition: CGFloat = 0.0
     var range: CGFloat = 0
     var homingObject: EnvironmentObject?
@@ -29,18 +29,21 @@ class PlayerEagle: PlayerProjectile {
         // Attach to skill
         self.attachedSkill = attachedSkill
         
-        let texture = GameTextures.sharedInstance.playerArcherAtlas.textureNamed("archereagleflapping_000")
+        let texture = GameTextures.sharedInstance.projectilesAtlas.textureNamed("fairy_000")
         
         super.init(texture: texture, color: SKColor(), size: texture.size(), scene: gameScene)
         
-        self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.playerArcherAtlas, texturesNamed: "archereagleflapping", frameStart: 0, frameEnd: 15), timePerFrame: 0.05, resize: true, restore: false))
+        self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.projectilesAtlas, texturesNamed: "fairy", frameStart: 0, frameEnd: 15), timePerFrame: 0.05, resize: true, restore: false))
         
         self.run(self.walkAction)
+        
+        // Set scale
+        self.setScale(CGFloat(attachedSkill.value))
     }
     
     override func setupTraits() {
         // Add physics
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.2, height: self.size.height * 0.2), center: CGPoint(x: self.size.width * 0.0, y: self.size.height * 0.0))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.4, height: self.size.height * 0.6), center: CGPoint(x: self.size.width * 0.0, y: self.size.height * 0.0))
         
         self.setDefaultPhysicsBodyValues()
         
@@ -52,22 +55,18 @@ class PlayerEagle: PlayerProjectile {
         // Acceleration
         self.velocityRate = 1.0 // used for movement calculation
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     override func updateAfterPhysics() {
-        super.updateAfterPhysics()
-        
-        if self.stopPositionAdjustment == false {
-            // Set fly positions
-            self.position = CGPoint(x: self.nextPosition.x, y: self.nextPosition.y)
-            self.lastAdjustedYPosition = self.nextPosition.y
-            self.physicsBody!.velocity = CGVector()
-        } else {
-            if self.range > 0 {
-                // There is something to home and it is still alive
+        if !self.attachedSkill!.cooldownInProgress {
+            super.updateAfterPhysics()
+            
+            /*
+            if !self.needsToExecuteDeath {
+                // Home existing target, or look for one
                 if self.homingObject != nil && self.homingObject!.isAlive {
                     if !self.isFlying {
                         self.isFlying = true
@@ -85,8 +84,22 @@ class PlayerEagle: PlayerProjectile {
                     // Try to find a new guy to home
                     self.findATarget()
                 }
-            }
+              
+                // If not target, move in circle
+                if self.homingObject == nil {
+                    self.setFlyPosition()
+                }
+            }*/
+            
+            self.setFlyPosition()
         }
+    }
+    
+    func setFlyPosition() {
+        // Set fly positions
+        self.position = CGPoint(x: self.nextPosition.x, y: self.nextPosition.y)
+        self.lastAdjustedYPosition = self.nextPosition.y
+        self.physicsBody!.velocity = CGVector()
     }
     
     func findATarget() {
@@ -97,11 +110,11 @@ class PlayerEagle: PlayerProjectile {
             if (object.type == EnvironmentObjectType.Enemy ||
                 object.type == EnvironmentObjectType.Obstacle) && object.isAlive && !object.isBeingTargeted && object.playerCanDamage {
                 if closestObject == nil {
-                    if object.position.x - 20 * ScaleBuddy.sharedInstance.getGameScaleAmount(false) > self.position.x && abs(self.position.y - object.position.y) <= self.range && abs(self.position.x - object.position.x) < (400 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)) {
+                    if object.position.x - (50 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)) > self.position.x && abs(self.position.y - object.position.y) <= self.range && abs(self.position.x - object.position.x) < self.range {
                         closestObject = object
                     }
                 } else {
-                    if object.position.x - 20 * ScaleBuddy.sharedInstance.getGameScaleAmount(false) > self.position.x && object.position.x < closestObject!.position.x && abs(self.position.y - object.position.y) <= self.range {
+                    if object.position.x - (50 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)) > self.position.x && object.position.x < closestObject!.position.x && abs(self.position.y - object.position.y) <= (self.range * ScaleBuddy.sharedInstance.getGameScaleAmount(false)) {
                         closestObject = object
                     }
                 }
@@ -116,29 +129,38 @@ class PlayerEagle: PlayerProjectile {
     }
     
     override func executeDeath() {
-        // Hide it
-        self.isHidden = true
-        
-        // Set bool back to go back to where we need to be
-        self.stopPositionAdjustment = false
-        self.needsToExecuteDeath = false
-        
-        // Set physics colls
-        self.physicsBody!.categoryBitMask = GameScene.deathCategory
-        self.physicsBody!.contactTestBitMask = 0
-        self.physicsBody!.collisionBitMask = 0
-        
-        if !self.attachedSkill!.cooldownInProgress {
-            self.putSkillOnCooldown()
+        if self.physicsBody!.categoryBitMask != GameScene.deathCategory {
+            // Hide it
+            self.isHidden = true
+            self.numberOfContacts = 0
+            self.homingObject = nil
+            self.removeAllActions()
+            
+            // Set bool back to go back to where we need to be
+            self.stopPositionAdjustment = false
+            self.needsToExecuteDeath = false
+            
+            // Set physics colls
+            self.physicsBody!.categoryBitMask = GameScene.deathCategory
+            self.physicsBody!.contactTestBitMask = 0
+            self.physicsBody!.collisionBitMask = 0
+            
+            if !self.attachedSkill!.cooldownInProgress {
+                self.putSkillOnCooldown()
+            }
         }
     }
     
-    func resetEagle() {
+    func reset() {
         // Unhide
         self.isHidden = false
         self.numberOfContacts = 1
         
-        // TODO consider fading in.
+        // Reset position
+        self.setFlyPosition()
+        
+        // Animation
+        self.run(self.walkAction)
         
         // Bring back collision
         self.setDefaultCollisionMasks()
@@ -151,8 +173,5 @@ class PlayerEagle: PlayerProjectile {
         
         // This is how long until it can be used again
         self.attachedSkill!.activeCooldownCount = self.attachedSkill!.maxCooldownCount
-        
-        // Make the button go to cooldown
-        self.gameScene!.getButtonWithSkill(self.attachedSkill!.upgrade)!.createCooldownButtonForCooldown()
     }
 }

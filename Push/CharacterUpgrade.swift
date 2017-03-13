@@ -168,4 +168,12 @@ enum CharacterUpgrade : String {
     case TimeFreeze4 = "timefreeze4"
     case TimeWarp = "timewarp"
     case TimeWarp2 = "timewarp2"
+    
+    // Fair Guardian
+    case FairyGuardian = "fairyguardian"
+    case FairyDefense1 = "fairydefense1"
+    case FairyDefense2 = "fairydefense2"
+    case FairyDefense3 = "fairydefense3"
+    case FairySize1 = "fairysize1"
+    case FairySize2 = "fairysize2"
 }
