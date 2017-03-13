@@ -24,6 +24,10 @@
 		370A169B1E74307D004A2FE0 /* level_69.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A169A1E74307D004A2FE0 /* level_69.plist */; };
 		370A169D1E7431E6004A2FE0 /* level_70.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A169C1E7431E6004A2FE0 /* level_70.plist */; };
 		370A169F1E743471004A2FE0 /* KingBolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370A169E1E743471004A2FE0 /* KingBolt.swift */; };
+		370A16A11E7460F4004A2FE0 /* level_71.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A16A01E7460F4004A2FE0 /* level_71.plist */; };
+		370A16A31E762F17004A2FE0 /* level_72.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A16A21E762F17004A2FE0 /* level_72.plist */; };
+		370A16A51E762F87004A2FE0 /* level_73.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A16A41E762F87004A2FE0 /* level_73.plist */; };
+		370A16A71E762FEA004A2FE0 /* level_74.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A16A61E762FEA004A2FE0 /* level_74.plist */; };
 		3713201D1D6BBF02001A1135 /* EnvironmentObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3713201C1D6BBF02001A1135 /* EnvironmentObjectType.swift */; };
 		371320231D6FB3D8001A1135 /* air.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3713201E1D6FB149001A1135 /* air.m4a */; };
 		371320241D6FB3D8001A1135 /* earth.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3713201F1D6FB149001A1135 /* earth.m4a */; };
@@ -480,6 +484,10 @@
 		370A169A1E74307D004A2FE0 /* level_69.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_69.plist; path = Levels/level_69.plist; sourceTree = "<group>"; };
 		370A169C1E7431E6004A2FE0 /* level_70.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_70.plist; path = Levels/level_70.plist; sourceTree = "<group>"; };
 		370A169E1E743471004A2FE0 /* KingBolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KingBolt.swift; sourceTree = "<group>"; };
+		370A16A01E7460F4004A2FE0 /* level_71.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_71.plist; path = Levels/level_71.plist; sourceTree = "<group>"; };
+		370A16A21E762F17004A2FE0 /* level_72.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_72.plist; path = Levels/level_72.plist; sourceTree = "<group>"; };
+		370A16A41E762F87004A2FE0 /* level_73.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_73.plist; path = Levels/level_73.plist; sourceTree = "<group>"; };
+		370A16A61E762FEA004A2FE0 /* level_74.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_74.plist; path = Levels/level_74.plist; sourceTree = "<group>"; };
 		3713201C1D6BBF02001A1135 /* EnvironmentObjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentObjectType.swift; sourceTree = "<group>"; };
 		3713201E1D6FB149001A1135 /* air.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = air.m4a; sourceTree = "<group>"; };
 		3713201F1D6FB149001A1135 /* earth.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = earth.m4a; sourceTree = "<group>"; };
@@ -1128,6 +1136,10 @@
 				370A16981E742EF7004A2FE0 /* level_68.plist */,
 				370A169A1E74307D004A2FE0 /* level_69.plist */,
 				370A169C1E7431E6004A2FE0 /* level_70.plist */,
+				370A16A01E7460F4004A2FE0 /* level_71.plist */,
+				370A16A21E762F17004A2FE0 /* level_72.plist */,
+				370A16A41E762F87004A2FE0 /* level_73.plist */,
+				370A16A61E762FEA004A2FE0 /* level_74.plist */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -2122,6 +2134,7 @@
 				37A38E781DD101DB00287FB2 /* __vungle.db in Resources */,
 				37A38E7D1DD101DB00287FB2 /* MPCloseBtn@3x.png in Resources */,
 				376CBA1D1CC10D5400BE2756 /* explode-3.caf in Resources */,
+				370A16A71E762FEA004A2FE0 /* level_74.plist in Resources */,
 				376CBA1E1CC10D5400BE2756 /* pow-1.caf in Resources */,
 				370A169B1E74307D004A2FE0 /* level_69.plist in Resources */,
 				376CBA0D1CC08B3800BE2756 /* action-2.caf in Resources */,
@@ -2150,6 +2163,7 @@
 				37A38E801DD101DB00287FB2 /* MPCloseButtonX@3x.png in Resources */,
 				37A38E8B1DD101DB00287FB2 /* MPUnmutedBtn@2x.png in Resources */,
 				376CB9F01CC0687300BE2756 /* collide-3.caf in Resources */,
+				370A16A51E762F87004A2FE0 /* level_73.plist in Resources */,
 				37A38E8D1DD101DB00287FB2 /* MRAID.bundle in Resources */,
 				376CBA581CCC714800BE2756 /* upgrades_cost.plist in Resources */,
 				376CB9F11CC0687300BE2756 /* collide-4.caf in Resources */,
@@ -2161,6 +2175,7 @@
 				373964141C664F780018C8C9 /* level_20.plist in Resources */,
 				373964331C664F780018C8C9 /* level_51.plist in Resources */,
 				37BAE67E1DD73FD600DD4ECC /* air2.atlas in Resources */,
+				370A16A11E7460F4004A2FE0 /* level_71.plist in Resources */,
 				3739643D1C664F780018C8C9 /* level_61.plist in Resources */,
 				373964361C664F780018C8C9 /* level_54.plist in Resources */,
 				373964481C664F910018C8C9 /* upgrades_monk.plist in Resources */,
@@ -2245,6 +2260,7 @@
 				37A38E8C1DD101DB00287FB2 /* MPUnmutedBtn@3x.png in Resources */,
 				373964001C664F780018C8C9 /* level_1.plist in Resources */,
 				373964291C664F780018C8C9 /* level_41.plist in Resources */,
+				370A16A31E762F17004A2FE0 /* level_72.plist in Resources */,
 				3739642A1C664F780018C8C9 /* level_42.plist in Resources */,
 				3739640D1C664F780018C8C9 /* level_14.plist in Resources */,
 				373964301C664F780018C8C9 /* level_48.plist in Resources */,

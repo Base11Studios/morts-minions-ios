@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>World</key>
+	<string>spirit</string>
+	<key>Story</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>here&apos;s the story, you&apos;re C_NAME, a C_ROLE.</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>warrior only story</string>
+			<key>Icon</key>
+			<string>tutorial_monk</string>
+			<key>Character</key>
+			<string>warrior</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>here&apos;s the story 3</string>
+			<key>Icon</key>
+			<string>tutorial_mage</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+	</array>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<integer>8100</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Wisp</string>
+		<key>Location</key>
+		<integer>7950</integer>
+		<key>Value1</key>
+		<real>0.65</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<integer>7500</integer>
+		<key>Value1</key>
+		<integer>70</integer>
+		<key>Value2</key>
+		<integer>300</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 2 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>BlackHole</string>
+		<key>Location</key>
+		<integer>7275</integer>
+		<key>Value1</key>
+		<integer>70</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>MeteorMaker</string>
+		<key>Location</key>
+		<integer>7200</integer>
+		<key>Value1</key>
+		<integer>200</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 2 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Ameba</string>
+		<key>Location</key>
+		<integer>7000</integer>
+		<key>Value1</key>
+		<integer>1</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 2 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>Ameba</string>
+		<key>Location</key>
+		<real>7000</real>
+		<key>Value1</key>
+		<integer>0</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<real>6675</real>
+		<key>Value1</key>
+		<integer>35</integer>
+		<key>Value2</key>
+		<integer>250</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>6300</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 2 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>BlackHole</string>
+		<key>Location</key>
+		<integer>6250</integer>
+		<key>Value1</key>
+		<integer>80</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<integer>6000</integer>
+		<key>Value1</key>
+		<integer>70</integer>
+		<key>Value2</key>
+		<integer>300</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>5700</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Darkness</string>
+		<key>Location</key>
+		<integer>5650</integer>
+		<key>Value1</key>
+		<integer>40</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>5600</integer>
+		<key>Value1</key>
+		<integer>125</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Mager</string>
+		<key>Location</key>
+		<integer>5350</integer>
+		<key>Value1</key>
+		<real>1.25</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>BlackHole</string>
+		<key>Location</key>
+		<integer>4850</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Creatch</string>
+		<key>Location</key>
+		<integer>4500</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<integer>4400</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Wisp</string>
+		<key>Location</key>
+		<integer>4050</integer>
+		<key>Value1</key>
+		<real>0.65</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>3700</integer>
+		<key>Value1</key>
+		<integer>125</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Mager</string>
+		<key>Location</key>
+		<integer>3650</integer>
+		<key>Value1</key>
+		<integer>1</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Wizard</string>
+		<key>Location</key>
+		<integer>3300</integer>
+		<key>Value1</key>
+		<real>1.5</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3 - 2 - 3 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Darkness</string>
+		<key>Location</key>
+		<integer>3000</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>BlackHole</string>
+		<key>Location</key>
+		<integer>2750</integer>
+		<key>Value1</key>
+		<integer>40</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<integer>2600</integer>
+		<key>Value1</key>
+		<integer>80</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Ameba</string>
+		<key>Location</key>
+		<integer>2450</integer>
+		<key>Value1</key>
+		<integer>0</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Ameba</string>
+		<key>Location</key>
+		<integer>2450</integer>
+		<key>Value1</key>
+		<integer>1</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>MeteorMaker</string>
+		<key>Location</key>
+		<integer>2250</integer>
+		<key>Value1</key>
+		<integer>200</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3 - 2 - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Darkness</string>
+		<key>Location</key>
+		<integer>2000</integer>
+		<key>Value1</key>
+		<integer>35</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>1800</integer>
+		<key>Value1</key>
+		<integer>110</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>1750</integer>
+		<key>Value1</key>
+		<integer>160</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>1750</integer>
+		<key>Value1</key>
+		<integer>60</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Wisp</string>
+		<key>Location</key>
+		<integer>1900</integer>
+		<key>Value1</key>
+		<real>0.65</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Creatch</string>
+		<key>Location</key>
+		<integer>1500</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Mager</string>
+		<key>Location</key>
+		<integer>1000</integer>
+		<key>Value1</key>
+		<integer>1</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>MeteorMaker</string>
+		<key>Location</key>
+		<integer>700</integer>
+		<key>Value1</key>
+		<integer>200</integer>
+	</dict>
+</dict>
+</plist>
