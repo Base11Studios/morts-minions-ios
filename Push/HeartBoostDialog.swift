@@ -85,9 +85,9 @@ class HeartBoostDialog: DialogBackground {
         
         self.descriptionNode?.paragraphWidth = width
         if GameData.sharedGameData.adsUnlocked {
-            self.descriptionNode?.text = "Get 1 extra heart for 1 hour by watching a video or using gems."
+            self.descriptionNode?.text = "Get 1 extra heart for 30 minutes by watching a video or using gems."
         } else {
-            self.descriptionNode?.text = "Get 1 extra heart for 20 minutes by watching a video or using gems."
+            self.descriptionNode?.text = "Get 1 extra heart for 10 minute by watching a video or using gems."
         }
         
         let height = self.iconBackgroundNode!.size.height + self.heartBoostGemsButton!.calculateAccumulatedFrame().size.height + self.buttonBuffer * 1 + /*self.videoCountdownBackground!.size.height +*/ self.buttonBuffer + self.closeButton!.size.height + self.descriptionNode!.calculateAccumulatedFrame().size.height
