@@ -428,7 +428,7 @@ class CharacterSkillScene : DBScene {
         self.selectedSkillIcon?.removeFromParent()
         let skillRow = self.scrollingNode!.selectedSkillNode!.parent as! ScrollingSkillNodeRow
         self.selectedSkillIcon = (skillRow.firstSkillNode!.nodeContent!.copy() as! SKSpriteNode)
-        self.selectedSkillIcon?.childNode(withName: "upgradelock")?.removeFromParent()
+        //self.selectedSkillIcon?.childNode(withName: "upgradelock")?.removeFromParent()
         
         //self.selectedSkillIcon!.size = CGSizeMake(self.selectedSkillIcon!.size.width * 1.2, self.selectedSkillIcon!.size.height * 1.2)
         self.selectedSkillIcon!.position = CGPoint(x: nodeBuffer + self.selectedSkillIcon!.size.width / 2 - self.selectedSkillBackground!.size.width/2, y: self.selectedSkillBackground!.size.height/2 - self.selectedSkillIcon!.size.height / 2 - nodeBuffer)

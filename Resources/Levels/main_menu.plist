@@ -6,21 +6,13 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>What&apos;s New in 1.1?</string>
+			<string>What&apos;s New in 1.1.1?</string>
 			<key>Description</key>
-			<string>- Limited time ALL HEROES ARE FREE!</string>
-			<key>Description2</key>
-			<string>- Stars and skills are easier to get!</string>
-			<key>Description3</key>
-			<string>- Jim&apos;s Charge replaced with Hurl Boulder.</string>
-			<key>Description4</key>
-			<string>- Trade gems for stars on your hero&apos;s skills page.</string>
-			<key>Description5</key>
-			<string>- Heart boosts to enhance your gameplay!</string>
+			<string>- Bug fixes - woo hoo!</string>
 			<key>Key</key>
 			<string>whats_new_main_menu</string>
 			<key>Version</key>
-			<integer>110</integer>
+			<integer>111</integer>
 			<key>FirstPlayDescription</key>
 			<string>Welcome to Mort&apos;s Minions! Select a hero and start your adventure today!</string>
 			<key>FirstPlayTitle</key>
