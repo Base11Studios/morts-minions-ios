@@ -9,6 +9,8 @@
 			<string>What&apos;s New in 1.1.1?</string>
 			<key>Description</key>
 			<string>- Bug fixes - woo hoo!</string>
+			<key>Description2</key>
+			<string>- Get more heart boosts</string>
 			<key>Key</key>
 			<string>whats_new_main_menu</string>
 			<key>Version</key>
