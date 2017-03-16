@@ -29,10 +29,6 @@
 		370A16A51E762F87004A2FE0 /* level_73.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A16A41E762F87004A2FE0 /* level_73.plist */; };
 		370A16A71E762FEA004A2FE0 /* level_74.plist in Resources */ = {isa = PBXBuildFile; fileRef = 370A16A61E762FEA004A2FE0 /* level_74.plist */; };
 		3713201D1D6BBF02001A1135 /* EnvironmentObjectType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3713201C1D6BBF02001A1135 /* EnvironmentObjectType.swift */; };
-		371320231D6FB3D8001A1135 /* air.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3713201E1D6FB149001A1135 /* air.m4a */; };
-		371320241D6FB3D8001A1135 /* earth.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 3713201F1D6FB149001A1135 /* earth.m4a */; };
-		371320251D6FB3D8001A1135 /* fire.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 371320201D6FB149001A1135 /* fire.m4a */; };
-		371320261D6FB3D8001A1135 /* menu.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 371320211D6FB149001A1135 /* menu.m4a */; };
 		371320271D6FB3D8001A1135 /* water.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 371320221D6FB149001A1135 /* water.m4a */; };
 		3717951B1BF93C3400C3D372 /* Currency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3717951A1BF93C3400C3D372 /* Currency.swift */; };
 		3717951D1BFD621700C3D372 /* UpgradeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3717951C1BFD621700C3D372 /* UpgradeType.swift */; };
@@ -396,6 +392,10 @@
 		37CE80081CA4B63A00B4DFA9 /* Trampoline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CE80071CA4B63A00B4DFA9 /* Trampoline.swift */; };
 		37CE800A1CA4BCE400B4DFA9 /* Steady.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CE80091CA4BCE400B4DFA9 /* Steady.swift */; };
 		37CE800C1CA4C18900B4DFA9 /* ExpandyCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CE800B1CA4C18900B4DFA9 /* ExpandyCloud.swift */; };
+		37CE870F1E789C9D0027EB28 /* air.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 37CE870B1E789A940027EB28 /* air.m4a */; };
+		37CE87101E789C9D0027EB28 /* earth.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 37CE870C1E789A940027EB28 /* earth.m4a */; };
+		37CE87111E789C9D0027EB28 /* fire.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 37CE870D1E789A940027EB28 /* fire.m4a */; };
+		37CE87121E789C9D0027EB28 /* menu.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 37CE870E1E789A940027EB28 /* menu.m4a */; };
 		37D2D1021C45EB3500B97691 /* CannonBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D2D1011C45EB3500B97691 /* CannonBall.swift */; };
 		37D2D1041C45EC7900B97691 /* Cannon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D2D1031C45EC7900B97691 /* Cannon.swift */; };
 		37D2D1071C4923DF00B97691 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3772FC041BCC388400A60E18 /* GameScene.swift */; };
@@ -490,10 +490,6 @@
 		370A16A41E762F87004A2FE0 /* level_73.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_73.plist; path = Levels/level_73.plist; sourceTree = "<group>"; };
 		370A16A61E762FEA004A2FE0 /* level_74.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_74.plist; path = Levels/level_74.plist; sourceTree = "<group>"; };
 		3713201C1D6BBF02001A1135 /* EnvironmentObjectType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnvironmentObjectType.swift; sourceTree = "<group>"; };
-		3713201E1D6FB149001A1135 /* air.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = air.m4a; sourceTree = "<group>"; };
-		3713201F1D6FB149001A1135 /* earth.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = earth.m4a; sourceTree = "<group>"; };
-		371320201D6FB149001A1135 /* fire.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = fire.m4a; sourceTree = "<group>"; };
-		371320211D6FB149001A1135 /* menu.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = menu.m4a; sourceTree = "<group>"; };
 		371320221D6FB149001A1135 /* water.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = water.m4a; sourceTree = "<group>"; };
 		3717951A1BF93C3400C3D372 /* Currency.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Currency.swift; sourceTree = "<group>"; };
 		3717951C1BFD621700C3D372 /* UpgradeType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeType.swift; sourceTree = "<group>"; };
@@ -865,6 +861,10 @@
 		37CE80071CA4B63A00B4DFA9 /* Trampoline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trampoline.swift; sourceTree = "<group>"; };
 		37CE80091CA4BCE400B4DFA9 /* Steady.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Steady.swift; sourceTree = "<group>"; };
 		37CE800B1CA4C18900B4DFA9 /* ExpandyCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandyCloud.swift; sourceTree = "<group>"; };
+		37CE870B1E789A940027EB28 /* air.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = air.m4a; sourceTree = "<group>"; };
+		37CE870C1E789A940027EB28 /* earth.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = earth.m4a; sourceTree = "<group>"; };
+		37CE870D1E789A940027EB28 /* fire.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = fire.m4a; sourceTree = "<group>"; };
+		37CE870E1E789A940027EB28 /* menu.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = menu.m4a; sourceTree = "<group>"; };
 		37D2D1011C45EB3500B97691 /* CannonBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CannonBall.swift; sourceTree = "<group>"; };
 		37D2D1031C45EC7900B97691 /* Cannon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cannon.swift; sourceTree = "<group>"; };
 		37DD89EB1C53378600588E38 /* Starfish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Starfish.swift; sourceTree = "<group>"; };
@@ -1844,10 +1844,10 @@
 				376CB9FC1CC085E000BE2756 /* action-1.caf */,
 				376CBA081CC08B2C00BE2756 /* action-2.caf */,
 				376CB9E01CC067E700BE2756 /* air-1.caf */,
-				3713201E1D6FB149001A1135 /* air.m4a */,
-				3713201F1D6FB149001A1135 /* earth.m4a */,
-				371320201D6FB149001A1135 /* fire.m4a */,
-				371320211D6FB149001A1135 /* menu.m4a */,
+				37CE870B1E789A940027EB28 /* air.m4a */,
+				37CE870C1E789A940027EB28 /* earth.m4a */,
+				37CE870D1E789A940027EB28 /* fire.m4a */,
+				37CE870E1E789A940027EB28 /* menu.m4a */,
 				371320221D6FB149001A1135 /* water.m4a */,
 				376CBA091CC08B2C00BE2756 /* bubble-1.caf */,
 				376CBA0A1CC08B2C00BE2756 /* burn-1.caf */,
@@ -2111,14 +2111,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37CE870F1E789C9D0027EB28 /* air.m4a in Resources */,
+				37CE87101E789C9D0027EB28 /* earth.m4a in Resources */,
+				37CE87111E789C9D0027EB28 /* fire.m4a in Resources */,
+				37CE87121E789C9D0027EB28 /* menu.m4a in Resources */,
 				37BAE8171DD73FD700DD4ECC /* projectiles2.atlas in Resources */,
-				371320231D6FB3D8001A1135 /* air.m4a in Resources */,
 				37A38E821DD101DB00287FB2 /* MPDAAIcon@2x.png in Resources */,
 				37A38E811DD101DB00287FB2 /* MPDAAIcon.png in Resources */,
-				371320241D6FB3D8001A1135 /* earth.m4a in Resources */,
-				371320251D6FB3D8001A1135 /* fire.m4a in Resources */,
 				37BAE81B1DD73FD700DD4ECC /* story-ignis2.atlas in Resources */,
-				371320261D6FB3D8001A1135 /* menu.m4a in Resources */,
 				374F900D1E21275E003613D5 /* spiritbackground2.atlas in Resources */,
 				37BAE8141DD73FD700DD4ECC /* playermage2.atlas in Resources */,
 				371320271D6FB3D8001A1135 /* water.m4a in Resources */,
