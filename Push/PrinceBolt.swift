@@ -8,7 +8,7 @@
 
 import Foundation
 
-class KingBolt : Projectile {
+class PrinceBolt : Projectile {
     var yGrowth: CGFloat = 0
     
     required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
@@ -32,13 +32,13 @@ class KingBolt : Projectile {
         self.maxHealth = 1
         self.health = self.maxHealth
         
-        self.walkSpeed = 400
+        self.walkSpeed = 300
         self.runSpeed = self.walkSpeed
         self.moveSpeed = self.walkSpeed
         
         // Damage
-        self.damage = 2
-        self.damageToShields = 2
+        self.damage = 1
+        self.damageToShields = 1
         
         // Rewards
         self.experience = 0

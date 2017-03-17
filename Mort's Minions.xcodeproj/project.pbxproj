@@ -431,6 +431,10 @@
 		37EF95891BD92DC200321B8B /* GamePauseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EF95881BD92DC200321B8B /* GamePauseButton.swift */; };
 		37EF958C1BD92F4C00321B8B /* GameResumeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EF958B1BD92F4C00321B8B /* GameResumeButton.swift */; };
 		37EF958E1BD92F5F00321B8B /* GameMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37EF958D1BD92F5F00321B8B /* GameMenuButton.swift */; };
+		37F31CB61E7B63EC0002A76A /* level_75.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CB51E7B63EC0002A76A /* level_75.plist */; };
+		37F31CB81E7B732C0002A76A /* PrinceTempus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F31CB71E7B732C0002A76A /* PrinceTempus.swift */; };
+		37F31CBA1E7B73810002A76A /* PrinceBolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F31CB91E7B73810002A76A /* PrinceBolt.swift */; };
+		37F31CBC1E7B798C0002A76A /* spirit.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CBB1E7B79540002A76A /* spirit.m4a */; };
 		37F518191D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F518181D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift */; };
 		37F8C2981C397418002FB339 /* GameTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2971C397418002FB339 /* GameTextures.swift */; };
 		37F8C2C21C3CA614002FB339 /* Crab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2C11C3CA613002FB339 /* Crab.swift */; };
@@ -901,6 +905,10 @@
 		37EF95881BD92DC200321B8B /* GamePauseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GamePauseButton.swift; sourceTree = "<group>"; };
 		37EF958B1BD92F4C00321B8B /* GameResumeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameResumeButton.swift; sourceTree = "<group>"; };
 		37EF958D1BD92F5F00321B8B /* GameMenuButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameMenuButton.swift; sourceTree = "<group>"; };
+		37F31CB51E7B63EC0002A76A /* level_75.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_75.plist; path = Levels/level_75.plist; sourceTree = "<group>"; };
+		37F31CB71E7B732C0002A76A /* PrinceTempus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinceTempus.swift; sourceTree = "<group>"; };
+		37F31CB91E7B73810002A76A /* PrinceBolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinceBolt.swift; sourceTree = "<group>"; };
+		37F31CBB1E7B79540002A76A /* spirit.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = spirit.m4a; sourceTree = "<group>"; };
 		37F518181D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWithShadowProtocol.swift; sourceTree = "<group>"; };
 		37F8C2971C397418002FB339 /* GameTextures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GameTextures.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		37F8C2C11C3CA613002FB339 /* Crab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crab.swift; sourceTree = "<group>"; };
@@ -1142,6 +1150,7 @@
 				370A16A21E762F17004A2FE0 /* level_72.plist */,
 				370A16A41E762F87004A2FE0 /* level_73.plist */,
 				370A16A61E762FEA004A2FE0 /* level_74.plist */,
+				37F31CB51E7B63EC0002A76A /* level_75.plist */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -1508,6 +1517,7 @@
 				372824371BC1BEDD00524DF7 /* Projectile.swift */,
 				374F90051E21217A003613D5 /* MageEnergyBall.swift */,
 				370A169E1E743471004A2FE0 /* KingBolt.swift */,
+				37F31CB91E7B73810002A76A /* PrinceBolt.swift */,
 				374F90061E21217A003613D5 /* WizardEnergyBall.swift */,
 				37688B591CA6C1220075E652 /* Lightning.swift */,
 				372824391BC1CF0000524DF7 /* FallingBomb.swift */,
@@ -1729,6 +1739,7 @@
 				374F90001E212169003613D5 /* Wizard.swift */,
 				37E198531BD06D6400AC5178 /* Mimic.swift */,
 				374F90141E246112003613D5 /* KingTempus.swift */,
+				37F31CB71E7B732C0002A76A /* PrinceTempus.swift */,
 				37E198551BD0781200AC5178 /* Ghost.swift */,
 				374F90101E21B56E003613D5 /* DarkEnergy.swift */,
 				374F900E1E21AF68003613D5 /* BlackHole.swift */,
@@ -1849,6 +1860,7 @@
 				37CE870D1E789A940027EB28 /* fire.m4a */,
 				37CE870E1E789A940027EB28 /* menu.m4a */,
 				371320221D6FB149001A1135 /* water.m4a */,
+				37F31CBB1E7B79540002A76A /* spirit.m4a */,
 				376CBA091CC08B2C00BE2756 /* bubble-1.caf */,
 				376CBA0A1CC08B2C00BE2756 /* burn-1.caf */,
 				376CBA021CC087FA00BE2756 /* buzz-1.caf */,
@@ -2111,6 +2123,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37F31CBC1E7B798C0002A76A /* spirit.m4a in Resources */,
 				37CE870F1E789C9D0027EB28 /* air.m4a in Resources */,
 				37CE87101E789C9D0027EB28 /* earth.m4a in Resources */,
 				37CE87111E789C9D0027EB28 /* fire.m4a in Resources */,
@@ -2258,6 +2271,7 @@
 				37BAE67F1DD73FD600DD4ECC /* airbackgrounds2.atlas in Resources */,
 				3739640A1C664F780018C8C9 /* level_11.plist in Resources */,
 				371CD9581BDEC3C200AE4975 /* LS.storyboard in Resources */,
+				37F31CB61E7B63EC0002A76A /* level_75.plist in Resources */,
 				373964381C664F780018C8C9 /* level_56.plist in Resources */,
 				37A38E8A1DD101DB00287FB2 /* MPUnmutedBtn.png in Resources */,
 				37A38E8C1DD101DB00287FB2 /* MPUnmutedBtn@3x.png in Resources */,
@@ -2517,6 +2531,7 @@
 				373F21981BE1A65A00934722 /* VerticalScrollingSkillNode.swift in Sources */,
 				375336721C8DEBC3009FE27E /* LoadingOverlay.swift in Sources */,
 				375319211D5BD198006FC9EE /* MultilineLabelWithShadow.swift in Sources */,
+				37F31CBA1E7B73810002A76A /* PrinceBolt.swift in Sources */,
 				37FF3E811C9DA2DA00A93FAD /* TextFormatter.swift in Sources */,
 				375741251CDC09CC00E040F2 /* DBSceneSkillsButton.swift in Sources */,
 				373F21891BE0D98C00934722 /* GameQuitButton.swift in Sources */,
@@ -2537,6 +2552,7 @@
 				37FF3E7D1C9B871900A93FAD /* GameChallengeOkButton.swift in Sources */,
 				374F90011E212169003613D5 /* Ameba.swift in Sources */,
 				37E8949D1CB323BA008788EF /* AppDelegate.swift in Sources */,
+				37F31CB81E7B732C0002A76A /* PrinceTempus.swift in Sources */,
 				37CE800C1CA4C18900B4DFA9 /* ExpandyCloud.swift in Sources */,
 				376CBA331CC2AFED00BE2756 /* PlayerDamageField.swift in Sources */,
 				376CBA561CCC03C000BE2756 /* CharacterPurchaseSuperstarButton.swift in Sources */,

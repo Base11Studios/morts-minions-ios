@@ -43,7 +43,7 @@ class PlayerFairy: PlayerProjectile {
     
     override func setupTraits() {
         // Add physics
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.4, height: self.size.height * 0.6), center: CGPoint(x: self.size.width * 0.0, y: self.size.height * 0.0))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.4, height: self.size.height * 0.75), center: CGPoint(x: self.size.width * 0.0, y: self.size.height * 0.0))
         
         self.setDefaultPhysicsBodyValues()
         
