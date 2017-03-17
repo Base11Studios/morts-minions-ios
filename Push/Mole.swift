@@ -71,8 +71,8 @@ class Mole : Enemy {
         super.attack(timeSinceLast, player: player)
         
         // If the player wasn't colliding with the ground but is now above the ground, collide
-        if self.position.y - self.size.height / 2 > self.groundYPosition && self.physicsBody!.collisionBitMask == GameScene.playerProjectileCategory | GameScene.playerCategory {
-            self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.groundCategory
+        if self.position.y - self.size.height / 2 > self.groundYPosition && self.physicsBody!.collisionBitMask == GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.playerPetCategory {
+            self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.groundCategory | GameScene.playerPetCategory
         }
         
         // The player is in sight of the enemy

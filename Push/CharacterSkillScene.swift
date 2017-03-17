@@ -84,6 +84,8 @@ class CharacterSkillScene : DBScene {
         
         // Level selector view ( this is the background & parent that everything is added to)
         self.skillSelectorBackground = ScaleBuddy.sharedInstance.getScreenAdjustedSpriteWithModifier("skill_prop_outline", textureAtlas: GameTextures.sharedInstance.uxMenuAtlas, modifier: 2.4)
+        self.skillSelectorBackground!.size = CGSize(width: self.skillSelectorBackground!.size.width, height: self.skillSelectorBackground!.size.height * 1.042)
+        
         self.skillSelector = SKSpriteNode(color: MerpColors.background, size: CGSize(width: self.skillSelectorBackground!.size.width - nodeBuffer * 1.5, height: self.skillSelectorBackground!.size.height - nodeBuffer * 1.3))
         
         //self.skillSelectorBackground = SKSpriteNode(color: UIColor(red: 60 / 255.0, green: 60 / 255.0, blue: 60 / 255.0, alpha: 1.0), size: CGSizeMake(self.skillSelector!.size.width + self.nodeBuffer * 2, self.skillSelector!.size.height + self.nodeBuffer * 2))

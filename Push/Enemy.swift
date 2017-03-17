@@ -102,8 +102,8 @@ class Enemy : EnvironmentObject {
         
         // Collisions
         self.physicsBody!.categoryBitMask = GameScene.enemyCategory
-        self.physicsBody!.contactTestBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.groundCategory | GameScene.transparentPlayerCategory
-        self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.groundCategory
+        self.physicsBody!.contactTestBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.groundCategory | GameScene.transparentPlayerCategory | GameScene.playerPetCategory
+        self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.groundCategory | GameScene.playerPetCategory
         
         // Physics Body settings
         self.physicsBody!.restitution = self.defaultRestitution

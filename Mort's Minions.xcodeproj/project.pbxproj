@@ -437,6 +437,9 @@
 		37F31CBC1E7B798C0002A76A /* spirit.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CBB1E7B79540002A76A /* spirit.m4a */; };
 		37F31CBE1E7C01590002A76A /* level_76.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CBD1E7C01590002A76A /* level_76.plist */; };
 		37F31CC01E7C03690002A76A /* level_77.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CBF1E7C03690002A76A /* level_77.plist */; };
+		37F31CC61E7C45B90002A76A /* level_78.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CC31E7C45B90002A76A /* level_78.plist */; };
+		37F31CC71E7C45B90002A76A /* level_79.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CC41E7C45B90002A76A /* level_79.plist */; };
+		37F31CC81E7C45B90002A76A /* level_80.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CC51E7C45B90002A76A /* level_80.plist */; };
 		37F518191D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F518181D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift */; };
 		37F8C2981C397418002FB339 /* GameTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2971C397418002FB339 /* GameTextures.swift */; };
 		37F8C2C21C3CA614002FB339 /* Crab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2C11C3CA613002FB339 /* Crab.swift */; };
@@ -913,6 +916,9 @@
 		37F31CBB1E7B79540002A76A /* spirit.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = spirit.m4a; sourceTree = "<group>"; };
 		37F31CBD1E7C01590002A76A /* level_76.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_76.plist; path = Levels/level_76.plist; sourceTree = "<group>"; };
 		37F31CBF1E7C03690002A76A /* level_77.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_77.plist; path = Levels/level_77.plist; sourceTree = "<group>"; };
+		37F31CC31E7C45B90002A76A /* level_78.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_78.plist; path = Levels/level_78.plist; sourceTree = "<group>"; };
+		37F31CC41E7C45B90002A76A /* level_79.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_79.plist; path = Levels/level_79.plist; sourceTree = "<group>"; };
+		37F31CC51E7C45B90002A76A /* level_80.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_80.plist; path = Levels/level_80.plist; sourceTree = "<group>"; };
 		37F518181D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWithShadowProtocol.swift; sourceTree = "<group>"; };
 		37F8C2971C397418002FB339 /* GameTextures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GameTextures.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		37F8C2C11C3CA613002FB339 /* Crab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crab.swift; sourceTree = "<group>"; };
@@ -1157,6 +1163,9 @@
 				37F31CB51E7B63EC0002A76A /* level_75.plist */,
 				37F31CBD1E7C01590002A76A /* level_76.plist */,
 				37F31CBF1E7C03690002A76A /* level_77.plist */,
+				37F31CC31E7C45B90002A76A /* level_78.plist */,
+				37F31CC41E7C45B90002A76A /* level_79.plist */,
+				37F31CC51E7C45B90002A76A /* level_80.plist */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -2185,6 +2194,7 @@
 				376CB9EF1CC0687300BE2756 /* collide-2.caf in Resources */,
 				37A38E801DD101DB00287FB2 /* MPCloseButtonX@3x.png in Resources */,
 				37A38E8B1DD101DB00287FB2 /* MPUnmutedBtn@2x.png in Resources */,
+				37F31CC61E7C45B90002A76A /* level_78.plist in Resources */,
 				376CB9F01CC0687300BE2756 /* collide-3.caf in Resources */,
 				370A16A51E762F87004A2FE0 /* level_73.plist in Resources */,
 				37A38E8D1DD101DB00287FB2 /* MRAID.bundle in Resources */,
@@ -2243,6 +2253,7 @@
 				373964111C664F780018C8C9 /* level_17.plist in Resources */,
 				3739642B1C664F780018C8C9 /* level_43.plist in Resources */,
 				3739641A1C664F780018C8C9 /* level_26.plist in Resources */,
+				37F31CC81E7C45B90002A76A /* level_80.plist in Resources */,
 				37BAE8211DD73FD700DD4ECC /* tutorial-terra2.atlas in Resources */,
 				37BAE6821DD73FD600DD4ECC /* buttonsmenu2.atlas in Resources */,
 				373964051C664F780018C8C9 /* level_6.plist in Resources */,
@@ -2313,6 +2324,7 @@
 				37300A941CD7FE4D009C3E87 /* main_menu.plist in Resources */,
 				373964281C664F780018C8C9 /* level_40.plist in Resources */,
 				37BAE8231DD73FD700DD4ECC /* ux2.atlas in Resources */,
+				37F31CC71E7C45B90002A76A /* level_79.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

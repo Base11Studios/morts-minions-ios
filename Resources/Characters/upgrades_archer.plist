@@ -647,7 +647,7 @@
 			<key>Description</key>
 			<string>Increases the fairy&apos;s size, allowing her to stop more danger.</string>
 			<key>Value</key>
-			<real>0.125</real>
+			<real>0.15</real>
 		</dict>
 		<dict>
 			<key>Name</key>
@@ -675,7 +675,7 @@
 			<key>Description</key>
 			<string>Further increases the fairy&apos;s size, allowing her to stop even more danger.</string>
 			<key>Value</key>
-			<real>0.1</real>
+			<real>0.15</real>
 		</dict>
 	</array>
 </array>

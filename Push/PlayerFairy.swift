@@ -17,6 +17,7 @@ class PlayerFairy: PlayerProjectile {
     var lastAdjustedYPosition: CGFloat = 0.0
     var range: CGFloat = 0
     var homingObject: EnvironmentObject?
+    var projectiles = Array<PlayerProjectile>()
     
     // Attached skills
     weak var attachedSkill: CharacterSkillDetails?
@@ -39,11 +40,34 @@ class PlayerFairy: PlayerProjectile {
         
         // Set scale
         self.setScale(CGFloat(attachedSkill.value))
+        
+        // Create shootbacks
+        for _ in 0 ..< Int(self.attachedSkill!.secondaryValue) * 5 {
+            // Create projectile
+            let projectile: PlayerArrow = PlayerArrow(gameScene: self.gameScene!)
+            
+            // We dont want this to get updated by gamescene so change the name which is the selector
+            projectile.name = "proj_dont_update"
+            projectile.type = EnvironmentObjectType.Ignored
+            projectile.isHidden = true
+            
+            // Set up initial location of projectile
+            projectile.position = CGPoint(x: 0, y: 0)
+            
+            projectile.zPosition = 9
+            
+            // Override
+            projectile.physicsBody!.categoryBitMask = GameScene.harmlessObjectCategory
+            
+            gameScene.worldView.addChild(projectile)
+            
+            self.projectiles.append(projectile)
+        }
     }
     
     override func setupTraits() {
         // Add physics
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.4, height: self.size.height * 0.75), center: CGPoint(x: self.size.width * 0.0, y: self.size.height * 0.0))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.4, height: self.size.height * 1.0), center: CGPoint(x: self.size.width * 0.0, y: self.size.height * 0.0))
         
         self.setDefaultPhysicsBodyValues()
         
@@ -54,6 +78,13 @@ class PlayerFairy: PlayerProjectile {
         
         // Acceleration
         self.velocityRate = 1.0 // used for movement calculation
+    }
+    
+    override func setDefaultCollisionMasks() {
+        // Collisions
+        self.physicsBody!.categoryBitMask = GameScene.playerPetCategory
+        self.physicsBody!.contactTestBitMask = GameScene.enemyCategory | GameScene.obstacleCategory | GameScene.projectileCategory
+        self.physicsBody!.collisionBitMask = 0
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -102,6 +133,7 @@ class PlayerFairy: PlayerProjectile {
         self.physicsBody!.velocity = CGVector()
     }
     
+    /*
     func findATarget() {
         var closestObject: EnvironmentObject?
         
@@ -126,7 +158,7 @@ class PlayerFairy: PlayerProjectile {
             self.homingObject = closestObject
             self.homingObject!.isBeingTargeted = true
         }
-    }
+    }*/
     
     override func executeDeath() {
         if self.physicsBody!.categoryBitMask != GameScene.deathCategory {
@@ -147,6 +179,28 @@ class PlayerFairy: PlayerProjectile {
             
             if !self.attachedSkill!.cooldownInProgress {
                 self.putSkillOnCooldown()
+            }
+            
+            // Shoot back
+            for i in 0 ..< Int(self.attachedSkill!.secondaryValue) {
+                let arrow: PlayerArrow = self.projectiles.popLast() as! PlayerArrow
+                
+                arrow.position = CGPoint(x: self.position.x, y: self!.position.y)
+                
+                // Change the name back to default so it receives updates
+                arrow.resetName()
+                
+                // Unhide it
+                arrow.isHidden = false
+                
+                // Set physics body back
+                arrow.physicsBody!.categoryBitMask = GameScene.playerProjectileCategory
+                
+                self.gameScene!.worldViewPlayerProjectiles.append(arrow)
+                
+                arrow.physicsBody!.applyImpulse(CGVector(dx: 8000.0, dy: 2000.0 * CGFloat(i)))
+                
+                self.playActionSound(action: SoundHelper.sharedInstance.projectileThrow)
             }
         }
     }

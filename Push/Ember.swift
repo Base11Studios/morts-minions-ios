@@ -70,8 +70,8 @@ class Ember : Enemy {
             self.physicsBody!.applyImpulse(CGVector(dx: 0, dy: (player.position.y - self.position.y) * 1200 / ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
             
             // Remove ground collision
-            self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory
-            self.physicsBody!.contactTestBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory
+            self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.playerPetCategory
+            self.physicsBody!.contactTestBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.playerPetCategory
             
             // Set the cooldown really high, this will be reset when the attack finishes
             self.attackCooldown = 100.0

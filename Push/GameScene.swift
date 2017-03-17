@@ -57,12 +57,13 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     static let playerCategory: UInt32 = 0x1 << 2
     static let transparentPlayerCategory: UInt32 = 0x1 << 3
     static let playerProjectileCategory: UInt32 = 0x1 << 4
-    static let enemyCategory: UInt32 = 0x1 << 5
-    static let obstacleCategory: UInt32 = 0x1 << 6
-    static let projectileCategory: UInt32 = 0x1 << 7
-    static let transparentEnemyCategory: UInt32 = 0x1 << 8
-    static let transparentObstacleCategory: UInt32 = 0x1 << 9
-    static let harmlessObjectCategory: UInt32 = 0x1 << 10
+    static let playerPetCategory: UInt32 = 0x1 << 5
+    static let enemyCategory: UInt32 = 0x1 << 6
+    static let obstacleCategory: UInt32 = 0x1 << 7
+    static let projectileCategory: UInt32 = 0x1 << 8
+    static let transparentEnemyCategory: UInt32 = 0x1 << 9
+    static let transparentObstacleCategory: UInt32 = 0x1 << 10
+    static let harmlessObjectCategory: UInt32 = 0x1 << 11
     
     // Z Positioning
     static let PLAYER_Z: CGFloat = 9
@@ -862,9 +863,25 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func checkLevelOver() {
-        // End the scene.
-        if self.player.position.x > self.totalLevelDistance || self.player.health <= 0 { // Player died
-            self.levelEnded = true
+        // 78+ has guys that go backwards so they may not be dead at the level end
+        if self.currentLevel > 77 {
+            var noTempus = true
+            
+            // Look for Prince or King
+            for envObject in self.worldViewEnvironmentObjects {
+                if (envObject is KingTempus || envObject is PrinceTempus) && envObject.isAlive {
+                    noTempus = false
+                }
+            }
+            
+            if (self.player.position.x > self.totalLevelDistance && noTempus) || self.player.health <= 0 {
+                self.levelEnded = true
+            }
+        } else {
+            // End the scene.
+            if self.player.position.x > self.totalLevelDistance || self.player.health <= 0 {
+                self.levelEnded = true
+            }
         }
     }
     
@@ -1287,6 +1304,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // Player Projectile and Environment Object
         else if (firstBody.categoryBitMask & GameScene.playerProjectileCategory) != 0 && ((secondBody.categoryBitMask & GameScene.obstacleCategory) != 0 || (secondBody.categoryBitMask & GameScene.enemyCategory) != 0) {
+            self.playerProjectileDidCollideWithEnvironmentObject(firstBody.node as! PlayerProjectile, object: secondBody.node as! EnvironmentObject)
+        }
+        
+        // Player Pet and Environment Object
+        else if (firstBody.categoryBitMask & GameScene.playerPetCategory) != 0 && ((secondBody.categoryBitMask & GameScene.obstacleCategory) != 0 || (secondBody.categoryBitMask & GameScene.enemyCategory) != 0 || (secondBody.categoryBitMask & GameScene.projectileCategory) != 0) {
             self.playerProjectileDidCollideWithEnvironmentObject(firstBody.node as! PlayerProjectile, object: secondBody.node as! EnvironmentObject)
         }
             
@@ -2061,22 +2083,22 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                         if GameData.sharedGameData.selectedCharacter == CharacterType.Archer {
                             description = description.replacingOccurrences(of: nameReplace, with: "May")
                             description = description.replacingOccurrences(of: roleReplace, with: "fearless Archer")
-                            description = description.replacingOccurrences(of: relationshipReplace, with: "sister")
+                            description = description.replacingOccurrences(of: relationshipReplace, with: "Sister")
                             iconName = iconName.replacingOccurrences(of: roleReplace, with: "archer")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Warrior {
                             description = description.replacingOccurrences(of: nameReplace, with: "Jim")
                             description = description.replacingOccurrences(of: roleReplace, with: "fearless Warrior")
-                            description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
+                            description = description.replacingOccurrences(of: relationshipReplace, with: "Brother")
                             iconName = iconName.replacingOccurrences(of: roleReplace, with: "warrior")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Mage {
                             description = description.replacingOccurrences(of: nameReplace, with: "Gary")
                             description = description.replacingOccurrences(of: roleReplace, with: "fearless Mage")
-                            description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
+                            description = description.replacingOccurrences(of: relationshipReplace, with: "Brother")
                             iconName = iconName.replacingOccurrences(of: roleReplace, with: "mage")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Monk {
                             description = description.replacingOccurrences(of: nameReplace, with: "Leonard")
                             description = description.replacingOccurrences(of: roleReplace, with: "fearless Monk")
-                            description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
+                            description = description.replacingOccurrences(of: relationshipReplace, with: "Brother")
                             iconName = iconName.replacingOccurrences(of: roleReplace, with: "monk")
                         }
                         

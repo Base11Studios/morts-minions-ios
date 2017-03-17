@@ -13,9 +13,9 @@ class PrinceBolt : Projectile {
     
     required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
 
-        super.init(scalar: scalar, imageName: "wizard_energy_000", textureAtlas: GameTextures.sharedInstance.projectilesAtlas, frameSpeed: 0.15, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
+        super.init(scalar: scalar, imageName: "mage_energy_000", textureAtlas: GameTextures.sharedInstance.projectilesAtlas, frameSpeed: 0.15, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
         
-        self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.projectilesAtlas, texturesNamed: "wizard_energy", frameStart: 0, frameEnd: 15), timePerFrame: 0.005, resize: true, restore: false))
+        self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.projectilesAtlas, texturesNamed: "mage_energy", frameStart: 0, frameEnd: 15), timePerFrame: 0.005, resize: true, restore: false))
     }
     
     required init?(coder aDecoder: NSCoder) {

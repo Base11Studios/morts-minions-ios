@@ -84,7 +84,7 @@ class Projectile : EnvironmentObject {
         
         // Collisions
         self.physicsBody!.categoryBitMask = GameScene.projectileCategory
-        self.physicsBody!.contactTestBitMask = GameScene.playerCategory | GameScene.groundCategory | GameScene.transparentPlayerCategory
+        self.physicsBody!.contactTestBitMask = GameScene.playerCategory | GameScene.groundCategory | GameScene.transparentPlayerCategory | GameScene.playerPetCategory
         self.physicsBody!.collisionBitMask = GameScene.groundCategory
         
         // Physics Body settings

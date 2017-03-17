@@ -8,31 +8,9 @@
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>here&apos;s the story, you&apos;re C_NAME, a C_ROLE.</string>
+			<string>You hear an eerie voice coming from the sky. “For your mistreatment of imals, I sentence you to an eternity of darkness. I am time, devourer of all things.”</string>
 			<key>Icon</key>
 			<string>tutorial_monk</string>
-			<key>Version</key>
-			<integer>1</integer>
-			<key>Type</key>
-			<string>Beginning</string>
-		</dict>
-		<dict>
-			<key>Description</key>
-			<string>warrior only story</string>
-			<key>Icon</key>
-			<string>tutorial_monk</string>
-			<key>Character</key>
-			<string>warrior</string>
-			<key>Version</key>
-			<integer>1</integer>
-			<key>Type</key>
-			<string>Beginning</string>
-		</dict>
-		<dict>
-			<key>Description</key>
-			<string>here&apos;s the story 3</string>
-			<key>Icon</key>
-			<string>tutorial_mage</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>

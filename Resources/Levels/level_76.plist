@@ -4,41 +4,6 @@
 <dict>
 	<key>World</key>
 	<string>spirit</string>
-	<key>Story</key>
-	<array>
-		<dict>
-			<key>Description</key>
-			<string>here&apos;s the story, you&apos;re C_NAME, a C_ROLE.</string>
-			<key>Icon</key>
-			<string>tutorial_monk</string>
-			<key>Version</key>
-			<integer>1</integer>
-			<key>Type</key>
-			<string>Beginning</string>
-		</dict>
-		<dict>
-			<key>Description</key>
-			<string>warrior only story</string>
-			<key>Icon</key>
-			<string>tutorial_monk</string>
-			<key>Character</key>
-			<string>warrior</string>
-			<key>Version</key>
-			<integer>1</integer>
-			<key>Type</key>
-			<string>Beginning</string>
-		</dict>
-		<dict>
-			<key>Description</key>
-			<string>here&apos;s the story 3</string>
-			<key>Icon</key>
-			<string>tutorial_mage</string>
-			<key>Version</key>
-			<integer>1</integer>
-			<key>Type</key>
-			<string>Beginning</string>
-		</dict>
-	</array>
 	<key>EnvironmentObject - 4 - 2</key>
 	<dict>
 		<key>Object</key>

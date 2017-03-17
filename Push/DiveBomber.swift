@@ -68,8 +68,8 @@ class DiveBomber : Enemy {
             self.physicsBody!.applyImpulse(CGVector(dx: 0, dy: (player.position.y - self.position.y) * 1200 / ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
             
             // Remove ground collision
-            self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory
-            self.physicsBody!.contactTestBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory
+            self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.playerPetCategory
+            self.physicsBody!.contactTestBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.playerPetCategory
             
             // Update action
             self.run(self.fightAction)

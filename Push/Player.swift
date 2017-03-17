@@ -1545,34 +1545,6 @@ class Player : SKSpriteNode {
                 skill.skillIsActive = true
                 skill.activeLength = 10000
             }
-        /*case .Fireball:
-            
-            // Set the skill to cooldown
-            skill.cooldownInProgress = true
-            
-            // This is how long until it can be used again
-            skill.activeCooldownCount = skill.maxCooldownCount
-            
-            // 2 - Set up initial location of projectile
-            let projectile: PlayerProjectile = PlayerProjectile(texture: GameTextures.sharedInstance.playerAtlas.textureNamed("fireball_000"))
-            projectile.name = "playerProjectile"
-            projectile.damage = Int(skill.value)
-            projectile.position = CGPoint(x: self.position.x, y: self.position.y)
-            projectile.xScale = -1.0 // flip on horz axis
-            
-            // Setup physics for projectile
-            projectile.physicsBody = SKPhysicsBody(rectangleOf: projectile.size)
-            projectile.physicsBody!.isDynamic = true
-            projectile.physicsBody!.categoryBitMask = GameScene.playerProjectileCategory
-            projectile.physicsBody!.contactTestBitMask = GameScene.enemyCategory | GameScene.obstacleCategory
-            projectile.physicsBody!.collisionBitMask = GameScene.enemyCategory | GameScene.obstacleCategory
-            projectile.physicsBody!.usesPreciseCollisionDetection = OptimizerBuddy.sharedInstance.usePreciseCollisionDetection()
-            projectile.physicsBody!.affectedByGravity = false
-            
-            // 5 - OK to add now - we've double checked position
-            self.gameScene!.worldViewPlayerProjectiles.append(projectile)
-            self.worldView!.addChild(projectile)
-            projectile.physicsBody!.applyImpulse(CGVector(dx: 22.0, dy: 0.0))*/
         case .Charge:
             // Set the skill to cooldown // TODO move this into a function
             skill.cooldownInProgress = true
