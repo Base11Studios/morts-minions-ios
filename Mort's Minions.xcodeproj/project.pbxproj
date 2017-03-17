@@ -435,6 +435,8 @@
 		37F31CB81E7B732C0002A76A /* PrinceTempus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F31CB71E7B732C0002A76A /* PrinceTempus.swift */; };
 		37F31CBA1E7B73810002A76A /* PrinceBolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F31CB91E7B73810002A76A /* PrinceBolt.swift */; };
 		37F31CBC1E7B798C0002A76A /* spirit.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CBB1E7B79540002A76A /* spirit.m4a */; };
+		37F31CBE1E7C01590002A76A /* level_76.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CBD1E7C01590002A76A /* level_76.plist */; };
+		37F31CC01E7C03690002A76A /* level_77.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CBF1E7C03690002A76A /* level_77.plist */; };
 		37F518191D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F518181D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift */; };
 		37F8C2981C397418002FB339 /* GameTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2971C397418002FB339 /* GameTextures.swift */; };
 		37F8C2C21C3CA614002FB339 /* Crab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2C11C3CA613002FB339 /* Crab.swift */; };
@@ -909,6 +911,8 @@
 		37F31CB71E7B732C0002A76A /* PrinceTempus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinceTempus.swift; sourceTree = "<group>"; };
 		37F31CB91E7B73810002A76A /* PrinceBolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrinceBolt.swift; sourceTree = "<group>"; };
 		37F31CBB1E7B79540002A76A /* spirit.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = spirit.m4a; sourceTree = "<group>"; };
+		37F31CBD1E7C01590002A76A /* level_76.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_76.plist; path = Levels/level_76.plist; sourceTree = "<group>"; };
+		37F31CBF1E7C03690002A76A /* level_77.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_77.plist; path = Levels/level_77.plist; sourceTree = "<group>"; };
 		37F518181D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWithShadowProtocol.swift; sourceTree = "<group>"; };
 		37F8C2971C397418002FB339 /* GameTextures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GameTextures.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		37F8C2C11C3CA613002FB339 /* Crab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crab.swift; sourceTree = "<group>"; };
@@ -1151,6 +1155,8 @@
 				370A16A41E762F87004A2FE0 /* level_73.plist */,
 				370A16A61E762FEA004A2FE0 /* level_74.plist */,
 				37F31CB51E7B63EC0002A76A /* level_75.plist */,
+				37F31CBD1E7C01590002A76A /* level_76.plist */,
+				37F31CBF1E7C03690002A76A /* level_77.plist */,
 			);
 			name = Levels;
 			sourceTree = "<group>";
@@ -2168,6 +2174,7 @@
 				376CBA001CC085F700BE2756 /* wind-1.caf in Resources */,
 				37BAE8111DD73FD700DD4ECC /* fire2.atlas in Resources */,
 				376CBA011CC085F700BE2756 /* wind-2.caf in Resources */,
+				37F31CC01E7C03690002A76A /* level_77.plist in Resources */,
 				376CB9FA1CC083CB00BE2756 /* ogre-1.caf in Resources */,
 				376CB9FB1CC083CB00BE2756 /* zoom-1.caf in Resources */,
 				376CB9EA1CC0687300BE2756 /* air-1.caf in Resources */,
@@ -2245,6 +2252,7 @@
 				37A38E901DD101DB00287FB2 /* UnityAds.bundle in Resources */,
 				373964191C664F780018C8C9 /* level_25.plist in Resources */,
 				3739643C1C664F780018C8C9 /* level_60.plist in Resources */,
+				37F31CBE1E7C01590002A76A /* level_76.plist in Resources */,
 				373964031C664F780018C8C9 /* level_4.plist in Resources */,
 				373964251C664F780018C8C9 /* level_37.plist in Resources */,
 				37BAE6811DD73FD600DD4ECC /* buttonsgame2.atlas in Resources */,
