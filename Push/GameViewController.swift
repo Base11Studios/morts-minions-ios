@@ -10,8 +10,8 @@ import Foundation
 import GameKit
 import AVFoundation
 import LocalAuthentication
-//import GoogleMobileAds
-import Appodeal
+import GoogleMobileAds
+//import Appodeal
 
 class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*AppodealInterstitialDelegate,*/ AppodealRewardedVideoDelegate/*, MPInterstitialAdControllerDelegate, MPRewardedVideoDelegate*/ {
     //var loadingScene: LoadingScene
@@ -702,10 +702,10 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
     }
     
     func videoAdReady() -> Bool {
-        return Appodeal.isReadyForShow(with: AppodealShowStyle.rewardedVideo)
+        //return Appodeal.isReadyForShow(with: AppodealShowStyle.rewardedVideo)
         //return MPRewardedVideo.hasAdAvailable(forAdUnitID: REWARD_AD_ID)
         //return Chartboost.hasRewardedVideo(CBLocationGameOver)
-        //return GADRewardBasedVideoAd.sharedInstance().isReady
+        return GADRewardBasedVideoAd.sharedInstance().isReady
     }
     
     func showRewardedVideo(location: String) {
@@ -715,7 +715,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
         self.dismissingVideo = false
         
         if self.videoAdReady() {
-            Appodeal.showAd(AppodealShowStyle.rewardedVideo, rootViewController: self)
+            //Appodeal.showAd(AppodealShowStyle.rewardedVideo, rootViewController: self)
+            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
         }
         /*
         if MPRewardedVideo.hasAdAvailable(forAdUnitID: REWARD_AD_ID) {
@@ -787,14 +788,15 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
     */
     func cacheRewardedVideo() {
         if !self.videoAdReady() {
-            Appodeal.cacheAd(AppodealAdType.rewardedVideo)
+            //Appodeal.cacheAd(AppodealAdType.rewardedVideo)
             //MPRewardedVideo.loadAd(withAdUnitID: REWARD_AD_ID, withMediationSettings: [])
+            
+            let request = GADRequest() // Requests test ads on test devices.
+            
+            request.testDevices = ["fa25ccf46baf21a9189bbb36e020a8ef"]
+            GADRewardBasedVideoAd.sharedInstance().load(request, withAdUnitID: "ca-app-pub-4505737160765142/2684998717")
         }
-        /*let request = GADRequest()
-        // Requests test ads on test devices.
 
-        request.testDevices = ["fa25ccf46baf21a9189bbb36e020a8ef"]
-        GADRewardBasedVideoAd.sharedInstance().load(request, withAdUnitID: "ca-app-pub-4505737160765142/2684998717")*/
         //Chartboost.cacheRewardedVideo(CBLocationGameOver)
     }
     
@@ -899,7 +901,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
     
     // Or will appear?
     //func rewardedVideoAdDidAppear(forAdUnitID adUnitID: String!) {
-    func rewardedVideoDidPresent(){
+    func rewardBasedVideoAdDidOpen() {
         // Remove the loading dialog
         //self.dismissLoadingDialog() Shouldn't need anymore
         
@@ -910,7 +912,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
     }
     
     //func rewardedVideoAdShouldReward(forAdUnitID adUnitID: String!, reward: MPRewardedVideoReward!) {
-    func rewardedVideoDidFinish(_ rewardAmount: UInt, name rewardName: String!){
+    func rewardBasedVideoAdDidClose(){
         self.endVideoSuccessfully()
     }
     
@@ -925,13 +927,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
         }
     }
     
-    /* Don't have this one for Appodeal
-    func rewardedVideoAdDidExpire(forAdUnitID adUnitID: String!) {
-        self.cacheRewardedVideo()
-    }*/
-    
     //func rewardedVideoAdDidReceiveTapEvent(forAdUnitID adUnitID: String!) {
-    func rewardedVideoDidClick(){
+    func rewardBasedVideoAdWillLeaveApplication(){
         // Store that the video was completed.
         if self.presentingVideo && !self.completedVideo {
             self.completedVideo = true

@@ -285,37 +285,6 @@
 		379FB9861CA9E1F70026F0B7 /* Lungey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FB9851CA9E1F70026F0B7 /* Lungey.swift */; };
 		379FB9881CB015D40026F0B7 /* FirePole.swift in Sources */ = {isa = PBXBuildFile; fileRef = 379FB9871CB015D40026F0B7 /* FirePole.swift */; };
 		37A0481C1CE170360015E4C8 /* HeartBoostDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A0481B1CE170360015E4C8 /* HeartBoostDialog.swift */; };
-		37A38E781DD101DB00287FB2 /* __vungle.db in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E591DD101DB00287FB2 /* __vungle.db */; };
-		37A38E791DD101DB00287FB2 /* Appodeal.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E5A1DD101DB00287FB2 /* Appodeal.bundle */; };
-		37A38E7A1DD101DB00287FB2 /* MPAdBrowserController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E5B1DD101DB00287FB2 /* MPAdBrowserController.xib */; };
-		37A38E7B1DD101DB00287FB2 /* MPCloseBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E5C1DD101DB00287FB2 /* MPCloseBtn.png */; };
-		37A38E7C1DD101DB00287FB2 /* MPCloseBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E5D1DD101DB00287FB2 /* MPCloseBtn@2x.png */; };
-		37A38E7D1DD101DB00287FB2 /* MPCloseBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E5E1DD101DB00287FB2 /* MPCloseBtn@3x.png */; };
-		37A38E7E1DD101DB00287FB2 /* MPCloseButtonX.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E5F1DD101DB00287FB2 /* MPCloseButtonX.png */; };
-		37A38E7F1DD101DB00287FB2 /* MPCloseButtonX@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E601DD101DB00287FB2 /* MPCloseButtonX@2x.png */; };
-		37A38E801DD101DB00287FB2 /* MPCloseButtonX@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E611DD101DB00287FB2 /* MPCloseButtonX@3x.png */; };
-		37A38E811DD101DB00287FB2 /* MPDAAIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E621DD101DB00287FB2 /* MPDAAIcon.png */; };
-		37A38E821DD101DB00287FB2 /* MPDAAIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E631DD101DB00287FB2 /* MPDAAIcon@2x.png */; };
-		37A38E831DD101DB00287FB2 /* MPDAAIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E641DD101DB00287FB2 /* MPDAAIcon@3x.png */; };
-		37A38E841DD101DB00287FB2 /* MPMutedBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E651DD101DB00287FB2 /* MPMutedBtn.png */; };
-		37A38E851DD101DB00287FB2 /* MPMutedBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E661DD101DB00287FB2 /* MPMutedBtn@2x.png */; };
-		37A38E861DD101DB00287FB2 /* MPMutedBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E671DD101DB00287FB2 /* MPMutedBtn@3x.png */; };
-		37A38E871DD101DB00287FB2 /* MPPlayBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E681DD101DB00287FB2 /* MPPlayBtn.png */; };
-		37A38E881DD101DB00287FB2 /* MPPlayBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E691DD101DB00287FB2 /* MPPlayBtn@2x.png */; };
-		37A38E891DD101DB00287FB2 /* MPPlayBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E6A1DD101DB00287FB2 /* MPPlayBtn@3x.png */; };
-		37A38E8A1DD101DB00287FB2 /* MPUnmutedBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E6B1DD101DB00287FB2 /* MPUnmutedBtn.png */; };
-		37A38E8B1DD101DB00287FB2 /* MPUnmutedBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E6C1DD101DB00287FB2 /* MPUnmutedBtn@2x.png */; };
-		37A38E8C1DD101DB00287FB2 /* MPUnmutedBtn@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E6D1DD101DB00287FB2 /* MPUnmutedBtn@3x.png */; };
-		37A38E8D1DD101DB00287FB2 /* MRAID.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E6E1DD101DB00287FB2 /* MRAID.bundle */; };
-		37A38E8E1DD101DB00287FB2 /* StartApp.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E6F1DD101DB00287FB2 /* StartApp.bundle */; };
-		37A38E8F1DD101DB00287FB2 /* TapjoyResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E701DD101DB00287FB2 /* TapjoyResources.bundle */; };
-		37A38E901DD101DB00287FB2 /* UnityAds.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E711DD101DB00287FB2 /* UnityAds.bundle */; };
-		37A38E911DD101DB00287FB2 /* vg_close.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E721DD101DB00287FB2 /* vg_close.png */; };
-		37A38E921DD101DB00287FB2 /* vg_cta.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E731DD101DB00287FB2 /* vg_cta.png */; };
-		37A38E931DD101DB00287FB2 /* vg_mute_off.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E741DD101DB00287FB2 /* vg_mute_off.png */; };
-		37A38E941DD101DB00287FB2 /* vg_mute_on.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E751DD101DB00287FB2 /* vg_mute_on.png */; };
-		37A38E951DD101DB00287FB2 /* vg_privacy.png in Resources */ = {isa = PBXBuildFile; fileRef = 37A38E761DD101DB00287FB2 /* vg_privacy.png */; };
-		37A38E971DD101F200287FB2 /* Appodeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37A38E961DD101F200287FB2 /* Appodeal.framework */; };
 		37B567951DA5A9520013A4AC /* TradeMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B567941DA5A9520013A4AC /* TradeMenu.swift */; };
 		37B567981DA6D0780013A4AC /* TradeBackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B567971DA6D0780013A4AC /* TradeBackButton.swift */; };
 		37B5679C1DA6D1E50013A4AC /* CharacterTradeButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5679B1DA6D1E50013A4AC /* CharacterTradeButton.swift */; };
@@ -368,6 +337,8 @@
 		37CE80081CA4B63A00B4DFA9 /* Trampoline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CE80071CA4B63A00B4DFA9 /* Trampoline.swift */; };
 		37CE800A1CA4BCE400B4DFA9 /* Steady.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CE80091CA4BCE400B4DFA9 /* Steady.swift */; };
 		37CE800C1CA4C18900B4DFA9 /* ExpandyCloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37CE800B1CA4C18900B4DFA9 /* ExpandyCloud.swift */; };
+		37CE87141E7AB1430027EB28 /* Chartboost.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CE87131E7AB1430027EB28 /* Chartboost.framework */; };
+		37CE87161E7AB35B0027EB28 /* GoogleMobileAds.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37CE87151E7AB35B0027EB28 /* GoogleMobileAds.framework */; };
 		37D2D1021C45EB3500B97691 /* CannonBall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D2D1011C45EB3500B97691 /* CannonBall.swift */; };
 		37D2D1041C45EC7900B97691 /* Cannon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D2D1031C45EC7900B97691 /* Cannon.swift */; };
 		37D2D1071C4923DF00B97691 /* GameScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3772FC041BCC388400A60E18 /* GameScene.swift */; };
@@ -414,7 +385,6 @@
 		37F8C2CF1C40A986002FB339 /* BubbleMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2CE1C40A985002FB339 /* BubbleMaker.swift */; };
 		37F8C2D11C40AB74002FB339 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2D01C40AB74002FB339 /* Bubble.swift */; };
 		37F8C2DB1C40BA2C002FB339 /* SpikePlant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2DA1C40BA2C002FB339 /* SpikePlant.swift */; };
-		37FDFF451DB2DCA300CF5EF4 /* Appodeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 37FDFF241DB2DCA300CF5EF4 /* Appodeal.framework */; };
 		37FF3E681C958C7A00A93FAD /* CloudDataDialog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FF3E671C958C7A00A93FAD /* CloudDataDialog.swift */; };
 		37FF3E6C1C958CDA00A93FAD /* CloudDataCloudButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FF3E6A1C958CDA00A93FAD /* CloudDataCloudButton.swift */; };
 		37FF3E6D1C958CDA00A93FAD /* CloudDataLocalButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37FF3E6B1C958CDA00A93FAD /* CloudDataLocalButton.swift */; };
@@ -726,37 +696,6 @@
 		379FB9851CA9E1F70026F0B7 /* Lungey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lungey.swift; sourceTree = "<group>"; };
 		379FB9871CB015D40026F0B7 /* FirePole.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FirePole.swift; sourceTree = "<group>"; };
 		37A0481B1CE170360015E4C8 /* HeartBoostDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeartBoostDialog.swift; sourceTree = "<group>"; };
-		37A38E591DD101DB00287FB2 /* __vungle.db */ = {isa = PBXFileReference; lastKnownFileType = file; path = __vungle.db; sourceTree = "<group>"; };
-		37A38E5A1DD101DB00287FB2 /* Appodeal.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Appodeal.bundle; sourceTree = "<group>"; };
-		37A38E5B1DD101DB00287FB2 /* MPAdBrowserController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MPAdBrowserController.xib; sourceTree = "<group>"; };
-		37A38E5C1DD101DB00287FB2 /* MPCloseBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPCloseBtn.png; sourceTree = "<group>"; };
-		37A38E5D1DD101DB00287FB2 /* MPCloseBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseBtn@2x.png"; sourceTree = "<group>"; };
-		37A38E5E1DD101DB00287FB2 /* MPCloseBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseBtn@3x.png"; sourceTree = "<group>"; };
-		37A38E5F1DD101DB00287FB2 /* MPCloseButtonX.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPCloseButtonX.png; sourceTree = "<group>"; };
-		37A38E601DD101DB00287FB2 /* MPCloseButtonX@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseButtonX@2x.png"; sourceTree = "<group>"; };
-		37A38E611DD101DB00287FB2 /* MPCloseButtonX@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPCloseButtonX@3x.png"; sourceTree = "<group>"; };
-		37A38E621DD101DB00287FB2 /* MPDAAIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPDAAIcon.png; sourceTree = "<group>"; };
-		37A38E631DD101DB00287FB2 /* MPDAAIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPDAAIcon@2x.png"; sourceTree = "<group>"; };
-		37A38E641DD101DB00287FB2 /* MPDAAIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPDAAIcon@3x.png"; sourceTree = "<group>"; };
-		37A38E651DD101DB00287FB2 /* MPMutedBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPMutedBtn.png; sourceTree = "<group>"; };
-		37A38E661DD101DB00287FB2 /* MPMutedBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPMutedBtn@2x.png"; sourceTree = "<group>"; };
-		37A38E671DD101DB00287FB2 /* MPMutedBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPMutedBtn@3x.png"; sourceTree = "<group>"; };
-		37A38E681DD101DB00287FB2 /* MPPlayBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPPlayBtn.png; sourceTree = "<group>"; };
-		37A38E691DD101DB00287FB2 /* MPPlayBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPPlayBtn@2x.png"; sourceTree = "<group>"; };
-		37A38E6A1DD101DB00287FB2 /* MPPlayBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPPlayBtn@3x.png"; sourceTree = "<group>"; };
-		37A38E6B1DD101DB00287FB2 /* MPUnmutedBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MPUnmutedBtn.png; sourceTree = "<group>"; };
-		37A38E6C1DD101DB00287FB2 /* MPUnmutedBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPUnmutedBtn@2x.png"; sourceTree = "<group>"; };
-		37A38E6D1DD101DB00287FB2 /* MPUnmutedBtn@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "MPUnmutedBtn@3x.png"; sourceTree = "<group>"; };
-		37A38E6E1DD101DB00287FB2 /* MRAID.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MRAID.bundle; sourceTree = "<group>"; };
-		37A38E6F1DD101DB00287FB2 /* StartApp.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = StartApp.bundle; sourceTree = "<group>"; };
-		37A38E701DD101DB00287FB2 /* TapjoyResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = TapjoyResources.bundle; sourceTree = "<group>"; };
-		37A38E711DD101DB00287FB2 /* UnityAds.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = UnityAds.bundle; sourceTree = "<group>"; };
-		37A38E721DD101DB00287FB2 /* vg_close.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_close.png; sourceTree = "<group>"; };
-		37A38E731DD101DB00287FB2 /* vg_cta.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_cta.png; sourceTree = "<group>"; };
-		37A38E741DD101DB00287FB2 /* vg_mute_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_mute_off.png; sourceTree = "<group>"; };
-		37A38E751DD101DB00287FB2 /* vg_mute_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_mute_on.png; sourceTree = "<group>"; };
-		37A38E761DD101DB00287FB2 /* vg_privacy.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vg_privacy.png; sourceTree = "<group>"; };
-		37A38E961DD101F200287FB2 /* Appodeal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Appodeal.framework; sourceTree = "<group>"; };
 		37B567941DA5A9520013A4AC /* TradeMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeMenu.swift; sourceTree = "<group>"; };
 		37B567971DA6D0780013A4AC /* TradeBackButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TradeBackButton.swift; sourceTree = "<group>"; };
 		37B5679B1DA6D1E50013A4AC /* CharacterTradeButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CharacterTradeButton.swift; sourceTree = "<group>"; };
@@ -809,6 +748,8 @@
 		37CE80071CA4B63A00B4DFA9 /* Trampoline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trampoline.swift; sourceTree = "<group>"; };
 		37CE80091CA4BCE400B4DFA9 /* Steady.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Steady.swift; sourceTree = "<group>"; };
 		37CE800B1CA4C18900B4DFA9 /* ExpandyCloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandyCloud.swift; sourceTree = "<group>"; };
+		37CE87131E7AB1430027EB28 /* Chartboost.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Chartboost.framework; path = Resources/Frameworks/Chartboost.framework; sourceTree = "<group>"; };
+		37CE87151E7AB35B0027EB28 /* GoogleMobileAds.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GoogleMobileAds.framework; path = Resources/Frameworks/Firebase/AdMob/GoogleMobileAds.framework; sourceTree = "<group>"; };
 		37D2D1011C45EB3500B97691 /* CannonBall.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CannonBall.swift; sourceTree = "<group>"; };
 		37D2D1031C45EC7900B97691 /* Cannon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cannon.swift; sourceTree = "<group>"; };
 		37DD89EB1C53378600588E38 /* Starfish.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Starfish.swift; sourceTree = "<group>"; };
@@ -856,7 +797,6 @@
 		37F8C2CE1C40A985002FB339 /* BubbleMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleMaker.swift; sourceTree = "<group>"; };
 		37F8C2D01C40AB74002FB339 /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		37F8C2DA1C40BA2C002FB339 /* SpikePlant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpikePlant.swift; sourceTree = "<group>"; };
-		37FDFF241DB2DCA300CF5EF4 /* Appodeal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Appodeal.framework; path = "Resources/Frameworks/Appodeal-1.3.0-fat/Appodeal.framework"; sourceTree = "<group>"; };
 		37FF3E671C958C7A00A93FAD /* CloudDataDialog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudDataDialog.swift; sourceTree = "<group>"; };
 		37FF3E6A1C958CDA00A93FAD /* CloudDataCloudButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudDataCloudButton.swift; sourceTree = "<group>"; };
 		37FF3E6B1C958CDA00A93FAD /* CloudDataLocalButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudDataLocalButton.swift; sourceTree = "<group>"; };
@@ -888,6 +828,7 @@
 				374A11B31DA14A8C00523102 /* MessageUI.framework in Frameworks */,
 				3762650F1D9FE38F00981E41 /* MediaPlayer.framework in Frameworks */,
 				372DF1DA1DB3A24F00523D20 /* libxml2.2.tbd in Frameworks */,
+				37CE87161E7AB35B0027EB28 /* GoogleMobileAds.framework in Frameworks */,
 				376267DA1D9FE6B400981E41 /* libsqlite3.tbd in Frameworks */,
 				372DF1D91DB3A23C00523D20 /* libc++.tbd in Frameworks */,
 				374A11AF1DA14A7B00523102 /* EventKit.framework in Frameworks */,
@@ -897,17 +838,16 @@
 				372DF1D51DB3A20100523D20 /* CoreImage.framework in Frameworks */,
 				372DF1D31DB3A1F600523D20 /* CoreFoundation.framework in Frameworks */,
 				376267D61D9FE69300981E41 /* CFNetwork.framework in Frameworks */,
+				37CE87141E7AB1430027EB28 /* Chartboost.framework in Frameworks */,
 				372359001D18A07600F117B5 /* AudioToolbox.framework in Frameworks */,
 				3762650B1D9FE36E00981E41 /* AdSupport.framework in Frameworks */,
 				374A11B61DA14AB100523102 /* WebKit.framework in Frameworks */,
 				376267D81D9FE69C00981E41 /* CoreMedia.framework in Frameworks */,
 				376265151D9FE3B200981E41 /* AVFoundation.framework in Frameworks */,
-				37FDFF451DB2DCA300CF5EF4 /* Appodeal.framework in Frameworks */,
 				3762650D1D9FE38000981E41 /* CoreLocation.framework in Frameworks */,
 				372359091D208BA600F117B5 /* CoreGraphics.framework in Frameworks */,
 				3723590D1D208BD300F117B5 /* UIKit.framework in Frameworks */,
 				3723590B1D208BB100F117B5 /* Foundation.framework in Frameworks */,
-				37A38E971DD101F200287FB2 /* Appodeal.framework in Frameworks */,
 				374A66111CFE70C400AA0F96 /* LocalAuthentication.framework in Frameworks */,
 				3753367A1C91A17B009FE27E /* GameKit.framework in Frameworks */,
 				371EACE91ABDA79D00E4ABBA /* libz.dylib in Frameworks */,
@@ -1078,16 +1018,6 @@
 				37656B3F1D2EAF0500506183 /* level_65.plist */,
 			);
 			name = Levels;
-			sourceTree = "<group>";
-		};
-		372DF1E51DB3AB9000523D20 /* Appodeal */ = {
-			isa = PBXGroup;
-			children = (
-				37A38E961DD101F200287FB2 /* Appodeal.framework */,
-				37A38E581DD101DB00287FB2 /* Resources */,
-			);
-			name = Appodeal;
-			path = Resources/Frameworks/Appodeal;
 			sourceTree = "<group>";
 		};
 		37300A8B1CD7FC09009C3E87 /* Tutorial */ = {
@@ -1295,17 +1225,17 @@
 		376265091D9FE36D00981E41 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				372DF1E51DB3AB9000523D20 /* Appodeal */,
 				372DF1E31DB3A2A500523D20 /* GLKit.framework */,
 				372DF1E11DB3A29F00523D20 /* JavaScriptCore.framework */,
+				37CE87151E7AB35B0027EB28 /* GoogleMobileAds.framework */,
 				372DF1DF1DB3A28700523D20 /* Twitter.framework */,
 				372DF1DD1DB3A26F00523D20 /* Security.framework */,
 				372DF1DB1DB3A26200523D20 /* MobileCoreServices.framework */,
 				372DF1D81DB3A23C00523D20 /* libc++.tbd */,
+				37CE87131E7AB1430027EB28 /* Chartboost.framework */,
 				372DF1D61DB3A21000523D20 /* CoreMotion.framework */,
 				372DF1D41DB3A20100523D20 /* CoreImage.framework */,
 				372DF1D21DB3A1F600523D20 /* CoreFoundation.framework */,
-				37FDFF241DB2DCA300CF5EF4 /* Appodeal.framework */,
 				374A11B41DA14A9A00523102 /* Social.framework */,
 				374A11B21DA14A8C00523102 /* MessageUI.framework */,
 				374A11B01DA14A8100523102 /* EventKitUI.framework */,
@@ -1475,43 +1405,6 @@
 				37484D371DD170900046B969 /* HeartBoostCloseButton.swift */,
 			);
 			name = Boost;
-			sourceTree = "<group>";
-		};
-		37A38E581DD101DB00287FB2 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-				37A38E591DD101DB00287FB2 /* __vungle.db */,
-				37A38E5A1DD101DB00287FB2 /* Appodeal.bundle */,
-				37A38E5B1DD101DB00287FB2 /* MPAdBrowserController.xib */,
-				37A38E5C1DD101DB00287FB2 /* MPCloseBtn.png */,
-				37A38E5D1DD101DB00287FB2 /* MPCloseBtn@2x.png */,
-				37A38E5E1DD101DB00287FB2 /* MPCloseBtn@3x.png */,
-				37A38E5F1DD101DB00287FB2 /* MPCloseButtonX.png */,
-				37A38E601DD101DB00287FB2 /* MPCloseButtonX@2x.png */,
-				37A38E611DD101DB00287FB2 /* MPCloseButtonX@3x.png */,
-				37A38E621DD101DB00287FB2 /* MPDAAIcon.png */,
-				37A38E631DD101DB00287FB2 /* MPDAAIcon@2x.png */,
-				37A38E641DD101DB00287FB2 /* MPDAAIcon@3x.png */,
-				37A38E651DD101DB00287FB2 /* MPMutedBtn.png */,
-				37A38E661DD101DB00287FB2 /* MPMutedBtn@2x.png */,
-				37A38E671DD101DB00287FB2 /* MPMutedBtn@3x.png */,
-				37A38E681DD101DB00287FB2 /* MPPlayBtn.png */,
-				37A38E691DD101DB00287FB2 /* MPPlayBtn@2x.png */,
-				37A38E6A1DD101DB00287FB2 /* MPPlayBtn@3x.png */,
-				37A38E6B1DD101DB00287FB2 /* MPUnmutedBtn.png */,
-				37A38E6C1DD101DB00287FB2 /* MPUnmutedBtn@2x.png */,
-				37A38E6D1DD101DB00287FB2 /* MPUnmutedBtn@3x.png */,
-				37A38E6E1DD101DB00287FB2 /* MRAID.bundle */,
-				37A38E6F1DD101DB00287FB2 /* StartApp.bundle */,
-				37A38E701DD101DB00287FB2 /* TapjoyResources.bundle */,
-				37A38E711DD101DB00287FB2 /* UnityAds.bundle */,
-				37A38E721DD101DB00287FB2 /* vg_close.png */,
-				37A38E731DD101DB00287FB2 /* vg_cta.png */,
-				37A38E741DD101DB00287FB2 /* vg_mute_off.png */,
-				37A38E751DD101DB00287FB2 /* vg_mute_on.png */,
-				37A38E761DD101DB00287FB2 /* vg_privacy.png */,
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		37B567961DA6D0640013A4AC /* Trade */ = {
@@ -2021,8 +1914,6 @@
 			files = (
 				37BAE8171DD73FD700DD4ECC /* projectiles2.atlas in Resources */,
 				371320231D6FB3D8001A1135 /* air.m4a in Resources */,
-				37A38E821DD101DB00287FB2 /* MPDAAIcon@2x.png in Resources */,
-				37A38E811DD101DB00287FB2 /* MPDAAIcon.png in Resources */,
 				371320241D6FB3D8001A1135 /* earth.m4a in Resources */,
 				371320251D6FB3D8001A1135 /* fire.m4a in Resources */,
 				37BAE81B1DD73FD700DD4ECC /* story-ignis2.atlas in Resources */,
@@ -2040,18 +1931,13 @@
 				376CBA311CC18D8E00BE2756 /* exert-5.caf in Resources */,
 				376CBA251CC10F4B00BE2756 /* drink-2.caf in Resources */,
 				376CBA191CC10D5400BE2756 /* charge-1.caf in Resources */,
-				37A38E7E1DD101DB00287FB2 /* MPCloseButtonX.png in Resources */,
-				37A38E781DD101DB00287FB2 /* __vungle.db in Resources */,
-				37A38E7D1DD101DB00287FB2 /* MPCloseBtn@3x.png in Resources */,
 				376CBA1D1CC10D5400BE2756 /* explode-3.caf in Resources */,
 				376CBA1E1CC10D5400BE2756 /* pow-1.caf in Resources */,
 				376CBA0D1CC08B3800BE2756 /* action-2.caf in Resources */,
 				376CBA0E1CC08B3800BE2756 /* bubble-1.caf in Resources */,
-				37A38E891DD101DB00287FB2 /* MPPlayBtn@3x.png in Resources */,
 				376CBA0F1CC08B3800BE2756 /* burn-1.caf in Resources */,
 				376CBA101CC08B3800BE2756 /* crash-2.caf in Resources */,
 				376CBA111CC08B3800BE2756 /* flame-1.caf in Resources */,
-				37A38E791DD101DB00287FB2 /* Appodeal.bundle in Resources */,
 				376CBA051CC0880400BE2756 /* buzz-1.caf in Resources */,
 				376CBA061CC0880400BE2756 /* crash-1.caf in Resources */,
 				376CBA071CC0880400BE2756 /* surprise-1.caf in Resources */,
@@ -2068,14 +1954,10 @@
 				37BAE8271DD73FD700DD4ECC /* waterbackgrounds2.atlas in Resources */,
 				376CB9EE1CC0687300BE2756 /* collide-1.caf in Resources */,
 				376CB9EF1CC0687300BE2756 /* collide-2.caf in Resources */,
-				37A38E801DD101DB00287FB2 /* MPCloseButtonX@3x.png in Resources */,
-				37A38E8B1DD101DB00287FB2 /* MPUnmutedBtn@2x.png in Resources */,
 				376CB9F01CC0687300BE2756 /* collide-3.caf in Resources */,
-				37A38E8D1DD101DB00287FB2 /* MRAID.bundle in Resources */,
 				376CBA581CCC714800BE2756 /* upgrades_cost.plist in Resources */,
 				376CB9F11CC0687300BE2756 /* collide-4.caf in Resources */,
 				373964221C664F780018C8C9 /* level_34.plist in Resources */,
-				37A38E7B1DD101DB00287FB2 /* MPCloseBtn.png in Resources */,
 				3739641E1C664F780018C8C9 /* level_30.plist in Resources */,
 				373964471C664F910018C8C9 /* upgrades_mage.plist in Resources */,
 				37BAE6831DD73FD600DD4ECC /* earth2.atlas in Resources */,
@@ -2086,18 +1968,14 @@
 				373964361C664F780018C8C9 /* level_54.plist in Resources */,
 				373964481C664F910018C8C9 /* upgrades_monk.plist in Resources */,
 				37BAE6801DD73FD600DD4ECC /* buttons2.atlas in Resources */,
-				37A38E8E1DD101DB00287FB2 /* StartApp.bundle in Resources */,
 				373964311C664F780018C8C9 /* level_49.plist in Resources */,
-				37A38E951DD101DB00287FB2 /* vg_privacy.png in Resources */,
 				373964131C664F780018C8C9 /* level_19.plist in Resources */,
 				3739640F1C664F780018C8C9 /* level_16.plist in Resources */,
 				3739643F1C664F780018C8C9 /* level_63.plist in Resources */,
 				373964321C664F780018C8C9 /* level_50.plist in Resources */,
-				37A38E851DD101DB00287FB2 /* MPMutedBtn@2x.png in Resources */,
 				3739642C1C664F780018C8C9 /* level_44.plist in Resources */,
 				3739641F1C664F780018C8C9 /* level_31.plist in Resources */,
 				37BAE8241DD73FD700DD4ECC /* uxgame2.atlas in Resources */,
-				37A38E861DD101DB00287FB2 /* MPMutedBtn@3x.png in Resources */,
 				373964121C664F780018C8C9 /* level_18.plist in Resources */,
 				3739640C1C664F780018C8C9 /* level_13.plist in Resources */,
 				37BAE8151DD73FD700DD4ECC /* playermonk2.atlas in Resources */,
@@ -2108,12 +1986,10 @@
 				373964461C664F910018C8C9 /* upgrades_archer.plist in Resources */,
 				373964271C664F780018C8C9 /* level_39.plist in Resources */,
 				3739642E1C664F780018C8C9 /* level_46.plist in Resources */,
-				37A38E881DD101DB00287FB2 /* MPPlayBtn@2x.png in Resources */,
 				37BAE6841DD73FD600DD4ECC /* earthbackgrounds2.atlas in Resources */,
 				3739641B1C664F780018C8C9 /* level_27.plist in Resources */,
 				373964341C664F780018C8C9 /* level_52.plist in Resources */,
 				37BAE8191DD73FD700DD4ECC /* splashandstory2.atlas in Resources */,
-				37A38E941DD101DB00287FB2 /* vg_mute_on.png in Resources */,
 				373964211C664F780018C8C9 /* level_33.plist in Resources */,
 				3739642D1C664F780018C8C9 /* level_45.plist in Resources */,
 				37BAE8251DD73FD700DD4ECC /* uxmenu2.atlas in Resources */,
@@ -2130,27 +2006,19 @@
 				37BAE81A1DD73FD700DD4ECC /* story-astra2.atlas in Resources */,
 				373964151C664F780018C8C9 /* level_21.plist in Resources */,
 				373964261C664F780018C8C9 /* level_38.plist in Resources */,
-				37A38E901DD101DB00287FB2 /* UnityAds.bundle in Resources */,
 				373964191C664F780018C8C9 /* level_25.plist in Resources */,
 				3739643C1C664F780018C8C9 /* level_60.plist in Resources */,
 				373964031C664F780018C8C9 /* level_4.plist in Resources */,
 				373964251C664F780018C8C9 /* level_37.plist in Resources */,
 				37BAE6811DD73FD600DD4ECC /* buttonsgame2.atlas in Resources */,
-				37A38E7A1DD101DB00287FB2 /* MPAdBrowserController.xib in Resources */,
-				37A38E8F1DD101DB00287FB2 /* TapjoyResources.bundle in Resources */,
 				3739643B1C664F780018C8C9 /* level_59.plist in Resources */,
 				3739642F1C664F780018C8C9 /* level_47.plist in Resources */,
 				373964401C664F780018C8C9 /* level_64.plist in Resources */,
 				373964091C664F780018C8C9 /* level_10.plist in Resources */,
 				373964021C664F780018C8C9 /* level_3.plist in Resources */,
-				37A38E7C1DD101DB00287FB2 /* MPCloseBtn@2x.png in Resources */,
-				37A38E911DD101DB00287FB2 /* vg_close.png in Resources */,
 				373964371C664F780018C8C9 /* level_55.plist in Resources */,
 				3739641C1C664F780018C8C9 /* level_28.plist in Resources */,
 				37BAE8181DD73FD700DD4ECC /* spirit2.atlas in Resources */,
-				37A38E841DD101DB00287FB2 /* MPMutedBtn.png in Resources */,
-				37A38E871DD101DB00287FB2 /* MPPlayBtn.png in Resources */,
-				37A38E931DD101DB00287FB2 /* vg_mute_off.png in Resources */,
 				3739643E1C664F780018C8C9 /* level_62.plist in Resources */,
 				371CD94F1BDEABF500AE4975 /* images.xcassets in Resources */,
 				373964241C664F780018C8C9 /* level_36.plist in Resources */,
@@ -2159,8 +2027,6 @@
 				3739640A1C664F780018C8C9 /* level_11.plist in Resources */,
 				371CD9581BDEC3C200AE4975 /* LS.storyboard in Resources */,
 				373964381C664F780018C8C9 /* level_56.plist in Resources */,
-				37A38E8A1DD101DB00287FB2 /* MPUnmutedBtn.png in Resources */,
-				37A38E8C1DD101DB00287FB2 /* MPUnmutedBtn@3x.png in Resources */,
 				373964001C664F780018C8C9 /* level_1.plist in Resources */,
 				373964291C664F780018C8C9 /* level_41.plist in Resources */,
 				3739642A1C664F780018C8C9 /* level_42.plist in Resources */,
@@ -2172,11 +2038,8 @@
 				373964011C664F780018C8C9 /* level_2.plist in Resources */,
 				3739640B1C664F780018C8C9 /* level_12.plist in Resources */,
 				37656B401D2EAF0500506183 /* level_65.plist in Resources */,
-				37A38E921DD101DB00287FB2 /* vg_cta.png in Resources */,
-				37A38E831DD101DB00287FB2 /* MPDAAIcon@3x.png in Resources */,
 				37BAE81C1DD73FD700DD4ECC /* story-shared2.atlas in Resources */,
 				37BAE8121DD73FD700DD4ECC /* firebackgrounds2.atlas in Resources */,
-				37A38E7F1DD101DB00287FB2 /* MPCloseButtonX@2x.png in Resources */,
 				37BAE8221DD73FD700DD4ECC /* tutorial-water2.atlas in Resources */,
 				373964161C664F780018C8C9 /* level_22.plist in Resources */,
 				376A654F1AB38A3500F31421 /* Main.storyboard in Resources */,
@@ -2568,6 +2431,7 @@
 					"$(PROJECT_DIR)/Resources/Frameworks/Appodeal/APDVungleAdapter.embeddedframework",
 					"$(PROJECT_DIR)/Resources/Frameworks/Appodeal/APDYandexAdapter.embeddedframework",
 					"$(PROJECT_DIR)/Resources/Frameworks/Appodeal",
+					"$(PROJECT_DIR)/Resources/Frameworks/Firebase/AdMob",
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Push/Info.plist;
@@ -2631,6 +2495,7 @@
 					"$(PROJECT_DIR)/Resources/Frameworks/Appodeal/APDVungleAdapter.embeddedframework",
 					"$(PROJECT_DIR)/Resources/Frameworks/Appodeal/APDYandexAdapter.embeddedframework",
 					"$(PROJECT_DIR)/Resources/Frameworks/Appodeal",
+					"$(PROJECT_DIR)/Resources/Frameworks/Firebase/AdMob",
 				);
 				INFOPLIST_FILE = Push/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
