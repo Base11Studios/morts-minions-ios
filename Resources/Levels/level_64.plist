@@ -65,21 +65,6 @@
 			<string>End</string>
 		</dict>
 	</array>
-	<key>Tutorial</key>
-	<array>
-		<dict>
-			<key>Title</key>
-			<string>The Last Level</string>
-			<key>Description</key>
-			<string>Great job for making it this far! After beating it, complete each level 100% and try new heroes.</string>
-			<key>Type</key>
-			<string>tutorial</string>
-			<key>Key</key>
-			<string>lastairlevel</string>
-			<key>Version</key>
-			<real>1.1</real>
-		</dict>
-	</array>
 	<key>Challenges</key>
 	<array>
 		<dict>

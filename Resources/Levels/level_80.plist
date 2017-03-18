@@ -4,6 +4,38 @@
 <dict>
 	<key>World</key>
 	<string>spirit</string>
+	<key>Tutorial - 2</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>King Tempus</string>
+			<key>Description</key>
+			<string>Hit me twice or hit me hard.</string>
+			<key>Type</key>
+			<string>environment</string>
+			<key>Class</key>
+			<string>StormCloud</string>
+			<key>Key</key>
+			<string>stormcloud</string>
+			<key>Version</key>
+			<real>1.1</real>
+		</dict>
+	</array>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>ReachEndOfLevel</string>
+			<key>Reward</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>DieByEnemies</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+	</array>
 	<key>Story</key>
 	<array>
 		<dict>
@@ -75,6 +107,21 @@
 			<integer>1</integer>
 			<key>Type</key>
 			<string>End</string>
+		</dict>
+	</array>
+	<key>Tutorial</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>The Last Level</string>
+			<key>Description</key>
+			<string>Great job for making it this far! After beating it, complete each level 100% and try new heroes.</string>
+			<key>Type</key>
+			<string>tutorial</string>
+			<key>Key</key>
+			<string>lasttempuslevel</string>
+			<key>Version</key>
+			<real>1</real>
 		</dict>
 	</array>
 	<key>EnvironmentObject - 4 - 2</key>

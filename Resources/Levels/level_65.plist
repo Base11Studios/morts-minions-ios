@@ -8,13 +8,13 @@
 	<array>
 		<dict>
 			<key>Type</key>
-			<string>FullHealth</string>
+			<string>NoHeartsCollected</string>
 			<key>Reward</key>
 			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>Type</key>
-			<string>OneHeartLeft</string>
+			<string>DontTouchAnything</string>
 			<key>Reward</key>
 			<integer>1</integer>
 		</dict>

@@ -4,6 +4,21 @@
 <dict>
 	<key>World</key>
 	<string>spirit</string>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>DieByEnemies</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>Collect75PercentHearts</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+	</array>
 	<key>EnvironmentObject - 4 - 2</key>
 	<dict>
 		<key>Object</key>

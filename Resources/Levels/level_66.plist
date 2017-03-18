@@ -4,6 +4,38 @@
 <dict>
 	<key>World</key>
 	<string>spirit</string>
+	<key>Tutorial</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>Creatch</string>
+			<key>Description</key>
+			<string>It isn&apos;t safe to fly through a storm cloud.</string>
+			<key>Type</key>
+			<string>environment</string>
+			<key>Class</key>
+			<string>StormCloud</string>
+			<key>Key</key>
+			<string>stormcloud</string>
+			<key>Version</key>
+			<real>1.1</real>
+		</dict>
+	</array>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>OneHundredPercent</string>
+			<key>Reward</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>NoHeartsCollected</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+	</array>
 	<key>EnvironmentObject - 4 - 2</key>
 	<dict>
 		<key>Object</key>
