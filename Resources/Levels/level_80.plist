@@ -10,7 +10,7 @@
 			<key>Description</key>
 			<string>“Welcome, c_name. You have made it and get a glimpse of what is to come for your people.”</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-king-talk</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -30,7 +30,7 @@
 			<key>Description</key>
 			<string>“The time for compromise has passed. Prepare to be defeated.”</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-king-stand</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -40,7 +40,7 @@
 			<key>Description</key>
 			<string>You have defeated the king of Tempus. The evil imals have disappeared, almost as if they had never existed.</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-tempus-free</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -60,7 +60,7 @@
 			<key>Description</key>
 			<string>You and Mort return to your worlds and begin to rebuild. The future is bright and full of freedom.</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-c_role-shake</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -68,9 +68,9 @@
 		</dict>
 		<dict>
 			<key>Description</key>
-			<string>The end.</string>
+			<string>Thank you for playing! Try to master all the levels or change characters for a new experience!</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-theend</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -82,50 +82,42 @@
 		<key>Object</key>
 		<string>LevelEnd</string>
 		<key>Location</key>
-		<integer>7675</integer>
+		<integer>8275</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 2</key>
 	<dict>
 		<key>Object</key>
 		<string>MeteorMaker</string>
 		<key>Location</key>
-		<integer>7525</integer>
-		<key>Value1</key>
-		<integer>200</integer>
+		<integer>8125</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 5</key>
 	<dict>
 		<key>Object</key>
 		<string>MeteorMaker</string>
 		<key>Location</key>
-		<integer>7375</integer>
-		<key>Value1</key>
-		<integer>200</integer>
+		<real>7975</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 6</key>
 	<dict>
 		<key>Object</key>
 		<string>MeteorMaker</string>
 		<key>Location</key>
-		<integer>7200</integer>
-		<key>Value1</key>
-		<integer>200</integer>
+		<real>7800</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 7</key>
 	<dict>
 		<key>Object</key>
 		<string>MeteorMaker</string>
 		<key>Location</key>
-		<integer>7075</integer>
-		<key>Value1</key>
-		<integer>200</integer>
+		<real>7675</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 4</key>
 	<dict>
 		<key>Object</key>
 		<string>DarkTower</string>
 		<key>Location</key>
-		<integer>7000</integer>
+		<real>7600</real>
 		<key>Value1</key>
 		<integer>90</integer>
 	</dict>
@@ -134,7 +126,7 @@
 		<key>Object</key>
 		<string>Teleporter</string>
 		<key>Location</key>
-		<integer>6950</integer>
+		<integer>7550</integer>
 		<key>Value1</key>
 		<integer>125</integer>
 	</dict>
@@ -143,7 +135,7 @@
 		<key>Object</key>
 		<string>PulseOrb</string>
 		<key>Location</key>
-		<integer>6900</integer>
+		<integer>7500</integer>
 		<key>Value1</key>
 		<integer>40</integer>
 	</dict>
@@ -152,7 +144,7 @@
 		<key>Object</key>
 		<string>DarkEnergy</string>
 		<key>Location</key>
-		<integer>6700</integer>
+		<integer>7300</integer>
 		<key>Value1</key>
 		<integer>50</integer>
 		<key>Value2</key>
@@ -163,7 +155,7 @@
 		<key>Object</key>
 		<string>DarkEnergy</string>
 		<key>Location</key>
-		<integer>6500</integer>
+		<integer>7100</integer>
 		<key>Value1</key>
 		<integer>50</integer>
 		<key>Value2</key>
@@ -174,27 +166,45 @@
 		<key>Object</key>
 		<string>DarkEnergy</string>
 		<key>Location</key>
-		<integer>6350</integer>
+		<real>6950</real>
 		<key>Value1</key>
 		<integer>40</integer>
 		<key>Value2</key>
 		<integer>350</integer>
-	</dict>
-	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 3 - 4</key>
-	<dict>
-		<key>Object</key>
-		<string>KingTempus</string>
-		<key>Location</key>
-		<integer>6150</integer>
-		<key>Value1</key>
-		<integer>20</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4</key>
 	<dict>
 		<key>Object</key>
 		<string>Teleporter</string>
 		<key>Location</key>
-		<real>4650</real>
+		<integer>5900</integer>
+		<key>Value1</key>
+		<integer>120</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>5650</integer>
+		<key>Value1</key>
+		<integer>30</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>5400</integer>
+		<key>Value1</key>
+		<integer>80</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 9</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>5150</integer>
 		<key>Value1</key>
 		<integer>50</integer>
 	</dict>
@@ -203,7 +213,7 @@
 		<key>Object</key>
 		<string>Teleporter</string>
 		<key>Location</key>
-		<real>4550</real>
+		<integer>5150</integer>
 		<key>Value1</key>
 		<integer>90</integer>
 	</dict>
@@ -212,7 +222,7 @@
 		<key>Object</key>
 		<string>Teleporter</string>
 		<key>Location</key>
-		<real>4450</real>
+		<integer>5050</integer>
 		<key>Value1</key>
 		<integer>50</integer>
 	</dict>
@@ -221,7 +231,7 @@
 		<key>Object</key>
 		<string>Teleporter</string>
 		<key>Location</key>
-		<real>4350</real>
+		<integer>4950</integer>
 		<key>Value1</key>
 		<integer>50</integer>
 	</dict>
@@ -230,7 +240,7 @@
 		<key>Object</key>
 		<string>KingTempus</string>
 		<key>Location</key>
-		<integer>4350</integer>
+		<integer>4950</integer>
 		<key>Value1</key>
 		<integer>20</integer>
 	</dict>
@@ -239,7 +249,34 @@
 		<key>Object</key>
 		<string>PulseOrb</string>
 		<key>Location</key>
-		<real>2850</real>
+		<integer>3900</integer>
+		<key>Value1</key>
+		<integer>120</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 2 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>PulseOrb</string>
+		<key>Location</key>
+		<integer>3650</integer>
+		<key>Value1</key>
+		<integer>80</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 2 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>PulseOrb</string>
+		<key>Location</key>
+		<integer>3400</integer>
+		<key>Value1</key>
+		<integer>40</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 2 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>PulseOrb</string>
+		<key>Location</key>
+		<integer>3150</integer>
 		<key>Value1</key>
 		<integer>100</integer>
 	</dict>
@@ -248,7 +285,7 @@
 		<key>Object</key>
 		<string>PulseOrb</string>
 		<key>Location</key>
-		<real>2800</real>
+		<integer>3100</integer>
 		<key>Value1</key>
 		<integer>80</integer>
 	</dict>
@@ -257,7 +294,7 @@
 		<key>Object</key>
 		<string>PulseOrb</string>
 		<key>Location</key>
-		<real>2750</real>
+		<integer>3050</integer>
 		<key>Value1</key>
 		<integer>40</integer>
 	</dict>
@@ -266,7 +303,7 @@
 		<key>Object</key>
 		<string>KingTempus</string>
 		<key>Location</key>
-		<real>2700</real>
+		<integer>3000</integer>
 		<key>Value1</key>
 		<integer>20</integer>
 	</dict>
@@ -275,7 +312,34 @@
 		<key>Object</key>
 		<string>DarkTower</string>
 		<key>Location</key>
-		<integer>1200</integer>
+		<integer>2050</integer>
+		<key>Value1</key>
+		<integer>80</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<real>1800</real>
+		<key>Value1</key>
+		<integer>120</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<real>1550</real>
+		<key>Value1</key>
+		<integer>30</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<real>1300</real>
 		<key>Value1</key>
 		<integer>50</integer>
 	</dict>
@@ -284,7 +348,7 @@
 		<key>Object</key>
 		<string>DarkTower</string>
 		<key>Location</key>
-		<integer>1050</integer>
+		<real>1150</real>
 		<key>Value1</key>
 		<integer>70</integer>
 	</dict>
@@ -293,7 +357,7 @@
 		<key>Object</key>
 		<string>DarkTower</string>
 		<key>Location</key>
-		<integer>900</integer>
+		<integer>1000</integer>
 		<key>Value1</key>
 		<integer>25</integer>
 	</dict>

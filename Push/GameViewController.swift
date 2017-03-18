@@ -540,7 +540,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
                 skView.isMultipleTouchEnabled = true
                 //skView.showsFPS = true
                 //skView.showsNodeCount = true
-                skView.showsPhysics = true
+                //skView.showsPhysics = true
                 
                 // Present the scene - pass through regulator
                 self.presentDBScene(skView, scene: gameScene, ignoreMusic: false)

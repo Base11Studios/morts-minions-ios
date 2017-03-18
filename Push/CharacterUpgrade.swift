@@ -172,8 +172,8 @@ enum CharacterUpgrade : String {
     // Fair Guardian
     case FairyGuardian = "fairyguardian"
     case FairyDefense1 = "fairydefense1"
-    case FairyDefense2 = "fairydefense2"
-    case FairyDefense3 = "fairydefense3"
+    case FairyBlast1 = "fairyblast1"
+    case FairyBlast2 = "fairyblast2"
     case FairySize1 = "fairysize1"
     case FairySize2 = "fairysize2"
 }

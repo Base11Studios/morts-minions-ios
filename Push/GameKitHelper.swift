@@ -209,6 +209,7 @@ class GameKitHelper: NSObject {
         achievementsToCheck.append(Achievements.ReachWorld2)
         achievementsToCheck.append(Achievements.ReachWorld3)
         achievementsToCheck.append(Achievements.ReachWorld4)
+        achievementsToCheck.append(Achievements.ReachWorld5)
         
         for achievement in achievementsToCheck {
             if lookUpLevelIntroAchievementSuccess(scene, achievement: achievement) {
@@ -232,6 +233,10 @@ class GameKitHelper: NSObject {
                 }
             case .ReachWorld4:
                 if scene.worldNumber > 3 {
+                    return true
+                }
+            case .ReachWorld5:
+                if scene.worldNumber > 4 {
                     return true
                 }
             default:
@@ -457,6 +462,10 @@ class GameKitHelper: NSObject {
                 if GameData.sharedGameData.getSelectedCharacterData().allStarsEarnedForWorld(4) {
                     return true
                 }
+            case .World5AllStarsEarned:
+                if GameData.sharedGameData.getSelectedCharacterData().allStarsEarnedForWorld(5) {
+                    return true
+                }
             case .World1AllSuperstarsEarned:
                 if GameData.sharedGameData.getSelectedCharacterData().allSuperstarsEarnedForWorld(1) {
                     return true
@@ -471,6 +480,10 @@ class GameKitHelper: NSObject {
                 }
             case .World4AllSuperstarsEarned:
                 if GameData.sharedGameData.getSelectedCharacterData().allSuperstarsEarnedForWorld(4) {
+                    return true
+                }
+            case .World5AllSuperstarsEarned:
+                if GameData.sharedGameData.getSelectedCharacterData().allSuperstarsEarnedForWorld(5) {
                     return true
                 }
             case .World1AllChallengesBeat:
@@ -489,6 +502,10 @@ class GameKitHelper: NSObject {
                 if GameData.sharedGameData.getSelectedCharacterData().allChallengesEarnedForWorld(4) {
                     return true
                 }
+            case .World5AllChallengesBeat:
+                if GameData.sharedGameData.getSelectedCharacterData().allChallengesEarnedForWorld(5) {
+                    return true
+                }
             case .BeatChapter1World1To4:
                 if GameData.sharedGameData.getNumberCharactersThatBeatWorld4() >= 1 {
                     return true
@@ -503,6 +520,22 @@ class GameKitHelper: NSObject {
                 }
             case .BeatChapter1FourCharacters:
                 if GameData.sharedGameData.getNumberCharactersThatBeatWorld4() >= 4 {
+                    return true
+                }
+            case .BeatChapter2World5:
+                if GameData.sharedGameData.getNumberCharactersThatBeatWorld5() >= 1 {
+                    return true
+                }
+            case .BeatChapter2TwoCharacters:
+                if GameData.sharedGameData.getNumberCharactersThatBeatWorld5() >= 2 {
+                    return true
+                }
+            case .BeatChapter2ThreeCharacters:
+                if GameData.sharedGameData.getNumberCharactersThatBeatWorld5() >= 3 {
+                    return true
+                }
+            case .BeatChapter2FourCharacters:
+                if GameData.sharedGameData.getNumberCharactersThatBeatWorld5() >= 4 {
                     return true
                 }
             case .CompleteALevelWith3HealthRemaining:

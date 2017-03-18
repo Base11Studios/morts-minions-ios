@@ -25,7 +25,7 @@
 			<key>Description</key>
 			<string>You reach the creepy and dark Tempus realm with Mort. The imals here are twisted. You begin battle to reach the king of Tempus.</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-tempus</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>

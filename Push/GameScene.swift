@@ -365,7 +365,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.initializePauseMenu()
         
         // Create credits if needed
-        if self.currentLevel == 65 /*MAX*/ {
+        if self.currentLevel == 80 /*MAX*/ {
             self.initializeCredits()
         }
         
@@ -379,7 +379,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Determine level status
         var lockedLevelsAdded: Int = 0
         var checkLevel = level
-        while checkLevel < 65 /*MAX*/ && lockedLevelsAdded < 2 {
+        while checkLevel < 80 /*MAX*/ && lockedLevelsAdded < 2 {
             if GameData.sharedGameData.getSelectedCharacterData().isLevelLocked(checkLevel + 1) {
                 self.levelCompletion.append(checkLevel + 1)
                 lockedLevelsAdded += 1
@@ -1303,12 +1303,12 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
         
         // Player Projectile and Environment Object
-        else if (firstBody.categoryBitMask & GameScene.playerProjectileCategory) != 0 && ((secondBody.categoryBitMask & GameScene.obstacleCategory) != 0 || (secondBody.categoryBitMask & GameScene.enemyCategory) != 0) {
+        else if (firstBody.categoryBitMask & GameScene.playerProjectileCategory) != 0 && ((secondBody.categoryBitMask & GameScene.obstacleCategory) != 0 || (secondBody.categoryBitMask & GameScene.enemyCategory) != 0 || (secondBody.categoryBitMask & GameScene.transparentEnemyCategory) != 0) {
             self.playerProjectileDidCollideWithEnvironmentObject(firstBody.node as! PlayerProjectile, object: secondBody.node as! EnvironmentObject)
         }
         
         // Player Pet and Environment Object
-        else if (firstBody.categoryBitMask & GameScene.playerPetCategory) != 0 && ((secondBody.categoryBitMask & GameScene.obstacleCategory) != 0 || (secondBody.categoryBitMask & GameScene.enemyCategory) != 0 || (secondBody.categoryBitMask & GameScene.projectileCategory) != 0) {
+        else if (firstBody.categoryBitMask & GameScene.playerPetCategory) != 0 && ((secondBody.categoryBitMask & GameScene.obstacleCategory) != 0 || (secondBody.categoryBitMask & GameScene.enemyCategory) != 0 || (secondBody.categoryBitMask & GameScene.projectileCategory) != 0 || (secondBody.categoryBitMask & GameScene.transparentEnemyCategory) != 0) {
             self.playerProjectileDidCollideWithEnvironmentObject(firstBody.node as! PlayerProjectile, object: secondBody.node as! EnvironmentObject)
         }
             

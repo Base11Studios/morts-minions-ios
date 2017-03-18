@@ -21,7 +21,7 @@ class Warrior : Player {
         super.initializeSkills()
         
         // Create the rocks for stomp
-        for _ in 0 ..< Int(self.getSkill(CharacterUpgrade.Stomp)!.value * 5) {
+        for _ in 0 ..< Int(self.getSkill(CharacterUpgrade.Stomp)!.secondaryValue * 8) {
             // Create projectile
             let projectile: PlayerRock = PlayerRock(gameScene: self.gameScene!)
             projectile.physicsBody!.velocity = CGVector()
@@ -67,7 +67,7 @@ class Warrior : Player {
         self.weapon.position = self.weaponStartPosition
         
         // Create projectiles
-        for _ in 0 ..< Int(self.getSkill(CharacterUpgrade.ThrowBoulder)!.value * 5) {
+        for _ in 0 ..< Int(self.getSkill(CharacterUpgrade.ThrowBoulder)!.value * 8) {
             // Create projectile
             let projectile: PlayerBoulder = PlayerBoulder(gameScene: self.gameScene!, groundCollision: GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(CharacterUpgrade.ExplodingBoulders))
             
@@ -80,6 +80,9 @@ class Warrior : Player {
             projectile.position = CGPoint(x: self.position.x + self.weaponStartPosition.x, y: self.position.y + self.weaponStartPosition.y - 2.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             
             projectile.zPosition = 9
+            
+            // Damage
+            projectile.damage = 1 + Int(self.getSkill(CharacterUpgrade.ThrowBoulder)!.secondaryValue)
             
             // Override
             projectile.physicsBody!.categoryBitMask = GameScene.harmlessObjectCategory

@@ -118,12 +118,17 @@ enum Achievements : String {
     case World4AllStarsEarned = "com.mm.achieve.world4allstarsearned" // All stars from world 4 are earned. Does not inlude superstars
     case World4AllSuperstarsEarned = "com.mm.achieve.world4allsuperstarsearned" // All superstars from world 4 are earned
     
+    case World5AllChallengesBeat = "com.mm.achieve.world5allchallengesbeat" // Unlocks after beating every challenge in world 5
+    case World5AllStarsEarned = "com.mm.achieve.world5allstarsearned" // All stars from world 5 are earned. Does not inlude superstars
+    case World5AllSuperstarsEarned = "com.mm.achieve.world5allsuperstarsearned" // All superstars from world 5 are earned
+    
 // Reach World 2
 // Acquire by unlocking and playing World 2
 // You reached World 2!
     case ReachWorld2 = "com.mm.achieve.reachworld2" // Unlocks at the start of a world 2 level
     case ReachWorld3 = "com.mm.achieve.reachworld3" // Unlocks at the start of a world 3 level
     case ReachWorld4 = "com.mm.achieve.reachworld4" // Unlocks at the start of a world 4 level
+    case ReachWorld5 = "com.mm.achieve.reachworld5" // Unlocks at the start of a world 5 level
     
 // Beat Chapter 1
 // Acquire by collecting at least 2 stars on World 4 Level 16
@@ -136,6 +141,11 @@ enum Achievements : String {
     case BeatChapter1TwoCharacters = "com.mm.achieve.beatchapter1twocharacters" // Get at least 2 stars on World 4 level 16 on 2 characters
     case BeatChapter1ThreeCharacters = "com.mm.achieve.beatchapter1threecharacters" // Get at least 2 stars on World 4 level 16 on 3 characters
     case BeatChapter1FourCharacters = "com.mm.achieve.beatchapter1fourcharacters" // Get at least 2 stars on World 4 level 16 on 4 characters
+    
+    case BeatChapter2World5 = "com.mm.achieve.beatchapter2world5" // Get at least 2 stars on World 5 level 16
+    case BeatChapter2TwoCharacters = "com.mm.achieve.beatchapter2twocharacters" // Get at least 2 stars on World 5 level 16 on 2 characters
+    case BeatChapter2ThreeCharacters = "com.mm.achieve.beatchapter2threecharacters" // Get at least 2 stars on World 5 level 16 on 3 characters
+    case BeatChapter2FourCharacters = "com.mm.achieve.beatchapter2fourcharacters" // Get at least 2 stars on World 5 level 16 on 4 characters
     
 // Complete a Level With 3 Health Remaining
 // Acquire by completing a level with at least 3 health remaining
@@ -218,14 +228,22 @@ enum Achievements : String {
         achievements.append(Achievements.World4AllChallengesBeat)
         achievements.append(Achievements.World4AllStarsEarned)
         achievements.append(Achievements.World4AllSuperstarsEarned)
+        achievements.append(Achievements.World5AllChallengesBeat)
+        achievements.append(Achievements.World5AllStarsEarned)
+        achievements.append(Achievements.World5AllSuperstarsEarned)
         
         achievements.append(Achievements.ReachWorld2)
         achievements.append(Achievements.ReachWorld3)
         achievements.append(Achievements.ReachWorld4)
+        achievements.append(Achievements.ReachWorld5)
         achievements.append(Achievements.BeatChapter1World1To4)
         achievements.append(Achievements.BeatChapter1TwoCharacters)
         achievements.append(Achievements.BeatChapter1ThreeCharacters)
         achievements.append(Achievements.BeatChapter1FourCharacters)
+        achievements.append(Achievements.BeatChapter2World5)
+        achievements.append(Achievements.BeatChapter2TwoCharacters)
+        achievements.append(Achievements.BeatChapter2ThreeCharacters)
+        achievements.append(Achievements.BeatChapter2FourCharacters)
         
         achievements.append(Achievements.CompleteALevelWith3HealthRemaining)
         achievements.append(Achievements.CompleteALevelWith4HealthRemaining)

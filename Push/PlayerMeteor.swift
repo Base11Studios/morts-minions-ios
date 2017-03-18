@@ -26,7 +26,7 @@ class PlayerMeteor: PlayerProjectile {
         
         self.setDefaultPhysicsBodyValues()
         if self.collidesWithGround {
-            self.physicsBody!.contactTestBitMask = GameScene.enemyCategory | GameScene.obstacleCategory | GameScene.groundCategory
+            self.physicsBody!.contactTestBitMask = GameScene.enemyCategory | GameScene.obstacleCategory | GameScene.groundCategory | GameScene.transparentEnemyCategory
         }
         
         self.isFlying = false

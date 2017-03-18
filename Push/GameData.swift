@@ -785,6 +785,28 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         return beat4
     }
     
+    func getNumberCharactersThatBeatWorld5() -> Int {
+        var beat5: Int = 0
+        
+        if self.warriorCharacter.levelProgress[80] != nil && self.warriorCharacter.levelProgress[80]!.starsEarnedHighScore >= 2 {
+            beat5 += 1
+        }
+        
+        if self.archerCharacter.levelProgress[80] != nil && self.archerCharacter.levelProgress[80]!.starsEarnedHighScore >= 2 {
+            beat5 += 1
+        }
+        
+        if self.mageCharacter.levelProgress[80] != nil && self.mageCharacter.levelProgress[80]!.starsEarnedHighScore >= 2 {
+            beat5 += 1
+        }
+        
+        if self.monkCharacter.levelProgress[80] != nil && self.monkCharacter.levelProgress[80]!.starsEarnedHighScore >= 2 {
+            beat5 += 1
+        }
+        
+        return beat5
+    }
+    
     func checkAndResetCharacterSkills() -> Bool {
         var reset = false
         

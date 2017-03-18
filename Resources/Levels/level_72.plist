@@ -10,7 +10,7 @@
 			<key>Description</key>
 			<string>You hear an eerie voice coming from the sky. “For your mistreatment of imals, I sentence you to an eternity of darkness. I am time, devourer of all things.”</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
+			<string>story-king-shadow</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -30,8 +30,6 @@
 		<string>MeteorMaker</string>
 		<key>Location</key>
 		<integer>7900</integer>
-		<key>Value1</key>
-		<integer>200</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 3</key>
 	<dict>
@@ -109,7 +107,7 @@
 		<key>Location</key>
 		<integer>6100</integer>
 		<key>Value1</key>
-		<real>0.65</real>
+		<real>1.25</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3</key>
 	<dict>
@@ -171,8 +169,6 @@
 		<string>MeteorMaker</string>
 		<key>Location</key>
 		<integer>4650</integer>
-		<key>Value1</key>
-		<integer>200</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3 - 2 - 3 - 3</key>
 	<dict>
@@ -286,8 +282,6 @@
 		<string>MeteorMaker</string>
 		<key>Location</key>
 		<integer>2350</integer>
-		<key>Value1</key>
-		<integer>200</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 5</key>
 	<dict>
@@ -296,7 +290,7 @@
 		<key>Location</key>
 		<integer>2050</integer>
 		<key>Value1</key>
-		<real>0.65</real>
+		<real>1.25</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 2 - 5</key>
 	<dict>

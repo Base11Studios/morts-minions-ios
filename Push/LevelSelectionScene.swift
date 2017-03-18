@@ -294,7 +294,7 @@ class LevelSelectionScene : DBScene {
                 
                 // Set the total levels for the gamedata
                 var data: CharacterData = GameData.sharedGameData.archerCharacter
-                data.totalLevels = 65 /*MAX*/
+                data.totalLevels = 80 /*MAX*/
                 
                 // Setup the level data only if it doesnt exist already
                 if data.levelProgress[level] == nil {
@@ -302,7 +302,7 @@ class LevelSelectionScene : DBScene {
                 }
                 
                 data = GameData.sharedGameData.monkCharacter
-                data.totalLevels = 65 /*MAX*/
+                data.totalLevels = 80 /*MAX*/
                 
                 // Setup the level data only if it doesnt exist already
                 if data.levelProgress[level] == nil {
@@ -310,7 +310,7 @@ class LevelSelectionScene : DBScene {
                 }
                 
                 data = GameData.sharedGameData.mageCharacter
-                data.totalLevels = 65 /*MAX*/
+                data.totalLevels = 80 /*MAX*/
                 
                 // Setup the level data only if it doesnt exist already
                 if data.levelProgress[level] == nil {
@@ -318,7 +318,7 @@ class LevelSelectionScene : DBScene {
                 }
                 
                 data = GameData.sharedGameData.warriorCharacter
-                data.totalLevels = 65 /*MAX*/
+                data.totalLevels = 80 /*MAX*/
                 
                 // Setup the level data only if it doesnt exist already
                 if data.levelProgress[level] == nil {

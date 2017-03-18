@@ -54,7 +54,7 @@ class MeteorMaker : Obstacle {
         self.damage = 0
         self.damageToShields = 0
         
-        self.lineOfSight = CGFloat(self.value1)
+        self.lineOfSight = 225//CGFloat(self.value1)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {

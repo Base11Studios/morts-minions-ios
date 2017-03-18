@@ -321,7 +321,9 @@
 			<key>Id</key>
 			<string>explodingboulders</string>
 			<key>Description</key>
-			<string>The boulders Jim hurls explode on contact with the ground, showering the area with rocks.</string>
+			<string>The boulders Jim hurls are denser, doing 2 damage on hit and showering the area with rocks on ground collision.</string>
+			<key>SecondaryValue</key>
+			<integer>1</integer>
 		</dict>
 	</array>
 	<array>
@@ -334,10 +336,6 @@
 			<string>skill</string>
 			<key>Id</key>
 			<string>stomp</string>
-			<key>Cost</key>
-			<integer>18</integer>
-			<key>Currency</key>
-			<string>stars</string>
 			<key>Description</key>
 			<string>Jim stomps the ground, causing 1 damage to minions within 150 feet. Skill is available to use every 24 seconds.</string>
 			<key>ActivationMethod</key>
@@ -364,14 +362,10 @@
 			<string>stomp</string>
 			<key>Id</key>
 			<string>harderstomp</string>
-			<key>Cost</key>
-			<integer>12</integer>
-			<key>Currency</key>
-			<string>stars</string>
 			<key>Description</key>
-			<string>Increases the range of Jim&apos;s stomp to 200 feet.</string>
+			<string>Increases the range of Jim&apos;s stomp to 250 feet.</string>
 			<key>Range</key>
-			<integer>50</integer>
+			<integer>100</integer>
 		</dict>
 		<dict>
 			<key>Name</key>
@@ -382,10 +376,6 @@
 			<string>stomp</string>
 			<key>Id</key>
 			<string>fasterstomp</string>
-			<key>Cost</key>
-			<integer>16</integer>
-			<key>Currency</key>
-			<string>stars</string>
 			<key>Description</key>
 			<string>Allows Jim to stomp every 16 seconds.</string>
 			<key>Cooldown</key>
@@ -393,17 +383,13 @@
 		</dict>
 		<dict>
 			<key>Name</key>
-			<string>earthquake</string>
+			<string>Earthquake</string>
 			<key>Type</key>
 			<string>boost</string>
 			<key>TargetSkill</key>
 			<string>stomp</string>
 			<key>Id</key>
 			<string>earthquake</string>
-			<key>Cost</key>
-			<integer>6</integer>
-			<key>Currency</key>
-			<string>citrine</string>
 			<key>Description</key>
 			<string>Jim&apos;s stomp sets off an aftershock, launching 1 rock into the air after the stomp.</string>
 			<key>SecondaryValue</key>
@@ -413,37 +399,29 @@
 		</dict>
 		<dict>
 			<key>Name</key>
-			<string>Harder Stomp 2</string>
+			<string>Earthquake 2</string>
 			<key>Type</key>
 			<string>boost</string>
 			<key>TargetSkill</key>
 			<string>stomp</string>
 			<key>Id</key>
 			<string>harderstomp2</string>
-			<key>Cost</key>
-			<integer>18</integer>
-			<key>Currency</key>
-			<string>stars</string>
 			<key>Description</key>
-			<string>Increases the range of Jim&apos;s stomp to 250 feet.</string>
-			<key>Range</key>
-			<integer>50</integer>
+			<string>The aftershock from Jim&apos;s stomp expands, launching 2 rocks into the air.</string>
+			<key>SecondaryValue</key>
+			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>Name</key>
-			<string>Harder Stomp 3</string>
+			<string>Earthquake 3</string>
 			<key>Type</key>
 			<string>boost</string>
 			<key>TargetSkill</key>
 			<string>stomp</string>
 			<key>Id</key>
 			<string>harderstomp3</string>
-			<key>Cost</key>
-			<integer>9</integer>
-			<key>Currency</key>
-			<string>citrine</string>
 			<key>Description</key>
-			<string>The aftershock from Jim&apos;s stomp expands, launching 2 rocks into the air.</string>
+			<string>The aftershock from Jim&apos;s stomp expands, launching 3 rocks into the air.</string>
 			<key>SecondaryValue</key>
 			<integer>1</integer>
 		</dict>
@@ -565,6 +543,102 @@
 			<key>Description</key>
 			<string>Increases Jim&apos;s total hearts to 5.</string>
 			<key>Value</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>fairy guardian</string>
+			<key>IconName</key>
+			<string>iconfairyguardian</string>
+			<key>Type</key>
+			<string>skill</string>
+			<key>Id</key>
+			<string>fairyguardian</string>
+			<key>Description</key>
+			<string>[Passive] Jim befriends a fairy to protect him. The guardian will protect Jim and retaliate when hit, every 28 seconds.</string>
+			<key>ActivationMethod</key>
+			<string>passive</string>
+			<key>Cooldown</key>
+			<integer>28</integer>
+			<key>Value</key>
+			<real>0.4</real>
+			<key>SecondaryValue</key>
+			<integer>1</integer>
+			<key>TutorialVersion</key>
+			<integer>1</integer>
+			<key>TutorialText</key>
+			<string>This is a passive skill. You automatically get the benefits without having to do any work!</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>fairy size 1</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>fairyguardian</string>
+			<key>Id</key>
+			<string>fairysize1</string>
+			<key>Description</key>
+			<string>Increases the fairy&apos;s size, allowing her to stop more danger.</string>
+			<key>Value</key>
+			<real>0.15</real>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>fairy defense 1</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>fairyguardian</string>
+			<key>Id</key>
+			<string>fairydefense1</string>
+			<key>Description</key>
+			<string>Increases the fairy&apos;s defenses, allowing her to protect every 18 seconds.</string>
+			<key>Cooldown</key>
+			<integer>10</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>fairy blast 1</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>fairyguardian</string>
+			<key>Id</key>
+			<string>fairyblast1</string>
+			<key>Description</key>
+			<string>Further increases the fairy&apos;s retaliation, shooting 2 projectiles when hit.</string>
+			<key>SecondaryValue</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>fairy size 2</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>fairyguardian</string>
+			<key>Id</key>
+			<string>fairysize2</string>
+			<key>Description</key>
+			<string>Further increases the fairy&apos;s size, allowing her to stop even more danger.</string>
+			<key>Value</key>
+			<real>0.15</real>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>fairy blast 2</string>
+			<key>Type</key>
+			<string>boost</string>
+			<key>TargetSkill</key>
+			<string>fairyguardian</string>
+			<key>Id</key>
+			<string>fairyblast2</string>
+			<key>Description</key>
+			<string>Further increases the fairy&apos;s retaliation, shooting 3 projectiles when hit.</string>
+			<key>SecondaryValue</key>
 			<integer>1</integer>
 		</dict>
 	</array>

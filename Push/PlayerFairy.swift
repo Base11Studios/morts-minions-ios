@@ -42,9 +42,9 @@ class PlayerFairy: PlayerProjectile {
         self.setScale(CGFloat(attachedSkill.value))
         
         // Create shootbacks
-        for _ in 0 ..< Int(self.attachedSkill!.secondaryValue) * 5 {
+        for _ in 0 ..< Int(self.attachedSkill!.secondaryValue) * 8 {
             // Create projectile
-            let projectile: PlayerArrow = PlayerArrow(gameScene: self.gameScene!)
+            let projectile: PlayerFairyBolt = PlayerFairyBolt(gameScene: self.gameScene!)
             
             // We dont want this to get updated by gamescene so change the name which is the selector
             projectile.name = "proj_dont_update"
@@ -83,7 +83,7 @@ class PlayerFairy: PlayerProjectile {
     override func setDefaultCollisionMasks() {
         // Collisions
         self.physicsBody!.categoryBitMask = GameScene.playerPetCategory
-        self.physicsBody!.contactTestBitMask = GameScene.enemyCategory | GameScene.obstacleCategory | GameScene.projectileCategory
+        self.physicsBody!.contactTestBitMask = GameScene.enemyCategory | GameScene.obstacleCategory | GameScene.projectileCategory | GameScene.transparentEnemyCategory
         self.physicsBody!.collisionBitMask = 0
     }
     
@@ -183,9 +183,9 @@ class PlayerFairy: PlayerProjectile {
             
             // Shoot back
             for i in 0 ..< Int(self.attachedSkill!.secondaryValue) {
-                let arrow: PlayerArrow = self.projectiles.popLast() as! PlayerArrow
+                let arrow: PlayerFairyBolt = self.projectiles.popLast() as! PlayerFairyBolt
                 
-                arrow.position = CGPoint(x: self.position.x, y: self!.position.y)
+                arrow.position = CGPoint(x: self.position.x, y: self.position.y)
                 
                 // Change the name back to default so it receives updates
                 arrow.resetName()

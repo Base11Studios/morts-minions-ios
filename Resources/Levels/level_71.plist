@@ -48,8 +48,6 @@
 		<string>MeteorMaker</string>
 		<key>Location</key>
 		<real>7050</real>
-		<key>Value1</key>
-		<integer>200</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 2 - 4</key>
 	<dict>
@@ -125,7 +123,7 @@
 		<key>Location</key>
 		<integer>5850</integer>
 		<key>Value1</key>
-		<real>0.65</real>
+		<real>1.25</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3</key>
 	<dict>
@@ -169,8 +167,6 @@
 		<string>MeteorMaker</string>
 		<key>Location</key>
 		<integer>4550</integer>
-		<key>Value1</key>
-		<integer>200</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 3 - 3</key>
 	<dict>
@@ -224,7 +220,7 @@
 		<key>Location</key>
 		<integer>3600</integer>
 		<key>Value1</key>
-		<real>0.65</real>
+		<real>1.25</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 2</key>
 	<dict>
@@ -257,8 +253,6 @@
 		<string>MeteorMaker</string>
 		<key>Location</key>
 		<integer>2200</integer>
-		<key>Value1</key>
-		<integer>200</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 6</key>
 	<dict>
@@ -266,8 +260,6 @@
 		<string>MeteorMaker</string>
 		<key>Location</key>
 		<integer>2100</integer>
-		<key>Value1</key>
-		<integer>200</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 3</key>
 	<dict>
@@ -284,8 +276,6 @@
 		<string>MeteorMaker</string>
 		<key>Location</key>
 		<integer>1600</integer>
-		<key>Value1</key>
-		<integer>200</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 2 - 5</key>
 	<dict>

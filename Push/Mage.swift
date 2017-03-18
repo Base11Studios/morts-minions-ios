@@ -24,7 +24,7 @@ class Mage : Player {
         self.maxAutoHoverStopCountdown = self.getSkill(CharacterUpgrade.Teleport)!.tertiaryValue
         
         // Create the meteors
-        for _ in 0 ..< Int(self.getSkill(CharacterUpgrade.Meteor)!.value * 5) {
+        for _ in 0 ..< Int(self.getSkill(CharacterUpgrade.Meteor)!.value * 8) {
             // Create projectile
             let projectile: PlayerMeteor = PlayerMeteor(gameScene: self.gameScene!, groundCollision: GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(CharacterUpgrade.MeteorBlast))
             projectile.physicsBody!.velocity = CGVector()
@@ -70,7 +70,7 @@ class Mage : Player {
         self.weapon.position = self.weaponStartPosition
         
         // Create projectiles
-        for _ in 0 ..< Int((self.getSkill(CharacterUpgrade.MagicMissle)!.secondaryValue + 1) * 5) {
+        for _ in 0 ..< Int((self.getSkill(CharacterUpgrade.MagicMissle)!.secondaryValue + 1) * 8) {
             // Create projectile
             let projectile: PlayerMagicMissle = PlayerMagicMissle(gameScene: self.gameScene!, range: self.getSkill(CharacterUpgrade.MagicMissle)!.range * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             

@@ -1597,6 +1597,16 @@ class Player : SKSpriteNode {
                 // Launch second rock
                 self.launchRock(skill.secondaryRange * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + 50 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), height: 8500, forwardMomentum: 1400)
             }
+            if skill.secondaryValue == 3 {
+                // Launch first rock
+                self.launchRock(skill.secondaryRange * ScaleBuddy.sharedInstance.getGameScaleAmount(false), height: 10500, forwardMomentum: 1150)
+                
+                // Launch second rock
+                self.launchRock(skill.secondaryRange * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + 45 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), height: 9500, forwardMomentum: 1300)
+                
+                // Launch third rock
+                self.launchRock(skill.secondaryRange * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + 75 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), height: 8500, forwardMomentum: 1450)
+            }
             
             // Iterate through all enemies and deal damage to them if they are touching the ground
             for enemy in self.gameScene!.worldViewEnvironmentObjects {

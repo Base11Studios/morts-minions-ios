@@ -76,8 +76,6 @@
 		<string>MeteorMaker</string>
 		<key>Location</key>
 		<integer>7000</integer>
-		<key>Value1</key>
-		<integer>200</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3</key>
 	<dict>
@@ -92,8 +90,6 @@
 		<string>MeteorMaker</string>
 		<key>Location</key>
 		<integer>6750</integer>
-		<key>Value1</key>
-		<integer>200</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 3</key>
 	<dict>
@@ -246,8 +242,6 @@
 		<string>MeteorMaker</string>
 		<key>Location</key>
 		<integer>2800</integer>
-		<key>Value1</key>
-		<integer>200</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 3</key>
 	<dict>

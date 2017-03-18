@@ -440,6 +440,8 @@
 		37F31CC61E7C45B90002A76A /* level_78.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CC31E7C45B90002A76A /* level_78.plist */; };
 		37F31CC71E7C45B90002A76A /* level_79.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CC41E7C45B90002A76A /* level_79.plist */; };
 		37F31CC81E7C45B90002A76A /* level_80.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CC51E7C45B90002A76A /* level_80.plist */; };
+		37F31CCA1E7CCC1A0002A76A /* PlayerFairyBolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F31CC91E7CCC1A0002A76A /* PlayerFairyBolt.swift */; };
+		37F31CCC1E7D57A70002A76A /* story-tempus2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CCB1E7D57A70002A76A /* story-tempus2.atlas */; };
 		37F518191D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F518181D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift */; };
 		37F8C2981C397418002FB339 /* GameTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2971C397418002FB339 /* GameTextures.swift */; };
 		37F8C2C21C3CA614002FB339 /* Crab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2C11C3CA613002FB339 /* Crab.swift */; };
@@ -919,6 +921,8 @@
 		37F31CC31E7C45B90002A76A /* level_78.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_78.plist; path = Levels/level_78.plist; sourceTree = "<group>"; };
 		37F31CC41E7C45B90002A76A /* level_79.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_79.plist; path = Levels/level_79.plist; sourceTree = "<group>"; };
 		37F31CC51E7C45B90002A76A /* level_80.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_80.plist; path = Levels/level_80.plist; sourceTree = "<group>"; };
+		37F31CC91E7CCC1A0002A76A /* PlayerFairyBolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFairyBolt.swift; sourceTree = "<group>"; };
+		37F31CCB1E7D57A70002A76A /* story-tempus2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "story-tempus2.atlas"; sourceTree = "<group>"; };
 		37F518181D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWithShadowProtocol.swift; sourceTree = "<group>"; };
 		37F8C2971C397418002FB339 /* GameTextures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GameTextures.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		37F8C2C11C3CA613002FB339 /* Crab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crab.swift; sourceTree = "<group>"; };
@@ -1654,7 +1658,6 @@
 		37BFC4941ABA336C0038C350 /* Atlases */ = {
 			isa = PBXGroup;
 			children = (
-				374F900C1E21275E003613D5 /* spiritbackground2.atlas */,
 				37BAE40D1DD73FD500DD4ECC /* air2.atlas */,
 				37BAE40E1DD73FD500DD4ECC /* airbackgrounds2.atlas */,
 				37BAE40F1DD73FD500DD4ECC /* buttons2.atlas */,
@@ -1670,10 +1673,12 @@
 				37BAE66C1DD73FD600DD4ECC /* playerwarrior2.atlas */,
 				37BAE66D1DD73FD600DD4ECC /* projectiles2.atlas */,
 				37BAE66E1DD73FD600DD4ECC /* spirit2.atlas */,
+				374F900C1E21275E003613D5 /* spiritbackground2.atlas */,
 				37BAE66F1DD73FD600DD4ECC /* splashandstory2.atlas */,
 				37BAE6701DD73FD600DD4ECC /* story-astra2.atlas */,
 				37BAE6711DD73FD600DD4ECC /* story-ignis2.atlas */,
 				37BAE6721DD73FD600DD4ECC /* story-shared2.atlas */,
+				37F31CCB1E7D57A70002A76A /* story-tempus2.atlas */,
 				37BAE6731DD73FD600DD4ECC /* story-terra2.atlas */,
 				37BAE6741DD73FD600DD4ECC /* story-water2.atlas */,
 				37BAE6751DD73FD600DD4ECC /* tutorial-astra2.atlas */,
@@ -1714,6 +1719,7 @@
 				37BAE82A1DD9144300DD4ECC /* PlayerSmallBoulder.swift */,
 				376A89A31D332DDF00ACCCA3 /* PlayerSmallMeteor.swift */,
 				3764F73B1C5C4425000CFFFD /* PlayerRock.swift */,
+				37F31CC91E7CCC1A0002A76A /* PlayerFairyBolt.swift */,
 				37DD89F01C554CD500588E38 /* PlayerArrow.swift */,
 				376CBA531CC3DF5100BE2756 /* PlayerShockwave.swift */,
 			);
@@ -2298,6 +2304,7 @@
 				373964291C664F780018C8C9 /* level_41.plist in Resources */,
 				370A16A31E762F17004A2FE0 /* level_72.plist in Resources */,
 				3739642A1C664F780018C8C9 /* level_42.plist in Resources */,
+				37F31CCC1E7D57A70002A76A /* story-tempus2.atlas in Resources */,
 				3739640D1C664F780018C8C9 /* level_14.plist in Resources */,
 				373964301C664F780018C8C9 /* level_48.plist in Resources */,
 				373964231C664F780018C8C9 /* level_35.plist in Resources */,
@@ -2517,6 +2524,7 @@
 				37BB69661C33253200B59D73 /* WorldNode.swift in Sources */,
 				375336761C8E0141009FE27E /* MainMenuBuyButton.swift in Sources */,
 				37FF3E751C9B6B2C00A93FAD /* ChallengeContainer.swift in Sources */,
+				37F31CCA1E7CCC1A0002A76A /* PlayerFairyBolt.swift in Sources */,
 				37B5679C1DA6D1E50013A4AC /* CharacterTradeButton.swift in Sources */,
 				370020C61C9EF0EF007432E4 /* Firebomber.swift in Sources */,
 				373CEAA21C165EA800197B83 /* Mage.swift in Sources */,

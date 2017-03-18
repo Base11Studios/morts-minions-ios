@@ -23,7 +23,7 @@ class PulseOrb : Obstacle {
     
     override func setupTraitsWithScalar(_ scalar: Double) {
         // Add physics to the enemy
-        self.physicsBody = SKPhysicsBody(circleOfRadius: self.size.width / 2.75)
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.85, height: self.size.height * 0.85), center: CGPoint(x: 0, y: 0))
         
         // Determine interactions with player
         self.collidesWithPlayer = true

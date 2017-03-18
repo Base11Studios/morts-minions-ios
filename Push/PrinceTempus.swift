@@ -108,7 +108,7 @@ class PrinceTempus : Enemy {
         self.physicsBody!.mass = self.defaultMass * 10
         
         // Attributes
-        self.maxHealth = 2
+        self.maxHealth = 1
         self.health = self.maxHealth
         self.lineOfSight = 350 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         
