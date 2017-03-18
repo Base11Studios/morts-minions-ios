@@ -23,10 +23,10 @@ class KingTempus : Enemy {
         // Setup animations for walking only
         self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "kingtempus_floating", frameStart: 0, frameEnd: 15), timePerFrame: 0.06, resize: true, restore: false))
         
-        var numProjectiles: Int = Int(self.value1)
+        var numProjectiles: Int = 30 /*Int(self.value1)
         if numProjectiles == 0 {
             numProjectiles = 10
-        }
+        }*/
         
         for _ in 1...numProjectiles {
             // Create projectile

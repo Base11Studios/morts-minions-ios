@@ -54,7 +54,7 @@ class MeteorMaker : Obstacle {
         self.damage = 0
         self.damageToShields = 0
         
-        self.lineOfSight = 225//CGFloat(self.value1)
+        self.lineOfSight = 260//CGFloat(self.value1)
     }
     
     override func attack(_ timeSinceLast: CFTimeInterval, player: Player) {
@@ -63,6 +63,7 @@ class MeteorMaker : Obstacle {
             
             meteor.position = CGPoint(x: self.position.x, y: self.position.y + 350 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             meteor.defaultYPosition = self.position.y
+            meteor.physicsBody!.velocity = CGVector(dx: 0,dy: 0)
             
             // Change the name back to default so it receives updates
             meteor.resetName()

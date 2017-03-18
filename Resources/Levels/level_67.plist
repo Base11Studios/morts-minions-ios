@@ -14,9 +14,9 @@
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>
-			<string>Teleport</string>
+			<string>Teleporter</string>
 			<key>Key</key>
-			<string>teleport</string>
+			<string>teleporter</string>
 			<key>Version</key>
 			<real>1.1</real>
 		</dict>

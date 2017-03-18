@@ -6,7 +6,7 @@
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>You catch your breath after a battle and notice one of the Imal’s shields depicts a graphic scene: An imal with legs in chains building a rulen house.</string>
+			<string>You catch your breath after a battle and notice one of the minion&apos;s shields depicts a graphic scene: A minion with legs in chains building a rulen house.</string>
 			<key>Icon</key>
 			<string>story-w3-chains</string>
 			<key>Version</key>
@@ -16,7 +16,7 @@
 		</dict>
 		<dict>
 			<key>Description</key>
-			<string>You find another shield. A dead imal over the fire and rulens eating it. You may be closer to finding a reason for this revolution.</string>
+			<string>You find another shield. A dead minion over the fire and rulens eating it. You may be closer to finding a reason for this revolution.</string>
 			<key>Icon</key>
 			<string>story-w3-eating</string>
 			<key>Version</key>
