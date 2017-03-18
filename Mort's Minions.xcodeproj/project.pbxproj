@@ -442,6 +442,7 @@
 		37F31CC81E7C45B90002A76A /* level_80.plist in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CC51E7C45B90002A76A /* level_80.plist */; };
 		37F31CCA1E7CCC1A0002A76A /* PlayerFairyBolt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F31CC91E7CCC1A0002A76A /* PlayerFairyBolt.swift */; };
 		37F31CCC1E7D57A70002A76A /* story-tempus2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CCB1E7D57A70002A76A /* story-tempus2.atlas */; };
+		37F31CCE1E7D94D10002A76A /* tutorial-tempus2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 37F31CCD1E7D94D10002A76A /* tutorial-tempus2.atlas */; };
 		37F518191D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F518181D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift */; };
 		37F8C2981C397418002FB339 /* GameTextures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2971C397418002FB339 /* GameTextures.swift */; };
 		37F8C2C21C3CA614002FB339 /* Crab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37F8C2C11C3CA613002FB339 /* Crab.swift */; };
@@ -923,6 +924,7 @@
 		37F31CC51E7C45B90002A76A /* level_80.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = level_80.plist; path = Levels/level_80.plist; sourceTree = "<group>"; };
 		37F31CC91E7CCC1A0002A76A /* PlayerFairyBolt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerFairyBolt.swift; sourceTree = "<group>"; };
 		37F31CCB1E7D57A70002A76A /* story-tempus2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "story-tempus2.atlas"; sourceTree = "<group>"; };
+		37F31CCD1E7D94D10002A76A /* tutorial-tempus2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = "tutorial-tempus2.atlas"; sourceTree = "<group>"; };
 		37F518181D5C94EF00E5EA77 /* LabelWithShadowProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelWithShadowProtocol.swift; sourceTree = "<group>"; };
 		37F8C2971C397418002FB339 /* GameTextures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GameTextures.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		37F8C2C11C3CA613002FB339 /* Crab.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Crab.swift; sourceTree = "<group>"; };
@@ -1683,6 +1685,7 @@
 				37BAE6741DD73FD600DD4ECC /* story-water2.atlas */,
 				37BAE6751DD73FD600DD4ECC /* tutorial-astra2.atlas */,
 				37BAE6761DD73FD600DD4ECC /* tutorial-ignis2.atlas */,
+				37F31CCD1E7D94D10002A76A /* tutorial-tempus2.atlas */,
 				37BAE6771DD73FD600DD4ECC /* tutorial-terra2.atlas */,
 				37BAE6781DD73FD600DD4ECC /* tutorial-water2.atlas */,
 				37BAE6791DD73FD600DD4ECC /* ux2.atlas */,
@@ -2320,6 +2323,7 @@
 				37BAE8121DD73FD700DD4ECC /* firebackgrounds2.atlas in Resources */,
 				37A38E7F1DD101DB00287FB2 /* MPCloseButtonX@2x.png in Resources */,
 				37BAE8221DD73FD700DD4ECC /* tutorial-water2.atlas in Resources */,
+				37F31CCE1E7D94D10002A76A /* tutorial-tempus2.atlas in Resources */,
 				373964161C664F780018C8C9 /* level_22.plist in Resources */,
 				376A654F1AB38A3500F31421 /* Main.storyboard in Resources */,
 				373964351C664F780018C8C9 /* level_53.plist in Resources */,

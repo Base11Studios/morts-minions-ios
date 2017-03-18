@@ -10,13 +10,13 @@
 			<key>Title</key>
 			<string>Teleport</string>
 			<key>Description</key>
-			<string>It isn&apos;t safe to fly through a storm cloud.</string>
+			<string>I prefer you stay on the ground.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>
-			<string>StormCloud</string>
+			<string>Teleport</string>
 			<key>Key</key>
-			<string>stormcloud</string>
+			<string>teleport</string>
 			<key>Version</key>
 			<real>1.1</real>
 		</dict>

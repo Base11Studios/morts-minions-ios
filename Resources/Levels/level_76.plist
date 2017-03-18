@@ -14,9 +14,9 @@
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>
-			<string>StormCloud</string>
+			<string>Mimic</string>
 			<key>Key</key>
-			<string>stormcloud</string>
+			<string>Mimic</string>
 			<key>Version</key>
 			<real>1.1</real>
 		</dict>

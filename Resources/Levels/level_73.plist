@@ -10,13 +10,13 @@
 			<key>Title</key>
 			<string>Black Hole</string>
 			<key>Description</key>
-			<string>It isn&apos;t safe to fly through a storm cloud.</string>
+			<string>Light bends to my will.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>
-			<string>StormCloud</string>
+			<string>BlackHole</string>
 			<key>Key</key>
-			<string>stormcloud</string>
+			<string>blackhole</string>
 			<key>Version</key>
 			<real>1.1</real>
 		</dict>

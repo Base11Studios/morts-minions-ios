@@ -10,13 +10,13 @@
 			<key>Title</key>
 			<string>Pulse Orb</string>
 			<key>Description</key>
-			<string>It isn&apos;t safe to fly through a storm cloud.</string>
+			<string>Look into my eyes...</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>
-			<string>StormCloud</string>
+			<string>PulseOrb</string>
 			<key>Key</key>
-			<string>stormcloud</string>
+			<string>pulseorb</string>
 			<key>Version</key>
 			<real>1.1</real>
 		</dict>

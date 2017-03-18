@@ -10,13 +10,13 @@
 			<key>Title</key>
 			<string>Creatch</string>
 			<key>Description</key>
-			<string>It isn&apos;t safe to fly through a storm cloud.</string>
+			<string>*Beware* within my circle you can&apos;t jump!</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>
-			<string>StormCloud</string>
+			<string>creatch</string>
 			<key>Key</key>
-			<string>stormcloud</string>
+			<string>creatch</string>
 			<key>Version</key>
 			<real>1.1</real>
 		</dict>

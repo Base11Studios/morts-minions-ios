@@ -10,13 +10,13 @@
 			<key>Title</key>
 			<string>Ameba</string>
 			<key>Description</key>
-			<string>It isn&apos;t safe to fly through a storm cloud.</string>
+			<string>Sccccieeeeence!</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>
-			<string>StormCloud</string>
+			<string>Ameba</string>
 			<key>Key</key>
-			<string>stormcloud</string>
+			<string>ameba</string>
 			<key>Version</key>
 			<real>1.1</real>
 		</dict>

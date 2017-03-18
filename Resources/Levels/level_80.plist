@@ -10,13 +10,13 @@
 			<key>Title</key>
 			<string>King Tempus</string>
 			<key>Description</key>
-			<string>Hit me twice or hit me hard.</string>
+			<string>I&apos;m really tough, really.</string>
 			<key>Type</key>
 			<string>environment</string>
 			<key>Class</key>
-			<string>StormCloud</string>
+			<string>KingTempus</string>
 			<key>Key</key>
-			<string>stormcloud</string>
+			<string>kingtempus</string>
 			<key>Version</key>
 			<real>1.1</real>
 		</dict>
