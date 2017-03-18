@@ -537,9 +537,9 @@
 			<key>Id</key>
 			<string>fairydefense1</string>
 			<key>Description</key>
-			<string>Increases the fairy&apos;s defenses, allowing her to protect every 18 seconds.</string>
+			<string>Increases the fairy&apos;s defenses, allowing her to protect every 20 seconds.</string>
 			<key>Cooldown</key>
-			<integer>10</integer>
+			<integer>8</integer>
 		</dict>
 		<dict>
 			<key>Name</key>

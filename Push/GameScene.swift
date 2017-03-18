@@ -1472,7 +1472,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             if self.player.position.x > 0 {
                 playerPositionX = CGFloat(Double(self.player.position.x))
             }
-            activeProgressBar.size = CGSize(width: playerPositionX / self.totalLevelDistance * (self.frame.size.width / self.progressBarAdjuster), height: self.frame.size.height / 24.0)
+            var playerPercent = playerPositionX / self.totalLevelDistance
+            if playerPercent > 1 {
+                playerPercent = 1
+            }
+            activeProgressBar.size = CGSize(width: playerPercent * (self.frame.size.width / self.progressBarAdjuster), height: self.frame.size.height / 24.0)
             
             activeProgressBar.position = CGPoint(x: self.progressBar.position.x  - self.progressBar.size.width / 2 + self.activeProgressBar.size.width / 2, y: self.frame.size.height - 20.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         }

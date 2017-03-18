@@ -129,64 +129,70 @@
 		<key>Object</key>
 		<string>LevelEnd</string>
 		<key>Location</key>
-		<integer>8275</integer>
+		<real>9275</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 2</key>
 	<dict>
 		<key>Object</key>
 		<string>MeteorMaker</string>
 		<key>Location</key>
-		<integer>8125</integer>
+		<real>9125</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 5</key>
 	<dict>
 		<key>Object</key>
 		<string>MeteorMaker</string>
 		<key>Location</key>
-		<real>7975</real>
+		<real>8975</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 6</key>
 	<dict>
 		<key>Object</key>
 		<string>MeteorMaker</string>
 		<key>Location</key>
-		<real>7800</real>
+		<real>8800</real>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 7</key>
 	<dict>
 		<key>Object</key>
 		<string>MeteorMaker</string>
 		<key>Location</key>
-		<real>7675</real>
+		<real>8675</real>
 	</dict>
-	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 4</key>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3</key>
 	<dict>
 		<key>Object</key>
-		<string>DarkTower</string>
+		<string>DarkEnergy</string>
 		<key>Location</key>
-		<real>7600</real>
+		<integer>8050</integer>
 		<key>Value1</key>
-		<integer>90</integer>
+		<integer>50</integer>
+		<key>Value2</key>
+		<integer>250</integer>
 	</dict>
-	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 6</key>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 5</key>
 	<dict>
 		<key>Object</key>
-		<string>Teleporter</string>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<integer>7800</integer>
+		<key>Value1</key>
+		<integer>70</integer>
+		<key>Value2</key>
+		<integer>250</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
 		<key>Location</key>
 		<integer>7550</integer>
 		<key>Value1</key>
-		<integer>125</integer>
+		<integer>30</integer>
+		<key>Value2</key>
+		<integer>250</integer>
 	</dict>
-	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 2 - 4</key>
-	<dict>
-		<key>Object</key>
-		<string>PulseOrb</string>
-		<key>Location</key>
-		<integer>7500</integer>
-		<key>Value1</key>
-		<integer>40</integer>
-	</dict>
-	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3</key>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 7</key>
 	<dict>
 		<key>Object</key>
 		<string>DarkEnergy</string>
@@ -206,7 +212,7 @@
 		<key>Value1</key>
 		<integer>50</integer>
 		<key>Value2</key>
-		<integer>300</integer>
+		<integer>250</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 4</key>
 	<dict>
@@ -217,7 +223,16 @@
 		<key>Value1</key>
 		<integer>40</integer>
 		<key>Value2</key>
-		<integer>350</integer>
+		<integer>250</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 3 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>KingTempus</string>
+		<key>Location</key>
+		<integer>6800</integer>
+		<key>Value1</key>
+		<integer>20</integer>
 	</dict>
 	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4</key>
 	<dict>
