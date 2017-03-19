@@ -161,6 +161,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     var heartBoostReady = false
     var heartBoostDialog: HeartBoostDialog?
     var startingReviveHearts: Int = 0
+    var showedHeartBoostDialog = false
     
     // Background
     var numberBackgroundNodes: Int = 4
@@ -175,6 +176,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     // Used for displaying pregame pops
     var firstMoveToScene: Bool = true
+    
+    // Static ads
+    var adsPresented = false
     
     // Point functions
     func dbAdd(_ a: CGPoint, b: CGPoint) -> CGPoint {
@@ -317,6 +321,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Add the world view
         self.addChild(self.worldView)
         
+        // Initialize Ads
+        self.createAds()
+        
         // Set button size
         let buttonNode = GameTextures.sharedInstance.buttonGameAtlas.textureNamed("skillbutton")
         self.buttonSize = buttonNode.size().width
@@ -403,6 +410,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func displayPregamePops() {
+        print("\(!self.showedHeartBoostDialog) && \((GameData.sharedGameData.adPopCountdown <= 0)) && \(viewController!.interstitialAdReady()) && \(!self.adsPresented) && \(!GameData.sharedGameData.adsUnlocked)")
+        
         // First story
         if self.storyDialogs!.count > 0 {
             self.showPauseMenu = false
@@ -415,6 +424,17 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.heartBoostReady = false
             self.showPauseMenu = false
             self.pauseGame()
+        } else if !self.showedHeartBoostDialog && (GameData.sharedGameData.adPopCountdown <= 0) && viewController!.interstitialAdReady() && !self.adsPresented && !GameData.sharedGameData.adsUnlocked {
+            // Then ads
+            // Show the ad
+            viewController!.showInterstitialAd()
+            
+            self.adsPresented = true
+            self.showPauseMenu = false
+            self.pauseGame()
+            
+            // Reset the count
+            GameData.sharedGameData.adPopCountdown = GameData.sharedGameData.adPopMax
         } else { // Then tutorials
             self.addAllPlayerHearts()
             
@@ -427,14 +447,19 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 self.showPauseMenu = false
                 self.pauseGame()
                 
-                // Skip challenges if restarted
-                if self.justRestarted {
+                // Skip challenges if restarted & we didn't show the heart boost video. We dont want the gameplay to start after video watch
+                if self.justRestarted && !self.showedHeartBoostDialog {
                     self.displayTutorialTooltip()
                 } else {
                     self.displayChallenges()
                 }
             }
         }
+    }
+    
+    func createAds() {
+        // Decrease pop count
+        GameData.sharedGameData.adPopCountdown -= 1
     }
     
     func enableHeartBoost() {
@@ -445,7 +470,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func intializeHeartBoost() {
-        self.heartBoostReady = GameData.sharedGameData.timesPlayed > 14 && self.viewController!.heartBoostReady()
+        // We don't want a video to end and go right into gameplay, so make sure the challenge is there to block it.
+        self.heartBoostReady = GameData.sharedGameData.timesPlayed > 14 && GameData.sharedGameData.getSelectedCharacterData().challengesUnlocked(self.currentLevel) && self.viewController!.heartBoostReady()
         
         if self.heartBoostReady {
             self.heartBoostDialog = HeartBoostDialog(frameSize: self.size, scene: self, gemCost: 12)
@@ -470,6 +496,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         GameData.sharedGameData.heartBoostLastPrompted = Date()
         self.heartBoostDialog!.toggleheartBoostVideo()
         self.heartBoostDialog!.isHidden = false
+        self.showedHeartBoostDialog = true
     }
     
     // Create a functon that will be called by posted notifications of interstitial being closed.
@@ -478,7 +505,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         //Chartboost.closeImpression()
         
         self.displayPregamePops()
-        //viewController!.cacheInterstitialAd()
+        viewController!.cacheInterstitialAd()
     }
     
     func createUxTutorials() {
@@ -1115,9 +1142,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     func loadEndOfLevelDialog(_ score: LevelScore) {
         // Video reward - cache
-        //self.viewController!.cacheRewardedVideo()
+        self.viewController!.cacheRewardedVideo()
         // Interstitial
-        //self.viewController!.cacheInterstitialAd()
+        self.viewController!.cacheInterstitialAd()
         
         // Check for levels completed if they are completed keep them in there
         var levelsUnlocked = Array<Int>()
@@ -2011,12 +2038,12 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Occasionally we advertise in house purchases. Skip the first time, so start at frequency * 2
         var frequencyAds: Int = 10
 
-        if !GameData.sharedGameData.adsUnlocked && GameData.sharedGameData.timesPlayed > frequencyAds && GameData.sharedGameData.timesPlayed % frequencyAds == 0 {
+        if !GameData.sharedGameData.adsUnlocked && GameData.sharedGameData.timesPlayed > 5 && GameData.sharedGameData.timesPlayed % frequencyAds == 0 {
             // Get the version information
             let key = "timesPlayedAdvertisement\(GameData.sharedGameData.timesPlayed)"
             let version = 1.0
             let iconTexture: SKTexture
-            var description = "Any purchase gives longer hero boosts!"
+            var description = "Purchases remove rewardless ads!"
             // Create dialog
             var title = "Buy Gems!"
             

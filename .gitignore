@@ -14,3 +14,6 @@ Videos\
 Videos/
 *.xcuserstate*
 *.xcbkptlist*
+Pods*
+Pods\*
+Pods/*
