@@ -410,8 +410,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func displayPregamePops() {
-        print("\(!self.showedHeartBoostDialog) && \((GameData.sharedGameData.adPopCountdown <= 0)) && \(viewController!.interstitialAdReady()) && \(!self.adsPresented) && \(!GameData.sharedGameData.adsUnlocked)")
-        
         // First story
         if self.storyDialogs!.count > 0 {
             self.showPauseMenu = false
