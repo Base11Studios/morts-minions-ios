@@ -16,12 +16,12 @@ class PrinceTempus : Enemy {
     
     required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
         // Initialize the attributes
-        super.init(scalar: scalar, imageName: "kingtempus_floating_000", textureAtlas: GameTextures.sharedInstance.spiritAtlas, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
+        super.init(scalar: scalar, imageName: "princetempus_floating_000", textureAtlas: GameTextures.sharedInstance.spiritAtlas, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
         
-        self.setScale(self.xScale * 0.625)
+        //self.setScale(self.xScale * 0.625)
         
         // Setup animations for walking only
-        self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "kingtempus_floating", frameStart: 0, frameEnd: 15), timePerFrame: 0.06, resize: true, restore: false))
+        self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "princetempus_floating", frameStart: 0, frameEnd: 15), timePerFrame: 0.06, resize: true, restore: false))
         
         var numProjectiles: Int = 30/* Int(self.value1)
         if numProjectiles == 0 {
@@ -91,7 +91,7 @@ class PrinceTempus : Enemy {
         })
         
         // Set the appropriate fight action
-        self.fightAction = SKAction.sequence([SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "kingtempus_attacking", frameStart: 0, frameEnd: 15), timePerFrame: 0.025, resize: true, restore: false), actionOpenProjectile, actionEndAttack]) // TODO this frame speed should be multiplied by the difference of the enemy speed or something
+        self.fightAction = SKAction.sequence([SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "princetempus_attacking", frameStart: 0, frameEnd: 15), timePerFrame: 0.025, resize: true, restore: false), actionOpenProjectile, actionEndAttack]) // TODO this frame speed should be multiplied by the difference of the enemy speed or something
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -15,14 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func applicationDidFinishLaunching(_ application: UIApplication) {
-        //GADMobileAds.configure(withApplicationID: "ca-app-pub-4505737160765142~1208265512");
-        /*let adTypes: AppodealAdType = [/*AppodealAdType.interstitial,*/ /*.skippableVideo,*/ AppodealAdType.rewardedVideo];
-        
-        Appodeal.setAutocache(true, types: adTypes)
-        Appodeal.setTestingEnabled(false)
-        
-        //Appodeal.setLocationTracking(false)
-        Appodeal.initialize(withApiKey:"e5ac706b45d36d6a998c42fb1aec1e0d4b469e9986cedc58", types: adTypes);*/
+        Chartboost.start(withAppId: "576a8abe04b01657f1e18be5", appSignature: "54c4763f89ea9ff96502d320787de1cb9ceb7c21", delegate: nil)
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
