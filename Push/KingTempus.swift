@@ -59,7 +59,7 @@ class KingTempus : Enemy {
                 bolt.defaultYPosition = self!.position.y - 3.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
                 
                 // Bolt direction
-                bolt.yGrowth = CGFloat((Double(arc4random_uniform(201) + 1) / 100.0) - 1.0)
+                bolt.yGrowth = CGFloat((Double(arc4random_uniform(101) + 1) / 100.0) - 0.25)
                 
                 // Change the name back to default so it receives updates
                 bolt.resetName()

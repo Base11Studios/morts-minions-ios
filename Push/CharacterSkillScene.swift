@@ -242,6 +242,7 @@ class CharacterSkillScene : DBScene {
     func createUxTutorials() {
         var displayedBuySkill: Bool = false
         var displayedResetSkill: Bool = false
+        var displayedTrade: Bool = false
         var tutorialAck: Double?
         var tutorialKey: String
         var tutorialVersion: Double
@@ -305,7 +306,7 @@ class CharacterSkillScene : DBScene {
             }
         }
         
-        if !displayedBuySkill && !displayedResetSkill && GameData.sharedGameData.getSelectedCharacterData().levelProgress[10] != nil && GameData.sharedGameData.getSelectedCharacterData().levelProgress[10]!.timesLevelPlayed > 0 {
+        if !displayedBuySkill && !displayedResetSkill && GameData.sharedGameData.getSelectedCharacterData().levelProgress[10] != nil && GameData.sharedGameData.getSelectedCharacterData().levelProgress[10]!.timesLevelPlayed > 0 || GameData.sharedGameData.getSelectedCharacterData().godMode {
             tutorialKey = "UXTutorialSkillsTrade"
             tutorialVersion = 1.0
             tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
@@ -313,6 +314,22 @@ class CharacterSkillScene : DBScene {
             if self.superStarPurchasingUnlocked() && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
                 let tutorial = UXTutorialDialog(frameSize: self.size, description: "Trade your gems for stars for skill upgrades!", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.rightTop], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
                 tutorial.containerBackground.position = CGPoint(x: self.tradeButton!.position.x - self.tradeButton!.size.width / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.width / 2 - self.nodeBuffer, y: self.tradeButton!.position.y + self.tradeButton!.size.height / 2 - tutorial.containerBackground.calculateAccumulatedFrame().size.height / 2)
+                self.uxTutorialTooltips!.append(tutorial)
+                
+                displayedTrade = true
+                self.addChild(tutorial)
+            }
+        }
+        
+        if !displayedBuySkill && !displayedResetSkill && !displayedTrade && GameData.sharedGameData.getSelectedCharacterData().levelProgress[10] != nil && GameData.sharedGameData.getSelectedCharacterData().levelProgress[10]!.timesLevelPlayed > 0 || GameData.sharedGameData.getSelectedCharacterData().godMode {
+            tutorialKey = "UXTutorialSkillsScroll"
+            tutorialVersion = 1.0
+            tutorialAck = GameData.sharedGameData.tutorialsAcknowledged[tutorialKey]
+            
+            if self.superStarPurchasingUnlocked() && (tutorialAck == nil || floor(tutorialAck!) != floor(tutorialVersion)) || GameData.sharedGameData.getSelectedCharacterData().godMode {
+                let tutorial = UXTutorialDialog(frameSize: self.size, description: "Scroll up and down to see all the possible skills!", scene: self, size: "Medium", indicators: [UxTutorialIndicatorPosition.topCenter, UxTutorialIndicatorPosition.bottomCenter], key: tutorialKey, version: tutorialVersion, onComplete: onCompleteUxTooltip!)
+                
+                tutorial.containerBackground.position = CGPoint(x: 0, y: 0)
                 self.uxTutorialTooltips!.append(tutorial)
                 
                 self.addChild(tutorial)
