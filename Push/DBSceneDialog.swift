@@ -15,17 +15,18 @@ class DBSceneDialog: DialogBackground {
     var descriptionNode2: DSMultilineLabelNode?
     var descriptionNode3: DSMultilineLabelNode?
     var descriptionNode4: DSMultilineLabelNode?
+    var descriptionNode5: DSMultilineLabelNode?
     var iconBackgroundNode: SKSpriteNode?
     var iconNode: SKSpriteNode?
     
-    init(title: String, description: String, descriptionSize: Int, description2: String?, description3: String?, description4: String?, frameSize : CGSize, scene: DBScene, iconTexture: SKTexture) {
+    init(title: String, description: String, descriptionSize: Int, description2: String?, description3: String?, description4: String?, description5: String?, frameSize : CGSize, scene: DBScene, iconTexture: SKTexture) {
         super.init(frameSize: frameSize)
         
         // Create the buttons
         self.okayButton = DBSceneOkayButton(scene: scene, container: self)
         
         // Set the container size
-        self.container.size = CGSize(width: frameSize.height * 1.0164 /** (1 + (1 - ScaleBuddy.sharedInstance.getScaleAmount()))*/, height: frameSize.height * 2 / 3.5)
+        self.container.size = CGSize(width: frameSize.height * 1.0164 /** (1 + (1 - ScaleBuddy.sharedInstance.getScaleAmount()))*/, height: frameSize.height * 0.675)
         self.containerBackground.size = CGSize(width: self.container.size.width + 2, height: self.container.size.height + 4)
         self.container.position = CGPoint(x: 0, y: 1)
         
@@ -97,12 +98,24 @@ class DBSceneDialog: DialogBackground {
             self.descriptionNode4 = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
             self.container.addChild(self.descriptionNode4!)
             self.descriptionNode4?.paragraphWidth = self.container.size.width - self.buttonBuffer
-            self.descriptionNode4?.fontSize = round(12 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+            self.descriptionNode4?.fontSize = ScaleBuddy.sharedInstance.getDescriptionFontSize()
             self.descriptionNode4?.fontColor = MerpColors.darkFont
             self.descriptionNode4?.text = description4!
             let descriptionNode4XPosition = self.container.size.width / -2 + self.descriptionNode4!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2
             let descriptionNode4YPosition = self.descriptionNode3!.position.y - self.descriptionNode3!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode4!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer
             self.descriptionNode4?.position = CGPoint(x: descriptionNode4XPosition, y: descriptionNode4YPosition)
+        }
+        
+        if description5 != nil {
+            self.descriptionNode5 = DSMultilineLabelNode(fontName: "Avenir-Medium", scene: scene)
+            self.container.addChild(self.descriptionNode5!)
+            self.descriptionNode5?.paragraphWidth = self.container.size.width - self.buttonBuffer
+            self.descriptionNode5?.fontSize = round(12 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+            self.descriptionNode5?.fontColor = MerpColors.darkFont
+            self.descriptionNode5?.text = description5!
+            let descriptionNode5XPosition = self.container.size.width / -2 + self.descriptionNode5!.calculateAccumulatedFrame().size.width / 2 + self.buttonBuffer / 2
+            let descriptionNode5YPosition = self.descriptionNode4!.position.y - self.descriptionNode4!.calculateAccumulatedFrame().size.height / 2 - self.descriptionNode5!.calculateAccumulatedFrame().size.height / 2 - self.buttonBuffer
+            self.descriptionNode5?.position = CGPoint(x: descriptionNode5XPosition, y: descriptionNode5YPosition)
         }
         
         self.container.addChild(self.iconBackgroundNode!)

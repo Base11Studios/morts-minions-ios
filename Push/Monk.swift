@@ -16,6 +16,7 @@ class Monk : Player {
         self.skill3Details = CharacterSkillDetails(upgrade: CharacterUpgrade.Hover)
         self.skill4Details = CharacterSkillDetails(upgrade: CharacterUpgrade.KiWave)
         self.skill5Details = CharacterSkillDetails(upgrade: CharacterUpgrade.KiShield)
+        self.skill6Details = CharacterSkillDetails(upgrade: CharacterUpgrade.FairyGuardian)
         
         super.initializeSkills()
     }

@@ -80,7 +80,7 @@ class MainMenuScene : DBScene {
         //self.viewController!.getAchievements()
         
         // Cache an ad so we're ready when we need it
-        //self.viewController!.cacheInterstitialAd()
+        self.viewController!.cacheInterstitialAd()
         
         super.didMove(to: view)
     }
@@ -531,7 +531,7 @@ class MainMenuScene : DBScene {
         
         // Create dialog for error message
         if true { // TODO base on bool from notification
-            let dialog = DBSceneDialog(title: "Unable to Connect to Game Center", description: "Ensure you're logged in by going to iOS settings then Game Center. If you're logged in and it still won't connect, try signing out then back in. Once you sign in to Game Center successfully, you will need to restart Mort's Minions.", descriptionSize: 14, description2: nil, description3: nil, description4: nil, frameSize : self.size, scene: self, iconTexture:  GameTextures.sharedInstance.buttonAtlas.textureNamed("trophyred"))
+            let dialog = DBSceneDialog(title: "Unable to Connect to Game Center", description: "Ensure you're logged in by going to iOS settings then Game Center. If you're logged in and it still won't connect, try signing out then back in. Once you sign in to Game Center successfully, you will need to restart Mort's Minions.", descriptionSize: 14, description2: nil, description3: nil, description4: nil, description5: nil, frameSize : self.size, scene: self, iconTexture:  GameTextures.sharedInstance.buttonAtlas.textureNamed("trophyred"))
             
             self.addChild(dialog)
             dialog.isHidden = false

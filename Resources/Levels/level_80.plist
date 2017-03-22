@@ -1,0 +1,436 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>World</key>
+	<string>spirit</string>
+	<key>Tutorial - 2</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>King Tempus</string>
+			<key>Description</key>
+			<string>I&apos;m really tough, really.</string>
+			<key>Type</key>
+			<string>environment</string>
+			<key>Class</key>
+			<string>KingTempus</string>
+			<key>Key</key>
+			<string>kingtempus</string>
+			<key>Version</key>
+			<real>1.1</real>
+		</dict>
+	</array>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>ReachEndOfLevel</string>
+			<key>Reward</key>
+			<integer>2</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>DieByEnemies</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+	</array>
+	<key>Story</key>
+	<array>
+		<dict>
+			<key>Description</key>
+			<string>“Welcome, c_name. You have made it and get a glimpse of what is to come for your people.”</string>
+			<key>Icon</key>
+			<string>story-king-talk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>“We have seen our mistakes and pledge to stop our mistreatment of minions. We commit to create a world of harmony and freedom. You must release your grip of time and work with us to create peace.”</string>
+			<key>Icon</key>
+			<string>story-c_role-talk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>“The time for compromise has passed. Prepare to be defeated.”</string>
+			<key>Icon</key>
+			<string>story-king-stand</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>Beginning</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>You have defeated the king of Tempus. The evil minions have disappeared, almost as if they had never existed.</string>
+			<key>Icon</key>
+			<string>story-tempus-free</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>Mort turns to you “c_relationship, we learn that peace and seeking understanding is the only answer. The king of Tempus sought vengeance and it has led to his demise.”</string>
+			<key>Icon</key>
+			<string>story-mort-talk</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>You and Mort return to your worlds and begin to rebuild. The future is bright and full of freedom.</string>
+			<key>Icon</key>
+			<string>story-c_role-shake</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+		<dict>
+			<key>Description</key>
+			<string>Thank you for playing! Try to master all the levels or change characters for a new experience!</string>
+			<key>Icon</key>
+			<string>story-theend</string>
+			<key>Version</key>
+			<integer>1</integer>
+			<key>Type</key>
+			<string>End</string>
+		</dict>
+	</array>
+	<key>Tutorial</key>
+	<array>
+		<dict>
+			<key>Title</key>
+			<string>The Last Level</string>
+			<key>Description</key>
+			<string>Great job for making it this far! After beating it, complete each level 100% and try new heroes.</string>
+			<key>Type</key>
+			<string>tutorial</string>
+			<key>Key</key>
+			<string>lasttempuslevel</string>
+			<key>Version</key>
+			<real>1</real>
+		</dict>
+	</array>
+	<key>EnvironmentObject - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>LevelEnd</string>
+		<key>Location</key>
+		<real>9275</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>MeteorMaker</string>
+		<key>Location</key>
+		<real>9125</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>MeteorMaker</string>
+		<key>Location</key>
+		<real>8975</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>MeteorMaker</string>
+		<key>Location</key>
+		<real>8800</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>MeteorMaker</string>
+		<key>Location</key>
+		<real>8675</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<integer>8050</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+		<key>Value2</key>
+		<integer>250</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<integer>7800</integer>
+		<key>Value1</key>
+		<integer>70</integer>
+		<key>Value2</key>
+		<integer>250</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<integer>7550</integer>
+		<key>Value1</key>
+		<integer>30</integer>
+		<key>Value2</key>
+		<integer>250</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<integer>7300</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+		<key>Value2</key>
+		<integer>250</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<integer>7100</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+		<key>Value2</key>
+		<integer>250</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<real>6950</real>
+		<key>Value1</key>
+		<integer>40</integer>
+		<key>Value2</key>
+		<integer>250</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 3 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>KingTempus</string>
+		<key>Location</key>
+		<integer>6800</integer>
+		<key>Value1</key>
+		<integer>20</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>5900</integer>
+		<key>Value1</key>
+		<integer>120</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>5650</integer>
+		<key>Value1</key>
+		<integer>30</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 8</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>5400</integer>
+		<key>Value1</key>
+		<integer>80</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 9</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>5150</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>5150</integer>
+		<key>Value1</key>
+		<integer>90</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>5050</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>Teleporter</string>
+		<key>Location</key>
+		<integer>4950</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>KingTempus</string>
+		<key>Location</key>
+		<integer>4950</integer>
+		<key>Value1</key>
+		<integer>20</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>PulseOrb</string>
+		<key>Location</key>
+		<integer>3900</integer>
+		<key>Value1</key>
+		<integer>120</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 2 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>PulseOrb</string>
+		<key>Location</key>
+		<integer>3650</integer>
+		<key>Value1</key>
+		<integer>80</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 2 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>PulseOrb</string>
+		<key>Location</key>
+		<integer>3400</integer>
+		<key>Value1</key>
+		<integer>40</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 2 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>PulseOrb</string>
+		<key>Location</key>
+		<integer>3150</integer>
+		<key>Value1</key>
+		<integer>100</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>PulseOrb</string>
+		<key>Location</key>
+		<integer>3100</integer>
+		<key>Value1</key>
+		<integer>80</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 4 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>PulseOrb</string>
+		<key>Location</key>
+		<integer>3050</integer>
+		<key>Value1</key>
+		<integer>40</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>KingTempus</string>
+		<key>Location</key>
+		<integer>3000</integer>
+		<key>Value1</key>
+		<integer>20</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<integer>2050</integer>
+		<key>Value1</key>
+		<integer>80</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 7</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<real>1800</real>
+		<key>Value1</key>
+		<integer>120</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<real>1550</real>
+		<key>Value1</key>
+		<integer>30</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 6</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<real>1300</real>
+		<key>Value1</key>
+		<integer>50</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<real>1150</real>
+		<key>Value1</key>
+		<integer>70</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<integer>1000</integer>
+		<key>Value1</key>
+		<integer>25</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>KingTempus</string>
+		<key>Location</key>
+		<integer>800</integer>
+		<key>Value1</key>
+		<integer>20</integer>
+	</dict>
+</dict>
+</plist>

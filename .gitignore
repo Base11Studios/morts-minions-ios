@@ -1,5 +1,5 @@
-*.DS_Store
-*DS_Store
+*.DS_Store*
+*DS_Store*
 *.mp4
 *.mov
 *.screenflow
@@ -12,3 +12,8 @@ Videos/*
 Videos\*
 Videos\
 Videos/
+*.xcuserstate*
+*.xcbkptlist*
+Pods*
+Pods\*
+Pods/*

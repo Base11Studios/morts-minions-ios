@@ -20,6 +20,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     var skill3Button: GameSkillButton?
     var skill4Button: GameSkillButton?
     var skill5Button: GameSkillButton?
+    var skill6Button: GameSkillButton?
     
     // GUI Button
     var pauseButton: GamePauseButton?
@@ -56,12 +57,17 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     static let playerCategory: UInt32 = 0x1 << 2
     static let transparentPlayerCategory: UInt32 = 0x1 << 3
     static let playerProjectileCategory: UInt32 = 0x1 << 4
-    static let enemyCategory: UInt32 = 0x1 << 5
-    static let obstacleCategory: UInt32 = 0x1 << 6
-    static let projectileCategory: UInt32 = 0x1 << 7
-    static let transparentEnemyCategory: UInt32 = 0x1 << 8
-    static let transparentObstacleCategory: UInt32 = 0x1 << 9
-    static let harmlessObjectCategory: UInt32 = 0x1 << 10
+    static let playerPetCategory: UInt32 = 0x1 << 5
+    static let enemyCategory: UInt32 = 0x1 << 6
+    static let obstacleCategory: UInt32 = 0x1 << 7
+    static let projectileCategory: UInt32 = 0x1 << 8
+    static let transparentEnemyCategory: UInt32 = 0x1 << 9
+    static let transparentObstacleCategory: UInt32 = 0x1 << 10
+    static let harmlessObjectCategory: UInt32 = 0x1 << 11
+    
+    // Z Positioning
+    static let PLAYER_Z: CGFloat = 9
+    static let ENEMY_Z: CGFloat = 4
     
     // Positioning
     var horizontalPlayerLimitRight: CGFloat = 0
@@ -155,6 +161,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     var heartBoostReady = false
     var heartBoostDialog: HeartBoostDialog?
     var startingReviveHearts: Int = 0
+    var showedHeartBoostDialog = false
     
     // Background
     var numberBackgroundNodes: Int = 4
@@ -169,6 +176,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     // Used for displaying pregame pops
     var firstMoveToScene: Bool = true
+    
+    // Static ads
+    var adsPresented = false
     
     // Point functions
     func dbAdd(_ a: CGPoint, b: CGPoint) -> CGPoint {
@@ -311,6 +321,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Add the world view
         self.addChild(self.worldView)
         
+        // Initialize Ads
+        self.createAds()
+        
         // Set button size
         let buttonNode = GameTextures.sharedInstance.buttonGameAtlas.textureNamed("skillbutton")
         self.buttonSize = buttonNode.size().width
@@ -359,7 +372,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.initializePauseMenu()
         
         // Create credits if needed
-        if self.currentLevel == 64 {
+        if self.currentLevel == 80 /*MAX*/ {
             self.initializeCredits()
         }
         
@@ -373,7 +386,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Determine level status
         var lockedLevelsAdded: Int = 0
         var checkLevel = level
-        while checkLevel < 64 && lockedLevelsAdded < 2 {
+        while checkLevel < 80 /*MAX*/ && lockedLevelsAdded < 2 {
             if GameData.sharedGameData.getSelectedCharacterData().isLevelLocked(checkLevel + 1) {
                 self.levelCompletion.append(checkLevel + 1)
                 lockedLevelsAdded += 1
@@ -409,6 +422,17 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.heartBoostReady = false
             self.showPauseMenu = false
             self.pauseGame()
+        } else if !self.showedHeartBoostDialog && (GameData.sharedGameData.adPopCountdown <= 0) && viewController!.interstitialAdReady() && !self.adsPresented && !GameData.sharedGameData.adsUnlocked {
+            // Then ads
+            // Show the ad
+            viewController!.showInterstitialAd()
+            
+            self.adsPresented = true
+            self.showPauseMenu = false
+            self.pauseGame()
+            
+            // Reset the count
+            GameData.sharedGameData.adPopCountdown = GameData.sharedGameData.adPopMax
         } else { // Then tutorials
             self.addAllPlayerHearts()
             
@@ -421,14 +445,19 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 self.showPauseMenu = false
                 self.pauseGame()
                 
-                // Skip challenges if restarted
-                if self.justRestarted {
+                // Skip challenges if restarted & we didn't show the heart boost video. We dont want the gameplay to start after video watch
+                if self.justRestarted && !self.showedHeartBoostDialog {
                     self.displayTutorialTooltip()
                 } else {
                     self.displayChallenges()
                 }
             }
         }
+    }
+    
+    func createAds() {
+        // Decrease pop count
+        GameData.sharedGameData.adPopCountdown -= 1
     }
     
     func enableHeartBoost() {
@@ -439,7 +468,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func intializeHeartBoost() {
-        self.heartBoostReady = GameData.sharedGameData.timesPlayed > 14 && self.viewController!.heartBoostReady()
+        // We don't want a video to end and go right into gameplay, so make sure the challenge is there to block it.
+        self.heartBoostReady = GameData.sharedGameData.timesPlayed > 14 && GameData.sharedGameData.getSelectedCharacterData().challengesUnlocked(self.currentLevel) && self.viewController!.heartBoostReady()
         
         if self.heartBoostReady {
             self.heartBoostDialog = HeartBoostDialog(frameSize: self.size, scene: self, gemCost: 12)
@@ -464,6 +494,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         GameData.sharedGameData.heartBoostLastPrompted = Date()
         self.heartBoostDialog!.toggleheartBoostVideo()
         self.heartBoostDialog!.isHidden = false
+        self.showedHeartBoostDialog = true
     }
     
     // Create a functon that will be called by posted notifications of interstitial being closed.
@@ -472,7 +503,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         //Chartboost.closeImpression()
         
         self.displayPregamePops()
-        //viewController!.cacheInterstitialAd()
+        viewController!.cacheInterstitialAd()
     }
     
     func createUxTutorials() {
@@ -714,6 +745,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.skill3Button!.update(self.player, timeSinceLast: timeSinceLast)
         self.skill4Button!.update(self.player, timeSinceLast: timeSinceLast)
         self.skill5Button!.update(self.player, timeSinceLast: timeSinceLast)
+        self.skill6Button!.update(self.player, timeSinceLast: timeSinceLast)
         
         let updatePosition = (self.frame.size.width - horizontalPlayerLimitRight) + (100 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         let projectileDestroyPosition = (self.frame.size.width - horizontalPlayerLimitRight) + (20 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
@@ -723,6 +755,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             if envObject.type == EnvironmentObjectType.Enemy ||
                 envObject.type == EnvironmentObjectType.Obstacle ||
                 envObject.type == EnvironmentObjectType.Projectile {
+                envObject.zPosition = GameScene.ENEMY_Z
+                
                 if envObject.position.x - self.player.position.x < updatePosition {
                     //self.addEnvironmentObject(environmentObject: envObject)
                     envObject.physicsBody!.isDynamic = true
@@ -854,9 +888,25 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func checkLevelOver() {
-        // End the scene.
-        if self.player.position.x > self.totalLevelDistance || self.player.health <= 0 { // Player died
-            self.levelEnded = true
+        // 78+ has guys that go backwards so they may not be dead at the level end
+        if self.currentLevel > 77 {
+            var noTempus = true
+            
+            // Look for Prince or King
+            for envObject in self.worldViewEnvironmentObjects {
+                if (envObject is KingTempus || envObject is PrinceTempus) && envObject.isAlive {
+                    noTempus = false
+                }
+            }
+            
+            if (self.player.position.x > self.totalLevelDistance && noTempus) || self.player.health <= 0 {
+                self.levelEnded = true
+            }
+        } else {
+            // End the scene.
+            if self.player.position.x > self.totalLevelDistance || self.player.health <= 0 {
+                self.levelEnded = true
+            }
         }
     }
     
@@ -1090,9 +1140,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     func loadEndOfLevelDialog(_ score: LevelScore) {
         // Video reward - cache
-        //self.viewController!.cacheRewardedVideo()
+        self.viewController!.cacheRewardedVideo()
         // Interstitial
-        //self.viewController!.cacheInterstitialAd()
+        self.viewController!.cacheInterstitialAd()
         
         // Check for levels completed if they are completed keep them in there
         var levelsUnlocked = Array<Int>()
@@ -1142,6 +1192,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 } else if !self.skill5Button!.isHidden && self.skill5Button!.contains(location) {
                     self.skill5Button?.touchesBegan(touches, with: event)
                     self.objectThatHadATouchEventPassedIn = self.skill5Button
+                } else if !self.skill6Button!.isHidden && self.skill6Button!.contains(location) {
+                    self.skill6Button?.touchesBegan(touches, with: event)
+                    self.objectThatHadATouchEventPassedIn = self.skill6Button
                 } else if !self.pauseButton!.isHidden && self.pauseButton!.contains(location) {
                     self.pauseButton?.touchesBegan(touches, with: event)
                     self.objectThatHadATouchEventPassedIn = self.pauseButton
@@ -1275,7 +1328,12 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         }
         
         // Player Projectile and Environment Object
-        else if (firstBody.categoryBitMask & GameScene.playerProjectileCategory) != 0 && ((secondBody.categoryBitMask & GameScene.obstacleCategory) != 0 || (secondBody.categoryBitMask & GameScene.enemyCategory) != 0) {
+        else if (firstBody.categoryBitMask & GameScene.playerProjectileCategory) != 0 && ((secondBody.categoryBitMask & GameScene.obstacleCategory) != 0 || (secondBody.categoryBitMask & GameScene.enemyCategory) != 0 || (secondBody.categoryBitMask & GameScene.transparentEnemyCategory) != 0) {
+            self.playerProjectileDidCollideWithEnvironmentObject(firstBody.node as! PlayerProjectile, object: secondBody.node as! EnvironmentObject)
+        }
+        
+        // Player Pet and Environment Object
+        else if (firstBody.categoryBitMask & GameScene.playerPetCategory) != 0 && ((secondBody.categoryBitMask & GameScene.obstacleCategory) != 0 || (secondBody.categoryBitMask & GameScene.enemyCategory) != 0 || (secondBody.categoryBitMask & GameScene.projectileCategory) != 0 || (secondBody.categoryBitMask & GameScene.transparentEnemyCategory) != 0) {
             self.playerProjectileDidCollideWithEnvironmentObject(firstBody.node as! PlayerProjectile, object: secondBody.node as! EnvironmentObject)
         }
             
@@ -1439,7 +1497,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             if self.player.position.x > 0 {
                 playerPositionX = CGFloat(Double(self.player.position.x))
             }
-            activeProgressBar.size = CGSize(width: playerPositionX / self.totalLevelDistance * (self.frame.size.width / self.progressBarAdjuster), height: self.frame.size.height / 24.0)
+            var playerPercent = playerPositionX / self.totalLevelDistance
+            if playerPercent > 1 {
+                playerPercent = 1
+            }
+            activeProgressBar.size = CGSize(width: playerPercent * (self.frame.size.width / self.progressBarAdjuster), height: self.frame.size.height / 24.0)
             
             activeProgressBar.position = CGPoint(x: self.progressBar.position.x  - self.progressBar.size.width / 2 + self.activeProgressBar.size.width / 2, y: self.frame.size.height - 20.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         }
@@ -1560,8 +1622,14 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         let yPosition: CGFloat = self.frame.size.height - 20.0 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         
         // Pause button
-        self.pauseButton = GamePauseButton(scene: self)
-        self.pauseButton!.alpha = 0.25
+        if self.worldName == "spirit" {
+            self.pauseButton = GamePauseButton(scene: self, light: true)
+            self.pauseButton!.alpha = 0.85
+        } else {
+            self.pauseButton = GamePauseButton(scene: self, light: false)
+            self.pauseButton!.alpha = 0.25
+        }
+        
         self.pauseButton!.size = CGSize(width: self.pauseButton!.size.width * 0.55, height: self.pauseButton!.size.height * 0.55)
         self.pauseButton!.position = CGPoint(x: self.frame.size.width - self.pauseButton!.size.width / 2.0 - buffer / 1.5, y: yPosition)
         self.addChild(self.pauseButton!)
@@ -1583,7 +1651,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // ******* PROGRESS BAR *******
         // Create background PROGRESS bar
-        progressBar = SKSpriteNode(color: UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 0.6), size: CGSize(width: self.frame.size.width / self.progressBarAdjuster, height: self.frame.size.height / 24.0))
+        if self.worldName != "spirit" {
+            progressBar = SKSpriteNode(color: UIColor(red: 0.20, green: 0.20, blue: 0.20, alpha: 0.6), size: CGSize(width: self.frame.size.width / self.progressBarAdjuster, height: self.frame.size.height / 24.0))
+        } else {
+            progressBar = SKSpriteNode(color: UIColor(red: 1.00, green: 1.00, blue: 1.00, alpha: 0.85), size: CGSize(width: self.frame.size.width / self.progressBarAdjuster, height: self.frame.size.height / 24.0))
+        }
         progressBar.position = CGPoint(x: self.frame.size.width - (self.frame.size.width / (self.progressBarAdjuster * 2) + buffer) - pauseButtonAdjustment, y: yPosition)
         self.addChild(progressBar)
         
@@ -1694,6 +1766,11 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         if !GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(self.player.skill5Details.upgrade) {
             self.skill5Button?.isHidden = true
         }
+        
+        // Skill 6 button - never show
+        self.skill6Button = GameSkillButton(scene: self, upgrade: self.player.skill6Details)
+        self.addChild(self.skill6Button!)
+        self.skill6Button?.isHidden = true
     }
     
     func initializePauseMenu() {
@@ -1762,55 +1839,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             }
         }
     }
-    
-    /*func initializeScrollingBackground(_ size: CGSize) {
-        var backgroundYPosition: CGFloat = 0
-        var foregroundYPosition: CGFloat = self.adjustedGroundPositionY
-        
-        // This is our scrolling background code.
-        if self.worldName == "earth" {
-            self.backgroundColor = MerpColors.earthBackground
-            backgroundYPosition = self.adjustedGroundPositionY
-        } else if self.worldName == "water" {
-            self.backgroundColor = MerpColors.waterBackground
-            backgroundYPosition = self.adjustedGroundPositionY
-        } else if self.worldName == "fire" {
-            self.backgroundColor = MerpColors.fireBackground
-        } else if self.worldName == "air" {
-            self.backgroundColor = MerpColors.airBackground
-        } else if self.worldName == "spirit" {
-            self.backgroundColor = MerpColors.spiritBackground
-        }
-        
-        // Background
-        for j in 0 ..< 2 {
-            for i in 0 ..< 2 {
-                let bg = getLevelBackground(j, number: i+1)
-                
-                if self.worldName == "earth" || self.worldName == "water" {
-                    backgroundYPosition = self.adjustedGroundPositionY
-                } else if self.worldName == "fire" || self.worldName == "air" || self.worldName == "spirit" {
-                    backgroundYPosition = size.height - bg.size.height
-                }
-                
-                bg.anchorPoint = CGPoint.zero
-                
-                switch j {
-                case 0:
-                    bg.name = "background"
-                    bg.position = CGPoint(x: CGFloat(i) * (bg.size.width - 2), y: backgroundYPosition)
-                case 1:
-                    bg.name = "foreground"
-                    bg.position = CGPoint(x: CGFloat(i) * (bg.size.width - 2), y: foregroundYPosition)
-                default:
-                    bg.name = "background"
-                    bg.position = CGPoint(x: CGFloat(i) * (bg.size.width - 2), y: backgroundYPosition)
-                }
-                
-                self.worldView.addChild(bg)
-            }
-        }
-    }*/
     
     func initializeScrollingBackground(_ size: CGSize) {
         var backgroundYPosition: CGFloat = 0
@@ -1923,16 +1951,13 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func initializePlayer(_ size: CGSize) {
-        
-        //NSLog("ground pos \(self.ground.position.y) ground size \(self.ground.size.height) player height \(self.player.size.height)")
-        
         // Set the position of the player right above the ground // TODO move into player class
         self.player.defaultPositionY = adjustedGroundPositionY + self.player.size.height / 2
-        //NSLog("\(self.player.defaultPositionY)")
+        
         self.player.position = CGPoint(x: self.player.size.width / 2, y: self.player.defaultPositionY)
         self.player.setPlayerAttachmentPositions(adjustedGroundPositionY + self.player.size.height / 2, position: CGPoint(x: self.player.size.width / 2, y: self.player.defaultPositionY))
         
-        self.player.zPosition = 9
+        self.player.zPosition = GameScene.PLAYER_Z
         
         // Add the player to the scene
         self.worldView.addChild(self.player)
@@ -2011,12 +2036,12 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Occasionally we advertise in house purchases. Skip the first time, so start at frequency * 2
         var frequencyAds: Int = 10
 
-        if !GameData.sharedGameData.adsUnlocked && GameData.sharedGameData.timesPlayed > frequencyAds && GameData.sharedGameData.timesPlayed % frequencyAds == 0 {
+        if !GameData.sharedGameData.adsUnlocked && GameData.sharedGameData.timesPlayed > 5 && GameData.sharedGameData.timesPlayed % frequencyAds == 0 {
             // Get the version information
             let key = "timesPlayedAdvertisement\(GameData.sharedGameData.timesPlayed)"
             let version = 1.0
             let iconTexture: SKTexture
-            var description = "Any purchase gives longer hero boosts!"
+            var description = "Purchases remove rewardless ads!"
             // Create dialog
             var title = "Buy Gems!"
             
@@ -2087,22 +2112,22 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                         if GameData.sharedGameData.selectedCharacter == CharacterType.Archer {
                             description = description.replacingOccurrences(of: nameReplace, with: "May")
                             description = description.replacingOccurrences(of: roleReplace, with: "fearless Archer")
-                            description = description.replacingOccurrences(of: relationshipReplace, with: "sister")
+                            description = description.replacingOccurrences(of: relationshipReplace, with: "Sister")
                             iconName = iconName.replacingOccurrences(of: roleReplace, with: "archer")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Warrior {
                             description = description.replacingOccurrences(of: nameReplace, with: "Jim")
                             description = description.replacingOccurrences(of: roleReplace, with: "fearless Warrior")
-                            description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
+                            description = description.replacingOccurrences(of: relationshipReplace, with: "Brother")
                             iconName = iconName.replacingOccurrences(of: roleReplace, with: "warrior")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Mage {
                             description = description.replacingOccurrences(of: nameReplace, with: "Gary")
                             description = description.replacingOccurrences(of: roleReplace, with: "fearless Mage")
-                            description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
+                            description = description.replacingOccurrences(of: relationshipReplace, with: "Brother")
                             iconName = iconName.replacingOccurrences(of: roleReplace, with: "mage")
                         } else if GameData.sharedGameData.selectedCharacter == CharacterType.Monk {
                             description = description.replacingOccurrences(of: nameReplace, with: "Leonard")
                             description = description.replacingOccurrences(of: roleReplace, with: "fearless Monk")
-                            description = description.replacingOccurrences(of: relationshipReplace, with: "brother")
+                            description = description.replacingOccurrences(of: relationshipReplace, with: "Brother")
                             iconName = iconName.replacingOccurrences(of: roleReplace, with: "monk")
                         }
                         
@@ -2195,6 +2220,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.skill2Button?.isPaused = true
             self.skill3Button?.isPaused = true
             self.skill4Button?.isPaused = true
+            self.skill5Button?.isPaused = true
+            self.skill6Button?.isPaused = true
         }
         
         self.backgroundPlayer?.volume = 0.0
@@ -2217,6 +2244,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.skill2Button?.isPaused = false
         self.skill3Button?.isPaused = false
         self.skill4Button?.isPaused = false
+        self.skill5Button?.isPaused = false
+        self.skill6Button?.isPaused = false
         
         self.backgroundPlayer?.volume = 1.0
     }
@@ -2230,6 +2259,10 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             return self.skill3Button!
         } else if self.skill4Button!.upgradeDetails?.upgrade == skillAsUpgrade {
             return self.skill4Button!
+        } else if self.skill5Button!.upgradeDetails?.upgrade == skillAsUpgrade {
+            return self.skill5Button!
+        } else if self.skill6Button!.upgradeDetails?.upgrade == skillAsUpgrade {
+            return self.skill6Button!
         } else {
             return nil
         }

@@ -4,35 +4,28 @@
 <dict>
 	<key>World</key>
 	<string>spirit</string>
+	<key>Challenges</key>
+	<array>
+		<dict>
+			<key>Type</key>
+			<string>NoHeartsCollected</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>Type</key>
+			<string>DontTouchAnything</string>
+			<key>Reward</key>
+			<integer>1</integer>
+		</dict>
+	</array>
 	<key>Story</key>
 	<array>
 		<dict>
 			<key>Description</key>
-			<string>here&apos;s the story, you&apos;re C_NAME, a C_ROLE.</string>
+			<string>You reach the creepy and dark Tempus realm with Mort. The minions here are twisted. You begin battle to reach the king of Tempus.</string>
 			<key>Icon</key>
-			<string>tutorial_monk</string>
-			<key>Version</key>
-			<integer>1</integer>
-			<key>Type</key>
-			<string>Beginning</string>
-		</dict>
-		<dict>
-			<key>Description</key>
-			<string>warrior only story</string>
-			<key>Icon</key>
-			<string>tutorial_monk</string>
-			<key>Character</key>
-			<string>warrior</string>
-			<key>Version</key>
-			<integer>1</integer>
-			<key>Type</key>
-			<string>Beginning</string>
-		</dict>
-		<dict>
-			<key>Description</key>
-			<string>here&apos;s the story 3</string>
-			<key>Icon</key>
-			<string>tutorial_mage</string>
+			<string>story-tempus</string>
 			<key>Version</key>
 			<integer>1</integer>
 			<key>Type</key>
@@ -44,7 +37,186 @@
 		<key>Object</key>
 		<string>LevelEnd</string>
 		<key>Location</key>
-		<integer>1500</integer>
+		<integer>6700</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<integer>6550</integer>
+		<key>Value1</key>
+		<integer>10</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Wisp</string>
+		<key>Location</key>
+		<integer>6550</integer>
+		<key>Value1</key>
+		<real>1.25</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<integer>6250</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+		<key>Value2</key>
+		<integer>350</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Mager</string>
+		<key>Location</key>
+		<integer>5900</integer>
+		<key>Value1</key>
+		<real>1.25</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<integer>5500</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+		<key>Value2</key>
+		<integer>350</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<integer>5150</integer>
+		<key>Value1</key>
+		<integer>25</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Darkness</string>
+		<key>Location</key>
+		<integer>5050</integer>
+		<key>Value1</key>
+		<integer>70</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Wisp</string>
+		<key>Location</key>
+		<integer>4700</integer>
+		<key>Value1</key>
+		<real>1.25</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 5</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<integer>4350</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+		<key>Value2</key>
+		<integer>350</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Wisp</string>
+		<key>Location</key>
+		<integer>3900</integer>
+		<key>Value1</key>
+		<real>1.25</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Wisp</string>
+		<key>Location</key>
+		<integer>3600</integer>
+		<key>Value1</key>
+		<real>1.25</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3 - 2 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Darkness</string>
+		<key>Location</key>
+		<integer>3200</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Wisp</string>
+		<key>Location</key>
+		<integer>3000</integer>
+		<key>Value1</key>
+		<real>1.25</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkTower</string>
+		<key>Location</key>
+		<integer>2700</integer>
+		<key>Value1</key>
+		<integer>15</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 4</key>
+	<dict>
+		<key>Object</key>
+		<string>Wisp</string>
+		<key>Location</key>
+		<integer>2650</integer>
+		<key>Value1</key>
+		<real>1.25</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>DarkEnergy</string>
+		<key>Location</key>
+		<integer>2300</integer>
+		<key>Value1</key>
+		<integer>50</integer>
+		<key>Value2</key>
+		<integer>350</integer>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3</key>
+	<dict>
+		<key>Object</key>
+		<string>Mager</string>
+		<key>Location</key>
+		<integer>1900</integer>
+		<key>Value1</key>
+		<real>1.25</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Wisp</string>
+		<key>Location</key>
+		<integer>1300</integer>
+		<key>Value1</key>
+		<real>1.25</real>
+	</dict>
+	<key>EnvironmentObject - 4 - 2 - 3 - 2 - 2 - 3 - 2 - 2 - 3 - 2 - 3 - 3 - 2</key>
+	<dict>
+		<key>Object</key>
+		<string>Darkness</string>
+		<key>Location</key>
+		<integer>800</integer>
+		<key>Value1</key>
+		<integer>35</integer>
 	</dict>
 </dict>
 </plist>

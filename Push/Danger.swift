@@ -16,10 +16,12 @@ class Danger : Enemy {
     required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
         super.init(scalar: scalar, imageName: "danger_000", textureAtlas: GameTextures.sharedInstance.fireAtlas, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
         
-        self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.fireAtlas, texturesNamed: "danger", frameStart: 0, frameEnd: 15), timePerFrame: 0.03, resize: true, restore: false))
+        let animArray = SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.fireAtlas, texturesNamed: "danger", frameStart: 0, frameEnd: 15)
+        
+        self.walkAction = SKAction.repeatForever(SKAction.animate(with: animArray, timePerFrame: 0.03, resize: true, restore: false))
         
         // Set the walking frames for animation
-        self.walkingAnimatedFrames = SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.fireAtlas, texturesNamed: "danger", frameStart: 0, frameEnd: 15)
+        self.walkingAnimatedFrames = animArray
     }
 
     required init?(coder aDecoder: NSCoder) {

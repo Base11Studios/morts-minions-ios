@@ -69,7 +69,7 @@ class Projectile : EnvironmentObject {
         
         // Movement speed
         self.walkSpeed = 275.0// * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
-        self.runSpeed = 275.0// * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+        self.runSpeed = self.walkSpeed// * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
         self.moveSpeed = self.walkSpeed
         
         // Acceleration
@@ -84,7 +84,7 @@ class Projectile : EnvironmentObject {
         
         // Collisions
         self.physicsBody!.categoryBitMask = GameScene.projectileCategory
-        self.physicsBody!.contactTestBitMask = GameScene.playerCategory | GameScene.groundCategory | GameScene.transparentPlayerCategory
+        self.physicsBody!.contactTestBitMask = GameScene.playerCategory | GameScene.groundCategory | GameScene.transparentPlayerCategory | GameScene.playerPetCategory
         self.physicsBody!.collisionBitMask = GameScene.groundCategory
         
         // Physics Body settings

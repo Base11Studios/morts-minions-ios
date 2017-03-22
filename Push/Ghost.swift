@@ -11,7 +11,6 @@ import Foundation
 @objc(Ghost)
 class Ghost : Enemy {
     
-    
     required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
         super.init(scalar: scalar, imageName: "ghost_000", textureAtlas: GameTextures.sharedInstance.spiritAtlas, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
         
@@ -25,7 +24,7 @@ class Ghost : Enemy {
     override func setupTraitsWithScalar(_ scalar: Double) {
         // Add physics to the enemy
         self.physicsBody = SKPhysicsBody(rectangleOf: self.size) // TODO modify for hat
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.85, height: self.size.height), center: CGPoint(x: -0.075, y: 0.0))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.85, height: self.size.height * 0.85), center: CGPoint(x: self.size.width * -0.075, y: self.size.height * 0))
         
         self.setDefaultPhysicsBodyValues()
         

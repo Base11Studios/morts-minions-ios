@@ -25,6 +25,8 @@ class Player : SKSpriteNode {
     var justReceivedUpwardImpulseFromEnvironment: Bool = false
     var teleportsInsteadOfJumps: Bool = false
     var isOnGround: Bool = true
+    var jumpDisabled: Bool = false
+    var resetYToGround: Bool = false
     
     // World view
     weak var worldView: SKNode?
@@ -43,6 +45,7 @@ class Player : SKSpriteNode {
     var skill3Details = CharacterSkillDetails(upgrade: CharacterUpgrade.None)
     var skill4Details = CharacterSkillDetails(upgrade: CharacterUpgrade.None)
     var skill5Details = CharacterSkillDetails(upgrade: CharacterUpgrade.None)
+    var skill6Details = CharacterSkillDetails(upgrade: CharacterUpgrade.None)
     
     /*
     // Skill range indicator
@@ -105,6 +108,11 @@ class Player : SKSpriteNode {
     var protectorXAdjust: CGFloat = 0
     var protectorYAdjust: CGFloat = 0
     
+    // Pets / Fairy
+    var fairyGuardian: PlayerFairy?
+    var fairyGuardianXAdjust: CGFloat = 0
+    var fairyGuardianYAdjust: CGFloat = 0
+    
     // Scene
     weak var gameScene: GameScene?
     
@@ -117,6 +125,9 @@ class Player : SKSpriteNode {
     var spriteOverlay: SKSpriteNode?
     var spriteOverlay2: SKSpriteNode?
     var spriteOverlay2Action: SKAction = SKAction()
+    
+    // States
+    //var jumpDisabledIndicator: SKSpriteNode
     
     // Hovering / Teleport
     var autoHoverStop: Bool = false
@@ -233,6 +244,19 @@ class Player : SKSpriteNode {
     }
     
     func setPlayerAttachmentPositions(_ defaultYPosition: CGFloat, position: CGPoint) {
+        guard let fairy = self.fairyGuardian else {
+            return
+        }
+        
+        fairy.position = CGPoint(x: self.position.x - 35 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), y: self.position.y + 50 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+        
+        fairy.nextPosition = CGPoint(x: self.position.x - 35 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), y: self.position.y + 50 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+        
+        fairy.defaultYPosition = defaultYPosition + self.fairyGuardianYAdjust
+        
+        fairy.startingYPosition = defaultYPosition + self.fairyGuardianYAdjust
+        
+        fairy.minimumHeight = defaultYPosition + self.fairyGuardianYAdjust - fairy.size.height / 2
     }
     
     func initPlayerDamaged() {
@@ -381,6 +405,20 @@ class Player : SKSpriteNode {
         }
         if GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(CharacterUpgrade.ForceField) {
             self.boostHealthWithSkill(CharacterUpgrade.ForceField)
+        }
+        
+        // Now add the fairy skill (all players have this)
+        // If the player has the eagle skill, create the eagle
+        if GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(CharacterUpgrade.FairyGuardian) {
+            // Create the fairy
+            self.fairyGuardian = PlayerFairy(attachedSkill: self.getSkill(CharacterUpgrade.FairyGuardian)!, gameScene: self.gameScene!, range: self.getSkill(CharacterUpgrade.FairyGuardian)!.range * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
+            self.fairyGuardian!.zPosition=1
+            
+            self.fairyGuardianXAdjust = 55 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+            self.fairyGuardianYAdjust = 30 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
+            
+            self.worldView!.addChild(self.fairyGuardian!)
+            self.gameScene!.worldViewPlayerProjectiles.append(self.fairyGuardian!)
         }
     }
     
@@ -603,6 +641,12 @@ class Player : SKSpriteNode {
                     }
                 }
             }
+            
+            // Fairy
+            //self.fairyGuardian?.nextPosition = CGPoint(x: self.position.x + (5 * sin(CGFloat(self.fairyGuardian!.timeAlive)*4)) * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + self.fairyGuardianXAdjust, y: self.position.y + (CGFloat(self.getSkill(CharacterUpgrade.FairyGuardian)!.value) * sin(CGFloat(self.fairyGuardian!.timeAlive)*4)) * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + self.fairyGuardianYAdjust)
+            self.fairyGuardian?.nextPosition = CGPoint(x: self.position.x + self.fairyGuardianXAdjust, y: self.position.y + self.fairyGuardianYAdjust)
+            
+            self.fairyGuardian?.update(timeSinceLast, withPlayer: self)
         }
     }
     
@@ -651,8 +695,17 @@ class Player : SKSpriteNode {
                 }
             }
             
+            // If the player is supposed to reset back to ground, do it
+            if self.resetYToGround {
+                self.position = CGPoint(x: self.position.x, y: self.defaultPositionY)
+                self.resetYToGround = false
+            }
+            
             // Move the weapon with the player animation
             self.updateWeapon() // TODO can move this into didEvaluateActions
+            
+            // Fairy
+            self.fairyGuardian?.updateAfterPhysics()
         }
         
         /*
@@ -696,6 +749,9 @@ class Player : SKSpriteNode {
         
         self.removeAction(forKey: "playerWalking")
         
+        // Fairy
+        self.fairyGuardian?.isHidden = true
+        
         // Start the new action
         self.run(SKAction.sequence([self.actionGroup1]), withKey: "playerDieing")
     }
@@ -730,6 +786,9 @@ class Player : SKSpriteNode {
         self.stopHiding() // Leave hiding but don't pop out until past everything
         self.startGracePeriod(2.8) // Don't take damage for 1.2 seconds
         self.startPlayerWalkingAnimation() // Start walk animation again
+        
+        // Fairy
+        self.fairyGuardian?.isHidden = false
     }
     
     func completeLevel() {
@@ -885,7 +944,7 @@ class Player : SKSpriteNode {
     
     func updateSkillsBasedOnPlayerPosition() {
         // Loop through the player skills and disable any that are ground only. Enable any that are air only
-        if (self.skill1Details.restriction == .Ground && !self.isOnGround) || (self.skill1Details.restriction == .Air && self.isOnGround) {
+        if (self.skill1Details.restriction == .Ground && !self.isOnGround) || (self.skill1Details.restriction == .Air && self.isOnGround) || (self.jumpDisabled) {
             self.skill1Details.isDisabled = true
         } else {
             self.skill1Details.isDisabled = false
@@ -913,6 +972,12 @@ class Player : SKSpriteNode {
             self.skill5Details.isDisabled = true
         } else {
             self.skill5Details.isDisabled = false
+        }
+        
+        if (self.skill6Details.restriction == .Ground && !self.isOnGround) || (self.skill6Details.restriction == .Air && self.isOnGround) {
+            self.skill6Details.isDisabled = true
+        } else {
+            self.skill6Details.isDisabled = false
         }
     }
     
@@ -1141,6 +1206,8 @@ class Player : SKSpriteNode {
             return self.skill4Details
         } else if self.skill5Details.upgrade == upgrade {
             return self.skill5Details
+        } else if self.skill6Details.upgrade == upgrade {
+            return self.skill6Details
         } else {
             return nil
         }
@@ -1303,6 +1370,7 @@ class Player : SKSpriteNode {
         self.updateSkill(timeSinceLast, skill: self.skill3Details)
         self.updateSkill(timeSinceLast, skill: self.skill4Details)
         self.updateSkill(timeSinceLast, skill: self.skill5Details)
+        self.updateSkill(timeSinceLast, skill: self.skill6Details)
         self.updateSkillsBasedOnPlayerPosition()
     }
     
@@ -1329,6 +1397,10 @@ class Player : SKSpriteNode {
                 self.deactivateSkill(skill)
             }
             else if skill.deactivatesOnEnemyContact && self.touchedAnEnemyThisFrame {
+                self.deactivateSkill(skill)
+            }
+            // Skill got disabled
+            else if skill.isDisabled {
                 self.deactivateSkill(skill)
             }
         }
@@ -1453,6 +1525,9 @@ class Player : SKSpriteNode {
                     
                     // Start jumping
                     self.startActiveJumping()
+                    
+                    skill.skillIsActive = true
+                    skill.activeLength = 10000
                 }
             }
         case .Teleport:
@@ -1466,35 +1541,10 @@ class Player : SKSpriteNode {
                 
                 // Start jumping
                 self.startActiveJumping()
+                
+                skill.skillIsActive = true
+                skill.activeLength = 10000
             }
-        /*case .Fireball:
-            
-            // Set the skill to cooldown
-            skill.cooldownInProgress = true
-            
-            // This is how long until it can be used again
-            skill.activeCooldownCount = skill.maxCooldownCount
-            
-            // 2 - Set up initial location of projectile
-            let projectile: PlayerProjectile = PlayerProjectile(texture: GameTextures.sharedInstance.playerAtlas.textureNamed("fireball_000"))
-            projectile.name = "playerProjectile"
-            projectile.damage = Int(skill.value)
-            projectile.position = CGPoint(x: self.position.x, y: self.position.y)
-            projectile.xScale = -1.0 // flip on horz axis
-            
-            // Setup physics for projectile
-            projectile.physicsBody = SKPhysicsBody(rectangleOf: projectile.size)
-            projectile.physicsBody!.isDynamic = true
-            projectile.physicsBody!.categoryBitMask = GameScene.playerProjectileCategory
-            projectile.physicsBody!.contactTestBitMask = GameScene.enemyCategory | GameScene.obstacleCategory
-            projectile.physicsBody!.collisionBitMask = GameScene.enemyCategory | GameScene.obstacleCategory
-            projectile.physicsBody!.usesPreciseCollisionDetection = OptimizerBuddy.sharedInstance.usePreciseCollisionDetection()
-            projectile.physicsBody!.affectedByGravity = false
-            
-            // 5 - OK to add now - we've double checked position
-            self.gameScene!.worldViewPlayerProjectiles.append(projectile)
-            self.worldView!.addChild(projectile)
-            projectile.physicsBody!.applyImpulse(CGVector(dx: 22.0, dy: 0.0))*/
         case .Charge:
             // Set the skill to cooldown // TODO move this into a function
             skill.cooldownInProgress = true
@@ -1546,6 +1596,16 @@ class Player : SKSpriteNode {
                 
                 // Launch second rock
                 self.launchRock(skill.secondaryRange * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + 50 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), height: 8500, forwardMomentum: 1400)
+            }
+            if skill.secondaryValue == 3 {
+                // Launch first rock
+                self.launchRock(skill.secondaryRange * ScaleBuddy.sharedInstance.getGameScaleAmount(false), height: 10500, forwardMomentum: 1150)
+                
+                // Launch second rock
+                self.launchRock(skill.secondaryRange * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + 45 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), height: 9500, forwardMomentum: 1300)
+                
+                // Launch third rock
+                self.launchRock(skill.secondaryRange * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + 75 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), height: 8500, forwardMomentum: 1450)
             }
             
             // Iterate through all enemies and deal damage to them if they are touching the ground
@@ -1668,33 +1728,6 @@ class Player : SKSpriteNode {
             self.protectorOfTheSky!.stopPositionAdjustment = true
             
             self.protectorOfTheSky!.defaultYPosition = self.protectorOfTheSky!.position.y
-            
-            // If we have homing, let's find the enemy
-            if skill.secondaryValue == 1 {
-                var closestObject: EnvironmentObject?
-                
-                // Iterate through all enemies to find someone close
-                for object in self.gameScene!.worldViewEnvironmentObjects {
-                    if (object.type == EnvironmentObjectType.Enemy ||
-                        object.type == EnvironmentObjectType.Obstacle) && object.isAlive {
-                        let modifiedObjectPosition = (abs(object.position.x) - (100 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))
-                        if closestObject == nil {
-                            if modifiedObjectPosition - abs(self.protectorOfTheSky!.position.x) > 0 && object.position.y > self.protectorOfTheSky!.minimumHeight {
-                                closestObject = object
-                            }
-                        } else {
-                            if modifiedObjectPosition - abs(self.protectorOfTheSky!.position.x) > 0 && abs(object.position.x) < abs(closestObject!.position.x) && object.position.y > self.protectorOfTheSky!.minimumHeight {
-                                closestObject = object
-                            }
-                        }
-                    }
-                }
-                
-                // If we found something to attack, let's do it
-                if closestObject != nil {
-                    self.protectorOfTheSky!.homingObject = closestObject
-                }
-            }
             
             self.playActionSound(action: SoundHelper.sharedInstance.zoom)
         case .WalkWithShadows:
@@ -1839,6 +1872,8 @@ class Player : SKSpriteNode {
             if self.isActiveJumping {
                 // No longer jumping
                 self.stopActiveJumping()
+                
+                skill.skillIsActive = false
             }
             
             // If we had a double jump allowed and the player is still jumping, do it
@@ -1852,6 +1887,8 @@ class Player : SKSpriteNode {
             if self.isActiveJumping {
                 // No longer jumping
                 self.stopActiveJumping()
+                
+                skill.skillIsActive = false
             }
             
             // If we had a double jump allowed and the player is still jumping, do it
@@ -1980,6 +2017,8 @@ class Player : SKSpriteNode {
         switch skill.upgrade {
         case .ProtectorOfTheSky:
             self.protectorOfTheSky!.resetEagle()
+        case .FairyGuardian:
+            self.fairyGuardian!.reset()
         default: break
         }
     }

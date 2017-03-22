@@ -63,18 +63,18 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     
     // Played
     var timesPlayed: Int = 0
-    var adPopCountdown: Int = 30
-    var adPopMax: Int = 10
+    var adPopCountdown: Int = 24
+    var adPopMax: Int = 6
     
     // Ads
     var lastVideoAdWatch: Date
     static var videoAdCooldown: Int = -2
     
     // Heart Boost
-    static var heartBoostCooldown: Int = -10
+    static var heartBoostCooldown: Int = -20
     var heartBoostLastUsed: Date
     var heartBoostCount: Int = 0
-    static var heartBoostPromptCooldown: Int = -5
+    static var heartBoostPromptCooldown: Int = -10
     var heartBoostLastPrompted: Date
     static var adsPurchasedHeartBoostMultiplier: Int = 3
     
@@ -783,6 +783,28 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         }
         
         return beat4
+    }
+    
+    func getNumberCharactersThatBeatWorld5() -> Int {
+        var beat5: Int = 0
+        
+        if self.warriorCharacter.levelProgress[80] != nil && self.warriorCharacter.levelProgress[80]!.starsEarnedHighScore >= 2 {
+            beat5 += 1
+        }
+        
+        if self.archerCharacter.levelProgress[80] != nil && self.archerCharacter.levelProgress[80]!.starsEarnedHighScore >= 2 {
+            beat5 += 1
+        }
+        
+        if self.mageCharacter.levelProgress[80] != nil && self.mageCharacter.levelProgress[80]!.starsEarnedHighScore >= 2 {
+            beat5 += 1
+        }
+        
+        if self.monkCharacter.levelProgress[80] != nil && self.monkCharacter.levelProgress[80]!.starsEarnedHighScore >= 2 {
+            beat5 += 1
+        }
+        
+        return beat5
     }
     
     func checkAndResetCharacterSkills() -> Bool {

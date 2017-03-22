@@ -150,11 +150,17 @@ class PlayerProjectile : SKSpriteNode {
     func setDefaultCollisionMasks() {
         // Collisions
         self.physicsBody!.categoryBitMask = GameScene.playerProjectileCategory
-        self.physicsBody!.contactTestBitMask = GameScene.enemyCategory | GameScene.obstacleCategory
+        self.physicsBody!.contactTestBitMask = GameScene.enemyCategory | GameScene.obstacleCategory | GameScene.transparentEnemyCategory
         self.physicsBody!.collisionBitMask = 0//GameScene.enemyCategory | GameScene.obstacleCategory
     }
     
     func contactWithGround() {
         
+    }
+    
+    func playActionSound(action: SKAction) {
+        if GameData.sharedGameData.preferenceSoundEffects {
+            SoundHelper.sharedInstance.playSoundAction(self, action: action)
+        }
     }
 }

@@ -10,8 +10,12 @@ import Foundation
 
 @objc(GamePauseButton)
 class GamePauseButton : DBButton {
-    init(scene: GameScene) {
-        super.init(name: "pausebuttonreleased", pressedName: "pausebuttonpressed", dbScene: scene, atlas: GameTextures.sharedInstance.buttonGameAtlas)
+    init(scene: GameScene, light: Bool) {
+        if light {
+            super.init(name: "pausebuttonlightreleased", pressedName: "pausebuttonlightpressed", dbScene: scene, atlas: GameTextures.sharedInstance.buttonGameAtlas)
+        } else {
+            super.init(name: "pausebuttonreleased", pressedName: "pausebuttonpressed", dbScene: scene, atlas: GameTextures.sharedInstance.buttonGameAtlas)
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

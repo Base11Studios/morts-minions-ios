@@ -59,7 +59,7 @@ class PlayerDamageField: PlayerProjectile {
     override func setDefaultCollisionMasks() {
         // Collisions
         self.physicsBody!.categoryBitMask = GameScene.playerProjectileCategory
-        self.physicsBody!.contactTestBitMask = GameScene.enemyCategory | GameScene.obstacleCategory | GameScene.projectileCategory
-        self.physicsBody!.collisionBitMask = GameScene.enemyCategory | GameScene.obstacleCategory | GameScene.projectileCategory
+        self.physicsBody!.contactTestBitMask = GameScene.enemyCategory | GameScene.obstacleCategory | GameScene.projectileCategory | GameScene.transparentEnemyCategory
+        self.physicsBody!.collisionBitMask = GameScene.enemyCategory | GameScene.obstacleCategory | GameScene.projectileCategory | GameScene.transparentEnemyCategory
     }
 }

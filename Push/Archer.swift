@@ -16,13 +16,14 @@ class Archer : Player {
         self.skill3Details = CharacterSkillDetails(upgrade: CharacterUpgrade.WalkWithShadows)
         self.skill4Details = CharacterSkillDetails(upgrade: CharacterUpgrade.ProtectorOfTheSky)
         self.skill5Details = CharacterSkillDetails(upgrade: CharacterUpgrade.HealthPotion)
+        self.skill6Details = CharacterSkillDetails(upgrade: CharacterUpgrade.FairyGuardian)
         
         super.initializeSkills()
         
         // If the player has the eagle skill, create the eagle
         if GameData.sharedGameData.getSelectedCharacterData().isUpgradeUnlocked(CharacterUpgrade.ProtectorOfTheSky) {
             // Create the protector
-            self.protectorOfTheSky = PlayerEagle(attachedSkill: self.getSkill(CharacterUpgrade.ProtectorOfTheSky)!, gameScene: self.gameScene!)
+            self.protectorOfTheSky = PlayerEagle(attachedSkill: self.getSkill(CharacterUpgrade.ProtectorOfTheSky)!, gameScene: self.gameScene!, range: self.getSkill(CharacterUpgrade.ProtectorOfTheSky)!.range * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             self.protectorOfTheSky!.zPosition=1
             
             self.protectorXAdjust = -40 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
@@ -145,6 +146,8 @@ class Archer : Player {
     }
     
     override func setPlayerAttachmentPositions(_ defaultYPosition: CGFloat, position: CGPoint) {
+        super.setPlayerAttachmentPositions(defaultYPosition, position: position)
+        
         self.protectorOfTheSky?.position = CGPoint(x: self.position.x - 35 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), y: self.position.y + 50 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         
         self.protectorOfTheSky?.nextPosition = CGPoint(x: self.position.x - 35 * ScaleBuddy.sharedInstance.getGameScaleAmount(false), y: self.position.y + 50 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))

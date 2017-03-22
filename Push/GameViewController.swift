@@ -10,15 +10,13 @@ import Foundation
 import GameKit
 import AVFoundation
 import LocalAuthentication
-//import GoogleMobileAds
-import Appodeal
 
-class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*AppodealInterstitialDelegate,*/ AppodealRewardedVideoDelegate/*, MPInterstitialAdControllerDelegate, MPRewardedVideoDelegate*/ {
-    //var loadingScene: LoadingScene
-    //let REWARD_AD_ID = "b0ddefd0a8a14252a14a64da0728dade"
+class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPInterstitialAdControllerDelegate, MPRewardedVideoDelegate {
+
+    let REWARD_AD_ID = "b0ddefd0a8a14252a14a64da0728dade"
     
     //MoPubSDK
-    //var interstitial: MPInterstitialAdController?
+    var interstitial: MPInterstitialAdController?
     
     static var AD_LOCATION_REVIVE: String = "revive"
     static var AD_LOCATION_HEART_BOOST: String = "heartBoost"
@@ -140,8 +138,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
             // Instantiate the interstitial using the class convenience method.
             self.setupAdDelegate()
             
-            //self.cacheInterstitialAd()
-            //self.cacheRewardedVideo()
+            self.cacheInterstitialAd()
+            self.cacheRewardedVideo()
             
             // Set restoration identifier
             self.restorationIdentifier = "GameViewController"
@@ -167,13 +165,13 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
     }
     
     func setupAdDelegate() {
-        Appodeal.setRewardedVideoDelegate(self)
+        //GADRewardBasedVideoAd.sharedInstance().delegate = self
+        //Appodeal.setRewardedVideoDelegate(self)
         //Appodeal.setInterstitialDelegate(self)
-        /*
+        
         self.interstitial = MPInterstitialAdController(forAdUnitId: "af95a96f865b431197a07916fa38fffd")
         self.interstitial!.delegate = self
         MoPub.sharedInstance().initializeRewardedVideo(withGlobalMediationSettings: [], delegate: self)
-         */
     }
     
     func setupMusic() {
@@ -702,10 +700,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
     }
     
     func videoAdReady() -> Bool {
-        return Appodeal.isReadyForShow(with: AppodealShowStyle.rewardedVideo)
-        //return MPRewardedVideo.hasAdAvailable(forAdUnitID: REWARD_AD_ID)
-        //return Chartboost.hasRewardedVideo(CBLocationGameOver)
-        //return GADRewardBasedVideoAd.sharedInstance().isReady
+        return MPRewardedVideo.hasAdAvailable(forAdUnitID: REWARD_AD_ID)
     }
     
     func showRewardedVideo(location: String) {
@@ -715,40 +710,20 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
         self.dismissingVideo = false
         
         if self.videoAdReady() {
-            Appodeal.showAd(AppodealShowStyle.rewardedVideo, rootViewController: self)
-        }
-        /*
-        if MPRewardedVideo.hasAdAvailable(forAdUnitID: REWARD_AD_ID) {
             MPRewardedVideo.presentAd(forAdUnitID: REWARD_AD_ID, from: self)
-        }*/
-        
-        // Show rewarded video pre-roll message and video ad at location MainMenu. See Chartboost.h for available location options.
-        //Chartboost.showRewardedVideo(CBLocationGameOver)
-
-        /*if self.videoAdReady() {
-            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
-
-        } else {
-
-        }*/
+        }
     }
     
-    /*
+    
     func showInterstitialAd() {
-        do {
         if !GameData.sharedGameData.adsUnlocked {
             // Show interstitial at main menu
-            //Chartboost.showInterstitial(CBLocationMainMenu)
             if self.interstitialAdReady() {
-                //self.interstitial!.show(from: self)
-                Appodeal.showAd(AppodealShowStyle.interstitial, rootViewController: self)
+                self.interstitial!.show(from: self)
             }
         }
-        } catch {
-            print("Uh oh!!")
-        }
     }
-    */
+ 
     func heartBoostReady() -> Bool {
         // Get date minutes ago. If time last redeemed or seen > that, dont allow
         let calendar = NSCalendar.autoupdatingCurrent
@@ -764,38 +739,22 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
         // If we have 0 heart boost and prompt time < now - 10, return true, else false
         return GameData.sharedGameData.heartBoostCount == 0 && promptDate > GameData.sharedGameData.heartBoostLastPrompted
     }
-    /*
+    
     func interstitialAdReady() -> Bool {
-        // Get date 5 minutes ago. If time last watched > that, dont allow
-        let calendar = NSCalendar.autoupdatingCurrent
-        let requiredDate = calendar.date(byAdding: Calendar.Component.minute, value: GameData.sharedGameData.heartBoostCooldown, to: Date())!
-        
-        return Appodeal.isReadyForShow(with: AppodealShowStyle.interstitial) && requiredDate > GameData.sharedGameData.lastIntroVideoAdWatch
-
-        //return self.interstitial!.ready
-    }*/
-    /*
+        return self.interstitial!.ready
+    }
+    
     func cacheInterstitialAd() {
         if !GameData.sharedGameData.adsUnlocked && !self.interstitialAdReady() {
-            Appodeal.cacheAd(AppodealAdType.interstitial)
             // Fetch the interstitial ad.
-            //self.interstitial!.loadAd()
-            
-            //Chartboost.cacheInterstitial(CBLocationMainMenu)
+            self.interstitial!.loadAd()
         }
     }
-    */
+    
     func cacheRewardedVideo() {
         if !self.videoAdReady() {
-            Appodeal.cacheAd(AppodealAdType.rewardedVideo)
-            //MPRewardedVideo.loadAd(withAdUnitID: REWARD_AD_ID, withMediationSettings: [])
+            MPRewardedVideo.loadAd(withAdUnitID: REWARD_AD_ID, withMediationSettings: [])
         }
-        /*let request = GADRequest()
-        // Requests test ads on test devices.
-
-        request.testDevices = ["fa25ccf46baf21a9189bbb36e020a8ef"]
-        GADRewardBasedVideoAd.sharedInstance().load(request, withAdUnitID: "ca-app-pub-4505737160765142/2684998717")*/
-        //Chartboost.cacheRewardedVideo(CBLocationGameOver)
     }
     
     // Game Center
@@ -824,7 +783,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
         //}
         
     }
-    /*
+    
     
     // ******************************** INTERSTITIAL ADS **********************
     /**
@@ -836,13 +795,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
      *
      * @param interstitial The interstitial ad object sending the message.
      */
-    //func interstitialDidDisappear(_ interstitial: MPInterstitialAdController!) {
-    func interstitialDidDismiss(){
-        // Update last watched flag to current time
-        GameData.sharedGameData.lastIntroVideoAdWatch = Date()
-        
+    func interstitialDidDisappear(_ interstitial: MPInterstitialAdController!) {
         // Move on to tutorials
-        print("dismissed")
         NotificationCenter.default.post(name: Notification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
     }
     
@@ -862,10 +816,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
      *
      * @param interstitial The interstitial ad object sending the message.
      */
-    /* Dont have for appodeal
     func interstitialDidExpire(_ interstitial: MPInterstitialAdController!) {
         self.cacheInterstitialAd()
-    }*/
+    }
     
     /**
      * Sent when the user taps the interstitial ad and the ad is about to perform its target action.
@@ -876,30 +829,18 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
      *
      * @param interstitial The interstitial ad object sending the message.
      */
-    //func interstitialDidReceiveTapEvent(_ interstitial: MPInterstitialAdController!) {
-    func interstitialDidClick(){
+    func interstitialDidReceiveTapEvent(_ interstitial: MPInterstitialAdController!) {
         AdSupporter.sharedInstance.showPauseMenu = true
     }
-    func interstitialDidFailToLoadAd() {
-        print("failed to load")
+    
+    func interstitialDidAppear(_ interstitial: MPInterstitialAdController!) {
     }
-    func interstitialWillPresent() {
-        // As a last resort here we could change the pause menu to unpause
-    }
-    */
+    
     
     // ************************* REWARDED VIDEO CALLBACKS *************
     
-    func rewardedVideoDidLoadAd(){
-        //print("load")
-    }
-    func rewardedVideoDidFailToLoadAd(){
-        //print("load failed")
-    }
-    
     // Or will appear?
-    //func rewardedVideoAdDidAppear(forAdUnitID adUnitID: String!) {
-    func rewardedVideoDidPresent(){
+    func rewardedVideoAdDidAppear(forAdUnitID adUnitID: String!) {
         // Remove the loading dialog
         //self.dismissLoadingDialog() Shouldn't need anymore
         
@@ -909,14 +850,13 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
         self.completedVideo = false
     }
     
-    //func rewardedVideoAdShouldReward(forAdUnitID adUnitID: String!, reward: MPRewardedVideoReward!) {
-    func rewardedVideoDidFinish(_ rewardAmount: UInt, name rewardName: String!){
-        self.endVideoSuccessfully()
+    func rewardedVideoAdShouldReward(forAdUnitID adUnitID: String!, reward: MPRewardedVideoReward!) {
+        //self.endVideoSuccessfully() - Don't complete here, just mark it was watched and let didDisappear handle it
+        self.completedVideo = true
     }
     
     // Or will disappear??
-    //func rewardedVideoAdDidDisappear(forAdUnitID adUnitID: String!) {
-    func rewardedVideoWillDismiss(){
+    func rewardedVideoAdDidDisappear(forAdUnitID adUnitID: String!) {
         // If video was completed, dont do anything, otherwise send dismiss dialog if not done
         if !self.completedVideo && self.presentingVideo && !self.dismissingVideo {
             self.endVideoUnsuccessfully()
@@ -925,24 +865,21 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, /*Ap
         }
     }
     
-    /* Don't have this one for Appodeal
     func rewardedVideoAdDidExpire(forAdUnitID adUnitID: String!) {
         self.cacheRewardedVideo()
-    }*/
+    }
     
-    //func rewardedVideoAdDidReceiveTapEvent(forAdUnitID adUnitID: String!) {
-    func rewardedVideoDidClick(){
+    func rewardedVideoAdDidReceiveTapEvent(forAdUnitID adUnitID: String!) {
         // Store that the video was completed.
         if self.presentingVideo && !self.completedVideo {
             self.completedVideo = true
         }
     }
     
-    /* Don't need as long as we know the video is loaded beforehand
     private func dismissLoadingDialog() {
         // Send notification that gamescene will pick up
         NotificationCenter.default.post(name: Notification.Name(rawValue: "DismissLoadingDialog"), object: nil)
-    }*/
+    }
     
     private func endVideoSuccessfully() {
         if self.videoAdLocation == GameViewController.AD_LOCATION_REVIVE {

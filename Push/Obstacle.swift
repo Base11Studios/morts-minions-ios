@@ -85,7 +85,7 @@ class Obstacle : EnvironmentObject {
         // Collisions
         if self.collidesWithPlayer {
             self.physicsBody!.categoryBitMask = GameScene.obstacleCategory
-            self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.groundCategory /*| GameScene.transparentPlayerCategory*/
+            self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerPetCategory | GameScene.playerCategory | GameScene.groundCategory /*| GameScene.transparentPlayerCategory*/
             self.physicsBody!.contactTestBitMask = GameScene.playerCategory | GameScene.groundCategory | GameScene.transparentPlayerCategory
         } else {
             self.physicsBody!.categoryBitMask = GameScene.transparentObstacleCategory

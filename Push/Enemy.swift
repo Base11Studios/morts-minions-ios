@@ -14,7 +14,7 @@ class Enemy : EnvironmentObject {
     
     static func getHealth(_ enemyClass: AnyClass) -> Int {
         // If the class has more than 1 HP, have to add it here, otherwise 1 is default
-        if enemyClass is Crab.Type || enemyClass is Prowler.Type {
+        if enemyClass is Crab.Type || enemyClass is Prowler.Type || enemyClass is KingTempus.Type  {
             return 2
         }
         
@@ -102,8 +102,8 @@ class Enemy : EnvironmentObject {
         
         // Collisions
         self.physicsBody!.categoryBitMask = GameScene.enemyCategory
-        self.physicsBody!.contactTestBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.groundCategory | GameScene.transparentPlayerCategory
-        self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.groundCategory
+        self.physicsBody!.contactTestBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.groundCategory | GameScene.transparentPlayerCategory | GameScene.playerPetCategory
+        self.physicsBody!.collisionBitMask = GameScene.playerProjectileCategory | GameScene.playerCategory | GameScene.groundCategory | GameScene.playerPetCategory
         
         // Physics Body settings
         self.physicsBody!.restitution = self.defaultRestitution

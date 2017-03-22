@@ -192,5 +192,43 @@
 			<string>stars</string>
 		</dict>
 	</array>
+	<array>
+		<dict>
+			<key>Cost</key>
+			<integer>18</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>7</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>7</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>14</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>9</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+		<dict>
+			<key>Cost</key>
+			<integer>20</integer>
+			<key>Currency</key>
+			<string>stars</string>
+		</dict>
+	</array>
 </array>
 </plist>
