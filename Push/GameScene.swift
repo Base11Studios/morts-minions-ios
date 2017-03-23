@@ -701,8 +701,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     // This function is called for each frame
     override func update(_ currentTime: TimeInterval) {
-        self.playMusic()
-        
         /*
         if !self.levelIntroTextShown! {
             self.levelIntroText!.isHidden = false
@@ -2224,7 +2222,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.skill6Button?.isPaused = true
         }
         
-        self.backgroundPlayer?.volume = 0.0
+        self.backgroundPlayer?.pause()
+        //self.backgroundPlayer?.volume = 0.0
     }
     
     func setStayPaused() {
@@ -2247,7 +2246,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.skill5Button?.isPaused = false
         self.skill6Button?.isPaused = false
         
-        self.backgroundPlayer?.volume = 1.0
+        self.backgroundPlayer?.play()
+        //self.backgroundPlayer?.volume = 1.0
     }
     
     func getButtonWithSkill(_ skillAsUpgrade: CharacterUpgrade) -> GameSkillButton? {
