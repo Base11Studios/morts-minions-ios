@@ -571,7 +571,7 @@ class Player : SKSpriteNode {
                                 self.gameScene!.transparentObjectsAlreadyDamagedPlayer.append(enemy.name!)
                                 
                                 // Only deal damage to the enemy if we came out of a teleport
-                                if self.isComingOutOfTeleport {
+                                if self.isComingOutOfTeleport && enemy.playerCanDamage {
                                     // Damage the projectile now
                                     enemy.takeDamageFromPlayer(self)
                                 }
@@ -598,7 +598,7 @@ class Player : SKSpriteNode {
                                 self.gameScene!.transparentObjectsAlreadyDamagedPlayer.append(obstacle.name!)
                                 
                                 // Only deal damage to the enemy if we came out of a teleport
-                                if self.isComingOutOfTeleport {
+                                if self.isComingOutOfTeleport && obstacle.playerCanDamage {
                                     // Damage the projectile now
                                     obstacle.takeDamageFromPlayer(self)
                                 }
