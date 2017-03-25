@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 @objc(RateMeLaterButton)
 class RateMeLaterButton : DBButton {
@@ -19,6 +20,13 @@ class RateMeLaterButton : DBButton {
     }
     
     override func touchesEndedAction() {
+        let title = "ClickedRateMeLATER"
+        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+            kFIRParameterItemID: "id-\(title)" as NSObject,
+            kFIRParameterItemName: title as NSObject,
+            kFIRParameterContentType: "cont" as NSObject
+            ])
+        
         GameData.sharedGameData.promptRateMeCountdown = GameData.sharedGameData.promptRateMeMax
         //GameData.sharedGameData.save()
         dbScene!.hideRateMeMenu()

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 @objc(TradeGemsForStarsButton)
 class TradeGemsForStarsButton : DBButton {
@@ -93,10 +94,32 @@ class TradeGemsForStarsButton : DBButton {
     
     override func touchesEndedAction() {
         self.setScale(1)
+        
+        let title = "ClickBuyStarsForGems"
+        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+            kFIRParameterItemID: "id-\(title)" as NSObject,
+            kFIRParameterItemName: title as NSObject,
+            kFIRParameterContentType: "cont" as NSObject
+            ])
 
         if self.unlockAmount <= GameData.sharedGameData.totalDiamonds { // Unlock it
+            let title = "HadGemsToBuyStars"
+            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+                kFIRParameterItemID: "id-\(title)" as NSObject,
+                kFIRParameterItemName: title as NSObject,
+                kFIRParameterContentType: "cont" as NSObject
+                ])
+            
             self.purchaseStars(ugh: false)
         } else {
+            let title = "DidntHaveGemsToBuyStars"
+            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+                kFIRParameterItemID: "id-\(title)" as NSObject,
+                kFIRParameterItemName: title as NSObject,
+                kFIRParameterContentType: "cont" as NSObject
+                ])
+            
+            
             // If the user does not have enough gems, show purchase menu
             // Need weak reference to prevent retain cycle
             //let onSuccessPurchase: (Bool) -> Void = {[weak self] (ugh: Bool) in self!.purchaseStars(ugh: ugh)}

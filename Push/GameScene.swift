@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import FirebaseAnalytics
 
 @objc(GameScene)
 class GameScene : DBScene, SKPhysicsContactDelegate {    
@@ -353,6 +354,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Create HUD
         self.initializeHUD()
         
+        // Firebase
+        self.firebase()
+        
         // Set the boundaries for player and background interaction
         horizontalPlayerLimitRight = self.frame.size.width / ScaleBuddy.sharedInstance.playerHorizontalRight
         horizontalPlayerLimitLeft = self.frame.size.width / ScaleBuddy.sharedInstance.playerHorizontalLeft
@@ -402,6 +406,15 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         self.showPauseMenu = false
         self.pauseGame()
+    }
+    
+    func firebase() {
+        let title = "StartingLevel" + String(self.currentLevel)
+        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+            kFIRParameterItemID: "id-\(title)" as NSObject,
+            kFIRParameterItemName: title as NSObject,
+            kFIRParameterContentType: "cont" as NSObject
+            ])
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -2051,6 +2064,12 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 description = "Support indie games by purchasing gems!"
             }
             
+            let analyticTitle = "PresentedWithInHouseAd"
+            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+                kFIRParameterItemID: "id-\(analyticTitle)" as NSObject,
+                kFIRParameterItemName: analyticTitle as NSObject,
+                kFIRParameterContentType: "cont" as NSObject
+                ])
             
             
             let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: true, key: key, version: version, prependText: false)

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 @objc(RateMeNeverButton)
 class RateMeNeverButton : DBButton {
@@ -19,6 +20,13 @@ class RateMeNeverButton : DBButton {
     }
     
     override func touchesEndedAction() {
+        let title = "ClickedRateMeNEVER"
+        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+            kFIRParameterItemID: "id-\(title)" as NSObject,
+            kFIRParameterItemName: title as NSObject,
+            kFIRParameterContentType: "cont" as NSObject
+            ])
+        
         GameData.sharedGameData.playerHasRatedGame = true
         //GameData.sharedGameData.save()
         dbScene!.hideRateMeMenu()

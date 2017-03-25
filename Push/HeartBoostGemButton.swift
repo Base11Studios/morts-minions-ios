@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 @objc(HeartBoostGemButton)
 class HeartBoostGemButton : DBButton {
@@ -69,9 +70,23 @@ class HeartBoostGemButton : DBButton {
     }
     
     override func touchesEndedAction() {
+        let title = "ClickedToBuyHeartBoostWithGems"
+        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+            kFIRParameterItemID: "id-\(title)" as NSObject,
+            kFIRParameterItemName: title as NSObject,
+            kFIRParameterContentType: "cont" as NSObject
+            ])
+        
         self.setScale(1)
         
         if GameData.sharedGameData.getSelectedCharacterData().hasFreeHeartBoosts() {
+            let title = "ClickedToBuyHeartBoostWithGemsAndHadFreebie"
+            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+                kFIRParameterItemID: "id-\(title)" as NSObject,
+                kFIRParameterItemName: title as NSObject,
+                kFIRParameterContentType: "cont" as NSObject
+                ])
+            
             // Reduce free hb
             GameData.sharedGameData.getSelectedCharacterData().useFreeHeartBoost()
             //GameData.sharedGameData.save()
@@ -80,8 +95,21 @@ class HeartBoostGemButton : DBButton {
             self.purchaseBoost(false)
         } else {
             if self.unlockAmount <= GameData.sharedGameData.totalDiamonds { // Unlock it
+                let title = "ClickedToBuyHeartBoostWithGemsAndHadGems"
+                FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+                    kFIRParameterItemID: "id-\(title)" as NSObject,
+                    kFIRParameterItemName: title as NSObject,
+                    kFIRParameterContentType: "cont" as NSObject
+                    ])
+                
                 self.purchaseBoost(true)
             } else {
+                let title = "ClickedToBuyHeartBoostWithGemsAndDidntHaveGems"
+                FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+                    kFIRParameterItemID: "id-\(title)" as NSObject,
+                    kFIRParameterItemName: title as NSObject,
+                    kFIRParameterContentType: "cont" as NSObject
+                    ])
                 // If the user does not have enough gems, show purchase menu
                 // Need weak reference to prevent retain cycle
                 let onSuccessPurchase: (Bool) -> Void = {[weak self] (flag: Bool) in self!.purchaseBoost(flag)}

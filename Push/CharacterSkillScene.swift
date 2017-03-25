@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 @objc(CharacterSkillScene)
 class CharacterSkillScene : DBScene {
@@ -212,6 +213,13 @@ class CharacterSkillScene : DBScene {
             self.createUxTutorials()
             self.displayTutorialTooltip()
         }
+        
+        let title = "GoingToSkills"
+        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+            kFIRParameterItemID: "id-\(title)" as NSObject,
+            kFIRParameterItemName: title as NSObject,
+            kFIRParameterContentType: "cont" as NSObject
+            ])
         
         // Update the star counts
         //self.updateSuperstars()

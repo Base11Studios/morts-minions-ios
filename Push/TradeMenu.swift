@@ -166,7 +166,7 @@ class TradeMenu: DialogBackground {
         
         //self.totalSuperstarsText.position = CGPoint(x: self.totalSuperstarsIcon.position.x - self.totalSuperstarsIcon.size.width/2 - buffer/5, y: self.totalSuperstarsIcon.position.y)
         
-        self.totalGemsIcon.position = CGPoint(x: self.totalStarsText.position.x - self.totalStarsText.calculateAccumulatedFrame().size.width / 2 - self.totalGemsIcon.size.width/2 - self.buffer, y: self.title.position.y)
+        self.totalGemsIcon.position = CGPoint(x: self.totalStarsText.position.x - self.totalStarsText.calculateAccumulatedFrame().size.width / 2 - self.totalGemsIcon.size.width/2 - self.buffer * 3, y: self.title.position.y)
         
         self.totalGemsText.position = CGPoint(x: self.totalGemsIcon.position.x - self.totalGemsIcon.size.width/2 - buffer/5, y: self.totalGemsIcon.position.y)
     }
