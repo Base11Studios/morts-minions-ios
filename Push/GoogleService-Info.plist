@@ -36,5 +36,7 @@
 	<string>1:156195350236:ios:8d6013d6ad18c6aa</string>
 	<key>DATABASE_URL</key>
 	<string>https://morts-minions-71727.firebaseio.com</string>
+	<key>FirebaseScreenReportingEnabled</key>
+	<false/>
 </dict>
 </plist>

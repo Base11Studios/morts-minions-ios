@@ -53,7 +53,7 @@ class Monk : Player {
             let projectile: PlayerShockwave = PlayerShockwave(gameScene: self.gameScene!)
             
             // Set scale - 3 is highest so we will make the wave that large and then scale down so we dont lose graphic quality
-            projectile.setScale(CGFloat(self.getSkill(CharacterUpgrade.KiWave)!.value) / 3.0)
+            projectile.setScale(CGFloat(self.getSkill(CharacterUpgrade.KiWave)!.value) / 3.0 * projectile.xScale)
             
             // This is how far it can pass through
             projectile.numberOfContacts = Int(self.getSkill(CharacterUpgrade.KiWave)!.secondaryValue)

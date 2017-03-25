@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 @objc(LevelSelectionScene)
 class LevelSelectionScene : DBScene {
@@ -617,6 +618,13 @@ class LevelSelectionScene : DBScene {
             if self.selectedWorld!.relatedLevelSelector!.levelSelectedNode!.levelSelectionBackground.contains(translatedTouchLocation) && !self.selectedWorld!.relatedLevelSelector!.levelSelectedNode!.levelLocked {
                 // Remove actions
                 self.selectedWorld!.relatedLevelSelector!.removeAllActions()
+                
+                let title = "StartingLevel" + String(self.selectedWorld!.relatedLevelSelector!.levelSelected)
+                FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+                    kFIRParameterItemID: "id-\(title)" as NSObject,
+                    kFIRParameterItemName: title as NSObject,
+                    kFIRParameterContentType: "cont" as NSObject
+                    ])
                 
                 // We touched a level so let's load it
                 self.viewController!.presentGameSceneLevel(self.selectedWorld!.relatedLevelSelector!.levelSelected, justRestarted: false)

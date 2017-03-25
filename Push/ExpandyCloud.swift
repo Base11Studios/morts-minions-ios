@@ -55,8 +55,8 @@ class ExpandyCloud : Obstacle {
             let distance = self.lineOfSight - (abs(self.position.x - player.position.x))
             self.currentScale = (((distance / self.lineOfSight) * (1 - self.originalScale)) + self.originalScale) * self.maxScale
             
-            if self.currentScale > 1 {
-                self.setScale(1)
+            if self.currentScale > ScaleBuddy.sharedInstance.getGameScaleAmount(false) {
+                self.setScale(ScaleBuddy.sharedInstance.getGameScaleAmount(false))
             }
             
             self.setScale(self.currentScale)

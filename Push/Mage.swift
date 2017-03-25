@@ -163,6 +163,6 @@ class Mage : Player {
     }
     
     override func createPhysicsBody() {
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.712, height: self.size.height * 0.917), center: CGPoint(x: self.size.width * 0.0, y: self.size.height * -0.041))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.712, height: self.size.height * 0.917), center: CGPoint(x: self.size.width * 0.0, y: self.size.height * -0.082))
     }
 }
