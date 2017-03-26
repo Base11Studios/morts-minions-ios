@@ -83,14 +83,6 @@ class RejuvenateGemButton : DBButton {
         (self.dbScene as! GameScene).setRejuvDialogDisplayed()
         
         if GameData.sharedGameData.getSelectedCharacterData().hasFreeRejuvenations() {
-            let title = "ClickedToBuyReviveWithGemsAndHadFreeRejuv"
-            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-                kFIRParameterItemID: "id-\(title)" as NSObject,
-                kFIRParameterItemName: title as NSObject,
-                kFIRParameterContentType: "cont" as NSObject
-                ])
-        
-            
             // Reduce free rejuvenation
             GameData.sharedGameData.getSelectedCharacterData().useFreeRejuvenation()
             //GameData.sharedGameData.save()
@@ -99,13 +91,6 @@ class RejuvenateGemButton : DBButton {
             self.purchaseRejuvenate(false)
         } else {
             if self.unlockAmount <= GameData.sharedGameData.totalDiamonds { // Unlock it
-                let title = "ClickedToBuyReviveWithGemsAndHadGems"
-                FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-                    kFIRParameterItemID: "id-\(title)" as NSObject,
-                    kFIRParameterItemName: title as NSObject,
-                    kFIRParameterContentType: "cont" as NSObject
-                    ])
-                
                 self.purchaseRejuvenate(true)
             } else {
                 let title = "ClickedToBuyReviveWithGemsAndDidntHaveGems"
@@ -130,6 +115,13 @@ class RejuvenateGemButton : DBButton {
     
     func purchaseRejuvenate(_ useGems: Bool) -> Void {
         if useGems {
+            let title = "PurchasedRejuvForGems-\(self.unlockAmount)"
+            FIRAnalytics.logEvent(withName: kFIREventSpendVirtualCurrency, parameters: [
+                kFIRParameterItemID: "id-\(title)" as NSObject,
+                kFIRParameterItemName: title as NSObject,
+                kFIRParameterContentType: "cont" as NSObject
+                ])
+            
             GameData.sharedGameData.totalDiamonds = GameData.sharedGameData.totalDiamonds - self.unlockAmount
             
             // Rejuvenate player and remove dialog through 1 sec slideout
@@ -138,6 +130,13 @@ class RejuvenateGemButton : DBButton {
             // Save data
             //GameData.sharedGameData.save()
         } else {
+            let title = "ClickedToBuyReviveWithGemsAndHadFreeRejuv"
+            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+                kFIRParameterItemID: "id-\(title)" as NSObject,
+                kFIRParameterItemName: title as NSObject,
+                kFIRParameterContentType: "cont" as NSObject
+                ])
+            
             // Rejuvenate player and remove dialog through 1 sec slideout
             (self.dbScene as! GameScene).rejuvenatePlayer()
         }
