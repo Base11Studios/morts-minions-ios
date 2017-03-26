@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 @objc(RejuvenateGemButton)
 class RejuvenateGemButton : DBButton {
@@ -69,12 +70,27 @@ class RejuvenateGemButton : DBButton {
     }
     
     override func touchesEndedAction() {
+        let title = "ClickedToBuyReviveWithGems"
+        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+            kFIRParameterItemID: "id-\(title)" as NSObject,
+            kFIRParameterItemName: title as NSObject,
+            kFIRParameterContentType: "cont" as NSObject
+            ])
+        
         self.setScale(1)
         
         // Remove the current animation
         (self.dbScene as! GameScene).setRejuvDialogDisplayed()
         
         if GameData.sharedGameData.getSelectedCharacterData().hasFreeRejuvenations() {
+            let title = "ClickedToBuyReviveWithGemsAndHadFreeRejuv"
+            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+                kFIRParameterItemID: "id-\(title)" as NSObject,
+                kFIRParameterItemName: title as NSObject,
+                kFIRParameterContentType: "cont" as NSObject
+                ])
+        
+            
             // Reduce free rejuvenation
             GameData.sharedGameData.getSelectedCharacterData().useFreeRejuvenation()
             //GameData.sharedGameData.save()
@@ -83,8 +99,22 @@ class RejuvenateGemButton : DBButton {
             self.purchaseRejuvenate(false)
         } else {
             if self.unlockAmount <= GameData.sharedGameData.totalDiamonds { // Unlock it
+                let title = "ClickedToBuyReviveWithGemsAndHadGems"
+                FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+                    kFIRParameterItemID: "id-\(title)" as NSObject,
+                    kFIRParameterItemName: title as NSObject,
+                    kFIRParameterContentType: "cont" as NSObject
+                    ])
+                
                 self.purchaseRejuvenate(true)
             } else {
+                let title = "ClickedToBuyReviveWithGemsAndDidntHaveGems"
+                FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+                    kFIRParameterItemID: "id-\(title)" as NSObject,
+                    kFIRParameterItemName: title as NSObject,
+                    kFIRParameterContentType: "cont" as NSObject
+                    ])
+                
                 // If the user does not have enough gems, show purchase menu
                 // Need weak reference to prevent retain cycle
                 let onSuccessPurchase: (Bool) -> Void = {[weak self] (flag: Bool) in self!.purchaseRejuvenate(flag)}

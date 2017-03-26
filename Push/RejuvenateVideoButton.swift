@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 @objc(RejuvenateVideoButton)
 class RejuvenateVideoButton : DBButton {
@@ -52,6 +53,13 @@ class RejuvenateVideoButton : DBButton {
     }
     
     override func touchesEndedAction() {
+        let title = "ClickedToBuyReviveWithVideo"
+        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+            kFIRParameterItemID: "id-\(title)" as NSObject,
+            kFIRParameterItemName: title as NSObject,
+            kFIRParameterContentType: "cont" as NSObject
+            ])
+        
         self.setScale(1)
         
         if self.dbScene!.viewController!.videoAdReady() {

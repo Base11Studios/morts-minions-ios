@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 @objc(CharacterTradeButton)
 class CharacterTradeButton : DBButton {
@@ -19,6 +20,13 @@ class CharacterTradeButton : DBButton {
     }
     
     override func touchesEndedAction() {
+        let title = "OpenTrade"
+        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+            kFIRParameterItemID: "id-\(title)" as NSObject,
+            kFIRParameterItemName: title as NSObject,
+            kFIRParameterContentType: "cont" as NSObject
+            ])
+        
         self.dbScene!.showTradeMenu()
     }
 }

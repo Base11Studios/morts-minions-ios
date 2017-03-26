@@ -97,7 +97,7 @@ class Wizard : Enemy {
     
     override func setupTraitsWithScalar(_ scalar: Double) {
         // Add physics to the enemy
-        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.65, height: self.size.height * 0.9), center: CGPoint(x: self.size.width * 0.15, y: -0.05))
+        self.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.size.width * 0.65, height: self.size.height * 0.9), center: CGPoint(x: self.size.width * 0.15, y: -0.1))
         
         setDefaultPhysicsBodyValues()
         

@@ -571,7 +571,7 @@ class Player : SKSpriteNode {
                                 self.gameScene!.transparentObjectsAlreadyDamagedPlayer.append(enemy.name!)
                                 
                                 // Only deal damage to the enemy if we came out of a teleport
-                                if self.isComingOutOfTeleport {
+                                if self.isComingOutOfTeleport && enemy.playerCanDamage {
                                     // Damage the projectile now
                                     enemy.takeDamageFromPlayer(self)
                                 }
@@ -598,7 +598,7 @@ class Player : SKSpriteNode {
                                 self.gameScene!.transparentObjectsAlreadyDamagedPlayer.append(obstacle.name!)
                                 
                                 // Only deal damage to the enemy if we came out of a teleport
-                                if self.isComingOutOfTeleport {
+                                if self.isComingOutOfTeleport && obstacle.playerCanDamage {
                                     // Damage the projectile now
                                     obstacle.takeDamageFromPlayer(self)
                                 }
@@ -641,12 +641,6 @@ class Player : SKSpriteNode {
                     }
                 }
             }
-            
-            // Fairy
-            //self.fairyGuardian?.nextPosition = CGPoint(x: self.position.x + (5 * sin(CGFloat(self.fairyGuardian!.timeAlive)*4)) * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + self.fairyGuardianXAdjust, y: self.position.y + (CGFloat(self.getSkill(CharacterUpgrade.FairyGuardian)!.value) * sin(CGFloat(self.fairyGuardian!.timeAlive)*4)) * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + self.fairyGuardianYAdjust)
-            self.fairyGuardian?.nextPosition = CGPoint(x: self.position.x + self.fairyGuardianXAdjust, y: self.position.y + self.fairyGuardianYAdjust)
-            
-            self.fairyGuardian?.update(timeSinceLast, withPlayer: self)
         }
     }
     
@@ -705,7 +699,7 @@ class Player : SKSpriteNode {
             self.updateWeapon() // TODO can move this into didEvaluateActions
             
             // Fairy
-            self.fairyGuardian?.updateAfterPhysics()
+            self.fairyGuardian?.nextPosition = CGPoint(x: self.position.x + self.fairyGuardianXAdjust, y: self.position.y + self.fairyGuardianYAdjust)
         }
         
         /*

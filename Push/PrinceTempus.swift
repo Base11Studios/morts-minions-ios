@@ -11,14 +11,13 @@ import Foundation
 @objc(PrinceTempus)
 class PrinceTempus : Enemy {
     
+    var savedPlayer: Player?
     var followPlayer: Bool = false
     var projectiles = Array<Projectile>()
     
     required init(scalar : Double, defaultYPosition: CGFloat, defaultXPosition: CGFloat, parent: SKNode, value1: Double, value2: Double, scene: GameScene) {
         // Initialize the attributes
         super.init(scalar: scalar, imageName: "princetempus_floating_000", textureAtlas: GameTextures.sharedInstance.spiritAtlas, defaultYPosition: defaultYPosition, value1: value1, value2: value2, scene: scene)
-        
-        //self.setScale(self.xScale * 0.625)
         
         // Setup animations for walking only
         self.walkAction = SKAction.repeatForever(SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.spiritAtlas, texturesNamed: "princetempus_floating", frameStart: 0, frameEnd: 15), timePerFrame: 0.06, resize: true, restore: false))
@@ -132,13 +131,12 @@ class PrinceTempus : Enemy {
         // Call the super attack (reduces attack cooldown)
         super.attack(timeSinceLast, player: player)
         
-        if (self.position.x - player.position.x) < self.lineOfSight {
-            self.followPlayer = true
-            //self.moveSpeed = 0
+        if savedPlayer == nil {
+            self.savedPlayer = player
         }
         
-        if self.followPlayer && (self.position.x - player.position.x) < self.lineOfSight {
-            self.position.x = player.position.x + self.lineOfSight
+        if (self.position.x - player.position.x) < self.lineOfSight {
+            self.followPlayer = true
         }
         
         // The player is in sight of the enemy
@@ -152,6 +150,12 @@ class PrinceTempus : Enemy {
             
             // Update the animations
             self.updateAnimation()
+        }
+    }
+    
+    override func updateAfterPhysics() {
+        if self.followPlayer && self.savedPlayer != nil && (self.position.x - self.savedPlayer!.position.x) < self.lineOfSight {
+            self.position.x = self.savedPlayer!.position.x + self.lineOfSight
         }
     }
 }

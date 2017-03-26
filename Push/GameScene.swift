@@ -8,6 +8,7 @@
 
 import Foundation
 import AVFoundation
+import FirebaseAnalytics
 
 @objc(GameScene)
 class GameScene : DBScene, SKPhysicsContactDelegate {    
@@ -114,6 +115,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     var storyDialogs: Array<StoryDialog>? = Array<StoryDialog>()
     var storyEndDialogs: Array<StoryDialog>? = Array<StoryDialog>()
     var score: LevelScore? = nil
+    
+    // Firebase
+    var firebasePresentedInHouseAds = false
 
     // Contacts
     var transparentObstacleContacts: Array<Obstacle> = Array<Obstacle>()
@@ -352,7 +356,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // Create HUD
         self.initializeHUD()
-        
+
         // Set the boundaries for player and background interaction
         horizontalPlayerLimitRight = self.frame.size.width / ScaleBuddy.sharedInstance.playerHorizontalRight
         horizontalPlayerLimitLeft = self.frame.size.width / ScaleBuddy.sharedInstance.playerHorizontalLeft
@@ -423,6 +427,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.showPauseMenu = false
             self.pauseGame()
         } else if !self.showedHeartBoostDialog && (GameData.sharedGameData.adPopCountdown <= 0) && viewController!.interstitialAdReady() && !self.adsPresented && !GameData.sharedGameData.adsUnlocked {
+            // We want to add to the tutorials
+            self.addInHouseAds()
+            
             // Then ads
             // Show the ad
             viewController!.showInterstitialAd()
@@ -435,6 +442,10 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             GameData.sharedGameData.adPopCountdown = GameData.sharedGameData.adPopMax
         } else { // Then tutorials
             self.addAllPlayerHearts()
+            
+            if !self.adsPresented && GameData.sharedGameData.adPopCountdown < -4 && GameData.sharedGameData.adPopCountdown % 5 == 0 {
+                self.addInHouseAds()
+            }
             
             // Now tutorials
             if self.tutorialDialogs!.count > 0 {
@@ -701,8 +712,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     
     // This function is called for each frame
     override func update(_ currentTime: TimeInterval) {
-        self.playMusic()
-        
         /*
         if !self.levelIntroTextShown! {
             self.levelIntroText!.isHidden = false
@@ -911,6 +920,14 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     func beginLevelEnding() {
+        if (firebasePresentedInHouseAds) {
+            let analyticTitle = "PresentedWithInHouseAd"
+            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+                kFIRParameterItemID: "id-\(analyticTitle)" as NSObject,
+                kFIRParameterItemName: analyticTitle as NSObject,
+                kFIRParameterContentType: "cont" as NSObject
+                ])
+        }
         // End the scene.
         if self.player.position.x > self.totalLevelDistance { // Victory
             // Have the player victory animation start
@@ -2032,48 +2049,54 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
                 }
             }
         }
-        
-        // Occasionally we advertise in house purchases. Skip the first time, so start at frequency * 2
-        var frequencyAds: Int = 10
+    }
+    
+    func addInHouseAds() {
+        var count: Int = self.tutorialDialogs!.count
 
-        if !GameData.sharedGameData.adsUnlocked && GameData.sharedGameData.timesPlayed > 5 && GameData.sharedGameData.timesPlayed % frequencyAds == 0 {
-            // Get the version information
-            let key = "timesPlayedAdvertisement\(GameData.sharedGameData.timesPlayed)"
-            let version = 1.0
-            let iconTexture: SKTexture
-            var description = "Purchases remove rewardless ads!"
-            // Create dialog
-            var title = "Buy Gems!"
-            
-            if GameData.sharedGameData.timesPlayed % (frequencyAds * 2) == 0 {
-                iconTexture = SKTexture(imageNamed: "tutorial_monk")
-            } else {
-                iconTexture = SKTexture(imageNamed: "tutorial_mage")
-                title = "Be a Pal!"
-                description = "Support indie games by purchasing gems!"
-            }
-            
-            
-            
-            let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: true, key: key, version: version, prependText: false)
-            
-            tutorialDialog.zPosition = 19
-            
-            if count == 1 {
-                // the previous one needs to change to a "next" only button
-                previousDialog!.updateAsNextOnly()
-            } else if count >= 2 {
-                // the previous one needs to change to a "next" and "previous" button
-                previousDialog!.updateAsPreviousAndNext()
-            }
-            
-            tutorialDialog.updateAsPlayAndStore()
-            
-            self.tutorialDialogs!.append(tutorialDialog)
-            //self.addChild(tutorialDialog)
-            previousDialog = tutorialDialog
-            count += 1
+        // Need to know the prev dialog
+        var previousDialog: TutorialDialog?
+        
+        if count > 0 {
+            previousDialog = self.tutorialDialogs![count - 1]
         }
+
+        // Get the version information
+        let key = "timesPlayedAdvertisement\(GameData.sharedGameData.timesPlayed)"
+        let version = 1.0
+        let iconTexture: SKTexture
+        var description = "Purchases remove rewardless ads!"
+        // Create dialog
+        var title = "Buy Gems!"
+        
+        if GameData.sharedGameData.timesPlayed % 2 == 0 {
+            iconTexture = SKTexture(imageNamed: "tutorial_monk")
+        } else {
+            iconTexture = SKTexture(imageNamed: "tutorial_mage")
+            title = "Be a Pal!"
+            description = "Support indie games by purchasing gems!"
+        }
+        
+        firebasePresentedInHouseAds = true
+        
+        let tutorialDialog = TutorialDialog(title: title, description: description, frameSize: self.size, dialogs: self.tutorialDialogs!, dialogNumber: count, scene: self, iconTexture: iconTexture, isCharacter: true, key: key, version: version, prependText: false)
+        
+        tutorialDialog.zPosition = 19
+        
+        if count == 1 {
+            // the previous one needs to change to a "next" only button
+            previousDialog!.updateAsNextOnly()
+        } else if count >= 2 {
+            // the previous one needs to change to a "next" and "previous" button
+            previousDialog!.updateAsPreviousAndNext()
+        }
+        
+        tutorialDialog.updateAsPlayAndStore()
+        
+        self.tutorialDialogs!.append(tutorialDialog)
+        //self.addChild(tutorialDialog)
+        previousDialog = tutorialDialog
+        count += 1
     }
     
     func initializeStory(_ levelSetup: NSDictionary) {
@@ -2224,7 +2247,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.skill6Button?.isPaused = true
         }
         
-        self.backgroundPlayer?.volume = 0.0
+        self.backgroundPlayer?.pause()
+        //self.backgroundPlayer?.volume = 0.0
     }
     
     func setStayPaused() {
@@ -2247,7 +2271,8 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         self.skill5Button?.isPaused = false
         self.skill6Button?.isPaused = false
         
-        self.backgroundPlayer?.volume = 1.0
+        self.backgroundPlayer?.play()
+        //self.backgroundPlayer?.volume = 1.0
     }
     
     func getButtonWithSkill(_ skillAsUpgrade: CharacterUpgrade) -> GameSkillButton? {

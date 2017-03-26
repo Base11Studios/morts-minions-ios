@@ -160,8 +160,6 @@ class Archer : Player {
     }
     
     override func update(_ timeSinceLast: CFTimeInterval) {
-        self.protectorOfTheSky?.nextPosition = CGPoint(x: self.position.x + (5 * sin(CGFloat(self.protectorOfTheSky!.timeAlive)*4)) * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + self.protectorXAdjust, y: self.position.y + (CGFloat(self.getSkill(CharacterUpgrade.ProtectorOfTheSky)!.value) * sin(CGFloat(self.protectorOfTheSky!.timeAlive)*4)) * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + self.protectorYAdjust)
-        
         self.protectorOfTheSky?.update(timeSinceLast, withPlayer: self)
         
         super.update(timeSinceLast)
@@ -170,7 +168,8 @@ class Archer : Player {
     override func updateAfterPhysics() {
         super.updateAfterPhysics()
         
-        self.protectorOfTheSky?.updateAfterPhysics()
+        self.protectorOfTheSky?.nextPosition = CGPoint(x: self.position.x + (5 * sin(CGFloat(self.protectorOfTheSky!.timeAlive)*4)) * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + self.protectorXAdjust, y: self.position.y + (CGFloat(self.getSkill(CharacterUpgrade.ProtectorOfTheSky)!.value) * sin(CGFloat(self.protectorOfTheSky!.timeAlive)*4)) * ScaleBuddy.sharedInstance.getGameScaleAmount(false) + self.protectorYAdjust)
+        //self.protectorOfTheSky?.updateAfterPhysics()
     }
     
     override func createPhysicsBody() {

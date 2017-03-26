@@ -14,7 +14,6 @@ class PlayerFairy: PlayerProjectile {
     var flyUpwardsFirst: Bool
     var minimumHeight: CGFloat = 0
     var maxYChangeWhenHoming: CGFloat = 5 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)
-    var lastAdjustedYPosition: CGFloat = 0.0
     var range: CGFloat = 0
     var homingObject: EnvironmentObject?
     var projectiles = Array<PlayerProjectile>()
@@ -39,7 +38,7 @@ class PlayerFairy: PlayerProjectile {
         self.run(self.walkAction)
         
         // Set scale
-        self.setScale(CGFloat(attachedSkill.value))
+        self.setScale(CGFloat(attachedSkill.value) * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         
         // Create shootbacks
         for _ in 0 ..< Int(self.attachedSkill!.secondaryValue) * 8 {
@@ -129,7 +128,6 @@ class PlayerFairy: PlayerProjectile {
     func setFlyPosition() {
         // Set fly positions
         self.position = CGPoint(x: self.nextPosition.x, y: self.nextPosition.y)
-        self.lastAdjustedYPosition = self.nextPosition.y
         self.physicsBody!.velocity = CGVector()
     }
     

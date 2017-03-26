@@ -11,6 +11,7 @@ import Foundation
 @objc(KingTempus)
 class KingTempus : Enemy {
     
+    var savedPlayer: Player?
     var followPlayer: Bool = false
     var projectiles = Array<Projectile>()
     
@@ -132,13 +133,12 @@ class KingTempus : Enemy {
         // Call the super attack (reduces attack cooldown)
         super.attack(timeSinceLast, player: player)
         
-        if (self.position.x - player.position.x) < self.lineOfSight {
-            self.followPlayer = true
-            //self.moveSpeed = 0
+        if savedPlayer == nil {
+            self.savedPlayer = player
         }
         
-        if self.followPlayer && (self.position.x - player.position.x) < self.lineOfSight {
-            self.position.x = player.position.x + self.lineOfSight
+        if (self.position.x - player.position.x) < self.lineOfSight {
+            self.followPlayer = true
         }
         
         // The player is in sight of the enemy
@@ -152,6 +152,12 @@ class KingTempus : Enemy {
             
             // Update the animations
             self.updateAnimation()
+        }
+    }
+    
+    override func updateAfterPhysics() {
+        if self.followPlayer && self.savedPlayer != nil && (self.position.x - self.savedPlayer!.position.x) < self.lineOfSight {
+            self.position.x = self.savedPlayer!.position.x + self.lineOfSight
         }
     }
 }
