@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAnalytics
 
 @objc(MainMenuBuyButton)
 class MainMenuBuyButton : DBButton {
@@ -63,21 +64,25 @@ class MainMenuBuyButton : DBButton {
     override func touchesEndedAction() {
         self.setScale(1)
         
+        let title = "ClickedToBuyCharacter"
+        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+            kFIRParameterItemID: "id-\(title)" as NSObject,
+            kFIRParameterItemName: title as NSObject,
+            kFIRParameterContentType: "cont" as NSObject
+            ])
+        
         // If the user has enough gems, unlock it
         let unlockCost = CharacterType.getUnlockCost(GameData.sharedGameData.selectedCharacter)
         
         if unlockCost <= GameData.sharedGameData.totalDiamonds { // Unlock it
-            GameData.sharedGameData.totalDiamonds = GameData.sharedGameData.totalDiamonds - unlockCost
-            
-            // Unlock the character
-            GameData.sharedGameData.getSelectedCharacterData().isCharacterUnlocked = true
-            
-            // Determine if we need to lock char
-            (self.dbScene as! MainMenuScene).lockOrUnlockCharacter()
-            
-            // Save data
-            GameData.sharedGameData.save()
+            self.purchaseCharacter(ugh: true)
         } else {
+            let title = "ClickedToBuyCharacterAndDidntHaveGems"
+            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
+                kFIRParameterItemID: "id-\(title)" as NSObject,
+                kFIRParameterItemName: title as NSObject,
+                kFIRParameterContentType: "cont" as NSObject
+                ])
             // If the user does not have enough gems, show purchase menu
             // Need weak reference to prevent retain cycle
             //let onSuccessPurchase: (Bool) -> Void = {[weak self] (ugh: Bool) in self!.purchaseCharacter(ugh: ugh)}
@@ -94,6 +99,13 @@ class MainMenuBuyButton : DBButton {
         let unlockCost = CharacterType.getUnlockCost(GameData.sharedGameData.selectedCharacter)
         
         if unlockCost <= GameData.sharedGameData.totalDiamonds { // Unlock it
+            let title = "PurchasedCharacter-\(GameData.sharedGameData.selectedCharacter.rawValue)-ForGems-\(unlockCost)"
+            FIRAnalytics.logEvent(withName: kFIREventSpendVirtualCurrency, parameters: [
+                kFIRParameterItemID: "id-\(title)" as NSObject,
+                kFIRParameterItemName: title as NSObject,
+                kFIRParameterContentType: "cont" as NSObject
+                ])
+            
             GameData.sharedGameData.totalDiamonds = GameData.sharedGameData.totalDiamonds - unlockCost
             
             // Unlock the character

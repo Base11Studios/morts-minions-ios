@@ -328,6 +328,9 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Initialize Ads
         self.createAds()
         
+        // Update times played for game
+        GameData.sharedGameData.promptRateMeCountdown -= 1
+        
         // Set button size
         let buttonNode = GameTextures.sharedInstance.buttonGameAtlas.textureNamed("skillbutton")
         self.buttonSize = buttonNode.size().width
@@ -1148,9 +1151,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         
         // Store gold heart count
         GameData.sharedGameData.getSelectedCharacterData().goldHearts = self.player.goldHearts
-        
-        // Update times played for game
-        GameData.sharedGameData.promptRateMeCountdown -= 1
         
         self.score = score
     }

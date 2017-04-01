@@ -95,13 +95,6 @@ class HeartBoostGemButton : DBButton {
             self.purchaseBoost(false)
         } else {
             if self.unlockAmount <= GameData.sharedGameData.totalDiamonds { // Unlock it
-                let title = "ClickedToBuyHeartBoostWithGemsAndHadGems"
-                FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-                    kFIRParameterItemID: "id-\(title)" as NSObject,
-                    kFIRParameterItemName: title as NSObject,
-                    kFIRParameterContentType: "cont" as NSObject
-                    ])
-                
                 self.purchaseBoost(true)
             } else {
                 let title = "ClickedToBuyHeartBoostWithGemsAndDidntHaveGems"
@@ -122,6 +115,13 @@ class HeartBoostGemButton : DBButton {
     
     func purchaseBoost(_ useGems: Bool) -> Void {
         if useGems {
+            let title = "PurchasedHeartBoostForGems-\(self.unlockAmount)"
+            FIRAnalytics.logEvent(withName: kFIREventSpendVirtualCurrency, parameters: [
+                kFIRParameterItemID: "id-\(title)" as NSObject,
+                kFIRParameterItemName: title as NSObject,
+                kFIRParameterContentType: "cont" as NSObject
+                ])
+            
             GameData.sharedGameData.totalDiamonds = GameData.sharedGameData.totalDiamonds - self.unlockAmount
             
             (self.dbScene as! GameScene).enableHeartBoost()

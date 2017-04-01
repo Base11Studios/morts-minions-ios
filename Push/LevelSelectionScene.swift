@@ -579,6 +579,17 @@ class LevelSelectionScene : DBScene {
         // Start gesture recognizer
         self.selectedWorld!.relatedLevelSelector!.enableScrollingOnView(view)
         
+        // Reduce count of rate me, if 0, pop it up
+        if GameData.sharedGameData.promptRateMeCountdown <= 0 /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
+            // Display the rate me dialog
+            // self.presentUserWithRateMeDialog()
+            if #available(iOS 10.3, *) {
+                SKStoreReviewController.requestReview()
+            }
+            
+            // Reset the count
+            GameData.sharedGameData.promptRateMeCountdown = GameData.sharedGameData.promptRateMeMax
+        }
         //self.selectedWorld!.relatedLevelSelector!.enableScrollingOnView(view)
         
         //if self.justInitialized {

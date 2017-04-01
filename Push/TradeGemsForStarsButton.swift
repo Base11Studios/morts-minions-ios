@@ -103,13 +103,6 @@ class TradeGemsForStarsButton : DBButton {
             ])
 
         if self.unlockAmount <= GameData.sharedGameData.totalDiamonds { // Unlock it
-            let title = "HadGemsToBuyStars"
-            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-                kFIRParameterItemID: "id-\(title)" as NSObject,
-                kFIRParameterItemName: title as NSObject,
-                kFIRParameterContentType: "cont" as NSObject
-                ])
-            
             self.purchaseStars(ugh: false)
         } else {
             let title = "DidntHaveGemsToBuyStars"
@@ -133,6 +126,13 @@ class TradeGemsForStarsButton : DBButton {
     
     func purchaseStars(ugh: Bool) -> Void {
         if self.unlockAmount <= GameData.sharedGameData.totalDiamonds { // Unlock it
+            let title = "PurchasedStarsForGems-\(self.unlockAmount)"
+            FIRAnalytics.logEvent(withName: kFIREventSpendVirtualCurrency, parameters: [
+                kFIRParameterItemID: "id-\(title)" as NSObject,
+                kFIRParameterItemName: title as NSObject,
+                kFIRParameterContentType: "cont" as NSObject
+                ])
+            
             GameData.sharedGameData.totalDiamonds = GameData.sharedGameData.totalDiamonds - self.unlockAmount
             
             // Give the reward

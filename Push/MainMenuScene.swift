@@ -67,15 +67,6 @@ class MainMenuScene : DBScene {
             self.gameCenterButton?.hideError()
         }
         
-        // Reduce count of rate me, if 0, pop it up
-        if (GameData.sharedGameData.playerHasRatedGame == false && GameData.sharedGameData.promptRateMeCountdown <= 0) /*|| GameData.sharedGameData.getSelectedCharacterData().godMode*/ {
-            // Display the rate me dialog
-            self.presentUserWithRateMeDialog()
-            
-            // Reset the count
-            GameData.sharedGameData.promptRateMeCountdown = GameData.sharedGameData.promptRateMeMax
-        }
-        
         // Get the achievements
         //self.viewController!.getAchievements()
         
