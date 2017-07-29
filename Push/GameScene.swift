@@ -474,7 +474,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         GameData.sharedGameData.adPopCountdown -= 1
     }
     
-    func enableHeartBoost() {
+    @objc func enableHeartBoost() {
         GameData.sharedGameData.heartBoostLastUsed = Date()
         GameData.sharedGameData.configureHeartBoost(enable: true)
         self.heartBoostDialog!.isHidden = true
@@ -512,7 +512,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     // Create a functon that will be called by posted notifications of interstitial being closed.
-    func dismissStaticAds() {
+    @objc func dismissStaticAds() {
         // Make sure it closes
         //Chartboost.closeImpression()
         
@@ -966,7 +966,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     }
     
     // Call when we're ready to rejuvenate
-    func rejuvenatePlayer() {
+    @objc func rejuvenatePlayer() {
         // Make sure we dismiss the video dialog
         //Chartboost.closeImpression()
         

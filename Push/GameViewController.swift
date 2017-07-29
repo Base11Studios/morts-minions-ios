@@ -72,7 +72,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(GameViewController.ubiquitousKeyValueStoreDidChangeExternally),
                                                name:  NSUbiquitousKeyValueStore.didChangeExternallyNotification,
-                                               object: NSUbiquitousKeyValueStore.default())
+                                               object: NSUbiquitousKeyValueStore.default)
         
         // Setup CUSTOM observer for cloud has more recent data than local
         NotificationCenter.default.addObserver(self,
@@ -211,7 +211,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         }
     }
     
-    func ubiquitousKeyValueStoreDidChangeExternally() {
+    @objc func ubiquitousKeyValueStoreDidChangeExternally() {
         if !self.gvcInitialized || GameData.sharedGameData.cloudSyncing {
             // Get the game data from the cloud
             let cloudData = GameData.getCloudData()
@@ -575,12 +575,12 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         return scene
     }
     
-    func showAuthenticationViewController() {
+    @objc func showAuthenticationViewController() {
         self.present(GameKitHelper.sharedInstance.authenticationViewController!, animated: true, completion: nil)
         
     }
     
-    func playerAuthenticated() {
+    @objc func playerAuthenticated() {
         DispatchQueue.global().async {
             // Get achievements
             GameKitHelper.sharedInstance.getAchievements()
@@ -635,7 +635,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         self.present(gcViewController, animated: true, completion: nil)
     }
     
-    func handleCloudHasMoreRecentDataThanLocal() {
+    @objc func handleCloudHasMoreRecentDataThanLocal() {
         if !self.gvcInitialized || GameData.sharedGameData.cloudSyncing {
             // Need a custom view controller and present it overtop this other one..
             //self.presentViewController(CloudDataViewController(), animated: true, completion: nil)

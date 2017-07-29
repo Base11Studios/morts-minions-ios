@@ -433,7 +433,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     }
     
     func saveToiCloud() {
-        let iCloudStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore.default()
+        let iCloudStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore.default
         let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: self)
         
         // Set data into icloud dictionary (locally)
@@ -533,7 +533,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     
     class func getCloudData() -> Data? {
         // Get the store from memory
-        let iCloudStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore.default()
+        let iCloudStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore.default
         
         // Set data into iCloud dictionary (locally)
         let dataFromCloud = iCloudStore.data(forKey: GameData.SSiCloudGameDataKey)

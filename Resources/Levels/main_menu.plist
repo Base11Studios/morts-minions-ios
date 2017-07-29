@@ -6,15 +6,15 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>What&apos;s New in 2.1?</string>
+			<string>What&apos;s New in 2.2?</string>
 			<key>Description</key>
-			<string>- Start with more health!</string>
+			<string>- Support for iOS 11!</string>
 			<key>Description2</key>
-			<string>- Skill costs reduced to get skills faster</string>
+			<string></string>
 			<key>Description3</key>
-			<string>- Longer &apos;no damage&apos; time after getting hit</string>
+			<string></string>
 			<key>Description4</key>
-			<string>- Squashed bugs</string>
+			<string></string>
 			<key>Description5</key>
 			<string></string>
 			<key>Key</key>

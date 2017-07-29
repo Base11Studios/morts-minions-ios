@@ -94,9 +94,9 @@ class DSMultilineLabelNode : SKSpriteNode
         }
         
         let text_attributes = NSMutableDictionary()
-        text_attributes.setObject(font!, forKey: NSFontAttributeName as NSCopying)
-        text_attributes.setObject(paragraph_style, forKey: NSParagraphStyleAttributeName as NSCopying)
-        text_attributes.setObject(_fontColor, forKey: NSForegroundColorAttributeName as NSCopying)
+        text_attributes.setObject(font!, forKey: NSAttributedStringKey.font as NSCopying)
+        text_attributes.setObject(paragraph_style, forKey: NSAttributedStringKey.paragraphStyle as NSCopying)
+        text_attributes.setObject(_fontColor, forKey: NSAttributedStringKey.foregroundColor as NSCopying)
         
         //var style = NSMutableParagraphStyle()
         //style.paragraphSpacingBefore = 0.0
@@ -115,7 +115,7 @@ class DSMultilineLabelNode : SKSpriteNode
         let texture_size = CGSize(width: _paragraphWidth, height: self.dbScene!.size.height)
         var texture_rect = (text as NSString).boundingRect(with: texture_size,
             options: NSStringDrawingOptions.usesLineFragmentOrigin,
-            attributes: (text_attributes as! [String : AnyObject]),
+            attributes: (text_attributes as! [NSAttributedStringKey : Any]),
             context: nil
         )
         
@@ -130,7 +130,7 @@ class DSMultilineLabelNode : SKSpriteNode
         size = texture_rect.size
         
         UIGraphicsBeginImageContextWithOptions(texture_rect.size, false, 0)
-        (text as NSString).draw(in: texture_rect, withAttributes: (text_attributes as! [String : AnyObject]))
+        (text as NSString).draw(in: texture_rect, withAttributes: (text_attributes as! [NSAttributedStringKey : Any]))
         
         let image = UIGraphicsGetImageFromCurrentImageContext()
         

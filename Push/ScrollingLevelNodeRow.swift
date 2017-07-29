@@ -99,7 +99,7 @@ class ScrollingLevelNodeRow : SKNode, UIGestureRecognizerDelegate {
         }
     }
     
-    func handlePanFrom(_ recognizer: UIPanGestureRecognizer) {
+    @objc func handlePanFrom(_ recognizer: UIPanGestureRecognizer) {
         if recognizer.state == UIGestureRecognizerState.began {
             self.removeAllActions()
         }
