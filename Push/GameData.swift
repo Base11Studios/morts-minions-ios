@@ -48,8 +48,8 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     
     // Rating
     var playerHasRatedGame: Bool = false
-    var promptRateMeCountdown: Int = 12
-    var promptRateMeMax: Int = 15
+    var promptRateMeCountdown: Int = 10
+    var promptRateMeMax: Int = 10
     
     // Store a copy of the data we got from the cloud in case it was more recent
     var unarchivedCloudData: GameData?

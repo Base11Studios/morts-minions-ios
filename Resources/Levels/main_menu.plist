@@ -6,21 +6,21 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>What&apos;s New in 2.0?</string>
+			<string>What&apos;s New in 2.1?</string>
 			<key>Description</key>
-			<string>- WORLD 5 COMPLETE with 15 all new enemies!</string>
+			<string>- Start with more health!</string>
 			<key>Description2</key>
-			<string>- Brand NEW MUSIC - turn it up!</string>
+			<string>- Skill costs reduced to get skills faster</string>
 			<key>Description3</key>
-			<string>- Every hero has a NEW SKILL, Fairy Guardian</string>
+			<string>- Longer &apos;no damage&apos; time after getting hit</string>
 			<key>Description4</key>
-			<string>- Jim and May&apos;s skills have been improved</string>
+			<string>- Squashed bugs</string>
 			<key>Description5</key>
-			<string>- 8 all new Game Center achivements</string>
+			<string></string>
 			<key>Key</key>
 			<string>whats_new_main_menu</string>
 			<key>Version</key>
-			<integer>200</integer>
+			<integer>210</integer>
 			<key>FirstPlayDescription</key>
 			<string>Welcome to Mort&apos;s Minions! Select a hero and start your adventure today!</string>
 			<key>FirstPlayTitle</key>
