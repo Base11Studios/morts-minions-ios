@@ -20,6 +20,19 @@
 		370020D11CA05243007432E4 /* Danger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370020D01CA05243007432E4 /* Danger.swift */; };
 		370020D31CA0B498007432E4 /* FloorLava.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370020D21CA0B498007432E4 /* FloorLava.swift */; };
 		370102701D4BF06B002B4368 /* air-3.caf in Resources */ = {isa = PBXBuildFile; fileRef = 3701026F1D4BF059002B4368 /* air-3.caf */; };
+		3701894E1F4E377E00FA7DE2 /* VungleSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 370189471F4E353700FA7DE2 /* VungleSDK.framework */; };
+		3701894F1F4E37EA00FA7DE2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 376267D51D9FE69300981E41 /* CFNetwork.framework */; };
+		370189501F4E381400FA7DE2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 376267D91D9FE6B400981E41 /* libsqlite3.tbd */; };
+		370189511F4E5AEA00FA7DE2 /* MPInstanceProvider+Vungle.h in Sources */ = {isa = PBXBuildFile; fileRef = 370189411F4E353700FA7DE2 /* MPInstanceProvider+Vungle.h */; };
+		370189521F4E5AEA00FA7DE2 /* MPInstanceProvider+Vungle.m in Sources */ = {isa = PBXBuildFile; fileRef = 370189421F4E353700FA7DE2 /* MPInstanceProvider+Vungle.m */; };
+		370189531F4E5AEA00FA7DE2 /* MPVungleRouter.h in Sources */ = {isa = PBXBuildFile; fileRef = 370189431F4E353700FA7DE2 /* MPVungleRouter.h */; };
+		370189541F4E5AEA00FA7DE2 /* MPVungleRouter.m in Sources */ = {isa = PBXBuildFile; fileRef = 370189441F4E353700FA7DE2 /* MPVungleRouter.m */; };
+		370189551F4E5AEA00FA7DE2 /* VungleInstanceMediationSettings.h in Sources */ = {isa = PBXBuildFile; fileRef = 370189481F4E353700FA7DE2 /* VungleInstanceMediationSettings.h */; };
+		370189561F4E5AEA00FA7DE2 /* VungleInstanceMediationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 370189491F4E353700FA7DE2 /* VungleInstanceMediationSettings.m */; };
+		370189571F4E5AEA00FA7DE2 /* VungleInterstitialCustomEvent.h in Sources */ = {isa = PBXBuildFile; fileRef = 3701894A1F4E353700FA7DE2 /* VungleInterstitialCustomEvent.h */; };
+		370189581F4E5AEA00FA7DE2 /* VungleInterstitialCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701894B1F4E353700FA7DE2 /* VungleInterstitialCustomEvent.m */; };
+		370189591F4E5AEA00FA7DE2 /* VungleRewardedVideoCustomEvent.h in Sources */ = {isa = PBXBuildFile; fileRef = 3701894C1F4E353700FA7DE2 /* VungleRewardedVideoCustomEvent.h */; };
+		3701895A1F4E5AEA00FA7DE2 /* VungleRewardedVideoCustomEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = 3701894D1F4E353700FA7DE2 /* VungleRewardedVideoCustomEvent.m */; };
 		3703C6541E85E97B00895F8C /* FirebaseAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3703C6501E85E97B00895F8C /* FirebaseAnalytics.framework */; };
 		3703C6551E85E97B00895F8C /* FirebaseCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3703C6511E85E97B00895F8C /* FirebaseCore.framework */; };
 		3703C6561E85E97B00895F8C /* FirebaseInstanceID.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3703C6521E85E97B00895F8C /* FirebaseInstanceID.framework */; };
@@ -653,6 +666,18 @@
 		370020D01CA05243007432E4 /* Danger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Danger.swift; sourceTree = "<group>"; };
 		370020D21CA0B498007432E4 /* FloorLava.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloorLava.swift; sourceTree = "<group>"; };
 		3701026F1D4BF059002B4368 /* air-3.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "air-3.caf"; sourceTree = "<group>"; };
+		370189411F4E353700FA7DE2 /* MPInstanceProvider+Vungle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MPInstanceProvider+Vungle.h"; sourceTree = "<group>"; };
+		370189421F4E353700FA7DE2 /* MPInstanceProvider+Vungle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "MPInstanceProvider+Vungle.m"; sourceTree = "<group>"; };
+		370189431F4E353700FA7DE2 /* MPVungleRouter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MPVungleRouter.h; sourceTree = "<group>"; };
+		370189441F4E353700FA7DE2 /* MPVungleRouter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MPVungleRouter.m; sourceTree = "<group>"; };
+		370189461F4E353700FA7DE2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		370189471F4E353700FA7DE2 /* VungleSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = VungleSDK.framework; sourceTree = "<group>"; };
+		370189481F4E353700FA7DE2 /* VungleInstanceMediationSettings.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VungleInstanceMediationSettings.h; sourceTree = "<group>"; };
+		370189491F4E353700FA7DE2 /* VungleInstanceMediationSettings.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VungleInstanceMediationSettings.m; sourceTree = "<group>"; };
+		3701894A1F4E353700FA7DE2 /* VungleInterstitialCustomEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VungleInterstitialCustomEvent.h; sourceTree = "<group>"; };
+		3701894B1F4E353700FA7DE2 /* VungleInterstitialCustomEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VungleInterstitialCustomEvent.m; sourceTree = "<group>"; };
+		3701894C1F4E353700FA7DE2 /* VungleRewardedVideoCustomEvent.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VungleRewardedVideoCustomEvent.h; sourceTree = "<group>"; };
+		3701894D1F4E353700FA7DE2 /* VungleRewardedVideoCustomEvent.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VungleRewardedVideoCustomEvent.m; sourceTree = "<group>"; };
 		3703C6501E85E97B00895F8C /* FirebaseAnalytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseAnalytics.framework; path = Resources/Frameworks/Firebase/Analytics/FirebaseAnalytics.framework; sourceTree = "<group>"; };
 		3703C6511E85E97B00895F8C /* FirebaseCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseCore.framework; path = Resources/Frameworks/Firebase/Analytics/FirebaseCore.framework; sourceTree = "<group>"; };
 		3703C6521E85E97B00895F8C /* FirebaseInstanceID.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FirebaseInstanceID.framework; path = Resources/Frameworks/Firebase/Analytics/FirebaseInstanceID.framework; sourceTree = "<group>"; };
@@ -1478,6 +1503,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				370189501F4E381400FA7DE2 /* libsqlite3.tbd in Frameworks */,
+				3723590B1D208BB100F117B5 /* Foundation.framework in Frameworks */,
+				3701894F1F4E37EA00FA7DE2 /* CFNetwork.framework in Frameworks */,
+				3701894E1F4E377E00FA7DE2 /* VungleSDK.framework in Frameworks */,
 				3703C65C1E85F3B400895F8C /* PassKit.framework in Frameworks */,
 				3703C65A1E85F39600895F8C /* iAd.framework in Frameworks */,
 				3703C6581E85F37500895F8C /* CoreTelephony.framework in Frameworks */,
@@ -1504,7 +1533,6 @@
 				3762650D1D9FE38000981E41 /* CoreLocation.framework in Frameworks */,
 				372359091D208BA600F117B5 /* CoreGraphics.framework in Frameworks */,
 				3723590D1D208BD300F117B5 /* UIKit.framework in Frameworks */,
-				3723590B1D208BB100F117B5 /* Foundation.framework in Frameworks */,
 				374A66111CFE70C400AA0F96 /* LocalAuthentication.framework in Frameworks */,
 				3753367A1C91A17B009FE27E /* GameKit.framework in Frameworks */,
 				3703C6551E85E97B00895F8C /* FirebaseCore.framework in Frameworks */,
@@ -1531,6 +1559,33 @@
 				370020CA1C9EF190007432E4 /* FireGeyser.swift */,
 			);
 			name = Fire;
+			sourceTree = "<group>";
+		};
+		370189401F4E353700FA7DE2 /* Vungle */ = {
+			isa = PBXGroup;
+			children = (
+				370189411F4E353700FA7DE2 /* MPInstanceProvider+Vungle.h */,
+				370189421F4E353700FA7DE2 /* MPInstanceProvider+Vungle.m */,
+				370189431F4E353700FA7DE2 /* MPVungleRouter.h */,
+				370189441F4E353700FA7DE2 /* MPVungleRouter.m */,
+				370189451F4E353700FA7DE2 /* SDK */,
+				370189481F4E353700FA7DE2 /* VungleInstanceMediationSettings.h */,
+				370189491F4E353700FA7DE2 /* VungleInstanceMediationSettings.m */,
+				3701894A1F4E353700FA7DE2 /* VungleInterstitialCustomEvent.h */,
+				3701894B1F4E353700FA7DE2 /* VungleInterstitialCustomEvent.m */,
+				3701894C1F4E353700FA7DE2 /* VungleRewardedVideoCustomEvent.h */,
+				3701894D1F4E353700FA7DE2 /* VungleRewardedVideoCustomEvent.m */,
+			);
+			path = Vungle;
+			sourceTree = "<group>";
+		};
+		370189451F4E353700FA7DE2 /* SDK */ = {
+			isa = PBXGroup;
+			children = (
+				370189461F4E353700FA7DE2 /* README.md */,
+				370189471F4E353700FA7DE2 /* VungleSDK.framework */,
+			);
+			path = SDK;
 			sourceTree = "<group>";
 		};
 		3703C64F1E85E96E00895F8C /* Firebase */ = {
@@ -2217,6 +2272,7 @@
 		37C7D48E1E7EE8B80066CB28 /* AdNetworkSupport */ = {
 			isa = PBXGroup;
 			children = (
+				370189401F4E353700FA7DE2 /* Vungle */,
 				37C7D86D1E7EEF390066CB28 /* AdColony */,
 				37C7D49C1E7EE8B90066CB28 /* Chartboost */,
 				37C7D4D91E7EE8B90066CB28 /* GoogleAdMob */,
@@ -3433,6 +3489,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				370189511F4E5AEA00FA7DE2 /* MPInstanceProvider+Vungle.h in Sources */,
+				370189521F4E5AEA00FA7DE2 /* MPInstanceProvider+Vungle.m in Sources */,
+				370189531F4E5AEA00FA7DE2 /* MPVungleRouter.h in Sources */,
+				370189541F4E5AEA00FA7DE2 /* MPVungleRouter.m in Sources */,
+				370189551F4E5AEA00FA7DE2 /* VungleInstanceMediationSettings.h in Sources */,
+				370189561F4E5AEA00FA7DE2 /* VungleInstanceMediationSettings.m in Sources */,
+				370189571F4E5AEA00FA7DE2 /* VungleInterstitialCustomEvent.h in Sources */,
+				370189581F4E5AEA00FA7DE2 /* VungleInterstitialCustomEvent.m in Sources */,
+				370189591F4E5AEA00FA7DE2 /* VungleRewardedVideoCustomEvent.h in Sources */,
+				3701895A1F4E5AEA00FA7DE2 /* VungleRewardedVideoCustomEvent.m in Sources */,
 				3767AAE01CBC610E0011F7A5 /* SettingsSoundEffectsButton.swift in Sources */,
 				37EA5A741D2712AD000DF187 /* GemContainer.swift in Sources */,
 				37C7D6FD1E7EE8B90066CB28 /* MRExpandModalViewController.m in Sources */,
@@ -3998,6 +4064,7 @@
 					"$(PROJECT_DIR)/Resources/Frameworks/MoPubSDK/AdNetworkSupport/Vungle/SDK/VungleSDK.embeddedframework",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Resources/Frameworks/MoPubSDK/AdNetworkSupport/AdColony/SDK",
+					"$(PROJECT_DIR)/Resources/Frameworks/MoPubSDK/AdNetworkSupport/Vungle/SDK",
 				);
 				GCC_OPTIMIZATION_LEVEL = 0;
 				INFOPLIST_FILE = Push/Info.plist;
@@ -4047,6 +4114,7 @@
 					"$(PROJECT_DIR)/Resources/Frameworks/MoPubSDK/AdNetworkSupport/Vungle/SDK/VungleSDK.embeddedframework",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Resources/Frameworks/MoPubSDK/AdNetworkSupport/AdColony/SDK",
+					"$(PROJECT_DIR)/Resources/Frameworks/MoPubSDK/AdNetworkSupport/Vungle/SDK",
 				);
 				INFOPLIST_FILE = Push/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;

@@ -12,3 +12,4 @@
 #import <AdColony/AdColony.h>
 #import "MoPub-Bridging-Header.h"
 #import <GoogleMobileAds/GoogleMobileAds.h>
+#import <VungleSDK/VungleSDK.h>
