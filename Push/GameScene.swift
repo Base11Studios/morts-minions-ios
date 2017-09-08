@@ -925,10 +925,10 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     func beginLevelEnding() {
         if (firebasePresentedInHouseAds) {
             let analyticTitle = "PresentedWithInHouseAd"
-            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-                kFIRParameterItemID: "id-\(analyticTitle)" as NSObject,
-                kFIRParameterItemName: analyticTitle as NSObject,
-                kFIRParameterContentType: "cont" as NSObject
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-\(analyticTitle)" as NSObject,
+                AnalyticsParameterItemName: analyticTitle as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
                 ])
         }
         // End the scene.

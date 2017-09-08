@@ -21,10 +21,10 @@ class CharacterTradeButton : DBButton {
     
     override func touchesEndedAction() {
         let title = "OpenTrade"
-        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-            kFIRParameterItemID: "id-\(title)" as NSObject,
-            kFIRParameterItemName: title as NSObject,
-            kFIRParameterContentType: "cont" as NSObject
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "id-\(title)" as NSObject,
+            AnalyticsParameterItemName: title as NSObject,
+            AnalyticsParameterContentType: "cont" as NSObject
             ])
         
         self.dbScene!.showTradeMenu()

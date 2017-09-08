@@ -96,20 +96,20 @@ class TradeGemsForStarsButton : DBButton {
         self.setScale(1)
         
         let title = "ClickBuyStarsForGems"
-        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-            kFIRParameterItemID: "id-\(title)" as NSObject,
-            kFIRParameterItemName: title as NSObject,
-            kFIRParameterContentType: "cont" as NSObject
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "id-\(title)" as NSObject,
+            AnalyticsParameterItemName: title as NSObject,
+            AnalyticsParameterContentType: "cont" as NSObject
             ])
 
         if self.unlockAmount <= GameData.sharedGameData.totalDiamonds { // Unlock it
             self.purchaseStars(ugh: false)
         } else {
             let title = "DidntHaveGemsToBuyStars"
-            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-                kFIRParameterItemID: "id-\(title)" as NSObject,
-                kFIRParameterItemName: title as NSObject,
-                kFIRParameterContentType: "cont" as NSObject
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-\(title)" as NSObject,
+                AnalyticsParameterItemName: title as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
                 ])
             
             
@@ -127,10 +127,10 @@ class TradeGemsForStarsButton : DBButton {
     func purchaseStars(ugh: Bool) -> Void {
         if self.unlockAmount <= GameData.sharedGameData.totalDiamonds { // Unlock it
             let title = "PurchasedStarsForGems-\(self.unlockAmount)"
-            FIRAnalytics.logEvent(withName: kFIREventSpendVirtualCurrency, parameters: [
-                kFIRParameterItemID: "id-\(title)" as NSObject,
-                kFIRParameterItemName: title as NSObject,
-                kFIRParameterContentType: "cont" as NSObject
+            Analytics.logEvent(AnalyticsEventSpendVirtualCurrency, parameters: [
+                AnalyticsParameterItemID: "id-\(title)" as NSObject,
+                AnalyticsParameterItemName: title as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
                 ])
             
             GameData.sharedGameData.totalDiamonds = GameData.sharedGameData.totalDiamonds - self.unlockAmount

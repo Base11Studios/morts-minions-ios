@@ -631,10 +631,10 @@ class LevelSelectionScene : DBScene {
                 self.selectedWorld!.relatedLevelSelector!.removeAllActions()
                 
                 let title = "StartingLevel" + String(self.selectedWorld!.relatedLevelSelector!.levelSelected)
-                FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-                    kFIRParameterItemID: "id-\(title)" as NSObject,
-                    kFIRParameterItemName: title as NSObject,
-                    kFIRParameterContentType: "cont" as NSObject
+                Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                    AnalyticsParameterItemID: "id-\(title)" as NSObject,
+                    AnalyticsParameterItemName: title as NSObject,
+                    AnalyticsParameterContentType: "cont" as NSObject
                     ])
                 
                 // We touched a level so let's load it

@@ -71,10 +71,10 @@ class RejuvenateGemButton : DBButton {
     
     override func touchesEndedAction() {
         let title = "ClickedToBuyReviveWithGems"
-        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-            kFIRParameterItemID: "id-\(title)" as NSObject,
-            kFIRParameterItemName: title as NSObject,
-            kFIRParameterContentType: "cont" as NSObject
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "id-\(title)" as NSObject,
+            AnalyticsParameterItemName: title as NSObject,
+            AnalyticsParameterContentType: "cont" as NSObject
             ])
         
         self.setScale(1)
@@ -94,10 +94,10 @@ class RejuvenateGemButton : DBButton {
                 self.purchaseRejuvenate(true)
             } else {
                 let title = "ClickedToBuyReviveWithGemsAndDidntHaveGems"
-                FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-                    kFIRParameterItemID: "id-\(title)" as NSObject,
-                    kFIRParameterItemName: title as NSObject,
-                    kFIRParameterContentType: "cont" as NSObject
+                Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                    AnalyticsParameterItemID: "id-\(title)" as NSObject,
+                    AnalyticsParameterItemName: title as NSObject,
+                    AnalyticsParameterContentType: "cont" as NSObject
                     ])
                 
                 // If the user does not have enough gems, show purchase menu
@@ -116,10 +116,10 @@ class RejuvenateGemButton : DBButton {
     func purchaseRejuvenate(_ useGems: Bool) -> Void {
         if useGems {
             let title = "PurchasedRejuvForGems-\(self.unlockAmount)"
-            FIRAnalytics.logEvent(withName: kFIREventSpendVirtualCurrency, parameters: [
-                kFIRParameterItemID: "id-\(title)" as NSObject,
-                kFIRParameterItemName: title as NSObject,
-                kFIRParameterContentType: "cont" as NSObject
+            Analytics.logEvent(AnalyticsEventSpendVirtualCurrency, parameters: [
+                AnalyticsParameterItemID: "id-\(title)" as NSObject,
+                AnalyticsParameterItemName: title as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
                 ])
             
             GameData.sharedGameData.totalDiamonds = GameData.sharedGameData.totalDiamonds - self.unlockAmount
@@ -131,10 +131,10 @@ class RejuvenateGemButton : DBButton {
             //GameData.sharedGameData.save()
         } else {
             let title = "ClickedToBuyReviveWithGemsAndHadFreeRejuv"
-            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-                kFIRParameterItemID: "id-\(title)" as NSObject,
-                kFIRParameterItemName: title as NSObject,
-                kFIRParameterContentType: "cont" as NSObject
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-\(title)" as NSObject,
+                AnalyticsParameterItemName: title as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
                 ])
             
             // Rejuvenate player and remove dialog through 1 sec slideout

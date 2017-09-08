@@ -48,8 +48,8 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     
     // Rating
     var playerHasRatedGame: Bool = false
-    var promptRateMeCountdown: Int = 10
-    var promptRateMeMax: Int = 10
+    var promptRateMeCountdown: Int = 8
+    var promptRateMeMax: Int = 8
     
     // Store a copy of the data we got from the cloud in case it was more recent
     var unarchivedCloudData: GameData?
@@ -63,8 +63,8 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     
     // Played
     var timesPlayed: Int = 0
-    var adPopCountdown: Int = 20
-    var adPopMax: Int = 5
+    var adPopCountdown: Int = 6
+    var adPopMax: Int = 4
     
     // Ads
     var lastVideoAdWatch: Date
@@ -74,7 +74,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     static var heartBoostCooldown: Int = -20
     var heartBoostLastUsed: Date
     var heartBoostCount: Int = 0
-    static var heartBoostPromptCooldown: Int = -10
+    static var heartBoostPromptCooldown: Int = -5
     var heartBoostLastPrompted: Date
     static var adsPurchasedHeartBoostMultiplier: Int = 3
     

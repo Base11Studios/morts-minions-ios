@@ -778,7 +778,7 @@ class Player : SKSpriteNode {
         
         self.startHiding() // Set all the bit masks so we don't get placed on top of something
         self.stopHiding() // Leave hiding but don't pop out until past everything
-        self.startGracePeriod(4) // Don't take damage for X seconds
+        self.startGracePeriod(3.5) // Don't take damage for X seconds
         self.startPlayerWalkingAnimation() // Start walk animation again
         
         // Fairy
@@ -1154,7 +1154,7 @@ class Player : SKSpriteNode {
             }
             
             // Need to turn on grace period 
-            self.startGracePeriod(3)
+            self.startGracePeriod(2.5)
         }
     }
     

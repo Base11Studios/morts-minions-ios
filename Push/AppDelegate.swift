@@ -19,14 +19,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Chartboost.start(withAppId: "576a8abe04b01657f1e18be5", appSignature: "54c4763f89ea9ff96502d320787de1cb9ceb7c21", delegate: nil)
         
         // Firebase
-        FIRApp.configure()
+        FirebaseApp.configure()
         
         /*
         let analyticTitle = "OpenedApp"
-        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-            kFIRParameterItemID: "id-\(analyticTitle)" as NSObject,
-            kFIRParameterItemName: analyticTitle as NSObject,
-            kFIRParameterContentType: "cont" as NSObject
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "id-\(analyticTitle)" as NSObject,
+            AnalyticsParameterItemName: analyticTitle as NSObject,
+            AnalyticsParameterContentType: "cont" as NSObject
             ])*/
     }
 
