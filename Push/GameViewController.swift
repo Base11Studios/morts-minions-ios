@@ -10,16 +10,22 @@ import Foundation
 import GameKit
 import AVFoundation
 import LocalAuthentication
+import GoogleMobileAds
 
-class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPInterstitialAdControllerDelegate, MPRewardedVideoDelegate {
+class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADInterstitialDelegate, GADRewardBasedVideoAdDelegate {
+
+//MPInterstitialAdControllerDelegate, MPRewardedVideoDelegate {
 
     let REWARD_AD_ID = "b0ddefd0a8a14252a14a64da0728dade"
     
     //MoPubSDK
-    var interstitial: MPInterstitialAdController?
+    //var interstitial: MPInterstitialAdController?
     
     static var AD_LOCATION_REVIVE: String = "revive"
     static var AD_LOCATION_HEART_BOOST: String = "heartBoost"
+    
+    // Admob
+    var interstitial: GADInterstitial?
     
     // Video rewards
     var presentingVideo: Bool = false
@@ -138,7 +144,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
             // Instantiate the interstitial using the class convenience method.
             self.setupAdDelegate()
             
-            self.cacheInterstitialAd()
+            interstitial = self.createAndLoadInterstitial()
             self.cacheRewardedVideo()
             
             // Set restoration identifier
@@ -169,9 +175,11 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         //Appodeal.setRewardedVideoDelegate(self)
         //Appodeal.setInterstitialDelegate(self)
         
-        self.interstitial = MPInterstitialAdController(forAdUnitId: "af95a96f865b431197a07916fa38fffd")
-        self.interstitial!.delegate = self
-        MoPub.sharedInstance().initializeRewardedVideo(withGlobalMediationSettings: [], delegate: self)
+        //self.interstitial = MPInterstitialAdController(forAdUnitId: "af95a96f865b431197a07916fa38fffd")
+        //self.interstitial!.delegate = self
+        //MoPub.sharedInstance().initializeRewardedVideo(withGlobalMediationSettings: [], delegate: self)
+        
+        
     }
     
     func setupMusic() {
@@ -700,7 +708,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
     }
     
     func videoAdReady() -> Bool {
-        return MPRewardedVideo.hasAdAvailable(forAdUnitID: REWARD_AD_ID)
+        return GADRewardBasedVideoAd.sharedInstance().isReady //return MPRewardedVideo.hasAdAvailable(forAdUnitID: REWARD_AD_ID)
     }
     
     func showRewardedVideo(location: String) {
@@ -710,7 +718,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         self.dismissingVideo = false
         
         if self.videoAdReady() {
-            MPRewardedVideo.presentAd(forAdUnitID: REWARD_AD_ID, from: self)
+            //MPRewardedVideo.presentAd(forAdUnitID: REWARD_AD_ID, from: self)
+            GADRewardBasedVideoAd.sharedInstance().present(fromRootViewController: self)
         }
     }
     
@@ -719,7 +728,8 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         if !GameData.sharedGameData.adsUnlocked {
             // Show interstitial at main menu
             if self.interstitialAdReady() {
-                self.interstitial!.show(from: self)
+                //self.interstitial!.show(from: self)
+                interstitial!.present(fromRootViewController: self)
             }
         }
     }
@@ -741,19 +751,34 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
     }
     
     func interstitialAdReady() -> Bool {
-        return self.interstitial!.ready
+        return interstitial != nil && interstitial!.isReady && !interstitial!.hasBeenUsed //self.interstitial!.ready
     }
     
     func cacheInterstitialAd() {
         if !GameData.sharedGameData.adsUnlocked && !self.interstitialAdReady() {
-            // Fetch the interstitial ad.
-            self.interstitial!.loadAd()
+            interstitial = createAndLoadInterstitial()
         }
+    }
+    
+    func createAndLoadInterstitial() -> GADInterstitial {
+        // Fetch the interstitial ad.
+        //self.interstitial!.loadAd()
+        
+        interstitial = GADInterstitial(adUnitID: "ca-app-pub-4505737160765142/6044000311") // REAL
+        //interstitial = GADInterstitial(adUnitID: "ca-app-pub-3940256099942544/4411468910") // TEST
+        interstitial!.delegate = self
+        interstitial!.load(GADRequest())
+        return interstitial!
     }
     
     func cacheRewardedVideo() {
         if !self.videoAdReady() {
-            MPRewardedVideo.loadAd(withAdUnitID: REWARD_AD_ID, withMediationSettings: [])
+            GADRewardBasedVideoAd.sharedInstance().delegate = self
+            //GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),
+                                                        //withAdUnitID: "ca-app-pub-3940256099942544/1712485313") // TEST
+            GADRewardBasedVideoAd.sharedInstance().load(GADRequest(),
+                                                        withAdUnitID: "ca-app-pub-4505737160765142/1908178718") // REAL
+            //MPRewardedVideo.loadAd(withAdUnitID: REWARD_AD_ID, withMediationSettings: [])
         }
     }
     
@@ -784,63 +809,26 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         
     }
     
-    
     // ******************************** INTERSTITIAL ADS **********************
-    /**
-     * Sent after an interstitial ad object has been dismissed from the screen, returning control
-     * to your application.
-     *
-     * Your implementation of this method should resume any application activity that was paused
-     * prior to the interstitial being presented on-screen.
-     *
-     * @param interstitial The interstitial ad object sending the message.
-     */
-    func interstitialDidDisappear(_ interstitial: MPInterstitialAdController!) {
-        // Move on to tutorials
+    /// Tells the delegate the interstitial had been animated off the screen.
+    func interstitialDidDismissScreen(_ ad: GADInterstitial) {
+        interstitial = createAndLoadInterstitial()
         NotificationCenter.default.post(name: Notification.Name(rawValue: "ProgressPastInterstitialAd"), object: nil)
     }
     
-    /** @name Detecting When an Interstitial Ad Expires */
-    
-    /**
-     * Sent when a loaded interstitial ad is no longer eligible to be displayed.
-     *
-     * Interstitial ads from certain networks may expire their content at any time,
-     * even if the content is currently on-screen. This method notifies you when the currently-
-     * loaded interstitial has expired and is no longer eligible for display.
-     *
-     * If the ad was on-screen when it expired, you can expect that the ad will already have been
-     * dismissed by the time this message is sent.
-     *
-     * Your implementation may include a call to `loadAd` to fetch a new ad, if desired.
-     *
-     * @param interstitial The interstitial ad object sending the message.
-     */
-    func interstitialDidExpire(_ interstitial: MPInterstitialAdController!) {
-        self.cacheInterstitialAd()
+    /// Tells the delegate an ad request failed.
+    func interstitial(_ ad: GADInterstitial, didFailToReceiveAdWithError error: GADRequestError) {
+        interstitial = createAndLoadInterstitial()
     }
-    
-    /**
-     * Sent when the user taps the interstitial ad and the ad is about to perform its target action.
-     *
-     * This action may include displaying a modal or leaving your application. Certain ad networks
-     * may not expose a "tapped" callback so you should not rely on this callback to perform
-     * critical tasks.
-     *
-     * @param interstitial The interstitial ad object sending the message.
-     */
-    func interstitialDidReceiveTapEvent(_ interstitial: MPInterstitialAdController!) {
+
+    /// Tells the delegate that a user click will open another app
+    /// (such as the App Store), backgrounding the current app.
+    func interstitialWillLeaveApplication(_ ad: GADInterstitial) {
         AdSupporter.sharedInstance.showPauseMenu = true
     }
     
-    func interstitialDidAppear(_ interstitial: MPInterstitialAdController!) {
-    }
-    
-    
     // ************************* REWARDED VIDEO CALLBACKS *************
-    
-    // Or will appear?
-    func rewardedVideoAdDidAppear(forAdUnitID adUnitID: String!) {
+    func rewardBasedVideoAdDidOpen(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
         // Remove the loading dialog
         //self.dismissLoadingDialog() Shouldn't need anymore
         
@@ -850,13 +838,13 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         self.completedVideo = false
     }
     
-    func rewardedVideoAdShouldReward(forAdUnitID adUnitID: String!, reward: MPRewardedVideoReward!) {
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
+                            didRewardUserWith reward: GADAdReward) {
         //self.endVideoSuccessfully() - Don't complete here, just mark it was watched and let didDisappear handle it
         self.completedVideo = true
     }
     
-    // Or will disappear??
-    func rewardedVideoAdDidDisappear(forAdUnitID adUnitID: String!) {
+    func rewardBasedVideoAdDidClose(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
         // If video was completed, dont do anything, otherwise send dismiss dialog if not done
         if !self.completedVideo && self.presentingVideo && !self.dismissingVideo {
             self.endVideoUnsuccessfully()
@@ -865,11 +853,12 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, MPIn
         }
     }
     
-    func rewardedVideoAdDidExpire(forAdUnitID adUnitID: String!) {
+    func rewardBasedVideoAd(_ rewardBasedVideoAd: GADRewardBasedVideoAd,
+                            didFailToLoadWithError error: Error) {
         self.cacheRewardedVideo()
     }
-    
-    func rewardedVideoAdDidReceiveTapEvent(forAdUnitID adUnitID: String!) {
+
+    func rewardBasedVideoAdWillLeaveApplication(_ rewardBasedVideoAd: GADRewardBasedVideoAd) {
         // Store that the video was completed.
         if self.presentingVideo && !self.completedVideo {
             self.completedVideo = true

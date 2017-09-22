@@ -64,11 +64,11 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     // Played
     var timesPlayed: Int = 0
     var adPopCountdown: Int = 6
-    var adPopMax: Int = 4
+    var adPopMax: Int = 3
     
     // Ads
     var lastVideoAdWatch: Date
-    static var videoAdCooldown: Int = -2
+    static var videoAdCooldown: Int = -1
     
     // Heart Boost
     static var heartBoostCooldown: Int = -20
