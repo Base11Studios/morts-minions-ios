@@ -71,20 +71,20 @@ class HeartBoostGemButton : DBButton {
     
     override func touchesEndedAction() {
         let title = "ClickedToBuyHeartBoostWithGems"
-        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-            kFIRParameterItemID: "id-\(title)" as NSObject,
-            kFIRParameterItemName: title as NSObject,
-            kFIRParameterContentType: "cont" as NSObject
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "id-\(title)" as NSObject,
+            AnalyticsParameterItemName: title as NSObject,
+            AnalyticsParameterContentType: "cont" as NSObject
             ])
         
         self.setScale(1)
         
         if GameData.sharedGameData.getSelectedCharacterData().hasFreeHeartBoosts() {
             let title = "ClickedToBuyHeartBoostWithGemsAndHadFreebie"
-            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-                kFIRParameterItemID: "id-\(title)" as NSObject,
-                kFIRParameterItemName: title as NSObject,
-                kFIRParameterContentType: "cont" as NSObject
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-\(title)" as NSObject,
+                AnalyticsParameterItemName: title as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
                 ])
             
             // Reduce free hb
@@ -98,10 +98,10 @@ class HeartBoostGemButton : DBButton {
                 self.purchaseBoost(true)
             } else {
                 let title = "ClickedToBuyHeartBoostWithGemsAndDidntHaveGems"
-                FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-                    kFIRParameterItemID: "id-\(title)" as NSObject,
-                    kFIRParameterItemName: title as NSObject,
-                    kFIRParameterContentType: "cont" as NSObject
+                Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                    AnalyticsParameterItemID: "id-\(title)" as NSObject,
+                    AnalyticsParameterItemName: title as NSObject,
+                    AnalyticsParameterContentType: "cont" as NSObject
                     ])
                 // If the user does not have enough gems, show purchase menu
                 // Need weak reference to prevent retain cycle
@@ -116,10 +116,10 @@ class HeartBoostGemButton : DBButton {
     func purchaseBoost(_ useGems: Bool) -> Void {
         if useGems {
             let title = "PurchasedHeartBoostForGems-\(self.unlockAmount)"
-            FIRAnalytics.logEvent(withName: kFIREventSpendVirtualCurrency, parameters: [
-                kFIRParameterItemID: "id-\(title)" as NSObject,
-                kFIRParameterItemName: title as NSObject,
-                kFIRParameterContentType: "cont" as NSObject
+            Analytics.logEvent(AnalyticsEventSpendVirtualCurrency, parameters: [
+                AnalyticsParameterItemID: "id-\(title)" as NSObject,
+                AnalyticsParameterItemName: title as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
                 ])
             
             GameData.sharedGameData.totalDiamonds = GameData.sharedGameData.totalDiamonds - self.unlockAmount

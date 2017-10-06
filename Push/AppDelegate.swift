@@ -19,15 +19,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Chartboost.start(withAppId: "576a8abe04b01657f1e18be5", appSignature: "54c4763f89ea9ff96502d320787de1cb9ceb7c21", delegate: nil)
         
         // Firebase
-        FIRApp.configure()
+        // Use Firebase library to configure APIs.
+        FirebaseApp.configure()
         
-        /*
-        let analyticTitle = "OpenedApp"
-        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-            kFIRParameterItemID: "id-\(analyticTitle)" as NSObject,
-            kFIRParameterItemName: analyticTitle as NSObject,
-            kFIRParameterContentType: "cont" as NSObject
-            ])*/
+        // Initialize the Google Mobile Ads SDK.
+        
+        //GADMobileAds.configure(withApplicationID: "ca-app-pub-3940256099942544~1458002511") // TEST
+        GADMobileAds.configure(withApplicationID: "ca-app-pub-4505737160765142~1208265512") // REAL
     }
 
     func applicationWillResignActive(_ application: UIApplication) {

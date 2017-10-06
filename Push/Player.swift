@@ -308,8 +308,8 @@ class Player : SKSpriteNode {
         
         // Attributes
         self.goldHearts = GameData.sharedGameData.getSelectedCharacterData().goldHearts
-        self.maxHealth = 3// + GameData.sharedGameData.heartBoostCount
-        self.health = 3// + GameData.sharedGameData.heartBoostCount
+        self.maxHealth = 4
+        self.health = 4
         self.damage = 1
         self.originalDamage = 1
         self.shieldDamage = 1
@@ -778,7 +778,7 @@ class Player : SKSpriteNode {
         
         self.startHiding() // Set all the bit masks so we don't get placed on top of something
         self.stopHiding() // Leave hiding but don't pop out until past everything
-        self.startGracePeriod(2.8) // Don't take damage for 1.2 seconds
+        self.startGracePeriod(3.5) // Don't take damage for X seconds
         self.startPlayerWalkingAnimation() // Start walk animation again
         
         // Fairy
@@ -1154,7 +1154,7 @@ class Player : SKSpriteNode {
             }
             
             // Need to turn on grace period 
-            self.startGracePeriod(1.8)
+            self.startGracePeriod(2.5)
         }
     }
     

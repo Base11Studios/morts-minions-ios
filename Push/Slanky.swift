@@ -44,7 +44,7 @@ class Slanky : Enemy {
         })
         
         // Set the appropriate fight action
-        self.fightAction = SKAction.sequence([SKAction.animate(with: SpriteKitHelper.getTextureArrayFromAtlas(GameTextures.sharedInstance.fireAtlas, texturesNamed: "slanky_pounding", frameStart: 0, frameEnd: 15), timePerFrame: 0.04, resize: true, restore: false), actionEndAttack]) // TODO this frame speed should be multiplied by the difference of the enemy speed or something
+        self.fightAction = SKAction.sequence([SKAction.animate(with: self.fightingAnimatedFrames, timePerFrame: 0.04, resize: true, restore: false), actionEndAttack]) // TODO this frame speed should be multiplied by the difference of the enemy speed or something
         
         // Animate ground pounding
         self.rangeIndicator = SKSpriteNode(texture: nil, color: MerpColors.fireGroundWarn, size: CGSize(width: self.lineOfSight*2, height: 2 * ScaleBuddy.sharedInstance.getGameScaleAmount(false)))

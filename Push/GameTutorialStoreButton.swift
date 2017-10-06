@@ -25,10 +25,10 @@ class GameTutorialStoreButton : DBButton {
     
     override func touchesEndedAction() {
         let title = "ClickedToGoToPurchaseMenuInHouseAds"
-        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-            kFIRParameterItemID: "id-\(title)" as NSObject,
-            kFIRParameterItemName: title as NSObject,
-            kFIRParameterContentType: "cont" as NSObject
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "id-\(title)" as NSObject,
+            AnalyticsParameterItemName: title as NSObject,
+            AnalyticsParameterContentType: "cont" as NSObject
             ])
         
         self.dbScene!.showPurchaseMenu(false, itemCost: 0, onSuccess: {_ in }, onFailure: {})

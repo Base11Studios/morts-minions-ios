@@ -48,8 +48,8 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     
     // Rating
     var playerHasRatedGame: Bool = false
-    var promptRateMeCountdown: Int = 12
-    var promptRateMeMax: Int = 15
+    var promptRateMeCountdown: Int = 8
+    var promptRateMeMax: Int = 8
     
     // Store a copy of the data we got from the cloud in case it was more recent
     var unarchivedCloudData: GameData?
@@ -63,18 +63,18 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     
     // Played
     var timesPlayed: Int = 0
-    var adPopCountdown: Int = 20
-    var adPopMax: Int = 5
+    var adPopCountdown: Int = 6
+    var adPopMax: Int = 3
     
     // Ads
     var lastVideoAdWatch: Date
-    static var videoAdCooldown: Int = -2
+    static var videoAdCooldown: Int = -1
     
     // Heart Boost
     static var heartBoostCooldown: Int = -20
     var heartBoostLastUsed: Date
     var heartBoostCount: Int = 0
-    static var heartBoostPromptCooldown: Int = -10
+    static var heartBoostPromptCooldown: Int = -5
     var heartBoostLastPrompted: Date
     static var adsPurchasedHeartBoostMultiplier: Int = 3
     
@@ -433,7 +433,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     }
     
     func saveToiCloud() {
-        let iCloudStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore.default()
+        let iCloudStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore.default
         let encodedData: Data = NSKeyedArchiver.archivedData(withRootObject: self)
         
         // Set data into icloud dictionary (locally)
@@ -533,7 +533,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     
     class func getCloudData() -> Data? {
         // Get the store from memory
-        let iCloudStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore.default()
+        let iCloudStore: NSUbiquitousKeyValueStore = NSUbiquitousKeyValueStore.default
         
         // Set data into iCloud dictionary (locally)
         let dataFromCloud = iCloudStore.data(forKey: GameData.SSiCloudGameDataKey)

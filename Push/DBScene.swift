@@ -183,7 +183,7 @@ class DBScene : SKScene {
     }
     
     // When a product is purchased, this notification fires -> Here we want to add the proper permissions and give gems
-    func productPurchased(_ notification: Notification) {
+    @objc func productPurchased(_ notification: Notification) {
         // Record gems purchased
         var gemsPurchased: Int = 0
         
@@ -217,7 +217,7 @@ class DBScene : SKScene {
     }
     
     // When a product purchase fails
-    func productPurchaseFailed(_ notification: Notification) {
+    @objc func productPurchaseFailed(_ notification: Notification) {
         let failReason = notification.object as! NSError
         
         if failReason.code != SKError.paymentInvalid.rawValue {

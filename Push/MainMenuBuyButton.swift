@@ -65,10 +65,10 @@ class MainMenuBuyButton : DBButton {
         self.setScale(1)
         
         let title = "ClickedToBuyCharacter"
-        FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-            kFIRParameterItemID: "id-\(title)" as NSObject,
-            kFIRParameterItemName: title as NSObject,
-            kFIRParameterContentType: "cont" as NSObject
+        Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+            AnalyticsParameterItemID: "id-\(title)" as NSObject,
+            AnalyticsParameterItemName: title as NSObject,
+            AnalyticsParameterContentType: "cont" as NSObject
             ])
         
         // If the user has enough gems, unlock it
@@ -78,10 +78,10 @@ class MainMenuBuyButton : DBButton {
             self.purchaseCharacter(ugh: true)
         } else {
             let title = "ClickedToBuyCharacterAndDidntHaveGems"
-            FIRAnalytics.logEvent(withName: kFIREventSelectContent, parameters: [
-                kFIRParameterItemID: "id-\(title)" as NSObject,
-                kFIRParameterItemName: title as NSObject,
-                kFIRParameterContentType: "cont" as NSObject
+            Analytics.logEvent(AnalyticsEventSelectContent, parameters: [
+                AnalyticsParameterItemID: "id-\(title)" as NSObject,
+                AnalyticsParameterItemName: title as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
                 ])
             // If the user does not have enough gems, show purchase menu
             // Need weak reference to prevent retain cycle
@@ -100,10 +100,10 @@ class MainMenuBuyButton : DBButton {
         
         if unlockCost <= GameData.sharedGameData.totalDiamonds { // Unlock it
             let title = "PurchasedCharacter-\(GameData.sharedGameData.selectedCharacter.rawValue)-ForGems-\(unlockCost)"
-            FIRAnalytics.logEvent(withName: kFIREventSpendVirtualCurrency, parameters: [
-                kFIRParameterItemID: "id-\(title)" as NSObject,
-                kFIRParameterItemName: title as NSObject,
-                kFIRParameterContentType: "cont" as NSObject
+            Analytics.logEvent(AnalyticsEventSpendVirtualCurrency, parameters: [
+                AnalyticsParameterItemID: "id-\(title)" as NSObject,
+                AnalyticsParameterItemName: title as NSObject,
+                AnalyticsParameterContentType: "cont" as NSObject
                 ])
             
             GameData.sharedGameData.totalDiamonds = GameData.sharedGameData.totalDiamonds - unlockCost

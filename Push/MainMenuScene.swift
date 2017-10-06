@@ -190,7 +190,8 @@ class MainMenuScene : DBScene {
         self.worldView.addChild(self.comingSoon)
         
         // Settings
-        let settingsButtonXPosition = -size.width / 2.0 + self.settingsButton!.size.width / 2 + self.buttonBuffer * 1.5
+        let boostedButtonBuffer = self.buttonBuffer * 1.5
+        let settingsButtonXPosition = -size.width / 2.0 + self.settingsButton!.size.width / 2 + boostedButtonBuffer
         let settingsButtonYPosition = size.height / 2 - self.settingsButton!.size.height / 2.3
         self.settingsButton!.position = CGPoint(x: settingsButtonXPosition, y: settingsButtonYPosition)
         
@@ -516,7 +517,7 @@ class MainMenuScene : DBScene {
         super.updateGemCounts()
     }
     
-    func playerNotAuthenticated() {
+    @objc func playerNotAuthenticated() {
         // Make trophy red
         self.gameCenterButton!.showError()
         
@@ -529,7 +530,7 @@ class MainMenuScene : DBScene {
         }
     }
     
-    func playerAuthenticated() {
+    @objc func playerAuthenticated() {
         // Game center button should be blue
         self.gameCenterButton!.hideError()
     }
