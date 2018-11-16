@@ -144,7 +144,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADI
             // Instantiate the interstitial using the class convenience method.
             self.setupAdDelegate()
             
-            interstitial = self.createAndLoadInterstitial()
+            //interstitial = self.createAndLoadInterstitial()
             self.cacheRewardedVideo()
             
             // Set restoration identifier
@@ -309,7 +309,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADI
     
     func createIntroductionScene() -> IntroductionScene {
         let scene: IntroductionScene = IntroductionScene(size: getScreenSize())
-        scene.scaleMode = SKSceneScaleMode.aspectFill
+        scene.scaleMode = SKSceneScaleMode.aspectFit
         scene.viewController = self
         return scene
     }
@@ -341,7 +341,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADI
     
     func createCharacterSkillScene(returnScene: DBScene) -> CharacterSkillScene {
         let scene = CharacterSkillScene(size: self.getScreenSize(), returnScene: returnScene)
-        scene.scaleMode = SKSceneScaleMode.aspectFill
+        scene.scaleMode = SKSceneScaleMode.aspectFit
         scene.viewController = self
         
         // Also set the selected char
@@ -420,7 +420,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADI
     
     func createMainMenuScene() -> MainMenuScene {
         let scene: MainMenuScene = MainMenuScene(size: self.getScreenSize())
-        scene.scaleMode = SKSceneScaleMode.aspectFill
+        scene.scaleMode = SKSceneScaleMode.aspectFit
         scene.viewController = self
         return scene
     }
@@ -457,7 +457,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADI
     
     func createLevelSelectionScene() -> LevelSelectionScene {
         let scene: LevelSelectionScene = LevelSelectionScene(size: self.getScreenSize())
-        scene.scaleMode = SKSceneScaleMode.aspectFill
+        scene.scaleMode = SKSceneScaleMode.aspectFit
         scene.viewController = self
         return scene
     }
@@ -522,7 +522,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADI
         
         SKTextureAtlas.preloadTextureAtlases(GameTextures.sharedInstance.getAtlasArrayForWorld(world: world)) { () -> Void in
             let gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
-            gameScene.scaleMode = SKSceneScaleMode.aspectFill
+            gameScene.scaleMode = SKSceneScaleMode.aspectFit
             gameScene.viewController = self
             let skView: SKView = self.view as! SKView
             skView.isMultipleTouchEnabled = true
@@ -538,7 +538,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADI
         // Move to a background thread to do some long running work
         DispatchQueue.global().async {
             let gameScene = GameScene(size: self.getScreenSize(), level: level, controller: self, justRestarted: justRestarted)
-            gameScene.scaleMode = SKSceneScaleMode.aspectFill
+            gameScene.scaleMode = SKSceneScaleMode.aspectFit
             gameScene.viewController = self
             // Bounce back to the main thread to update the UI
             DispatchQueue.main.async {
@@ -578,7 +578,7 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADI
     
     func createLoadingScene() -> LoadingScene {
         let scene: LoadingScene = LoadingScene(size: self.getScreenSize())
-        scene.scaleMode = SKSceneScaleMode.aspectFill
+        scene.scaleMode = SKSceneScaleMode.aspectFit
         scene.viewController = self
         return scene
     }
@@ -611,7 +611,9 @@ class GameViewController: UIViewController, GKGameCenterControllerDelegate, GADI
             //NSLog("\(Double(round(100*Double(skView.bounds.height / skView.bounds.width))/100))")
             //NSLog("\(Double(round(100*(9.0 / 16.0))/100))")
             let partial = round(100*Double(skView.bounds.height / skView.bounds.width))
-            if Double(partial/100) == Double(round(100*(9.0 / 16.0))/100) {
+            if Double(partial/100) == Double(round(100*(9.0 / 19.5))/100) {
+                return CGSize(width: 667, height: 375)
+            } else if Double(partial/100) == Double(round(100*(9.0 / 16.0))/100) {
                 return CGSize(width: 667, height: 375)
             } else {
                 return CGSize(width: 562.5, height: 375)

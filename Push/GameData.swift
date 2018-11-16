@@ -30,7 +30,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     var tutorialsAcknowledged: [String: Double] = [:]
 
     // Ads?
-    var adsUnlocked: Bool = false
+    var adsUnlocked: Bool = true
     
     // Scores
     var totalGemsCollected = 0
@@ -139,7 +139,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
     let SSGameDataSelectedCharacterKey: String = "selectedCharacterKey"
     let SSGameDataTotalDiamondsKey: String = "totalDiamonds"
     let SSGameDataTotalGemsCollectedKey: String = "totalGemsCollected"
-    let SSGameDataAdsUnlockedKey: String = "adsUnlocked"
+    //let SSGameDataAdsUnlockedKey: String = "adsUnlocked"
     let SSGameDataTutorialsAcknowledgedKey: String = "tutorialsAcknowledged"
     let SSGameDataTimesPlayedKey: String = "timesPlayedKey"
     
@@ -181,7 +181,7 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         encoder.encode(self.selectedCharacter.rawValue, forKey: SSGameDataSelectedCharacterKey)
         encoder.encode(self._totalDiamonds, forKey: SSGameDataTotalDiamondsKey)
         encoder.encode(self.totalGemsCollected, forKey: SSGameDataTotalGemsCollectedKey)
-        encoder.encode(self.adsUnlocked, forKey: SSGameDataAdsUnlockedKey)
+        //encoder.encode(self.adsUnlocked, forKey: SSGameDataAdsUnlockedKey)
         encoder.encode(self.tutorialsAcknowledged, forKey: SSGameDataTutorialsAcknowledgedKey)
         encoder.encode(self.timesPlayed, forKey: SSGameDataTimesPlayedKey)
         
@@ -326,9 +326,9 @@ class GameData : NSObject, NSCoding { // TODO doesnt need to inheirit from NSObj
         if decoder.containsValue(forKey: SSGameDataTotalGemsCollectedKey) {
             self.totalGemsCollected = decoder.decodeInteger(forKey: SSGameDataTotalGemsCollectedKey)
         }
-        if decoder.containsValue(forKey: SSGameDataAdsUnlockedKey) {
-            self.adsUnlocked = decoder.decodeBool(forKey: SSGameDataAdsUnlockedKey)
-        }
+        // if decoder.containsValue(forKey: SSGameDataAdsUnlockedKey) {
+        //     self.adsUnlocked = decoder.decodeBool(forKey: SSGameDataAdsUnlockedKey)
+        // }
         if decoder.containsValue(forKey: SSGameDataTimesPlayedKey) {
             self.timesPlayed = decoder.decodeInteger(forKey: SSGameDataTimesPlayedKey)
         }

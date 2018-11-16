@@ -6,11 +6,11 @@
 	<array>
 		<dict>
 			<key>Title</key>
-			<string>What&apos;s New in 2.3?</string>
+			<string>What&apos;s New in 2.4?</string>
 			<key>Description</key>
-			<string>- More reliable video rewards!</string>
+			<string>- Support for iPhone X</string>
 			<key>Description2</key>
-			<string></string>
+			<string>- No more static ads!</string>
 			<key>Description3</key>
 			<string></string>
 			<key>Description4</key>
@@ -20,7 +20,7 @@
 			<key>Key</key>
 			<string>whats_new_main_menu</string>
 			<key>Version</key>
-			<integer>230</integer>
+			<integer>240</integer>
 			<key>FirstPlayDescription</key>
 			<string>Welcome to Mort&apos;s Minions! Select a hero and start your adventure today!</string>
 			<key>FirstPlayTitle</key>

@@ -80,7 +80,7 @@ class PurchaseMenu: DialogBackground {
         self.headerText!.paragraphWidth = self.buy2Button.size.width * 2 + buffer
         self.headerText!.fontSize = round(14 * ScaleBuddy.sharedInstance.getGameScaleAmount(false))
         self.headerText!.fontColor = MerpColors.darkFont
-        self.headerText!.text = "Buy gems to boost your hero and remove rewardless ads."
+        self.headerText!.text = "Buy gems to boost your hero."
         self.headerText!.position = CGPoint(x: (-self.totalWidth! + self.headerText!.calculateAccumulatedFrame().size.width) / 2, y: self.buy1Button.position.y + self.buy1Button.size.height / 2 + self.headerText!.calculateAccumulatedFrame().size.height / 2 + self.buffer)
         
         // Footer
@@ -89,9 +89,9 @@ class PurchaseMenu: DialogBackground {
         self.footerText!.fontColor = MerpColors.darkFont
         
         if GameData.sharedGameData.adsUnlocked {
-            self.footerText!.text = "Thank you for your purchase - rewardless ads are no more!"
+            self.footerText!.text = "Thank you for your purchase!"
         } else {
-            self.footerText!.text = "* Purchase any gems and remove rewardless ads!"
+            self.footerText!.text = "* Support indie development!"
         }
         self.footerText!.position = CGPoint(x: (-self.totalWidth! + self.footerText!.calculateAccumulatedFrame().size.width) / 2, y: self.buy3Button.position.y - self.buy3Button.size.height / 2 - self.footerText!.calculateAccumulatedFrame().size.height / 2 - self.buffer)
         
@@ -148,7 +148,7 @@ class PurchaseMenu: DialogBackground {
                 self.headerText!.text = "Darn, you need \(itemCost) gems to make the purchase. Buy more below."
             } else {
                 self.headerFontColor(false)
-                self.headerText!.text = "Buy gems to boost your hero and remove rewardless ads."
+                self.headerText!.text = "Buy gems to boost your hero."
             }
         } else {
             if openedWithNotEnoughGems {
@@ -210,9 +210,9 @@ class PurchaseMenu: DialogBackground {
     func updateFooter() {
         // Footer
         if GameData.sharedGameData.adsUnlocked {
-            self.footerText!.text = "Thank you for your purchase - rewardless ads are no more!"
+            self.footerText!.text = "Thank you for your purchase!"
         } else {
-            self.footerText!.text = "* Purchase any gems and remove rewardless ads!"
+            self.footerText!.text = "* Support indie development!"
         }
         self.footerText!.position = CGPoint(x: (-self.totalWidth! + self.footerText!.calculateAccumulatedFrame().size.width) / 2, y: self.buy3Button.position.y - self.buy3Button.size.height / 2 - self.footerText!.calculateAccumulatedFrame().size.height / 2 - self.buffer)
     }

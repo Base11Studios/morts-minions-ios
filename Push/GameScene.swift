@@ -429,27 +429,27 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
             self.heartBoostReady = false
             self.showPauseMenu = false
             self.pauseGame()
-        } else if !self.showedHeartBoostDialog && (GameData.sharedGameData.adPopCountdown <= 0) && viewController!.interstitialAdReady() && !self.adsPresented && !GameData.sharedGameData.adsUnlocked {
-            // We want to add to the tutorials
-            self.addInHouseAds()
-            
-            // Then ads
-            // Show the ad
-            viewController!.showInterstitialAd()
-            
-            self.adsPresented = true
-            self.showPauseMenu = false
-            self.pauseGame()
-            
-            // Reset the count
-            GameData.sharedGameData.adPopCountdown = GameData.sharedGameData.adPopMax
+//        } else if !self.showedHeartBoostDialog && (GameData.sharedGameData.adPopCountdown <= 0) && viewController!.interstitialAdReady() && !self.adsPresented && !GameData.sharedGameData.adsUnlocked {
+//            // We want to add to the tutorials
+//            self.addInHouseAds()
+//
+//            // Then ads
+//            // Show the ad
+//            viewController!.showInterstitialAd()
+//
+//            self.adsPresented = true
+//            self.showPauseMenu = false
+//            self.pauseGame()
+//
+//            // Reset the count
+//            GameData.sharedGameData.adPopCountdown = GameData.sharedGameData.adPopMax
         } else { // Then tutorials
             self.addAllPlayerHearts()
-            
-            if !self.adsPresented && GameData.sharedGameData.adPopCountdown < -4 && GameData.sharedGameData.adPopCountdown % 5 == 0 {
-                self.addInHouseAds()
-            }
-            
+//
+//            if !self.adsPresented && GameData.sharedGameData.adPopCountdown < -4 && GameData.sharedGameData.adPopCountdown % 5 == 0 {
+//                self.addInHouseAds()
+//            }
+//
             // Now tutorials
             if self.tutorialDialogs!.count > 0 {
                 self.showPauseMenu = false
@@ -1159,7 +1159,7 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
         // Video reward - cache
         self.viewController!.cacheRewardedVideo()
         // Interstitial
-        self.viewController!.cacheInterstitialAd()
+        //self.viewController!.cacheInterstitialAd()
         
         // Check for levels completed if they are completed keep them in there
         var levelsUnlocked = Array<Int>()
