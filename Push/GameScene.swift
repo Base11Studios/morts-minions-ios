@@ -156,11 +156,6 @@ class GameScene : DBScene, SKPhysicsContactDelegate {
     var playerRejuved: Bool = false
     var ACTION_KEY_REJUV_DIALOG: String = "rejuvDialog"
     
-    // Cool text for level
-    //var levelIntroText: LabelWithShadow?
-    //var levelIntroTextAction: SKAction?
-    //var levelIntroTextShown: Bool? = false
-    
     // Heart boost
     var heartBoostReady = false
     var heartBoostDialog: HeartBoostDialog?
